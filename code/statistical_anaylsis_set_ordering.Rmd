@@ -1,0 +1,1166 @@
+---
+title: "Bayesian Anaylsis of Set, Ordering, Conjunction, and Disjunction Models"
+authors: "Laila Johnston"
+output: html_notebook
+---
+
+# Set Up
+```{r}
+# Load needed libraries.
+library(cowplot)
+library(dplyr) # for probabilities 
+library(gridExtra)
+library(ggplot2) # for ploting graphs and figures
+library(matrixStats) # for logSumExp
+library(psych) # used for logit and logistic transformations
+library(readr)
+library(stats4)
+library("tidyverse") # for data wrangling
+
+# Load the human experimental data
+# CHANGE WHEN USING A DIFFERENT LOCATION
+sca_data_prereg_filtered <- read_csv("/Users/lailajohnston/Library/CloudStorage/GoogleDrive-laila_johnston@brown.edu/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Data/Study Data/sca_data_prereg_filtered.csv")
+
+# FILE PATH LOCATION FOR PLOTS! CAN CHANGE AS NEEDED
+filepath_plots = "/Users/lailajohnston/Library/CloudStorage/GoogleDrive-laila_johnston@brown.edu/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/figures/"
+
+# Explanation of certain columns:
+
+# trigger_relevance and query_relevance are the ranking of the word from 0-5 where 0 is the most "relevant" word and 5 is the least
+# set: whether the query word was inside (relevance 0-2) or outside (relevance 3-5) the supposed set.
+# scale: whether the query word was above (trigger_relevance > query_relevance) or below (trigger_relevance < query_relevance) the trigger word on the supposed scale
+# region: based on set and scale values, which of the four regions in the grid this trigger-query pair was testing (A = inside, below; B= inside, above; C = outside, below; D = outside, above)
+
+# Experiment columns are from participant responses. True columns are the "ground truth" (i.e. the results from the pilot study).
+
+# Change / add columns to make it more understandable.
+df.data = sca_data_prereg_filtered %>% 
+  rename(trigger = chosen,
+         trigger_relevance = chosen_ix, 
+         query = target,
+         query_relevance = target_ix) %>% 
+  mutate(set_model = NA, 
+         ordering_model = NA, 
+         conjunction_model = NA, 
+         disjunction_model = NA)
+```
+
+# Logical Models
+```{r}
+# Get model predictions for the four different models - set, ordering, conjunction, disjunction. These models are the logical models (no uncertainty) !
+
+for (i in 1:nrow(df.data)) {
+  current_row <- df.data[i, ]
+  
+  # Set model: Negated response iff query is inside the set.
+  if (current_row$set == "inside")
+    df.data$set_model[i] = 1
+  else if (current_row$set == "outside")
+    df.data$set_model[i] = 0
+  
+  # Ordering model: Negated response iff query is above trigger item.
+  if (current_row$scale == "above")
+    df.data$ordering_model[i] = 1
+  else if (current_row$scale == "below")
+    df.data$ordering_model[i] = 0
+  
+  # Conjunction model: Negated response iff query is inside the set AND above 
+  # trigger item.
+  if (current_row$set == "inside" & current_row$scale == "above")
+    df.data$conjunction_model[i] = 1
+  else
+    df.data$conjunction_model[i] = 0
+  
+  # Disjunction model: Negated response iff query is inside the set OR above 
+  # trigger item.
+  if (current_row$set == "inside" | current_row$scale == "above")
+    df.data$disjunction_model[i] = 1
+  else 
+    df.data$disjunction_model[i] = 0
+}
+```
+
+# Bayesian Models
+## Parameter Settings and Gobal Functions (i.e. functions not specific to a model)
+```{r}
+# ---- Sorting by region ----
+# Regions A and D are where the models make different predictions. 
+# Regions B and C are where the models make the same predictions. 
+# df.data = df.data %>%  
+#   filter(region %in% c('C'))
+
+# ---- Uniform Gradation ----
+
+# Start, end, and step values for the prob variable. prob represents the probability of a negated response. These vales are used in the for loops that get the marginal likelihood. 
+# P_negated_response_set should always be greater than 1 - P_negated_response_set! P_negated_response_set has values in the range (param_start = 0.5, param_end = 1). 
+param_step = 0.001
+param_start = 0.5 + param_step
+param_end = 1 - param_step
+
+# The probability that a query produces negation given that the query is inside the set. 
+# The set model produced the greatest likelihood with prob_inside =~ 0.7
+prob_inside = 0.7
+prob_order = 0.6
+```
+
+
+```{r}
+# ---- Query Gradation ----
+
+# To estimate the query distributions: We split the data based on unique story, trigger, query pairs. Half the data will be used to estimate the query distributions. The other half will be used to test the models. 
+
+# Sort the dataframe
+df.sorted <- df.data %>%
+  arrange(story, trigger, query)
+
+# Initialize empty dataframes
+df.estimate <- data.frame()
+df.test <- data.frame()
+
+# Group by story, trigger, and query
+groups <- df.sorted %>%
+  group_by(story, trigger, query) %>%
+  group_split()
+
+# Split each group into estimate and test dataframes
+for (group in groups) {
+  n <- nrow(group)
+  half <- floor(n / 2)
+  df.estimate <- bind_rows(df.estimate, group[1:half, ])
+  df.test <- bind_rows(df.test, group[(half + 1):n, ])
+}
+
+# Now we have our split data. Now we are going to estimate query distributions for each context given each model. Because each model has different predictions on what trigger, query pairs get negated and because we do not want indifferent prediction to influence our distributions, we have to take into account the model. Also notes that every query is unique to a context. Two different contexts do not have the same queries. Thus, by sorting by query we automatically sort by context. 
+
+# Set model - negated responses are in region A and B
+df_filtered_set <- df.estimate %>%
+  filter(region %in% c("A", "B")) %>%
+  group_by(story, query_relevance, query) %>%
+  summarise(total_count = n(),
+            neg_count = sum(neg == 1),
+            proportion_neg = neg_count / total_count) %>%
+  mutate(model = "set")
+
+# Ordering model - negated in regions B and D
+df_filtered_order <- df.estimate %>%
+  filter(region %in% c("B", "D")) %>%
+  group_by(story, query_relevance, query) %>%
+  summarise(total_count = n(),
+            neg_count = sum(neg == 1),
+            proportion_neg = neg_count / total_count) %>%
+  mutate(model = "order")
+
+# Conjunction model - negated in B 
+df_filtered_conjunct <- df.estimate %>%
+  filter(region %in% c("B")) %>%
+  group_by(story, query_relevance, query) %>%
+  summarise(total_count = n(),
+            neg_count = sum(neg == 1),
+            proportion_neg = neg_count / total_count) %>%
+  mutate(model = "conjunction")
+
+# Disjunction model - negated in A, B, D
+df_filtered_disjunct <- df.test %>%
+  filter(region %in% c("A", "B", "D")) %>%
+  group_by(story, query_relevance, query) %>%
+  summarise(total_count = n(),
+            neg_count = sum(neg == 1),
+            proportion_neg = neg_count / total_count) %>%
+  mutate(model = "disjunction")
+
+query_distributions = bind_rows(df_filtered_set, df_filtered_order, df_filtered_conjunct, df_filtered_disjunct)
+
+# write.csv(query_distributions, "/Users/lailajohnston/Library/CloudStorage/GoogleDrive-laila_johnston@brown.edu/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/code/query_distributions.csv", row.names = FALSE)
+
+# Let's visualize these distributions. 
+
+# Filter the dataframe by model and create a new column to order the queries by their story
+df_filtered <- query_distributions %>%
+  filter(model == "disjunction") %>%
+  group_by(story) %>% 
+  arrange(story, query_relevance, query) %>%
+  mutate(query_story = factor(paste(story, query, sep = "_"), levels = unique(paste(story, query, sep = "_"))))
+
+# Create a lookup table for custom labels
+query_labels <- df_filtered %>% 
+  distinct(query_story, query) %>% 
+  pull(query, name = query_story)
+
+# Create the plot
+p <- ggplot(df_filtered, aes(x = query_story, y = proportion_neg)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Query", y = "Proportion of Negated Response") +
+  ggtitle("Query Distributions Given Each Context for the Disjunction Model (2half of data)") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
+  # Add a secondary x-axis title for the story
+  facet_grid(. ~ story, scales = "free_x", space = "free_x") +
+  theme(strip.text.x = element_text(angle = 90, hjust = 1)) +
+  scale_x_discrete(labels = query_labels)
+
+print(p)
+
+filename = "query_distributions/disjunction_model_query_distribution_plot_2half.png"
+full_path <- paste0(filepath_plots, filename)
+ggsave(full_path, p, width = 14, height = 8, dpi = 300)
+
+```
+
+## Set Model Predictions
+```{r}
+# Get set model predictions for a specific parameter value
+
+P_negated_response = 0.8 
+
+# Probabilistic Set Model
+
+set_model_bayes = function(set_status) {
+  # Generate a random number between 0 and 1
+  random_prob = runif(1)
+  
+  # If inside the set, return a negated response (i.e. -1) with probability P_negated_response
+  if (set_status == "inside") {
+    if (random_prob < P_negated_response)
+      return (1)
+    else
+      return (0)
+  }
+  # If outside the set, return a negated response (i.e. -1) with probability 1 - P_negated_response
+  else if (set_status == "outside") {
+    if (random_prob < (1 - P_negated_response))
+      return (1)
+    else 
+      return (0)
+  }
+}
+
+# Apply the function over the 'set' column and store the result in a new column 'set_bayes'
+df.data$set_model_bayes <- sapply(df.data$set, set_model_bayes)
+
+# --- Set Model Plots ---
+
+# Calculate mean for each set category
+average_data <- df.data %>%
+  group_by(set) %>%
+  summarise(Average = mean(set_model_bayes)) %>%
+  ungroup()
+
+# Plot the averages
+plot = ggplot(average_data, aes(x = set, y = Average, fill = set)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Predictions of the Probabilistic Set Model", x = "Query Set Status", y = "Frequency of Negated Response") +
+  scale_fill_brewer(palette = "Accent") +
+  theme(
+    plot.title = element_text(size = 22, face = "bold"),
+    axis.title = element_text(size = 18),
+    axis.text = element_text(size = 16)) +
+  scale_y_continuous(
+    limits = c(0, 1),  # Set y-axis from 0 to 1
+    breaks = seq(0, 1, by = 0.2)  # Set breaks at every 0.1 interval
+  )
+
+filename = "set_model_bayes_plot.png"
+
+full_path <- paste0(filepath_plots, filename)
+ggsave(full_path, plot, width = 10, height = 6, dpi = 300)
+
+```
+
+```{r}
+
+# UPDATED MODEL! Uncertainty in "inside status". Produces same behavior as before but should change all models to this. 
+new_function = function(set_status) {
+  random_prob = runif(1)
+  
+  if (set_status == "inside"){
+    if (random_prob < prob_inside)
+      inside_status = 1
+    else 
+      inside_status = 0
+  }
+  else if (set_status == "outside") {
+    if (random_prob < 1 - prob_inside)
+      inside_status = 1
+    else 
+      inside_status = 0
+  }
+  
+  if (inside_status == 1)
+    return(1)
+  else 
+    return (0)
+}
+
+df.data$new = sapply(df.data$set, new_function)
+
+average_data <- df.data %>%
+  group_by(set) %>%
+  summarise(Average = mean(new)) %>%
+  ungroup()
+
+# Plot the averages
+ggplot(average_data, aes(x = set, y = Average, fill = set)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_brewer(palette = "Accent") +
+  theme(
+    plot.title = element_text(size = 22, face = "bold"),
+    axis.title = element_text(size = 18),
+    axis.text = element_text(size = 16)) +
+  scale_y_continuous(
+    limits = c(0, 1),  # Set y-axis from 0 to 1
+    breaks = seq(0, 1, by = 0.2)  # Set breaks at every 0.1 interval
+  )
+```
+
+
+### Set Model Likelihood
+```{r}
+# Function that returns the log probability of a negated response for the set model
+likelihood_set = function(participant_response, set_status, P_negated_response) {
+  if (set_status == "inside") {
+    if (participant_response == 1)
+      return(log(P_negated_response))
+    else
+      return(log(1 - P_negated_response))
+  }
+  else if (set_status == "outside") {
+    if (participant_response == 1)
+      return(log(1 - P_negated_response))
+    else
+      return(log(P_negated_response))
+  }
+}
+
+# Get the log likelihood for each parameter; loop over parameter values
+log_likelihood_list <- list()
+# max_likelihood = -1000000
+
+for (prob in seq(param_start, param_end, by = param_step)) {
+  log_likelihood <- sum(mapply(likelihood_set, df.data$neg, df.data$set, prob))
+  # if (log_likelihood > max_likelihood) {
+  #   max_likelihood = log_likelihood
+  #   max_param = prob
+  # }
+  # log_likelihood <- sum(mapply(likelihood_set, df.data$conjunction_model, df.data$set, prob))
+  # Put log likelihoods into a list
+  log_likelihood_list[[length(log_likelihood_list) + 1]] <- log_likelihood 
+}
+
+# print(max_likelihood)
+# print(max_param)
+
+# Sum the log likelihoods then divide by the amount of likelihoods
+marginal_likelihood_set = logSumExp(log_likelihood_list) - log(length(log_likelihood_list))
+```
+
+### Set Model with Query Gradation (Predictions and Likelihood)
+```{r}
+# Two parameters in this model. The inside parameter (the parameter that puts uncertainty on whether a query is inside the set or not). And the query gradation parameter (the graded-ness of the query relevance).
+
+# Function that returns the prediction of a set query gradation model. 
+# 1 is a negated response and 0 is an difference response
+set_query_gradation_prediction = function(query_relevance, set_status){
+  prob_negated_response = get_gradated_negated_response_probability(query_relevance)
+  random_prob_inside = runif(1)
+  random_prob_query = runif(1)
+  
+  if (set_status == "inside"){
+    if (random_prob_query < prob_negated_response)
+      return (1)
+    else
+      return (0)
+  }
+  else if (set_status == "outside") {
+    if (random_prob_inside < 1 - prob_inside)
+      return(1)
+    else 
+      return (0)
+  }
+}
+
+# Returns the log likelihood of a specific trial.
+likelihood_set_query_gradation = function(participant_response, query_relevance, set_status) {
+  prob_negated_response = get_gradated_negated_response_probability(query_relevance)
+
+  if (set_status == "inside") {
+    if (participant_response == 1)
+      return(log(prob_negated_response))
+    else
+      return(log(1 - prob_negated_response))
+  }
+  else if (set_status == "outside") {
+    if (participant_response == 1)
+      return(log(1 - prob_inside))
+    else
+      return(log(prob_inside))
+  }
+}
+
+# Get the sum of all the log likelihoods
+log_likelihood_set_query_gradation <- sum(mapply(likelihood_set_query_gradation, df.data$neg, df.data$query_relevance, df.data$set))
+```
+
+
+```{r}
+# --- Set Query Prediction Plot --- 
+
+df.data$set_model_query <- mapply(set_query_gradation_prediction, df.data$query_relevance, df.data$set)
+
+# Calculate averages
+average_data <- df.data %>%
+  group_by(set, query_relevance) %>%
+  summarise(Average = mean(set_model_query)) %>%
+  ungroup()
+
+# Plot the averages
+plot = ggplot(average_data, aes(x = query_relevance, y = Average, fill = set)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Predictions of the Probabilistic Set Model\nwith Query Gradation", 
+       x = "Query Relevance (from greatest to least)", 
+       y = "Probability of Negated Response",
+       fill = "Query Set Status") +
+  scale_fill_brewer(palette = "Accent") +
+  theme(
+    plot.title = element_text(size = 22, face = "bold"),
+    axis.title = element_text(size = 18),
+    axis.text = element_text(size = 16),
+    legend.title = element_text(size = 14),
+    legend.text = element_text(size = 12)) +
+  scale_y_continuous(
+    limits = c(0, 1),  # Set y-axis from 0 to 1
+    breaks = seq(0, 1, by = 0.2)) + 
+  scale_x_continuous(
+    limits = c(-0.5, 5.5),
+    breaks = seq(0, 5, by = 1))
+
+# filename = "set_model_query_gradation_plot.png"
+# 
+# full_path <- paste0(filepath_plots, filename)
+# ggsave(full_path, plot, width = 10, height = 6, dpi = 300)
+
+print(plot)
+```
+
+## Ordering Model Predictions
+```{r}
+# Get ordering model predictions for a specific parameter value
+
+# Probabilistic Ordering Model
+ordering_model_bayes = function(ordering_status) {
+  
+  # Generate a random number between 0 and 1
+  random_prob = runif(1)
+  
+  # If above on the ordering, return a negated response (i.e. 1) with probability P_negated_response_order
+  if (ordering_status == "above") {
+    if (random_prob < prob_order)
+      return (1)
+    else
+      return (0)
+  }
+  # If below on the ordering, return a negated response (i.e. 1) with probability 1 - P_negated_response_order
+  else if (ordering_status == "below") {
+    if (random_prob < (1 - prob_order))
+      return (1)
+    else 
+      return (0)
+  }
+}
+
+# Apply the function over the 'scale' column and store the result in a new column 'ordering_model_bayes'
+df.data$ordering_model_bayes <- sapply(df.data$scale, ordering_model_bayes)
+
+# --- Ordering Model Frequency Plot ---
+
+# Calculate mean
+average_data <- df.data %>%
+  group_by(scale) %>%
+  summarise(Average = mean(ordering_model_bayes)) %>%
+  ungroup()
+
+# Plot the averages
+plot = ggplot(average_data, aes(x = scale, y = Average, fill = scale)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Predictions of the Probabilistic Ordering Model", x = "Trigger Ordering Status", y = "Frequency of Negated Responses") +
+  scale_fill_brewer(palette = "Accent") +
+  theme(
+    plot.title = element_text(size = 22, face = "bold"),
+    axis.title = element_text(size = 18),
+    axis.text = element_text(size = 16)) +
+  scale_y_continuous(
+    limits = c(0, 1),  # Set y-axis from 0 to 1
+    breaks = seq(0, 1, by = 0.2)  # Set breaks at every 0.1 interval
+  )
+
+filename = "ordering_model_bayes_plot.png"
+
+full_path <- paste0(filepath_plots, filename)
+ggsave(full_path, plot, width = 10, height = 6, dpi = 300)
+
+```
+
+### Ordering Model Likelihood
+```{r}
+# Function that returns the log probability of a negated response
+likelihood_order = function(participant_response, scale_status, P_negated_response) {
+  if (scale_status == "above") {
+    if (participant_response == 1)
+      return (log(P_negated_response))
+    else 
+      return(log(1 - P_negated_response))
+  }
+  else if (scale_status == "below") {
+    if (participant_response == 1)
+      return(log(1 - P_negated_response))
+    else
+      return (log(P_negated_response))
+  }
+}
+
+# Get the log likelihood for each parameter; loop over parameter values
+log_likelihood_list <- list()
+max_likelihood = -100000
+
+for (prob in seq(param_start, param_end, by = param_step)) {
+  log_likelihood <- sum(mapply(likelihood_order, df.data$neg, df.data$scale, prob))
+  # log_likelihood <- sum(mapply(likelihood_order, df.data$conjunction_model, df.data$scale, prob))
+  if (log_likelihood > max_likelihood) {
+    max_likelihood = log_likelihood
+    max_param = prob
+  }
+  # Put log likelihoods into a list
+  log_likelihood_list[[length(log_likelihood_list) + 1]] <- log_likelihood
+}
+
+print(max_likelihood)
+print(max_param)
+
+# Sum the log likelihoods then divide by the amount of likelihoods
+marginal_likelihood_order = logSumExp(log_likelihood_list) - log(length(log_likelihood_list))
+```
+
+### Ordering Model with Query Gradation (Predictions and Likelihood)
+```{r}
+order_query_gradation_prediction = function(query_relevance, ordering_status){
+  prob_negated_response = get_gradated_negated_response_probability(query_relevance)
+  random_prob_order = runif(1)
+  random_prob_query = runif(1)
+  
+  if (ordering_status == "above") {
+    if (random_prob_query < prob_negated_response)
+      return (1)
+    else
+      return (0)
+  }
+  else if (ordering_status == "below") {
+    if (random_prob_order < (1 - prob_order))
+      return (1)
+    else 
+      return (0)
+  }
+}
+
+likelihood_order_query_gradation = function(participant_response, query_relevance, scale_status) {
+  prob_negated_response = get_gradated_negated_response_probability(query_relevance)
+  
+  if (scale_status == "above") {
+    if (participant_response == 1)
+      return (log(prob_negated_response))
+    else 
+      return(log(1 - prob_negated_response))
+  }
+  else if (scale_status == "below") {
+    if (participant_response == 1)
+      return(log(1 - prob_negated_response))
+    else
+      return (log(prob_negated_response))
+  }
+}
+
+# Get the sum of all the log likelihoods
+log_likelihood_order_query_gradation <- sum(mapply(likelihood_order_query_gradation, df.data$neg, df.data$query_relevance, df.data$scale))
+
+# --- Ordering Query Prediction Plot --- 
+
+# results <- expand.grid(query_relevance = 0:5, ordering_status = c("above", "below"), rep = 1:100)
+# results$output <- mapply(order_query_gradation_prediction, results$query_relevance, results$ordering_status)
+# 
+# # Calculate averages
+# average_results <- aggregate(output ~ query_relevance + ordering_status, data = results, mean)
+# 
+# ggplot(average_results, aes(x = query_relevance, y = output, fill = ordering_status)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   labs(title = "Average Outputs for Order Query Gradation Prediction", x = "Query Relevance", y = "Average Output") +
+#   scale_fill_manual(values = c("above" = "blue", "below" = "red")) +
+#   theme_minimal()
+
+df.data$order_model_query <- mapply(order_query_gradation_prediction, df.data$query_relevance, df.data$scale)
+
+# Calculate averages
+average_data <- df.data %>%
+  group_by(scale, query_relevance) %>%
+  summarise(Average = mean(order_model_query)) %>%
+  ungroup()
+
+# Plot the averages
+plot = ggplot(average_data, aes(x = query_relevance, y = Average, fill = scale)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Predictions of the Probabilistic Ordering Model\nwith Query Gradation", 
+       x = "Query Relevance (from greatest to least)", 
+       y = "Probability of Negated Response",
+       fill = "Trigger Ordering Status") +
+  scale_fill_brewer(palette = "Accent") +
+  theme(
+    plot.title = element_text(size = 22, face = "bold"),
+    axis.title = element_text(size = 18),
+    axis.text = element_text(size = 16),
+    legend.title = element_text(size = 14),
+    legend.text = element_text(size = 12)) +
+  scale_y_continuous(
+    limits = c(0, 1),  # Set y-axis from 0 to 1
+    breaks = seq(0, 1, by = 0.2)) + 
+  scale_x_continuous(
+    limits = c(-0.5, 5.5),
+    breaks = seq(0, 5, by = 1))
+
+print(plot)
+
+# filename = "set_model_query_gradation_plot.png"
+# 
+# full_path <- paste0(filepath_plots, filename)
+# ggsave(full_path, plot, width = 10, height = 6, dpi = 300)
+
+```
+
+## Conjunction Model Predictions
+```{r}
+P_negated_response_conjunct = 0.8
+
+# Probabilistic Conjunction Model
+conjunction_model_bayes = function(set_status, ordering_status) {
+  
+  # Generate a random number between 0 and 1
+  random_prob = runif(1)
+  
+  # If inside the set and above on the ordering, return a negated response (i.e. 1) with probability P_negated_response_order
+  if (set_status == "inside" && ordering_status == "above") {
+    if (random_prob < P_negated_response_conjunct)
+      return (1)
+    else
+      return (0)
+  }
+  
+  # For all other cases, return an negated response with probability 1 - P_negated_response_order
+  else {
+    if (random_prob < (1 - P_negated_response_conjunct))
+      return (1)
+    else 
+      return (0)
+  }
+}
+
+# Apply the function and store the result in a new column 'conjunction_model_bayes'
+df.data$conjunction_model_bayes <- mapply(conjunction_model_bayes, df.data$set, df.data$scale)
+
+# --- Conjunction Model Plot ---
+
+# Calculate mean
+average_data <- df.data %>%
+  group_by(set, scale) %>%
+  summarise(Average = mean(conjunction_model_bayes)) %>%
+  ungroup()
+
+# Plot the averages
+plot = ggplot(average_data, aes(x = scale, y = Average, fill = set)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Predictions of the Probabilistic Conjunction Model", 
+       x = "Trigger Ordering Status", 
+       y = "Frequency of Negated Responses",
+       fill = "Query Set Status") +
+  scale_fill_brewer(palette = "Accent") +
+  theme(plot.title = element_text(size = 22, face = "bold"),
+        axis.title = element_text(size = 18),
+        axis.text = element_text(size = 16),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 12)) +
+  scale_y_continuous(limits = c(0, 1),  # Set y-axis from 0 to 1
+                     breaks = seq(0, 1, by = 0.2))
+
+filename = "conjunction_model_bayes_plot.png"
+
+full_path <- paste0(filepath_plots, filename)
+ggsave(full_path, plot, width = 10, height = 6, dpi = 300)
+
+```
+
+### Conjunction Model Likelihood
+```{r}
+# Function that returns the log probability of a negated response
+likelihood_conjunct = function(participant_response, set_status, scale_status, P_negated_response) {
+  if (set_status == "inside" && scale_status == "above") {
+    if (participant_response == 1)
+      return (log(P_negated_response))
+    else 
+      return(log(1 - P_negated_response))
+  }
+  else {
+    if (participant_response == 1)
+      return(log(1 - P_negated_response))
+    else
+      return (log(P_negated_response))
+  }
+}
+
+# Get the log likelihood for each parameter; loop over parameter values
+log_likelihood_list <- list()
+for (prob in seq(param_start, param_end, by = param_step)) {
+  log_likelihood <- sum(mapply(likelihood_conjunct, df.data$neg, df.data$set, df.data$scale, prob))
+  # log_likelihood <- sum(mapply(likelihood_conjunct, df.data$disjunction_model, df.data$set, df.data$scale, prob))
+  # Put log likelihoods into a list
+  log_likelihood_list[[length(log_likelihood_list) + 1]] <- log_likelihood
+}
+
+# Sum the log likelihoods then subtract by the amount of likelihoods
+marginal_likelihood_conjunct = logSumExp(log_likelihood_list) - log(length(log_likelihood_list))
+```
+
+## Disjunction Model 
+```{r}
+P_negated_response_disjunct = 0.8
+
+# Probabilistic Conjunction Model
+disjunction_model_bayes = function(set_status, ordering_status) {
+  
+  # Generate a random number between 0 and 1
+  random_prob = runif(1)
+  
+  # If inside the set or above on the ordering, return a negated response (i.e. -1) with probability P_negated_response_disjunct
+  if (set_status == "inside" || ordering_status == "above") {
+    if (random_prob < P_negated_response_conjunct)
+      return (1)
+    else
+      return (0)
+  }
+  
+  # TRICKY CASE, DISCUSS WITH MAX
+  # For all other cases, return an negated response (i.e. -1) with probability 1 - P_negated_response_disjunct
+  else {
+    if (random_prob < (1 - P_negated_response_conjunct))
+      return (1)
+    else 
+      return (0)
+  }
+}
+
+# Apply the function and store the result in a new column 'disjunction_model_bayes'
+df.data$disjunction_model_bayes <- mapply(disjunction_model_bayes, df.data$set, df.data$scale)
+
+# --- Disjunction Model Plot ---
+
+# Calculate mean
+average_data <- df.data %>%
+  group_by(set, scale) %>%
+  summarise(Average = mean(disjunction_model_bayes)) %>%
+  ungroup()
+
+# Plot the averages
+plot = ggplot(average_data, aes(x = scale, y = Average, fill = set)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Predictions of the Probabilistic Disjunction Model", 
+       x = "Trigger Ordering Status", 
+       y = "Frequency of Negated Responses",
+       fill = "Query Set Status") +
+  scale_fill_brewer(palette = "Accent") +
+  theme(plot.title = element_text(size = 22, face = "bold"),
+        axis.title = element_text(size = 18),
+        axis.text = element_text(size = 16),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 12)) +
+  scale_y_continuous(limits = c(0, 1),  # Set y-axis from 0 to 1
+                     breaks = seq(0, 1, by = 0.2))
+
+filename = "disjunction_model_bayes_plot.png"
+
+full_path <- paste0(filepath_plots, filename)
+ggsave(full_path, plot, width = 10, height = 6, dpi = 300)
+```
+
+### Disjunction Model Likeihood
+```{r}
+# Function that returns the log probability of a negated response
+likelihood_disjunct = function(participant_response, set_status, scale_status, P_negated_response) {
+  if (set_status == "inside" || scale_status == "above") {
+    if (participant_response == 1)
+      return (log(P_negated_response))
+    else 
+      return(log(1 - P_negated_response))
+  }
+  else {
+    if (participant_response == 1)
+      return(log(1 - P_negated_response))
+    else
+      return (log(P_negated_response))
+  }
+}
+
+# Get the log likelihood for each parameter; loop over parameter values
+log_likelihood_list <- list()
+for (prob in seq(param_start, param_end, by = param_step)) {
+  log_likelihood <- sum(mapply(likelihood_disjunct, df.data$neg, df.data$set, df.data$scale, prob))
+  # log_likelihood <- sum(mapply(likelihood_disjunct, df.data$disjunction_model, df.data$set, df.data$scale, prob))
+  # Put log likelihoods into a list
+  log_likelihood_list[[length(log_likelihood_list) + 1]] <- log_likelihood
+}
+
+# Sum the log likelihoods then divide by the amount of likelihoods
+marginal_likelihood_disjunct = logSumExp(log_likelihood_list) - log(length(log_likelihood_list))
+```
+
+## Marginal Likelihood Plots
+```{r}
+# Create a data frame
+df.marg_likelihoods <- data.frame(
+  Name = factor(c("Set", "Ordering", "Conjunction", "Disjunction"), levels = c("Set", "Ordering", "Conjunction", "Disjunction")),
+  Value = c(marginal_likelihood_set, 
+            marginal_likelihood_order, 
+            marginal_likelihood_conjunct, 
+            marginal_likelihood_disjunct)
+)
+
+# Create the plot with points
+plot <- ggplot(df.marg_likelihoods, aes(x = Name, y = Value, color = Name)) +
+  geom_point(size = 7) +  # Adjust size for better visibility
+  labs(title = "Marginal Likelihoods by Model",
+       x = "Model",
+       y = "Marginal Likelihood") +
+  scale_color_brewer(palette = "Dark2") + # Adds color to each point for better distinction
+  theme(plot.title = element_text(size = 18, face = "bold"),
+        axis.title = element_text(size = 16),
+        axis.text = element_text(size = 12))
+
+filename = "marginal_likelihoods_plot.png"
+full_path <- paste0(filepath_plots, filename)
+ggsave(full_path, plot, width = 8, height = 6, dpi = 300)
+
+```
+
+
+
+
+```{r}
+
+# For loop models
+
+
+prob_inside_set = 0.8
+
+for (i in 1:nrow(df.data)) {
+  current_row <- df.data[i, ]
+  
+  # Bayesian Set Model: If query is inside set then produce a negated response with  
+  # probability prob_inside_set. If the query is outside the set then produce an
+  # indifferent response with probability 1 - prob_inside_set
+  
+  if (current_row$set == "inside") {
+    # Generate a random number between 0 and 1
+    if (runif(1) < prob_inside_set)   
+      df.data$set_model_bayes[i] = -1 # with probability = prob_inside_set
+    else 
+      df.data$set_model_bayes[i] = 0 # with probability = 1 - prob_inside_set
+  } 
+  else if (current_row$set == "outside") {
+    # Generate a random number between 0 and 1
+    if (runif(1) < (1 - prob_inside_set)) 
+      df.data$set_model_bayes[i] = 0 # with probability = 1 - prob_inside_set
+    else 
+      df.data$set_model_bayes[i] = -1 # with probability = prob_inside_set
+  }
+  
+  # Bayesian Ordering Model: If query is above the trigger then produce a negated 
+  # response with probability prob_above_ordering. If the query is below the 
+  # trigger then produce an indifferent response with probability 
+  # 1 - prob_above_ordering. 
+  
+  if (current_row$scale == "above") {
+    if (runif(1) < prob_above_ordering)
+      df.data$ordering_model_bayes[i] = -1
+    else
+      df.data$ordering_model_bayes[i] = 0
+  }  
+  else if (current_row$scale == "below") {
+    if (runif(1) < (1 - prob_above_ordering)) 
+      df.data$ordering_model_bayes[i] = 0
+    else
+      df.data$ordering_model_bayes[i] = -1
+  }
+}
+```
+
+# Statistics
+
+```{r}
+# Accuracy rates: The proportion of matching predictions for each model
+# Highest accuracy is desired 
+
+accuracy <- function(actual, predicted) {
+  sum(actual == predicted) / length(actual)
+}
+
+accuracy_set <- accuracy(df.data$neg, df.data$set_model)
+accuracy_order <- accuracy(df.data$neg, df.data$ordering_model)
+accuracy_conjunction <- accuracy(df.data$neg, df.data$conjunction_model)
+accuracy_disjunction <- accuracy(df.data$neg, df.data$disjunction_model)
+
+print(paste("Accuracy for Set Model:", accuracy_set))
+print(paste("Accuracy for Ordering Model:", accuracy_order))
+print(paste("Accuracy for Conjunction Model:", accuracy_conjunction))
+print(paste("Accuracy for Disjunction Model:", accuracy_disjunction))
+```
+
+
+```{r}
+# Cohen's Kappa: Measures the agreement between two raters (human vs. model) while correcting for agreement by chance
+
+kappa_set <- cohen.kappa(cbind(df.data$neg, df.data$set_model))
+kappa_order <- cohen.kappa(cbind(df.data$neg, df.data$ordering_model))
+kappa_conjunction <- cohen.kappa(cbind(df.data$neg, df.data$conjunction_model))
+kappa_disjunction <- cohen.kappa(cbind(df.data$neg, df.data$disjunction_model))
+
+print("Cohen's Kappa for Set Model:")
+print(kappa_set)
+
+print("Cohen's Kappa for Ordering Model:")
+print(kappa_order)
+
+print("Cohen's Kappa for Conjunction Model:")
+print(kappa_conjunction)
+
+print("Cohen's Kappa for Disjunction Model:")
+print(kappa_disjunction)
+```
+
+
+```{r}
+# Precision, Recall, and F1
+
+precision <- function(actual, predicted) {
+  tp <- sum((predicted == 1) & (actual == 1))
+  fp <- sum((predicted == 1) & (actual == 0))
+  tp / (tp + fp)
+}
+
+recall <- function(actual, predicted) {
+  tp <- sum((predicted == 1) & (actual == 1))
+  fn <- sum((predicted == 0) & (actual == 1))
+  tp / (tp + fn)
+}
+
+f1_score <- function(actual, predicted) {
+  prec <- precision(actual, predicted)
+  rec <- recall(actual, predicted)
+  2 * (prec * rec) / (prec + rec)
+}
+
+precision_set <- precision(df.data$neg, df.data$set_model)
+recall_set <- recall(df.data$neg, df.data$set_model)
+f1_set <- f1_score(df.data$neg, df.data$set_model)
+
+precision_order <- precision(df.data$neg, df.data$ordering_model)
+recall_order <- recall(df.data$neg, df.data$ordering_model)
+f1_order <- f1_score(df.data$neg, df.data$ordering_model)
+
+precision_conjunction <- precision(df.data$neg, df.data$conjunction_model)
+recall_conjunction <- recall(df.data$neg, df.data$conjunction_model)
+f1_conjunction <- f1_score(df.data$neg, df.data$conjunction_model)
+
+precision_disjunction <- precision(df.data$neg, df.data$disjunction_model)
+recall_disjunction <- recall(df.data$neg, df.data$disjunction_model)
+f1_disjunction <- f1_score(df.data$neg, df.data$disjunction_model)
+
+print(paste("Precision for Set Model:", precision_set))
+print(paste("Recall for Set Model:", recall_set))
+print(paste("F1 Score for Set Model:", f1_set))
+
+print(paste("Precision for Ordering Model:", precision_order))
+print(paste("Recall for Ordering Model:", recall_order))
+print(paste("F1 Score for Ordering Model:", f1_order))
+
+print(paste("Precision for Conjunction Model:", precision_conjunction))
+print(paste("Recall for conjunction Model:", recall_conjunction))
+print(paste("F1 Score for conjunction Model:", f1_conjunction))
+
+print(paste("Precision for disjunction Model:", precision_disjunction))
+print(paste("Recall for disjunction Model:", recall_disjunction))
+print(paste("F1 Score for disjunction Model:", f1_disjunction))
+```
+
+```{r}
+# Confusion Matrix
+
+confusion_matrix <- function(actual, predicted) {
+  table(Predicted = predicted, Actual = actual)
+}
+
+cm_set <- confusion_matrix(df.data$neg, df.data$set_model)
+cm_order <- confusion_matrix(df.data$neg, df.data$ordering_model)
+
+print("Confusion Matrix for Set Model:")
+print(cm_set)
+
+print("Confusion Matrix for Ordering Model:")
+print(cm_order)
+```
+
+
+## Probability Practice
+```{r}
+# n: number of trials
+# k: number of negated responses
+# theta: probability of a negated response
+
+n = 3408
+k = sum(df.data$response == -1) 
+theta = k / n # maximum likelihood estimate
+
+# Set and ordering models have theta = 0.5. Meaning that they produce a negated response 50% of the time. Conjunction is 25%. Disjunction is 75%. Human data is around 50%; theta ~ 0.51.
+
+# Binomial functions
+# dbinom(k, n, theta)
+# pbinom(k, n, theta, lower.tail = TRUE)
+rbinom(5, 10, 0.5)
+
+# Computing the normalizing constant 
+# sum(dbinom(k, size=n, prob=c(0.1,0.5,0.9)))/3
+
+# The beta distribution (prior)
+# theta ~ beta(shape1 = a, shape2 = b)
+# dbeta(x, shape1, shape2)
+```
+
+## Matching Rows
+```{r}
+number_of_matches_set <- sum(df.data$response == df.data$set_model)
+number_of_matches_ordering <- sum(df.data$response == df.data$ordering_model)
+number_of_matches_conjunction <- sum(df.data$response == df.data$conjunction_model)
+number_of_matches_disjunction <- sum(df.data$response == df.data$disjunction_model)
+```
+
+## Correlations
+```{r}
+correlation_set <- cor(df.data$response, df.data$set_model)
+print(paste("Set: ", correlation_set))
+
+correlation_ordering <- cor(df.data$response, df.data$ordering_model)
+print(paste("Ordering: ", correlation_ordering))
+
+correlation_conjunction <- cor(df.data$response, df.data$conjunction_model)
+print(paste("Conjunction: ", correlation_conjunction))
+
+correlation_disjunction <- cor(df.data$response, df.data$disjunction_model)
+print(paste("Disjunction: ", correlation_disjunction))
+```
+
+# Figures
+
+## Overlayed Plots
+```{r}
+# Plots of the four models overlayed with participant responses 
+
+# Set model
+set_plot = ggplot(data, aes(x = response)) +
+  geom_histogram(aes(y = ..count.., fill = "Participant Responses"), 
+                 alpha = 0.5, color = "black", binwidth = 0.5) + 
+  geom_histogram(data = data, 
+                 aes(x = set_model, y = ..count.., fill = "Model Predictions"), 
+                 alpha = 0.5, color = "black", binwidth = 0.5) + 
+  labs(title = "Set Model", 
+       x = "Responses",
+       y = "Frequency") + 
+  scale_fill_manual(name = NULL, values = c("Participant Responses" = "#1ECCE3", "Model Predictions" = "#827f7d")) +
+  theme(legend.position = "top")
+
+# Ordering model
+ordering_plot = ggplot(data, aes(x = response)) +
+  geom_histogram(aes(y = ..count.., fill = "Participant Responses"), 
+                 alpha = 0.5, color = "black", binwidth = 0.5) + 
+  geom_histogram(data = data, 
+                 aes(x = ordering_model, y = ..count.., fill = "Model Predictions"), 
+                 alpha = 0.5, color = "black", binwidth = 0.5) + 
+  labs(title = "Ordering Model", 
+       x = "Responses",
+       y = "Frequency") + 
+  scale_fill_manual(name = NULL, values = c("Participant Responses" = "#1ECCE3", "Model Predictions" = "#827f7d")) +
+  theme(legend.position = "top")
+
+# Conjunction model
+conjunction_plot = ggplot(data, aes(x = response)) +
+  geom_histogram(aes(y = ..count.., fill = "Participant Responses"), 
+                 alpha = 0.5, color = "black", binwidth = 0.5) + 
+  geom_histogram(data = data, 
+                 aes(x = conjunction_model, y = ..count.., fill = "Model Predictions"), 
+                 alpha = 0.5, color = "black", binwidth = 0.5) + 
+  labs(title = "Conjunction Model", 
+       x = "Responses",
+       y = "Frequency") + 
+  scale_fill_manual(name = NULL, values = c("Participant Responses" = "#1ECCE3", "Model Predictions" = "#827f7d")) +
+  theme(legend.position = "top")
+
+# Disjunction model
+disjunction_plot = ggplot(data, aes(x = response)) +
+  geom_histogram(aes(y = ..count.., fill = "Participant Responses"), 
+                 alpha = 0.5, color = "black", binwidth = 0.5) + 
+  geom_histogram(data = data, 
+                 aes(x = disjunction_model, y = ..count.., fill = "Model Predictions"), 
+                 alpha = 0.5, color = "black", binwidth = 0.5) + 
+  labs(title = "Disjunction Model", 
+       x = "Responses",
+       y = "Frequency") + 
+  scale_fill_manual(name = NULL, values = c("Participant Responses" = "#1ECCE3", "Model Predictions" = "#827f7d")) +
+  theme(legend.position = "top")
+
+# Put all four plots into one plot
+combined_plot <- plot_grid(set_plot, ordering_plot, conjunction_plot, disjunction_plot, ncol = 4) 
+
+# Save the figure
+ggsave("/Users/lailajohnston/Library/CloudStorage/GoogleDrive-laila_johnston@brown.edu/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/figures/models_overlayed_responses.png", plot = combined_plot, width = 16, height = 6)
+
+```
+
+
+## Grid Figures 
+```{r}
+ggplot(data = df.data,
+       mapping = aes(x = trigger_relevance,
+                     y = query_relevance,
+                     z = response)) +
+  stat_summary_2d(fun = "mean", geom = "tile")
+
+```
+
+```{r}
+ggplot(data = df.data,
+       aes(x = trigger_relevance, 
+           y = query_relevance, 
+           z = response)) +
+  stat_summary_2d(fun = "mean", geom = "tile") +
+  geom_tile() +
+  scale_fill_manual(values = c("red", "yellow"), na.value = "green") +
+  labs(title = "Tile Plot",
+       x = "Trigger Relevance",
+       y = "Query Relevance",
+       fill = "Response") +
+  theme_classic()
+```
+
+```{r}
+ggplot(data = df.data,
+       mapping = aes(x = trigger_relevance,
+                     y = query_relevance,
+                     z = set_model)) +
+  stat_summary_2d(fun = "mean",
+                  geom = "tile",
+                  color = "black") +
+  scale_fill_gradient(low = "white", high = "black") +
+  labs(fill = "set_model")
+```
+
+

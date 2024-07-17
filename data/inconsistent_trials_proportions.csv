@@ -1,0 +1,271 @@
+story,trigger,query,Total Responses,Zero Responses,Negative Responses,Proportion
+bag,a pen,chalk,21.0,3.0,18.0,0.14285714285714285
+bag,a pen,crayons,17.0,2.0,15.0,0.11764705882352941
+bag,a pen,makeup,6.0,5.0,1.0,0.16666666666666666
+bag,cash,makeup,19.0,17.0,2.0,0.10526315789473684
+bag,chalk,headphones,5.0,4.0,1.0,0.2
+bag,chalk,makeup,5.0,4.0,1.0,0.2
+bag,crayons,chalk,18.0,2.0,16.0,0.1111111111111111
+bag,crayons,headphones,4.0,3.0,1.0,0.25
+bag,headphones,cash,14.0,12.0,2.0,0.14285714285714285
+bag,headphones,chalk,5.0,3.0,2.0,0.4
+bag,headphones,makeup,19.0,15.0,4.0,0.21052631578947367
+bag,makeup,cash,5.0,4.0,1.0,0.2
+bakery,cakes,ice cream,19.0,3.0,16.0,0.15789473684210525
+bakery,cakes,muffins,18.0,2.0,16.0,0.1111111111111111
+bakery,cakes,pretzels,6.0,3.0,3.0,0.5
+bakery,cakes,sandwiches,5.0,3.0,2.0,0.4
+bakery,ice cream,muffins,17.0,7.0,10.0,0.4117647058823529
+bakery,ice cream,pretzels,2.0,1.0,1.0,0.5
+bakery,ice cream,sandwiches,4.0,3.0,1.0,0.25
+bakery,ice cream,water,6.0,5.0,1.0,0.16666666666666666
+bakery,muffins,pretzels,5.0,3.0,2.0,0.4
+bakery,pretzels,sandwiches,5.0,3.0,2.0,0.4
+bakery,sandwiches,muffins,3.0,1.0,2.0,0.3333333333333333
+bakery,sandwiches,pretzels,20.0,9.0,11.0,0.45
+bakery,water,cakes,3.0,1.0,2.0,0.3333333333333333
+bakery,water,ice cream,6.0,2.0,4.0,0.3333333333333333
+bakery,water,muffins,6.0,3.0,3.0,0.5
+bakery,water,pretzels,13.0,6.0,7.0,0.46153846153846156
+bakery,water,sandwiches,21.0,12.0,9.0,0.42857142857142855
+beach,a bikini,a coat,3.0,2.0,1.0,0.3333333333333333
+beach,a bikini,a jacket,4.0,3.0,1.0,0.25
+beach,a bikini,jeans,6.0,3.0,3.0,0.5
+beach,a bikini,shorts,20.0,6.0,14.0,0.3
+beach,a bikini,sunglasses,18.0,15.0,3.0,0.16666666666666666
+beach,a coat,a jacket,11.0,5.0,6.0,0.45454545454545453
+beach,a coat,jeans,16.0,8.0,8.0,0.5
+beach,a jacket,jeans,20.0,11.0,9.0,0.45
+beach,a jacket,shorts,5.0,2.0,3.0,0.4
+beach,a jacket,sunglasses,4.0,2.0,2.0,0.5
+beach,jeans,a coat,5.0,2.0,3.0,0.4
+beach,jeans,sunglasses,4.0,3.0,1.0,0.25
+beach,shorts,a bikini,4.0,1.0,3.0,0.25
+beach,shorts,a coat,4.0,1.0,3.0,0.25
+beach,shorts,a jacket,4.0,3.0,1.0,0.25
+beach,shorts,jeans,5.0,2.0,3.0,0.4
+beach,shorts,sunglasses,20.0,17.0,3.0,0.15
+beach,sunglasses,a jacket,5.0,1.0,4.0,0.2
+beach,sunglasses,jeans,6.0,3.0,3.0,0.5
+beach,sunglasses,shorts,4.0,2.0,2.0,0.5
+cold,a fridge,a heater,5.0,1.0,4.0,0.2
+cold,a fridge,a microwave,13.0,4.0,9.0,0.3076923076923077
+cold,a fridge,a sink,21.0,16.0,5.0,0.23809523809523808
+cold,a fridge,blankets,3.0,2.0,1.0,0.3333333333333333
+cold,a fridge,tea,6.0,3.0,3.0,0.5
+cold,a heater,a microwave,5.0,4.0,1.0,0.2
+cold,a heater,blankets,18.0,3.0,15.0,0.16666666666666666
+cold,a heater,tea,16.0,14.0,2.0,0.125
+cold,a microwave,a fridge,4.0,2.0,2.0,0.5
+cold,a microwave,blankets,5.0,2.0,3.0,0.4
+cold,a microwave,tea,5.0,4.0,1.0,0.2
+cold,a sink,a fridge,4.0,3.0,1.0,0.25
+cold,a sink,a microwave,17.0,8.0,9.0,0.47058823529411764
+cold,a sink,blankets,3.0,2.0,1.0,0.3333333333333333
+cold,blankets,tea,20.0,16.0,4.0,0.2
+cold,tea,a heater,6.0,3.0,3.0,0.5
+cold,tea,blankets,5.0,2.0,3.0,0.4
+cut,a stapler,keys,5.0,4.0,1.0,0.2
+cut,a stapler,nail clippers,6.0,2.0,4.0,0.3333333333333333
+cut,a stapler,thumb tacks,17.0,15.0,2.0,0.11764705882352941
+cut,batteries,a stapler,18.0,10.0,8.0,0.4444444444444444
+cut,batteries,keys,6.0,5.0,1.0,0.16666666666666666
+cut,batteries,nail clippers,5.0,1.0,4.0,0.2
+cut,batteries,scissors,5.0,1.0,4.0,0.2
+cut,batteries,thumb tacks,21.0,13.0,8.0,0.38095238095238093
+cut,keys,a stapler,5.0,4.0,1.0,0.2
+cut,keys,batteries,4.0,3.0,1.0,0.25
+cut,keys,nail clippers,5.0,1.0,4.0,0.2
+cut,keys,thumb tacks,5.0,4.0,1.0,0.2
+cut,nail clippers,a stapler,2.0,1.0,1.0,0.5
+cut,nail clippers,keys,16.0,11.0,5.0,0.3125
+cut,nail clippers,thumb tacks,3.0,1.0,2.0,0.3333333333333333
+cut,scissors,a stapler,6.0,5.0,1.0,0.16666666666666666
+cut,scissors,keys,20.0,17.0,3.0,0.15
+cut,scissors,nail clippers,11.0,4.0,7.0,0.36363636363636365
+cut,thumb tacks,keys,3.0,2.0,1.0,0.3333333333333333
+cut,thumb tacks,nail clippers,5.0,2.0,3.0,0.4
+cut,thumb tacks,scissors,5.0,1.0,4.0,0.2
+fridge,juice,ketchup,6.0,4.0,2.0,0.3333333333333333
+fridge,ketchup,yogurt,18.0,14.0,4.0,0.2222222222222222
+fridge,meat,ketchup,18.0,15.0,3.0,0.16666666666666666
+fridge,meat,milk,3.0,1.0,2.0,0.3333333333333333
+fridge,meat,yogurt,16.0,6.0,10.0,0.375
+fridge,milk,water,6.0,1.0,5.0,0.16666666666666666
+fridge,milk,yogurt,5.0,4.0,1.0,0.2
+fridge,water,milk,18.0,1.0,17.0,0.05555555555555555
+fridge,yogurt,ketchup,5.0,4.0,1.0,0.2
+fridge,yogurt,meat,5.0,3.0,2.0,0.4
+fridge,yogurt,milk,4.0,1.0,3.0,0.25
+gym,basketball,lacrosse,15.0,1.0,14.0,0.06666666666666667
+gym,basketball,softball,20.0,2.0,18.0,0.1
+gym,basketball,swimming,5.0,3.0,2.0,0.4
+gym,basketball,weightlifting,5.0,1.0,4.0,0.2
+gym,lacrosse,swimming,3.0,2.0,1.0,0.3333333333333333
+gym,lacrosse,weightlifting,3.0,1.0,2.0,0.3333333333333333
+gym,meditation,basketball,4.0,1.0,3.0,0.25
+gym,meditation,swimming,19.0,4.0,15.0,0.21052631578947367
+gym,meditation,weightlifting,20.0,9.0,11.0,0.45
+gym,softball,lacrosse,19.0,1.0,18.0,0.05263157894736842
+gym,softball,meditation,5.0,2.0,3.0,0.4
+gym,softball,swimming,5.0,1.0,4.0,0.2
+gym,softball,weightlifting,3.0,2.0,1.0,0.3333333333333333
+gym,swimming,softball,4.0,1.0,3.0,0.25
+gym,swimming,weightlifting,5.0,3.0,2.0,0.4
+gym,weightlifting,softball,6.0,1.0,5.0,0.16666666666666666
+gym,weightlifting,swimming,20.0,3.0,17.0,0.15
+hot,a couch,a pool,6.0,3.0,3.0,0.5
+hot,a couch,blankets,5.0,4.0,1.0,0.2
+hot,a fan,a heater,6.0,5.0,1.0,0.16666666666666666
+hot,a fan,a pool,20.0,9.0,11.0,0.45
+hot,a fan,a shower,20.0,19.0,1.0,0.05
+hot,a heater,a pool,4.0,3.0,1.0,0.25
+hot,a heater,blankets,13.0,10.0,3.0,0.23076923076923078
+hot,a pool,a fan,4.0,3.0,1.0,0.25
+hot,a pool,a shower,19.0,14.0,5.0,0.2631578947368421
+hot,a pool,blankets,5.0,3.0,2.0,0.4
+hot,a shower,a fan,5.0,1.0,4.0,0.2
+hot,a shower,a heater,6.0,4.0,2.0,0.3333333333333333
+hot,blankets,a fan,5.0,4.0,1.0,0.2
+hot,blankets,a heater,4.0,1.0,3.0,0.25
+hot,blankets,a shower,5.0,4.0,1.0,0.2
+mall,a burger joint,a coffee shop,16.0,6.0,10.0,0.375
+mall,a burger joint,a gift shop,6.0,5.0,1.0,0.16666666666666666
+mall,a burger joint,a grocery store,5.0,1.0,4.0,0.2
+mall,a burger joint,a pretzel stand,19.0,3.0,16.0,0.15789473684210525
+mall,a coffee shop,a burger joint,2.0,1.0,1.0,0.5
+mall,a coffee shop,a grocery store,5.0,2.0,3.0,0.4
+mall,a coffee shop,an electronics store,5.0,3.0,2.0,0.4
+mall,a gift shop,a coffee shop,2.0,1.0,1.0,0.5
+mall,a gift shop,a grocery store,15.0,2.0,13.0,0.13333333333333333
+mall,a gift shop,an electronics store,4.0,2.0,2.0,0.5
+mall,a grocery store,a coffee shop,5.0,1.0,4.0,0.2
+mall,a grocery store,a gift shop,5.0,4.0,1.0,0.2
+mall,a grocery store,a pretzel stand,5.0,1.0,4.0,0.2
+mall,a pretzel stand,a coffee shop,20.0,4.0,16.0,0.2
+mall,a pretzel stand,a grocery store,5.0,2.0,3.0,0.4
+mall,an electronics store,a coffee shop,5.0,1.0,4.0,0.2
+mall,an electronics store,a gift shop,20.0,8.0,12.0,0.4
+mall,an electronics store,a grocery store,19.0,3.0,16.0,0.15789473684210525
+mall,an electronics store,a pretzel stand,3.0,1.0,2.0,0.3333333333333333
+mask,a bandana,a handkerchief,13.0,5.0,8.0,0.38461538461538464
+mask,a bandana,a wallet,5.0,3.0,2.0,0.4
+mask,a bandana,gloves,2.0,1.0,1.0,0.5
+mask,a bandana,napkins,12.0,10.0,2.0,0.16666666666666666
+mask,a handkerchief,gloves,5.0,3.0,2.0,0.4
+mask,a handkerchief,napkins,20.0,14.0,6.0,0.3
+mask,a wallet,a bandana,5.0,1.0,4.0,0.2
+mask,a wallet,a handkerchief,5.0,2.0,3.0,0.4
+mask,a wallet,candy,5.0,4.0,1.0,0.2
+mask,a wallet,gloves,19.0,7.0,12.0,0.3684210526315789
+mask,a wallet,napkins,6.0,3.0,3.0,0.5
+mask,candy,a bandana,5.0,1.0,4.0,0.2
+mask,candy,a handkerchief,6.0,2.0,4.0,0.3333333333333333
+mask,candy,a wallet,20.0,16.0,4.0,0.2
+mask,candy,gloves,16.0,15.0,1.0,0.0625
+mask,candy,napkins,4.0,2.0,2.0,0.5
+mask,gloves,a bandana,6.0,3.0,3.0,0.5
+mask,gloves,a handkerchief,5.0,3.0,2.0,0.4
+mask,gloves,candy,5.0,4.0,1.0,0.2
+mask,gloves,napkins,4.0,2.0,2.0,0.5
+mask,napkins,a handkerchief,5.0,2.0,3.0,0.4
+mask,napkins,candy,5.0,4.0,1.0,0.2
+mask,napkins,gloves,5.0,4.0,1.0,0.2
+meat,chicken,crab,17.0,4.0,13.0,0.23529411764705882
+meat,chicken,mushrooms,5.0,4.0,1.0,0.2
+meat,chicken,rice,2.0,1.0,1.0,0.5
+meat,chicken,turkey,21.0,1.0,20.0,0.047619047619047616
+meat,crab,tofu,3.0,1.0,2.0,0.3333333333333333
+meat,mushrooms,tofu,19.0,9.0,10.0,0.47368421052631576
+meat,rice,crab,2.0,1.0,1.0,0.5
+meat,rice,mushrooms,17.0,13.0,4.0,0.23529411764705882
+meat,rice,tofu,18.0,11.0,7.0,0.3888888888888889
+meat,tofu,crab,5.0,1.0,4.0,0.2
+meat,turkey,crab,13.0,3.0,10.0,0.23076923076923078
+meat,turkey,tofu,6.0,5.0,1.0,0.16666666666666666
+restaurant,cake,salad,5.0,2.0,3.0,0.4
+restaurant,cake,soda,5.0,1.0,4.0,0.2
+restaurant,cake,soup,18.0,11.0,7.0,0.3888888888888889
+restaurant,cocktails,cake,5.0,2.0,3.0,0.4
+restaurant,cocktails,soda,19.0,11.0,8.0,0.42105263157894735
+restaurant,cocktails,vodka,14.0,7.0,7.0,0.5
+restaurant,salad,cake,20.0,9.0,11.0,0.45
+restaurant,salad,cocktails,4.0,1.0,3.0,0.25
+restaurant,salad,soda,5.0,2.0,3.0,0.4
+restaurant,salad,soup,20.0,6.0,14.0,0.3
+restaurant,soup,cake,3.0,2.0,1.0,0.3333333333333333
+restaurant,soup,salad,6.0,3.0,3.0,0.5
+restaurant,soup,soda,6.0,1.0,5.0,0.16666666666666666
+restaurant,vodka,soda,19.0,13.0,6.0,0.3157894736842105
+salad,chips,cigarettes,6.0,5.0,1.0,0.16666666666666666
+salad,chips,dressing,5.0,3.0,2.0,0.4
+salad,chips,meat,21.0,15.0,6.0,0.2857142857142857
+salad,chips,tuna,5.0,4.0,1.0,0.2
+salad,cigarettes,chips,16.0,9.0,7.0,0.4375
+salad,cigarettes,lettuce,4.0,1.0,3.0,0.25
+salad,cigarettes,meat,19.0,8.0,11.0,0.42105263157894735
+salad,cigarettes,tuna,6.0,4.0,2.0,0.3333333333333333
+salad,dressing,meat,3.0,2.0,1.0,0.3333333333333333
+salad,dressing,tuna,16.0,9.0,7.0,0.4375
+salad,lettuce,dressing,18.0,7.0,11.0,0.3888888888888889
+salad,lettuce,meat,4.0,1.0,3.0,0.25
+salad,lettuce,tuna,18.0,11.0,7.0,0.3888888888888889
+salad,meat,tuna,3.0,2.0,1.0,0.3333333333333333
+salad,tuna,dressing,5.0,2.0,3.0,0.4
+salad,tuna,meat,5.0,1.0,4.0,0.2
+science,art,math,20.0,6.0,14.0,0.3
+science,art,philosophy,18.0,7.0,11.0,0.3888888888888889
+science,art,zoology,5.0,1.0,4.0,0.2
+science,geology,art,5.0,2.0,3.0,0.4
+science,geology,math,6.0,1.0,5.0,0.16666666666666666
+science,geology,philosophy,3.0,1.0,2.0,0.3333333333333333
+science,math,art,2.0,1.0,1.0,0.5
+science,math,geology,4.0,1.0,3.0,0.25
+science,math,philosophy,5.0,3.0,2.0,0.4
+science,math,physics,4.0,2.0,2.0,0.5
+science,math,zoology,5.0,1.0,4.0,0.2
+science,philosophy,geology,5.0,1.0,4.0,0.2
+science,philosophy,math,16.0,5.0,11.0,0.3125
+science,philosophy,zoology,6.0,1.0,5.0,0.16666666666666666
+science,physics,art,5.0,3.0,2.0,0.4
+science,physics,geology,21.0,3.0,18.0,0.14285714285714285
+science,physics,math,3.0,2.0,1.0,0.3333333333333333
+science,physics,philosophy,3.0,2.0,1.0,0.3333333333333333
+science,physics,zoology,20.0,7.0,13.0,0.35
+science,zoology,art,3.0,1.0,2.0,0.3333333333333333
+science,zoology,geology,4.0,1.0,3.0,0.25
+science,zoology,math,5.0,3.0,2.0,0.4
+science,zoology,philosophy,6.0,2.0,4.0,0.3333333333333333
+throw,a beach ball,a boomerang,19.0,7.0,12.0,0.3684210526315789
+throw,a boomerang,a beach ball,4.0,1.0,3.0,0.25
+throw,a football,a beach ball,16.0,2.0,14.0,0.125
+throw,a football,a boomerang,21.0,8.0,13.0,0.38095238095238093
+throw,a lawnmower,a boomerang,5.0,1.0,4.0,0.2
+throw,a lawnmower,a shovel,21.0,14.0,7.0,0.3333333333333333
+throw,a lawnmower,tires,13.0,12.0,1.0,0.07692307692307693
+throw,a shovel,a beach ball,4.0,1.0,3.0,0.25
+throw,a shovel,a boomerang,5.0,2.0,3.0,0.4
+throw,a shovel,tires,16.0,14.0,2.0,0.125
+throw,tires,a beach ball,5.0,2.0,3.0,0.4
+throw,tires,a football,5.0,1.0,4.0,0.2
+throw,tires,a lawnmower,5.0,1.0,4.0,0.2
+throw,tires,a shovel,6.0,4.0,2.0,0.3333333333333333
+transport,a car,a hammer,5.0,4.0,1.0,0.2
+transport,a car,a lawnmower,4.0,3.0,1.0,0.25
+transport,a car,a motorcycle,21.0,2.0,19.0,0.09523809523809523
+transport,a car,roller blades,16.0,7.0,9.0,0.4375
+transport,a hammer,a car,5.0,2.0,3.0,0.4
+transport,a hammer,a lawnmower,18.0,8.0,10.0,0.4444444444444444
+transport,a hammer,a motorcycle,4.0,2.0,2.0,0.5
+transport,a hammer,chairs,15.0,14.0,1.0,0.06666666666666667
+transport,a hammer,roller blades,5.0,1.0,4.0,0.2
+transport,a lawnmower,a hammer,4.0,3.0,1.0,0.25
+transport,a lawnmower,chairs,5.0,4.0,1.0,0.2
+transport,a lawnmower,roller blades,4.0,2.0,2.0,0.5
+transport,a motorcycle,a car,5.0,1.0,4.0,0.2
+transport,a motorcycle,roller blades,13.0,6.0,7.0,0.46153846153846156
+transport,chairs,a lawnmower,22.0,20.0,2.0,0.09090909090909091
+transport,chairs,a motorcycle,5.0,2.0,3.0,0.4
+transport,chairs,roller blades,3.0,1.0,2.0,0.3333333333333333
+transport,roller blades,a hammer,5.0,4.0,1.0,0.2
+transport,roller blades,chairs,2.0,1.0,1.0,0.5
