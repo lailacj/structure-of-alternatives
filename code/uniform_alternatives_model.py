@@ -1,6 +1,7 @@
 # ---- Imports and Set Up ----
 
 import nltk # Natural Language Toolkit 
+import numpy as np
 import pandas as pd
 import pdb
 import random
@@ -12,22 +13,16 @@ nltk.download('universal_tagset') # Part of speech tagging that NLTK uses
 
 df_experimental_data = pd.read_csv('../data/sca_dataframe.csv')
 
-# DO TOS: Make sure query and trigger are in most_common_nouns
-
 # ---- Corpus Data and Experimental Data Preparation ----
 
-vocab_size = 1000
-
-# vs = 500; uncommon = 87; total = 91
-# vs = 1000; uncommon = 86
-
-
+vocab_size = 500
 words = brown.tagged_words(tagset='universal')
 nouns = [word for word, pos in words if pos == 'NOUN']
 noun_freq = Counter(nouns).most_common(vocab_size)
 most_common_nouns = [word for word, freq in noun_freq]
 
 # Function that removes 'a' or 'an' from the front of the items
+# Not being used in the rest of the code. I wrote it to see how many query words are in the corpus dataset.
 def clean_word(word):
     word = word.lower()
     if word.startswith('a '):
@@ -39,35 +34,22 @@ def clean_word(word):
 
 df_experimental_data['cleaned_trigger'] = df_experimental_data['trigger'].apply(clean_word)
 df_experimental_data['cleaned_query'] = df_experimental_data['query'].apply(clean_word)
-
-# unique_uncommon_words = sorted(set(df_experimental_data['cleaned_trigger']) - set(most_common_nouns))
-# print(unique_uncommon_words)
-# print(" ")
-# print("Len of uncommon: " + str(len(unique_uncommon_words)))
-# print("Total exp words: " + str(df_experimental_data['cleaned_trigger'].nunique()))
-
-# pdb.set_trace()
-
 df_experimental_data = df_experimental_data.sort_values(by='story')
 
 # ---- Uniform Set Model ----
 
 set_size = 3
 
-def prob_query_in_set():
+def prob_query_in_set(context=None, trigger=None, query=None):
     """
     Returns the probability that a query is inside the set. Sets are uniformly 
     sampled (without replacement) from a vocabulary of size, vocab_size.
-    In the future, this function would have context, trigger, query as inputs. 
     """
-    # n / k
-    # N is vocab size, k is set size
-    return (1/vocab_size) * set_size
+    return (set_size/vocab_size) 
 
 def get_set():
     """
-    Returns a uniformly sampled set of nouns. 
-    In the future, this function would have context, trigger as inputs. 
+    Returns a uniformly sampled set of nouns.
     """
     return random.sample(most_common_nouns, set_size)
 
@@ -84,7 +66,7 @@ def get_set():
 #         return 0 # Negate with probability 0
 
 current_context = None
-set_liklihood = 0
+set_log_liklihood = 0
 for index, row in df_experimental_data.iterrows():
     context = row['story']
     query = row['query']
@@ -101,17 +83,18 @@ for index, row in df_experimental_data.iterrows():
     # prob_neg_given_set = prob_query_negated_set(trigger, query, inside_set)
 
     if query_negated == 1:
-        # p(q in set) * p(q is neg | in set) + p(q not in set) * p(q is neg | not set)
+        # p(q neg) = p(q in set) * p(q neg | in set) + p(q not in set) * p(q neg | not set)
         prob_query_obs = prob_set * 1 + (1-prob_set) * 0
     else:
+        # p(q not neg) = p(q in set) * p(q not neg | in set) + p(q not in set) * p(q not neg | not set)
         prob_query_obs = prob_set * 0 + (1-prob_set) * 1
     
     # product for probabilities; sum for logs
-    set_liklihood *= prob_query_obs
+    set_log_liklihood += np.log(prob_query_obs)
 
-print("Set Liklihood: " + str(set_liklihood))
+print("Set Log Liklihood: " + str(set_log_liklihood))
 
-# # ---- Uniform Ordering Model ----
+# ---- Uniform Ordering Model ----
 
 def prob_query_above_trigger():
     # Since all possible orderings are equally likely, and since there are only two possible positions
@@ -143,7 +126,7 @@ def get_ordering():
 #         return 0 # Negate with probability 0
 
 current_context = None
-ordering_liklihood = 0
+ordering_log_liklihood = 0
 for index, row in df_experimental_data.iterrows():
     context = row['story']
     query = row['query']
@@ -164,8 +147,8 @@ for index, row in df_experimental_data.iterrows():
     else:
         prob_query_obs = prob_above * 0 + (1-prob_above) * 1
     
-    ordering_liklihood += prob_query_obs
+    ordering_log_liklihood += np.log(prob_query_obs)
 
-print("Ordering Liklihood: " + str(ordering_liklihood))
+print("Ordering Log Liklihood: " + str(ordering_log_liklihood))
 
 # pdb.set_trace()
