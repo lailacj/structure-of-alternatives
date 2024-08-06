@@ -1,3 +1,7 @@
+# A simple script that puts all the stories and prompts into a data frame. 
+# " [MASk] " is included in the prompts. 
+# These prompts are made for BERT usage.
+
 import pandas as pd
 
 # Story and BERT promppt
