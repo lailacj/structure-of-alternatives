@@ -15,33 +15,25 @@ df_prompts = pd.read_csv("../data/prompts_BERT.csv")
 
 # ------ Getting next word predictions from BERT ------
 
+# Return the top k next tokens and their probabilities.
 def get_top_k_predictions(text, top_k):
     inputs = tokenizer(text, return_tensors="pt")
-    
+
     # Get logits 
     with torch.no_grad():
         logits = model(**inputs).logits
 
-    # Get index of [MASK] token
     mask_token_index = (inputs.input_ids == tokenizer.mask_token_id).nonzero(as_tuple=True)[1]
-
-    # Get logits of masked token
     mask_token_logits = logits[0, mask_token_index, :].squeeze()
-
-    # Get the top k indices
     top_k_indices = torch.topk(mask_token_logits, top_k).indices
-
-    # Filter logits to only the top k
     top_k_logits = mask_token_logits[top_k_indices]
-
-    # Apply softmax to the top_k logits 
     top_k_probs = torch.softmax(top_k_logits, dim=-1)
-
     predicted_tokens = tokenizer.convert_ids_to_tokens(top_k_indices)
 
     # Return the results as a list of (token, probability) tuples
     return list(zip(predicted_tokens, top_k_probs.tolist()))
 
+# Returns all next tokens and their probabilities.
 def get_all_logits(text):
     inputs = tokenizer(text, return_tensors="pt")
     
@@ -67,6 +59,7 @@ def prob_query_in_set(logits, query):
     # Return zero if the token is not in logits
     return 0 
 
+# Sample a set based on the distribution of tokens outputted by BERT
 def get_set(logits, set_size=3):
     words, probabilities = zip(*logits)
     
@@ -75,10 +68,11 @@ def get_set(logits, set_size=3):
     probabilities /= probabilities.sum()
 
     sampled_indices = np.random.choice(len(words), size=set_size, replace=False, p=probabilities)
-    sampled_words = [words[i] for i in sampled_indices]
+    sampled_set = [words[i] for i in sampled_indices]
     
-    return sampled_words
+    return sampled_set
 
+# Get the input prompt for BERT based on the context.
 def get_prompt_for_context(df_prompts, context):
     matching_row = df_prompts[df_prompts['story'] == context]
     if not matching_row.empty:
@@ -86,62 +80,99 @@ def get_prompt_for_context(df_prompts, context):
     else:
         return None
 
-current_context = None
-set_log_liklihood = 0
-for index, row in df_experimental_data.iterrows():
-    context = row['story']
-    query = row['query']
-    trigger = row['trigger']
-    query_negated = row['neg'] 
 
-    print("Context: " + str(context))
+def log_liklihood_set(df_experimental_data, df_prompts):
+    current_context = None
+    set_log_liklihood = 0
 
-    # Sample inside_set for a given story. Resample for every new story. 
-    if context != current_context:
-        prompt = get_prompt_for_context(df_prompts, context)
-        print("Promt: " + str(prompt))
-        logits = get_top_k_predictions(prompt, top_k=100)
-        inside_set = get_set(logits)
-        print("Sampled Set: " + str(inside_set))
-        current_context = context
+    for index, row in df_experimental_data.iterrows():
+        context = row['story']
+        query = row['query']
+        trigger = row['trigger']
+        query_negated = row['neg'] 
 
-    prob_set = prob_query_in_set(logits, query)
-    print("Prob in set: " + str(prob_set))
-    # prob_neg_given_set = prob_query_negated_set(trigger, query, inside_set)
+        # Get the logits for every context. 
+        if context != current_context:
+            prompt = get_prompt_for_context(df_prompts, context)
+            logits = get_all_logits(prompt)
+            current_context = context
 
-    if query_negated == 1:
-        # p(q neg) = p(q in set) * p(q neg | in set) + p(q not in set) * p(q neg | not set)
-        prob_query_obs = prob_set * 1 + (1-prob_set) * 0
-    else:
-        # p(q not neg) = p(q in set) * p(q not neg | in set) + p(q not in set) * p(q not neg | not set)
-        prob_query_obs = prob_set * 0 + (1-prob_set) * 1
+        prob_set = prob_query_in_set(logits, query)
+
+        if query_negated == 1:
+            # p(q neg) = p(q in set) * p(q neg | in set) + p(q not in set) * p(q neg | not set)
+            prob_query_obs = prob_set * 1 + (1-prob_set) * 0
+        else:
+            # p(q not neg) = p(q in set) * p(q not neg | in set) + p(q not in set) * p(q not neg | not set)
+            prob_query_obs = prob_set * 0 + (1-prob_set) * 1
     
-    print("Prob Obsevered: " + str(prob_query_obs))
+        print("Prob Obsevered: " + str(prob_query_obs))
 
-    if prob_query_obs == 0:
-        set_log_liklihood = 0 
-    else:
-        set_log_liklihood = np.log(prob_query_obs)
+        if prob_query_obs == 0:
+            set_log_liklihood = 0 
+        else:   
+            set_log_liklihood = np.log(prob_query_obs)
 
-    set_log_liklihood += set_log_liklihood
+        set_log_liklihood += set_log_liklihood
+        print("Log Liklihood: " + str(set_log_liklihood) + "\n\n")
 
-    print("Log Liklihood: " + str(set_log_liklihood) + "\n\n")
+    return(set_log_liklihood)
 
-print("Set Log Liklihood: " + str(set_log_liklihood))
+# ------- Empirical Experiment --------
+
+# Would the probability that a query gets negated by sampling a bunch of sets equal the 
+# proability that BERT outputs? 
+
+def sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs):
+    current_context = None
+    results = []
+
+    for index, row in df_experimental_data.iterrows():
+        context = row['story']
+        query = row['query']
+
+        # For each unique story, get the distribution of logits from BERT and sample sets
+        if context != current_context:
+            # Get the distribution of all logits from BERT
+            prompt = get_prompt_for_context(df_prompts, context)
+            distribution = get_all_logits(prompt)
+            current_context = context
+
+            # Sample a bunch of sets and store them in all_sampled_sets
+            all_sampled_sets = []
+            for _ in range(runs):
+                all_sampled_sets = get_set(distribution)
+                all_sampled_sets.append(all_sampled_sets)
+
+        # Count how many of the sampled sets contain the query
+        count = sum(1 for sampled_set in all_sampled_sets if query in sampled_set)
+
+        # Propotion of sampled sets that have the query in the set
+        empirical_probability = count / runs
+        print(f"Proportion of sampled sets containing '{query}': {empirical_probability}")
+
+        bert_probability = prob_query_in_set(distribution, query)
+        print(f"BERT probability of '{query}': {bert_probability}")
 
 
-# Input text with [MASK] token
-# text = "Sam opens the fridge and responds, 'I only have [MASK].'"
-# top_k_size = 50
-# top_k_predictions = get_top_k_predictions(text, top_k_size)
-# # all_logits = get_all_logits(text)
-# for token, prob in top_k_predictions:
-#     print(f'{token}: {prob:.4f}')
+        results.append({
+            'query': query,
+            'empirical_probability': empirical_probability,
+            'bert_probability': bert_probability
+        })
+    
+    # Convert the results to a DataFrame
+    df_empirical_exp_results = pd.DataFrame(results)
 
-# query = "water"
-# prob_query_set = prob_query_in_set(top_k_predictions, query)
-# print(f"The probability that the token '{query}' is in the sampled set is: {prob_query_set:.4f}" if prob_query_set else f"The token '{query}' is not in the top_k predictions.")
+    return df_empirical_exp_results
 
-# set = get_set(top_k_predictions)
-# print("Sampled set of words: ", set)
+runs = 10000
+df_empirical_exp = sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs)
+df_empirical_exp = df_empirical_exp.drop_duplicates()
+df_empirical_exp.to_csv('../data/empirical_exp_results_runs=' + str(runs) + '.csv', index=False)
 
+
+# total_set_log_liklihood = log_liklihood_set(df_experimental_data, df_prompts)
+# print("Total Log Liklihood: " + str(total_set_log_liklihood))
+
+#  pdb.set_trace()
