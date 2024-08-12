@@ -38,16 +38,19 @@ df_experimental_data = df_experimental_data.sort_values(by='story')
 
 # ---- Uniform Set Model ----
 
-set_size = 3
-
-def prob_query_in_set(context=None, trigger=None, query=None):
+def prob_query_in_set(set_size):
     """
     Returns the probability that a query is inside the set. Sets are uniformly 
     sampled (without replacement) from a vocabulary of size, vocab_size.
     """
-    return (set_size/vocab_size) 
+    # Query being in the set is INDEPENDENT of set size
+    if set_size == None:
+        return (1 / vocab_size)
+    # Query being in the set is DEPENDENT of set size
+    else:
+        return (set_size/vocab_size) 
 
-def get_set():
+def get_set(set_size):
     """
     Returns a uniformly sampled set of nouns.
     """
@@ -76,10 +79,10 @@ for index, row in df_experimental_data.iterrows():
     # Sample inside_set for a given story. Resample for every new story. 
     # MORE complicated, new sample for each unquie context and trigger pair 
     if context != current_context:
-        inside_set = get_set()
+        inside_set = get_set(set_size=3)
         current_context = context
 
-    prob_set = prob_query_in_set()
+    prob_set = prob_query_in_set(set_size=None)
     # prob_neg_given_set = prob_query_negated_set(trigger, query, inside_set)
 
     if query_negated == 1:
