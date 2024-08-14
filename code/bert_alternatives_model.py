@@ -1,3 +1,4 @@
+from transformers import AutoTokenizer, AutoModelForMaskedLM
 from transformers import BertTokenizer, BertForMaskedLM
 import numpy as np
 import pandas as pd
@@ -5,10 +6,28 @@ import pdb
 import random
 import torch
 
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-model = BertForMaskedLM.from_pretrained('bert-base-uncased')
+# tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+# model = BertForMaskedLM.from_pretrained('bert-base-uncased')
+
+tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-large-uncased-whole-word-masking")
+model = AutoModelForMaskedLM.from_pretrained("google-bert/bert-large-uncased-whole-word-masking")
+
+# ------- Cleaning and Sorting the Experimental Data ------
+
+# Function that removes 'a' or 'an' from the front of the items
+def clean_word(word):
+    word = word.lower()
+    if word.startswith('a '):
+        return word[2:]
+    elif word.startswith('an '):
+        return word[3:]
+    else:
+        return word
 
 df_experimental_data = pd.read_csv('../data/sca_dataframe.csv')
+
+df_experimental_data['cleaned_trigger'] = df_experimental_data['trigger'].apply(clean_word)
+df_experimental_data['cleaned_query'] = df_experimental_data['query'].apply(clean_word)
 df_experimental_data = df_experimental_data.sort_values(by='story')
 
 df_prompts = pd.read_csv("../data/prompts_BERT.csv")
@@ -16,6 +35,7 @@ df_prompts = pd.read_csv("../data/prompts_BERT.csv")
 # ------ Getting next word predictions from BERT ------
 
 # Return the top k next tokens and their probabilities.
+# NOT BEING USED!
 def get_top_k_predictions(text, top_k):
     inputs = tokenizer(text, return_tensors="pt")
 
@@ -34,7 +54,7 @@ def get_top_k_predictions(text, top_k):
     return list(zip(predicted_tokens, top_k_probs.tolist()))
 
 # Returns all next tokens and their probabilities.
-def get_all_logits(text):
+def get_next_word_probability_distribution(text):
     inputs = tokenizer(text, return_tensors="pt")
     
     with torch.no_grad():
@@ -51,17 +71,62 @@ def get_all_logits(text):
 # ------ Set Model with BERT ------
 
 # The probability a query is in a set is equal to the probability of query being the next word. 
-def prob_query_in_set(logits, query):
-    for token, prob in logits:
+def prob_query_in_set(probability_distribution, query):
+    for token, probability in probability_distribution:
         if token == query:
-            return prob
+            return probability
     
     # Return zero if the token is not in logits
     return 0 
 
+# Helper function: Get the input prompt for BERT based on the context.
+def get_prompt_for_context(df_prompts, context):
+    matching_row = df_prompts[df_prompts['story'] == context]
+    if not matching_row.empty:
+        return matching_row['prompt'].values[0]
+    else:
+        return None
+
+# Log likelihood computation
+def log_likelihood_set(df_experimental_data, df_prompts):
+    current_context = None
+    set_log_likelihood = 0
+
+    for index, row in df_experimental_data.iterrows():
+        context = row['story']
+        query = row['cleaned_query']
+        query_negated = row['neg'] 
+
+        # Get the logits (probability_distribution) for every context. 
+        if context != current_context:
+            prompt = get_prompt_for_context(df_prompts, context)
+            probability_distribution = get_next_word_probability_distribution(prompt)
+            current_context = context
+
+        prob_set = prob_query_in_set(probability_distribution, query)
+
+        if query_negated == 1:
+            # p(q neg) = p(q in set) * p(q neg | in set) + p(q not in set) * p(q neg | not set)
+            prob_query_obs = prob_set * 1 + (1-prob_set) * 0
+        else:
+            # p(q not neg) = p(q in set) * p(q not neg | in set) + p(q not in set) * p(q not neg | not set)
+            prob_query_obs = prob_set * 0 + (1-prob_set) * 1
+
+        if prob_query_obs == 0:
+            set_log_likelihood += 0 
+        else:   
+            set_log_likelihood += np.log(prob_query_obs)
+
+    return(set_log_likelihood)
+
+# ------- Empirical Experiment --------
+
+# Would the probability that a query gets negated by sampling a bunch of sets equal the 
+# proability that BERT outputs? 
+
 # Sample a set based on the distribution of tokens outputted by BERT
-def get_set(logits, set_size=3):
-    words, probabilities = zip(*logits)
+def get_set(probability_distribution, set_size=3):
+    words, probabilities = zip(*probability_distribution)
     
     # Normalize probabilities to sum to 1
     probabilities = np.array(probabilities)
@@ -71,57 +136,6 @@ def get_set(logits, set_size=3):
     sampled_set = [words[i] for i in sampled_indices]
     
     return sampled_set
-
-# Get the input prompt for BERT based on the context.
-def get_prompt_for_context(df_prompts, context):
-    matching_row = df_prompts[df_prompts['story'] == context]
-    if not matching_row.empty:
-        return matching_row['prompt'].values[0]
-    else:
-        return None
-
-
-def log_liklihood_set(df_experimental_data, df_prompts):
-    current_context = None
-    set_log_liklihood = 0
-
-    for index, row in df_experimental_data.iterrows():
-        context = row['story']
-        query = row['query']
-        trigger = row['trigger']
-        query_negated = row['neg'] 
-
-        # Get the logits for every context. 
-        if context != current_context:
-            prompt = get_prompt_for_context(df_prompts, context)
-            logits = get_all_logits(prompt)
-            current_context = context
-
-        prob_set = prob_query_in_set(logits, query)
-
-        if query_negated == 1:
-            # p(q neg) = p(q in set) * p(q neg | in set) + p(q not in set) * p(q neg | not set)
-            prob_query_obs = prob_set * 1 + (1-prob_set) * 0
-        else:
-            # p(q not neg) = p(q in set) * p(q not neg | in set) + p(q not in set) * p(q not neg | not set)
-            prob_query_obs = prob_set * 0 + (1-prob_set) * 1
-    
-        print("Prob Obsevered: " + str(prob_query_obs))
-
-        if prob_query_obs == 0:
-            set_log_liklihood = 0 
-        else:   
-            set_log_liklihood = np.log(prob_query_obs)
-
-        set_log_liklihood += set_log_liklihood
-        print("Log Liklihood: " + str(set_log_liklihood) + "\n\n")
-
-    return(set_log_liklihood)
-
-# ------- Empirical Experiment --------
-
-# Would the probability that a query gets negated by sampling a bunch of sets equal the 
-# proability that BERT outputs? 
 
 def sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs):
     current_context = None
@@ -135,7 +149,7 @@ def sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs):
         if context != current_context:
             # Get the distribution of all logits from BERT
             prompt = get_prompt_for_context(df_prompts, context)
-            distribution = get_all_logits(prompt)
+            distribution = get_next_word_probability_distribution(prompt)
             current_context = context
 
             # Sample a bunch of sets and store them in all_sampled_sets
@@ -166,13 +180,36 @@ def sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs):
 
     return df_empirical_exp_results
 
-runs = 10000
-df_empirical_exp = sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs)
-df_empirical_exp = df_empirical_exp.drop_duplicates()
-df_empirical_exp.to_csv('../data/empirical_exp_results_runs=' + str(runs) + '.csv', index=False)
 
 
-# total_set_log_liklihood = log_liklihood_set(df_experimental_data, df_prompts)
-# print("Total Log Liklihood: " + str(total_set_log_liklihood))
+
+# row_num = 300
+# context = df_experimental_data.loc[row_num, 'story']
+# query = df_experimental_data.loc[row_num, 'query']
+# prompt = get_prompt_for_context(df_prompts, context)
+# print("Prompt: " + str(prompt))
+# probability_distribution = get_next_word_probability_distribution(prompt)
+
+# sorted_distribution = sorted(probability_distribution, key=lambda x: x[1], reverse=True)
+
+# # Get the top 100 elements
+# top_100_elements = sorted_distribution[:500]
+
+# # Print the top 100 elements
+# for token, probability in top_100_elements:
+#     print(f'Token: {token}, Probability: {probability}')
+
+# prob_set = prob_query_in_set(probability_distribution, query)
+# print("Prob Query - " + str(query) + ": " + str(prob_set))
+
+
+# runs = 10000
+# df_empirical_exp = sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs)
+# df_empirical_exp = df_empirical_exp.drop_duplicates()
+# df_empirical_exp.to_csv('../data/empirical_exp_results_runs=' + str(runs) + '.csv', index=False)
+
+
+total_set_log_likelihood = log_likelihood_set(df_experimental_data, df_prompts)
+print("Total Log likelihood: " + str(total_set_log_likelihood))
 
 #  pdb.set_trace()
