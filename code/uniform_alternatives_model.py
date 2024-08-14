@@ -48,7 +48,7 @@ def prob_query_in_set(set_size):
         return (1 / vocab_size)
     # Query being in the set is DEPENDENT of set size
     else:
-        return (set_size/vocab_size) 
+        return (set_size / vocab_size) 
 
 def get_set(set_size):
     """
@@ -69,7 +69,7 @@ def get_set(set_size):
 #         return 0 # Negate with probability 0
 
 current_context = None
-set_log_liklihood = 0
+set_log_likelihood = 0
 for index, row in df_experimental_data.iterrows():
     context = row['story']
     query = row['query']
@@ -93,9 +93,9 @@ for index, row in df_experimental_data.iterrows():
         prob_query_obs = prob_set * 0 + (1-prob_set) * 1
     
     # product for probabilities; sum for logs
-    set_log_liklihood += np.log(prob_query_obs)
+    set_log_likelihood += np.log(prob_query_obs)
 
-print("Set Log Liklihood: " + str(set_log_liklihood))
+print("Set Log likelihood: " + str(set_log_likelihood))
 
 # ---- Uniform Ordering Model ----
 
@@ -129,7 +129,7 @@ def get_ordering():
 #         return 0 # Negate with probability 0
 
 current_context = None
-ordering_log_liklihood = 0
+ordering_log_likelihood = 0
 for index, row in df_experimental_data.iterrows():
     context = row['story']
     query = row['query']
@@ -150,8 +150,8 @@ for index, row in df_experimental_data.iterrows():
     else:
         prob_query_obs = prob_above * 0 + (1-prob_above) * 1
     
-    ordering_log_liklihood += np.log(prob_query_obs)
+    ordering_log_likelihood += np.log(prob_query_obs)
 
-print("Ordering Log Liklihood: " + str(ordering_log_liklihood))
+print("Ordering Log likelihood: " + str(ordering_log_likelihood))
 
 # pdb.set_trace()
