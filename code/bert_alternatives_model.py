@@ -32,6 +32,16 @@ df_experimental_data = df_experimental_data.sort_values(by='story')
 
 df_prompts = pd.read_csv("../data/prompts_BERT.csv")
 
+# ------ Helper Functions -------
+
+# Get the input prompt for BERT based on the context.
+def get_prompt_for_context(df_prompts, context):
+    matching_row = df_prompts[df_prompts['story'] == context]
+    if not matching_row.empty:
+        return matching_row['prompt'].values[0]
+    else:
+        return None
+
 # ------ Getting next word predictions from BERT ------
 
 # Return the top k next tokens and their probabilities.
@@ -79,14 +89,6 @@ def prob_query_in_set(probability_distribution, query):
     # Return zero if the token is not in logits
     return 0 
 
-# Helper function: Get the input prompt for BERT based on the context.
-def get_prompt_for_context(df_prompts, context):
-    matching_row = df_prompts[df_prompts['story'] == context]
-    if not matching_row.empty:
-        return matching_row['prompt'].values[0]
-    else:
-        return None
-
 # Log likelihood computation
 def log_likelihood_set(df_experimental_data, df_prompts):
     current_context = None
@@ -125,7 +127,7 @@ def log_likelihood_set(df_experimental_data, df_prompts):
 # proability that BERT outputs? 
 
 # Sample a set based on the distribution of tokens outputted by BERT
-def get_set(probability_distribution, set_size=3):
+def get_set(probability_distribution, set_size):
     words, probabilities = zip(*probability_distribution)
     
     # Normalize probabilities to sum to 1
@@ -143,7 +145,7 @@ def sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs):
 
     for index, row in df_experimental_data.iterrows():
         context = row['story']
-        query = row['query']
+        query = row['cleaned_query']
 
         # For each unique story, get the distribution of logits from BERT and sample sets
         if context != current_context:
@@ -155,7 +157,7 @@ def sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs):
             # Sample a bunch of sets and store them in all_sampled_sets
             all_sampled_sets = []
             for _ in range(runs):
-                all_sampled_sets = get_set(distribution)
+                all_sampled_sets = get_set(distribution, set_size=10)
                 all_sampled_sets.append(all_sampled_sets)
 
         # Count how many of the sampled sets contain the query
@@ -168,7 +170,6 @@ def sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs):
         bert_probability = prob_query_in_set(distribution, query)
         print(f"BERT probability of '{query}': {bert_probability}")
 
-
         results.append({
             'query': query,
             'empirical_probability': empirical_probability,
@@ -180,6 +181,10 @@ def sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs):
 
     return df_empirical_exp_results
 
+# ------- Ordering Model with BERT --------
+
+# def prob_query_above_trigger():
+    #???
 
 
 
@@ -203,13 +208,13 @@ def sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs):
 # print("Prob Query - " + str(query) + ": " + str(prob_set))
 
 
-# runs = 10000
-# df_empirical_exp = sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs)
-# df_empirical_exp = df_empirical_exp.drop_duplicates()
-# df_empirical_exp.to_csv('../data/empirical_exp_results_runs=' + str(runs) + '.csv', index=False)
+runs = 10000
+df_empirical_exp = sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs)
+df_empirical_exp = df_empirical_exp.drop_duplicates()
+df_empirical_exp.to_csv('../data/empirical_exp_results_set_size=10_num_sampled_sets=' + str(runs) + '.csv', index=False)
 
 
-total_set_log_likelihood = log_likelihood_set(df_experimental_data, df_prompts)
-print("Total Log likelihood: " + str(total_set_log_likelihood))
+# total_set_log_likelihood = log_likelihood_set(df_experimental_data, df_prompts)
+# print("Total Log likelihood: " + str(total_set_log_likelihood))
 
 #  pdb.set_trace()
