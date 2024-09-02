@@ -78,16 +78,21 @@ def get_next_word_probability_distribution(text):
     # Return the results as a list of (token, probability) tuples
     return list(zip(predicted_tokens, probs.tolist()))
 
-# ------ Set Model with BERT ------
-
+# ------ Set Model with BERT (Version 1 - NOT BEING USED) ------
 # The probability a query is in a set is equal to the probability of query being the next word. 
+
 def prob_query_in_set(probability_distribution, query):
-    for token, probability in probability_distribution:
-        if token == query:
-            return probability
+    try:
+        for token, probability in probability_distribution:
+            if token == query:
+                return probability
+        
+        # If the token is not found, raise an error
+        raise ValueError(f"Query '{query}' is not in BERT probability distribution")
     
-    # Return zero if the token is not in logits
-    return 0 
+    except ValueError as e:
+        print(e)
+        raise 
 
 # Log likelihood computation
 def log_likelihood_set(df_experimental_data, df_prompts):
@@ -121,10 +126,8 @@ def log_likelihood_set(df_experimental_data, df_prompts):
 
     return(set_log_likelihood)
 
-# ------- Empirical Experiment --------
-
-# Would the probability that a query gets negated by sampling a bunch of sets equal the 
-# proability that BERT outputs? 
+# ------ Set Model with BERT (Version 2) ------
+# Here we empricially find the proability that a query and trigger are in the same set
 
 # Sample a set based on the distribution of tokens outputted by BERT
 def get_set(probability_distribution, set_size):
@@ -138,6 +141,55 @@ def get_set(probability_distribution, set_size):
     sampled_set = [words[i] for i in sampled_indices]
     
     return sampled_set
+
+def log_likelihood_sampling_sets(df_experimental_data, df_prompts, num_sets):
+    current_context = None
+    set_log_likelihood = 0
+
+    for _, row in df_experimental_data.iterrows():
+        context = row['story']
+        query = row['cleaned_query']
+        query_negated = row['neg'] 
+        trigger = row['cleaned_trigger']
+
+        if context != current_context:
+            # Get the BERT input prompt and BERT output distribution for each context
+            prompt = get_prompt_for_context(df_prompts, context)
+            distribution = get_next_word_probability_distribution(prompt)
+            current_context = context
+
+            # Sample a bunch of sets from the BERT distribution and store them in all_sampled_sets
+            all_sampled_sets = []
+            for _ in range(num_sets):
+                all_sampled_sets = get_set(distribution, set_size=random.randint(1, len(distribution)))
+                all_sampled_sets.append(all_sampled_sets)
+
+        # Count how many of the sampled sets contain the query and trigger
+        count = sum(1 for sampled_set in all_sampled_sets if query in sampled_set and trigger in sampled_set)
+
+        # The the proporation of smapled sets that contain the query and trigger
+        empirical_probability = count / num_sets
+
+        # Compute likelihoods
+
+        if query_negated == 1:
+            # p(q neg) = p(q in set) * p(q neg | in set) + p(q not in set) * p(q neg | not set)
+            prob_query_obs = empirical_probability * 1 + (1-empirical_probability) * 0
+        else:
+            # p(q not neg) = p(q in set) * p(q not neg | in set) + p(q not in set) * p(q not neg | not set)
+            prob_query_obs = empirical_probability * 0 + (1-empirical_probability) * 1
+
+        if prob_query_obs == 0:
+            set_log_likelihood += 0 
+        else:   
+            set_log_likelihood += np.log(prob_query_obs)
+
+    return(set_log_likelihood)
+
+# ------- Empirical Experiment --------
+
+# Would the probability that a query gets negated by sampling a bunch of sets equal the 
+# proability that BERT outputs? 
 
 def sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs):
     current_context = None
@@ -162,6 +214,8 @@ def sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs):
 
         # Count how many of the sampled sets contain the query
         count = sum(1 for sampled_set in all_sampled_sets if query in sampled_set)
+
+        # CHANGE! TRIGGER AND QUERY need to be in same set!! 
 
         # Propotion of sampled sets that have the query in the set
         empirical_probability = count / runs
@@ -188,12 +242,26 @@ def sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs):
 
 
 
+
+
+
+num_sets = 1000
+likelihood = log_likelihood_sampling_sets(df_experimental_data, df_prompts, num_sets)
+print(likelihood)
+
 # row_num = 300
 # context = df_experimental_data.loc[row_num, 'story']
 # query = df_experimental_data.loc[row_num, 'query']
 # prompt = get_prompt_for_context(df_prompts, context)
 # print("Prompt: " + str(prompt))
 # probability_distribution = get_next_word_probability_distribution(prompt)
+
+# words = df_experimental_data['cleaned_query'].tolist()
+# tokens = {token for token, _ in probability_distribution}
+
+# for word in words:
+#     if word not in tokens:
+#         print(f"Word '{word}' is not in the BERT vocabulary")
 
 # sorted_distribution = sorted(probability_distribution, key=lambda x: x[1], reverse=True)
 
@@ -208,10 +276,13 @@ def sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs):
 # print("Prob Query - " + str(query) + ": " + str(prob_set))
 
 
-runs = 10000
-df_empirical_exp = sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs)
-df_empirical_exp = df_empirical_exp.drop_duplicates()
-df_empirical_exp.to_csv('../data/empirical_exp_results_set_size=10_num_sampled_sets=' + str(runs) + '.csv', index=False)
+
+
+
+# runs = 10000
+# df_empirical_exp = sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs)
+# df_empirical_exp = df_empirical_exp.drop_duplicates()
+# df_empirical_exp.to_csv('../data/empirical_exp_results_set_size=10_num_sampled_sets=' + str(runs) + '.csv', index=False)
 
 
 # total_set_log_likelihood = log_likelihood_set(df_experimental_data, df_prompts)
