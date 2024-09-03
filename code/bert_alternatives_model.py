@@ -171,7 +171,6 @@ def log_likelihood_sampling_sets(df_experimental_data, df_prompts, num_sets):
         empirical_probability = count / num_sets
 
         # Compute likelihoods
-
         if query_negated == 1:
             # p(q neg) = p(q in set) * p(q neg | in set) + p(q not in set) * p(q neg | not set)
             prob_query_obs = empirical_probability * 1 + (1-empirical_probability) * 0
@@ -186,7 +185,7 @@ def log_likelihood_sampling_sets(df_experimental_data, df_prompts, num_sets):
 
     return(set_log_likelihood)
 
-# ------- Empirical Experiment --------
+# ------- Empirical Experiment (Sets) --------
 
 # Would the probability that a query gets negated by sampling a bunch of sets equal the 
 # proability that BERT outputs? 
@@ -237,17 +236,83 @@ def sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs):
 
 # ------- Ordering Model with BERT --------
 
-# def prob_query_above_trigger():
-    #???
+def get_ordering(probability_distribution):
+    tokens, probabilities = zip(*probability_distribution)
+    ordered_tokens = []
+    
+    # While loop that samples one token based on its probability then removes that token from
+    # the tokens list then resamples a token and so on. 
+    while tokens:
+        # Sample one token based on its probability then append it to the ordered_tokens list
+        sampled_token = random.choices(tokens, weights=probabilities, k=1)[0]
+        ordered_tokens.append(sampled_token)
+        
+        # Remove the sampled token and its probability from the list to ensure we sample without replacment 
+        index = tokens.index(sampled_token)
+        tokens = tokens[:index] + tokens[index+1:]
+        probabilities = probabilities[:index] + probabilities[index+1:]
 
+    # Another way to do this is below but this might not be a perfect simulation of sampling without replacement.
+    # sampled_tokens = random.choices(tokens, weights=probabilities, k=len(tokens))
+    # ordered_tokens = list(dict.fromkeys(sampled_tokens))
+    
+    return ordered_tokens
 
+def log_likelihood_ordering(df_experimental_data, df_prompts, num_samples):
+    current_context = None
+    ordering_log_likelihood = 0
 
+    for _, row in df_experimental_data.iterrows():
+        context = row['story']
+        query = row['cleaned_query']
+        query_negated = row['neg'] 
+        trigger = row['cleaned_trigger']
+
+        if context != current_context:
+            # Get the BERT input prompt and BERT output distribution for each context
+            prompt = get_prompt_for_context(df_prompts, context)
+            distribution = get_next_word_probability_distribution(prompt)
+            current_context = context
+
+            all_sampled_orderings = []
+            for _ in range(num_samples):
+                sampled_ordering = get_ordering(distribution)
+                all_sampled_orderings.append(sampled_ordering)
+
+        count_query_above_trigger = 0
+        for ordering in all_sampled_orderings:
+            query_index = ordering.index(query)
+            trigger_index = ordering.index(trigger)
+        
+            if query_index < trigger_index:
+                count_query_above_trigger += 1
+
+        empirical_probability = count_query_above_trigger / len(all_sampled_orderings)
+
+        if query_negated == 1:
+            # p(q neg) = p(q in set) * p(q neg | in set) + p(q not in set) * p(q neg | not set)
+            prob_query_obs = empirical_probability * 1 + (1-empirical_probability) * 0
+        else:
+            # p(q not neg) = p(q in set) * p(q not neg | in set) + p(q not in set) * p(q not neg | not set)
+            prob_query_obs = empirical_probability * 0 + (1-empirical_probability) * 1
+
+        if prob_query_obs == 0:
+            ordering_log_likelihood += 0 
+        else:   
+            ordering_log_likelihood += np.log(prob_query_obs)
+
+    return ordering_log_likelihood
 
 
 
 num_sets = 1000
 likelihood = log_likelihood_sampling_sets(df_experimental_data, df_prompts, num_sets)
 print(likelihood)
+
+ordering_likelihood = log_likelihood_ordering(df_experimental_data, df_prompts, 1000)
+print(ordering_likelihood)
+
+
 
 # row_num = 300
 # context = df_experimental_data.loc[row_num, 'story']
@@ -274,10 +339,6 @@ print(likelihood)
 
 # prob_set = prob_query_in_set(probability_distribution, query)
 # print("Prob Query - " + str(query) + ": " + str(prob_set))
-
-
-
-
 
 # runs = 10000
 # df_empirical_exp = sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs)
