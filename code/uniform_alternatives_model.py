@@ -15,7 +15,7 @@ df_experimental_data = pd.read_csv('../data/sca_dataframe.csv')
 
 # ---- Corpus Data and Experimental Data Preparation ----
 
-vocab_size = 500
+vocab_size = 10000
 words = brown.tagged_words(tagset='universal')
 nouns = [word for word, pos in words if pos == 'NOUN']
 noun_freq = Counter(nouns).most_common(vocab_size)
@@ -68,34 +68,24 @@ def get_set(set_size):
 #     else:
 #         return 0 # Negate with probability 0
 
-current_context = None
-set_log_likelihood = 0
-for index, row in df_experimental_data.iterrows():
-    context = row['story']
-    query = row['query']
-    trigger = row['trigger']
-    query_negated = row['neg'] 
+def set_uniform_log_likelihood():
+    set_log_likelihood = 0
 
-    # Sample inside_set for a given story. Resample for every new story. 
-    # MORE complicated, new sample for each unquie context and trigger pair 
-    if context != current_context:
-        inside_set = get_set(set_size=3)
-        current_context = context
+    for index, row in df_experimental_data.iterrows():
+        query_negated = row['neg'] 
+        prob_set = prob_query_in_set(set_size=None)
 
-    prob_set = prob_query_in_set(set_size=None)
-    # prob_neg_given_set = prob_query_negated_set(trigger, query, inside_set)
+        if query_negated == 1:
+            # p(q neg) = p(q in set) * p(q neg | in set) + p(q not in set) * p(q neg | not set)
+            prob_query_obs = prob_set * 1 + (1-prob_set) * 0
+        else:
+            # p(q not neg) = p(q in set) * p(q not neg | in set) + p(q not in set) * p(q not neg | not set)
+            prob_query_obs = prob_set * 0 + (1-prob_set) * 1
+        
+        # product for probabilities; sum for logs
+        set_log_likelihood += np.log(prob_query_obs)
 
-    if query_negated == 1:
-        # p(q neg) = p(q in set) * p(q neg | in set) + p(q not in set) * p(q neg | not set)
-        prob_query_obs = prob_set * 1 + (1-prob_set) * 0
-    else:
-        # p(q not neg) = p(q in set) * p(q not neg | in set) + p(q not in set) * p(q not neg | not set)
-        prob_query_obs = prob_set * 0 + (1-prob_set) * 1
-    
-    # product for probabilities; sum for logs
-    set_log_likelihood += np.log(prob_query_obs)
-
-print("Set Log likelihood: " + str(set_log_likelihood))
+    return set_log_likelihood
 
 # ---- Uniform Ordering Model ----
 
@@ -128,30 +118,25 @@ def get_ordering():
 #     else:
 #         return 0 # Negate with probability 0
 
-current_context = None
-ordering_log_likelihood = 0
-for index, row in df_experimental_data.iterrows():
-    context = row['story']
-    query = row['query']
-    trigger = row['trigger']
-    query_negated = row['neg'] 
+def ordering_uniform_likelihood():
+    ordering_log_likelihood = 0
 
-    # Sample inside_set for a given story. Resample for every new story. 
-    # MORE complicated, new sample for each unquie context and trigger pair 
-    if context != current_context:
-        ordering = get_ordering()
-        current_context = context
+    for index, row in df_experimental_data.iterrows():
+        query_negated = row['neg'] 
+        prob_above = prob_query_above_trigger()
 
-    prob_above = prob_query_above_trigger()
-    # prob_neg_given_above = prob_query_negated_order(trigger, query, ordering)
+        if query_negated == 1:
+            prob_query_obs = prob_above * 1 + (1-prob_above) * 0
+        else:
+            prob_query_obs = prob_above * 0 + (1-prob_above) * 1
+        
+        ordering_log_likelihood += np.log(prob_query_obs)
 
-    if query_negated == 1:
-        prob_query_obs = prob_above * 1 + (1-prob_above) * 0
-    else:
-        prob_query_obs = prob_above * 0 + (1-prob_above) * 1
-    
-    ordering_log_likelihood += np.log(prob_query_obs)
+    return ordering_log_likelihood
 
-print("Ordering Log likelihood: " + str(ordering_log_likelihood))
+
+print("Set Uniform Likelihood: " + str(set_uniform_log_likelihood()))
+
+print("Ordering Uniform Likelihood: " + str(ordering_uniform_likelihood()))
 
 # pdb.set_trace()
