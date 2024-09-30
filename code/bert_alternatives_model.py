@@ -1,10 +1,12 @@
 from transformers import AutoTokenizer, AutoModelForMaskedLM
 from transformers import BertTokenizer, BertForMaskedLM
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import pdb
 import random
 import torch
+import seaborn as sns
 
 # tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 # model = BertForMaskedLM.from_pretrained('bert-base-uncased')
@@ -78,7 +80,7 @@ def get_next_word_probability_distribution(text):
     # Return the results as a list of (token, probability) tuples
     return list(zip(predicted_tokens, probs.tolist()))
 
-# ------ Set Model with BERT (Version 1 - NOT BEING USED) ------
+# ------ Set Model with BERT (Version 1) ------
 # The probability a query is in a set is equal to the probability of query being the next word. 
 
 def prob_query_in_set(probability_distribution, query):
@@ -151,6 +153,8 @@ def get_set(probability_distribution, set_size):
 def log_likelihood_sampling_sets(df_experimental_data, df_prompts, num_sets):
     current_context = None
     set_log_likelihood = 0
+    context_likelihoods = []
+    current_context_likelihood = 0
 
     for _, row in df_experimental_data.iterrows():
         context = row['story']
@@ -159,6 +163,10 @@ def log_likelihood_sampling_sets(df_experimental_data, df_prompts, num_sets):
         trigger = row['cleaned_trigger']
 
         if context != current_context:
+            context_likelihoods.append((current_context, current_context_likelihood))
+            print(f"Context: {current_context}, Log Likelihood: {current_context_likelihood}")
+            current_context_likelihood = 0
+
             # Get the BERT input prompt and BERT output distribution for each context
             prompt = get_prompt_for_context(df_prompts, context)
             distribution = get_next_word_probability_distribution(prompt)
@@ -171,7 +179,7 @@ def log_likelihood_sampling_sets(df_experimental_data, df_prompts, num_sets):
                 all_sampled_sets.append(all_sampled_sets)
 
         # Count how many of the sampled sets contain the query and trigger
-        count = sum(1 for sampled_set in all_sampled_sets if query in sampled_set and trigger in sampled_set)
+        count = sum(1 for sampled_set in all_sampled_sets if query in sampled_set)
 
         # The the proporation of smapled sets that contain the query and trigger
         empirical_probability = count / num_sets
@@ -186,9 +194,12 @@ def log_likelihood_sampling_sets(df_experimental_data, df_prompts, num_sets):
 
         if prob_query_obs == 0:
             set_log_likelihood += 0 
+            current_context_likelihood += 0
         else:   
             set_log_likelihood += np.log(prob_query_obs)
+            current_context_likelihood += np.log(prob_query_obs)
 
+    # return(set_log_likelihood, context_likelihoods)
     return(set_log_likelihood)
 
 # ------- Empirical Experiment (Sets) --------
@@ -244,19 +255,16 @@ def sampling_sets_empirical_exp(df_experimental_data, df_prompts, runs):
 
 def get_ordering(probability_distribution):
     tokens, probabilities = zip(*probability_distribution)
-    tokens = np.array(tokens)
-
     probabilities = np.array(probabilities)
-    exp_probabilities = np.exp(probabilities)
-    probabilities = exp_probabilities / np.sum(exp_probabilities)
-
+    probabilities /= probabilities.sum()
     ordered_tokens = np.random.choice(tokens, size=len(tokens), replace=False, p=probabilities)
-    
     return ordered_tokens
 
 def log_likelihood_sampling_ordering(df_experimental_data, df_prompts, num_samples):
     current_context = None
     ordering_log_likelihood = 0
+    current_context_likelihood = 0
+    context_likelihoods = []
 
     for _, row in df_experimental_data.iterrows():
         context = row['story']
@@ -265,6 +273,10 @@ def log_likelihood_sampling_ordering(df_experimental_data, df_prompts, num_sampl
         trigger = row['cleaned_trigger']
 
         if context != current_context:
+            context_likelihoods.append((current_context, current_context_likelihood))
+            print(f"Context: {current_context}, Log Likelihood: {current_context_likelihood}")
+            current_context_likelihood = 0
+
             # Get the BERT input prompt and BERT output distribution for each context
             prompt = get_prompt_for_context(df_prompts, context)
             distribution = get_next_word_probability_distribution(prompt)
@@ -293,7 +305,7 @@ def log_likelihood_sampling_ordering(df_experimental_data, df_prompts, num_sampl
                 count_query_above_trigger += 1
 
         empirical_probability = count_query_above_trigger / len(all_sampled_orderings)
-        print("Query: " + str(query) + " - Empirical: " + str(empirical_probability))
+        # print("Query: " + str(query) + " - Empirical: " + str(empirical_probability))
 
         if query_negated == 1:
             # p(q neg) = p(q in set) * p(q neg | in set) + p(q not in set) * p(q neg | not set)
@@ -304,18 +316,83 @@ def log_likelihood_sampling_ordering(df_experimental_data, df_prompts, num_sampl
 
         if prob_query_obs == 0:
             ordering_log_likelihood += 0 
+            current_context_likelihood += 0
         else:   
             ordering_log_likelihood += np.log(prob_query_obs)
+            current_context_likelihood += np.log(prob_query_obs)
 
-    return ordering_log_likelihood
+    return (ordering_log_likelihood, context_likelihoods)
+
+# ------- Main -------
+
+total_set_log_likelihood_direct = log_likelihood_set(df_experimental_data, df_prompts)
+total_set_log_likelihood_sampling = log_likelihood_sampling_sets(df_experimental_data, df_prompts, 10000)
+
+print("Total Log likelihood (Direct): " + str(total_set_log_likelihood_direct))
+print("Total Log likelihood (Sampling): " + str(total_set_log_likelihood_sampling))
 
 
-# num_sets = 1000
-# likelihood = log_likelihood_sampling_sets(df_experimental_data, df_prompts, num_sets)
-# print("Sampling Sets Log Likelihood" + str(likelihood))
 
-ordering_likelihood = log_likelihood_sampling_ordering(df_experimental_data, df_prompts, 1000)
-print("Sampling Orderings Log Likelihood" + str(ordering_likelihood))
+# ------- Random Code -------
+
+# num_sets = 100
+# total_set_likelihood, context_set_likelihood = log_likelihood_sampling_sets(df_experimental_data, df_prompts, num_sets)
+# print("Sampling Set Log Likelihood" + str(total_set_likelihood))
+# context_set_likelihood = context_set_likelihood[1:]
+
+# total_ordering_likelihood, context_ordering_likelihood = log_likelihood_sampling_ordering(df_experimental_data, df_prompts, num_sets)
+# print("Sampling Orderings Log Likelihood" + str(total_ordering_likelihood))
+# context_ordering_likelihood = context_ordering_likelihood[1:]
+
+# set_context, set_likelihoods = zip(*context_set_likelihood)
+# ordering_context, ordering_likelihoods = zip(*context_ordering_likelihood)
+
+# # Remove the "mall" context from the data
+# filtered_set_context = [context for context in set_context if context != "mall"]
+# filtered_set_likelihoods = [likelihood for context, likelihood in zip(set_context, set_likelihoods) if context != "mall"]
+# filtered_ordering_likelihoods = [likelihood for context, likelihood in zip(ordering_context, ordering_likelihoods) if context != "mall"]
+
+# # Calculate the differences and sort by them
+# differences = [abs(set_likelihood - ordering_likelihood) for set_likelihood, ordering_likelihood in zip(filtered_set_likelihoods, filtered_ordering_likelihoods)]
+# sorted_data = sorted(zip(differences, filtered_set_context, filtered_set_likelihoods, filtered_ordering_likelihoods))
+# sorted_differences, sorted_contexts, sorted_set_likelihoods, sorted_ordering_likelihoods = zip(*sorted_data)
+
+# plt.figure(figsize=(10, 8))
+# plt.scatter(sorted_contexts, sorted_set_likelihoods, color='blue', label='Set Log Likelihoods', s=100)
+# plt.scatter(sorted_contexts, sorted_ordering_likelihoods, color='red', label='Ordering Log Likelihoods', s=100)
+# plt.xlabel('Context', fontsize=16)
+# plt.ylabel('Log Likelihoods', fontsize=16)
+# plt.title('Log Likleihoods by Context for Set and Ordering Models', fontsize=16)
+# plt.xticks(rotation=45, ha='right', fontsize=14)
+# plt.tick_params(axis='both', which='major', labelsize=14)
+# plt.legend(loc='lower left', fontsize = 14)
+# plt.tight_layout()
+# plt.savefig('../figures/likelihoods_by_context_.png', dpi=1000)
+# plt.show()
+
+
+
+# #Plot the likelihoods for each context
+# plt.figure(figsize=(13, 6))
+# plt.plot(context, likelihoods, marker='o')
+# # sns.barplot(x=context[:len(context)], y=likelihoods[:len(context)])
+# plt.xlabel('Context')
+# plt.ylabel('Log Likelihood')
+# plt.title('Log Likelihood for Each Context (Empirical Ordering Model)')
+# for i, prob in enumerate(likelihoods[:len(context)]):
+#     plt.text(i, prob, f'{prob:.3f}', ha='center', va='bottom')
+
+# plt.savefig('../figures/likelihoods_context_ordering_empirical.png', dpi=500)
+# plt.show()
+
+
+
+
+
+
+
+# ordering_likelihood = log_likelihood_sampling_ordering(df_experimental_data, df_prompts, 1000)
+# print("Sampling Orderings Log Likelihood" + str(ordering_likelihood))
 
 # set_likelihood = log_likelihood_set(df_experimental_data, df_prompts)
 # print("Direct Set Log Likeihood: " + str(set_likelihood))
@@ -358,3 +435,75 @@ print("Sampling Orderings Log Likelihood" + str(ordering_likelihood))
 # print("Total Log likelihood: " + str(total_set_log_likelihood))
 
 #  pdb.set_trace()
+
+
+
+# text = "You and your friend Lee are registering for classes at a fitness center. You say to Lee, 'Let's sign up for some team sports.' Lee looks at the list of classes and responds, 'They only have [MASK].'"
+# text = "You and your friend Chris walk by a bakery. You say, 'I want some dessert.' Chris looks inside the bakery and responds, 'They only have [MASK].'"
+# # text = "You and your friend Sam go for a long walk together. After the walk, you go back to Sam's house. You say to Sam, 'I'm thirsty.' Sam opens the fridge and responds, 'I only have [MASK].'"
+
+# distribution = get_next_word_probability_distribution(text)
+# tokens, probabilities = zip(*distribution)
+# tokens = np.array(tokens)
+# probabilities = np.array(probabilities)
+
+# # Sort the tokens and probabilities
+# sorted_indices = np.argsort(probabilities)[::-1]
+# tokens = tokens[sorted_indices]
+# probabilities = probabilities[sorted_indices]
+
+# # Plot the distribution (top 100 tokens)
+# token_size = 15
+# plt.figure(figsize=(30, 8))
+# sns.barplot(x=tokens[:token_size], y=probabilities[:token_size])
+# plt.ylabel('Probability', fontsize=20)
+# plt.xlabel('Token', fontsize=20)
+# plt.title("BERT's Next Word Probability Distribution\nGym Context, Top " + str(token_size) + " Tokens", fontsize=18)
+# # y-axis goes from 0 to 1
+# # plt.ylim(0, 0.2)
+
+# # Put the probability on top of each bar
+# # change the font size of the text above the bars
+
+# for i, prob in enumerate(probabilities[:token_size]):
+#     plt.text(i, prob, f'{prob:.3f}', ha='center', va='bottom', fontsize=15)
+
+# # Make the font size larger for the entire plot and title
+# plt.tick_params(axis='both', which='major', labelsize=18)
+
+# # Save plot with a higher resolution
+# plt.savefig('../figures/gym_context_top_15_tokens.png', dpi=1000)
+
+# plt.show()
+
+# query = "swimming"
+# trigger = "basketball"
+
+# # Sample a bunch of sets from the BERT distribution and store them in all_sampled_sets
+# all_sampled_orderings = []
+# for _ in range(10000):
+#     all_sampled_orderings = get_ordering(distribution)
+#     all_sampled_orderings = all_sampled_orderings.tolist()
+#     all_sampled_orderings.append(all_sampled_orderings)
+
+# count_query_above_trigger = 0
+# for ordering in all_sampled_orderings:
+#     query_index = np.where(ordering == query)[0]
+#     if query_index.size > 0:
+#         query_index = query_index[0]
+#     else:
+#         query_index = 0
+
+#     trigger_index = np.where(ordering == trigger)[0]
+#     if trigger_index.size > 0:
+#         trigger_index = trigger_index[0]
+#     else:
+#         trigger_index = 0
+
+#     if query_index < trigger_index:
+#         count_query_above_trigger += 1
+
+# empirical_probability = count_query_above_trigger / len(all_sampled_orderings)
+
+# print(f"Empirical Probability: {empirical_probability}")
+
