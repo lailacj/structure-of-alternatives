@@ -7,6 +7,7 @@ import pdb
 import random
 from collections import Counter
 from nltk.corpus import brown # Brown Corpus
+from nltk.probability import FreqDist
 
 nltk.download('brown') 
 nltk.download('universal_tagset') # Part of speech tagging that NLTK uses
@@ -15,11 +16,17 @@ df_experimental_data = pd.read_csv('../data/sca_dataframe.csv')
 
 # ---- Corpus Data and Experimental Data Preparation ----
 
-vocab_size = 10000
+# Getting most frequent nouns
+vocab_size = 100000
 words = brown.tagged_words(tagset='universal')
 nouns = [word for word, pos in words if pos == 'NOUN']
 noun_freq = Counter(nouns).most_common(vocab_size)
 most_common_nouns = [word for word, freq in noun_freq]
+
+# Getting most frequent words
+# brown_words = brown.words()
+# freq_dist = FreqDist(brown_words)
+# top_words = freq_dist.most_common(100000)
 
 # Function that removes 'a' or 'an' from the front of the items
 # Not being used in the rest of the code. I wrote it to see how many query words are in the corpus dataset.
@@ -35,6 +42,26 @@ def clean_word(word):
 df_experimental_data['cleaned_trigger'] = df_experimental_data['trigger'].apply(clean_word)
 df_experimental_data['cleaned_query'] = df_experimental_data['query'].apply(clean_word)
 df_experimental_data = df_experimental_data.sort_values(by='story')
+
+not_in_corpus = []
+for index, row in df_experimental_data.iterrows():
+    word = row['cleaned_query']
+    context = row['context']
+    if word not in most_common_nouns:
+        not_in_corpus.append(word, context)
+        
+
+# for word in df_experimental_data['cleaned_query']:
+#     if word not in most_common_nouns:
+#         not_in_corpus.append(word)
+
+unique_words_not_in_top_words = set(not_in_corpus)
+
+print("The following words are NOT in the list of most common nouns:")
+for word in unique_words_not_in_top_words:
+    print(word)
+
+print(len(unique_words_not_in_top_words))
 
 # ---- Uniform Set Model ----
 
@@ -135,8 +162,7 @@ def ordering_uniform_likelihood():
     return ordering_log_likelihood
 
 
-print("Set Uniform Likelihood: " + str(set_uniform_log_likelihood()))
-
-print("Ordering Uniform Likelihood: " + str(ordering_uniform_likelihood()))
+# print("Set Uniform Likelihood: " + str(set_uniform_log_likelihood()))
+# print("Ordering Uniform Likelihood: " + str(ordering_uniform_likelihood()))
 
 # pdb.set_trace()
