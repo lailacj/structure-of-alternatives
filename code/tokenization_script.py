@@ -1,9 +1,11 @@
 # A script that check the BERT tokenization of words. 
-
 from transformers import BertTokenizer
+from transformers import AutoTokenizer
 import pandas as pd
 
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+# tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-large-uncased-whole-word-masking")
+
 df_experimental_data = pd.read_csv('../data/sca_dataframe.csv')
 
 def tokenize_words(words):
