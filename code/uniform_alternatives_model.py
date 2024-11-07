@@ -46,22 +46,24 @@ df_experimental_data = df_experimental_data.sort_values(by='story')
 not_in_corpus = []
 for index, row in df_experimental_data.iterrows():
     word = row['cleaned_query']
-    context = row['context']
+    context = row['story']
     if word not in most_common_nouns:
-        not_in_corpus.append(word, context)
-        
-
-# for word in df_experimental_data['cleaned_query']:
-#     if word not in most_common_nouns:
-#         not_in_corpus.append(word)
+        not_in_corpus.append(word)
 
 unique_words_not_in_top_words = set(not_in_corpus)
 
 print("The following words are NOT in the list of most common nouns:")
 for word in unique_words_not_in_top_words:
     print(word)
-
 print(len(unique_words_not_in_top_words))
+
+# Remove the words that are not in the corpus from the experimental data
+print(df_experimental_data.shape)
+df_experimental_data = df_experimental_data[~df_experimental_data['cleaned_query'].isin(unique_words_not_in_top_words)]
+print(df_experimental_data.shape)
+
+# Save the filtered data
+# df_experimental_data_filtered.to_csv('../data/sca_dataframe_filtered.csv', index=False)
 
 # ---- Uniform Set Model ----
 
@@ -162,7 +164,7 @@ def ordering_uniform_likelihood():
     return ordering_log_likelihood
 
 
-# print("Set Uniform Likelihood: " + str(set_uniform_log_likelihood()))
-# print("Ordering Uniform Likelihood: " + str(ordering_uniform_likelihood()))
+print("Set Uniform Likelihood: " + str(set_uniform_log_likelihood()))
+print("Ordering Uniform Likelihood: " + str(ordering_uniform_likelihood()))
 
 # pdb.set_trace()

@@ -27,7 +27,6 @@ def clean_word(word):
         return word
 
 df_experimental_data = pd.read_csv('../data/sca_dataframe.csv')
-
 df_experimental_data['cleaned_trigger'] = df_experimental_data['trigger'].apply(clean_word)
 df_experimental_data['cleaned_query'] = df_experimental_data['query'].apply(clean_word)
 df_experimental_data = df_experimental_data.sort_values(by='story')
@@ -155,6 +154,7 @@ def log_likelihood_sampling_sets(df_experimental_data, df_prompts, num_sets):
     set_log_likelihood = 0
     context_likelihoods = []
     current_context_likelihood = 0
+    queries_not_in_distribution = []
 
     for _, row in df_experimental_data.iterrows():
         context = row['story']
@@ -163,9 +163,10 @@ def log_likelihood_sampling_sets(df_experimental_data, df_prompts, num_sets):
         trigger = row['cleaned_trigger']
 
         if context != current_context:
-            context_likelihoods.append((current_context, current_context_likelihood))
-            print(f"Context: {current_context}, Log Likelihood: {current_context_likelihood}")
+            context_likelihoods.append((current_context, current_context_likelihood, set(queries_not_in_distribution)))
+            print(f"Context: {current_context}, \nLog Likelihood: {current_context_likelihood}, \nQueries not in distribution: {set(queries_not_in_distribution)}\n")
             current_context_likelihood = 0
+            queries_not_in_distribution = []
 
             # Get the BERT input prompt and BERT output distribution for each context
             prompt = get_prompt_for_context(df_prompts, context)
@@ -178,29 +179,46 @@ def log_likelihood_sampling_sets(df_experimental_data, df_prompts, num_sets):
                 all_sampled_sets = get_set(distribution, set_size=random.randint(2, len(distribution)))
                 all_sampled_sets.append(all_sampled_sets)
 
-        # Count how many of the sampled sets contain the query and trigger
+        # Skip to the next row if query is not in the predicted tokens of distribution
+        if not any(predicted_token == query for predicted_token, _ in distribution):
+            queries_not_in_distribution.append(query)
+            continue
+
+        # Count how many of the sampled sets contain the query 
         count = sum(1 for sampled_set in all_sampled_sets if query in sampled_set)
 
-        # The the proporation of smapled sets that contain the query and trigger
+        # The the proporation of smapled sets that contain the query 
         empirical_probability = count / num_sets
 
         # Compute likelihoods
         if query_negated == 1:
             # p(q neg) = p(q in set) * p(q neg | in set) + p(q not in set) * p(q neg | not set)
-            prob_query_obs = empirical_probability * 1 + (1-empirical_probability) * 0
+            # prob_query_obs = empirical_probability * 1 + (1-empirical_probability) * 0
+            prob_query_obs = empirical_probability
+
         else:
             # p(q not neg) = p(q in set) * p(q not neg | in set) + p(q not in set) * p(q not neg | not set)
-            prob_query_obs = empirical_probability * 0 + (1-empirical_probability) * 1
+            # prob_query_obs = empirical_probability * 0 + (1-empirical_probability) * 1
+            prob_query_obs = 1 - empirical_probability
 
-        if prob_query_obs == 0:
-            set_log_likelihood += 0 
-            current_context_likelihood += 0
-        else:   
+        if prob_query_obs > 0:
             set_log_likelihood += np.log(prob_query_obs)
             current_context_likelihood += np.log(prob_query_obs)
+        else:   
+            # Handle the zero or negative case by assigning a small value
+            set_log_likelihood += np.log(1e-10)
+            current_context_likelihood += np.log(1e-10)
+            # set_log_likelihood += 0
+            # current_context_likelihood += 0
 
-    # return(set_log_likelihood, context_likelihoods)
-    return(set_log_likelihood)
+        if row.equals(df_experimental_data.iloc[-1]):
+            context_likelihoods.append((current_context, current_context_likelihood, set(queries_not_in_distribution)))
+            print(f"Context: {current_context}, \nLog Likelihood: {current_context_likelihood}, \nQueries not in distribution: {set(queries_not_in_distribution)}\n\n")
+
+    # print(set(queries_not_in_distribution))
+
+    return(set_log_likelihood, context_likelihoods)
+    # return(set_log_likelihood)
 
 # ------- Empirical Experiment (Sets) --------
 
@@ -265,6 +283,7 @@ def log_likelihood_sampling_ordering(df_experimental_data, df_prompts, num_sampl
     ordering_log_likelihood = 0
     current_context_likelihood = 0
     context_likelihoods = []
+    queries_not_in_distribution = []
 
     for _, row in df_experimental_data.iterrows():
         context = row['story']
@@ -273,9 +292,10 @@ def log_likelihood_sampling_ordering(df_experimental_data, df_prompts, num_sampl
         trigger = row['cleaned_trigger']
 
         if context != current_context:
-            context_likelihoods.append((current_context, current_context_likelihood))
-            print(f"Context: {current_context}, Log Likelihood: {current_context_likelihood}")
+            context_likelihoods.append((current_context, current_context_likelihood, set(queries_not_in_distribution)))
+            print(f"Context: {current_context}, \nLog Likelihood: {current_context_likelihood}, \nQueries not in distribution: {set(queries_not_in_distribution)}\n")
             current_context_likelihood = 0
+            queries_not_in_distribution = []
 
             # Get the BERT input prompt and BERT output distribution for each context
             prompt = get_prompt_for_context(df_prompts, context)
@@ -286,6 +306,15 @@ def log_likelihood_sampling_ordering(df_experimental_data, df_prompts, num_sampl
             for _ in range(num_samples):
                 sampled_ordering = get_ordering(distribution)
                 all_sampled_orderings.append(sampled_ordering)
+        
+        # Skip to the next row if query or trigger is not in the predicted tokens of distribution
+        if not any(predicted_token == query for predicted_token, _ in distribution):
+            queries_not_in_distribution.append(query)
+            continue
+
+        if not any(predicted_token == trigger for predicted_token, _ in distribution):
+            queries_not_in_distribution.append(trigger)
+            continue
 
         count_query_above_trigger = 0
         for ordering in all_sampled_orderings:
@@ -314,24 +343,44 @@ def log_likelihood_sampling_ordering(df_experimental_data, df_prompts, num_sampl
             # p(q not neg) = p(q in set) * p(q not neg | in set) + p(q not in set) * p(q not neg | not set)
             prob_query_obs = 1 - empirical_probability
 
-        if prob_query_obs == 0:
-            ordering_log_likelihood += 0 
-            current_context_likelihood += 0
-        else:   
+        if prob_query_obs > 0:
             ordering_log_likelihood += np.log(prob_query_obs)
             current_context_likelihood += np.log(prob_query_obs)
+        else:   
+            # Handle the zero or negative case by assigning a small value
+            ordering_log_likelihood += np.log(1e-10)
+            current_context_likelihood += np.log(1e-10)
 
-    return (ordering_log_likelihood, context_likelihoods)
+    if row.equals(df_experimental_data.iloc[-1]):
+        context_likelihoods.append((current_context, current_context_likelihood, set(queries_not_in_distribution)))
+        print(f"Context: {current_context}, \nLog Likelihood: {current_context_likelihood}, \nQueries not in distribution: {set(queries_not_in_distribution)}\n\n")
+
+    return ordering_log_likelihood, context_likelihoods
 
 # ------- Main -------
 
-total_set_log_likelihood_direct = log_likelihood_set(df_experimental_data, df_prompts)
-total_set_log_likelihood_sampling = log_likelihood_sampling_sets(df_experimental_data, df_prompts, 10000)
+# total_set_log_likelihood_direct = log_likelihood_set(df_experimental_data, df_prompts)
+total_set_log_likelihood_sampling, set_context_likelihoods = log_likelihood_sampling_sets(df_experimental_data, df_prompts, 1000)
+total_ordering_log_likelihood_sampling, ordering_context_likelihoods = log_likelihood_sampling_ordering(df_experimental_data, df_prompts, 1000)
 
-print("Total Log likelihood (Direct): " + str(total_set_log_likelihood_direct))
-print("Total Log likelihood (Sampling): " + str(total_set_log_likelihood_sampling))
+# print("Total Log likelihood (Direct): " + str(total_set_log_likelihood_direct))
+print("Total Set Log likelihood (Sampling): " + str(total_set_log_likelihood_sampling))
+print("Total Ordering Log likelihood (Sampling): " + str(total_ordering_log_likelihood_sampling))
 
+# Slicing to exclude the first tuple (None, 0)
+ordering_context_likelihoods = ordering_context_likelihoods[1:]
+set_context_likelihoods = set_context_likelihoods[1:]
 
+# Create a DataFrame with the results
+df_results = pd.DataFrame({
+    "context": [item[0] for item in ordering_context_likelihoods],
+    "excluded_items": [item[2] if item[2] else None for item in ordering_context_likelihoods],
+    "ordering_context_likelihood": [item[1] for item in ordering_context_likelihoods],
+    "set_context_likelihood": [item[1] for item in set_context_likelihoods]
+})
+
+# Save the DataFrame to a CSV file
+df_results.to_csv('../data/filtered_items_results_fyp.csv', index=False) 
 
 # ------- Random Code -------
 
