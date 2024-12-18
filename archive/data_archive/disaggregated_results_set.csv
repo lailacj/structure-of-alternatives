@@ -1,0 +1,3409 @@
+context,query,trigger,empirical_probability,log_likelihoods,excluded_items,alternative_structure
+bag,pen,chalk,1.0,0.0,,set
+bag,crayons,headphones,,,{'crayons'},set
+bag,makeup,cash,0.998,-6.2146080984221905,{'crayons'},set
+bag,makeup,chalk,0.998,-6.2146080984221905,,set
+bag,headphones,chalk,,,{'headphones'},set
+bag,chalk,crayons,0.994,-5.115995809754081,{'headphones'},set
+bag,chalk,crayons,0.994,-0.006018072325563021,,set
+bag,chalk,pen,0.994,-0.006018072325563021,,set
+bag,chalk,crayons,0.994,-0.006018072325563021,,set
+bag,crayons,pen,,,{'crayons'},set
+bag,cash,headphones,0.999,-6.907755278982136,{'crayons'},set
+bag,chalk,crayons,0.994,-0.006018072325563021,,set
+bag,chalk,crayons,0.994,-0.006018072325563021,,set
+bag,makeup,cash,0.998,-6.2146080984221905,,set
+bag,makeup,cash,0.998,-0.0020020026706730793,,set
+bag,pen,chalk,1.0,0.0,,set
+bag,pen,headphones,1.0,0.0,,set
+bag,cash,headphones,0.999,-0.0010005003335835344,,set
+bag,crayons,pen,,,{'crayons'},set
+bag,crayons,pen,,,{'crayons'},set
+bag,makeup,cash,0.998,-6.2146080984221905,{'crayons'},set
+bag,headphones,crayons,,,{'headphones'},set
+bag,chalk,pen,0.994,-0.006018072325563021,{'headphones'},set
+bag,makeup,headphones,0.998,-6.2146080984221905,,set
+bag,makeup,headphones,0.998,-6.2146080984221905,,set
+bag,makeup,pen,0.998,-6.2146080984221905,,set
+bag,cash,crayons,0.999,-6.907755278982136,,set
+bag,cash,crayons,0.999,-6.907755278982136,,set
+bag,makeup,headphones,0.998,-6.2146080984221905,,set
+bag,pen,cash,1.0,0.0,,set
+bag,crayons,pen,,,{'crayons'},set
+bag,cash,crayons,0.999,-6.907755278982136,{'crayons'},set
+bag,pen,cash,1.0,0.0,,set
+bag,chalk,cash,0.994,-0.006018072325563021,,set
+bag,pen,headphones,1.0,0.0,,set
+bag,makeup,headphones,0.998,-6.2146080984221905,,set
+bag,crayons,pen,,,{'crayons'},set
+bag,cash,makeup,0.999,-6.907755278982136,{'crayons'},set
+bag,makeup,cash,0.998,-6.2146080984221905,,set
+bag,cash,pen,0.999,-6.907755278982136,,set
+bag,makeup,cash,0.998,-6.2146080984221905,,set
+bag,makeup,pen,0.998,-6.2146080984221905,,set
+bag,crayons,chalk,,,{'crayons'},set
+bag,chalk,makeup,0.994,-0.006018072325563021,{'crayons'},set
+bag,makeup,crayons,0.998,-6.2146080984221905,,set
+bag,headphones,pen,,,{'headphones'},set
+bag,chalk,pen,0.994,-0.006018072325563021,{'headphones'},set
+bag,headphones,chalk,,,{'headphones'},set
+bag,pen,chalk,1.0,0.0,{'headphones'},set
+bag,headphones,cash,,,{'headphones'},set
+bag,headphones,chalk,,,{'headphones'},set
+bag,cash,makeup,0.999,-6.907755278982136,{'headphones'},set
+bag,pen,headphones,1.0,0.0,,set
+bag,chalk,pen,0.994,-0.006018072325563021,,set
+bag,chalk,makeup,0.994,-0.006018072325563021,,set
+bag,chalk,crayons,0.994,-0.006018072325563021,,set
+bag,pen,crayons,1.0,0.0,,set
+bag,chalk,pen,0.994,-0.006018072325563021,,set
+bag,makeup,headphones,0.998,-6.2146080984221905,,set
+bag,headphones,makeup,,,{'headphones'},set
+bag,pen,cash,1.0,0.0,{'headphones'},set
+bag,cash,pen,0.999,-6.907755278982136,,set
+bag,chalk,pen,0.994,-5.115995809754081,,set
+bag,pen,chalk,1.0,0.0,,set
+bag,makeup,chalk,0.998,-6.2146080984221905,,set
+bag,chalk,pen,0.994,-0.006018072325563021,,set
+bag,chalk,headphones,0.994,-5.115995809754081,,set
+bag,cash,headphones,0.999,-6.907755278982136,,set
+bag,headphones,pen,,,{'headphones'},set
+bag,cash,headphones,0.999,-6.907755278982136,{'headphones'},set
+bag,headphones,makeup,,,{'headphones'},set
+bag,makeup,headphones,0.998,-6.2146080984221905,{'headphones'},set
+bag,cash,pen,0.999,-6.907755278982136,,set
+bag,makeup,headphones,0.998,-6.2146080984221905,,set
+bag,cash,chalk,0.999,-6.907755278982136,,set
+bag,cash,headphones,0.999,-6.907755278982136,,set
+bag,crayons,cash,,,{'crayons'},set
+bag,pen,makeup,1.0,0.0,{'crayons'},set
+bag,makeup,chalk,0.998,-6.2146080984221905,,set
+bag,makeup,cash,0.998,-6.2146080984221905,,set
+bag,chalk,crayons,0.994,-0.006018072325563021,,set
+bag,crayons,cash,,,{'crayons'},set
+bag,cash,headphones,0.999,-6.907755278982136,{'crayons'},set
+bag,makeup,cash,0.998,-6.2146080984221905,,set
+bag,crayons,chalk,,,{'crayons'},set
+bag,makeup,headphones,0.998,-0.0020020026706730793,{'crayons'},set
+bag,chalk,pen,0.994,-0.006018072325563021,,set
+bag,headphones,chalk,,,{'headphones'},set
+bag,crayons,chalk,,,"{'crayons', 'headphones'}",set
+bag,chalk,pen,0.994,-0.006018072325563021,"{'crayons', 'headphones'}",set
+bag,crayons,pen,,,{'crayons'},set
+bag,crayons,pen,,,{'crayons'},set
+bag,chalk,headphones,0.994,-0.006018072325563021,{'crayons'},set
+bag,pen,crayons,1.0,0.0,,set
+bag,cash,chalk,0.999,-6.907755278982136,,set
+bag,chalk,cash,0.994,-0.006018072325563021,,set
+bag,chalk,pen,0.994,-0.006018072325563021,,set
+bag,headphones,makeup,,,{'headphones'},set
+bag,crayons,pen,,,"{'crayons', 'headphones'}",set
+bag,chalk,crayons,0.994,-0.006018072325563021,"{'crayons', 'headphones'}",set
+bag,makeup,cash,0.998,-6.2146080984221905,,set
+bag,cash,pen,0.999,-6.907755278982136,,set
+bag,makeup,headphones,0.998,-0.0020020026706730793,,set
+bag,makeup,crayons,0.998,-6.2146080984221905,,set
+bag,pen,crayons,1.0,0.0,,set
+bag,makeup,cash,0.998,-6.2146080984221905,,set
+bag,makeup,crayons,0.998,-6.2146080984221905,,set
+bag,makeup,headphones,0.998,-6.2146080984221905,,set
+bag,chalk,pen,0.994,-0.006018072325563021,,set
+bag,makeup,pen,0.998,-6.2146080984221905,,set
+bag,chalk,pen,0.994,-0.006018072325563021,,set
+bag,pen,headphones,1.0,0.0,,set
+bag,headphones,chalk,,,{'headphones'},set
+bag,makeup,cash,0.998,-6.2146080984221905,{'headphones'},set
+bag,makeup,cash,0.998,-6.2146080984221905,,set
+bag,cash,headphones,0.999,-0.0010005003335835344,,set
+bag,chalk,crayons,0.994,-0.006018072325563021,,set
+bag,chalk,crayons,0.994,-0.006018072325563021,,set
+bag,cash,headphones,0.999,-6.907755278982136,,set
+bag,crayons,makeup,,,{'crayons'},set
+bag,pen,makeup,1.0,0.0,{'crayons'},set
+bag,crayons,chalk,,,{'crayons'},set
+bag,headphones,pen,,,"{'crayons', 'headphones'}",set
+bag,crayons,pen,,,"{'crayons', 'headphones'}",set
+bag,cash,chalk,0.999,-6.907755278982136,"{'crayons', 'headphones'}",set
+bag,chalk,pen,0.994,-5.115995809754081,,set
+bag,pen,cash,1.0,0.0,,set
+bag,crayons,chalk,,,{'crayons'},set
+bag,chalk,pen,0.994,-0.006018072325563021,{'crayons'},set
+bag,crayons,pen,,,{'crayons'},set
+bag,cash,headphones,0.999,-6.907755278982136,{'crayons'},set
+bag,cash,headphones,0.999,-6.907755278982136,,set
+bag,makeup,headphones,0.998,-0.0020020026706730793,,set
+bag,crayons,pen,,,{'crayons'},set
+bag,cash,makeup,0.999,-0.0010005003335835344,{'crayons'},set
+bag,pen,headphones,1.0,0.0,,set
+bag,chalk,crayons,0.994,-0.006018072325563021,,set
+bag,makeup,pen,0.998,-0.0020020026706730793,,set
+bag,headphones,cash,,,{'headphones'},set
+bag,cash,headphones,0.999,-6.907755278982136,{'headphones'},set
+bag,makeup,headphones,0.998,-6.2146080984221905,,set
+bag,crayons,chalk,,,{'crayons'},set
+bag,chalk,crayons,0.994,-0.006018072325563021,{'crayons'},set
+bag,makeup,headphones,0.998,-6.2146080984221905,,set
+bag,makeup,headphones,0.998,-0.0020020026706730793,,set
+bag,chalk,crayons,0.994,-0.006018072325563021,,set
+bag,headphones,cash,,,{'headphones'},set
+bag,makeup,cash,0.998,-0.0020020026706730793,{'headphones'},set
+bag,chalk,headphones,0.994,-0.006018072325563021,,set
+bag,makeup,headphones,0.998,-6.2146080984221905,,set
+bag,chalk,cash,0.994,-0.006018072325563021,,set
+bag,headphones,crayons,,,{'headphones'},set
+bag,makeup,crayons,0.998,-6.2146080984221905,{'headphones'},set
+bag,cash,crayons,0.999,-6.907755278982136,,set
+bag,chalk,pen,0.994,-5.115995809754081,,set
+bag,pen,crayons,1.0,0.0,,set
+bag,makeup,headphones,0.998,-6.2146080984221905,,set
+bag,makeup,headphones,0.998,-6.2146080984221905,,set
+bag,makeup,cash,0.998,-6.2146080984221905,,set
+bag,cash,chalk,0.999,-6.907755278982136,,set
+bag,makeup,pen,0.998,-6.2146080984221905,,set
+bag,makeup,cash,0.998,-6.2146080984221905,,set
+bag,headphones,pen,,,{'headphones'},set
+bag,chalk,cash,0.994,-0.006018072325563021,{'headphones'},set
+bag,cash,headphones,0.999,-6.907755278982136,,set
+bag,chalk,pen,0.994,-0.006018072325563021,,set
+bag,cash,chalk,0.999,-6.907755278982136,,set
+bag,crayons,makeup,,,{'crayons'},set
+bag,chalk,crayons,0.994,-0.006018072325563021,{'crayons'},set
+bag,chalk,headphones,0.994,-5.115995809754081,,set
+bag,chalk,crayons,0.994,-0.006018072325563021,,set
+bag,pen,chalk,1.0,0.0,,set
+bag,chalk,cash,0.994,-0.006018072325563021,,set
+bag,makeup,chalk,0.998,-6.2146080984221905,,set
+bag,crayons,pen,,,{'crayons'},set
+bag,cash,headphones,0.999,-6.907755278982136,{'crayons'},set
+bag,crayons,headphones,,,{'crayons'},set
+bag,crayons,pen,,,{'crayons'},set
+bag,makeup,pen,0.998,-6.2146080984221905,{'crayons'},set
+bag,crayons,pen,,,{'crayons'},set
+bag,cash,makeup,0.999,-6.907755278982136,{'crayons'},set
+bag,cash,pen,0.999,-6.907755278982136,,set
+bag,headphones,crayons,,,{'headphones'},set
+bag,headphones,makeup,,,{'headphones'},set
+bag,chalk,crayons,0.994,-0.006018072325563021,{'headphones'},set
+bag,makeup,headphones,0.998,-6.2146080984221905,,set
+bag,headphones,crayons,,,{'headphones'},set
+bag,chalk,crayons,0.994,-0.006018072325563021,{'headphones'},set
+bag,chalk,pen,0.994,-0.006018072325563021,,set
+bag,chalk,pen,0.994,-0.006018072325563021,,set
+bag,makeup,headphones,0.998,-6.2146080984221905,,set
+bag,cash,headphones,0.999,-6.907755278982136,,set
+bag,makeup,cash,0.998,-6.2146080984221905,,set
+bag,chalk,crayons,0.994,-5.115995809754081,,set
+bag,chalk,pen,0.994,-0.006018072325563021,,set
+bag,cash,chalk,0.999,-6.907755278982136,,set
+bag,crayons,pen,,,{'crayons'},set
+bag,makeup,crayons,0.998,-6.2146080984221905,{'crayons'},set
+bag,cash,crayons,0.999,-6.907755278982136,,set
+bag,pen,cash,1.0,0.0,,set
+bag,chalk,pen,0.994,-0.006018072325563021,,set
+bag,crayons,pen,,,{'crayons'},set
+bag,chalk,pen,0.994,-0.006018072325563021,{'crayons'},set
+bag,makeup,chalk,0.998,-0.0020020026706730793,,set
+bag,chalk,headphones,0.994,-5.115995809754081,,set
+bag,headphones,pen,,,{'headphones'},set
+bag,cash,makeup,0.999,-6.907755278982136,{'headphones'},set
+bag,crayons,headphones,,,{'crayons'},set
+bag,makeup,cash,0.998,-6.2146080984221905,{'crayons'},set
+bag,makeup,cash,0.998,-6.2146080984221905,,set
+bag,makeup,cash,0.998,-6.2146080984221905,,set
+bag,crayons,pen,,,{'crayons'},set
+bag,pen,makeup,1.0,0.0,{'crayons'},set
+bakery,muffins,ice cream,,,{'muffins'},set
+bakery,sandwiches,pretzels,0.999,-6.907755278982136,{'muffins'},set
+bakery,muffins,pretzels,,,{'muffins'},set
+bakery,pretzels,sandwiches,,,"{'muffins', 'pretzels'}",set
+bakery,ice cream,cakes,,,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,cakes,ice cream,0.999,-0.0010005003335835344,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,muffins,ice cream,,,{'muffins'},set
+bakery,muffins,cakes,,,{'muffins'},set
+bakery,muffins,cakes,,,{'muffins'},set
+bakery,sandwiches,muffins,0.999,-6.907755278982136,{'muffins'},set
+bakery,pretzels,muffins,,,{'pretzels'},set
+bakery,sandwiches,water,0.999,-6.907755278982136,{'pretzels'},set
+bakery,water,muffins,0.999,-6.907755278982136,,set
+bakery,pretzels,ice cream,,,{'pretzels'},set
+bakery,pretzels,sandwiches,,,{'pretzels'},set
+bakery,sandwiches,water,0.999,-6.907755278982136,{'pretzels'},set
+bakery,cakes,pretzels,0.999,-0.0010005003335835344,,set
+bakery,pretzels,water,,,{'pretzels'},set
+bakery,muffins,cakes,,,"{'muffins', 'pretzels'}",set
+bakery,pretzels,sandwiches,,,"{'muffins', 'pretzels'}",set
+bakery,water,muffins,0.999,-6.907755278982136,"{'muffins', 'pretzels'}",set
+bakery,muffins,water,,,{'muffins'},set
+bakery,muffins,ice cream,,,{'muffins'},set
+bakery,muffins,water,,,{'muffins'},set
+bakery,cakes,ice cream,0.999,-0.0010005003335835344,{'muffins'},set
+bakery,ice cream,cakes,,,{'ice cream'},set
+bakery,sandwiches,water,0.999,-6.907755278982136,{'ice cream'},set
+bakery,pretzels,water,,,{'pretzels'},set
+bakery,ice cream,water,,,"{'pretzels', 'ice cream'}",set
+bakery,ice cream,cakes,,,"{'pretzels', 'ice cream'}",set
+bakery,ice cream,cakes,,,"{'pretzels', 'ice cream'}",set
+bakery,pretzels,sandwiches,,,"{'pretzels', 'ice cream'}",set
+bakery,water,sandwiches,0.999,-6.907755278982136,"{'pretzels', 'ice cream'}",set
+bakery,sandwiches,ice cream,0.999,-6.907755278982136,,set
+bakery,sandwiches,ice cream,0.999,-6.907755278982136,,set
+bakery,sandwiches,ice cream,0.999,-0.0010005003335835344,,set
+bakery,sandwiches,pretzels,0.999,-0.0010005003335835344,,set
+bakery,muffins,ice cream,,,{'muffins'},set
+bakery,pretzels,sandwiches,,,"{'muffins', 'pretzels'}",set
+bakery,water,muffins,0.999,-6.907755278982136,"{'muffins', 'pretzels'}",set
+bakery,cakes,pretzels,0.999,-0.0010005003335835344,,set
+bakery,ice cream,sandwiches,,,{'ice cream'},set
+bakery,pretzels,sandwiches,,,"{'pretzels', 'ice cream'}",set
+bakery,ice cream,cakes,,,"{'pretzels', 'ice cream'}",set
+bakery,water,ice cream,0.999,-6.907755278982136,"{'pretzels', 'ice cream'}",set
+bakery,water,ice cream,0.999,-6.907755278982136,,set
+bakery,pretzels,sandwiches,,,{'pretzels'},set
+bakery,ice cream,pretzels,,,"{'pretzels', 'ice cream'}",set
+bakery,muffins,cakes,,,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,muffins,cakes,,,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,muffins,water,,,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,pretzels,sandwiches,,,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,water,muffins,0.999,-6.907755278982136,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,ice cream,sandwiches,,,{'ice cream'},set
+bakery,pretzels,ice cream,,,"{'pretzels', 'ice cream'}",set
+bakery,ice cream,water,,,"{'pretzels', 'ice cream'}",set
+bakery,muffins,cakes,,,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,sandwiches,water,0.999,-0.0010005003335835344,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,muffins,cakes,,,{'muffins'},set
+bakery,water,ice cream,0.999,-6.907755278982136,{'muffins'},set
+bakery,pretzels,cakes,,,{'pretzels'},set
+bakery,ice cream,pretzels,,,"{'pretzels', 'ice cream'}",set
+bakery,sandwiches,cakes,0.999,-6.907755278982136,"{'pretzels', 'ice cream'}",set
+bakery,muffins,sandwiches,,,{'muffins'},set
+bakery,ice cream,cakes,,,"{'muffins', 'ice cream'}",set
+bakery,pretzels,water,,,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,sandwiches,water,0.999,-6.907755278982136,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,cakes,muffins,0.999,-0.0010005003335835344,,set
+bakery,muffins,cakes,,,{'muffins'},set
+bakery,pretzels,muffins,,,"{'muffins', 'pretzels'}",set
+bakery,ice cream,cakes,,,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,water,cakes,0.999,-6.907755278982136,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,cakes,ice cream,0.999,-0.0010005003335835344,,set
+bakery,cakes,pretzels,0.999,-0.0010005003335835344,,set
+bakery,ice cream,cakes,,,{'ice cream'},set
+bakery,water,cakes,0.999,-6.907755278982136,{'ice cream'},set
+bakery,sandwiches,cakes,0.999,-0.0010005003335835344,,set
+bakery,muffins,cakes,,,{'muffins'},set
+bakery,ice cream,pretzels,,,"{'muffins', 'ice cream'}",set
+bakery,ice cream,cakes,,,"{'muffins', 'ice cream'}",set
+bakery,muffins,water,,,"{'muffins', 'ice cream'}",set
+bakery,ice cream,cakes,,,"{'muffins', 'ice cream'}",set
+bakery,muffins,ice cream,,,"{'muffins', 'ice cream'}",set
+bakery,ice cream,cakes,,,"{'muffins', 'ice cream'}",set
+bakery,ice cream,sandwiches,,,"{'muffins', 'ice cream'}",set
+bakery,sandwiches,water,0.999,-6.907755278982136,"{'muffins', 'ice cream'}",set
+bakery,ice cream,pretzels,,,{'ice cream'},set
+bakery,water,pretzels,0.999,-6.907755278982136,{'ice cream'},set
+bakery,water,pretzels,0.999,-6.907755278982136,,set
+bakery,cakes,pretzels,0.999,-0.0010005003335835344,,set
+bakery,pretzels,water,,,{'pretzels'},set
+bakery,cakes,ice cream,0.999,-0.0010005003335835344,{'pretzels'},set
+bakery,cakes,ice cream,0.999,-0.0010005003335835344,,set
+bakery,muffins,cakes,,,{'muffins'},set
+bakery,muffins,ice cream,,,{'muffins'},set
+bakery,pretzels,sandwiches,,,"{'muffins', 'pretzels'}",set
+bakery,sandwiches,ice cream,0.999,-6.907755278982136,"{'muffins', 'pretzels'}",set
+bakery,pretzels,water,,,{'pretzels'},set
+bakery,muffins,cakes,,,"{'muffins', 'pretzels'}",set
+bakery,cakes,water,0.999,-0.0010005003335835344,"{'muffins', 'pretzels'}",set
+bakery,ice cream,muffins,,,{'ice cream'},set
+bakery,muffins,cakes,,,"{'muffins', 'ice cream'}",set
+bakery,pretzels,sandwiches,,,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,sandwiches,water,0.999,-0.0010005003335835344,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,muffins,cakes,,,{'muffins'},set
+bakery,sandwiches,water,0.999,-0.0010005003335835344,{'muffins'},set
+bakery,ice cream,water,,,{'ice cream'},set
+bakery,sandwiches,cakes,0.999,-6.907755278982136,{'ice cream'},set
+bakery,sandwiches,muffins,0.999,-6.907755278982136,,set
+bakery,sandwiches,pretzels,0.999,-0.0010005003335835344,,set
+bakery,sandwiches,water,0.999,-6.907755278982136,,set
+bakery,pretzels,water,,,{'pretzels'},set
+bakery,sandwiches,water,0.999,-6.907755278982136,{'pretzels'},set
+bakery,pretzels,water,,,{'pretzels'},set
+bakery,pretzels,sandwiches,,,{'pretzels'},set
+bakery,ice cream,pretzels,,,"{'pretzels', 'ice cream'}",set
+bakery,cakes,muffins,0.999,-0.0010005003335835344,"{'pretzels', 'ice cream'}",set
+bakery,muffins,cakes,,,{'muffins'},set
+bakery,pretzels,sandwiches,,,"{'muffins', 'pretzels'}",set
+bakery,cakes,muffins,0.999,-0.0010005003335835344,"{'muffins', 'pretzels'}",set
+bakery,water,muffins,0.999,-6.907755278982136,,set
+bakery,pretzels,muffins,,,{'pretzels'},set
+bakery,cakes,sandwiches,0.999,-0.0010005003335835344,{'pretzels'},set
+bakery,pretzels,water,,,{'pretzels'},set
+bakery,muffins,ice cream,,,"{'muffins', 'pretzels'}",set
+bakery,cakes,sandwiches,0.999,-0.0010005003335835344,"{'muffins', 'pretzels'}",set
+bakery,cakes,pretzels,0.999,-0.0010005003335835344,,set
+bakery,water,sandwiches,0.999,-6.907755278982136,,set
+bakery,pretzels,cakes,,,{'pretzels'},set
+bakery,muffins,cakes,,,"{'muffins', 'pretzels'}",set
+bakery,pretzels,sandwiches,,,"{'muffins', 'pretzels'}",set
+bakery,pretzels,cakes,,,"{'muffins', 'pretzels'}",set
+bakery,pretzels,muffins,,,"{'muffins', 'pretzels'}",set
+bakery,water,cakes,0.999,-6.907755278982136,"{'muffins', 'pretzels'}",set
+bakery,ice cream,cakes,,,{'ice cream'},set
+bakery,muffins,ice cream,,,"{'muffins', 'ice cream'}",set
+bakery,cakes,water,0.999,-0.0010005003335835344,"{'muffins', 'ice cream'}",set
+bakery,pretzels,water,,,{'pretzels'},set
+bakery,ice cream,water,,,"{'pretzels', 'ice cream'}",set
+bakery,sandwiches,water,0.999,-6.907755278982136,"{'pretzels', 'ice cream'}",set
+bakery,sandwiches,water,0.999,-6.907755278982136,,set
+bakery,pretzels,sandwiches,,,{'pretzels'},set
+bakery,sandwiches,pretzels,0.999,-6.907755278982136,{'pretzels'},set
+bakery,pretzels,sandwiches,,,{'pretzels'},set
+bakery,muffins,cakes,,,"{'muffins', 'pretzels'}",set
+bakery,water,sandwiches,0.999,-6.907755278982136,"{'muffins', 'pretzels'}",set
+bakery,ice cream,cakes,,,{'ice cream'},set
+bakery,pretzels,sandwiches,,,"{'pretzels', 'ice cream'}",set
+bakery,muffins,ice cream,,,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,water,pretzels,0.999,-6.907755278982136,"{'muffins', 'pretzels', 'ice cream'}",set
+bakery,muffins,sandwiches,,,{'muffins'},set
+bakery,sandwiches,water,0.999,-6.907755278982136,{'muffins'},set
+bakery,water,sandwiches,0.999,-6.907755278982136,,set
+bakery,ice cream,cakes,,,{'ice cream'},set
+bakery,ice cream,cakes,,,{'ice cream'},set
+bakery,ice cream,sandwiches,,,{'ice cream'},set
+bakery,muffins,pretzels,,,"{'muffins', 'ice cream'}",set
+bakery,ice cream,water,,,"{'muffins', 'ice cream'}",set
+bakery,sandwiches,water,0.999,-0.0010005003335835344,"{'muffins', 'ice cream'}",set
+bakery,muffins,sandwiches,,,{'muffins'},set
+bakery,pretzels,sandwiches,,,"{'muffins', 'pretzels'}",set
+bakery,muffins,ice cream,,,"{'muffins', 'pretzels'}",set
+bakery,water,cakes,0.999,-6.907755278982136,"{'muffins', 'pretzels'}",set
+bakery,cakes,muffins,0.999,-0.0010005003335835344,,set
+bakery,pretzels,muffins,,,{'pretzels'},set
+bakery,water,ice cream,0.999,-0.0010005003335835344,{'pretzels'},set
+bakery,muffins,ice cream,,,{'muffins'},set
+bakery,pretzels,water,,,"{'muffins', 'pretzels'}",set
+bakery,pretzels,sandwiches,,,"{'muffins', 'pretzels'}",set
+bakery,sandwiches,water,0.999,-0.0010005003335835344,"{'muffins', 'pretzels'}",set
+bakery,muffins,ice cream,,,{'muffins'},set
+bakery,water,ice cream,0.999,-6.907755278982136,{'muffins'},set
+bakery,pretzels,cakes,,,{'pretzels'},set
+bakery,muffins,ice cream,,,"{'muffins', 'pretzels'}",set
+bakery,sandwiches,water,0.999,-0.0010005003335835344,"{'muffins', 'pretzels'}",set
+bakery,ice cream,cakes,,,{'ice cream'},set
+bakery,sandwiches,water,0.999,-0.0010005003335835344,{'ice cream'},set
+bakery,cakes,water,0.999,-6.907755278982136,,set
+bakery,sandwiches,water,0.999,-6.907755278982136,,set
+bakery,ice cream,cakes,,,{'ice cream'},set
+bakery,sandwiches,water,0.999,-0.0010005003335835344,{'ice cream'},set
+bakery,pretzels,water,,,{'pretzels'},set
+bakery,sandwiches,cakes,0.999,-0.0010005003335835344,{'pretzels'},set
+bakery,water,pretzels,0.999,-6.907755278982136,,set
+bakery,ice cream,cakes,,,{'ice cream'},set
+bakery,water,sandwiches,0.999,-6.907755278982136,{'ice cream'},set
+bakery,ice cream,water,,,{'ice cream'},set
+bakery,water,ice cream,0.999,-6.907755278982136,{'ice cream'},set
+bakery,muffins,ice cream,,,{'muffins'},set
+bakery,muffins,ice cream,,,{'muffins'},set
+bakery,muffins,water,,,{'muffins'},set
+bakery,muffins,cakes,,,{'muffins'},set
+bakery,muffins,ice cream,,,{'muffins'},set
+bakery,ice cream,sandwiches,,,"{'muffins', 'ice cream'}",set
+bakery,muffins,water,,,"{'muffins', 'ice cream'}",set
+bakery,muffins,cakes,,,"{'muffins', 'ice cream'}",set
+bakery,muffins,ice cream,,,"{'muffins', 'ice cream'}",set
+bakery,water,cakes,0.999,-6.907755278982136,"{'muffins', 'ice cream'}",set
+bakery,ice cream,muffins,,,{'ice cream'},set
+bakery,pretzels,water,,,"{'pretzels', 'ice cream'}",set
+bakery,pretzels,cakes,,,"{'pretzels', 'ice cream'}",set
+bakery,cakes,muffins,0.999,-0.0010005003335835344,"{'pretzels', 'ice cream'}",set
+bakery,sandwiches,cakes,0.999,-6.907755278982136,,set
+bakery,muffins,pretzels,,,{'muffins'},set
+bakery,cakes,sandwiches,0.999,-0.0010005003335835344,{'muffins'},set
+bakery,pretzels,cakes,,,{'pretzels'},set
+bakery,ice cream,cakes,,,"{'pretzels', 'ice cream'}",set
+bakery,pretzels,sandwiches,,,"{'pretzels', 'ice cream'}",set
+bakery,sandwiches,water,0.999,-0.0010005003335835344,"{'pretzels', 'ice cream'}",set
+bakery,sandwiches,water,0.999,-6.907755278982136,,set
+bakery,sandwiches,pretzels,0.999,-6.907755278982136,,set
+bakery,pretzels,water,,,{'pretzels'},set
+bakery,pretzels,sandwiches,,,{'pretzels'},set
+beach,shorts,bikini,1.0,-23.025850929940457,{'pretzels'},set
+beach,sunglasses,jeans,0.999,-0.0010005003335835344,,set
+beach,jeans,coat,1.0,0.0,,set
+beach,jeans,coat,1.0,-23.025850929940457,,set
+beach,jacket,shorts,0.996,-5.521460917862245,,set
+beach,coat,shorts,0.989,-0.011060947359424948,,set
+beach,jacket,sunglasses,0.996,-0.004008021397538822,,set
+beach,shorts,bikini,1.0,-23.025850929940457,,set
+beach,sunglasses,bikini,0.999,-6.907755278982136,,set
+beach,jeans,jacket,1.0,0.0,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,jacket,coat,0.996,-5.521460917862245,,set
+beach,jacket,bikini,0.996,-5.521460917862245,,set
+beach,jeans,coat,1.0,-23.025850929940457,,set
+beach,sunglasses,shorts,0.999,-0.0010005003335835344,,set
+beach,shorts,sunglasses,1.0,-23.025850929940457,,set
+beach,jeans,jacket,1.0,-23.025850929940457,,set
+beach,bikini,sunglasses,1.0,0.0,,set
+beach,shorts,jacket,1.0,0.0,,set
+beach,jacket,jeans,0.996,-5.521460917862245,,set
+beach,jeans,shorts,1.0,-23.025850929940457,,set
+beach,jeans,jacket,1.0,0.0,,set
+beach,jeans,jacket,1.0,-23.025850929940457,,set
+beach,jeans,sunglasses,1.0,-23.025850929940457,,set
+beach,jeans,coat,1.0,-23.025850929940457,,set
+beach,sunglasses,bikini,0.999,-6.907755278982136,,set
+beach,sunglasses,coat,0.999,-6.907755278982136,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,jeans,coat,1.0,-23.025850929940457,,set
+beach,sunglasses,bikini,0.999,-0.0010005003335835344,,set
+beach,jeans,jacket,1.0,0.0,,set
+beach,jacket,jeans,0.996,-5.521460917862245,,set
+beach,bikini,shorts,1.0,0.0,,set
+beach,jeans,jacket,1.0,-23.025850929940457,,set
+beach,bikini,coat,1.0,0.0,,set
+beach,coat,bikini,0.989,-4.509860006183765,,set
+beach,sunglasses,jacket,0.999,-0.0010005003335835344,,set
+beach,coat,jacket,0.989,-0.011060947359424948,,set
+beach,jeans,bikini,1.0,-23.025850929940457,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,shorts,bikini,1.0,0.0,,set
+beach,jeans,jacket,1.0,-23.025850929940457,,set
+beach,sunglasses,bikini,0.999,-6.907755278982136,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,jacket,sunglasses,0.996,-0.004008021397538822,,set
+beach,jacket,coat,0.996,-5.521460917862245,,set
+beach,jeans,coat,1.0,0.0,,set
+beach,sunglasses,shorts,0.999,-0.0010005003335835344,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,coat,jacket,0.989,-0.011060947359424948,,set
+beach,jeans,jacket,1.0,-23.025850929940457,,set
+beach,shorts,bikini,1.0,-23.025850929940457,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,shorts,jeans,1.0,0.0,,set
+beach,shorts,coat,1.0,0.0,,set
+beach,coat,shorts,0.989,-4.509860006183765,,set
+beach,jeans,shorts,1.0,0.0,,set
+beach,jeans,coat,1.0,0.0,,set
+beach,coat,bikini,0.989,-4.509860006183765,,set
+beach,shorts,bikini,1.0,0.0,,set
+beach,coat,shorts,0.989,-0.011060947359424948,,set
+beach,sunglasses,shorts,0.999,-0.0010005003335835344,,set
+beach,shorts,bikini,1.0,-23.025850929940457,,set
+beach,bikini,jeans,1.0,0.0,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,jeans,sunglasses,1.0,-23.025850929940457,,set
+beach,sunglasses,bikini,0.999,-0.0010005003335835344,,set
+beach,jacket,coat,0.996,-5.521460917862245,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,jeans,sunglasses,1.0,0.0,,set
+beach,jeans,jacket,1.0,0.0,,set
+beach,bikini,sunglasses,1.0,0.0,,set
+beach,shorts,bikini,1.0,-23.025850929940457,,set
+beach,jeans,bikini,1.0,0.0,,set
+beach,coat,jeans,0.989,-0.011060947359424948,,set
+beach,jacket,shorts,0.996,-0.004008021397538822,,set
+beach,jacket,coat,0.996,-0.004008021397538822,,set
+beach,jacket,shorts,0.996,-5.521460917862245,,set
+beach,shorts,bikini,1.0,0.0,,set
+beach,jeans,jacket,1.0,-23.025850929940457,,set
+beach,shorts,bikini,1.0,0.0,,set
+beach,jeans,jacket,1.0,-23.025850929940457,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,sunglasses,jacket,0.999,-6.907755278982136,,set
+beach,sunglasses,jeans,0.999,-6.907755278982136,,set
+beach,shorts,coat,1.0,0.0,,set
+beach,shorts,jacket,1.0,-23.025850929940457,,set
+beach,sunglasses,bikini,0.999,-6.907755278982136,,set
+beach,sunglasses,bikini,0.999,-6.907755278982136,,set
+beach,bikini,sunglasses,1.0,0.0,,set
+beach,shorts,bikini,1.0,0.0,,set
+beach,coat,sunglasses,0.989,-4.509860006183765,,set
+beach,jeans,shorts,1.0,0.0,,set
+beach,jeans,coat,1.0,0.0,,set
+beach,coat,shorts,0.989,-0.011060947359424948,,set
+beach,jeans,shorts,1.0,0.0,,set
+beach,shorts,bikini,1.0,0.0,,set
+beach,coat,jeans,0.989,-0.011060947359424948,,set
+beach,jacket,jeans,0.996,-5.521460917862245,,set
+beach,coat,jeans,0.989,-0.011060947359424948,,set
+beach,shorts,sunglasses,1.0,0.0,,set
+beach,sunglasses,bikini,0.999,-6.907755278982136,,set
+beach,bikini,jeans,1.0,0.0,,set
+beach,shorts,jeans,1.0,0.0,,set
+beach,sunglasses,bikini,0.999,-6.907755278982136,,set
+beach,sunglasses,jacket,0.999,-6.907755278982136,,set
+beach,shorts,jeans,1.0,0.0,,set
+beach,shorts,sunglasses,1.0,0.0,,set
+beach,jacket,coat,0.996,-0.004008021397538822,,set
+beach,coat,sunglasses,0.989,-4.509860006183765,,set
+beach,jeans,jacket,1.0,0.0,,set
+beach,jacket,bikini,0.996,-5.521460917862245,,set
+beach,jeans,jacket,1.0,0.0,,set
+beach,shorts,bikini,1.0,0.0,,set
+beach,shorts,coat,1.0,0.0,,set
+beach,sunglasses,bikini,0.999,-6.907755278982136,,set
+beach,jeans,sunglasses,1.0,0.0,,set
+beach,shorts,jacket,1.0,0.0,,set
+beach,bikini,jacket,1.0,0.0,,set
+beach,bikini,shorts,1.0,0.0,,set
+beach,shorts,jacket,1.0,-23.025850929940457,,set
+beach,sunglasses,bikini,0.999,-6.907755278982136,,set
+beach,jeans,bikini,1.0,-23.025850929940457,,set
+beach,jeans,jacket,1.0,-23.025850929940457,,set
+beach,bikini,coat,1.0,0.0,,set
+beach,bikini,coat,1.0,0.0,,set
+beach,shorts,bikini,1.0,0.0,,set
+beach,jacket,shorts,0.996,-5.521460917862245,,set
+beach,jacket,sunglasses,0.996,-5.521460917862245,,set
+beach,jeans,bikini,1.0,-23.025850929940457,,set
+beach,jacket,coat,0.996,-0.004008021397538822,,set
+beach,sunglasses,bikini,0.999,-6.907755278982136,,set
+beach,jeans,coat,1.0,0.0,,set
+beach,shorts,bikini,1.0,0.0,,set
+beach,jeans,sunglasses,1.0,-23.025850929940457,,set
+beach,sunglasses,coat,0.999,-6.907755278982136,,set
+beach,shorts,jacket,1.0,0.0,,set
+beach,bikini,jeans,1.0,0.0,,set
+beach,jeans,jacket,1.0,-23.025850929940457,,set
+beach,bikini,sunglasses,1.0,0.0,,set
+beach,shorts,bikini,1.0,-23.025850929940457,,set
+beach,bikini,jeans,1.0,0.0,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,sunglasses,jacket,0.999,-0.0010005003335835344,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,sunglasses,bikini,0.999,-6.907755278982136,,set
+beach,jeans,coat,1.0,-23.025850929940457,,set
+beach,shorts,jeans,1.0,0.0,,set
+beach,jeans,bikini,1.0,0.0,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,shorts,coat,1.0,0.0,,set
+beach,shorts,jeans,1.0,0.0,,set
+beach,jacket,coat,0.996,-5.521460917862245,,set
+beach,coat,jeans,0.989,-4.509860006183765,,set
+beach,shorts,sunglasses,1.0,-23.025850929940457,,set
+beach,jacket,jeans,0.996,-5.521460917862245,,set
+beach,bikini,jacket,1.0,0.0,,set
+beach,bikini,jeans,1.0,0.0,,set
+beach,jacket,sunglasses,0.996,-0.004008021397538822,,set
+beach,jeans,sunglasses,1.0,0.0,,set
+beach,jacket,coat,0.996,-0.004008021397538822,,set
+beach,jeans,coat,1.0,-23.025850929940457,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,jeans,coat,1.0,-23.025850929940457,,set
+beach,jeans,jacket,1.0,0.0,,set
+beach,sunglasses,jeans,0.999,-6.907755278982136,,set
+beach,jeans,jacket,1.0,-23.025850929940457,,set
+beach,jeans,jacket,1.0,0.0,,set
+beach,shorts,bikini,1.0,0.0,,set
+beach,jeans,jacket,1.0,-23.025850929940457,,set
+beach,shorts,bikini,1.0,0.0,,set
+beach,sunglasses,bikini,0.999,-0.0010005003335835344,,set
+beach,jeans,bikini,1.0,0.0,,set
+beach,shorts,bikini,1.0,0.0,,set
+beach,bikini,coat,1.0,0.0,,set
+beach,jacket,bikini,0.996,-5.521460917862245,,set
+beach,coat,sunglasses,0.989,-4.509860006183765,,set
+beach,bikini,sunglasses,1.0,0.0,,set
+beach,jacket,sunglasses,0.996,-0.004008021397538822,,set
+beach,jacket,bikini,0.996,-0.004008021397538822,,set
+beach,shorts,coat,1.0,0.0,,set
+beach,coat,jacket,0.989,-0.011060947359424948,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,sunglasses,bikini,0.999,-6.907755278982136,,set
+beach,bikini,shorts,1.0,0.0,,set
+beach,bikini,coat,1.0,0.0,,set
+beach,jacket,coat,0.996,-0.004008021397538822,,set
+beach,sunglasses,bikini,0.999,-6.907755278982136,,set
+beach,jeans,coat,1.0,0.0,,set
+beach,jeans,jacket,1.0,0.0,,set
+beach,bikini,shorts,1.0,-23.025850929940457,,set
+beach,jacket,jeans,0.996,-5.521460917862245,,set
+beach,sunglasses,bikini,0.999,-6.907755278982136,,set
+beach,coat,sunglasses,0.989,-4.509860006183765,,set
+beach,coat,bikini,0.989,-0.011060947359424948,,set
+beach,sunglasses,shorts,0.999,-6.907755278982136,,set
+beach,bikini,coat,1.0,0.0,,set
+beach,jeans,coat,1.0,0.0,,set
+beach,coat,sunglasses,0.989,-4.509860006183765,,set
+beach,sunglasses,bikini,0.999,-6.907755278982136,,set
+beach,sunglasses,coat,0.999,-6.907755278982136,,set
+beach,jacket,coat,0.996,-0.004008021397538822,,set
+beach,shorts,bikini,1.0,0.0,,set
+beach,shorts,bikini,1.0,0.0,,set
+beach,coat,jeans,0.989,-4.509860006183765,,set
+beach,jeans,coat,1.0,-23.025850929940457,,set
+beach,jeans,coat,1.0,0.0,,set
+beach,jacket,jeans,0.996,-5.521460917862245,,set
+beach,jeans,shorts,1.0,-23.025850929940457,,set
+beach,jacket,coat,0.996,-5.521460917862245,,set
+beach,sunglasses,jeans,0.999,-6.907755278982136,,set
+cold,sink,blankets,0.879,-2.111964733385396,,set
+cold,heater,blankets,,,{'heater'},set
+cold,microwave,blankets,0.936,-2.748872195622466,{'heater'},set
+cold,tea,microwave,0.996,-5.521460917862245,,set
+cold,heater,microwave,,,{'heater'},set
+cold,tea,sink,0.996,-5.521460917862245,{'heater'},set
+cold,tea,blankets,0.996,-5.521460917862245,,set
+cold,tea,microwave,0.996,-0.004008021397538822,,set
+cold,microwave,sink,0.936,-0.06613980250454495,,set
+cold,sink,fridge,0.879,-2.111964733385396,,set
+cold,microwave,sink,0.936,-2.748872195622466,,set
+cold,heater,microwave,,,{'heater'},set
+cold,microwave,tea,0.936,-2.748872195622466,{'heater'},set
+cold,heater,microwave,,,{'heater'},set
+cold,sink,fridge,0.879,-2.111964733385396,{'heater'},set
+cold,sink,heater,0.879,-2.111964733385396,,set
+cold,tea,heater,0.996,-5.521460917862245,,set
+cold,tea,blankets,0.996,-0.004008021397538822,,set
+cold,microwave,fridge,0.936,-0.06613980250454495,,set
+cold,heater,fridge,,,{'heater'},set
+cold,blankets,heater,0.995,-0.005012541823544286,{'heater'},set
+cold,heater,sink,,,{'heater'},set
+cold,sink,fridge,0.879,-2.111964733385396,{'heater'},set
+cold,tea,blankets,0.996,-5.521460917862245,,set
+cold,fridge,tea,0.869,-2.0325579557809856,,set
+cold,tea,heater,0.996,-5.521460917862245,,set
+cold,microwave,heater,0.936,-0.06613980250454495,,set
+cold,microwave,sink,0.936,-2.748872195622466,,set
+cold,microwave,heater,0.936,-2.748872195622466,,set
+cold,microwave,blankets,0.936,-2.748872195622466,,set
+cold,tea,blankets,0.996,-5.521460917862245,,set
+cold,tea,fridge,0.996,-0.004008021397538822,,set
+cold,tea,heater,0.996,-5.521460917862245,,set
+cold,blankets,heater,0.995,-0.005012541823544286,,set
+cold,heater,tea,,,{'heater'},set
+cold,tea,blankets,0.996,-0.004008021397538822,{'heater'},set
+cold,heater,microwave,,,{'heater'},set
+cold,tea,blankets,0.996,-5.521460917862245,{'heater'},set
+cold,blankets,heater,0.995,-0.005012541823544286,,set
+cold,sink,fridge,0.879,-2.111964733385396,,set
+cold,sink,heater,0.879,-2.111964733385396,,set
+cold,microwave,sink,0.936,-2.748872195622466,,set
+cold,heater,tea,,,{'heater'},set
+cold,blankets,sink,0.995,-5.298317366548035,{'heater'},set
+cold,tea,blankets,0.996,-5.521460917862245,,set
+cold,fridge,sink,0.869,-2.0325579557809856,,set
+cold,tea,fridge,0.996,-0.004008021397538822,,set
+cold,sink,fridge,0.879,-0.12897038129696006,,set
+cold,fridge,sink,0.869,-2.0325579557809856,,set
+cold,tea,heater,0.996,-5.521460917862245,,set
+cold,microwave,sink,0.936,-2.748872195622466,,set
+cold,blankets,microwave,0.995,-0.005012541823544286,,set
+cold,fridge,heater,0.869,-2.0325579557809856,,set
+cold,microwave,blankets,0.936,-2.748872195622466,,set
+cold,blankets,sink,0.995,-0.005012541823544286,,set
+cold,sink,heater,0.879,-2.111964733385396,,set
+cold,microwave,tea,0.936,-2.748872195622466,,set
+cold,sink,fridge,0.879,-2.111964733385396,,set
+cold,blankets,microwave,0.995,-0.005012541823544286,,set
+cold,heater,fridge,,,{'heater'},set
+cold,microwave,sink,0.936,-0.06613980250454495,{'heater'},set
+cold,microwave,sink,0.936,-0.06613980250454495,,set
+cold,tea,blankets,0.996,-0.004008021397538822,,set
+cold,heater,sink,,,{'heater'},set
+cold,fridge,microwave,0.869,-2.0325579557809856,{'heater'},set
+cold,tea,sink,0.996,-5.521460917862245,,set
+cold,sink,blankets,0.879,-2.111964733385396,,set
+cold,blankets,tea,0.995,-0.005012541823544286,,set
+cold,microwave,fridge,0.936,-0.06613980250454495,,set
+cold,sink,microwave,0.879,-2.111964733385396,,set
+cold,tea,blankets,0.996,-5.521460917862245,,set
+cold,fridge,microwave,0.869,-0.140412153716745,,set
+cold,blankets,heater,0.995,-0.005012541823544286,,set
+cold,sink,fridge,0.879,-0.12897038129696006,,set
+cold,microwave,sink,0.936,-2.748872195622466,,set
+cold,microwave,fridge,0.936,-0.06613980250454495,,set
+cold,sink,fridge,0.879,-2.111964733385396,,set
+cold,sink,fridge,0.879,-2.111964733385396,,set
+cold,blankets,fridge,0.995,-5.298317366548035,,set
+cold,blankets,heater,0.995,-0.005012541823544286,,set
+cold,tea,heater,0.996,-5.521460917862245,,set
+cold,heater,tea,,,{'heater'},set
+cold,tea,blankets,0.996,-5.521460917862245,{'heater'},set
+cold,blankets,tea,0.995,-5.298317366548035,,set
+cold,tea,heater,0.996,-5.521460917862245,,set
+cold,microwave,fridge,0.936,-0.06613980250454495,,set
+cold,microwave,fridge,0.936,-0.06613980250454495,,set
+cold,microwave,blankets,0.936,-2.748872195622466,,set
+cold,tea,heater,0.996,-5.521460917862245,,set
+cold,sink,microwave,0.879,-2.111964733385396,,set
+cold,tea,microwave,0.996,-5.521460917862245,,set
+cold,sink,tea,0.879,-2.111964733385396,,set
+cold,tea,blankets,0.996,-5.521460917862245,,set
+cold,heater,tea,,,{'heater'},set
+cold,tea,fridge,0.996,-0.004008021397538822,{'heater'},set
+cold,fridge,heater,0.869,-2.0325579557809856,,set
+cold,tea,blankets,0.996,-5.521460917862245,,set
+cold,microwave,fridge,0.936,-0.06613980250454495,,set
+cold,tea,blankets,0.996,-5.521460917862245,,set
+cold,tea,blankets,0.996,-5.521460917862245,,set
+cold,sink,tea,0.879,-2.111964733385396,,set
+cold,tea,heater,0.996,-0.004008021397538822,,set
+cold,blankets,fridge,0.995,-5.298317366548035,,set
+cold,sink,fridge,0.879,-0.12897038129696006,,set
+cold,blankets,microwave,0.995,-5.298317366548035,,set
+cold,tea,heater,0.996,-5.521460917862245,,set
+cold,fridge,tea,0.869,-2.0325579557809856,,set
+cold,blankets,tea,0.995,-0.005012541823544286,,set
+cold,microwave,tea,0.936,-2.748872195622466,,set
+cold,sink,fridge,0.879,-2.111964733385396,,set
+cold,tea,blankets,0.996,-0.004008021397538822,,set
+cold,microwave,fridge,0.936,-2.748872195622466,,set
+cold,tea,fridge,0.996,-5.521460917862245,,set
+cold,fridge,blankets,0.869,-2.0325579557809856,,set
+cold,microwave,sink,0.936,-0.06613980250454495,,set
+cold,blankets,sink,0.995,-5.298317366548035,,set
+cold,fridge,tea,0.869,-2.0325579557809856,,set
+cold,microwave,blankets,0.936,-2.748872195622466,,set
+cold,tea,fridge,0.996,-5.521460917862245,,set
+cold,blankets,heater,0.995,-0.005012541823544286,,set
+cold,heater,microwave,,,{'heater'},set
+cold,heater,sink,,,{'heater'},set
+cold,blankets,heater,0.995,-0.005012541823544286,{'heater'},set
+cold,blankets,microwave,0.995,-5.298317366548035,,set
+cold,microwave,sink,0.936,-0.06613980250454495,,set
+cold,tea,blankets,0.996,-5.521460917862245,,set
+cold,sink,tea,0.879,-2.111964733385396,,set
+cold,sink,fridge,0.879,-2.111964733385396,,set
+cold,tea,sink,0.996,-5.521460917862245,,set
+cold,heater,fridge,,,{'heater'},set
+cold,microwave,sink,0.936,-2.748872195622466,{'heater'},set
+cold,sink,tea,0.879,-2.111964733385396,,set
+cold,blankets,heater,0.995,-5.298317366548035,,set
+cold,fridge,blankets,0.869,-2.0325579557809856,,set
+cold,sink,heater,0.879,-2.111964733385396,,set
+cold,sink,fridge,0.879,-2.111964733385396,,set
+cold,tea,heater,0.996,-5.521460917862245,,set
+cold,blankets,heater,0.995,-0.005012541823544286,,set
+cold,microwave,heater,0.936,-2.748872195622466,,set
+cold,microwave,fridge,0.936,-2.748872195622466,,set
+cold,fridge,heater,0.869,-2.0325579557809856,,set
+cold,tea,fridge,0.996,-5.521460917862245,,set
+cold,fridge,heater,0.869,-2.0325579557809856,,set
+cold,fridge,microwave,0.869,-0.140412153716745,,set
+cold,heater,fridge,,,{'heater'},set
+cold,microwave,sink,0.936,-0.06613980250454495,{'heater'},set
+cold,tea,blankets,0.996,-5.521460917862245,,set
+cold,blankets,heater,0.995,-0.005012541823544286,,set
+cold,sink,blankets,0.879,-2.111964733385396,,set
+cold,microwave,fridge,0.936,-2.748872195622466,,set
+cold,sink,blankets,0.879,-2.111964733385396,,set
+cold,fridge,tea,0.869,-2.0325579557809856,,set
+cold,fridge,tea,0.869,-2.0325579557809856,,set
+cold,microwave,fridge,0.936,-0.06613980250454495,,set
+cold,microwave,sink,0.936,-2.748872195622466,,set
+cold,tea,microwave,0.996,-5.521460917862245,,set
+cold,heater,tea,,,{'heater'},set
+cold,sink,fridge,0.879,-2.111964733385396,{'heater'},set
+cold,sink,fridge,0.879,-2.111964733385396,,set
+cold,microwave,sink,0.936,-0.06613980250454495,,set
+cold,heater,tea,,,{'heater'},set
+cold,heater,sink,,,{'heater'},set
+cold,tea,blankets,0.996,-5.521460917862245,{'heater'},set
+cold,tea,heater,0.996,-5.521460917862245,,set
+cold,microwave,heater,0.936,-2.748872195622466,,set
+cold,sink,microwave,0.879,-2.111964733385396,,set
+cold,microwave,sink,0.936,-0.06613980250454495,,set
+cold,microwave,sink,0.936,-0.06613980250454495,,set
+cold,tea,heater,0.996,-5.521460917862245,,set
+cold,blankets,tea,0.995,-0.005012541823544286,,set
+cold,heater,fridge,,,{'heater'},set
+cold,fridge,sink,0.869,-2.0325579557809856,{'heater'},set
+cold,blankets,heater,0.995,-0.005012541823544286,,set
+cold,fridge,microwave,0.869,-2.0325579557809856,,set
+cold,blankets,heater,0.995,-0.005012541823544286,,set
+cold,microwave,heater,0.936,-2.748872195622466,,set
+cold,microwave,sink,0.936,-2.748872195622466,,set
+cold,tea,microwave,0.996,-5.521460917862245,,set
+cold,blankets,heater,0.995,-0.005012541823544286,,set
+cold,tea,blankets,0.996,-5.521460917862245,,set
+cold,tea,sink,0.996,-5.521460917862245,,set
+cold,blankets,tea,0.995,-5.298317366548035,,set
+cold,fridge,tea,0.869,-2.0325579557809856,,set
+cold,tea,heater,0.996,-5.521460917862245,,set
+cold,blankets,microwave,0.995,-0.005012541823544286,,set
+cold,sink,fridge,0.879,-2.111964733385396,,set
+cold,tea,blankets,0.996,-5.521460917862245,,set
+cold,blankets,heater,0.995,-5.298317366548035,,set
+cold,blankets,fridge,0.995,-0.005012541823544286,,set
+cold,tea,heater,0.996,-5.521460917862245,,set
+cold,sink,fridge,0.879,-0.12897038129696006,,set
+cold,fridge,blankets,0.869,-2.0325579557809856,,set
+cold,tea,heater,0.996,-0.004008021397538822,,set
+cold,microwave,tea,0.936,-2.748872195622466,,set
+cold,sink,fridge,0.879,-2.111964733385396,,set
+cold,microwave,fridge,0.936,-0.06613980250454495,,set
+cold,heater,blankets,,,{'heater'},set
+cold,sink,microwave,0.879,-2.111964733385396,{'heater'},set
+cold,tea,sink,0.996,-5.521460917862245,,set
+cold,blankets,heater,0.995,-5.298317366548035,,set
+cold,sink,fridge,0.879,-2.111964733385396,,set
+cold,fridge,sink,0.869,-0.140412153716745,,set
+cold,microwave,fridge,0.936,-0.06613980250454495,,set
+cold,blankets,heater,0.995,-0.005012541823544286,,set
+cold,blankets,heater,0.995,-0.005012541823544286,,set
+cold,sink,fridge,0.879,-0.12897038129696006,,set
+cold,blankets,heater,0.995,-0.005012541823544286,,set
+cold,microwave,fridge,0.936,-2.748872195622466,,set
+cold,tea,heater,0.996,-5.521460917862245,,set
+cold,sink,heater,0.879,-2.111964733385396,,set
+cold,microwave,tea,0.936,-2.748872195622466,,set
+cold,fridge,blankets,0.869,-2.0325579557809856,,set
+cold,sink,fridge,0.879,-2.111964733385396,,set
+cut,nail clippers,keys,,,{'nail clippers'},set
+cut,keys,stapler,0.986,-4.268697949366878,{'nail clippers'},set
+cut,nail clippers,scissors,,,{'nail clippers'},set
+cut,stapler,nail clippers,,,"{'stapler', 'nail clippers'}",set
+cut,keys,scissors,0.986,-4.268697949366878,"{'stapler', 'nail clippers'}",set
+cut,thumb tacks,nail clippers,,,{'thumb tacks'},set
+cut,scissors,batteries,0.987,-0.01308523954865548,{'thumb tacks'},set
+cut,thumb tacks,stapler,,,{'thumb tacks'},set
+cut,thumb tacks,scissors,,,{'thumb tacks'},set
+cut,thumb tacks,stapler,,,{'thumb tacks'},set
+cut,keys,nail clippers,0.986,-4.268697949366878,{'thumb tacks'},set
+cut,thumb tacks,batteries,,,{'thumb tacks'},set
+cut,keys,nail clippers,0.986,-4.268697949366878,{'thumb tacks'},set
+cut,batteries,thumb tacks,0.988,-4.422848629194136,,set
+cut,thumb tacks,batteries,,,{'thumb tacks'},set
+cut,stapler,batteries,,,"{'thumb tacks', 'stapler'}",set
+cut,thumb tacks,stapler,,,"{'thumb tacks', 'stapler'}",set
+cut,stapler,scissors,,,"{'thumb tacks', 'stapler'}",set
+cut,thumb tacks,batteries,,,"{'thumb tacks', 'stapler'}",set
+cut,keys,scissors,0.986,-0.014098924379501648,"{'thumb tacks', 'stapler'}",set
+cut,stapler,keys,,,{'stapler'},set
+cut,keys,scissors,0.986,-4.268697949366878,{'stapler'},set
+cut,thumb tacks,stapler,,,{'thumb tacks'},set
+cut,scissors,keys,0.987,-0.01308523954865548,{'thumb tacks'},set
+cut,thumb tacks,keys,,,{'thumb tacks'},set
+cut,batteries,keys,0.988,-4.422848629194136,{'thumb tacks'},set
+cut,keys,nail clippers,0.986,-4.268697949366878,,set
+cut,thumb tacks,stapler,,,{'thumb tacks'},set
+cut,keys,nail clippers,0.986,-4.268697949366878,{'thumb tacks'},set
+cut,keys,scissors,0.986,-4.268697949366878,,set
+cut,thumb tacks,scissors,,,{'thumb tacks'},set
+cut,thumb tacks,stapler,,,{'thumb tacks'},set
+cut,nail clippers,keys,,,"{'thumb tacks', 'nail clippers'}",set
+cut,nail clippers,scissors,,,"{'thumb tacks', 'nail clippers'}",set
+cut,batteries,thumb tacks,0.988,-4.422848629194136,"{'thumb tacks', 'nail clippers'}",set
+cut,nail clippers,batteries,,,{'nail clippers'},set
+cut,thumb tacks,batteries,,,"{'thumb tacks', 'nail clippers'}",set
+cut,thumb tacks,batteries,,,"{'thumb tacks', 'nail clippers'}",set
+cut,batteries,keys,0.988,-4.422848629194136,"{'thumb tacks', 'nail clippers'}",set
+cut,keys,thumb tacks,0.986,-0.014098924379501648,,set
+cut,thumb tacks,nail clippers,,,{'thumb tacks'},set
+cut,thumb tacks,nail clippers,,,{'thumb tacks'},set
+cut,batteries,nail clippers,0.988,-4.422848629194136,{'thumb tacks'},set
+cut,stapler,thumb tacks,,,{'stapler'},set
+cut,nail clippers,stapler,,,"{'stapler', 'nail clippers'}",set
+cut,thumb tacks,stapler,,,"{'thumb tacks', 'stapler', 'nail clippers'}",set
+cut,stapler,scissors,,,"{'thumb tacks', 'stapler', 'nail clippers'}",set
+cut,nail clippers,scissors,,,"{'thumb tacks', 'stapler', 'nail clippers'}",set
+cut,stapler,batteries,,,"{'thumb tacks', 'stapler', 'nail clippers'}",set
+cut,batteries,nail clippers,0.988,-4.422848629194136,"{'thumb tacks', 'stapler', 'nail clippers'}",set
+cut,thumb tacks,keys,,,{'thumb tacks'},set
+cut,keys,batteries,0.986,-4.268697949366878,{'thumb tacks'},set
+cut,thumb tacks,batteries,,,{'thumb tacks'},set
+cut,nail clippers,scissors,,,"{'thumb tacks', 'nail clippers'}",set
+cut,keys,scissors,0.986,-4.268697949366878,"{'thumb tacks', 'nail clippers'}",set
+cut,nail clippers,scissors,,,{'nail clippers'},set
+cut,thumb tacks,batteries,,,"{'thumb tacks', 'nail clippers'}",set
+cut,keys,nail clippers,0.986,-4.268697949366878,"{'thumb tacks', 'nail clippers'}",set
+cut,keys,batteries,0.986,-4.268697949366878,,set
+cut,nail clippers,scissors,,,{'nail clippers'},set
+cut,keys,nail clippers,0.986,-0.014098924379501648,{'nail clippers'},set
+cut,keys,nail clippers,0.986,-4.268697949366878,,set
+cut,stapler,scissors,,,{'stapler'},set
+cut,thumb tacks,stapler,,,"{'stapler', 'thumb tacks'}",set
+cut,batteries,scissors,0.988,-4.422848629194136,"{'stapler', 'thumb tacks'}",set
+cut,stapler,batteries,,,{'stapler'},set
+cut,thumb tacks,stapler,,,"{'stapler', 'thumb tacks'}",set
+cut,scissors,keys,0.987,-0.01308523954865548,"{'stapler', 'thumb tacks'}",set
+cut,keys,stapler,0.986,-4.268697949366878,,set
+cut,scissors,nail clippers,0.987,-0.01308523954865548,,set
+cut,batteries,stapler,0.988,-4.422848629194136,,set
+cut,thumb tacks,batteries,,,{'thumb tacks'},set
+cut,thumb tacks,stapler,,,{'thumb tacks'},set
+cut,nail clippers,scissors,,,"{'thumb tacks', 'nail clippers'}",set
+cut,thumb tacks,stapler,,,"{'thumb tacks', 'nail clippers'}",set
+cut,stapler,scissors,,,"{'thumb tacks', 'nail clippers', 'stapler'}",set
+cut,stapler,keys,,,"{'thumb tacks', 'nail clippers', 'stapler'}",set
+cut,thumb tacks,batteries,,,"{'thumb tacks', 'nail clippers', 'stapler'}",set
+cut,scissors,thumb tacks,0.987,-4.3428059215206,"{'thumb tacks', 'nail clippers', 'stapler'}",set
+cut,batteries,thumb tacks,0.988,-4.422848629194136,,set
+cut,scissors,thumb tacks,0.987,-0.01308523954865548,,set
+cut,scissors,nail clippers,0.987,-0.01308523954865548,,set
+cut,keys,nail clippers,0.986,-0.014098924379501648,,set
+cut,stapler,nail clippers,,,{'stapler'},set
+cut,keys,nail clippers,0.986,-0.014098924379501648,{'stapler'},set
+cut,scissors,batteries,0.987,-0.01308523954865548,,set
+cut,stapler,keys,,,{'stapler'},set
+cut,nail clippers,keys,,,"{'stapler', 'nail clippers'}",set
+cut,keys,scissors,0.986,-4.268697949366878,"{'stapler', 'nail clippers'}",set
+cut,thumb tacks,batteries,,,{'thumb tacks'},set
+cut,nail clippers,scissors,,,"{'thumb tacks', 'nail clippers'}",set
+cut,stapler,batteries,,,"{'thumb tacks', 'nail clippers', 'stapler'}",set
+cut,keys,nail clippers,0.986,-4.268697949366878,"{'thumb tacks', 'nail clippers', 'stapler'}",set
+cut,keys,scissors,0.986,-4.268697949366878,,set
+cut,keys,stapler,0.986,-0.014098924379501648,,set
+cut,batteries,stapler,0.988,-4.422848629194136,,set
+cut,stapler,batteries,,,{'stapler'},set
+cut,batteries,scissors,0.988,-4.422848629194136,{'stapler'},set
+cut,thumb tacks,batteries,,,{'thumb tacks'},set
+cut,keys,nail clippers,0.986,-4.268697949366878,{'thumb tacks'},set
+cut,batteries,nail clippers,0.988,-4.422848629194136,,set
+cut,thumb tacks,stapler,,,{'thumb tacks'},set
+cut,thumb tacks,stapler,,,{'thumb tacks'},set
+cut,thumb tacks,keys,,,{'thumb tacks'},set
+cut,scissors,batteries,0.987,-0.01308523954865548,{'thumb tacks'},set
+cut,keys,batteries,0.986,-0.014098924379501648,,set
+cut,stapler,scissors,,,{'stapler'},set
+cut,stapler,keys,,,{'stapler'},set
+cut,scissors,thumb tacks,0.987,-0.01308523954865548,{'stapler'},set
+cut,scissors,stapler,0.987,-0.01308523954865548,,set
+cut,thumb tacks,scissors,,,{'thumb tacks'},set
+cut,keys,scissors,0.986,-4.268697949366878,{'thumb tacks'},set
+cut,stapler,batteries,,,{'stapler'},set
+cut,scissors,stapler,0.987,-0.01308523954865548,{'stapler'},set
+cut,nail clippers,stapler,,,{'nail clippers'},set
+cut,keys,batteries,0.986,-4.268697949366878,{'nail clippers'},set
+cut,thumb tacks,stapler,,,{'thumb tacks'},set
+cut,keys,scissors,0.986,-4.268697949366878,{'thumb tacks'},set
+cut,thumb tacks,stapler,,,{'thumb tacks'},set
+cut,keys,stapler,0.986,-4.268697949366878,{'thumb tacks'},set
+cut,batteries,stapler,0.988,-4.422848629194136,,set
+cut,keys,nail clippers,0.986,-4.268697949366878,,set
+cut,scissors,thumb tacks,0.987,-0.01308523954865548,,set
+cut,scissors,batteries,0.987,-4.3428059215206,,set
+cut,nail clippers,scissors,,,{'nail clippers'},set
+cut,keys,scissors,0.986,-4.268697949366878,{'nail clippers'},set
+cut,stapler,thumb tacks,,,{'stapler'},set
+cut,stapler,thumb tacks,,,{'stapler'},set
+cut,batteries,nail clippers,0.988,-4.422848629194136,{'stapler'},set
+cut,nail clippers,stapler,,,{'nail clippers'},set
+cut,nail clippers,batteries,,,{'nail clippers'},set
+cut,stapler,batteries,,,"{'stapler', 'nail clippers'}",set
+cut,keys,nail clippers,0.986,-0.014098924379501648,"{'stapler', 'nail clippers'}",set
+cut,nail clippers,stapler,,,{'nail clippers'},set
+cut,scissors,thumb tacks,0.987,-0.01308523954865548,{'nail clippers'},set
+cut,keys,batteries,0.986,-4.268697949366878,,set
+cut,stapler,batteries,,,{'stapler'},set
+cut,keys,scissors,0.986,-0.014098924379501648,{'stapler'},set
+cut,scissors,nail clippers,0.987,-0.01308523954865548,,set
+cut,stapler,batteries,,,{'stapler'},set
+cut,batteries,thumb tacks,0.988,-4.422848629194136,{'stapler'},set
+cut,keys,thumb tacks,0.986,-4.268697949366878,,set
+cut,thumb tacks,scissors,,,{'thumb tacks'},set
+cut,thumb tacks,batteries,,,{'thumb tacks'},set
+cut,nail clippers,stapler,,,"{'thumb tacks', 'nail clippers'}",set
+cut,thumb tacks,batteries,,,"{'thumb tacks', 'nail clippers'}",set
+cut,thumb tacks,batteries,,,"{'thumb tacks', 'nail clippers'}",set
+cut,batteries,scissors,0.988,-4.422848629194136,"{'thumb tacks', 'nail clippers'}",set
+cut,batteries,stapler,0.988,-4.422848629194136,,set
+cut,nail clippers,batteries,,,{'nail clippers'},set
+cut,stapler,batteries,,,"{'stapler', 'nail clippers'}",set
+cut,stapler,thumb tacks,,,"{'stapler', 'nail clippers'}",set
+cut,keys,nail clippers,0.986,-4.268697949366878,"{'stapler', 'nail clippers'}",set
+cut,nail clippers,thumb tacks,,,{'nail clippers'},set
+cut,stapler,batteries,,,"{'stapler', 'nail clippers'}",set
+cut,nail clippers,thumb tacks,,,"{'stapler', 'nail clippers'}",set
+cut,stapler,batteries,,,"{'stapler', 'nail clippers'}",set
+cut,keys,nail clippers,0.986,-0.014098924379501648,"{'stapler', 'nail clippers'}",set
+cut,keys,batteries,0.986,-4.268697949366878,,set
+cut,keys,scissors,0.986,-4.268697949366878,,set
+cut,scissors,nail clippers,0.987,-0.01308523954865548,,set
+cut,nail clippers,batteries,,,{'nail clippers'},set
+cut,nail clippers,thumb tacks,,,{'nail clippers'},set
+cut,nail clippers,keys,,,{'nail clippers'},set
+cut,keys,nail clippers,0.986,-4.268697949366878,{'nail clippers'},set
+cut,nail clippers,stapler,,,{'nail clippers'},set
+cut,keys,stapler,0.986,-4.268697949366878,{'nail clippers'},set
+cut,scissors,batteries,0.987,-0.01308523954865548,,set
+cut,stapler,keys,,,{'stapler'},set
+cut,batteries,nail clippers,0.988,-4.422848629194136,{'stapler'},set
+cut,thumb tacks,batteries,,,{'thumb tacks'},set
+cut,thumb tacks,keys,,,{'thumb tacks'},set
+cut,stapler,batteries,,,"{'thumb tacks', 'stapler'}",set
+cut,keys,scissors,0.986,-4.268697949366878,"{'thumb tacks', 'stapler'}",set
+cut,scissors,stapler,0.987,-0.01308523954865548,,set
+cut,thumb tacks,batteries,,,{'thumb tacks'},set
+cut,stapler,scissors,,,"{'thumb tacks', 'stapler'}",set
+cut,keys,thumb tacks,0.986,-4.268697949366878,"{'thumb tacks', 'stapler'}",set
+cut,thumb tacks,keys,,,{'thumb tacks'},set
+cut,nail clippers,scissors,,,"{'thumb tacks', 'nail clippers'}",set
+cut,thumb tacks,stapler,,,"{'thumb tacks', 'nail clippers'}",set
+cut,nail clippers,thumb tacks,,,"{'thumb tacks', 'nail clippers'}",set
+cut,batteries,keys,0.988,-4.422848629194136,"{'thumb tacks', 'nail clippers'}",set
+cut,scissors,stapler,0.987,-0.01308523954865548,,set
+cut,scissors,keys,0.987,-0.01308523954865548,,set
+cut,thumb tacks,batteries,,,{'thumb tacks'},set
+cut,stapler,batteries,,,"{'thumb tacks', 'stapler'}",set
+cut,keys,scissors,0.986,-4.268697949366878,"{'thumb tacks', 'stapler'}",set
+cut,stapler,batteries,,,{'stapler'},set
+cut,stapler,thumb tacks,,,{'stapler'},set
+cut,keys,scissors,0.986,-4.268697949366878,{'stapler'},set
+cut,stapler,batteries,,,{'stapler'},set
+cut,thumb tacks,batteries,,,"{'stapler', 'thumb tacks'}",set
+cut,scissors,keys,0.987,-0.01308523954865548,"{'stapler', 'thumb tacks'}",set
+cut,thumb tacks,stapler,,,{'thumb tacks'},set
+cut,thumb tacks,batteries,,,{'thumb tacks'},set
+cut,keys,scissors,0.986,-4.268697949366878,{'thumb tacks'},set
+cut,nail clippers,scissors,,,{'nail clippers'},set
+cut,thumb tacks,batteries,,,"{'thumb tacks', 'nail clippers'}",set
+cut,keys,scissors,0.986,-4.268697949366878,"{'thumb tacks', 'nail clippers'}",set
+cut,nail clippers,batteries,,,{'nail clippers'},set
+cut,batteries,keys,0.988,-0.012072581234269249,{'nail clippers'},set
+cut,nail clippers,thumb tacks,,,{'nail clippers'},set
+cut,keys,scissors,0.986,-4.268697949366878,{'nail clippers'},set
+cut,scissors,keys,0.987,-0.01308523954865548,,set
+cut,batteries,stapler,0.988,-4.422848629194136,,set
+cut,stapler,batteries,,,{'stapler'},set
+cut,batteries,scissors,0.988,-4.422848629194136,{'stapler'},set
+cut,keys,scissors,0.986,-0.014098924379501648,,set
+cut,thumb tacks,batteries,,,{'thumb tacks'},set
+cut,keys,scissors,0.986,-4.268697949366878,{'thumb tacks'},set
+cut,stapler,batteries,,,{'stapler'},set
+cut,nail clippers,keys,,,"{'stapler', 'nail clippers'}",set
+fridge,meat,milk,0.991,-4.710530701645917,"{'stapler', 'nail clippers'}",set
+fridge,milk,juice,1.0,0.0,,set
+fridge,milk,water,1.0,-23.025850929940457,,set
+fridge,juice,water,1.0,0.0,,set
+fridge,ketchup,meat,,,{'ketchup'},set
+fridge,yogurt,ketchup,,,"{'yogurt', 'ketchup'}",set
+fridge,milk,water,1.0,0.0,"{'yogurt', 'ketchup'}",set
+fridge,milk,water,1.0,0.0,,set
+fridge,juice,water,1.0,0.0,,set
+fridge,ketchup,meat,,,{'ketchup'},set
+fridge,juice,water,1.0,0.0,{'ketchup'},set
+fridge,juice,water,1.0,0.0,,set
+fridge,water,juice,1.0,0.0,,set
+fridge,yogurt,milk,,,{'yogurt'},set
+fridge,milk,water,1.0,0.0,{'yogurt'},set
+fridge,water,meat,1.0,0.0,,set
+fridge,yogurt,ketchup,,,{'yogurt'},set
+fridge,ketchup,meat,,,"{'yogurt', 'ketchup'}",set
+fridge,milk,water,1.0,0.0,"{'yogurt', 'ketchup'}",set
+fridge,yogurt,ketchup,,,{'yogurt'},set
+fridge,meat,water,0.991,-4.710530701645917,{'yogurt'},set
+fridge,water,juice,1.0,0.0,,set
+fridge,milk,water,1.0,0.0,,set
+fridge,juice,water,1.0,0.0,,set
+fridge,ketchup,juice,,,{'ketchup'},set
+fridge,ketchup,meat,,,{'ketchup'},set
+fridge,yogurt,meat,,,"{'yogurt', 'ketchup'}",set
+fridge,ketchup,water,,,"{'yogurt', 'ketchup'}",set
+fridge,meat,juice,0.991,-4.710530701645917,"{'yogurt', 'ketchup'}",set
+fridge,ketchup,milk,,,{'ketchup'},set
+fridge,ketchup,juice,,,{'ketchup'},set
+fridge,milk,ketchup,1.0,0.0,{'ketchup'},set
+fridge,juice,water,1.0,0.0,,set
+fridge,yogurt,ketchup,,,{'yogurt'},set
+fridge,milk,water,1.0,0.0,{'yogurt'},set
+fridge,ketchup,yogurt,,,{'ketchup'},set
+fridge,meat,juice,0.991,-4.710530701645917,{'ketchup'},set
+fridge,ketchup,juice,,,{'ketchup'},set
+fridge,milk,water,1.0,0.0,{'ketchup'},set
+fridge,juice,water,1.0,0.0,,set
+fridge,yogurt,ketchup,,,{'yogurt'},set
+fridge,juice,yogurt,1.0,0.0,{'yogurt'},set
+fridge,yogurt,ketchup,,,{'yogurt'},set
+fridge,yogurt,juice,,,{'yogurt'},set
+fridge,juice,water,1.0,0.0,{'yogurt'},set
+fridge,yogurt,meat,,,{'yogurt'},set
+fridge,yogurt,ketchup,,,{'yogurt'},set
+fridge,juice,meat,1.0,0.0,{'yogurt'},set
+fridge,water,ketchup,1.0,0.0,,set
+fridge,water,meat,1.0,0.0,,set
+fridge,meat,water,0.991,-4.710530701645917,,set
+fridge,yogurt,meat,,,{'yogurt'},set
+fridge,juice,ketchup,1.0,0.0,{'yogurt'},set
+fridge,juice,water,1.0,0.0,,set
+fridge,yogurt,milk,,,{'yogurt'},set
+fridge,milk,ketchup,1.0,0.0,{'yogurt'},set
+fridge,meat,yogurt,0.991,-0.00904074465214907,,set
+fridge,milk,ketchup,1.0,0.0,,set
+fridge,ketchup,meat,,,{'ketchup'},set
+fridge,ketchup,yogurt,,,{'ketchup'},set
+fridge,meat,ketchup,0.991,-4.710530701645917,{'ketchup'},set
+fridge,yogurt,meat,,,{'yogurt'},set
+fridge,ketchup,milk,,,"{'yogurt', 'ketchup'}",set
+fridge,meat,milk,0.991,-4.710530701645917,"{'yogurt', 'ketchup'}",set
+fridge,juice,water,1.0,0.0,,set
+fridge,yogurt,meat,,,{'yogurt'},set
+fridge,milk,juice,1.0,0.0,{'yogurt'},set
+fridge,yogurt,meat,,,{'yogurt'},set
+fridge,yogurt,water,,,{'yogurt'},set
+fridge,water,yogurt,1.0,0.0,{'yogurt'},set
+fridge,ketchup,meat,,,{'ketchup'},set
+fridge,ketchup,juice,,,{'ketchup'},set
+fridge,yogurt,ketchup,,,"{'yogurt', 'ketchup'}",set
+fridge,milk,juice,1.0,0.0,"{'yogurt', 'ketchup'}",set
+fridge,juice,water,1.0,0.0,,set
+fridge,juice,milk,1.0,0.0,,set
+fridge,yogurt,meat,,,{'yogurt'},set
+fridge,meat,milk,0.991,-4.710530701645917,{'yogurt'},set
+fridge,ketchup,meat,,,{'ketchup'},set
+fridge,juice,meat,1.0,0.0,{'ketchup'},set
+fridge,yogurt,water,,,{'yogurt'},set
+fridge,water,juice,1.0,0.0,{'yogurt'},set
+fridge,ketchup,meat,,,{'ketchup'},set
+fridge,meat,ketchup,0.991,-4.710530701645917,{'ketchup'},set
+fridge,juice,yogurt,1.0,0.0,,set
+fridge,ketchup,yogurt,,,{'ketchup'},set
+fridge,milk,water,1.0,0.0,{'ketchup'},set
+fridge,yogurt,milk,,,{'yogurt'},set
+fridge,yogurt,juice,,,{'yogurt'},set
+fridge,ketchup,meat,,,"{'yogurt', 'ketchup'}",set
+fridge,milk,yogurt,1.0,0.0,"{'yogurt', 'ketchup'}",set
+fridge,water,milk,1.0,0.0,,set
+fridge,juice,ketchup,1.0,0.0,,set
+fridge,milk,yogurt,1.0,-23.025850929940457,,set
+fridge,milk,juice,1.0,0.0,,set
+fridge,juice,milk,1.0,0.0,,set
+fridge,yogurt,ketchup,,,{'yogurt'},set
+fridge,water,milk,1.0,0.0,{'yogurt'},set
+fridge,water,milk,1.0,0.0,,set
+fridge,milk,meat,1.0,-23.025850929940457,,set
+fridge,yogurt,meat,,,{'yogurt'},set
+fridge,yogurt,water,,,{'yogurt'},set
+fridge,yogurt,meat,,,{'yogurt'},set
+fridge,milk,water,1.0,0.0,{'yogurt'},set
+fridge,meat,ketchup,0.991,-4.710530701645917,,set
+fridge,yogurt,meat,,,{'yogurt'},set
+fridge,yogurt,meat,,,{'yogurt'},set
+fridge,milk,meat,1.0,0.0,{'yogurt'},set
+fridge,milk,yogurt,1.0,0.0,,set
+fridge,juice,water,1.0,0.0,,set
+fridge,yogurt,juice,,,{'yogurt'},set
+fridge,ketchup,meat,,,"{'yogurt', 'ketchup'}",set
+fridge,milk,water,1.0,0.0,"{'yogurt', 'ketchup'}",set
+fridge,juice,yogurt,1.0,0.0,,set
+fridge,juice,meat,1.0,0.0,,set
+fridge,milk,water,1.0,0.0,,set
+fridge,milk,juice,1.0,0.0,,set
+fridge,milk,water,1.0,0.0,,set
+fridge,milk,water,1.0,0.0,,set
+fridge,meat,juice,0.991,-4.710530701645917,,set
+fridge,yogurt,ketchup,,,{'yogurt'},set
+fridge,ketchup,milk,,,"{'yogurt', 'ketchup'}",set
+fridge,milk,yogurt,1.0,0.0,"{'yogurt', 'ketchup'}",set
+fridge,juice,milk,1.0,0.0,,set
+fridge,yogurt,ketchup,,,{'yogurt'},set
+fridge,ketchup,milk,,,"{'yogurt', 'ketchup'}",set
+fridge,ketchup,water,,,"{'yogurt', 'ketchup'}",set
+fridge,juice,water,1.0,0.0,"{'yogurt', 'ketchup'}",set
+fridge,milk,juice,1.0,0.0,,set
+fridge,milk,juice,1.0,0.0,,set
+fridge,yogurt,ketchup,,,{'yogurt'},set
+fridge,ketchup,juice,,,"{'yogurt', 'ketchup'}",set
+fridge,ketchup,meat,,,"{'yogurt', 'ketchup'}",set
+fridge,yogurt,ketchup,,,"{'yogurt', 'ketchup'}",set
+fridge,ketchup,meat,,,"{'yogurt', 'ketchup'}",set
+fridge,meat,yogurt,0.991,-4.710530701645917,"{'yogurt', 'ketchup'}",set
+fridge,meat,yogurt,0.991,-0.00904074465214907,,set
+fridge,water,juice,1.0,0.0,,set
+fridge,milk,water,1.0,0.0,,set
+fridge,meat,ketchup,0.991,-4.710530701645917,,set
+fridge,milk,water,1.0,0.0,,set
+fridge,water,milk,1.0,-23.025850929940457,,set
+fridge,juice,water,1.0,0.0,,set
+fridge,milk,juice,1.0,0.0,,set
+fridge,juice,water,1.0,0.0,,set
+fridge,milk,juice,1.0,0.0,,set
+fridge,juice,water,1.0,0.0,,set
+fridge,meat,milk,0.991,-4.710530701645917,,set
+fridge,yogurt,ketchup,,,{'yogurt'},set
+fridge,yogurt,meat,,,{'yogurt'},set
+fridge,juice,ketchup,1.0,0.0,{'yogurt'},set
+fridge,water,juice,1.0,0.0,,set
+fridge,ketchup,yogurt,,,{'ketchup'},set
+fridge,ketchup,meat,,,{'ketchup'},set
+fridge,yogurt,ketchup,,,"{'yogurt', 'ketchup'}",set
+fridge,water,milk,1.0,0.0,"{'yogurt', 'ketchup'}",set
+fridge,juice,water,1.0,0.0,,set
+fridge,juice,ketchup,1.0,0.0,,set
+fridge,juice,yogurt,1.0,0.0,,set
+fridge,yogurt,ketchup,,,{'yogurt'},set
+fridge,ketchup,milk,,,"{'yogurt', 'ketchup'}",set
+fridge,yogurt,water,,,"{'yogurt', 'ketchup'}",set
+fridge,yogurt,juice,,,"{'yogurt', 'ketchup'}",set
+fridge,ketchup,meat,,,"{'yogurt', 'ketchup'}",set
+fridge,milk,water,1.0,0.0,"{'yogurt', 'ketchup'}",set
+fridge,water,juice,1.0,0.0,,set
+fridge,water,yogurt,1.0,0.0,,set
+fridge,milk,juice,1.0,0.0,,set
+fridge,juice,water,1.0,0.0,,set
+fridge,yogurt,meat,,,{'yogurt'},set
+fridge,yogurt,water,,,{'yogurt'},set
+fridge,ketchup,juice,,,"{'yogurt', 'ketchup'}",set
+fridge,ketchup,yogurt,,,"{'yogurt', 'ketchup'}",set
+fridge,milk,juice,1.0,0.0,"{'yogurt', 'ketchup'}",set
+fridge,yogurt,ketchup,,,{'yogurt'},set
+fridge,water,milk,1.0,0.0,{'yogurt'},set
+fridge,ketchup,water,,,{'ketchup'},set
+fridge,juice,ketchup,1.0,0.0,{'ketchup'},set
+fridge,juice,water,1.0,0.0,,set
+fridge,milk,ketchup,1.0,0.0,,set
+fridge,yogurt,meat,,,{'yogurt'},set
+fridge,ketchup,meat,,,"{'yogurt', 'ketchup'}",set
+fridge,ketchup,meat,,,"{'yogurt', 'ketchup'}",set
+fridge,milk,juice,1.0,0.0,"{'yogurt', 'ketchup'}",set
+fridge,yogurt,meat,,,{'yogurt'},set
+fridge,yogurt,ketchup,,,{'yogurt'},set
+fridge,milk,meat,1.0,0.0,{'yogurt'},set
+fridge,yogurt,milk,,,{'yogurt'},set
+fridge,ketchup,water,,,"{'yogurt', 'ketchup'}",set
+fridge,juice,meat,1.0,0.0,"{'yogurt', 'ketchup'}",set
+fridge,meat,yogurt,0.991,-4.710530701645917,,set
+fridge,milk,water,1.0,0.0,,set
+fridge,meat,yogurt,0.991,-4.710530701645917,,set
+fridge,juice,water,1.0,0.0,,set
+fridge,ketchup,meat,,,{'ketchup'},set
+fridge,meat,water,0.991,-4.710530701645917,{'ketchup'},set
+fridge,juice,milk,1.0,0.0,,set
+fridge,juice,water,1.0,0.0,,set
+fridge,milk,juice,1.0,0.0,,set
+fridge,milk,juice,1.0,0.0,,set
+fridge,juice,yogurt,1.0,0.0,,set
+fridge,yogurt,meat,,,{'yogurt'},set
+fridge,juice,meat,1.0,0.0,{'yogurt'},set
+fridge,meat,milk,0.991,-4.710530701645917,,set
+fridge,yogurt,milk,,,{'yogurt'},set
+fridge,juice,milk,1.0,0.0,{'yogurt'},set
+fridge,yogurt,juice,,,{'yogurt'},set
+fridge,water,ketchup,1.0,0.0,{'yogurt'},set
+fridge,milk,juice,1.0,0.0,,set
+fridge,milk,ketchup,1.0,0.0,,set
+fridge,ketchup,meat,,,{'ketchup'},set
+fridge,juice,water,1.0,0.0,{'ketchup'},set
+fridge,meat,milk,0.991,-4.710530701645917,,set
+gym,swimming,weightlifting,1.0,-23.025850929940457,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,lacrosse,basketball,0.998,-0.0020020026706730793,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,weightlifting,meditation,0.997,-0.0030045090202987243,,set
+gym,lacrosse,meditation,0.998,-0.0020020026706730793,,set
+gym,swimming,basketball,1.0,-23.025850929940457,,set
+gym,weightlifting,meditation,0.997,-5.809142990314027,,set
+gym,lacrosse,basketball,0.998,-0.0020020026706730793,,set
+gym,basketball,swimming,1.0,0.0,,set
+gym,meditation,lacrosse,0.984,-4.135166556742355,,set
+gym,softball,weightlifting,1.0,-23.025850929940457,,set
+gym,meditation,basketball,0.984,-4.135166556742355,,set
+gym,weightlifting,meditation,0.997,-5.809142990314027,,set
+gym,lacrosse,basketball,0.998,-0.0020020026706730793,,set
+gym,lacrosse,weightlifting,0.998,-0.0020020026706730793,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,weightlifting,swimming,0.997,-5.809142990314027,,set
+gym,weightlifting,meditation,0.997,-0.0030045090202987243,,set
+gym,swimming,meditation,1.0,0.0,,set
+gym,weightlifting,meditation,0.997,-5.809142990314027,,set
+gym,lacrosse,weightlifting,0.998,-0.0020020026706730793,,set
+gym,softball,weightlifting,1.0,0.0,,set
+gym,weightlifting,basketball,0.997,-5.809142990314027,,set
+gym,swimming,meditation,1.0,0.0,,set
+gym,meditation,swimming,0.984,-4.135166556742355,,set
+gym,weightlifting,meditation,0.997,-0.0030045090202987243,,set
+gym,weightlifting,basketball,0.997,-0.0030045090202987243,,set
+gym,lacrosse,swimming,0.998,-0.0020020026706730793,,set
+gym,weightlifting,lacrosse,0.997,-0.0030045090202987243,,set
+gym,weightlifting,meditation,0.997,-0.0030045090202987243,,set
+gym,basketball,softball,1.0,0.0,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,weightlifting,swimming,0.997,-0.0030045090202987243,,set
+gym,weightlifting,softball,0.997,-0.0030045090202987243,,set
+gym,basketball,weightlifting,1.0,0.0,,set
+gym,lacrosse,basketball,0.998,-0.0020020026706730793,,set
+gym,weightlifting,meditation,0.997,-0.0030045090202987243,,set
+gym,lacrosse,basketball,0.998,-6.2146080984221905,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,meditation,lacrosse,0.984,-4.135166556742355,,set
+gym,weightlifting,meditation,0.997,-0.0030045090202987243,,set
+gym,softball,swimming,1.0,0.0,,set
+gym,swimming,meditation,1.0,-23.025850929940457,,set
+gym,softball,basketball,1.0,-23.025850929940457,,set
+gym,swimming,meditation,1.0,0.0,,set
+gym,basketball,weightlifting,1.0,0.0,,set
+gym,basketball,meditation,1.0,-23.025850929940457,,set
+gym,lacrosse,swimming,0.998,-0.0020020026706730793,,set
+gym,lacrosse,basketball,0.998,-0.0020020026706730793,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,weightlifting,swimming,0.997,-0.0030045090202987243,,set
+gym,lacrosse,weightlifting,0.998,-0.0020020026706730793,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,lacrosse,meditation,0.998,-0.0020020026706730793,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,swimming,meditation,1.0,0.0,,set
+gym,swimming,basketball,1.0,-23.025850929940457,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,softball,weightlifting,1.0,0.0,,set
+gym,swimming,meditation,1.0,0.0,,set
+gym,softball,meditation,1.0,0.0,,set
+gym,basketball,softball,1.0,0.0,,set
+gym,weightlifting,meditation,0.997,-0.0030045090202987243,,set
+gym,softball,meditation,1.0,0.0,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,weightlifting,basketball,0.997,-0.0030045090202987243,,set
+gym,swimming,softball,1.0,0.0,,set
+gym,swimming,meditation,1.0,-23.025850929940457,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,meditation,softball,0.984,-4.135166556742355,,set
+gym,lacrosse,basketball,0.998,-0.0020020026706730793,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,swimming,softball,1.0,0.0,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,swimming,basketball,1.0,0.0,,set
+gym,basketball,lacrosse,1.0,0.0,,set
+gym,softball,weightlifting,1.0,0.0,,set
+gym,swimming,basketball,1.0,0.0,,set
+gym,lacrosse,weightlifting,0.998,-0.0020020026706730793,,set
+gym,basketball,softball,1.0,0.0,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,weightlifting,basketball,0.997,-0.0030045090202987243,,set
+gym,swimming,lacrosse,1.0,-23.025850929940457,,set
+gym,meditation,weightlifting,0.984,-0.016129381929883644,,set
+gym,meditation,swimming,0.984,-4.135166556742355,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,lacrosse,meditation,0.998,-0.0020020026706730793,,set
+gym,meditation,softball,0.984,-0.016129381929883644,,set
+gym,basketball,lacrosse,1.0,0.0,,set
+gym,weightlifting,lacrosse,0.997,-5.809142990314027,,set
+gym,basketball,weightlifting,1.0,0.0,,set
+gym,weightlifting,meditation,0.997,-0.0030045090202987243,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,lacrosse,basketball,0.998,-0.0020020026706730793,,set
+gym,swimming,softball,1.0,-23.025850929940457,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,basketball,weightlifting,1.0,0.0,,set
+gym,swimming,meditation,1.0,-23.025850929940457,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,softball,swimming,1.0,-23.025850929940457,,set
+gym,basketball,swimming,1.0,0.0,,set
+gym,lacrosse,softball,0.998,-6.2146080984221905,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,softball,meditation,1.0,0.0,,set
+gym,basketball,meditation,1.0,0.0,,set
+gym,lacrosse,weightlifting,0.998,-0.0020020026706730793,,set
+gym,swimming,basketball,1.0,-23.025850929940457,,set
+gym,weightlifting,meditation,0.997,-0.0030045090202987243,,set
+gym,basketball,lacrosse,1.0,0.0,,set
+gym,swimming,meditation,1.0,-23.025850929940457,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,basketball,lacrosse,1.0,0.0,,set
+gym,lacrosse,basketball,0.998,-0.0020020026706730793,,set
+gym,meditation,swimming,0.984,-4.135166556742355,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,meditation,softball,0.984,-0.016129381929883644,,set
+gym,lacrosse,swimming,0.998,-0.0020020026706730793,,set
+gym,weightlifting,meditation,0.997,-5.809142990314027,,set
+gym,swimming,meditation,1.0,0.0,,set
+gym,basketball,meditation,1.0,0.0,,set
+gym,weightlifting,lacrosse,0.997,-0.0030045090202987243,,set
+gym,weightlifting,meditation,0.997,-5.809142990314027,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,swimming,lacrosse,1.0,-23.025850929940457,,set
+gym,weightlifting,meditation,0.997,-5.809142990314027,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,basketball,weightlifting,1.0,0.0,,set
+gym,swimming,meditation,1.0,0.0,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,basketball,swimming,1.0,0.0,,set
+gym,swimming,meditation,1.0,0.0,,set
+gym,swimming,meditation,1.0,0.0,,set
+gym,basketball,swimming,1.0,0.0,,set
+gym,lacrosse,basketball,0.998,-0.0020020026706730793,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,lacrosse,basketball,0.998,-0.0020020026706730793,,set
+gym,swimming,softball,1.0,0.0,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,meditation,softball,0.984,-4.135166556742355,,set
+gym,weightlifting,softball,0.997,-5.809142990314027,,set
+gym,softball,swimming,1.0,0.0,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,swimming,meditation,1.0,0.0,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,lacrosse,meditation,0.998,-0.0020020026706730793,,set
+gym,weightlifting,meditation,0.997,-0.0030045090202987243,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,softball,weightlifting,1.0,0.0,,set
+gym,lacrosse,basketball,0.998,-0.0020020026706730793,,set
+gym,weightlifting,softball,0.997,-5.809142990314027,,set
+gym,basketball,softball,1.0,0.0,,set
+gym,swimming,meditation,1.0,0.0,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,basketball,softball,1.0,0.0,,set
+gym,softball,weightlifting,1.0,0.0,,set
+gym,softball,lacrosse,1.0,0.0,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,swimming,weightlifting,1.0,-23.025850929940457,,set
+gym,meditation,swimming,0.984,-4.135166556742355,,set
+gym,swimming,meditation,1.0,0.0,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,swimming,meditation,1.0,0.0,,set
+gym,meditation,softball,0.984,-0.016129381929883644,,set
+gym,swimming,meditation,1.0,0.0,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,lacrosse,basketball,0.998,-0.0020020026706730793,,set
+gym,weightlifting,swimming,0.997,-5.809142990314027,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,swimming,meditation,1.0,0.0,,set
+gym,swimming,weightlifting,1.0,-23.025850929940457,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,softball,lacrosse,1.0,0.0,,set
+gym,lacrosse,basketball,0.998,-0.0020020026706730793,,set
+gym,lacrosse,basketball,0.998,-0.0020020026706730793,,set
+gym,meditation,weightlifting,0.984,-0.016129381929883644,,set
+gym,weightlifting,meditation,0.997,-5.809142990314027,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+gym,softball,meditation,1.0,0.0,,set
+gym,lacrosse,weightlifting,0.998,-0.0020020026706730793,,set
+gym,swimming,lacrosse,1.0,0.0,,set
+gym,softball,basketball,1.0,0.0,,set
+gym,weightlifting,meditation,0.997,-0.0030045090202987243,,set
+gym,basketball,swimming,1.0,0.0,,set
+gym,swimming,softball,1.0,0.0,,set
+gym,lacrosse,swimming,0.998,-0.0020020026706730793,,set
+gym,weightlifting,basketball,0.997,-0.0030045090202987243,,set
+gym,meditation,basketball,0.984,-4.135166556742355,,set
+gym,weightlifting,meditation,0.997,-5.809142990314027,,set
+gym,basketball,softball,1.0,0.0,,set
+gym,softball,lacrosse,1.0,0.0,,set
+gym,weightlifting,meditation,0.997,-5.809142990314027,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,softball,basketball,1.0,-23.025850929940457,,set
+gym,softball,swimming,1.0,0.0,,set
+gym,basketball,meditation,1.0,0.0,,set
+gym,lacrosse,softball,0.998,-0.0020020026706730793,,set
+gym,meditation,swimming,0.984,-4.135166556742355,,set
+gym,weightlifting,swimming,0.997,-5.809142990314027,,set
+gym,swimming,weightlifting,1.0,0.0,,set
+hot,shower,fan,0.863,-1.987774353154012,,set
+hot,pool,fan,0.999,-6.907755278982136,,set
+hot,pool,shower,0.999,-0.0010005003335835344,,set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,shower,fan,0.863,-1.987774353154012,,set
+hot,couch,pool,0.802,-1.619488248287602,,set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,shower,pool,0.863,-0.14734058789870913,,set
+hot,shower,fan,0.863,-1.987774353154012,,set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,blankets,heater,0.995,-5.298317366548035,,set
+hot,pool,shower,0.999,-0.0010005003335835344,,set
+hot,couch,blankets,0.802,-1.619488248287602,,set
+hot,couch,shower,0.802,-1.619488248287602,,set
+hot,pool,fan,0.999,-0.0010005003335835344,,set
+hot,blankets,couch,0.995,-0.005012541823544286,,set
+hot,pool,couch,0.999,-0.0010005003335835344,,set
+hot,shower,blankets,0.863,-1.987774353154012,,set
+hot,blankets,pool,0.995,-5.298317366548035,,set
+hot,heater,couch,,,{'heater'},set
+hot,couch,heater,0.802,-1.619488248287602,{'heater'},set
+hot,fan,pool,0.907,-2.3751557858288814,,set
+hot,blankets,pool,0.995,-0.005012541823544286,,set
+hot,blankets,heater,0.995,-5.298317366548035,,set
+hot,shower,fan,0.863,-1.987774353154012,,set
+hot,shower,fan,0.863,-1.987774353154012,,set
+hot,pool,fan,0.999,-6.907755278982136,,set
+hot,shower,pool,0.863,-1.987774353154012,,set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,fan,heater,0.907,-0.09761282886700041,,set
+hot,fan,blankets,0.907,-2.3751557858288814,,set
+hot,shower,fan,0.863,-1.987774353154012,,set
+hot,shower,heater,0.863,-1.987774353154012,,set
+hot,shower,fan,0.863,-1.987774353154012,,set
+hot,couch,fan,0.802,-1.619488248287602,,set
+hot,shower,heater,0.863,-1.987774353154012,,set
+hot,pool,shower,0.999,-0.0010005003335835344,,set
+hot,heater,blankets,,,{'heater'},set
+hot,shower,fan,0.863,-1.987774353154012,{'heater'},set
+hot,fan,heater,0.907,-0.09761282886700041,,set
+hot,couch,fan,0.802,-1.619488248287602,,set
+hot,blankets,couch,0.995,-5.298317366548035,,set
+hot,blankets,heater,0.995,-0.005012541823544286,,set
+hot,couch,blankets,0.802,-1.619488248287602,,set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,shower,fan,0.863,-1.987774353154012,,set
+hot,pool,blankets,0.999,-6.907755278982136,,set
+hot,pool,blankets,0.999,-6.907755278982136,,set
+hot,pool,shower,0.999,-0.0010005003335835344,,set
+hot,shower,blankets,0.863,-1.987774353154012,,set
+hot,pool,fan,0.999,-6.907755278982136,,set
+hot,couch,blankets,0.802,-1.619488248287602,,set
+hot,heater,pool,,,{'heater'},set
+hot,fan,shower,0.907,-0.09761282886700041,{'heater'},set
+hot,pool,fan,0.999,-0.0010005003335835344,,set
+hot,blankets,heater,0.995,-0.005012541823544286,,set
+hot,pool,shower,0.999,-0.0010005003335835344,,set
+hot,couch,blankets,0.802,-1.619488248287602,,set
+hot,shower,heater,0.863,-1.987774353154012,,set
+hot,fan,shower,0.907,-0.09761282886700041,,set
+hot,heater,fan,,,{'heater'},set
+hot,shower,fan,0.863,-1.987774353154012,{'heater'},set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,blankets,shower,0.995,-5.298317366548035,,set
+hot,shower,pool,0.863,-1.987774353154012,,set
+hot,heater,shower,,,{'heater'},set
+hot,pool,fan,0.999,-0.0010005003335835344,{'heater'},set
+hot,shower,fan,0.863,-1.987774353154012,,set
+hot,heater,couch,,,{'heater'},set
+hot,shower,fan,0.863,-1.987774353154012,{'heater'},set
+hot,blankets,heater,0.995,-5.298317366548035,,set
+hot,pool,fan,0.999,-0.0010005003335835344,,set
+hot,pool,heater,0.999,-6.907755278982136,,set
+hot,couch,shower,0.802,-1.619488248287602,,set
+hot,shower,pool,0.863,-0.14734058789870913,,set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,shower,pool,0.863,-0.14734058789870913,,set
+hot,shower,pool,0.863,-1.987774353154012,,set
+hot,couch,blankets,0.802,-1.619488248287602,,set
+hot,shower,heater,0.863,-1.987774353154012,,set
+hot,pool,fan,0.999,-0.0010005003335835344,,set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,shower,pool,0.863,-1.987774353154012,,set
+hot,pool,fan,0.999,-0.0010005003335835344,,set
+hot,heater,fan,,,{'heater'},set
+hot,pool,heater,0.999,-0.0010005003335835344,{'heater'},set
+hot,shower,pool,0.863,-1.987774353154012,,set
+hot,blankets,fan,0.995,-5.298317366548035,,set
+hot,heater,pool,,,{'heater'},set
+hot,couch,blankets,0.802,-1.619488248287602,{'heater'},set
+hot,blankets,heater,0.995,-0.005012541823544286,,set
+hot,blankets,heater,0.995,-5.298317366548035,,set
+hot,shower,pool,0.863,-1.987774353154012,,set
+hot,shower,pool,0.863,-1.987774353154012,,set
+hot,couch,shower,0.802,-1.619488248287602,,set
+hot,fan,shower,0.907,-0.09761282886700041,,set
+hot,shower,pool,0.863,-0.14734058789870913,,set
+hot,pool,couch,0.999,-0.0010005003335835344,,set
+hot,blankets,shower,0.995,-5.298317366548035,,set
+hot,fan,blankets,0.907,-0.09761282886700041,,set
+hot,blankets,couch,0.995,-5.298317366548035,,set
+hot,fan,pool,0.907,-2.3751557858288814,,set
+hot,shower,pool,0.863,-0.14734058789870913,,set
+hot,heater,blankets,,,{'heater'},set
+hot,heater,shower,,,{'heater'},set
+hot,blankets,heater,0.995,-5.298317366548035,{'heater'},set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,couch,blankets,0.802,-1.619488248287602,,set
+hot,heater,fan,,,{'heater'},set
+hot,blankets,shower,0.995,-5.298317366548035,{'heater'},set
+hot,shower,couch,0.863,-0.14734058789870913,,set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,heater,shower,,,{'heater'},set
+hot,fan,heater,0.907,-0.09761282886700041,{'heater'},set
+hot,blankets,fan,0.995,-5.298317366548035,,set
+hot,shower,pool,0.863,-1.987774353154012,,set
+hot,blankets,pool,0.995,-5.298317366548035,,set
+hot,fan,blankets,0.907,-2.3751557858288814,,set
+hot,couch,shower,0.802,-1.619488248287602,,set
+hot,pool,heater,0.999,-6.907755278982136,,set
+hot,pool,couch,0.999,-0.0010005003335835344,,set
+hot,pool,fan,0.999,-6.907755278982136,,set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,pool,fan,0.999,-6.907755278982136,,set
+hot,heater,fan,,,{'heater'},set
+hot,couch,heater,0.802,-1.619488248287602,{'heater'},set
+hot,shower,couch,0.863,-0.14734058789870913,,set
+hot,couch,pool,0.802,-1.619488248287602,,set
+hot,fan,couch,0.907,-2.3751557858288814,,set
+hot,shower,fan,0.863,-1.987774353154012,,set
+hot,pool,couch,0.999,-6.907755278982136,,set
+hot,pool,fan,0.999,-6.907755278982136,,set
+hot,fan,couch,0.907,-2.3751557858288814,,set
+hot,blankets,couch,0.995,-5.298317366548035,,set
+hot,couch,pool,0.802,-1.619488248287602,,set
+hot,shower,fan,0.863,-1.987774353154012,,set
+hot,shower,blankets,0.863,-0.14734058789870913,,set
+hot,couch,blankets,0.802,-1.619488248287602,,set
+hot,pool,blankets,0.999,-6.907755278982136,,set
+hot,couch,blankets,0.802,-1.619488248287602,,set
+hot,blankets,heater,0.995,-5.298317366548035,,set
+hot,blankets,heater,0.995,-5.298317366548035,,set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,blankets,pool,0.995,-5.298317366548035,,set
+hot,heater,fan,,,{'heater'},set
+hot,fan,pool,0.907,-2.3751557858288814,{'heater'},set
+hot,shower,fan,0.863,-0.14734058789870913,,set
+hot,blankets,fan,0.995,-5.298317366548035,,set
+hot,heater,blankets,,,{'heater'},set
+hot,pool,couch,0.999,-6.907755278982136,{'heater'},set
+hot,heater,shower,,,{'heater'},set
+hot,blankets,shower,0.995,-5.298317366548035,{'heater'},set
+hot,couch,shower,0.802,-1.619488248287602,,set
+hot,shower,pool,0.863,-1.987774353154012,,set
+hot,blankets,heater,0.995,-5.298317366548035,,set
+hot,shower,fan,0.863,-1.987774353154012,,set
+hot,pool,couch,0.999,-6.907755278982136,,set
+hot,shower,fan,0.863,-1.987774353154012,,set
+hot,shower,pool,0.863,-1.987774353154012,,set
+hot,pool,fan,0.999,-0.0010005003335835344,,set
+hot,heater,couch,,,{'heater'},set
+hot,pool,blankets,0.999,-6.907755278982136,{'heater'},set
+hot,pool,fan,0.999,-6.907755278982136,,set
+hot,heater,blankets,,,{'heater'},set
+hot,shower,blankets,0.863,-1.987774353154012,{'heater'},set
+hot,pool,heater,0.999,-6.907755278982136,,set
+hot,couch,blankets,0.802,-1.619488248287602,,set
+hot,shower,pool,0.863,-1.987774353154012,,set
+hot,shower,heater,0.863,-1.987774353154012,,set
+hot,fan,couch,0.907,-2.3751557858288814,,set
+hot,fan,heater,0.907,-0.09761282886700041,,set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,couch,blankets,0.802,-1.619488248287602,,set
+hot,couch,fan,0.802,-1.619488248287602,,set
+hot,shower,fan,0.863,-1.987774353154012,,set
+hot,heater,shower,,,{'heater'},set
+hot,shower,blankets,0.863,-1.987774353154012,{'heater'},set
+hot,fan,blankets,0.907,-2.3751557858288814,,set
+hot,pool,fan,0.999,-0.0010005003335835344,,set
+hot,heater,fan,,,{'heater'},set
+hot,blankets,fan,0.995,-5.298317366548035,{'heater'},set
+hot,couch,shower,0.802,-1.619488248287602,,set
+hot,blankets,heater,0.995,-5.298317366548035,,set
+hot,blankets,heater,0.995,-5.298317366548035,,set
+hot,blankets,pool,0.995,-0.005012541823544286,,set
+hot,fan,shower,0.907,-2.3751557858288814,,set
+hot,fan,heater,0.907,-0.09761282886700041,,set
+hot,pool,blankets,0.999,-6.907755278982136,,set
+hot,fan,shower,0.907,-0.09761282886700041,,set
+hot,pool,fan,0.999,-0.0010005003335835344,,set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,fan,blankets,0.907,-2.3751557858288814,,set
+hot,couch,pool,0.802,-1.619488248287602,,set
+hot,heater,pool,,,{'heater'},set
+hot,shower,pool,0.863,-1.987774353154012,{'heater'},set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,pool,fan,0.999,-0.0010005003335835344,,set
+hot,shower,fan,0.863,-1.987774353154012,,set
+hot,pool,fan,0.999,-0.0010005003335835344,,set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,couch,fan,0.802,-1.619488248287602,,set
+hot,shower,pool,0.863,-1.987774353154012,,set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,pool,fan,0.999,-6.907755278982136,,set
+hot,heater,pool,,,{'heater'},set
+hot,shower,fan,0.863,-1.987774353154012,{'heater'},set
+hot,couch,heater,0.802,-1.619488248287602,,set
+hot,heater,shower,,,{'heater'},set
+hot,shower,pool,0.863,-1.987774353154012,{'heater'},set
+hot,blankets,couch,0.995,-5.298317366548035,,set
+hot,pool,fan,0.999,-6.907755278982136,,set
+hot,fan,pool,0.907,-0.09761282886700041,,set
+hot,couch,blankets,0.802,-1.619488248287602,,set
+mall,gift shop,pretzel stand,,,{'gift shop'},set
+mall,electronics store,coffee shop,,,"{'electronics store', 'gift shop'}",set
+mall,gift shop,coffee shop,,,"{'electronics store', 'gift shop'}",set
+mall,coffee shop,electronics store,,,"{'electronics store', 'gift shop', 'coffee shop'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'pretzel stand', 'gift shop', 'coffee shop'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'pretzel stand', 'gift shop', 'coffee shop'}",set
+mall,electronics store,burger joint,,,"{'electronics store', 'pretzel stand', 'gift shop', 'coffee shop'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'pretzel stand'}",set
+mall,grocery store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'pretzel stand'}",set
+mall,pretzel stand,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'pretzel stand'}",set
+mall,pretzel stand,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'pretzel stand'}",set
+mall,burger joint,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,pretzel stand,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,coffee shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,electronics store,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,burger joint,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,burger joint,gift shop,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,coffee shop,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,grocery store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,grocery store,pretzel stand,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mall,gift shop,electronics store,,,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mask,wallet,candy,0.992,-4.828313737302301,"{'electronics store', 'gift shop', 'grocery store', 'coffee shop', 'burger joint', 'pretzel stand'}",set
+mask,handkerchief,wallet,0.826,-1.7486999797676077,,set
+mask,napkins,wallet,,,{'napkins'},set
+mask,napkins,wallet,,,{'napkins'},set
+mask,gloves,wallet,1.0,-23.025850929940457,{'napkins'},set
+mask,gloves,candy,1.0,-23.025850929940457,,set
+mask,handkerchief,bandana,0.826,-0.19116050546115904,,set
+mask,handkerchief,bandana,0.826,-1.7486999797676077,,set
+mask,bandana,wallet,,,{'bandana'},set
+mask,napkins,candy,,,"{'napkins', 'bandana'}",set
+mask,handkerchief,bandana,0.826,-1.7486999797676077,"{'napkins', 'bandana'}",set
+mask,handkerchief,gloves,0.826,-1.7486999797676077,,set
+mask,gloves,candy,1.0,-23.025850929940457,,set
+mask,candy,wallet,0.996,-5.521460917862245,,set
+mask,wallet,napkins,0.992,-4.828313737302301,,set
+mask,handkerchief,gloves,0.826,-0.19116050546115904,,set
+mask,bandana,gloves,,,{'bandana'},set
+mask,candy,handkerchief,0.996,-5.521460917862245,{'bandana'},set
+mask,wallet,handkerchief,0.992,-4.828313737302301,,set
+mask,wallet,gloves,0.992,-4.828313737302301,,set
+mask,handkerchief,wallet,0.826,-0.19116050546115904,,set
+mask,napkins,gloves,,,{'napkins'},set
+mask,handkerchief,bandana,0.826,-0.19116050546115904,{'napkins'},set
+mask,candy,bandana,0.996,-5.521460917862245,,set
+mask,gloves,candy,1.0,-23.025850929940457,,set
+mask,bandana,candy,,,{'bandana'},set
+mask,candy,napkins,0.996,-5.521460917862245,{'bandana'},set
+mask,gloves,wallet,1.0,0.0,,set
+mask,napkins,gloves,,,{'napkins'},set
+mask,gloves,candy,1.0,-23.025850929940457,{'napkins'},set
+mask,gloves,candy,1.0,-23.025850929940457,,set
+mask,bandana,gloves,,,{'bandana'},set
+mask,napkins,wallet,,,"{'napkins', 'bandana'}",set
+mask,napkins,handkerchief,,,"{'napkins', 'bandana'}",set
+mask,gloves,candy,1.0,0.0,"{'napkins', 'bandana'}",set
+mask,wallet,bandana,0.992,-0.008032171697264267,,set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,wallet,handkerchief,0.992,-4.828313737302301,{'napkins'},set
+mask,gloves,candy,1.0,-23.025850929940457,,set
+mask,gloves,handkerchief,1.0,-23.025850929940457,,set
+mask,wallet,candy,0.992,-4.828313737302301,,set
+mask,napkins,bandana,,,{'napkins'},set
+mask,wallet,candy,0.992,-4.828313737302301,{'napkins'},set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,bandana,candy,,,"{'napkins', 'bandana'}",set
+mask,candy,napkins,0.996,-5.521460917862245,"{'napkins', 'bandana'}",set
+mask,wallet,candy,0.992,-4.828313737302301,,set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,candy,bandana,0.996,-5.521460917862245,{'napkins'},set
+mask,gloves,candy,1.0,-23.025850929940457,,set
+mask,gloves,wallet,1.0,0.0,,set
+mask,bandana,handkerchief,,,{'bandana'},set
+mask,candy,bandana,0.996,-5.521460917862245,{'bandana'},set
+mask,candy,bandana,0.996,-5.521460917862245,,set
+mask,gloves,napkins,1.0,-23.025850929940457,,set
+mask,gloves,wallet,1.0,0.0,,set
+mask,wallet,candy,0.992,-4.828313737302301,,set
+mask,napkins,wallet,,,{'napkins'},set
+mask,wallet,candy,0.992,-4.828313737302301,{'napkins'},set
+mask,gloves,wallet,1.0,0.0,,set
+mask,napkins,bandana,,,{'napkins'},set
+mask,wallet,candy,0.992,-4.828313737302301,{'napkins'},set
+mask,wallet,bandana,0.992,-4.828313737302301,,set
+mask,wallet,gloves,0.992,-4.828313737302301,,set
+mask,wallet,gloves,0.992,-4.828313737302301,,set
+mask,handkerchief,gloves,0.826,-0.19116050546115904,,set
+mask,handkerchief,wallet,0.826,-1.7486999797676077,,set
+mask,handkerchief,bandana,0.826,-1.7486999797676077,,set
+mask,napkins,bandana,,,{'napkins'},set
+mask,candy,handkerchief,0.996,-5.521460917862245,{'napkins'},set
+mask,gloves,candy,1.0,-23.025850929940457,,set
+mask,gloves,candy,1.0,-23.025850929940457,,set
+mask,napkins,bandana,,,{'napkins'},set
+mask,bandana,wallet,,,"{'napkins', 'bandana'}",set
+mask,candy,handkerchief,0.996,-5.521460917862245,"{'napkins', 'bandana'}",set
+mask,wallet,candy,0.992,-4.828313737302301,,set
+mask,candy,wallet,0.996,-5.521460917862245,,set
+mask,gloves,wallet,1.0,0.0,,set
+mask,wallet,candy,0.992,-4.828313737302301,,set
+mask,handkerchief,bandana,0.826,-0.19116050546115904,,set
+mask,handkerchief,bandana,0.826,-0.19116050546115904,,set
+mask,gloves,wallet,1.0,0.0,,set
+mask,napkins,bandana,,,{'napkins'},set
+mask,gloves,napkins,1.0,-23.025850929940457,{'napkins'},set
+mask,wallet,napkins,0.992,-4.828313737302301,,set
+mask,gloves,wallet,1.0,0.0,,set
+mask,bandana,candy,,,{'bandana'},set
+mask,handkerchief,bandana,0.826,-1.7486999797676077,{'bandana'},set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,wallet,candy,0.992,-4.828313737302301,{'napkins'},set
+mask,wallet,bandana,0.992,-0.008032171697264267,,set
+mask,gloves,wallet,1.0,-23.025850929940457,,set
+mask,gloves,wallet,1.0,0.0,,set
+mask,candy,gloves,0.996,-5.521460917862245,,set
+mask,gloves,handkerchief,1.0,0.0,,set
+mask,candy,gloves,0.996,-5.521460917862245,,set
+mask,gloves,wallet,1.0,0.0,,set
+mask,napkins,gloves,,,{'napkins'},set
+mask,handkerchief,napkins,0.826,-0.19116050546115904,{'napkins'},set
+mask,bandana,candy,,,{'bandana'},set
+mask,candy,wallet,0.996,-5.521460917862245,{'bandana'},set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,candy,gloves,0.996,-5.521460917862245,{'napkins'},set
+mask,wallet,candy,0.992,-0.008032171697264267,,set
+mask,napkins,bandana,,,{'napkins'},set
+mask,napkins,bandana,,,{'napkins'},set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,wallet,handkerchief,0.992,-4.828313737302301,{'napkins'},set
+mask,napkins,wallet,,,{'napkins'},set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,bandana,wallet,,,"{'napkins', 'bandana'}",set
+mask,bandana,napkins,,,"{'napkins', 'bandana'}",set
+mask,wallet,handkerchief,0.992,-4.828313737302301,"{'napkins', 'bandana'}",set
+mask,bandana,wallet,,,{'bandana'},set
+mask,candy,napkins,0.996,-0.004008021397538822,{'bandana'},set
+mask,napkins,candy,,,{'napkins'},set
+mask,wallet,candy,0.992,-4.828313737302301,{'napkins'},set
+mask,wallet,handkerchief,0.992,-4.828313737302301,,set
+mask,candy,handkerchief,0.996,-5.521460917862245,,set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,wallet,candy,0.992,-4.828313737302301,{'napkins'},set
+mask,napkins,bandana,,,{'napkins'},set
+mask,candy,gloves,0.996,-5.521460917862245,{'napkins'},set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,wallet,candy,0.992,-4.828313737302301,{'napkins'},set
+mask,wallet,candy,0.992,-4.828313737302301,,set
+mask,candy,handkerchief,0.996,-5.521460917862245,,set
+mask,candy,gloves,0.996,-0.004008021397538822,,set
+mask,napkins,bandana,,,{'napkins'},set
+mask,gloves,wallet,1.0,-23.025850929940457,{'napkins'},set
+mask,gloves,wallet,1.0,-23.025850929940457,,set
+mask,handkerchief,wallet,0.826,-0.19116050546115904,,set
+mask,gloves,wallet,1.0,0.0,,set
+mask,candy,napkins,0.996,-5.521460917862245,,set
+mask,handkerchief,napkins,0.826,-0.19116050546115904,,set
+mask,handkerchief,gloves,0.826,-1.7486999797676077,,set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,bandana,napkins,,,"{'napkins', 'bandana'}",set
+mask,gloves,bandana,1.0,0.0,"{'napkins', 'bandana'}",set
+mask,handkerchief,bandana,0.826,-1.7486999797676077,,set
+mask,gloves,candy,1.0,-23.025850929940457,,set
+mask,bandana,handkerchief,,,{'bandana'},set
+mask,wallet,napkins,0.992,-4.828313737302301,{'bandana'},set
+mask,handkerchief,napkins,0.826,-0.19116050546115904,,set
+mask,handkerchief,wallet,0.826,-0.19116050546115904,,set
+mask,napkins,gloves,,,{'napkins'},set
+mask,gloves,candy,1.0,-23.025850929940457,{'napkins'},set
+mask,bandana,gloves,,,{'bandana'},set
+mask,candy,napkins,0.996,-5.521460917862245,{'bandana'},set
+mask,candy,wallet,0.996,-0.004008021397538822,,set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,wallet,candy,0.992,-0.008032171697264267,{'napkins'},set
+mask,gloves,wallet,1.0,-23.025850929940457,,set
+mask,handkerchief,bandana,0.826,-0.19116050546115904,,set
+mask,napkins,bandana,,,{'napkins'},set
+mask,bandana,napkins,,,"{'napkins', 'bandana'}",set
+mask,gloves,candy,1.0,-23.025850929940457,"{'napkins', 'bandana'}",set
+mask,gloves,handkerchief,1.0,-23.025850929940457,,set
+mask,gloves,wallet,1.0,-23.025850929940457,,set
+mask,handkerchief,bandana,0.826,-0.19116050546115904,,set
+mask,gloves,handkerchief,1.0,0.0,,set
+mask,handkerchief,napkins,0.826,-1.7486999797676077,,set
+mask,gloves,handkerchief,1.0,-23.025850929940457,,set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,gloves,bandana,1.0,-23.025850929940457,{'napkins'},set
+mask,handkerchief,candy,0.826,-0.19116050546115904,,set
+mask,wallet,napkins,0.992,-4.828313737302301,,set
+mask,handkerchief,candy,0.826,-1.7486999797676077,,set
+mask,handkerchief,napkins,0.826,-1.7486999797676077,,set
+mask,gloves,napkins,1.0,-23.025850929940457,,set
+mask,gloves,napkins,1.0,0.0,,set
+mask,bandana,wallet,,,{'bandana'},set
+mask,napkins,handkerchief,,,"{'napkins', 'bandana'}",set
+mask,wallet,bandana,0.992,-4.828313737302301,"{'napkins', 'bandana'}",set
+mask,gloves,candy,1.0,-23.025850929940457,,set
+mask,handkerchief,bandana,0.826,-0.19116050546115904,,set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,bandana,gloves,,,"{'napkins', 'bandana'}",set
+mask,napkins,handkerchief,,,"{'napkins', 'bandana'}",set
+mask,handkerchief,gloves,0.826,-1.7486999797676077,"{'napkins', 'bandana'}",set
+mask,wallet,candy,0.992,-0.008032171697264267,,set
+mask,bandana,handkerchief,,,{'bandana'},set
+mask,handkerchief,candy,0.826,-0.19116050546115904,{'bandana'},set
+mask,candy,handkerchief,0.996,-5.521460917862245,,set
+mask,gloves,candy,1.0,-23.025850929940457,,set
+mask,napkins,wallet,,,{'napkins'},set
+mask,wallet,candy,0.992,-4.828313737302301,{'napkins'},set
+mask,gloves,wallet,1.0,0.0,,set
+mask,gloves,candy,1.0,-23.025850929940457,,set
+mask,gloves,wallet,1.0,-23.025850929940457,,set
+mask,handkerchief,candy,0.826,-0.19116050546115904,,set
+mask,wallet,candy,0.992,-0.008032171697264267,,set
+mask,bandana,gloves,,,{'bandana'},set
+mask,gloves,napkins,1.0,-23.025850929940457,{'bandana'},set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,bandana,candy,,,"{'napkins', 'bandana'}",set
+mask,napkins,bandana,,,"{'napkins', 'bandana'}",set
+mask,napkins,bandana,,,"{'napkins', 'bandana'}",set
+mask,napkins,handkerchief,,,"{'napkins', 'bandana'}",set
+mask,bandana,gloves,,,"{'napkins', 'bandana'}",set
+mask,napkins,candy,,,"{'napkins', 'bandana'}",set
+mask,handkerchief,candy,0.826,-1.7486999797676077,"{'napkins', 'bandana'}",set
+mask,wallet,bandana,0.992,-4.828313737302301,,set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,handkerchief,bandana,0.826,-0.19116050546115904,{'napkins'},set
+mask,bandana,napkins,,,{'bandana'},set
+mask,candy,wallet,0.996,-5.521460917862245,{'bandana'},set
+mask,napkins,handkerchief,,,{'napkins'},set
+mask,wallet,candy,0.992,-4.828313737302301,{'napkins'},set
+mask,handkerchief,candy,0.826,-0.19116050546115904,,set
+mask,napkins,candy,,,{'napkins'},set
+mask,gloves,wallet,1.0,0.0,{'napkins'},set
+mask,bandana,napkins,,,{'bandana'},set
+meat,tofu,mushrooms,,,"{'tofu', 'bandana'}",set
+meat,tofu,mushrooms,,,"{'tofu', 'bandana'}",set
+meat,mushrooms,chicken,0.999,-0.0010005003335835344,"{'tofu', 'bandana'}",set
+meat,chicken,mushrooms,0.999,-0.0010005003335835344,,set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,crab,turkey,0.988,-0.012072581234269249,,set
+meat,crab,tofu,0.988,-0.012072581234269249,,set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,turkey,crab,0.999,-0.0010005003335835344,{'tofu'},set
+meat,rice,turkey,0.999,-6.907755278982136,,set
+meat,turkey,tofu,0.999,-0.0010005003335835344,,set
+meat,crab,rice,0.988,-4.422848629194136,,set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,tofu,rice,,,{'tofu'},set
+meat,turkey,mushrooms,0.999,-0.0010005003335835344,{'tofu'},set
+meat,crab,turkey,0.988,-4.422848629194136,,set
+meat,chicken,tofu,0.999,-0.0010005003335835344,,set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,rice,turkey,0.999,-6.907755278982136,,set
+meat,mushrooms,turkey,0.999,-6.907755278982136,,set
+meat,crab,chicken,0.988,-0.012072581234269249,,set
+meat,turkey,tofu,0.999,-0.0010005003335835344,,set
+meat,turkey,mushrooms,0.999,-0.0010005003335835344,,set
+meat,chicken,tofu,0.999,-0.0010005003335835344,,set
+meat,mushrooms,rice,0.999,-0.0010005003335835344,,set
+meat,crab,chicken,0.988,-0.012072581234269249,,set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,turkey,chicken,0.999,-0.0010005003335835344,{'tofu'},set
+meat,rice,tofu,0.999,-6.907755278982136,,set
+meat,mushrooms,rice,0.999,-6.907755278982136,,set
+meat,mushrooms,rice,0.999,-6.907755278982136,,set
+meat,rice,mushrooms,0.999,-6.907755278982136,,set
+meat,crab,chicken,0.988,-0.012072581234269249,,set
+meat,tofu,rice,,,{'tofu'},set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,mushrooms,tofu,0.999,-6.907755278982136,{'tofu'},set
+meat,mushrooms,tofu,0.999,-6.907755278982136,,set
+meat,mushrooms,chicken,0.999,-6.907755278982136,,set
+meat,chicken,tofu,0.999,-0.0010005003335835344,,set
+meat,mushrooms,crab,0.999,-6.907755278982136,,set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,crab,turkey,0.988,-0.012072581234269249,,set
+meat,chicken,mushrooms,0.999,-0.0010005003335835344,,set
+meat,turkey,rice,0.999,-0.0010005003335835344,,set
+meat,tofu,turkey,,,{'tofu'},set
+meat,crab,mushrooms,0.988,-0.012072581234269249,{'tofu'},set
+meat,tofu,rice,,,{'tofu'},set
+meat,rice,tofu,0.999,-6.907755278982136,{'tofu'},set
+meat,crab,turkey,0.988,-0.012072581234269249,,set
+meat,chicken,turkey,0.999,-0.0010005003335835344,,set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,tofu,chicken,,,{'tofu'},set
+meat,rice,mushrooms,0.999,-6.907755278982136,{'tofu'},set
+meat,turkey,mushrooms,0.999,-0.0010005003335835344,,set
+meat,turkey,tofu,0.999,-0.0010005003335835344,,set
+meat,rice,chicken,0.999,-0.0010005003335835344,,set
+meat,crab,mushrooms,0.988,-0.012072581234269249,,set
+meat,turkey,crab,0.999,-0.0010005003335835344,,set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,tofu,crab,,,{'tofu'},set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,tofu,chicken,,,{'tofu'},set
+meat,turkey,chicken,0.999,-0.0010005003335835344,{'tofu'},set
+meat,rice,tofu,0.999,-6.907755278982136,,set
+meat,crab,chicken,0.988,-4.422848629194136,,set
+meat,crab,chicken,0.988,-0.012072581234269249,,set
+meat,crab,chicken,0.988,-0.012072581234269249,,set
+meat,tofu,crab,,,{'tofu'},set
+meat,tofu,rice,,,{'tofu'},set
+meat,chicken,crab,0.999,-0.0010005003335835344,{'tofu'},set
+meat,turkey,tofu,0.999,-0.0010005003335835344,,set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,crab,turkey,0.988,-0.012072581234269249,,set
+meat,crab,chicken,0.988,-0.012072581234269249,,set
+meat,tofu,rice,,,{'tofu'},set
+meat,tofu,rice,,,{'tofu'},set
+meat,crab,rice,0.988,-0.012072581234269249,{'tofu'},set
+meat,mushrooms,rice,0.999,-6.907755278982136,,set
+meat,turkey,rice,0.999,-0.0010005003335835344,,set
+meat,mushrooms,rice,0.999,-6.907755278982136,,set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,crab,mushrooms,0.988,-0.012072581234269249,{'tofu'},set
+meat,crab,chicken,0.988,-0.012072581234269249,,set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,crab,turkey,0.988,-4.422848629194136,,set
+meat,tofu,turkey,,,{'tofu'},set
+meat,crab,chicken,0.988,-0.012072581234269249,{'tofu'},set
+meat,tofu,rice,,,{'tofu'},set
+meat,mushrooms,crab,0.999,-6.907755278982136,{'tofu'},set
+meat,rice,turkey,0.999,-6.907755278982136,,set
+meat,mushrooms,crab,0.999,-6.907755278982136,,set
+meat,tofu,rice,,,{'tofu'},set
+meat,crab,chicken,0.988,-4.422848629194136,{'tofu'},set
+meat,rice,mushrooms,0.999,-6.907755278982136,,set
+meat,crab,chicken,0.988,-0.012072581234269249,,set
+meat,rice,turkey,0.999,-6.907755278982136,,set
+meat,rice,chicken,0.999,-6.907755278982136,,set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,tofu,rice,,,{'tofu'},set
+meat,chicken,tofu,0.999,-0.0010005003335835344,{'tofu'},set
+meat,chicken,crab,0.999,-0.0010005003335835344,,set
+meat,mushrooms,rice,0.999,-6.907755278982136,,set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,mushrooms,rice,0.999,-0.0010005003335835344,,set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,mushrooms,chicken,0.999,-6.907755278982136,{'tofu'},set
+meat,chicken,mushrooms,0.999,-0.0010005003335835344,,set
+meat,turkey,mushrooms,0.999,-0.0010005003335835344,,set
+meat,mushrooms,rice,0.999,-6.907755278982136,,set
+meat,tofu,chicken,,,{'tofu'},set
+meat,tofu,turkey,,,{'tofu'},set
+meat,tofu,rice,,,{'tofu'},set
+meat,tofu,crab,,,{'tofu'},set
+meat,tofu,chicken,,,{'tofu'},set
+meat,mushrooms,chicken,0.999,-6.907755278982136,{'tofu'},set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,crab,chicken,0.988,-0.012072581234269249,,set
+meat,mushrooms,rice,0.999,-6.907755278982136,,set
+meat,mushrooms,turkey,0.999,-6.907755278982136,,set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,tofu,turkey,,,{'tofu'},set
+meat,turkey,chicken,0.999,-0.0010005003335835344,{'tofu'},set
+meat,mushrooms,tofu,0.999,-6.907755278982136,,set
+meat,chicken,mushrooms,0.999,-0.0010005003335835344,,set
+meat,mushrooms,rice,0.999,-6.907755278982136,,set
+meat,crab,tofu,0.988,-0.012072581234269249,,set
+meat,turkey,mushrooms,0.999,-0.0010005003335835344,,set
+meat,turkey,mushrooms,0.999,-0.0010005003335835344,,set
+meat,crab,turkey,0.988,-0.012072581234269249,,set
+meat,mushrooms,rice,0.999,-0.0010005003335835344,,set
+meat,crab,tofu,0.988,-0.012072581234269249,,set
+meat,crab,turkey,0.988,-0.012072581234269249,,set
+meat,chicken,rice,0.999,-0.0010005003335835344,,set
+meat,crab,tofu,0.988,-4.422848629194136,,set
+meat,tofu,rice,,,{'tofu'},set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,tofu,rice,,,{'tofu'},set
+meat,turkey,chicken,0.999,-0.0010005003335835344,{'tofu'},set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,tofu,turkey,,,{'tofu'},set
+meat,chicken,crab,0.999,-0.0010005003335835344,{'tofu'},set
+meat,turkey,rice,0.999,-0.0010005003335835344,,set
+meat,mushrooms,rice,0.999,-6.907755278982136,,set
+meat,rice,crab,0.999,-6.907755278982136,,set
+meat,mushrooms,turkey,0.999,-6.907755278982136,,set
+meat,mushrooms,rice,0.999,-6.907755278982136,,set
+meat,chicken,turkey,0.999,-0.0010005003335835344,,set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,chicken,mushrooms,0.999,-0.0010005003335835344,,set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,crab,mushrooms,0.988,-0.012072581234269249,{'tofu'},set
+meat,turkey,chicken,0.999,-6.907755278982136,,set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,mushrooms,tofu,0.999,-6.907755278982136,,set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,mushrooms,tofu,0.999,-6.907755278982136,{'tofu'},set
+meat,chicken,crab,0.999,-0.0010005003335835344,,set
+meat,rice,tofu,0.999,-6.907755278982136,,set
+meat,rice,mushrooms,0.999,-6.907755278982136,,set
+meat,mushrooms,rice,0.999,-6.907755278982136,,set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,turkey,rice,0.999,-0.0010005003335835344,,set
+meat,tofu,rice,,,{'tofu'},set
+meat,tofu,rice,,,{'tofu'},set
+meat,crab,turkey,0.988,-0.012072581234269249,{'tofu'},set
+meat,rice,turkey,0.999,-6.907755278982136,,set
+meat,turkey,crab,0.999,-0.0010005003335835344,,set
+meat,tofu,rice,,,{'tofu'},set
+meat,crab,turkey,0.988,-0.012072581234269249,{'tofu'},set
+meat,tofu,turkey,,,{'tofu'},set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,chicken,rice,0.999,-0.0010005003335835344,{'tofu'},set
+meat,tofu,rice,,,{'tofu'},set
+meat,crab,chicken,0.988,-0.012072581234269249,{'tofu'},set
+meat,rice,tofu,0.999,-6.907755278982136,,set
+meat,rice,mushrooms,0.999,-6.907755278982136,,set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,crab,turkey,0.988,-0.012072581234269249,{'tofu'},set
+meat,crab,tofu,0.988,-0.012072581234269249,,set
+meat,turkey,chicken,0.999,-0.0010005003335835344,,set
+meat,chicken,turkey,0.999,-0.0010005003335835344,,set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,mushrooms,rice,0.999,-6.907755278982136,{'tofu'},set
+meat,tofu,rice,,,{'tofu'},set
+meat,crab,chicken,0.988,-4.422848629194136,{'tofu'},set
+meat,crab,turkey,0.988,-4.422848629194136,,set
+meat,chicken,turkey,0.999,-0.0010005003335835344,,set
+meat,turkey,tofu,0.999,-0.0010005003335835344,,set
+meat,crab,chicken,0.988,-0.012072581234269249,,set
+meat,rice,crab,0.999,-6.907755278982136,,set
+meat,crab,turkey,0.988,-0.012072581234269249,,set
+meat,rice,crab,0.999,-6.907755278982136,,set
+meat,chicken,crab,0.999,-0.0010005003335835344,,set
+meat,crab,chicken,0.988,-0.012072581234269249,,set
+meat,turkey,crab,0.999,-0.0010005003335835344,,set
+meat,mushrooms,rice,0.999,-6.907755278982136,,set
+meat,crab,mushrooms,0.988,-0.012072581234269249,,set
+meat,tofu,chicken,,,{'tofu'},set
+meat,mushrooms,rice,0.999,-0.0010005003335835344,{'tofu'},set
+meat,mushrooms,turkey,0.999,-6.907755278982136,,set
+meat,turkey,crab,0.999,-0.0010005003335835344,,set
+meat,rice,crab,0.999,-6.907755278982136,,set
+meat,tofu,rice,,,{'tofu'},set
+meat,turkey,rice,0.999,-0.0010005003335835344,{'tofu'},set
+meat,tofu,mushrooms,,,{'tofu'},set
+meat,crab,chicken,0.988,-4.422848629194136,{'tofu'},set
+meat,rice,mushrooms,0.999,-6.907755278982136,,set
+meat,chicken,mushrooms,0.999,-0.0010005003335835344,,set
+meat,rice,crab,0.999,-6.907755278982136,,set
+meat,mushrooms,chicken,0.999,-6.907755278982136,,set
+restaurant,soda,cocktails,0.998,-6.2146080984221905,,set
+restaurant,soup,salad,0.997,-0.0030045090202987243,,set
+restaurant,vodka,salad,0.999,-0.0010005003335835344,,set
+restaurant,vodka,cocktails,0.999,-0.0010005003335835344,,set
+restaurant,cake,salad,0.976,-3.7297014486341906,,set
+restaurant,soup,cake,0.997,-0.0030045090202987243,,set
+restaurant,soda,cake,0.998,-0.0020020026706730793,,set
+restaurant,soup,vodka,0.997,-5.809142990314027,,set
+restaurant,salad,soup,0.995,-0.005012541823544286,,set
+restaurant,cake,salad,0.976,-3.7297014486341906,,set
+restaurant,cocktails,soda,,,{'cocktails'},set
+restaurant,soda,soup,0.998,-0.0020020026706730793,{'cocktails'},set
+restaurant,soda,soup,0.998,-0.0020020026706730793,,set
+restaurant,soup,salad,0.997,-0.0030045090202987243,,set
+restaurant,salad,soup,0.995,-0.005012541823544286,,set
+restaurant,soup,salad,0.997,-5.809142990314027,,set
+restaurant,soup,salad,0.997,-5.809142990314027,,set
+restaurant,cake,salad,0.976,-0.024292692569044587,,set
+restaurant,soda,cocktails,0.998,-0.0020020026706730793,,set
+restaurant,soup,salad,0.997,-0.0030045090202987243,,set
+restaurant,salad,cake,0.995,-5.298317366548035,,set
+restaurant,vodka,cocktails,0.999,-0.0010005003335835344,,set
+restaurant,cocktails,soup,,,{'cocktails'},set
+restaurant,soda,vodka,0.998,-6.2146080984221905,{'cocktails'},set
+restaurant,salad,soda,0.995,-5.298317366548035,,set
+restaurant,soup,cake,0.997,-5.809142990314027,,set
+restaurant,soda,cocktails,0.998,-6.2146080984221905,,set
+restaurant,cake,salad,0.976,-0.024292692569044587,,set
+restaurant,vodka,soup,0.999,-0.0010005003335835344,,set
+restaurant,salad,soup,0.995,-0.005012541823544286,,set
+restaurant,salad,soup,0.995,-5.298317366548035,,set
+restaurant,soup,salad,0.997,-0.0030045090202987243,,set
+restaurant,vodka,cake,0.999,-0.0010005003335835344,,set
+restaurant,vodka,soup,0.999,-0.0010005003335835344,,set
+restaurant,soda,vodka,0.998,-6.2146080984221905,,set
+restaurant,cake,salad,0.976,-0.024292692569044587,,set
+restaurant,cake,salad,0.976,-0.024292692569044587,,set
+restaurant,cake,cocktails,0.976,-3.7297014486341906,,set
+restaurant,soup,cake,0.997,-5.809142990314027,,set
+restaurant,vodka,cake,0.999,-0.0010005003335835344,,set
+restaurant,soup,vodka,0.997,-5.809142990314027,,set
+restaurant,soda,soup,0.998,-0.0020020026706730793,,set
+restaurant,cake,vodka,0.976,-3.7297014486341906,,set
+restaurant,vodka,cocktails,0.999,-0.0010005003335835344,,set
+restaurant,salad,soup,0.995,-5.298317366548035,,set
+restaurant,vodka,soda,0.999,-0.0010005003335835344,,set
+restaurant,cocktails,soup,,,{'cocktails'},set
+restaurant,vodka,cake,0.999,-0.0010005003335835344,{'cocktails'},set
+restaurant,soup,cocktails,0.997,-5.809142990314027,,set
+restaurant,vodka,cocktails,0.999,-6.907755278982136,,set
+restaurant,soup,salad,0.997,-0.0030045090202987243,,set
+restaurant,vodka,salad,0.999,-0.0010005003335835344,,set
+restaurant,salad,soda,0.995,-5.298317366548035,,set
+restaurant,cake,soda,0.976,-3.7297014486341906,,set
+restaurant,vodka,cake,0.999,-0.0010005003335835344,,set
+restaurant,cocktails,cake,,,{'cocktails'},set
+restaurant,salad,soda,0.995,-5.298317366548035,{'cocktails'},set
+restaurant,cocktails,cake,,,{'cocktails'},set
+restaurant,cake,salad,0.976,-3.7297014486341906,{'cocktails'},set
+restaurant,soda,salad,0.998,-6.2146080984221905,,set
+restaurant,soda,vodka,0.998,-6.2146080984221905,,set
+restaurant,vodka,cocktails,0.999,-0.0010005003335835344,,set
+restaurant,soda,cocktails,0.998,-6.2146080984221905,,set
+restaurant,vodka,soda,0.999,-0.0010005003335835344,,set
+restaurant,cake,salad,0.976,-3.7297014486341906,,set
+restaurant,soda,vodka,0.998,-6.2146080984221905,,set
+restaurant,cake,salad,0.976,-3.7297014486341906,,set
+restaurant,cake,cocktails,0.976,-3.7297014486341906,,set
+restaurant,soda,vodka,0.998,-6.2146080984221905,,set
+restaurant,soup,salad,0.997,-0.0030045090202987243,,set
+restaurant,soda,cocktails,0.998,-0.0020020026706730793,,set
+restaurant,cake,vodka,0.976,-3.7297014486341906,,set
+restaurant,soup,cake,0.997,-5.809142990314027,,set
+restaurant,soup,salad,0.997,-0.0030045090202987243,,set
+restaurant,soup,vodka,0.997,-5.809142990314027,,set
+restaurant,soda,vodka,0.998,-6.2146080984221905,,set
+restaurant,soup,cake,0.997,-0.0030045090202987243,,set
+restaurant,cocktails,soup,,,{'cocktails'},set
+restaurant,vodka,soda,0.999,-0.0010005003335835344,{'cocktails'},set
+restaurant,soda,cake,0.998,-0.0020020026706730793,,set
+restaurant,soup,cake,0.997,-5.809142990314027,,set
+restaurant,salad,cake,0.995,-0.005012541823544286,,set
+restaurant,cocktails,vodka,,,{'cocktails'},set
+restaurant,salad,cocktails,0.995,-5.298317366548035,{'cocktails'},set
+restaurant,soda,vodka,0.998,-6.2146080984221905,,set
+restaurant,cake,vodka,0.976,-3.7297014486341906,,set
+restaurant,cake,salad,0.976,-0.024292692569044587,,set
+restaurant,soda,vodka,0.998,-0.0020020026706730793,,set
+restaurant,soda,vodka,0.998,-6.2146080984221905,,set
+restaurant,soup,salad,0.997,-0.0030045090202987243,,set
+restaurant,cocktails,vodka,,,{'cocktails'},set
+restaurant,soup,salad,0.997,-0.0030045090202987243,{'cocktails'},set
+restaurant,soda,cocktails,0.998,-6.2146080984221905,,set
+restaurant,cocktails,soup,,,{'cocktails'},set
+restaurant,cocktails,cake,,,{'cocktails'},set
+restaurant,soup,cake,0.997,-5.809142990314027,{'cocktails'},set
+restaurant,cocktails,salad,,,{'cocktails'},set
+restaurant,soda,cocktails,0.998,-6.2146080984221905,{'cocktails'},set
+restaurant,vodka,cocktails,0.999,-0.0010005003335835344,,set
+restaurant,soda,cake,0.998,-0.0020020026706730793,,set
+restaurant,soda,vodka,0.998,-6.2146080984221905,,set
+restaurant,soda,soup,0.998,-0.0020020026706730793,,set
+restaurant,cake,salad,0.976,-0.024292692569044587,,set
+restaurant,soda,cocktails,0.998,-6.2146080984221905,,set
+restaurant,soup,soda,0.997,-5.809142990314027,,set
+restaurant,cake,salad,0.976,-3.7297014486341906,,set
+restaurant,salad,soda,0.995,-5.298317366548035,,set
+restaurant,soda,cocktails,0.998,-0.0020020026706730793,,set
+restaurant,cake,salad,0.976,-0.024292692569044587,,set
+restaurant,vodka,cocktails,0.999,-0.0010005003335835344,,set
+restaurant,cocktails,salad,,,{'cocktails'},set
+restaurant,vodka,cocktails,0.999,-6.907755278982136,{'cocktails'},set
+restaurant,soup,cake,0.997,-5.809142990314027,,set
+restaurant,soda,cocktails,0.998,-6.2146080984221905,,set
+restaurant,soda,cocktails,0.998,-0.0020020026706730793,,set
+restaurant,vodka,soda,0.999,-0.0010005003335835344,,set
+restaurant,soup,cake,0.997,-5.809142990314027,,set
+restaurant,cocktails,soda,,,{'cocktails'},set
+restaurant,soup,vodka,0.997,-5.809142990314027,{'cocktails'},set
+restaurant,soup,salad,0.997,-0.0030045090202987243,,set
+restaurant,salad,cocktails,0.995,-5.298317366548035,,set
+restaurant,cake,vodka,0.976,-3.7297014486341906,,set
+restaurant,vodka,salad,0.999,-0.0010005003335835344,,set
+restaurant,soda,cocktails,0.998,-6.2146080984221905,,set
+restaurant,soda,cocktails,0.998,-6.2146080984221905,,set
+restaurant,vodka,cocktails,0.999,-6.907755278982136,,set
+restaurant,cake,cocktails,0.976,-0.024292692569044587,,set
+restaurant,soda,cake,0.998,-0.0020020026706730793,,set
+restaurant,soda,vodka,0.998,-6.2146080984221905,,set
+restaurant,soup,cake,0.997,-0.0030045090202987243,,set
+restaurant,vodka,cocktails,0.999,-6.907755278982136,,set
+restaurant,cocktails,soup,,,{'cocktails'},set
+restaurant,cake,soda,0.976,-3.7297014486341906,{'cocktails'},set
+restaurant,vodka,salad,0.999,-0.0010005003335835344,,set
+restaurant,soda,salad,0.998,-0.0020020026706730793,,set
+restaurant,soda,cocktails,0.998,-0.0020020026706730793,,set
+restaurant,cake,soup,0.976,-3.7297014486341906,,set
+restaurant,cake,soup,0.976,-0.024292692569044587,,set
+restaurant,soda,vodka,0.998,-0.0020020026706730793,,set
+restaurant,salad,cake,0.995,-0.005012541823544286,,set
+restaurant,soup,salad,0.997,-5.809142990314027,,set
+restaurant,vodka,salad,0.999,-0.0010005003335835344,,set
+restaurant,soup,cocktails,0.997,-5.809142990314027,,set
+restaurant,salad,cake,0.995,-0.005012541823544286,,set
+restaurant,cake,soup,0.976,-3.7297014486341906,,set
+restaurant,vodka,soup,0.999,-0.0010005003335835344,,set
+restaurant,vodka,cake,0.999,-0.0010005003335835344,,set
+restaurant,soda,cocktails,0.998,-0.0020020026706730793,,set
+restaurant,soup,cake,0.997,-0.0030045090202987243,,set
+restaurant,cocktails,salad,,,{'cocktails'},set
+restaurant,vodka,cocktails,0.999,-0.0010005003335835344,{'cocktails'},set
+restaurant,vodka,cocktails,0.999,-6.907755278982136,,set
+restaurant,soup,salad,0.997,-5.809142990314027,,set
+restaurant,cake,salad,0.976,-0.024292692569044587,,set
+restaurant,soup,salad,0.997,-0.0030045090202987243,,set
+restaurant,soda,cocktails,0.998,-6.2146080984221905,,set
+restaurant,cake,salad,0.976,-0.024292692569044587,,set
+restaurant,soup,cake,0.997,-5.809142990314027,,set
+restaurant,cake,salad,0.976,-0.024292692569044587,,set
+restaurant,soup,salad,0.997,-0.0030045090202987243,,set
+restaurant,vodka,cake,0.999,-0.0010005003335835344,,set
+restaurant,soup,salad,0.997,-5.809142990314027,,set
+restaurant,cake,salad,0.976,-0.024292692569044587,,set
+restaurant,cocktails,soup,,,{'cocktails'},set
+restaurant,soda,salad,0.998,-0.0020020026706730793,{'cocktails'},set
+restaurant,soup,cake,0.997,-0.0030045090202987243,,set
+restaurant,salad,vodka,0.995,-5.298317366548035,,set
+restaurant,cake,cocktails,0.976,-0.024292692569044587,,set
+restaurant,soup,cake,0.997,-5.809142990314027,,set
+restaurant,soup,salad,0.997,-0.0030045090202987243,,set
+restaurant,cake,salad,0.976,-3.7297014486341906,,set
+restaurant,soup,soda,0.997,-5.809142990314027,,set
+restaurant,soda,vodka,0.998,-0.0020020026706730793,,set
+restaurant,soda,vodka,0.998,-6.2146080984221905,,set
+restaurant,soda,salad,0.998,-6.2146080984221905,,set
+restaurant,vodka,cocktails,0.999,-6.907755278982136,,set
+restaurant,soup,cake,0.997,-5.809142990314027,,set
+restaurant,salad,soup,0.995,-5.298317366548035,,set
+restaurant,soda,vodka,0.998,-6.2146080984221905,,set
+restaurant,soda,vodka,0.998,-6.2146080984221905,,set
+restaurant,cake,soda,0.976,-3.7297014486341906,,set
+restaurant,soda,vodka,0.998,-0.0020020026706730793,,set
+restaurant,soda,soup,0.998,-6.2146080984221905,,set
+restaurant,soup,cake,0.997,-5.809142990314027,,set
+restaurant,salad,cocktails,0.995,-5.298317366548035,,set
+restaurant,salad,cocktails,0.995,-5.298317366548035,,set
+restaurant,cake,vodka,0.976,-3.7297014486341906,,set
+restaurant,cocktails,soda,,,{'cocktails'},set
+restaurant,soda,soup,0.998,-0.0020020026706730793,{'cocktails'},set
+restaurant,salad,cake,0.995,-5.298317366548035,,set
+restaurant,soda,salad,0.998,-0.0020020026706730793,,set
+restaurant,cocktails,salad,,,{'cocktails'},set
+restaurant,soda,vodka,0.998,-0.0020020026706730793,{'cocktails'},set
+restaurant,soda,cocktails,0.998,-0.0020020026706730793,,set
+restaurant,cake,salad,0.976,-3.7297014486341906,,set
+restaurant,salad,vodka,0.995,-5.298317366548035,,set
+restaurant,cake,salad,0.976,-3.7297014486341906,,set
+restaurant,vodka,cocktails,0.999,-6.907755278982136,,set
+restaurant,soup,salad,0.997,-0.0030045090202987243,,set
+restaurant,salad,soda,0.995,-5.298317366548035,,set
+restaurant,soup,vodka,0.997,-5.809142990314027,,set
+restaurant,cocktails,vodka,,,{'cocktails'},set
+restaurant,soup,salad,0.997,-5.809142990314027,{'cocktails'},set
+restaurant,soup,cake,0.997,-0.0030045090202987243,,set
+restaurant,vodka,soup,0.999,-0.0010005003335835344,,set
+restaurant,soda,vodka,0.998,-0.0020020026706730793,,set
+restaurant,vodka,soda,0.999,-0.0010005003335835344,,set
+restaurant,soda,cocktails,0.998,-6.2146080984221905,,set
+restaurant,soup,cake,0.997,-0.0030045090202987243,,set
+restaurant,soda,cocktails,0.998,-0.0020020026706730793,,set
+restaurant,cocktails,cake,,,{'cocktails'},set
+restaurant,cake,cocktails,0.976,-0.024292692569044587,{'cocktails'},set
+restaurant,soda,cake,0.998,-6.2146080984221905,,set
+salad,meat,cigarettes,1.0,-23.025850929940457,,set
+salad,lettuce,dressing,,,{'lettuce'},set
+salad,meat,lettuce,1.0,0.0,{'lettuce'},set
+salad,chips,cigarettes,0.997,-0.0030045090202987243,,set
+salad,lettuce,meat,,,{'lettuce'},set
+salad,tuna,lettuce,0.997,-0.0030045090202987243,{'lettuce'},set
+salad,meat,cigarettes,1.0,0.0,,set
+salad,dressing,chips,0.996,-5.521460917862245,,set
+salad,dressing,cigarettes,0.996,-0.004008021397538822,,set
+salad,meat,lettuce,1.0,0.0,,set
+salad,dressing,tuna,0.996,-0.004008021397538822,,set
+salad,dressing,meat,0.996,-5.521460917862245,,set
+salad,dressing,lettuce,0.996,-5.521460917862245,,set
+salad,cigarettes,lettuce,0.982,-4.017383521085971,,set
+salad,meat,tuna,1.0,0.0,,set
+salad,cigarettes,tuna,0.982,-4.017383521085971,,set
+salad,chips,meat,0.997,-5.809142990314027,,set
+salad,dressing,cigarettes,0.996,-0.004008021397538822,,set
+salad,dressing,lettuce,0.996,-0.004008021397538822,,set
+salad,meat,chips,1.0,-23.025850929940457,,set
+salad,dressing,lettuce,0.996,-5.521460917862245,,set
+salad,dressing,lettuce,0.996,-5.521460917862245,,set
+salad,tuna,dressing,0.997,-5.809142990314027,,set
+salad,meat,chips,1.0,0.0,,set
+salad,cigarettes,dressing,0.982,-4.017383521085971,,set
+salad,tuna,dressing,0.997,-5.809142990314027,,set
+salad,dressing,lettuce,0.996,-5.521460917862245,,set
+salad,meat,chips,1.0,-23.025850929940457,,set
+salad,meat,tuna,1.0,0.0,,set
+salad,cigarettes,chips,0.982,-4.017383521085971,,set
+salad,tuna,meat,0.997,-0.0030045090202987243,,set
+salad,tuna,cigarettes,0.997,-5.809142990314027,,set
+salad,tuna,dressing,0.997,-0.0030045090202987243,,set
+salad,dressing,meat,0.996,-5.521460917862245,,set
+salad,tuna,lettuce,0.997,-5.809142990314027,,set
+salad,dressing,lettuce,0.996,-0.004008021397538822,,set
+salad,chips,dressing,0.997,-5.809142990314027,,set
+salad,tuna,dressing,0.997,-0.0030045090202987243,,set
+salad,cigarettes,tuna,0.982,-4.017383521085971,,set
+salad,lettuce,tuna,,,{'lettuce'},set
+salad,cigarettes,chips,0.982,-4.017383521085971,{'lettuce'},set
+salad,meat,tuna,1.0,0.0,,set
+salad,meat,chips,1.0,-23.025850929940457,,set
+salad,lettuce,dressing,,,{'lettuce'},set
+salad,dressing,lettuce,0.996,-0.004008021397538822,{'lettuce'},set
+salad,meat,lettuce,1.0,-23.025850929940457,,set
+salad,chips,tuna,0.997,-5.809142990314027,,set
+salad,tuna,lettuce,0.997,-5.809142990314027,,set
+salad,cigarettes,tuna,0.982,-4.017383521085971,,set
+salad,chips,cigarettes,0.997,-5.809142990314027,,set
+salad,dressing,lettuce,0.996,-0.004008021397538822,,set
+salad,meat,tuna,1.0,-23.025850929940457,,set
+salad,lettuce,meat,,,{'lettuce'},set
+salad,cigarettes,lettuce,0.982,-4.017383521085971,{'lettuce'},set
+salad,lettuce,tuna,,,{'lettuce'},set
+salad,tuna,dressing,0.997,-0.0030045090202987243,{'lettuce'},set
+salad,tuna,chips,0.997,-5.809142990314027,,set
+salad,dressing,lettuce,0.996,-0.004008021397538822,,set
+salad,chips,cigarettes,0.997,-0.0030045090202987243,,set
+salad,tuna,lettuce,0.997,-0.0030045090202987243,,set
+salad,meat,cigarettes,1.0,-23.025850929940457,,set
+salad,cigarettes,lettuce,0.982,-4.017383521085971,,set
+salad,meat,cigarettes,1.0,0.0,,set
+salad,tuna,lettuce,0.997,-0.0030045090202987243,,set
+salad,tuna,dressing,0.997,-5.809142990314027,,set
+salad,cigarettes,meat,0.982,-4.017383521085971,,set
+salad,dressing,lettuce,0.996,-5.521460917862245,,set
+salad,dressing,tuna,0.996,-5.521460917862245,,set
+salad,meat,cigarettes,1.0,0.0,,set
+salad,dressing,lettuce,0.996,-0.004008021397538822,,set
+salad,meat,cigarettes,1.0,-23.025850929940457,,set
+salad,tuna,cigarettes,0.997,-5.809142990314027,,set
+salad,dressing,lettuce,0.996,-5.521460917862245,,set
+salad,meat,dressing,1.0,0.0,,set
+salad,meat,dressing,1.0,-23.025850929940457,,set
+salad,tuna,lettuce,0.997,-5.809142990314027,,set
+salad,cigarettes,dressing,0.982,-4.017383521085971,,set
+salad,dressing,lettuce,0.996,-0.004008021397538822,,set
+salad,tuna,lettuce,0.997,-5.809142990314027,,set
+salad,lettuce,dressing,,,{'lettuce'},set
+salad,cigarettes,meat,0.982,-4.017383521085971,{'lettuce'},set
+salad,dressing,tuna,0.996,-5.521460917862245,,set
+salad,dressing,lettuce,0.996,-0.004008021397538822,,set
+salad,meat,chips,1.0,0.0,,set
+salad,meat,cigarettes,1.0,-23.025850929940457,,set
+salad,lettuce,meat,,,{'lettuce'},set
+salad,meat,cigarettes,1.0,-23.025850929940457,{'lettuce'},set
+salad,chips,cigarettes,0.997,-0.0030045090202987243,,set
+salad,dressing,cigarettes,0.996,-0.004008021397538822,,set
+salad,lettuce,chips,,,{'lettuce'},set
+salad,tuna,lettuce,0.997,-5.809142990314027,{'lettuce'},set
+salad,meat,dressing,1.0,-23.025850929940457,,set
+salad,dressing,lettuce,0.996,-0.004008021397538822,,set
+salad,tuna,lettuce,0.997,-5.809142990314027,,set
+salad,tuna,cigarettes,0.997,-5.809142990314027,,set
+salad,meat,chips,1.0,-23.025850929940457,,set
+salad,cigarettes,meat,0.982,-4.017383521085971,,set
+salad,chips,cigarettes,0.997,-5.809142990314027,,set
+salad,chips,cigarettes,0.997,-5.809142990314027,,set
+salad,meat,chips,1.0,0.0,,set
+salad,dressing,chips,0.996,-5.521460917862245,,set
+salad,tuna,dressing,0.997,-0.0030045090202987243,,set
+salad,tuna,cigarettes,0.997,-0.0030045090202987243,,set
+salad,cigarettes,dressing,0.982,-4.017383521085971,,set
+salad,tuna,chips,0.997,-5.809142990314027,,set
+salad,chips,cigarettes,0.997,-5.809142990314027,,set
+salad,tuna,dressing,0.997,-5.809142990314027,,set
+salad,chips,meat,0.997,-5.809142990314027,,set
+salad,tuna,lettuce,0.997,-0.0030045090202987243,,set
+salad,lettuce,chips,,,{'lettuce'},set
+salad,dressing,meat,0.996,-5.521460917862245,{'lettuce'},set
+salad,tuna,dressing,0.997,-0.0030045090202987243,,set
+salad,tuna,chips,0.997,-0.0030045090202987243,,set
+salad,chips,cigarettes,0.997,-0.0030045090202987243,,set
+salad,tuna,lettuce,0.997,-5.809142990314027,,set
+salad,tuna,chips,0.997,-5.809142990314027,,set
+salad,lettuce,meat,,,{'lettuce'},set
+salad,meat,chips,1.0,0.0,{'lettuce'},set
+salad,tuna,dressing,0.997,-5.809142990314027,,set
+salad,meat,chips,1.0,-23.025850929940457,,set
+salad,meat,cigarettes,1.0,0.0,,set
+salad,chips,lettuce,0.997,-5.809142990314027,,set
+salad,chips,cigarettes,0.997,-0.0030045090202987243,,set
+salad,chips,tuna,0.997,-5.809142990314027,,set
+salad,lettuce,tuna,,,{'lettuce'},set
+salad,tuna,lettuce,0.997,-5.809142990314027,{'lettuce'},set
+salad,dressing,tuna,0.996,-0.004008021397538822,,set
+salad,cigarettes,dressing,0.982,-4.017383521085971,,set
+salad,cigarettes,lettuce,0.982,-4.017383521085971,,set
+salad,cigarettes,dressing,0.982,-4.017383521085971,,set
+salad,lettuce,chips,,,{'lettuce'},set
+salad,dressing,lettuce,0.996,-5.521460917862245,{'lettuce'},set
+salad,lettuce,cigarettes,,,{'lettuce'},set
+salad,cigarettes,lettuce,0.982,-4.017383521085971,{'lettuce'},set
+salad,tuna,lettuce,0.997,-5.809142990314027,,set
+salad,dressing,chips,0.996,-0.004008021397538822,,set
+salad,meat,lettuce,1.0,0.0,,set
+salad,meat,cigarettes,1.0,0.0,,set
+salad,lettuce,cigarettes,,,{'lettuce'},set
+salad,cigarettes,chips,0.982,-4.017383521085971,{'lettuce'},set
+salad,meat,chips,1.0,-23.025850929940457,,set
+salad,meat,chips,1.0,-23.025850929940457,,set
+salad,chips,cigarettes,0.997,-0.0030045090202987243,,set
+salad,dressing,cigarettes,0.996,-0.004008021397538822,,set
+salad,lettuce,tuna,,,{'lettuce'},set
+salad,meat,cigarettes,1.0,0.0,{'lettuce'},set
+salad,dressing,lettuce,0.996,-0.004008021397538822,,set
+salad,cigarettes,meat,0.982,-4.017383521085971,,set
+salad,meat,cigarettes,1.0,0.0,,set
+salad,dressing,chips,0.996,-0.004008021397538822,,set
+salad,meat,cigarettes,1.0,-23.025850929940457,,set
+salad,cigarettes,chips,0.982,-0.01816397062767118,,set
+salad,meat,chips,1.0,-23.025850929940457,,set
+salad,chips,cigarettes,0.997,-5.809142990314027,,set
+salad,lettuce,cigarettes,,,{'lettuce'},set
+salad,meat,cigarettes,1.0,0.0,{'lettuce'},set
+salad,cigarettes,tuna,0.982,-4.017383521085971,,set
+salad,meat,chips,1.0,-23.025850929940457,,set
+salad,meat,chips,1.0,-23.025850929940457,,set
+salad,chips,cigarettes,0.997,-5.809142990314027,,set
+salad,chips,tuna,0.997,-5.809142990314027,,set
+salad,tuna,dressing,0.997,-0.0030045090202987243,,set
+salad,tuna,meat,0.997,-5.809142990314027,,set
+salad,cigarettes,chips,0.982,-4.017383521085971,,set
+salad,tuna,cigarettes,0.997,-0.0030045090202987243,,set
+salad,tuna,lettuce,0.997,-5.809142990314027,,set
+salad,lettuce,meat,,,{'lettuce'},set
+salad,chips,cigarettes,0.997,-5.809142990314027,{'lettuce'},set
+salad,tuna,lettuce,0.997,-0.0030045090202987243,,set
+salad,tuna,lettuce,0.997,-0.0030045090202987243,,set
+salad,meat,chips,1.0,-23.025850929940457,,set
+salad,chips,cigarettes,0.997,-5.809142990314027,,set
+salad,tuna,lettuce,0.997,-5.809142990314027,,set
+salad,meat,chips,1.0,0.0,,set
+salad,meat,tuna,1.0,0.0,,set
+salad,lettuce,tuna,,,{'lettuce'},set
+salad,tuna,dressing,0.997,-0.0030045090202987243,{'lettuce'},set
+salad,lettuce,chips,,,{'lettuce'},set
+salad,tuna,lettuce,0.997,-0.0030045090202987243,{'lettuce'},set
+salad,cigarettes,lettuce,0.982,-4.017383521085971,,set
+salad,dressing,lettuce,0.996,-0.004008021397538822,,set
+salad,chips,cigarettes,0.997,-5.809142990314027,,set
+salad,tuna,dressing,0.997,-5.809142990314027,,set
+salad,tuna,dressing,0.997,-5.809142990314027,,set
+salad,meat,cigarettes,1.0,0.0,,set
+salad,tuna,dressing,0.997,-5.809142990314027,,set
+salad,chips,tuna,0.997,-5.809142990314027,,set
+salad,meat,cigarettes,1.0,-23.025850929940457,,set
+salad,meat,chips,1.0,-23.025850929940457,,set
+salad,meat,cigarettes,1.0,0.0,,set
+salad,meat,chips,1.0,0.0,,set
+salad,meat,cigarettes,1.0,0.0,,set
+salad,lettuce,cigarettes,,,{'lettuce'},set
+salad,tuna,dressing,0.997,-5.809142990314027,{'lettuce'},set
+salad,dressing,chips,0.996,-5.521460917862245,,set
+salad,lettuce,meat,,,{'lettuce'},set
+salad,lettuce,chips,,,{'lettuce'},set
+salad,chips,tuna,0.997,-5.809142990314027,{'lettuce'},set
+salad,cigarettes,meat,0.982,-4.017383521085971,,set
+salad,cigarettes,chips,0.982,-4.017383521085971,,set
+salad,meat,cigarettes,1.0,-23.025850929940457,,set
+salad,meat,chips,1.0,-23.025850929940457,,set
+salad,chips,dressing,0.997,-5.809142990314027,,set
+salad,chips,cigarettes,0.997,-0.0030045090202987243,,set
+salad,chips,lettuce,0.997,-5.809142990314027,,set
+salad,meat,chips,1.0,-23.025850929940457,,set
+salad,lettuce,chips,,,{'lettuce'},set
+salad,tuna,meat,0.997,-5.809142990314027,{'lettuce'},set
+salad,dressing,tuna,0.996,-0.004008021397538822,,set
+salad,tuna,chips,0.997,-5.809142990314027,,set
+salad,tuna,cigarettes,0.997,-5.809142990314027,,set
+salad,meat,chips,1.0,-23.025850929940457,,set
+salad,cigarettes,tuna,0.982,-4.017383521085971,,set
+science,zoology,philosophy,0.997,-0.0030045090202987243,,set
+science,philosophy,art,0.996,-5.521460917862245,,set
+science,math,art,1.0,0.0,,set
+science,art,math,0.999,-6.907755278982136,,set
+science,zoology,philosophy,0.997,-0.0030045090202987243,,set
+science,art,physics,0.999,-0.0010005003335835344,,set
+science,physics,geology,1.0,0.0,,set
+science,geology,math,0.998,-0.0020020026706730793,,set
+science,philosophy,art,0.996,-5.521460917862245,,set
+science,zoology,physics,0.997,-0.0030045090202987243,,set
+science,math,art,1.0,-23.025850929940457,,set
+science,art,philosophy,0.999,-0.0010005003335835344,,set
+science,zoology,geology,0.997,-0.0030045090202987243,,set
+science,zoology,physics,0.997,-5.809142990314027,,set
+science,zoology,physics,0.997,-0.0030045090202987243,,set
+science,math,philosophy,1.0,0.0,,set
+science,philosophy,art,0.996,-5.521460917862245,,set
+science,physics,philosophy,1.0,0.0,,set
+science,math,art,1.0,0.0,,set
+science,math,philosophy,1.0,0.0,,set
+science,physics,geology,1.0,0.0,,set
+science,math,zoology,1.0,-23.025850929940457,,set
+science,math,art,1.0,0.0,,set
+science,zoology,physics,0.997,-0.0030045090202987243,,set
+science,geology,art,0.998,-0.0020020026706730793,,set
+science,zoology,physics,0.997,-5.809142990314027,,set
+science,zoology,art,0.997,-5.809142990314027,,set
+science,math,art,1.0,-23.025850929940457,,set
+science,philosophy,art,0.996,-5.521460917862245,,set
+science,art,physics,0.999,-6.907755278982136,,set
+science,math,geology,1.0,-23.025850929940457,,set
+science,philosophy,physics,0.996,-5.521460917862245,,set
+science,physics,geology,1.0,0.0,,set
+science,math,philosophy,1.0,0.0,,set
+science,philosophy,art,0.996,-0.004008021397538822,,set
+science,math,philosophy,1.0,0.0,,set
+science,art,philosophy,0.999,-0.0010005003335835344,,set
+science,zoology,math,0.997,-0.0030045090202987243,,set
+science,philosophy,geology,0.996,-0.004008021397538822,,set
+science,zoology,art,0.997,-0.0030045090202987243,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,math,art,1.0,0.0,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,physics,math,1.0,-23.025850929940457,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,math,philosophy,1.0,-23.025850929940457,,set
+science,geology,philosophy,0.998,-0.0020020026706730793,,set
+science,math,art,1.0,0.0,,set
+science,math,physics,1.0,0.0,,set
+science,math,art,1.0,0.0,,set
+science,physics,geology,1.0,0.0,,set
+science,math,art,1.0,-23.025850929940457,,set
+science,art,geology,0.999,-0.0010005003335835344,,set
+science,zoology,philosophy,0.997,-0.0030045090202987243,,set
+science,physics,philosophy,1.0,0.0,,set
+science,philosophy,math,0.996,-5.521460917862245,,set
+science,physics,art,1.0,0.0,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,zoology,geology,0.997,-0.0030045090202987243,,set
+science,art,geology,0.999,-0.0010005003335835344,,set
+science,zoology,physics,0.997,-0.0030045090202987243,,set
+science,geology,art,0.998,-0.0020020026706730793,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,math,philosophy,1.0,0.0,,set
+science,geology,physics,0.998,-6.2146080984221905,,set
+science,zoology,geology,0.997,-0.0030045090202987243,,set
+science,math,art,1.0,0.0,,set
+science,physics,philosophy,1.0,0.0,,set
+science,art,physics,0.999,-0.0010005003335835344,,set
+science,zoology,physics,0.997,-5.809142990314027,,set
+science,geology,zoology,0.998,-0.0020020026706730793,,set
+science,zoology,art,0.997,-0.0030045090202987243,,set
+science,geology,philosophy,0.998,-0.0020020026706730793,,set
+science,physics,zoology,1.0,0.0,,set
+science,math,art,1.0,0.0,,set
+science,philosophy,geology,0.996,-5.521460917862245,,set
+science,zoology,physics,0.997,-0.0030045090202987243,,set
+science,math,zoology,1.0,0.0,,set
+science,zoology,math,0.997,-0.0030045090202987243,,set
+science,philosophy,zoology,0.996,-0.004008021397538822,,set
+science,physics,zoology,1.0,0.0,,set
+science,art,geology,0.999,-0.0010005003335835344,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,philosophy,zoology,0.996,-5.521460917862245,,set
+science,zoology,physics,0.997,-5.809142990314027,,set
+science,philosophy,art,0.996,-0.004008021397538822,,set
+science,physics,art,1.0,0.0,,set
+science,art,physics,0.999,-6.907755278982136,,set
+science,math,geology,1.0,0.0,,set
+science,geology,zoology,0.998,-6.2146080984221905,,set
+science,physics,philosophy,1.0,0.0,,set
+science,philosophy,zoology,0.996,-0.004008021397538822,,set
+science,zoology,geology,0.997,-0.0030045090202987243,,set
+science,art,math,0.999,-0.0010005003335835344,,set
+science,art,philosophy,0.999,-0.0010005003335835344,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,math,art,1.0,0.0,,set
+science,zoology,math,0.997,-5.809142990314027,,set
+science,math,art,1.0,-23.025850929940457,,set
+science,philosophy,art,0.996,-5.521460917862245,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,art,geology,0.999,-6.907755278982136,,set
+science,math,physics,1.0,-23.025850929940457,,set
+science,philosophy,physics,0.996,-0.004008021397538822,,set
+science,philosophy,art,0.996,-0.004008021397538822,,set
+science,math,philosophy,1.0,0.0,,set
+science,physics,math,1.0,-23.025850929940457,,set
+science,zoology,physics,0.997,-0.0030045090202987243,,set
+science,zoology,philosophy,0.997,-0.0030045090202987243,,set
+science,geology,math,0.998,-6.2146080984221905,,set
+science,zoology,geology,0.997,-0.0030045090202987243,,set
+science,philosophy,math,0.996,-5.521460917862245,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,zoology,art,0.997,-0.0030045090202987243,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,philosophy,art,0.996,-0.004008021397538822,,set
+science,zoology,physics,0.997,-0.0030045090202987243,,set
+science,zoology,geology,0.997,-0.0030045090202987243,,set
+science,zoology,geology,0.997,-0.0030045090202987243,,set
+science,math,philosophy,1.0,0.0,,set
+science,geology,physics,0.998,-6.2146080984221905,,set
+science,geology,zoology,0.998,-0.0020020026706730793,,set
+science,zoology,physics,0.997,-0.0030045090202987243,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,math,philosophy,1.0,0.0,,set
+science,philosophy,math,0.996,-5.521460917862245,,set
+science,philosophy,art,0.996,-0.004008021397538822,,set
+science,math,art,1.0,0.0,,set
+science,zoology,physics,0.997,-0.0030045090202987243,,set
+science,zoology,philosophy,0.997,-5.809142990314027,,set
+science,physics,art,1.0,0.0,,set
+science,art,philosophy,0.999,-0.0010005003335835344,,set
+science,math,art,1.0,-23.025850929940457,,set
+science,philosophy,art,0.996,-0.004008021397538822,,set
+science,zoology,math,0.997,-0.0030045090202987243,,set
+science,art,geology,0.999,-6.907755278982136,,set
+science,philosophy,art,0.996,-0.004008021397538822,,set
+science,math,philosophy,1.0,0.0,,set
+science,zoology,physics,0.997,-0.0030045090202987243,,set
+science,philosophy,physics,0.996,-5.521460917862245,,set
+science,math,zoology,1.0,0.0,,set
+science,math,geology,1.0,0.0,,set
+science,zoology,geology,0.997,-0.0030045090202987243,,set
+science,philosophy,zoology,0.996,-5.521460917862245,,set
+science,philosophy,art,0.996,-0.004008021397538822,,set
+science,geology,physics,0.998,-6.2146080984221905,,set
+science,art,physics,0.999,-6.907755278982136,,set
+science,philosophy,art,0.996,-0.004008021397538822,,set
+science,physics,math,1.0,0.0,,set
+science,math,geology,1.0,0.0,,set
+science,philosophy,art,0.996,-5.521460917862245,,set
+science,geology,zoology,0.998,-0.0020020026706730793,,set
+science,zoology,physics,0.997,-0.0030045090202987243,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,philosophy,zoology,0.996,-0.004008021397538822,,set
+science,philosophy,art,0.996,-5.521460917862245,,set
+science,geology,art,0.998,-0.0020020026706730793,,set
+science,math,zoology,1.0,-23.025850929940457,,set
+science,physics,art,1.0,0.0,,set
+science,geology,math,0.998,-0.0020020026706730793,,set
+science,math,art,1.0,0.0,,set
+science,zoology,physics,0.997,-5.809142990314027,,set
+science,math,art,1.0,0.0,,set
+science,art,zoology,0.999,-0.0010005003335835344,,set
+science,zoology,geology,0.997,-0.0030045090202987243,,set
+science,math,philosophy,1.0,-23.025850929940457,,set
+science,zoology,physics,0.997,-5.809142990314027,,set
+science,math,geology,1.0,0.0,,set
+science,geology,philosophy,0.998,-0.0020020026706730793,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,physics,zoology,1.0,0.0,,set
+science,geology,math,0.998,-0.0020020026706730793,,set
+science,math,geology,1.0,0.0,,set
+science,zoology,geology,0.997,-0.0030045090202987243,,set
+science,art,zoology,0.999,-6.907755278982136,,set
+science,zoology,physics,0.997,-5.809142990314027,,set
+science,math,art,1.0,0.0,,set
+science,geology,philosophy,0.998,-6.2146080984221905,,set
+science,geology,art,0.998,-0.0020020026706730793,,set
+science,physics,math,1.0,0.0,,set
+science,art,philosophy,0.999,-0.0010005003335835344,,set
+science,philosophy,geology,0.996,-0.004008021397538822,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,philosophy,math,0.996,-0.004008021397538822,,set
+science,zoology,geology,0.997,-0.0030045090202987243,,set
+science,philosophy,art,0.996,-0.004008021397538822,,set
+science,math,philosophy,1.0,-23.025850929940457,,set
+science,zoology,physics,0.997,-0.0030045090202987243,,set
+science,math,philosophy,1.0,-23.025850929940457,,set
+science,zoology,philosophy,0.997,-0.0030045090202987243,,set
+science,math,physics,1.0,-23.025850929940457,,set
+science,zoology,math,0.997,-0.0030045090202987243,,set
+science,math,zoology,1.0,-23.025850929940457,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,philosophy,math,0.996,-0.004008021397538822,,set
+science,physics,art,1.0,0.0,,set
+science,zoology,art,0.997,-0.0030045090202987243,,set
+science,math,philosophy,1.0,0.0,,set
+science,math,art,1.0,-23.025850929940457,,set
+science,math,art,1.0,0.0,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,math,philosophy,1.0,0.0,,set
+science,geology,physics,0.998,-0.0020020026706730793,,set
+science,physics,zoology,1.0,0.0,,set
+science,math,philosophy,1.0,-23.025850929940457,,set
+science,zoology,geology,0.997,-0.0030045090202987243,,set
+science,geology,philosophy,0.998,-0.0020020026706730793,,set
+science,art,zoology,0.999,-0.0010005003335835344,,set
+science,zoology,physics,0.997,-0.0030045090202987243,,set
+science,philosophy,zoology,0.996,-0.004008021397538822,,set
+science,zoology,geology,0.997,-0.0030045090202987243,,set
+science,philosophy,art,0.996,-0.004008021397538822,,set
+throw,football,beach ball,1.0,0.0,,set
+throw,shovel,lawnmower,0.969,-3.47376807449699,,set
+throw,lawnmower,beach ball,,,{'lawnmower'},set
+throw,boomerang,lawnmower,,,"{'boomerang', 'lawnmower'}",set
+throw,boomerang,beach ball,,,"{'boomerang', 'lawnmower'}",set
+throw,shovel,beach ball,0.969,-3.47376807449699,"{'boomerang', 'lawnmower'}",set
+throw,tires,shovel,0.985,-4.199705077879926,,set
+throw,tires,football,0.985,-4.199705077879926,,set
+throw,boomerang,football,,,{'boomerang'},set
+throw,shovel,boomerang,0.969,-3.47376807449699,{'boomerang'},set
+throw,football,boomerang,1.0,0.0,,set
+throw,lawnmower,tires,,,{'lawnmower'},set
+throw,beach ball,football,,,"{'beach ball', 'lawnmower'}",set
+throw,beach ball,football,,,"{'beach ball', 'lawnmower'}",set
+throw,shovel,lawnmower,0.969,-3.47376807449699,"{'beach ball', 'lawnmower'}",set
+throw,boomerang,beach ball,,,{'boomerang'},set
+throw,lawnmower,shovel,,,"{'boomerang', 'lawnmower'}",set
+throw,tires,shovel,0.985,-4.199705077879926,"{'boomerang', 'lawnmower'}",set
+throw,lawnmower,tires,,,{'lawnmower'},set
+throw,beach ball,football,,,"{'beach ball', 'lawnmower'}",set
+throw,football,lawnmower,1.0,0.0,"{'beach ball', 'lawnmower'}",set
+throw,boomerang,beach ball,,,{'boomerang'},set
+throw,shovel,football,0.969,-3.47376807449699,{'boomerang'},set
+throw,boomerang,beach ball,,,{'boomerang'},set
+throw,lawnmower,football,,,"{'boomerang', 'lawnmower'}",set
+throw,beach ball,tires,,,"{'beach ball', 'boomerang', 'lawnmower'}",set
+throw,football,lawnmower,1.0,0.0,"{'beach ball', 'boomerang', 'lawnmower'}",set
+throw,lawnmower,boomerang,,,{'lawnmower'},set
+throw,tires,beach ball,0.985,-4.199705077879926,{'lawnmower'},set
+throw,beach ball,football,,,{'beach ball'},set
+throw,shovel,tires,0.969,-0.03149066709137085,{'beach ball'},set
+throw,boomerang,tires,,,{'boomerang'},set
+throw,boomerang,football,,,{'boomerang'},set
+throw,shovel,beach ball,0.969,-3.47376807449699,{'boomerang'},set
+throw,shovel,lawnmower,0.969,-3.47376807449699,,set
+throw,beach ball,shovel,,,{'beach ball'},set
+throw,boomerang,football,,,"{'beach ball', 'boomerang'}",set
+throw,boomerang,tires,,,"{'beach ball', 'boomerang'}",set
+throw,boomerang,shovel,,,"{'beach ball', 'boomerang'}",set
+throw,boomerang,beach ball,,,"{'beach ball', 'boomerang'}",set
+throw,tires,shovel,0.985,-4.199705077879926,"{'beach ball', 'boomerang'}",set
+throw,tires,lawnmower,0.985,-0.015113637810048184,,set
+throw,boomerang,football,,,{'boomerang'},set
+throw,shovel,lawnmower,0.969,-3.47376807449699,{'boomerang'},set
+throw,football,beach ball,1.0,0.0,,set
+throw,lawnmower,beach ball,,,{'lawnmower'},set
+throw,football,shovel,1.0,0.0,{'lawnmower'},set
+throw,tires,shovel,0.985,-4.199705077879926,,set
+throw,shovel,lawnmower,0.969,-0.03149066709137085,,set
+throw,tires,boomerang,0.985,-4.199705077879926,,set
+throw,shovel,tires,0.969,-3.47376807449699,,set
+throw,tires,beach ball,0.985,-4.199705077879926,,set
+throw,beach ball,football,,,{'beach ball'},set
+throw,boomerang,football,,,"{'beach ball', 'boomerang'}",set
+throw,beach ball,football,,,"{'beach ball', 'boomerang'}",set
+throw,shovel,lawnmower,0.969,-0.03149066709137085,"{'beach ball', 'boomerang'}",set
+throw,boomerang,beach ball,,,{'boomerang'},set
+throw,tires,shovel,0.985,-0.015113637810048184,{'boomerang'},set
+throw,shovel,lawnmower,0.969,-3.47376807449699,,set
+throw,tires,shovel,0.985,-4.199705077879926,,set
+throw,shovel,lawnmower,0.969,-0.03149066709137085,,set
+throw,tires,lawnmower,0.985,-4.199705077879926,,set
+throw,beach ball,tires,,,{'beach ball'},set
+throw,boomerang,beach ball,,,"{'beach ball', 'boomerang'}",set
+throw,tires,lawnmower,0.985,-4.199705077879926,"{'beach ball', 'boomerang'}",set
+throw,tires,beach ball,0.985,-4.199705077879926,,set
+throw,tires,lawnmower,0.985,-4.199705077879926,,set
+throw,football,tires,1.0,0.0,,set
+throw,shovel,beach ball,0.969,-3.47376807449699,,set
+throw,football,lawnmower,1.0,0.0,,set
+throw,boomerang,football,,,{'boomerang'},set
+throw,shovel,lawnmower,0.969,-3.47376807449699,{'boomerang'},set
+throw,beach ball,football,,,{'beach ball'},set
+throw,football,tires,1.0,0.0,{'beach ball'},set
+throw,beach ball,football,,,{'beach ball'},set
+throw,beach ball,football,,,{'beach ball'},set
+throw,beach ball,boomerang,,,{'beach ball'},set
+throw,beach ball,boomerang,,,{'beach ball'},set
+throw,beach ball,tires,,,{'beach ball'},set
+throw,football,shovel,1.0,0.0,{'beach ball'},set
+throw,tires,shovel,0.985,-4.199705077879926,,set
+throw,shovel,lawnmower,0.969,-0.03149066709137085,,set
+throw,boomerang,football,,,{'boomerang'},set
+throw,shovel,beach ball,0.969,-3.47376807449699,{'boomerang'},set
+throw,boomerang,lawnmower,,,{'boomerang'},set
+throw,tires,shovel,0.985,-4.199705077879926,{'boomerang'},set
+throw,football,boomerang,1.0,0.0,,set
+throw,beach ball,boomerang,,,{'beach ball'},set
+throw,tires,boomerang,0.985,-4.199705077879926,{'beach ball'},set
+throw,beach ball,football,,,{'beach ball'},set
+throw,shovel,lawnmower,0.969,-3.47376807449699,{'beach ball'},set
+throw,tires,lawnmower,0.985,-4.199705077879926,,set
+throw,boomerang,beach ball,,,{'boomerang'},set
+throw,boomerang,football,,,{'boomerang'},set
+throw,lawnmower,football,,,"{'boomerang', 'lawnmower'}",set
+throw,boomerang,shovel,,,"{'boomerang', 'lawnmower'}",set
+throw,shovel,tires,0.969,-3.47376807449699,"{'boomerang', 'lawnmower'}",set
+throw,tires,shovel,0.985,-0.015113637810048184,,set
+throw,tires,shovel,0.985,-4.199705077879926,,set
+throw,football,boomerang,1.0,0.0,,set
+throw,boomerang,beach ball,,,{'boomerang'},set
+throw,boomerang,football,,,{'boomerang'},set
+throw,beach ball,football,,,"{'beach ball', 'boomerang'}",set
+throw,tires,lawnmower,0.985,-4.199705077879926,"{'beach ball', 'boomerang'}",set
+throw,tires,lawnmower,0.985,-4.199705077879926,,set
+throw,tires,lawnmower,0.985,-4.199705077879926,,set
+throw,lawnmower,boomerang,,,{'lawnmower'},set
+throw,tires,lawnmower,0.985,-4.199705077879926,{'lawnmower'},set
+throw,beach ball,shovel,,,{'beach ball'},set
+throw,lawnmower,beach ball,,,"{'beach ball', 'lawnmower'}",set
+throw,tires,shovel,0.985,-4.199705077879926,"{'beach ball', 'lawnmower'}",set
+throw,beach ball,tires,,,{'beach ball'},set
+throw,lawnmower,boomerang,,,"{'beach ball', 'lawnmower'}",set
+throw,shovel,tires,0.969,-0.03149066709137085,"{'beach ball', 'lawnmower'}",set
+throw,boomerang,beach ball,,,{'boomerang'},set
+throw,football,beach ball,1.0,0.0,{'boomerang'},set
+throw,shovel,beach ball,0.969,-3.47376807449699,,set
+throw,shovel,lawnmower,0.969,-3.47376807449699,,set
+throw,beach ball,shovel,,,{'beach ball'},set
+throw,beach ball,football,,,{'beach ball'},set
+throw,shovel,football,0.969,-3.47376807449699,{'beach ball'},set
+throw,boomerang,beach ball,,,{'boomerang'},set
+throw,beach ball,tires,,,"{'beach ball', 'boomerang'}",set
+throw,boomerang,lawnmower,,,"{'beach ball', 'boomerang'}",set
+throw,tires,beach ball,0.985,-4.199705077879926,"{'beach ball', 'boomerang'}",set
+throw,boomerang,football,,,{'boomerang'},set
+throw,tires,shovel,0.985,-4.199705077879926,{'boomerang'},set
+throw,tires,lawnmower,0.985,-4.199705077879926,,set
+throw,shovel,lawnmower,0.969,-3.47376807449699,,set
+throw,shovel,lawnmower,0.969,-3.47376807449699,,set
+throw,lawnmower,shovel,,,{'lawnmower'},set
+throw,shovel,lawnmower,0.969,-0.03149066709137085,{'lawnmower'},set
+throw,lawnmower,tires,,,{'lawnmower'},set
+throw,beach ball,football,,,"{'beach ball', 'lawnmower'}",set
+throw,beach ball,football,,,"{'beach ball', 'lawnmower'}",set
+throw,tires,boomerang,0.985,-4.199705077879926,"{'beach ball', 'lawnmower'}",set
+throw,beach ball,lawnmower,,,{'beach ball'},set
+throw,tires,shovel,0.985,-4.199705077879926,{'beach ball'},set
+throw,boomerang,football,,,{'boomerang'},set
+throw,beach ball,shovel,,,"{'beach ball', 'boomerang'}",set
+throw,football,beach ball,1.0,0.0,"{'beach ball', 'boomerang'}",set
+throw,lawnmower,shovel,,,{'lawnmower'},set
+throw,shovel,beach ball,0.969,-3.47376807449699,{'lawnmower'},set
+throw,boomerang,football,,,{'boomerang'},set
+throw,boomerang,beach ball,,,{'boomerang'},set
+throw,boomerang,beach ball,,,{'boomerang'},set
+throw,tires,shovel,0.985,-4.199705077879926,{'boomerang'},set
+throw,beach ball,football,,,{'beach ball'},set
+throw,shovel,tires,0.969,-3.47376807449699,{'beach ball'},set
+throw,boomerang,football,,,{'boomerang'},set
+throw,shovel,football,0.969,-3.47376807449699,{'boomerang'},set
+throw,tires,boomerang,0.985,-4.199705077879926,,set
+throw,tires,shovel,0.985,-4.199705077879926,,set
+throw,boomerang,lawnmower,,,{'boomerang'},set
+throw,boomerang,shovel,,,{'boomerang'},set
+throw,lawnmower,boomerang,,,"{'boomerang', 'lawnmower'}",set
+throw,tires,football,0.985,-4.199705077879926,"{'boomerang', 'lawnmower'}",set
+throw,boomerang,lawnmower,,,{'boomerang'},set
+throw,boomerang,shovel,,,{'boomerang'},set
+throw,tires,shovel,0.985,-4.199705077879926,{'boomerang'},set
+throw,boomerang,football,,,{'boomerang'},set
+throw,boomerang,beach ball,,,{'boomerang'},set
+throw,lawnmower,tires,,,"{'boomerang', 'lawnmower'}",set
+throw,football,shovel,1.0,0.0,"{'boomerang', 'lawnmower'}",set
+throw,boomerang,football,,,{'boomerang'},set
+throw,shovel,lawnmower,0.969,-3.47376807449699,{'boomerang'},set
+throw,lawnmower,football,,,{'lawnmower'},set
+throw,beach ball,boomerang,,,"{'beach ball', 'lawnmower'}",set
+throw,football,shovel,1.0,0.0,"{'beach ball', 'lawnmower'}",set
+throw,shovel,tires,0.969,-3.47376807449699,,set
+throw,shovel,lawnmower,0.969,-0.03149066709137085,,set
+throw,shovel,boomerang,0.969,-3.47376807449699,,set
+throw,tires,beach ball,0.985,-4.199705077879926,,set
+throw,boomerang,football,,,{'boomerang'},set
+throw,football,lawnmower,1.0,0.0,{'boomerang'},set
+throw,boomerang,football,,,{'boomerang'},set
+throw,boomerang,beach ball,,,{'boomerang'},set
+throw,boomerang,football,,,{'boomerang'},set
+throw,shovel,boomerang,0.969,-3.47376807449699,{'boomerang'},set
+throw,shovel,lawnmower,0.969,-0.03149066709137085,,set
+throw,lawnmower,boomerang,,,{'lawnmower'},set
+throw,football,lawnmower,1.0,0.0,{'lawnmower'},set
+throw,boomerang,football,,,{'boomerang'},set
+throw,tires,beach ball,0.985,-4.199705077879926,{'boomerang'},set
+throw,lawnmower,shovel,,,{'lawnmower'},set
+throw,tires,boomerang,0.985,-4.199705077879926,{'lawnmower'},set
+throw,boomerang,beach ball,,,{'boomerang'},set
+throw,tires,lawnmower,0.985,-4.199705077879926,{'boomerang'},set
+throw,boomerang,football,,,{'boomerang'},set
+throw,shovel,football,0.969,-3.47376807449699,{'boomerang'},set
+throw,boomerang,tires,,,{'boomerang'},set
+throw,beach ball,football,,,"{'beach ball', 'boomerang'}",set
+throw,football,tires,1.0,0.0,"{'beach ball', 'boomerang'}",set
+throw,football,tires,1.0,0.0,,set
+throw,football,tires,1.0,-23.025850929940457,,set
+throw,boomerang,shovel,,,{'boomerang'},set
+throw,boomerang,beach ball,,,{'boomerang'},set
+throw,shovel,lawnmower,0.969,-3.47376807449699,{'boomerang'},set
+throw,lawnmower,tires,,,{'lawnmower'},set
+throw,shovel,boomerang,0.969,-3.47376807449699,{'lawnmower'},set
+throw,shovel,lawnmower,0.969,-3.47376807449699,,set
+throw,boomerang,football,,,{'boomerang'},set
+throw,tires,lawnmower,0.985,-4.199705077879926,{'boomerang'},set
+throw,boomerang,beach ball,,,{'boomerang'},set
+throw,shovel,lawnmower,0.969,-3.47376807449699,{'boomerang'},set
+throw,tires,lawnmower,0.985,-4.199705077879926,,set
+throw,lawnmower,shovel,,,{'lawnmower'},set
+throw,boomerang,beach ball,,,"{'boomerang', 'lawnmower'}",set
+throw,football,beach ball,1.0,0.0,"{'boomerang', 'lawnmower'}",set
+throw,tires,football,0.985,-4.199705077879926,,set
+throw,boomerang,tires,,,{'boomerang'},set
+throw,football,boomerang,1.0,0.0,{'boomerang'},set
+throw,beach ball,lawnmower,,,{'beach ball'},set
+transport,roller blades,car,,,"{'beach ball', 'roller blades'}",set
+transport,lawnmower,chairs,,,"{'beach ball', 'lawnmower', 'roller blades'}",set
+transport,hammer,motorcycle,0.945,-2.900422093749665,"{'beach ball', 'lawnmower', 'roller blades'}",set
+transport,roller blades,hammer,,,{'roller blades'},set
+transport,lawnmower,hammer,,,"{'lawnmower', 'roller blades'}",set
+transport,motorcycle,hammer,0.989,-4.509860006183765,"{'lawnmower', 'roller blades'}",set
+transport,roller blades,hammer,,,{'roller blades'},set
+transport,roller blades,motorcycle,,,{'roller blades'},set
+transport,lawnmower,hammer,,,"{'lawnmower', 'roller blades'}",set
+transport,motorcycle,car,0.989,-0.011060947359424948,"{'lawnmower', 'roller blades'}",set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,chairs,hammer,0.992,-4.828313737302301,{'lawnmower'},set
+transport,chairs,hammer,0.992,-0.008032171697264267,,set
+transport,car,motorcycle,0.998,-0.0020020026706730793,,set
+transport,hammer,roller blades,0.945,-0.05657035148839435,,set
+transport,motorcycle,chairs,0.989,-4.509860006183765,,set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,motorcycle,lawnmower,0.989,-0.011060947359424948,{'lawnmower'},set
+transport,motorcycle,car,0.989,-0.011060947359424948,,set
+transport,hammer,motorcycle,0.945,-2.900422093749665,,set
+transport,motorcycle,car,0.989,-0.011060947359424948,,set
+transport,motorcycle,car,0.989,-0.011060947359424948,,set
+transport,car,lawnmower,0.998,-0.0020020026706730793,,set
+transport,hammer,motorcycle,0.945,-2.900422093749665,,set
+transport,lawnmower,motorcycle,,,{'lawnmower'},set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,chairs,car,0.992,-4.828313737302301,{'lawnmower'},set
+transport,roller blades,lawnmower,,,{'roller blades'},set
+transport,hammer,roller blades,0.945,-2.900422093749665,{'roller blades'},set
+transport,motorcycle,car,0.989,-0.011060947359424948,,set
+transport,motorcycle,chairs,0.989,-4.509860006183765,,set
+transport,car,lawnmower,0.998,-0.0020020026706730793,,set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,hammer,car,0.945,-2.900422093749665,{'lawnmower'},set
+transport,hammer,chairs,0.945,-2.900422093749665,,set
+transport,chairs,hammer,0.992,-4.828313737302301,,set
+transport,roller blades,hammer,,,{'roller blades'},set
+transport,hammer,lawnmower,0.945,-2.900422093749665,{'roller blades'},set
+transport,roller blades,car,,,{'roller blades'},set
+transport,roller blades,motorcycle,,,{'roller blades'},set
+transport,roller blades,motorcycle,,,{'roller blades'},set
+transport,motorcycle,car,0.989,-0.011060947359424948,{'roller blades'},set
+transport,hammer,motorcycle,0.945,-2.900422093749665,,set
+transport,lawnmower,car,,,{'lawnmower'},set
+transport,roller blades,motorcycle,,,"{'roller blades', 'lawnmower'}",set
+transport,lawnmower,chairs,,,"{'roller blades', 'lawnmower'}",set
+transport,chairs,motorcycle,0.992,-4.828313737302301,"{'roller blades', 'lawnmower'}",set
+transport,chairs,motorcycle,0.992,-4.828313737302301,,set
+transport,car,lawnmower,0.998,-0.0020020026706730793,,set
+transport,hammer,lawnmower,0.945,-2.900422093749665,,set
+transport,motorcycle,car,0.989,-0.011060947359424948,,set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,chairs,lawnmower,0.992,-4.828313737302301,{'lawnmower'},set
+transport,chairs,car,0.992,-4.828313737302301,,set
+transport,motorcycle,car,0.989,-0.011060947359424948,,set
+transport,motorcycle,car,0.989,-0.011060947359424948,,set
+transport,motorcycle,hammer,0.989,-0.011060947359424948,,set
+transport,car,chairs,0.998,-0.0020020026706730793,,set
+transport,motorcycle,roller blades,0.989,-0.011060947359424948,,set
+transport,chairs,hammer,0.992,-4.828313737302301,,set
+transport,chairs,car,0.992,-4.828313737302301,,set
+transport,car,motorcycle,0.998,-0.0020020026706730793,,set
+transport,roller blades,lawnmower,,,{'roller blades'},set
+transport,roller blades,lawnmower,,,{'roller blades'},set
+transport,chairs,lawnmower,0.992,-4.828313737302301,{'roller blades'},set
+transport,hammer,roller blades,0.945,-2.900422093749665,,set
+transport,chairs,roller blades,0.992,-0.008032171697264267,,set
+transport,roller blades,hammer,,,{'roller blades'},set
+transport,roller blades,car,,,{'roller blades'},set
+transport,car,lawnmower,0.998,-0.0020020026706730793,{'roller blades'},set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,roller blades,car,,,"{'roller blades', 'lawnmower'}",set
+transport,roller blades,motorcycle,,,"{'roller blades', 'lawnmower'}",set
+transport,car,roller blades,0.998,-0.0020020026706730793,"{'roller blades', 'lawnmower'}",set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,roller blades,car,,,"{'roller blades', 'lawnmower'}",set
+transport,roller blades,car,,,"{'roller blades', 'lawnmower'}",set
+transport,car,hammer,0.998,-0.0020020026706730793,"{'roller blades', 'lawnmower'}",set
+transport,chairs,car,0.992,-4.828313737302301,,set
+transport,hammer,roller blades,0.945,-2.900422093749665,,set
+transport,lawnmower,car,,,{'lawnmower'},set
+transport,chairs,roller blades,0.992,-4.828313737302301,{'lawnmower'},set
+transport,motorcycle,chairs,0.989,-0.011060947359424948,,set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,motorcycle,roller blades,0.989,-0.011060947359424948,{'lawnmower'},set
+transport,motorcycle,car,0.989,-0.011060947359424948,,set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,motorcycle,lawnmower,0.989,-0.011060947359424948,{'lawnmower'},set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,roller blades,motorcycle,,,"{'roller blades', 'lawnmower'}",set
+transport,chairs,hammer,0.992,-4.828313737302301,"{'roller blades', 'lawnmower'}",set
+transport,hammer,chairs,0.945,-2.900422093749665,,set
+transport,motorcycle,car,0.989,-0.011060947359424948,,set
+transport,chairs,motorcycle,0.992,-4.828313737302301,,set
+transport,roller blades,hammer,,,{'roller blades'},set
+transport,hammer,car,0.945,-0.05657035148839435,{'roller blades'},set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,lawnmower,roller blades,,,{'lawnmower'},set
+transport,roller blades,chairs,,,"{'roller blades', 'lawnmower'}",set
+transport,chairs,hammer,0.992,-4.828313737302301,"{'roller blades', 'lawnmower'}",set
+transport,roller blades,motorcycle,,,{'roller blades'},set
+transport,chairs,hammer,0.992,-4.828313737302301,{'roller blades'},set
+transport,hammer,car,0.945,-2.900422093749665,,set
+transport,car,motorcycle,0.998,-0.0020020026706730793,,set
+transport,roller blades,motorcycle,,,{'roller blades'},set
+transport,lawnmower,chairs,,,"{'lawnmower', 'roller blades'}",set
+transport,hammer,roller blades,0.945,-2.900422093749665,"{'lawnmower', 'roller blades'}",set
+transport,chairs,hammer,0.992,-4.828313737302301,,set
+transport,motorcycle,hammer,0.989,-4.509860006183765,,set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,hammer,car,0.945,-2.900422093749665,{'lawnmower'},set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,car,roller blades,0.998,-0.0020020026706730793,{'lawnmower'},set
+transport,car,hammer,0.998,-0.0020020026706730793,,set
+transport,roller blades,car,,,{'roller blades'},set
+transport,chairs,car,0.992,-4.828313737302301,{'roller blades'},set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,chairs,hammer,0.992,-4.828313737302301,{'lawnmower'},set
+transport,roller blades,motorcycle,,,{'roller blades'},set
+transport,motorcycle,roller blades,0.989,-0.011060947359424948,{'roller blades'},set
+transport,motorcycle,car,0.989,-0.011060947359424948,,set
+transport,car,roller blades,0.998,-0.0020020026706730793,,set
+transport,lawnmower,car,,,{'lawnmower'},set
+transport,motorcycle,car,0.989,-0.011060947359424948,{'lawnmower'},set
+transport,chairs,lawnmower,0.992,-0.008032171697264267,,set
+transport,motorcycle,hammer,0.989,-0.011060947359424948,,set
+transport,car,hammer,0.998,-6.2146080984221905,,set
+transport,chairs,lawnmower,0.992,-4.828313737302301,,set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,roller blades,lawnmower,,,"{'roller blades', 'lawnmower'}",set
+transport,roller blades,motorcycle,,,"{'roller blades', 'lawnmower'}",set
+transport,lawnmower,roller blades,,,"{'roller blades', 'lawnmower'}",set
+transport,lawnmower,motorcycle,,,"{'roller blades', 'lawnmower'}",set
+transport,car,motorcycle,0.998,-0.0020020026706730793,"{'roller blades', 'lawnmower'}",set
+transport,motorcycle,car,0.989,-0.011060947359424948,,set
+transport,chairs,hammer,0.992,-4.828313737302301,,set
+transport,car,hammer,0.998,-0.0020020026706730793,,set
+transport,chairs,hammer,0.992,-4.828313737302301,,set
+transport,motorcycle,car,0.989,-0.011060947359424948,,set
+transport,motorcycle,car,0.989,-0.011060947359424948,,set
+transport,roller blades,car,,,{'roller blades'},set
+transport,hammer,chairs,0.945,-2.900422093749665,{'roller blades'},set
+transport,car,roller blades,0.998,-0.0020020026706730793,,set
+transport,car,lawnmower,0.998,-0.0020020026706730793,,set
+transport,hammer,car,0.945,-2.900422093749665,,set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,roller blades,car,,,"{'roller blades', 'lawnmower'}",set
+transport,motorcycle,roller blades,0.989,-0.011060947359424948,"{'roller blades', 'lawnmower'}",set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,lawnmower,car,,,{'lawnmower'},set
+transport,car,lawnmower,0.998,-0.0020020026706730793,{'lawnmower'},set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,motorcycle,car,0.989,-0.011060947359424948,{'lawnmower'},set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,chairs,hammer,0.992,-4.828313737302301,{'lawnmower'},set
+transport,motorcycle,car,0.989,-4.509860006183765,,set
+transport,car,chairs,0.998,-0.0020020026706730793,,set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,motorcycle,car,0.989,-0.011060947359424948,{'lawnmower'},set
+transport,roller blades,car,,,{'roller blades'},set
+transport,lawnmower,chairs,,,"{'lawnmower', 'roller blades'}",set
+transport,lawnmower,roller blades,,,"{'lawnmower', 'roller blades'}",set
+transport,motorcycle,lawnmower,0.989,-0.011060947359424948,"{'lawnmower', 'roller blades'}",set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,roller blades,car,,,"{'roller blades', 'lawnmower'}",set
+transport,lawnmower,motorcycle,,,"{'roller blades', 'lawnmower'}",set
+transport,roller blades,car,,,"{'roller blades', 'lawnmower'}",set
+transport,lawnmower,motorcycle,,,"{'roller blades', 'lawnmower'}",set
+transport,car,hammer,0.998,-6.2146080984221905,"{'roller blades', 'lawnmower'}",set
+transport,roller blades,motorcycle,,,{'roller blades'},set
+transport,motorcycle,lawnmower,0.989,-0.011060947359424948,{'roller blades'},set
+transport,motorcycle,chairs,0.989,-0.011060947359424948,,set
+transport,lawnmower,roller blades,,,{'lawnmower'},set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,car,motorcycle,0.998,-6.2146080984221905,{'lawnmower'},set
+transport,lawnmower,hammer,,,{'lawnmower'},set
+transport,roller blades,car,,,"{'roller blades', 'lawnmower'}",set
+transport,roller blades,motorcycle,,,"{'roller blades', 'lawnmower'}",set
+transport,hammer,lawnmower,0.945,-2.900422093749665,"{'roller blades', 'lawnmower'}",set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,motorcycle,chairs,0.989,-0.011060947359424948,{'lawnmower'},set
+transport,hammer,chairs,0.945,-2.900422093749665,,set
+transport,chairs,lawnmower,0.992,-4.828313737302301,,set
+transport,roller blades,chairs,,,{'roller blades'},set
+transport,lawnmower,chairs,,,"{'lawnmower', 'roller blades'}",set
+transport,motorcycle,car,0.989,-4.509860006183765,"{'lawnmower', 'roller blades'}",set
+transport,chairs,hammer,0.992,-4.828313737302301,,set
+transport,roller blades,motorcycle,,,{'roller blades'},set
+transport,chairs,hammer,0.992,-4.828313737302301,{'roller blades'},set
+transport,motorcycle,roller blades,0.989,-0.011060947359424948,,set
+transport,hammer,motorcycle,0.945,-2.900422093749665,,set
+transport,roller blades,chairs,,,{'roller blades'},set
+transport,lawnmower,motorcycle,,,"{'lawnmower', 'roller blades'}",set
+transport,hammer,lawnmower,0.945,-0.05657035148839435,"{'lawnmower', 'roller blades'}",set
+transport,chairs,motorcycle,0.992,-4.828313737302301,,set
+transport,motorcycle,car,0.989,-0.011060947359424948,,set
+transport,lawnmower,chairs,,,{'lawnmower'},set
+transport,roller blades,car,,,"{'roller blades', 'lawnmower'}",set
+transport,chairs,hammer,0.992,-4.828313737302301,"{'roller blades', 'lawnmower'}",set
+transport,motorcycle,roller blades,0.989,-0.011060947359424948,,set
+transport,roller blades,car,,,{'roller blades'},set
+transport,lawnmower,chairs,,,"{'lawnmower', 'roller blades'}",set
+transport,car,chairs,0.998,-0.0020020026706730793,"{'lawnmower', 'roller blades'}",set
+transport,roller blades,car,,,{'roller blades'},set
+transport,car,roller blades,0.998,-0.0020020026706730793,{'roller blades'},set
+transport,motorcycle,lawnmower,0.989,-0.011060947359424948,,set

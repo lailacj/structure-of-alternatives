@@ -1,0 +1,146 @@
+---
+title: "Main Effects, Interaction, and Simple Effects"
+output: html_notebook
+---
+
+# Set Up
+```{r}
+library(emmeans)
+library(ggplot2)
+library(lme4)
+library(lmerTest)
+library(readr)
+library(tidyr)
+library(dplyr)
+
+filtered_items_results_fyp <- read_csv("/Users/lailajohnston/Library/CloudStorage/GoogleDrive-laila_johnston@brown.edu/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/data/filtered_items_results_fyp.csv")
+
+filtered_items_results_fyp2 <- filtered_items_results_fyp %>%
+  select(-excluded_items) %>%
+  filter(row.names(filtered_items_results_fyp) != "mall")
+
+# Reshape the data to long format
+long_df <- filtered_items_results_fyp2 %>%
+  pivot_longer(
+    cols = -context,
+    names_to = "variable",
+    values_to = "log_likelihood"
+  ) %>%
+  mutate(
+    model = ifelse(grepl("uniform", variable), "UNIFORM", "BERT"),
+    type = ifelse(grepl("ordering", variable), "ordering", "set")
+  ) %>%
+  select(context, model, type, log_likelihood)
+```
+
+# Main Effects and Interaction 
+```{r}
+# main effects
+reduced<-lmer(log_likelihood ~ model + type + (1|context), data = long_df)
+summary(reduced)
+
+# main effects with interaction
+full<-lmer(log_likelihood ~ model + type + model*type + (1|context), data = long_df)
+summary(full)
+
+# interaction is significant 
+anova(full, reduced)
+
+# Compute estimated marginal means for interaction
+emm_interaction <- emmeans(full, ~ model * type)
+# Convert to data frame for ggplot
+emm_interaction_df <- as.data.frame(emm_interaction)
+
+# Create the interaction plot
+ggplot(emm_interaction_df, aes(x = type, y = emmean, color = model, group = model)) +
+  geom_line() +
+  geom_point() +
+  geom_errorbar(aes(ymin = emmean - SE, ymax = emmean + SE), width = 0.1) +
+  labs(
+    title = "Interaction Effect Between Model and Type",
+    x = "Type",
+    y = "Log Likelihood",
+    color = "Model"
+  ) +
+  theme_minimal()
+```
+
+# Simple Effects 
+```{r}
+# simple effects (only allowed to do bc significant interaction)
+
+bert<-subset(long_df, model=="BERT")
+mod.bert<-lmer(log_likelihood ~ type + (1|context), data = bert)
+summary(mod.bert)
+
+uniform<-subset(long_df, model=="UNIFORM")
+mod.uniform<-lmer(log_likelihood ~ type + (1|context), data = uniform)
+summary(mod.uniform)
+
+# Compute estimated marginal means
+emm_bert <- emmeans(mod.bert, ~ type)
+emm_uniform <- emmeans(mod.uniform, ~ type)
+
+# Combine results into a single data frame
+emm_bert_df <- as.data.frame(emm_bert)
+emm_bert_df$model <- "BERT"
+
+emm_uniform_df <- as.data.frame(emm_uniform)
+emm_uniform_df$model <- "UNIFORM"
+
+combined_df <- rbind(emm_bert_df, emm_uniform_df)
+
+# Plot simple effects
+ggplot(combined_df, aes(x = type, y = emmean, fill = model)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_errorbar(aes(ymin = emmean - SE, ymax = emmean + SE), 
+                width = 0.2, position = position_dodge(0.9)) +
+  labs(
+    title = "Simple Effects of Type for BERT and UNIFORM Models",
+    x = "Type",
+    y = "Estimated Log Likelihood",
+    fill = "Model"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+ordering<-subset(long_df, type=="ordering")
+mod.ordering<-lmer(log_likelihood ~ model + (1|context), data = ordering)
+summary(mod.ordering)
+
+set<-subset(long_df, type=="set")
+mod.set<-lmer(log_likelihood ~ model + (1|context), data = set)
+summary(mod.set)
+
+# Compute estimated marginal means
+emm_ordering <- emmeans(mod.ordering, ~ model)
+emm_set <- emmeans(mod.set, ~ model)
+
+# Convert to data frames and add type column
+emm_ordering_df <- as.data.frame(emm_ordering)
+emm_ordering_df$type <- "ordering"
+
+emm_set_df <- as.data.frame(emm_set)
+emm_set_df$type <- "set"
+
+# Combine results into a single data frame
+combined_df <- rbind(emm_ordering_df, emm_set_df)
+
+# Plot simple effects
+ggplot(combined_df, aes(x = model, y = emmean, fill = type)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_errorbar(aes(ymin = emmean - SE, ymax = emmean + SE), 
+                width = 0.2, position = position_dodge(0.9)) +
+  labs(
+    title = "Simple Effects of Model for Ordering and Set Types",
+    x = "Model",
+    y = "Estimated Log Likelihood",
+    fill = "Type"
+  ) +
+  theme_minimal()
+
+# graph of bert and unfoirm line with set and ordering on x-axis 
+```
+
