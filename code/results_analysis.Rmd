@@ -1,0 +1,58 @@
+---
+title: "Untitled"
+author: "Laila Johnston"
+date: '2025-02-25'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# Needed libraries 
+library(dplyr)
+library(ggplot2)
+library(readr)
+```
+
+
+```{r}
+# Import result files 
+set_results = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/set_results.csv")
+
+ordering_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/ordering_results.csv")
+
+conjunction_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/conjunction_results.csv")
+
+disjunction_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/disjunction_results.csv")
+
+queries_not_in_distribution = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/queries_not_in_distribution.csv")
+```
+
+```{r}
+# Add a model column and combine the dataframes 
+set_results$model <- "Set"
+ordering_results$model <- "Ordering"
+conjunction_results$model <- "Conjunction"
+disjunction_results$model <- "Disjunction"
+
+df_results <- bind_rows(set_results, ordering_results, conjunction_results, disjunction_results)
+
+# Compute the mean of the log_likelihoods and the standard error of the log_likelihoods for each set_boundary and model
+summary_df <- df_results %>%
+  group_by(set_boundary, model) %>%
+  summarise(
+    mean_log_likelihood = mean(log_likelihood, na.rm = TRUE),
+    se_log_likelihood = sd(log_likelihood, na.rm = TRUE) / sqrt(n()))
+
+# Plot of the mean log_likelihoods as a function of set boundary (four lines, one for each model) with standard error of the mean
+ggplot(summary_df, aes(x = set_boundary, y = mean_log_likelihood, color = model)) +
+  geom_line() +
+  geom_point() +
+  geom_errorbar(aes(ymin = mean_log_likelihood - se_log_likelihood, ymax = mean_log_likelihood + se_log_likelihood), width = 0.2) +
+  labs(x = "Set Boundary", y = "Log Likelihood", title = "Mean of log likelihoods as a function of set boundary with standard error of the mean") +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+```
+
