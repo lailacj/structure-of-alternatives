@@ -52,17 +52,26 @@ emm_interaction <- emmeans(full, ~ model * type)
 emm_interaction_df <- as.data.frame(emm_interaction)
 
 # Create the interaction plot
-ggplot(emm_interaction_df, aes(x = type, y = emmean, color = model, group = model)) +
-  geom_line() +
-  geom_point() +
-  geom_errorbar(aes(ymin = emmean - SE, ymax = emmean + SE), width = 0.1) +
-  labs(
-    title = "Interaction Effect Between Model and Type",
-    x = "Type",
-    y = "Log Likelihood",
-    color = "Model"
-  ) +
-  theme_minimal()
+p = ggplot(emm_interaction_df, aes(x = type, y = emmean, color = model, group = model)) +
+    geom_line(size = 1) +
+    geom_point(size = 2) +
+    geom_errorbar(aes(ymin = emmean - SE, ymax = emmean + SE), width = 0.1) +
+    labs(
+      title = "Interaction Effect Between Model Approach and Alternative Structure",
+      x = "Alternative Structure",
+      y = "Log Likelihood Estimates",
+      color = "Model Approach"
+    ) +
+    theme(
+      plot.title = element_text(size = 16, face = "bold"), # Title text size
+      axis.title.x = element_text(size = 14),             # X-axis title size
+      axis.title.y = element_text(size = 14),             # Y-axis title size
+      axis.text = element_text(size = 14),                # X and Y axis tick labels size
+      legend.title = element_text(size = 14),             # Legend title size
+      legend.text = element_text(size = 12)               # Legend labels size
+    )
+
+ggsave(filename = "../figures/interaction_plot_fyp.png", plot = p, width = 9, height = 6, dpi = 500)
 ```
 
 # Simple Effects 
