@@ -1,13 +1,9 @@
 ---
-title: "Untitled"
+title: "Results Analysis"
 author: "Laila Johnston"
 date: '2025-02-25'
 output: html_document
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 ```{r}
 # Needed libraries 
@@ -36,7 +32,6 @@ set_results$model <- "Set"
 ordering_results$model <- "Ordering"
 conjunction_results$model <- "Conjunction"
 disjunction_results$model <- "Disjunction"
-
 df_results <- bind_rows(set_results, ordering_results, conjunction_results, disjunction_results)
 
 # Compute the mean of the log_likelihoods and the standard error of the log_likelihoods for each set_boundary and model
@@ -51,7 +46,85 @@ ggplot(summary_df, aes(x = set_boundary, y = mean_log_likelihood, color = model)
   geom_line() +
   geom_point() +
   geom_errorbar(aes(ymin = mean_log_likelihood - se_log_likelihood, ymax = mean_log_likelihood + se_log_likelihood), width = 0.2) +
-  labs(x = "Set Boundary", y = "Log Likelihood", title = "Mean of log likelihoods as a function of set boundary with standard error of the mean") +
+  labs(x = "Set Boundary", y = "Log Likelihood", title = "Mean of log likelihoods  as a function of set boundary with standard error of the mean\nAveraged accross all contexts and trials") +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+```
+
+```{r}
+context_df_set <- set_results %>%
+  group_by(set_boundary, context) %>%
+  summarise(
+    mean_log_likelihood = mean(log_likelihood, na.rm = TRUE),
+    se_log_likelihood = sd(log_likelihood, na.rm = TRUE) / sqrt(n()))
+
+ggplot(context_df_set, aes(x = set_boundary, y = mean_log_likelihood, color = context)) +
+  geom_line() +
+  geom_point() +
+  # geom_errorbar(aes(ymin = mean_log_likelihood - se_log_likelihood, ymax = mean_log_likelihood + se_log_likelihood), width = 0.2) +
+  labs(x = "Set Boundary", y = "Log Likelihood", title = "Set Model\nMean of log likelihoodsas a function of set boundary\nAveraged accross triggers and queries") +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+```
+```{r}
+context_df_ordering <- ordering_results %>%
+  group_by(set_boundary, context) %>%
+  summarise(
+    mean_log_likelihood = mean(log_likelihood, na.rm = TRUE),
+    se_log_likelihood = sd(log_likelihood, na.rm = TRUE) / sqrt(n()))
+
+ggplot(context_df_ordering, aes(x = set_boundary, y = mean_log_likelihood, color = context)) +
+  geom_line() +
+  geom_point() +
+  # geom_errorbar(aes(ymin = mean_log_likelihood - se_log_likelihood, ymax = mean_log_likelihood + se_log_likelihood), width = 0.2) +
+  labs(x = "Set Boundary", y = "Log Likelihood", title = "Ordering Model\nMean of log likelihoods as a function of set boundary\nAveraged accross triggers and queries") +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+```
+```{r}
+context_df_con <- conjunction_results %>%
+  group_by(set_boundary, context) %>%
+  summarise(
+    mean_log_likelihood = mean(log_likelihood, na.rm = TRUE),
+    se_log_likelihood = sd(log_likelihood, na.rm = TRUE) / sqrt(n()))
+
+ggplot(context_df_con, aes(x = set_boundary, y = mean_log_likelihood, color = context)) +
+  geom_line() +
+  geom_point() +
+  # geom_errorbar(aes(ymin = mean_log_likelihood - se_log_likelihood, ymax = mean_log_likelihood + se_log_likelihood), width = 0.2) +
+  labs(x = "Set Boundary", y = "Log Likelihood", title = "Conjunction Model\nMean of log likelihoods as a function of set boundary\nAveraged accross triggers and queries") +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+```
+```{r}
+context_df_dis <- disjunction_results %>%
+  group_by(set_boundary, context) %>%
+  summarise(
+    mean_log_likelihood = mean(log_likelihood, na.rm = TRUE),
+    se_log_likelihood = sd(log_likelihood, na.rm = TRUE) / sqrt(n()))
+
+ggplot(context_df_dis, aes(x = set_boundary, y = mean_log_likelihood, color = context)) +
+  geom_line() +
+  geom_point() +
+  # geom_errorbar(aes(ymin = mean_log_likelihood - se_log_likelihood, ymax = mean_log_likelihood + se_log_likelihood), width = 0.2) +
+  labs(x = "Set Boundary", y = "Log Likelihood", title = "Disjunction Model\nMean of log likelihoods as a function of set boundary\nAveraged accross triggers and queries") +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+```
+
+```{r}
+context_df <- set_results %>%
+  filter(context == "hot") %>% 
+  group_by(set_boundary, trigger) %>%
+  summarise(
+    mean_log_likelihood = mean(log_likelihood, na.rm = TRUE),
+    se_log_likelihood = sd(log_likelihood, na.rm = TRUE) / sqrt(n()))
+
+ggplot(context_df, aes(x = set_boundary, y = mean_log_likelihood, color = trigger)) +
+  geom_line() +
+  geom_point() +
+  # geom_errorbar(aes(ymin = mean_log_likelihood - se_log_likelihood, ymax = mean_log_likelihood + se_log_likelihood), width = 0.2) +
+  labs(x = "Set Boundary", y = "Log Likelihood", title = "Set Model, Context 'hot'\nMean of log likelihoods as a function of set boundary\nAveraged accross queries") +
   theme_minimal() +
   theme(legend.title = element_blank())
 ```
