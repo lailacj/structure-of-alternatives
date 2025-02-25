@@ -173,7 +173,7 @@ def disjunction_log_likelihood(samples, query, trigger, query_negated):
         # Handle the zero or negative case by assigning a small value
         return np.log(1e-10)
 
-def log_likelihoods(experimental_data, num_reps=1000):
+def log_likelihoods(experimental_data, num_reps=500, save_interval=1000):
     ordering_data = []
     set_data = []
     conjunction_data = []
@@ -184,73 +184,114 @@ def log_likelihoods(experimental_data, num_reps=1000):
     contexts = experimental_data['story'].unique()
     context_samples = {}
 
-    for set_boundary in range(3, 30522, 100):
+    # range(start, stop, step)
+    # the start has to be at least three
+    # the stop can be at most 30522 (size of bert vocab)
+    for set_boundary in range(3, 30522, save_interval): 
+        print(f"Set Boundary: {set_boundary}")
 
         for context in contexts:
             prompt = get_prompt_for_context(df_prompts, context)
             distribution = get_next_word_probability_distribution(prompt)
             context_samples[context] = []
 
-            for rep in range(0, num_reps):
+            for i in range(0, num_reps):
                 sampled_ordering = get_ordering(distribution)
                 sampled_set = sampled_ordering[:set_boundary]
                 context_samples[context].append((sampled_ordering, sampled_set))
+                print(f"Completed {set_boundary} {context} {i}")
 
-    # iterate through the experimental data
-    for _, row in experimental_data.iterrows():
-        context = row['story']
-        query = row['cleaned_query']
-        trigger = row['cleaned_trigger']
-        query_negated = row['neg'] 
+        # iterate through the experimental data
+        for _, row in experimental_data.iterrows():
 
-        # Skip to the next row if query or trigger is not in the predicted tokens of distribution
-        if not any(predicted_token == query for predicted_token, _ in distribution):
-            queries_not_in_distribution.append((context, query, trigger))
-            continue
+            # print(f"Row: {row}")
 
-        if not any(predicted_token == trigger for predicted_token, _ in distribution):
-            queries_not_in_distribution.append((context, query, trigger))
-            continue
+            context = row['story']
+            query = row['cleaned_query']
+            trigger = row['cleaned_trigger']
+            query_negated = row['neg'] 
 
-        # get the samples for the context
-        samples = context_samples[context]
-        ordering_log_likelihood_single_trial = ordering_log_likelihood(samples, query, trigger, query_negated)
-        set_log_likelihood_single_trial = set_log_likelihood(samples, query, query_negated)
-        conjunction_log_likelihood_single_trial = conjunction_log_likelihood(samples, query, trigger, query_negated)
-        disjunction_log_likelihood_single_trial = disjunction_log_likelihood(samples, query, trigger, query_negated)
+            # Skip to the next row if query or trigger is not in the predicted tokens of distribution
+            if not any(predicted_token == query for predicted_token, _ in distribution):
+                queries_not_in_distribution.append((context, query, trigger))
+                continue
 
-        ordering_data.append([set_boundary, num_reps, context, trigger, query, ordering_log_likelihood_single_trial])
-        set_data.append([set_boundary, num_reps, context, trigger, query, set_log_likelihood_single_trial])
-        conjunction_data.append([set_boundary, num_reps, context, trigger, query, conjunction_log_likelihood_single_trial])
-        disjunction_data.append([set_boundary, num_reps, context, trigger, query, disjunction_log_likelihood_single_trial])
+            if not any(predicted_token == trigger for predicted_token, _ in distribution):
+                queries_not_in_distribution.append((context, query, trigger))
+                continue
 
-    return (set_data, ordering_data, conjunction_data, disjunction_data, queries_not_in_distribution)
+            # get the samples for the context
+            samples = context_samples[context]
+            ordering_log_likelihood_single_trial = ordering_log_likelihood(samples, query, trigger, query_negated)
+            set_log_likelihood_single_trial = set_log_likelihood(samples, query, query_negated)
+            conjunction_log_likelihood_single_trial = conjunction_log_likelihood(samples, query, trigger, query_negated)
+            disjunction_log_likelihood_single_trial = disjunction_log_likelihood(samples, query, trigger, query_negated)
+
+            ordering_data.append([set_boundary, num_reps, context, trigger, query, ordering_log_likelihood_single_trial])
+            set_data.append([set_boundary, num_reps, context, trigger, query, set_log_likelihood_single_trial])
+            conjunction_data.append([set_boundary, num_reps, context, trigger, query, conjunction_log_likelihood_single_trial])
+            disjunction_data.append([set_boundary, num_reps, context, trigger, query, disjunction_log_likelihood_single_trial])
+
+            # print(f"Context: {context}, Query: {query}, Trigger: {trigger}, Ordering LL: {ordering_log_likelihood_single_trial}, Set LL: {set_log_likelihood_single_trial}, Conjunction LL: {conjunction_log_likelihood_single_trial}, Disjunction LL: {disjunction_log_likelihood_single_trial}")
+
+        # Convert lists to DataFrames
+        set_df = pd.DataFrame(set_data, columns=['set_boundary', 'num_reps', 'context', 'trigger', 'query', 'log_likelihood'])
+        ordering_df = pd.DataFrame(ordering_data, columns=['set_boundary', 'num_reps', 'context', 'trigger', 'query', 'log_likelihood'])
+        conjunction_df = pd.DataFrame(conjunction_data, columns=['set_boundary', 'num_reps', 'context', 'trigger', 'query', 'log_likelihood'])
+        disjunction_df = pd.DataFrame(disjunction_data, columns=['set_boundary', 'num_reps', 'context', 'trigger', 'query', 'log_likelihood'])
+        queries_not_in_distribution_df = pd.DataFrame(queries_not_in_distribution, columns=['context', 'query', 'trigger'])
+
+        # Save results to CSV incrementally
+        set_df.to_csv('../data/set_results.csv', mode='a', header=not pd.io.common.file_exists('../data/set_results.csv'), index=False)
+        ordering_df.to_csv('../data/ordering_results.csv', mode='a', header=not pd.io.common.file_exists('../data/ordering_results.csv'), index=False)
+        conjunction_df.to_csv('../data/conjunction_results.csv', mode='a', header=not pd.io.common.file_exists('../data/conjunction_results.csv'), index=False)
+        disjunction_df.to_csv('../data/disjunction_results.csv', mode='a', header=not pd.io.common.file_exists('../data/disjunction_results.csv'), index=False)
+        queries_not_in_distribution_df.to_csv('../data/queries_not_in_distribution.csv', mode='a', header=not pd.io.common.file_exists('../data/queries_not_in_distribution.csv'), index=False)
+
+        print(set_df.head())
+        print(ordering_df.head())
+        print(conjunction_df.head())
+        print(disjunction_df.head())
+        print(queries_not_in_distribution_df.head())
+
+        # Clear lists to free memory
+        set_data.clear()
+        ordering_data.clear()
+        conjunction_data.clear()
+        disjunction_data.clear()
+        queries_not_in_distribution.clear()
+
+    return None
+    # return (set_data, ordering_data, conjunction_data, disjunction_data, queries_not_in_distribution)
 
 # ------ Main ------
 
-set_data, ordering_data, conjunction_data, disjunction_data, queries_not_in_distribution = log_likelihoods(df_experimental_data)
-
-set_df = pd.DataFrame(set_data, columns=['set_boundary', 'num_reps', 'context', 'trigger', 'query', 'log_likelihood'])
-ordering_df = pd.DataFrame(ordering_data, columns=['set_boundary', 'num_reps', 'context', 'trigger', 'query', 'log_likelihood'])
-conjunction_df = pd.DataFrame(conjunction_data, columns=['set_boundary', 'num_reps', 'context', 'trigger', 'query', 'log_likelihood'])
-disjunction_df = pd.DataFrame(disjunction_data, columns=['set_boundary', 'num_reps', 'context', 'trigger', 'query', 'log_likelihood'])
-
-queries_not_in_distribution_df = pd.DataFrame(queries_not_in_distribution, columns=['context', 'query', 'trigger'])
-
-print(set_df.head())
-print(ordering_df.head())
-print(conjunction_df.head())
-print(disjunction_df.head())
-
-# Save DataFrames to CSV files
-set_df.to_csv('../data/set_results.csv', index=False)
-ordering_df.to_csv('../data/ordering_results.csv', index=False)
-conjunction_df.to_csv('../data/conjunction_results.csv', index=False)
-disjunction_df.to_csv('../data/disjunction_results.csv', index=False)
-queries_not_in_distribution_df.to_csv('../data/queries_not_in_distribution.csv', index=False)
+log_likelihoods(df_experimental_data)
 
 
 # ------ Not used code ------
+# set_data, ordering_data, conjunction_data, disjunction_data, queries_not_in_distribution = log_likelihoods(df_experimental_data)
+
+# set_df = pd.DataFrame(set_data, columns=['set_boundary', 'num_reps', 'context', 'trigger', 'query', 'log_likelihood'])
+# ordering_df = pd.DataFrame(ordering_data, columns=['set_boundary', 'num_reps', 'context', 'trigger', 'query', 'log_likelihood'])
+# conjunction_df = pd.DataFrame(conjunction_data, columns=['set_boundary', 'num_reps', 'context', 'trigger', 'query', 'log_likelihood'])
+# disjunction_df = pd.DataFrame(disjunction_data, columns=['set_boundary', 'num_reps', 'context', 'trigger', 'query', 'log_likelihood'])
+
+# queries_not_in_distribution_df = pd.DataFrame(queries_not_in_distribution, columns=['context', 'query', 'trigger'])
+
+# print(set_df.head())
+# print(ordering_df.head())
+# print(conjunction_df.head())
+# print(disjunction_df.head())
+# print(queries_not_in_distribution_df.head())
+
+# # Save DataFrames to CSV files
+# set_df.to_csv('../data/set_results.csv', index=False)
+# ordering_df.to_csv('../data/ordering_results.csv', index=False)
+# conjunction_df.to_csv('../data/conjunction_results.csv', index=False)
+# disjunction_df.to_csv('../data/disjunction_results.csv', index=False)
+# queries_not_in_distribution_df.to_csv('../data/queries_not_in_distribution.csv', index=False)
+
 
     # contexts = experimental_data['story'].unique()
     # # context_samples = {}
