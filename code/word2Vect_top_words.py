@@ -4,6 +4,7 @@ import pandas as pd
 from transformers import BertModel, BertTokenizer
 from sklearn.metrics.pairwise import cosine_similarity
 from tqdm import tqdm
+import pdb
 
 # Load pre-trained BERT model and tokenizer
 model_name = "bert-base-uncased"
@@ -35,6 +36,20 @@ vocab = tokenizer.get_vocab()
 # Convert vocab ID to word
 id_to_word = {v: k for k, v in vocab.items()}
 
+def is_valid_word(word):
+    """Check if a token is a valid word."""
+    return (
+        word.isalpha() and          # Only alphabetic characters
+        word.isascii() and          # Exclude non-ASCII characters (like π, γ)
+        not word.startswith("##") and # Exclude subwords
+        len(word) > 1               # Exclude single characters
+    )
+
+# Filter out non-word tokens (special tokens + subwords)
+valid_word_ids = [word_id for word_id, word in id_to_word.items() if is_valid_word(word)]
+
+# pdb.set_trace()
+
 def get_bert_embedding(word):
     """Returns the static BERT input embedding for a given word."""
     token_id = tokenizer.convert_tokens_to_ids(word)
@@ -53,7 +68,7 @@ def find_top_similar_words(target_word, top_n):
     target_embedding = target_embedding.reshape(1, -1)
 
     # Compute cosine similarity for each word in the vocabulary
-    for word_id in tqdm(range(len(vocab)), desc="Computing similarities"):
+    for word_id in valid_word_ids:
         word_embedding = input_embeddings.weight[word_id].detach().numpy().reshape(1, -1)
         sim = cosine_similarity(target_embedding, word_embedding)[0][0]
         similarities.append((id_to_word[word_id], sim))
