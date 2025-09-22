@@ -4,35 +4,610 @@ author: "Laila Johnston"
 date: '2025-02-25'
 output: html_document
 ---
-
+# Libraries
 ```{r}
 # Needed libraries 
 library(dplyr)
+library(ggforce)
 library(ggplot2)
+library(ggtext)
+library(plotly)
 library(readr)
+library(patchwork)
+library(purrr)
+library(tidyr)
+library(tidytext)
+library(tidyverse)
+library(viridis)
+```
+
+# Word Stats 
+```{r}
+uncleaned_data_net <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/data/wordNet_top_words.csv")
+uncleaned_data_vec <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/data/word2Vec_top_words.csv")
+
+df_bert = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/data/BERT_top_words.csv")
+
+udf_net <- as.data.frame(uncleaned_data_net)
+df_vec <- as.data.frame(uncleaned_data_vec)
+min_score_net <- min(uncleaned_data_net$resnik_score)
+max_score_net <- max(uncleaned_data_net$resnik_score)
+min_score_vec <- min(uncleaned_data_vec$cosine_similarity)
+max_score_vec <- max(uncleaned_data_vec$cosine_similarity)
+df_net <- subset(udf_net, resnik_score < max_score_net) # because we have some values that are 1e+300
+max_score_net <- max(df_net$resnik_score)
+```
+
+```{r}
+df_vec_new = df_vec %>% 
+  mutate(model = "Word2Vec") %>% 
+  rename(score = cosine_similarity) %>% 
+  group_by(context) %>%
+  top_n(15, score)
+
+df_net_new = df_net %>% 
+  mutate(model = "WordNet") %>% 
+  rename(score = resnik_score) %>% 
+  group_by(context) %>%
+  top_n(15, score)
+
+combined_df <- rbind(df_vec_new, df_net_new)
 ```
 
 
 ```{r}
-# Import result files 
-set_results = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/set_results.csv")
+# Filter the top 10 tokens for each context based on probability
+top_words <- df_bert %>%
+  group_by(context) %>%
+  top_n(15, probability) %>%
+  arrange(context, desc(probability)) %>% 
+  mutate(token = factor(token, levels = unique(token)))
 
-ordering_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/ordering_results.csv")
-
-conjunction_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/conjunction_results.csv")
-
-disjunction_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/disjunction_results.csv")
-
-queries_not_in_distribution = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/queries_not_in_distribution.csv")
+ggplot(top_words, aes(x = token, y = probability, fill = context)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = round(probability, 3)), vjust = -0.5, size = 2) +
+  facet_wrap(~context, scales = "free_x") +
+  labs(title = "BERT Top 10 Words by Context",
+       x = "Words",
+       y = "Probability Score") +
+  ylim(0, 1) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+
+
+```{r}
+#wordNet subsets
+bag_net <- subset(df_net, context == "bag")
+bakery_net <- subset(df_net, context == "bakery")
+beach_net <- subset(df_net, context == "beach")
+cold_net <- subset(df_net, context == "cold")
+cut_net <- subset(df_net, context == "cut")
+fridge_net <- subset(df_net, context == "fridge")
+gym_net <- subset(df_net, context == "gym")
+hot_net <- subset(df_net, context == "hot")
+mask_net <- subset(df_net, context == "mask")
+meat_net <- subset(df_net, context == "meat")
+restaurant_net <- subset(df_net, context == "restaurant")
+salad_net <- subset(df_net, context == "salad")
+science_net <- subset(df_net, context == "science")
+throw_net <- subset(df_net, context == "throw")
+transport_net <- subset(df_net, context == "transport")
+
+#word2Vec subsets
+bag_vec <- subset(df_vec, context == "bag")
+bakery_vec <- subset(df_vec, context == "bakery")
+beach_vec <- subset(df_vec, context == "beach")
+cold_vec <- subset(df_vec, context == "cold")
+cut_vec <- subset(df_vec, context == "cut")
+fridge_vec <- subset(df_vec, context == "fridge")
+gym_vec <- subset(df_vec, context == "gym")
+hot_vec <- subset(df_vec, context == "hot")
+mask_vec <- subset(df_vec, context == "mask")
+meat_vec <- subset(df_vec, context == "meat")
+restaurant_vec <- subset(df_vec, context == "restaurant")
+salad_vec <- subset(df_vec, context == "salad")
+science_vec <- subset(df_vec, context == "science")
+throw_vec <- subset(df_vec, context == "throw")
+transport_vec <- subset(df_vec, context == "transport")
+```
+
+
+```{r}
+# NOTE: we get top 10, but the top_n function in dplyr includes if there are ties (which there are) so that's why sometimes there are more than 10
+# input: string value of the trigger: "bag", "bakery", ...etc
+make_graph <- function(input) {
+  net <- subset(df_net, context == input)
+  vec <- subset(df_vec, context == input)
+  
+  # Normalize the scores
+  net$normalized_score <- (net$resnik_score - min_score_net) / (max_score_net - min_score_net) * 100
+  vec$normalized_score <- (vec$cosine_similarity - min_score_vec) / (max_score_vec - min_score_vec) * 100
+  
+  # Select top 10 for each trigger
+  net10 <- net %>% group_by(trigger) %>% top_n(10, normalized_score) %>% ungroup()
+  vec10 <- vec %>% group_by(trigger) %>% top_n(10, normalized_score) %>% ungroup()
+  
+  # Label datasets
+  net10$dataset <- "net"
+  vec10$dataset <- "vec"
+  
+  # Combine and factorize
+  combined10 <- bind_rows(net10, vec10)
+  combined10$dataset <- factor(combined10$dataset, levels = c("net", "vec"))
+  
+  # Order labels
+  labels <- unique(net$trigger)[order(unique(net$trigger))]
+  
+  # Create the plotly object
+  p <- ggplot(combined10, aes(x = trigger, y = normalized_score, color = dataset, 
+                              text = paste("Word: ", word))) +
+    geom_jitter(width = 0.1, height = 0, size = 2, alpha = 0.7) +
+    scale_x_discrete(labels = labels) +
+    labs(x = "Trigger", y = "Normalized Score", title = paste(input, ": Top 10 Words by Trigger")) +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+    scale_color_manual(values = c("net" = "blue", "vec" = "red"))
+  
+  # Convert to plotly with custom tooltip
+  ggplotly(p, tooltip = "text")
+}
+
+# List of contexts
+contexts <- c("bag", "bakery", "beach", "cold", "cut", "fridge", 
+              "gym", "hot", "mask", "meat", "restaurant", 
+              "salad", "science", "throw", "transport")
+
+# Generate all plots
+plots <- lapply(contexts, make_graph)
+
+plots
+
+# # Combine all plots into a single figure
+# combined_plot = subplot(plots, nrows = 4, margin = 0.05, shareX = FALSE, shareY = TRUE, titleX = FALSE, titleY = TRUE)
+# 
+# # Add titles manually as annotations for each subplot
+# annotations <- lapply(seq_along(contexts), function(i) {
+#   list(
+#     x = (i - 1) %% 4 / 4 + 0.125,
+#     y = 1 - (floor((i - 1) / 4) / 4),
+#     text = contexts[i],
+#     xref = "paper",
+#     yref = "paper",
+#     showarrow = FALSE,
+#     font = list(size = 12, color = "black")
+#   )
+# })
+# 
+# # Apply annotations to the combined plot
+# combined_plot <- combined_plot %>% layout(annotations = annotations)
+# 
+# # Display the final plot
+# combined_plot
+# 
+# # make_graph("bag")
+```
+
+```{r}
+# bag
+bag_net$normalized_score <- (bag_net$resnik_score - min_score_net) / (max_score_net - min_score_net) * 100
+bag10 <- bag_net %>% group_by(trigger) %>% top_n(10, normalized_score) %>% ungroup()
+bag_plot <- ggplotly(ggplot(bag10, aes(x = trigger, y = normalized_score, text = paste("Word: ", word))) +
+                       geom_jitter(width = 0.1, height = 0, size = 2, alpha = 0.7) +
+                       scale_x_discrete(labels = c("cash", "chalk", "crayons", "headphones", "makeup", "pen")) +
+                       labs(x = "Trigger", y = "Normalized Score", title = "Bag: Top 10 Scores by Trigger") +
+                       theme_minimal() +
+                       theme(axis.text.x = element_text(angle = 45, hjust = 1)), tooltop="text")
+bag_plot
+```
+
+
+```{r}
+# bakery
+bakery_net$normalized_score <- (bakery_net$resnik_score - min_score_net) / (max_score_net - min_score_net) * 100
+bakery10 <- bakery_net %>% group_by(trigger) %>% top_n(10, normalized_score) %>% ungroup()
+bakery_plot <- ggplotly(ggplot(bakery10, aes(x = trigger, y = normalized_score, text = paste("Word: ", word))) +
+                       geom_jitter(width = 0.1, height = 0, size = 2, alpha = 0.7) +
+                       scale_x_discrete(labels = c("cakes", "sandwiches", "muffins", "pretzels", "water")) +
+                       labs(x = "Trigger", y = "Normalized Score", title = "Bakery: Top 10 Scores by Trigger") +
+                       theme_minimal() +
+                       theme(axis.text.x = element_text(angle = 45, hjust = 1)), tooltop="text")
+bakery_plot
+```
+
+
+
+
+
+
+# Import Results (Context only: "I only have [MASK]")
+```{r}
+# Import result files 
+set_results = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/set_results_july2025.csv",
+                      col_types = cols(
+                        context = col_character(),
+                        trigger = col_character(),
+                        query = col_character(),
+                        empirical_probability = col_double(), 
+                        log_likelihood = col_double()
+              )) %>%
+              rename(
+                cleaned_trigger = trigger,
+                cleaned_query   = query
+              )
+
+ordering_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/ordering_results_july2025.csv",
+                      col_types = cols(
+                        context = col_character(),
+                        trigger = col_character(),
+                        query = col_character(),
+                        empirical_probability = col_double(), 
+                        log_likelihood = col_double()
+              )) %>%
+              rename(
+                cleaned_trigger = trigger,
+                cleaned_query   = query
+              )
+
+conjunction_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/conjunction_results_july2025.csv",
+                      col_types = cols(
+                        context = col_character(),
+                        trigger = col_character(),
+                        query = col_character(),
+                        empirical_probability = col_double(), 
+                        log_likelihood = col_double()
+              )) %>%
+              rename(
+                cleaned_trigger = trigger,
+                cleaned_query   = query
+              )
+
+disjunction_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/disjunction_results_july2025.csv",
+                      col_types = cols(
+                        context = col_character(),
+                        trigger = col_character(),
+                        query = col_character(),
+                        empirical_probability = col_double(), 
+                        log_likelihood = col_double()
+              )) %>%
+              rename(
+                cleaned_trigger = trigger,
+                cleaned_query   = query
+              )
+
+always_negate_results = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/always_negate_results_july2025.csv",
+                      col_types = cols(
+                        context = col_character(),
+                        trigger = col_character(),
+                        query = col_character(),
+                        empirical_probability = col_double(), 
+                        log_likelihood = col_double()
+              )) %>%
+              rename(
+                cleaned_trigger = trigger,
+                cleaned_query   = query
+              )
+
+never_negate_results = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/never_negate_results_july2025.csv",
+                      col_types = cols(
+                        context = col_character(),
+                        trigger = col_character(),
+                        query = col_character(),
+                        empirical_probability = col_double(), 
+                        log_likelihood = col_double()
+              )) %>%
+              rename(
+                cleaned_trigger = trigger,
+                cleaned_query   = query
+              )
+
+sca_data = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/data/sca_dataframe_filtered.csv",
+                    col_types = cols(
+                      story             = col_character(),
+                      cleaned_trigger   = col_character(),
+                      trigger_relevance = col_double(),
+                      cleaned_query     = col_character(),
+                      query_relevance   = col_double() 
+                    ))
+
+queries_not_in_distribution = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/queries_not_in_distribution_july2025.csv")
+
+```
+
+# Grid Plots by Context
+```{r}
+# 13 Plots for each context
+
+# Human negation
+neg_plot_df <- sca_data %>%
+  group_by(story, cleaned_trigger, cleaned_query) %>%
+  summarise(value = mean(neg, na.rm = TRUE), 
+            sd = sd(neg, na.rm = TRUE), 
+            .groups = "drop") %>%
+  rename(context = story) %>%
+  mutate(plot_type = "Human Negation")
+
+# Model result helper
+get_model_df <- function(df, context_col, type_name, value_col) {
+  df %>%
+    group_by({{ context_col }}, cleaned_trigger, cleaned_query) %>%
+    summarise(value = mean({{ value_col }}, na.rm = TRUE), 
+              sd = sd({{ value_col }}, na.rm = TRUE),
+              .groups = "drop") %>%
+    rename(context = {{ context_col }}) %>%
+    mutate(plot_type = type_name)
+}
+
+# 12 plots
+plot_dfs <- list(
+  neg_plot_df,
+  get_model_df(set_results, context, "Set Log Likelihood", log_likelihood),
+  get_model_df(set_results, context, "Set Empirical Probability", empirical_probability),
+  get_model_df(ordering_results, context, "Ordering Log Likelihood", log_likelihood),
+  get_model_df(ordering_results, context, "Ordering Empirical Probability", empirical_probability),
+  get_model_df(conjunction_results, context, "Conjunction Log Likelihood", log_likelihood),
+  get_model_df(conjunction_results, context, "Conjunction Empirical Probability", empirical_probability),
+  get_model_df(disjunction_results, context, "Disjunction Log Likelihood", log_likelihood),
+  get_model_df(disjunction_results, context, "Disjunction Empirical Probability", empirical_probability),
+  get_model_df(always_negate_results, context, "Always Negate Log Likelihood", log_likelihood),
+  get_model_df(always_negate_results, context, "Always Negate Empirical Probability", empirical_probability),
+  get_model_df(never_negate_results, context, "Never Negate Log Likelihood", log_likelihood),
+  get_model_df(never_negate_results, context, "Never Negate Empirical Probability", empirical_probability)
+)
+
+# Combine all into one dataframe
+full_plot_df <- bind_rows(plot_dfs)
+
+```
+
+```{r}
+# Define the tile plot function
+make_tile_plot <- function(df, title = NULL) {
+  # Use fixed scale for Empirical Probability and Human Negation
+  if (grepl("Empirical Probability|Human Negation", title)) {
+    fill_scale <- scale_fill_gradient(low = "green", high = "red", limits = c(0, 1), name = "")
+  } else {
+    fill_scale <- scale_fill_gradientn(colours = c("red", "blue", "green"), name = "")
+  }
+  
+  df <- df %>%
+    mutate(label = ifelse(is.na(sd),
+                          sprintf("%.2f", value),
+                          sprintf("%.2f\n(%.2f)", value, sd)))
+
+  ggplot(df, aes(x = cleaned_trigger, y = cleaned_query, fill = value)) +
+    geom_tile(color = "white") +
+    geom_text(aes(label = sprintf("%.2f", value)), size = 2.5) +
+    fill_scale +
+    theme_minimal(base_size = 9) +
+    labs(title = title, x = "Trigger", y = "Query") +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      panel.grid = element_blank(),
+      plot.title = element_text(size = 10, face = "bold", hjust = 0.5)
+    )
+}
+
+contexts <- unique(full_plot_df$context)
+
+# contexts = contexts[1]
+
+for (ctx in contexts) {
+  context_df <- filter(full_plot_df, context == ctx)
+
+  # Get a list of 13 plots in the desired order
+  plot_order <- c(
+    "Set Empirical Probability", "Set Log Likelihood", 
+    "Ordering Empirical Probability", "Ordering Log Likelihood", 
+    "Conjunction Empirical Probability", "Conjunction Log Likelihood", 
+    "Disjunction Empirical Probability", "Disjunction Log Likelihood", 
+    "Always Negate Empirical Probability", "Always Negate Log Likelihood", 
+    "Never Negate Empirical Probability", "Never Negate Log Likelihood", 
+    "Human Negation"
+  )
+
+  plots <- lapply(plot_order, function(ptype) {
+    df_sub <- filter(context_df, plot_type == ptype)
+    make_tile_plot(df_sub, ptype)
+  })
+
+  # Combine into 3x5 grid (13 plots — will fill row by row)
+  full_plot <- wrap_plots(plots, ncol = 2)
+
+  # Save
+  ggsave(
+    filename = paste0("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/figures/context_", gsub("[^a-zA-Z0-9]", "_", ctx), ".png"),
+    plot = full_plot,
+    width = 14, height = 16, dpi = 300
+  )
+}
+
+print(full_plot)
+
+```
+
+
+# Grid Plots for Likelihood 
+```{r}
+# 2) Compute the average empirical probability per (context, trigger, query)
+avg_df <- never_negate_results %>%
+  group_by(context, cleaned_trigger, cleaned_query) %>%
+  summarise(
+    mean_likelihood = mean(log_likelihood, na.rm = TRUE),
+    sd_likelihood = sd(log_likelihood, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# 4) Merge in the relevance scores
+plot_df <- avg_df %>%
+  # bring in trigger_relevance
+  left_join(
+    sca_data %>% select(story, cleaned_trigger, trigger_relevance) %>% distinct(),
+    by = c("context" = "story", "cleaned_trigger")
+  ) %>%
+  # bring in query_relevance
+  left_join(
+    sca_data %>% select(story, cleaned_query, query_relevance) %>% distinct(),
+    by = c("context" = "story", "cleaned_query")
+  )
+
+plot_df <- plot_df %>%
+  mutate(
+    trigger_ord = reorder_within(cleaned_trigger,
+                                trigger_relevance,
+                                context,
+                                fun = mean),
+    query_ord   = reorder_within(cleaned_query,
+                                -query_relevance,
+                                context,
+                                fun = mean)
+  )
+
+# 6) Plot with facet_wrap and the green→red fill
+p <- ggplot(plot_df,
+            aes(x = trigger_ord,
+                y = query_ord,
+                fill = mean_likelihood)) +
+  geom_tile(color = "white") +
+  # add text labels, rounded to two decimals
+  geom_text(aes(label = sprintf("%.2f\n(%.2f)", mean_likelihood, sd_likelihood)),
+          size = 2, color = "black") +
+  scale_fill_gradientn(
+    colours = c("red", "blue", "green"),
+    name = "Avg Log Likelihood") +
+  facet_wrap(~ context, scales = "free") +
+  scale_x_reordered() +
+  scale_y_reordered() +
+  theme_minimal(base_size = 10) +
+  labs(
+    title = "Average Log Likelihood by Context\nNever Negate Model\nPrompt: 'I only have [MASK]'",
+    x     = "Trigger (0→5 left→right)",
+    y     = "Query   (0→5 top→bottom)"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid  = element_blank(),
+    strip.text  = element_text(size = 12)
+  )
+
+print(p)
+
+# 7) Save to file
+# ggsave(
+#   filename = OUTPUT_PNG,
+#   plot     = p,
+#   width    = 12,
+#   height   = 8,
+#   dpi      = 300
+# )
+
+# after you’ve built p
+ggsave(
+  filename = "~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/figures/log_likelihood_never_negate.png",
+  plot     = p,
+  width    = 12,
+  height   = 10,
+  dpi      = 300,
+  bg = "white"
+)
+```
+
+# Grid Plots for Empirical Probability
+```{r}
+
+# 2) Compute the average empirical probability per (context, trigger, query)
+avg_df <- set_results %>%
+  group_by(context, cleaned_trigger, cleaned_query) %>%
+  summarise(
+    mean_empirical = mean(empirical_probability, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# 4) Merge in the relevance scores
+plot_df <- avg_df %>%
+  # bring in trigger_relevance
+  left_join(
+    sca %>% select(story, cleaned_trigger, trigger_relevance) %>% distinct(),
+    by = c("context" = "story", "cleaned_trigger")
+  ) %>%
+  # bring in query_relevance
+  left_join(
+    sca %>% select(story, cleaned_query, query_relevance) %>% distinct(),
+    by = c("context" = "story", "cleaned_query")
+  )
+
+plot_df <- plot_df %>%
+  mutate(
+    trigger_ord = reorder_within(cleaned_trigger,
+                                trigger_relevance,
+                                context,
+                                fun = mean),
+    query_ord   = reorder_within(cleaned_query,
+                                -query_relevance,
+                                context,
+                                fun = mean)
+  )
+
+# 6) Plot with facet_wrap and the green→red fill
+p <- ggplot(plot_df,
+            aes(x = trigger_ord,
+                y = query_ord,
+                fill = mean_empirical)) +
+  geom_tile(color = "white") +
+  # add text labels, rounded to two decimals
+  geom_text(aes(label = sprintf("%.2f", mean_empirical)),
+            size = 3, color = "black") +
+  scale_fill_gradient(low = "green", high = "red",
+                      name = "Avg Empirical P") +
+  facet_wrap(~ context, scales = "free") +
+  scale_x_reordered() +
+  scale_y_reordered() +
+  theme_minimal(base_size = 12) +
+  labs(
+    title = "Average Empirical Probability by Context\nSet Model\nPrompt: 'I only have [MASK]'",
+    x     = "Trigger (0→5 left→right)",
+    y     = "Query   (0→5 top→bottom)"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid  = element_blank(),
+    strip.text  = element_text(size = 10)
+  )
+
+print(p)
+
+# 7) Save to file
+# ggsave(
+#   filename = OUTPUT_PNG,
+#   plot     = p,
+#   width    = 12,
+#   height   = 8,
+#   dpi      = 300
+# )
+
+# after you’ve built p
+# ggsave(
+#   filename = "~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/figures/log_likelihood_set.png",
+#   plot     = p,
+#   width    = 12,    
+#   height   = 8,
+#   dpi      = 300,
+#   bg = "white"
+# )
+```
+
 
 ```{r}
 # Add a model column and combine the dataframes 
+
 set_results$model <- "Set"
 ordering_results$model <- "Ordering"
 conjunction_results$model <- "Conjunction"
 disjunction_results$model <- "Disjunction"
-df_results <- bind_rows(set_results, ordering_results, conjunction_results, disjunction_results)
+always_negate_results$model = "Always Negate"
+never_negate_results$model = "Never Negate"
+
+df_results <- bind_rows(set_results, ordering_results, conjunction_results, disjunction_results, always_negate_results, never_negate_results)
 
 # Compute the mean of the log_likelihoods and the standard error of the log_likelihoods for each set_boundary and model
 summary_df <- df_results %>%
@@ -66,6 +641,7 @@ ggplot(context_df_set, aes(x = set_boundary, y = mean_log_likelihood, color = co
   theme_minimal() +
   theme(legend.title = element_blank())
 ```
+
 ```{r}
 context_df_ordering <- ordering_results %>%
   group_by(set_boundary, context) %>%
@@ -81,6 +657,7 @@ ggplot(context_df_ordering, aes(x = set_boundary, y = mean_log_likelihood, color
   theme_minimal() +
   theme(legend.title = element_blank())
 ```
+
 ```{r}
 context_df_con <- conjunction_results %>%
   group_by(set_boundary, context) %>%
@@ -96,6 +673,8 @@ ggplot(context_df_con, aes(x = set_boundary, y = mean_log_likelihood, color = co
   theme_minimal() +
   theme(legend.title = element_blank())
 ```
+
+
 ```{r}
 context_df_dis <- disjunction_results %>%
   group_by(set_boundary, context) %>%
@@ -112,9 +691,10 @@ ggplot(context_df_dis, aes(x = set_boundary, y = mean_log_likelihood, color = co
   theme(legend.title = element_blank())
 ```
 
+
 ```{r}
-context_df <- set_results %>%
-  filter(context == "hot") %>% 
+context_df <- ordering_results %>%
+  filter(context == "fridge") %>% 
   group_by(set_boundary, trigger) %>%
   summarise(
     mean_log_likelihood = mean(log_likelihood, na.rm = TRUE),
@@ -128,4 +708,75 @@ ggplot(context_df, aes(x = set_boundary, y = mean_log_likelihood, color = trigge
   theme_minimal() +
   theme(legend.title = element_blank())
 ```
+# Results (Context and trigger: "I only have {trigger} and [MASK]")
+
+```{r}
+# Import result files 
+set_results_trigger = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/set_with_trigger_AND_results.csv")
+
+ordering_results_trigger <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/ordering_with_trigger_AND_results.csv")
+
+conjunction_results_trigger <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/conjunction_with_trigger_AND_results.csv")
+
+disjunction_results_trigger <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/disjunction_with_trigger_AND_results.csv")
+```
+```{r}
+# Add a model column and combine the dataframes 
+set_results_trigger$model <- "Set"
+ordering_results_trigger$model <- "Ordering"
+conjunction_results_trigger$model <- "Conjunction"
+disjunction_results_trigger$model <- "Disjunction"
+df_results_trigger <- bind_rows(set_results_trigger, ordering_results_trigger, conjunction_results_trigger, disjunction_results_trigger)
+
+# Compute the mean of the log_likelihoods and the standard error of the log_likelihoods for each set_boundary and model
+summary_df_trigger <- df_results_trigger %>%
+  group_by(set_boundary, model) %>%
+  summarise(
+    mean_log_likelihood = mean(log_likelihood, na.rm = TRUE),
+    se_log_likelihood = sd(log_likelihood, na.rm = TRUE) / sqrt(n()))
+
+# Plot of the mean log_likelihoods as a function of set boundary (four lines, one for each model) with standard error of the mean
+ggplot(summary_df_trigger, aes(x = set_boundary, y = mean_log_likelihood, color = model)) +
+  geom_line() +
+  geom_point() +
+  geom_errorbar(aes(ymin = mean_log_likelihood - se_log_likelihood, ymax = mean_log_likelihood + se_log_likelihood), width = 0.2) +
+  labs(x = "Set Boundary", y = "Log Likelihood", title = "Mean of log likelihoods  as a function of set boundary with standard error of the mean\nAveraged accross all contexts and trials\nPrompt: 'I only have {trigger} and [MASK]'") +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+```
+
+```{r}
+context_df_ordering_trigger <- ordering_results_trigger %>%
+  group_by(set_boundary, context) %>%
+  summarise(
+    mean_log_likelihood = mean(log_likelihood, na.rm = TRUE),
+    se_log_likelihood = sd(log_likelihood, na.rm = TRUE) / sqrt(n()))
+
+ggplot(context_df_ordering_trigger, aes(x = set_boundary, y = mean_log_likelihood, color = context)) +
+  geom_line() +
+  geom_point() +
+  # geom_errorbar(aes(ymin = mean_log_likelihood - se_log_likelihood, ymax = mean_log_likelihood + se_log_likelihood), width = 0.2) +
+  labs(x = "Set Boundary", y = "Log Likelihood", title = "Ordering Model\nMean of log likelihoods as a function of set boundary\nAveraged accross triggers and queries\nPrompt: 'I only have {trigger} and [MASK]'") +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+```
+
+```{r}
+context_df <- ordering_results_trigger %>%
+  filter(context == "fridge") %>% 
+  group_by(set_boundary, trigger) %>%
+  summarise(
+    mean_log_likelihood = mean(log_likelihood, na.rm = TRUE),
+    se_log_likelihood = sd(log_likelihood, na.rm = TRUE) / sqrt(n()))
+
+ggplot(context_df, aes(x = set_boundary, y = mean_log_likelihood, color = trigger)) +
+  geom_line() +
+  geom_point() +
+  # geom_errorbar(aes(ymin = mean_log_likelihood - se_log_likelihood, ymax = mean_log_likelihood + se_log_likelihood), width = 0.2) +
+  labs(x = "Set Boundary", y = "Log Likelihood", title = "Ordering Model, Context 'fridge'\nMean of log likelihoods as a function of set boundary\nAveraged accross queries\nPrompt: 'I only have {trigger} and [MASK]") +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+```
+
+
 

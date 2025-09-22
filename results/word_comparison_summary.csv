@@ -1,0 +1,17 @@
+context,n_human_words,n_words_overlap,spearman_drop
+bakery,6,3,1.0
+fridge,6,4,1.0
+restaurant,6,5,0.8999999999999998
+gym,6,6,0.8285714285714287
+transport,6,4,0.7999999999999999
+beach,6,6,0.6571428571428573
+meat,6,5,0.6
+science,6,6,0.6
+cut,6,3,0.5
+throw,6,3,0.5
+salad,6,5,0.3
+bag,6,4,0.19999999999999998
+mask,6,4,0.19999999999999998
+hot,6,5,-0.19999999999999998
+cold,6,5,-0.7
+mall,6,0,

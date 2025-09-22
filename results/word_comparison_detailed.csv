@@ -1,0 +1,97 @@
+context,cleaned_trigger,human_position,bert_position,bert_prob
+bakery,cakes,0,3.0,0.0369842424988746
+bakery,ice cream,1,,
+bakery,muffins,2,,
+bakery,pretzels,3,,
+bakery,sandwiches,4,24.0,0.00367594929412
+bakery,water,5,35.0,0.0018987694056704
+fridge,water,0,0.0,0.9598785638809204
+fridge,juice,1,3.0,0.0037272467743605
+fridge,milk,2,4.0,0.0022780355066061
+fridge,yogurt,3,,
+fridge,ketchup,4,,
+fridge,meat,5,223.0,2.3265804429684067e-06
+restaurant,cocktails,0,,
+restaurant,vodka,1,6.0,0.022120963782072
+restaurant,soda,2,11.0,0.017389440909028
+restaurant,soup,3,48.0,0.0012566379737108
+restaurant,cake,4,462.0,2.408662658126559e-05
+restaurant,salad,5,59.0,0.0007705321768298
+gym,basketball,0,2.0,0.0642000436782836
+gym,softball,1,29.0,0.0049060992896556
+gym,lacrosse,2,33.0,0.0040495228022336
+gym,swimming,3,12.0,0.01523326523602
+gym,weightlifting,4,64.0,0.001268905471079
+gym,meditation,5,193.0,0.0002062594139715
+transport,car,0,1.0,0.1712274700403213
+transport,motorcycle,1,3.0,0.0655717849731445
+transport,roller blades,2,,
+transport,lawnmower,3,,
+transport,chairs,4,1448.0,2.23176107283507e-06
+transport,hammer,5,466.0,2.3779515686328523e-05
+beach,bikini,0,0.0,0.7436550259590149
+beach,shorts,1,2.0,0.0512919388711452
+beach,sunglasses,2,44.0,0.0002539163979236
+beach,jeans,3,7.0,0.006384483538568
+beach,jacket,4,21.0,0.0015847815666347
+beach,coat,5,29.0,0.0009031948866322
+meat,chicken,0,0.0,0.1810290217399597
+meat,turkey,1,3.0,0.0401717573404312
+meat,crab,2,225.0,0.0001005024387268
+meat,tofu,3,,
+meat,mushrooms,4,12.0,0.0218834336847066
+meat,rice,5,4.0,0.0392224714159965
+science,physics,0,1.0,0.0728996321558952
+science,geology,1,22.0,0.0057696378789842
+science,zoology,2,46.0,0.0028718367684632
+science,math,3,3.0,0.0672671273350715
+science,philosophy,4,53.0,0.0024179460015147
+science,art,5,26.0,0.0047610118053853
+cut,scissors,0,126.0,0.0008745808154344
+cut,nail clippers,1,,
+cut,keys,2,41.0,0.0038028084672987
+cut,thumb tacks,3,,
+cut,stapler,4,,
+cut,batteries,5,351.0,0.0001847336679929
+throw,football,0,0.0,0.1931817382574081
+throw,beach ball,1,,
+throw,boomerang,2,,
+throw,tires,3,2862.0,5.435650791696389e-07
+throw,shovel,4,20.0,0.0071549024432897
+throw,lawnmower,5,,
+salad,lettuce,0,,
+salad,dressing,1,40.0,0.0025436277501285
+salad,tuna,2,18.0,0.0053473892621695
+salad,meat,3,16.0,0.0064443782903254
+salad,chips,4,38.0,0.0027786372229456
+salad,cigarettes,5,362.0,4.512040322879329e-05
+bag,pen,0,6.0,0.0312626026570797
+bag,crayons,1,,
+bag,chalk,2,131.0,0.000357695040293
+bag,makeup,3,44.0,0.0017565243178978
+bag,cash,4,33.0,0.0023723971098661
+bag,headphones,5,,
+mask,bandana,0,,
+mask,handkerchief,1,117.0,0.0006706224521622
+mask,napkins,2,,
+mask,gloves,3,11.0,0.0122159542515873
+mask,wallet,4,1.0,0.1604990810155868
+mask,candy,5,230.0,0.000212152430322
+hot,fan,0,1066.0,4.273580998415128e-05
+hot,pool,1,161.0,0.0008469749009236
+hot,shower,2,2046.0,1.088130102289142e-05
+hot,couch,3,865.0,6.248232966754586e-05
+hot,blankets,4,264.0,0.0004533246683422
+hot,heater,5,,
+cold,heater,0,,
+cold,blankets,1,2027.0,8.226487011597783e-07
+cold,tea,2,1122.0,3.4559282084956067e-06
+cold,microwave,3,37.0,0.0014225264312699
+cold,sink,4,286.0,5.914341818424873e-05
+cold,fridge,5,114.0,0.0003136056475341
+mall,burger joint,0,,
+mall,pretzel stand,1,,
+mall,coffee shop,2,,
+mall,grocery store,3,,
+mall,gift shop,4,,
+mall,electronics store,5,,

@@ -76,3 +76,7 @@ for _, row in df_experimental_data.iterrows():
 df_results = pd.DataFrame(results_data, columns=['context', 'trigger', 'word', 'resnik_score'])
 df_results.to_csv('../data/wordNet_top_words.csv', index=False)
 
+
+
+
+

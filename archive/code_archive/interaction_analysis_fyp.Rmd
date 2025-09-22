@@ -13,7 +13,7 @@ library(readr)
 library(tidyr)
 library(dplyr)
 
-filtered_items_results_fyp <- read_csv("/Users/lailajohnston/Library/CloudStorage/GoogleDrive-laila_johnston@brown.edu/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/data/filtered_items_results_fyp.csv")
+filtered_items_results_fyp <- read_csv("/Users/lailajohnston/Library/CloudStorage/GoogleDrive-laila_johnston@brown.edu/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/archive/data_archive/filtered_items_results_fyp.csv")
 
 filtered_items_results_fyp2 <- filtered_items_results_fyp %>%
   select(-excluded_items) %>%

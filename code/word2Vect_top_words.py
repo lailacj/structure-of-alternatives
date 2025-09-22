@@ -92,4 +92,3 @@ for _, row in tqdm(df_experimental_data.iterrows(), total=len(df_experimental_da
 df_results = pd.DataFrame(results_data, columns=['context', 'trigger', 'word', 'cosine_similarity'])
 df_results.to_csv('../data/word2Vec_top_words.csv', index=False)
 
-
