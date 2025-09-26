@@ -1,5 +1,4 @@
-from importlib.metadata import distribution
-from transformers import AutoTokenizer, AutoModelForMaskedLM
+
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -7,10 +6,24 @@ import pandas as pd
 import pdb
 import random
 import torch
+import torch.nn.functional as F
 import seaborn as sns
+from functools import lru_cache
+from importlib.metadata import distribution
+from transformers import AutoTokenizer, AutoModelForMaskedLM
 
-tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-large-uncased-whole-word-masking")
-model = AutoModelForMaskedLM.from_pretrained("google-bert/bert-large-uncased-whole-word-masking")
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+
+MODEL_NAME = "google-bert/bert-large-uncased-whole-word-masking"
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+model = AutoModelForMaskedLM.from_pretrained(MODEL_NAME).to(DEVICE).eval()
+
+CLS_ID   = tokenizer.cls_token_id
+SEP_ID   = tokenizer.sep_token_id
+MASK_ID  = tokenizer.mask_token_id
+PAD_ID   = tokenizer.pad_token_id if tokenizer.pad_token_id is not None else 0
+UNK_ID   = tokenizer.unk_token_id
+MAXLEN  = getattr(tokenizer, "model_max_length", 512)
 
 # ------- Cleaning and Sorting the Experimental Data ------
 
@@ -46,8 +59,8 @@ def get_prompt_for_context(df_prompts, context):
 
 # Returns all next tokens and their probabilities.
 def get_next_word_probability_distribution(text):
-    inputs = tokenizer(text, return_tensors="pt")
-    
+    inputs = tokenizer(text, return_tensors="pt").to(DEVICE)
+
     with torch.no_grad():
         logits = model(**inputs).logits
 
@@ -58,6 +71,93 @@ def get_next_word_probability_distribution(text):
 
     # Return the results as a list of (token, probability) tuples
     return list(zip(predicted_tokens, probs.tolist()))
+
+def _encode_no_special(text: str):
+    return tokenizer.encode(text, add_special_tokens=False)
+
+def _truncate_left(ctx_ids, produced_len, max_len=MAXLEN):
+    """Keep nearest context so that [CLS]+ctx+produced+[MASK]+[SEP] fits max_len."""
+    need = 3 + produced_len + len(ctx_ids)  # CLS, MASK, SEP = 3
+    if need <= max_len:
+        return ctx_ids
+    return ctx_ids[need - max_len:]  # drop from left
+
+# Next word logprob for words with multiple subwords (e.g. "headphones" -> "head", "##phone", "##s")
+@lru_cache(maxsize=200_000)
+def bert_pseudo_logprob_next_word(prompt_with_single_mask: str, candidate_word: str):
+    """
+    Pseudo log P(candidate_word | prompt) for BERT-MLM with per-subword details.
+
+    Returns:
+      {
+        "ok": bool,
+        "reason": Optional[str],
+        "prob": float,               # joint prob of the whole word
+        "logprob": float,            # sum of subword log-probs (natural log)
+        "neg_logprob": float,        # -logprob
+        "pieces": [
+          {"piece": str, "logprob": float, "prob": float},  # one entry per subword
+          ...
+        ],
+      }
+    """
+    if prompt_with_single_mask is None:
+        return {
+            "ok": False, "reason": "no_prompt",
+            "prob": 0.0, "logprob": float("-inf"), "neg_logprob": float("inf"),
+            "pieces": []
+        }
+
+    # Left context = prompt without the [MASK]
+    left_context = prompt_with_single_mask.replace(tokenizer.mask_token, "").rstrip()
+
+    ctx_ids_full = tokenizer.encode(left_context, add_special_tokens=False)
+    cand_ids = tokenizer.encode(candidate_word, add_special_tokens=False)
+    if not cand_ids or (UNK_ID in cand_ids):
+        return {
+            "ok": False, "reason": "unk_or_empty",
+            "prob": 0.0, "logprob": float("-inf"), "neg_logprob": float("inf"),
+            "pieces": []
+        }
+
+    total_lp = 0.0
+    produced = []
+    pieces_info = []
+
+    with torch.no_grad():
+        for pid in cand_ids:
+            # Keep nearest (rightmost) context to fit model length
+            need = 3 + len(produced) + len(ctx_ids_full)  # CLS + MASK + SEP = 3
+            if need > MAXLEN:
+                ctx_ids = ctx_ids_full[need - MAXLEN:]
+            else:
+                ctx_ids = ctx_ids_full
+
+            seq = [CLS_ID] + ctx_ids + produced + [MASK_ID] + [SEP_ID]
+            inp = torch.tensor([seq], dtype=torch.long, device=DEVICE)
+            mask_pos = 1 + len(ctx_ids) + len(produced)
+
+            logits = model(inp).logits  # [1, T, V]
+            logp = torch.log_softmax(logits[0, mask_pos, :], dim=-1)[pid].item()
+            p = float(torch.exp(torch.tensor(logp)))
+
+            total_lp += logp
+            produced.append(pid)
+
+            pieces_info.append({
+                "piece": tokenizer.convert_ids_to_tokens([pid])[0],
+                "logprob": logp,
+                "prob": p
+            })
+
+    prob = float(torch.exp(torch.tensor(total_lp)))
+    return {
+        "ok": True,
+        "prob": prob,
+        "logprob": total_lp,
+        "neg_logprob": -total_lp,
+        "pieces": pieces_info
+    }
 
 # ------ Log Likelihood Calculation ------
 
@@ -226,6 +326,7 @@ def log_likelihoods_by_context(experimental_data, num_reps=500, save_interval=5)
      # get the unique context in the experimental data
     contexts = experimental_data['story'].unique()
     context_samples = {}
+    top_100_by_context = {}
 
     print("In log likelihoods function")
 
@@ -244,7 +345,7 @@ def log_likelihoods_by_context(experimental_data, num_reps=500, save_interval=5)
                 sampled_ordering = get_ordering(distribution)
                 sampled_set = sampled_ordering[:set_boundary]
                 context_samples[context].append((sampled_ordering, sampled_set))
-                print(f"Completed {set_boundary} {context} {i}")
+                # print(f"Completed {set_boundary} {context} {i}")
 
         # Sort by probability (descending) and take the top 100
         top_100 = sorted(distribution, key=lambda x: x[1], reverse=True)[:100]
@@ -474,55 +575,67 @@ def log_likelihoods_by_context_trigger(
 #     print(f"  Set: {sampled_set[:20]}")
 #     print()
 
+# ------ Example usage of next word prediction of a word tokenized into multiple subwords ------
+context = "mall"
+word = "electronics store"
+prompt = get_prompt_for_context(df_prompts, context)
+res = bert_pseudo_logprob_next_word(prompt, word)
+
+if res["ok"]:
+    print(f'Word prob: {res["prob"]:.8f} | logprob: {res["logprob"]:.4f} | S(w)={res["neg_logprob"]:.4f}')
+    print("Subpieces:")
+    for p in res["pieces"]:
+        print(f'  {p["piece"]:>12s}  logp={p["logprob"]:.4f}  p={p["prob"]:.6f}')
+else:
+    print("Could not score:", res.get("reason"))
 
 # ------ Getting BERT next word probabilities for a certain context ------
 
+# all_results = []
 
-all_results = []
+# for specific_context in df_prompts['story'].unique():
+#     prompt = get_prompt_for_context(df_prompts, specific_context)
+#     distribution = get_next_word_probability_distribution(prompt)
 
-for specific_context in df_prompts['story'].unique():
-    prompt = get_prompt_for_context(df_prompts, specific_context)
-    distribution = get_next_word_probability_distribution(prompt)
+#     # Sort distribution by probability (descending)
+#     distribution_sorted = sorted(distribution, key=lambda x: x[1], reverse=True)
 
-    # Sort distribution by probability (descending)
-    distribution_sorted = sorted(distribution, key=lambda x: x[1], reverse=True)
+#     # Get queries for this context
+#     queries = df_experimental_data[df_experimental_data['story'] == specific_context]['cleaned_query'].unique()
 
-    # Get queries for this context
-    queries = df_experimental_data[df_experimental_data['story'] == specific_context]['cleaned_query'].unique()
+#     # Prepare results
+#     results = []
+#     for query in queries:
+#         positions = [i for i, (token, _) in enumerate(distribution_sorted) if token == query]
+#         if positions:
+#             pos = positions[0]
+#             prob = distribution_sorted[pos][1]
+#             results.append({'context': specific_context, 'query': query, 'position': pos, 'probability': prob})
+#         else:
+#             results.append({'context': specific_context, 'query': query, 'position': None, 'probability': None})
 
-    # Prepare results
-    results = []
-    for query in queries:
-        positions = [i for i, (token, _) in enumerate(distribution_sorted) if token == query]
-        if positions:
-            pos = positions[0]
-            prob = distribution_sorted[pos][1]
-            results.append({'context': specific_context, 'query': query, 'position': pos, 'probability': prob})
-        else:
-            results.append({'context': specific_context, 'query': query, 'position': None, 'probability': None})
+#     # Add top 10 next words
+#     for i, (token, prob) in enumerate(distribution_sorted[:10]):
+#         results.append({'context': specific_context, 'query': token, 'position': i, 'probability': prob})
 
-    # Add top 10 next words
-    for i, (token, prob) in enumerate(distribution_sorted[:10]):
-        results.append({'context': specific_context, 'query': token, 'position': i, 'probability': prob})
+#     # Convert to DataFrame
+#     query_positions_df = pd.DataFrame(results)
 
-    # Convert to DataFrame
-    query_positions_df = pd.DataFrame(results)
+#     # Keep unique queries
+#     query_positions_df = query_positions_df.drop_duplicates(subset=['query'])
 
-    # Keep unique queries
-    query_positions_df = query_positions_df.drop_duplicates(subset=['query'])
+#     # Sort by position
+#     query_positions_df = query_positions_df.sort_values(by='position')
 
-    # Sort by position
-    query_positions_df = query_positions_df.sort_values(by='position')
+#     all_results.append(query_positions_df)
 
-    all_results.append(query_positions_df)
+# # Combine all contexts
+# final_df = pd.concat(all_results, ignore_index=True)
 
-# Combine all contexts
-final_df = pd.concat(all_results, ignore_index=True)
+# # Save to CSV
+# final_df.to_csv("../data/query_positions_results.csv", index=False)
 
-# Save to CSV
-final_df.to_csv("../data/query_positions_results.csv", index=False)
-
-print("Saved results to query_positions_results.csv")
+# print("Saved results to query_positions_results.csv")
 
 
 # ------ Not used code ------
