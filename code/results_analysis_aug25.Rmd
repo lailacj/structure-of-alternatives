@@ -222,7 +222,7 @@ bakery_plot
 
 ```{r}
 # Import result files 
-set_results = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/set_results_july2025.csv",
+set_results = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/set_results_cloze_prob_sep2025.csv",
                       col_types = cols(
                         context = col_character(),
                         trigger = col_character(),
@@ -235,7 +235,7 @@ set_results = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/
                 cleaned_query   = query
               )
 
-ordering_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/ordering_results_july2025.csv",
+ordering_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/ordering_results_cloze_prob_sep2025.csv",
                       col_types = cols(
                         context = col_character(),
                         trigger = col_character(),
@@ -248,7 +248,7 @@ ordering_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared d
                 cleaned_query   = query
               )
 
-conjunction_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/conjunction_results_july2025.csv",
+conjunction_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/conjunction_results_cloze_prob_sep2025.csv",
                       col_types = cols(
                         context = col_character(),
                         trigger = col_character(),
@@ -261,7 +261,7 @@ conjunction_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Share
                 cleaned_query   = query
               )
 
-disjunction_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/disjunction_results_july2025.csv",
+disjunction_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/disjunction_results_cloze_prob_sep2025.csv",
                       col_types = cols(
                         context = col_character(),
                         trigger = col_character(),
@@ -274,7 +274,7 @@ disjunction_results <- read_csv("~/laila_johnston@brown.edu - Google Drive/Share
                 cleaned_query   = query
               )
 
-always_negate_results = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/always_negate_results_july2025.csv",
+always_negate_results = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/always_negate_results_cloze_prob_sep2025.csv",
                       col_types = cols(
                         context = col_character(),
                         trigger = col_character(),
@@ -287,7 +287,7 @@ always_negate_results = read_csv("~/laila_johnston@brown.edu - Google Drive/Shar
                 cleaned_query   = query
               )
 
-never_negate_results = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/never_negate_results_july2025.csv",
+never_negate_results = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/never_negate_results_cloze_prob_sep2025.csv",
                       col_types = cols(
                         context = col_character(),
                         trigger = col_character(),
@@ -312,29 +312,8 @@ sca_data = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT
                       context = story
                     )
 
-queries_not_in_distribution = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/queries_not_in_distribution_july2025.csv")
-
-# df <- read_csv(disjunction_results, col_types = cols(
-#   context        = col_character(),
-#   trigger        = col_character(),
-#   query          = col_character(),
-#   empirical_probability    = col_double()
-# )) %>%
-#   rename(
-#     cleaned_trigger = trigger,
-#     cleaned_query   = query
-#   )
-
-# sca_data <- read_csv(sca_data, col_types = cols(
-#   story             = col_character(),
-#   cleaned_trigger   = col_character(),
-#   trigger_relevance = col_double(),
-#   cleaned_query     = col_character(),
-#   query_relevance   = col_double()
-# ))
-
+# queries_not_in_distribution = read_csv("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/results/queries_not_in_distribution_july2025.csv")
 ```
-
 
 
 # Print context name, number of cells missing, number of critical cells missing, log likelihood for total cells, log likelihood for critical cells.
@@ -451,12 +430,12 @@ p <- ggplot(summary_df, aes(x = model, y = mean_log_likelihood)) +
             nudge_x = 0.15, size = 3.7, hjust = 0) +
   ylim(-25, 5) +
   labs(
-    title = "Mean Log Likelihood by Model (Average Everything)",
+    title = "Mean Log Likelihood by Model (Average Everything)\nPseudo Cloze Probability",
     x = "Model",
     y = "Mean Log Likelihood"
   )
 
-ggsave("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/figures/mean_log_likelihood_by_model_average_everything.png", plot = p, width = 8, height = 6, dpi = 300)
+ggsave("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/figures/cloze_prob_mean_log_likelihood_by_model_average_everything.png", plot = p, width = 8, height = 6, dpi = 300)
 
 print(p)
 
@@ -550,12 +529,12 @@ p = ggplot(context_level_df, aes(x = model, y = mean_log_likelihood)) +
              size = 4) +
   scale_color_manual(values = high_contrast_colors) +
   labs(
-    title = "Mean Log Likelihood by Context for Each Model\nPrompt with Article",
+    title = "Mean Log Likelihood by Context for Each Model\nPseudo Cloze Probability",
     x = "Model",
     y = "Mean Log Likelihood (per Context)"
   ) 
 
-ggsave("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/figures/mean_log_likelihood_by_context_prompt_with_article.png", plot = p, width = 12, height = 6, dpi = 500)
+ggsave("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/figures/cloze_probmean_log_likelihood_by_context.png", plot = p, width = 12, height = 6, dpi = 500)
 
 print(p)
 ```
@@ -607,12 +586,12 @@ p <- ggplot(context_level_df, aes(x = context, y = mean_log_likelihood, color = 
   geom_point(position = position_dodge(width = 0.6), size = 4, alpha = 0.85) +
   scale_color_manual(values = high_contrast_colors, name = "Model") +
   labs(
-    title = "Mean Log Likelihood by Model for Each Context\nPrompt with article\nFake Data - Always Negate",
+    title = "Mean Log Likelihood by Model for Each Context\nPseudo Cloze Probability",
     x = "Context",
     y = "Mean Log Likelihood"
   ) 
 
-ggsave("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/figures/mean_log_likelihood_by_context_with_article_fake_data_always_negate.png", plot = p, width = 12, height = 6, dpi = 500)
+ggsave("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/figures/cloze_prob_mean_log_likelihood_by_context.png", plot = p, width = 12, height = 6, dpi = 500)
 
 print(p)
 
@@ -676,10 +655,10 @@ ggsave("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current 
 
 ```{r}
 # Keep only these triggers/queries
-keep <- c("chalk", "cash", "makeup", "pen")
+keep <- c("tuna", "chips", "dressing", "cigarettes", "lettuce", "meat")
 
 specific_context_df <- sca_data %>%
-  filter(context == "bag",
+  filter(context == "salad",
          cleaned_trigger %in% keep,
          cleaned_query   %in% keep) %>%
   group_by(cleaned_trigger, cleaned_query) %>%
@@ -691,8 +670,8 @@ specific_context_df <- sca_data %>%
     .groups = "drop"
   ) %>%
   mutate(
-    trigger_ord = reorder_within(cleaned_trigger,  trigger_relevance, within = "bag"),
-    query_ord   = reorder_within(cleaned_query,   trigger_relevance,  within = "bag"),
+    trigger_ord = reorder_within(cleaned_trigger,  trigger_relevance, within = "salad"),
+    query_ord   = reorder_within(cleaned_query,   trigger_relevance,  within = "salad"),
     label = sprintf("%.2f\n(%.2f)", mean_neg, sd_neg)
   )
 
@@ -703,7 +682,7 @@ p = ggplot(specific_context_df, aes(x = trigger_ord, y = query_ord, fill = mean_
   scale_x_reordered() +
   scale_y_reordered() +
   labs(
-    title = "Bag — Average Human Negation",
+    title = "Salad — Average Human Negation",
     x = "Trigger (ordered by relevance)",
     y = "Query (ordered by relevance)"
   ) +
@@ -714,7 +693,7 @@ p = ggplot(specific_context_df, aes(x = trigger_ord, y = query_ord, fill = mean_
     panel.grid  = element_blank()
   )
 
-ggsave("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/figures/bag_human_negation.png", plot = p, width = 12, height = 6, dpi = 500)
+ggsave("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/figures/cloze_prob_salad_human_negation.png", plot = p, width = 12, height = 6, dpi = 500)
 
 print(p)
 
@@ -729,7 +708,7 @@ relevance <- sca_data %>%
   distinct()
 
 specific_context_df <- disjunction_results %>%
-  filter(context == "bag",
+  filter(context == "salad",
          cleaned_trigger %in% keep,
          cleaned_query   %in% keep) %>%
   # bring in trigger/query relevance from sca_data
@@ -746,8 +725,8 @@ specific_context_df <- disjunction_results %>%
     .groups = "drop"
   ) %>%
   mutate(
-    trigger_ord = reorder_within(cleaned_trigger,  trigger_relevance, within = "bag"),
-    query_ord   = reorder_within(cleaned_query,   trigger_relevance,  within = "bag"),
+    trigger_ord = reorder_within(cleaned_trigger,  trigger_relevance, within = "salad"),
+    query_ord   = reorder_within(cleaned_query,   trigger_relevance,  within = "salad"),
     label = sprintf("%.2f\n(%.2f)", mean_val, sd_val)
   )
 
@@ -758,7 +737,7 @@ p = ggplot(specific_context_df, aes(x = trigger_ord, y = query_ord, fill = mean_
   scale_x_reordered() +
   scale_y_reordered() +
   labs(
-    title = "Bag - Average Negation Probability - Disjunction Model - Prompt with article",
+    title = "Salad - Average Negation Probability - Disjunction Model - Pseudo Cloze Prob",
     x = "Trigger (ordered by relevance)",
     y = "Query (ordered by relevance)"
   ) +
@@ -769,7 +748,7 @@ p = ggplot(specific_context_df, aes(x = trigger_ord, y = query_ord, fill = mean_
     panel.grid  = element_blank()
   )
 
-ggsave("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/figures/bag_disjunction_negation_article.png", plot = p, width = 12, height = 6, dpi = 500)
+ggsave("~/laila_johnston@brown.edu - Google Drive/Shared drives/BLT Lab/Current Studies/SCA (Structure of Computational Alternatives; formerly CompAlt and RSA)/Extensions (Laila)/figures/cloze_prob_salad_disjunction_negation.png", plot = p, width = 12, height = 6, dpi = 500)
 
 print(p)
 ```
