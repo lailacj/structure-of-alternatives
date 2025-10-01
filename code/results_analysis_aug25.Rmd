@@ -334,6 +334,9 @@ queries_not_in_distribution = read_csv("~/laila_johnston@brown.edu - Google Driv
 # ))
 
 ```
+
+
+
 # Print context name, number of cells missing, number of critical cells missing, log likelihood for total cells, log likelihood for critical cells.
 ```{r}
 # 1) Build a one-row-per-key lookup from SCA
