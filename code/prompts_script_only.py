@@ -41,7 +41,7 @@ data = [
      "prompt": "You and your friend Billie go to a new restaurant. While you're there, you find out that it's Billie's 21st birthday. You say to Billie, 'Let's order some drinks!' Billie looks at the menu and responds, 'They only have "},
     
     {"story": "salad", 
-     "prompt": "You and your friend Ali are preparing dinner together. You tell Ali, 'I want to make a salad!' Ali runs to the corner store, and texts you, 'They only have [MASK].'"},
+     "prompt": "You and your friend Ali are preparing dinner together. You tell Ali, 'I want to make a salad!' Ali runs to the corner store, and texts you, 'They only have "},
 
     {"story": "science", 
      "prompt": "You and your friend Drew are looking for books in a library. You say, 'I want to learn more about science.' Drew looks at the library catalogue and responds, 'They only have books about "},
@@ -57,4 +57,4 @@ data = [
 df = pd.DataFrame(data)
 
 # Save the DataFrame to a CSV file
-df.to_csv("../data/prompts_llm.csv", index=False)
+df.to_csv("../data/prompts_llm_only.csv", index=False)
