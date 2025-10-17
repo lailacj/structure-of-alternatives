@@ -46,7 +46,7 @@ from transformers import (
 # ============
 # File paths (edit if needed)
 # ============
-PROMPTS_CSV = "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/data/prompts_llm.csv"
+PROMPTS_CSV = "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/data/prompts_llm_next_word.csv"
 WFC_CSV     = "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/data/word_freq_and_cloze_prob.csv"
 OUTPUT_CSV  = "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/results/llm/results_llm_next_word_probs.csv"
 
