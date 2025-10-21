@@ -1,81 +1,141 @@
-# Script to correlate half cloze probabilities with other half. 
-# Get 100 draws from one half and 100 draws from the other half. 
-# Each draw will give you a correlation. Plot these in a histogram, 
-# then put the LLM correlation lines. 
-
-# Re-run with confirmed filename and produce outputs.
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-import os
+import numpy as np
+from scipy.stats import spearmanr
 
-path = "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/data/word_freq_and_cloze_prob.csv"
-df = pd.read_csv(path)
+CSV_PATH   = "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/data/Generative_Data_RAW.csv"
+N_SPLITS   = 100
+CLOZE_DEN  = 26
+RANDOM_SEED = 42
 
-# Filter to POS
-pos_df = df[df["type"].astype(str).str.lower() == "pos"].copy()
+CONTEXTS = [
+    "fridge","handbag","mall","bakery","play","corner",
+    "restaurant","fitness","library","garage","closet"
+]
 
-# Find the cloze prob column
-colname = None
-for candidate in ["cloze_probability", "cloze_prob", "cloze", "clozeprob"]:
-    if candidate in pos_df.columns:
-        colname = candidate
-        break
-if colname is None:
-    raise ValueError(f"None of the expected cloze probability columns found. Available columns:\n{list(pos_df.columns)}")
+def normalize_word(x):
+    if pd.isna(x): return ""
+    return str(x).strip().casefold()
 
-vals = pd.to_numeric(pos_df[colname], errors="coerce").dropna().to_numpy()
+def vec_spearman(a, b):
+    if len(a) < 2 or len(b) < 2: return np.nan, np.nan
+    if (a == a[0]).all() and (b == b[0]).all(): return np.nan, np.nan
+    rho, p = spearmanr(a, b, nan_policy="omit")
+    return float(rho), float(p)
 
-n = len(vals)
-if n % 2 == 1:
-    vals = vals[:-1]
-    n = len(vals)
+def main():
+    rng = np.random.default_rng(RANDOM_SEED)
+    df = pd.read_csv(CSV_PATH)
 
-if n < 4:
-    raise ValueError(f"Need at least 4 POS rows; found {n}.")
+    # Filter: positive == TRUE
+    pos_mask = df["positive"].astype(str).str.strip().str.lower().isin(["true","1","t","yes","y"])
+    df_pos = df[pos_mask].reset_index(drop=True)
+    if df_pos.empty:
+        raise ValueError("No rows where positive == TRUE.")
 
-half = n // 2
+    # Build per-context column groups (1..6); ignore *_time
+    ctx_cols = {ctx: [f"{ctx}{i}" for i in range(1,7)] for ctx in CONTEXTS}
+    # Sanity check columns exist
+    for ctx, cols in ctx_cols.items():
+        missing = [c for c in cols if c not in df_pos.columns]
+        if missing:
+            raise ValueError(f"Missing expected columns for context '{ctx}': {missing}")
 
-rng = np.random.default_rng(12345)
-num_splits = 1000
-split_rs = []
+    n = len(df_pos)
+    if n < 2:
+        raise ValueError("Not enough rows to split.")
 
-for _ in range(num_splits):
-    perm = rng.permutation(n)
-    A = vals[perm[:half]]
-    B = vals[perm[half:]]
-    r = np.corrcoef(A, B)[0,1]
-    split_rs.append(r)
+    records = []
+    for split_id in range(N_SPLITS):
+        perm = rng.permutation(n)
+        A_idx = perm[: n // 2]
+        B_idx = perm[n // 2 :]
 
-import pandas as pd
-split_rs = np.array(split_rs)
-summary_df = pd.DataFrame({
-    "num_splits":[num_splits],
-    "n_pos_rows_used":[n],
-    "half_size":[half],
-    "mean_r":[split_rs.mean()],
-    "std_r":[split_rs.std(ddof=1)],
-    "ci_2_5":[np.percentile(split_rs, 2.5)],
-    "ci_97_5":[np.percentile(split_rs, 97.5)],
-})
+        A = df_pos.iloc[A_idx].reset_index(drop=True)
+        B = df_pos.iloc[B_idx].reset_index(drop=True)
 
-print(summary_df)
-print(summary_df["mean_r"])
+        for ctx in CONTEXTS:
+            cols = ctx_cols[ctx]
 
-# Save CSV
-# corrs_csv_path = "/mnt/data/pos_cloze_split_half_correlations.csv"
-# pd.DataFrame({"pearson_r": split_rs}).to_csv(corrs_csv_path, index=False)
+            # collect all words across the 6 columns for this context
+            words_A = (
+                pd.Series(np.concatenate([A[c].astype(str).values for c in cols], axis=0), dtype="object")
+                .map(lambda x: x if x != "nan" else np.nan)
+                .dropna()
+                .map(normalize_word)
+            )
+            words_B = (
+                pd.Series(np.concatenate([B[c].astype(str).values for c in cols], axis=0), dtype="object")
+                .map(lambda x: x if x != "nan" else np.nan)
+                .dropna()
+                .map(normalize_word)
+            )
 
-# Plot histogram
-plt.figure(figsize=(7,5))
-plt.hist(split_rs, bins=100)
-plt.title("Split-half self-correlation for cloze_probability\n1000 random splits")
-plt.xlabel("Pearson r")
-plt.ylabel("Count")
-hist_path = "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/figures/cloze_split_half_hist.png"
-plt.tight_layout()
-plt.savefig(hist_path, dpi=160)
-plt.close()
+            words_A = words_A[words_A != ""]
+            words_B = words_B[words_B != ""]
 
-# (hist_path, corrs_csv_path)
+            cnt_A = words_A.value_counts()
+            cnt_B = words_B.value_counts()
 
+            vocab = sorted(set(cnt_A.index).union(cnt_B.index))
+            if len(vocab) == 0:
+                rho, p = np.nan, np.nan
+                n_vocab = 0
+            else:
+                pA = cnt_A.reindex(vocab, fill_value=0).astype(float) / CLOZE_DEN
+                pB = cnt_B.reindex(vocab, fill_value=0).astype(float) / CLOZE_DEN
+                rho, p = vec_spearman(pA.values, pB.values)
+                n_vocab = len(vocab)
+
+            records.append({
+                "split_id": split_id,
+                "context": ctx,
+                "spearman_rho": rho,
+                "p_value": p,
+                "n_words_union": n_vocab
+            })
+
+    results = pd.DataFrame(records).sort_values(["split_id","context"]).reset_index(drop=True)
+
+    # Optional summary per context
+    summary = (
+        results.groupby("context", as_index=False)
+        .agg(mean_rho=("spearman_rho","mean"),
+             sd_rho=("spearman_rho","std"),
+             median_rho=("spearman_rho","median"),
+             valid_splits=("spearman_rho", lambda s: s.notna().sum()))
+        .sort_values("context")
+    )
+
+    print("\n=== Results (head) ===")
+    print(results.head(22).to_string(index=False))
+    print("\n=== Summary ===")
+    print(summary.to_string(index=False))
+
+    results.to_csv("/users/ljohnst7/data/ljohnst7/structure-of-alternatives/results/llm/split_half_spearman_by_context.csv", index=False)
+    summary.to_csv("/users/ljohnst7/data/ljohnst7/structure-of-alternatives/results/llm/split_half_spearman_summary.csv", index=False)
+    print("\nSaved: split_half_spearman_by_context.csv, split_half_spearman_summary.csv")
+    
+    # After you’ve built the `results` DataFrame of per-split × context correlations:
+
+    # 1. Compute mean correlation across contexts for each split
+    mean_by_split = (
+        results.groupby("split_id", as_index=False)
+            .agg(mean_rho=("spearman_rho","mean"))
+    )
+
+    # 2. Plot histogram
+    plt.figure(figsize=(7,5))
+    plt.hist(mean_by_split["mean_rho"].dropna(), bins=20, edgecolor="k")
+    plt.title("Distribution of mean Spearman correlations\n(across contexts, per split)")
+    plt.xlabel("Mean Spearman rho")
+    plt.ylabel("Count")
+    plt.tight_layout()
+    plt.savefig("/users/ljohnst7/data/ljohnst7/structure-of-alternatives/figures/hist_mean_spearman_by_split.png", dpi=160)
+    plt.show()
+
+    # Optional: also save the table of mean correlations
+    mean_by_split.to_csv("/users/ljohnst7/data/ljohnst7/structure-of-alternatives/results/llm/mean_spearman_by_split.csv", index=False)
+
+if __name__ == "__main__":
+    main()
