@@ -6,7 +6,7 @@ MODEL_NAME = "meta-llama/Llama-3.2-3B"   # change to local path if you downloade
 
 # === EDIT THESE TWO VARIABLES ===
 context = "You and your friend Taylor are sitting in a park. You pull out a piece of paper and tell Taylor, 'I just had an idea that I want to remember, but don't have anything to write with.' Taylor looks through her handbag and responds, 'Sure, I have "
-word    = "pencil"
+word    = "highlighter"
 
 def load_model(model_name: str = MODEL_NAME):
     tok = AutoTokenizer.from_pretrained(model_name, use_fast=True)
