@@ -1,4 +1,3 @@
-# Build the two requested dataframes:
 # 1) word_comparison_summary: per-context counts + Spearman (drop-missing), sorted by Spearman
 # 2) word_comparison_detailed: ONLY human words, with columns
 #    [context, cleaned_trigger, human_position, bert_position, bert_prob],
