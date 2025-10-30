@@ -39,8 +39,7 @@ Description of repo directories:
             - `split_half_human_llm_spearman.py`: Split half of the human word data and compute spearman correlations between each half and LLM next word probabilities. 
             - `word_freq_to_cloze_prob.py`: Get the pesudo cloze probability for the words in the inside the set task. 
         - `alternative_task_model.py`: Code to run the alternatives negation task on the top model from the next word probability correlations. Work in progress. 
-    - *ollama*: 
-        - `main.py`: Code I used when I was exploring how to use the Ollama framework on Oscar. Don't use this anymore. 
+    - *ollama*: Code I used when I was exploring how to use the Ollama framework on Oscar. Don't use this anymore.
     - *prompts*: Code to output LLM prompts in the format I want. 
         - `prompts_script_only.py`: Prompts with 'only' - "I only have "
         - `prompts_script_stim.py`: Prompts without 'only'. Used in the stimulus generation, inside the set experiments. "Sure, I have "
@@ -63,7 +62,7 @@ Description of repo directories:
     - `sca_dataframe.csv`: All the data from the alternative negation experiment.
 - *figures*: A bunch of different plots and figures. 
 - *presentations*: All the presentations I have given associated with this project. 
-- *results*: 
+- *results* 
     - *BERT_results*: Results from when BERT was the LM we were primarily interested in. 
     - *fyp_results*: Results I used in my FYP. 
     - *llm* 
