@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import spearmanr
+import pdb
 
 # ---------- CONFIG ----------
 INPUT_CSV = "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/results/llm/external_cloze_prob_dataset/llm_next_word_from_external_cloze.csv"  
@@ -10,7 +11,6 @@ OUT_SUMMARY  = "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/results/
 OUT_PLOT     = "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/figures/llm/external_cloze_prob_dataset_mean_spearman_by_llm.png"
 
 MIN_ITEMS_PER_SENTENCE = 3   # require at least this many word candidates in a sentence
-DROP_NAN = True              # drop rows where either prob is NaN
 # ----------------------------
 
 def safe_spearman(x: pd.Series, y: pd.Series) -> float:
@@ -24,31 +24,26 @@ def safe_spearman(x: pd.Series, y: pd.Series) -> float:
     # constant vectors -> undefined
     if np.all(a == a[0]) or np.all(b == b[0]):
         return np.nan
-    rho, _ = spearmanr(a, b, nan_policy="omit")
+    rho, _ = spearmanr(a, b, nan_policy="raise")
     return float(rho)
 
 def main():
     df = pd.read_csv(INPUT_CSV)
 
-    req = {"llm_name", "sentence", "word", "human_cloze_prob", "llm_next_word_prob"}
-    missing = req - set(df.columns)
-    if missing:
-        raise ValueError(f"Missing required columns: {missing}")
-
-    if DROP_NAN:
-        df = df.dropna(subset=["human_cloze_prob", "llm_next_word_prob"]).copy()
-
     # Compute per (llm_name, sentence) Spearman over words
     rows = []
-    for (llm, sent), g in df.groupby(["llm_name", "sentence"], sort=False):
-        gg = g.copy()
-        gg = gg[np.isfinite(pd.to_numeric(gg["human_cloze_prob"], errors="coerce")) &
-                np.isfinite(pd.to_numeric(gg["llm_next_word_prob"], errors="coerce"))]
-        n_items = len(gg)
+    for (llm, sent), group in df.groupby(["llm_name", "sentence"], sort=False):
+        unique_llm_sent = group.copy()
+        unique_llm_sent = unique_llm_sent[
+            np.isfinite(pd.to_numeric(unique_llm_sent["human_cloze_prob"], errors="coerce")) & 
+            np.isfinite(pd.to_numeric(unique_llm_sent["llm_next_word_prob"], errors="coerce"))
+            ]
+
+        n_items = len(unique_llm_sent)
         if n_items < MIN_ITEMS_PER_SENTENCE:
             continue
 
-        rho = safe_spearman(gg["human_cloze_prob"], gg["llm_next_word_prob"])
+        rho = safe_spearman(unique_llm_sent["human_cloze_prob"], unique_llm_sent["llm_next_word_prob"])
         rows.append({
             "llm_name": llm,
             "sentence": sent,
@@ -59,6 +54,8 @@ def main():
     per_sent = pd.DataFrame(rows)
     per_sent.to_csv(OUT_PER_SENT, index=False)
     print(f"Wrote per-sentence results: {OUT_PER_SENT} ({len(per_sent)} rows)")
+
+    # pdb.set_trace()
 
     # Average Spearman per LLM (simple mean over sentences)
     summary = (
