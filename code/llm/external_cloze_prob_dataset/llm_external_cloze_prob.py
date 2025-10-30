@@ -43,8 +43,7 @@ MODELS: Dict[str, str] = {
     "DeepSeek-Coder-1.3B": "deepseek-ai/deepseek-coder-1.3b-base",
 }
 
-# Optional: cap GPU memory to avoid OOM (adjust for your card)
-MAX_MEMORY = {0: "20GiB", "cpu": "64GiB"}  # integer GPU index 0
+MAX_MEMORY = {0: "20GiB", "cpu": "64GiB"}  
 
 # -------------
 # Small helpers
@@ -125,31 +124,79 @@ def causal_phrase_prob(tok, mdl, sentence: str, word: str) -> Tuple[float, float
     return math.exp(total_logp), total_logp
 
 @torch.no_grad()
-def bert_word_prob(tok, mdl, sentence: str, word: str) -> Tuple[Optional[float], Optional[float]]:
+def bert_word_prob(tok, mdl, sentence: str, phrase: str, end_punct: str = "'.") -> Tuple[Optional[float], Optional[float]]:
     """
-    Next-word probability for BERT at a single [MASK] position.
-    Only words that are a single tokenizer piece are supported; multi-piece -> (None, None).
+    Pseudo-probability for a multi-token next 'word'/phrase with BERT.
     """
+
     sentence = norm_text(sentence)
-    word = str(word)
+    phrase = str(phrase)
 
-    text = sentence.rstrip() + " " + tok.mask_token + "."
-    enc = tok(text, return_tensors="pt")
-    input_ids = enc["input_ids"]
-    mask_pos = (input_ids == tok.mask_token_id).nonzero(as_tuple=False)
-    if mask_pos.numel() == 0:
+    piece_ids = tok(" " + phrase, add_special_tokens=False).input_ids  # leading space → word boundary
+    if not piece_ids:
         return None, None
 
-    i, j = int(mask_pos[0][0]), int(mask_pos[0][1])
-    out = mdl(**{k: v.to(mdl.device) for k, v in enc.items()})
-    probs = F.softmax(out.logits[i, j, :], dim=-1)
+    masks = " ".join([tok.mask_token] * len(piece_ids))
+    text = sentence.rstrip() + " " + masks + end_punct
+    enc = tok(text, return_tensors="pt") 
+    input_ids = enc["input_ids"].to(mdl.device)
+    attn_mask = enc["attention_mask"].to(mdl.device)
 
-    # Only single-piece candidates are valid under BERT tokenizer
-    ids = tok(" " + word, add_special_tokens=False).input_ids
-    if len(ids) != 1:
-        return None, None
-    p = float(probs[ids[0]].item())
-    return p, math.log(max(p, 1e-45))
+    # Sanity: confirm we have exactly K masks
+    mask_id = tok.mask_token_id
+    if mask_id is None:
+        raise ValueError("Tokenizer has no mask_token_id (not a masked LM tokenizer).")
+    num_masks = int((input_ids == mask_id).sum().item())
+    if num_masks != len(piece_ids):
+        raise ValueError(f"Expected {len(piece_ids)} masks, found {num_masks} in encoded text.")
+
+    total_logp = 0.0
+
+    # Fill masks left->right using gold pieces (pseudo-likelihood)
+    for k, tid in enumerate(piece_ids):
+        # find the *current* first mask position
+        mask_pos = (input_ids == mask_id).nonzero(as_tuple=False)
+        if mask_pos.numel() == 0:
+            return None, None  # no mask to fill (shouldn't happen if counts align)
+        pos = int(mask_pos[0, 1])
+
+        out = mdl(input_ids=input_ids, attention_mask=attn_mask)
+        logits = out.logits[0, pos, :]
+        probs = F.softmax(logits, dim=-1)
+
+        p = float(torch.clamp(probs[tid], min=1e-45).item())
+        total_logp += math.log(p)
+
+        # replace this mask with the target piece; keep remaining masks for next steps
+        input_ids[0, pos] = tid
+
+    return math.exp(total_logp), total_logp
+
+# def bert_word_prob(tok, mdl, sentence: str, word: str) -> Tuple[Optional[float], Optional[float]]:
+#     """
+#     Next-word probability for BERT at a single [MASK] position.
+#     Only words that are a single tokenizer piece are supported; multi-piece -> (None, None).
+#     """
+#     sentence = norm_text(sentence)
+#     word = str(word)
+
+#     text = sentence.rstrip() + " " + tok.mask_token + "."
+#     enc = tok(text, return_tensors="pt")
+#     input_ids = enc["input_ids"]
+#     mask_pos = (input_ids == tok.mask_token_id).nonzero(as_tuple=False)
+#     if mask_pos.numel() == 0:
+#         return None, None
+
+#     i, j = int(mask_pos[0][0]), int(mask_pos[0][1])
+#     out = mdl(**{k: v.to(mdl.device) for k, v in enc.items()})
+#     probs = F.softmax(out.logits[i, j, :], dim=-1)
+
+#     # Only single-piece candidates are valid under BERT tokenizer
+#     ids = tok(" " + word, add_special_tokens=False).input_ids
+#     if len(ids) != 1:
+#         return None, None
+#     p = float(probs[ids[0]].item())
+#     return p, math.log(max(p, 1e-45))
 
 # -----------
 # Main script
