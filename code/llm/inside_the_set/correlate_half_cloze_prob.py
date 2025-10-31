@@ -117,26 +117,5 @@ def main():
     # summary.to_csv("/users/ljohnst7/data/ljohnst7/structure-of-alternatives/results/llm/inside_the_set/split_half_spearman_summary.csv", index=False)
     # print("\nSaved: split_half_spearman_by_context.csv, split_half_spearman_summary.csv")
     
-    # # After you’ve built the `results` DataFrame of per-split × context correlations:
-
-    # # 1. Compute mean correlation across contexts for each split
-    # mean_by_split = (
-    #     results.groupby("split_id", as_index=False)
-    #         .agg(mean_rho=("spearman_rho","mean"))
-    # )
-
-    # # 2. Plot histogram
-    # plt.figure(figsize=(7,5))
-    # plt.hist(mean_by_split["mean_rho"].dropna(), bins=20, edgecolor="k")
-    # plt.title("Distribution of mean Spearman correlations\n(across contexts, per split)")
-    # plt.xlabel("Mean Spearman rho")
-    # plt.ylabel("Count")
-    # plt.tight_layout()
-    # plt.savefig("/users/ljohnst7/data/ljohnst7/structure-of-alternatives/figures/hist_mean_spearman_by_split.png", dpi=160)
-    # plt.show()
-
-    # # Optional: also save the table of mean correlations
-    # mean_by_split.to_csv("/users/ljohnst7/data/ljohnst7/structure-of-alternatives/results/llm/mean_spearman_by_split.csv", index=False)
-
 if __name__ == "__main__":
     main()

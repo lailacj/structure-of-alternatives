@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Split-half Spearman correlations: Human cloze halves vs LLM next-word probabilities,
 using a HUMAN->LLM context map supplied by the user. We invert it internally
