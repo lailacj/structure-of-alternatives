@@ -87,7 +87,8 @@ for i, row in sorted_means.iterrows():
         ha="center",
         va="bottom",
         fontsize=12,
-        color="black"
+        color="black",
+        fontweight="bold"
     )
 
 legend_elements = [
