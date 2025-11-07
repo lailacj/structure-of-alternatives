@@ -55,7 +55,7 @@ means["llm_name"] = pd.Categorical(means["llm_name"], categories=order_llm, orde
 
 # pdb.set_trace()
 
-plt.figure(figsize=(8, 5))
+plt.figure(figsize=(10, 5))
 sns.stripplot(
     data=df,
     x="llm_name",
@@ -86,8 +86,7 @@ for i, row in sorted_means.iterrows():
         s=f"{row['mean_rho']:.2f}", # round to 2 decimals
         ha="center",
         va="bottom",
-        fontsize=11,
-        fontweight="bold",
+        fontsize=12,
         color="black"
     )
 
@@ -97,12 +96,12 @@ legend_elements = [
 ]
 plt.legend(handles=legend_elements, bbox_to_anchor=(1.05, 1), loc="upper left")
 
-plt.xticks(range(len(order_llm)), order_llm, rotation=30, ha="right")
-plt.xlabel("LLM")
-plt.ylabel("Spearman Correlation\n(per context)")
-plt.title("Our experimental inside the set condition\nSpearman Correlation per LLM and Context")
+plt.xticks(range(len(order_llm)), order_llm, rotation=30, ha="right", fontsize=14)
+plt.xlabel("LLM", fontsize=14)
+plt.ylabel("Spearman Correlation\n(per context)", fontsize=14)
+plt.title("Our experimental inside the set condition\nSpearman Correlation per LLM and Context", fontsize=16)
 # plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
-plt.tight_layout()
+plt.tight_layout() 
 plt.show()
 
 plt.savefig("/users/ljohnst7/data/ljohnst7/structure-of-alternatives/figures/llm/llm_inside_set_correlation_dbbtalk1.png", dpi=300)

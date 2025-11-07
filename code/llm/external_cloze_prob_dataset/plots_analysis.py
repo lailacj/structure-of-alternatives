@@ -78,7 +78,7 @@ def main():
     summary["llm_name"]  = pd.Categorical(summary["llm_name"],  categories=order_llm, ordered=True)
 
     # --- plot ---
-    plt.figure(figsize=(10, 5))
+    plt.figure(figsize=(10, 6))
 
     # 1) Violin per model (distribution of per-sentence Spearman)
     sns.violinplot(
@@ -111,7 +111,7 @@ def main():
             s=f"{row['mean_spearman']:.2f}",         # round to 2 decimals
             ha="center",
             va="bottom",
-            fontsize=9,
+            fontsize=12,
             color="black",
             fontweight="bold"
         )
@@ -124,10 +124,10 @@ def main():
     plt.legend(handles=legend_elements, bbox_to_anchor=(1.02, 1), loc="upper left")
 
     # 5) Axes & save
-    plt.xticks(range(len(order_llm)), order_llm, rotation=30, ha="right")
-    plt.xlabel("LLM")
-    plt.ylabel("Spearman Correlation\n(per sentence)")
-    plt.title("Pelle et al (2020) Cloze Probability Dataset\nDistribution of the spearman correlations for each sentence by LLM\nMean spearman correlation indicated by black diamond")
+    plt.xticks(range(len(order_llm)), order_llm, rotation=30, ha="right", fontsize=14)
+    plt.xlabel("LLM", fontsize=14)
+    plt.ylabel("Spearman Correlation\n(per sentence)", fontsize=14)
+    plt.title("Pelle et al (2020) Cloze Probability Dataset\nDistribution of the spearman correlations for each sentence by LLM\nMean spearman correlation indicated by black diamond", fontsize=16)
     plt.tight_layout()
     plt.savefig(OUT_PLOT, dpi=300)
     plt.show()
