@@ -127,7 +127,7 @@ def main():
     plt.xticks(range(len(order_llm)), order_llm, rotation=30, ha="right", fontsize=14)
     plt.xlabel("LLM", fontsize=14)
     plt.ylabel("Spearman Correlation\n(per sentence)", fontsize=14)
-    plt.title("Pelle et al (2020) Cloze Probability Dataset\nDistribution of the spearman correlations for each sentence by LLM\nMean spearman correlation indicated by black diamond", fontsize=16)
+    plt.title("Peelle et al (2020) Cloze Probability Dataset\nDistribution of the spearman correlations for each sentence by LLM\nMean spearman correlation indicated by black diamond", fontsize=16)
     plt.tight_layout()
     plt.savefig(OUT_PLOT, dpi=300)
     plt.show()
