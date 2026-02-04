@@ -1,6 +1,11 @@
 # Get log likelihood for each alternative model structure 
 # using the cloze probabilities from the generation task.
 
+# Cloze prob baseline model. 
+# This code runs the 4 different alternative strucutres using the 
+# pseudo cloze probability measurements from the stimulus generation 
+# experiments.
+
 import pandas as pd
 import numpy as np
 import pdb 
@@ -21,13 +26,13 @@ def clean_word(word):
         return word
 
 # Load the experimental data
-df_experimental_data = pd.read_csv('../data/sca_dataframe.csv')
+df_experimental_data = pd.read_csv('../../data/sca_dataframe.csv')
 df_experimental_data['cleaned_trigger'] = df_experimental_data['trigger'].apply(clean_word)
 df_experimental_data['cleaned_query'] = df_experimental_data['query'].apply(clean_word)
 df_experimental_data = df_experimental_data.sort_values(by='story')
 
 # Load the cloze probabilities data
-df_cloze = pd.read_csv('../data/word_freq_and_cloze_prob.csv')
+df_cloze = pd.read_csv('../../data/inside_the_set/word_freq_and_cloze_prob.csv')
 
 # Only use the contexts that are in both the experimental data and cloze data
 common_contexts = set(df_experimental_data['story']).intersection(set(df_cloze['context']))
