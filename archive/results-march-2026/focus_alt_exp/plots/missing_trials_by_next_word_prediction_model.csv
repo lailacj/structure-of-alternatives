@@ -1,0 +1,4 @@
+NextWordPredictionModelRaw,NextWordPredictionModel,missing_rows,missing_boundaries,missing_contexts,missing_query_rows,missing_trigger_rows
+bert,BERT,94140,60,13,60540,33600
+bert_static,BERT Static,97278,60,13,62558,34720
+cloze,Cloze,31944,24,10,21528,10416
