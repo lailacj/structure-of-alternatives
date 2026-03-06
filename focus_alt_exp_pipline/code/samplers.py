@@ -122,197 +122,195 @@ class ClozeSampler(ContextSampler):
         return token in self._context_words.get(key, set())
 
 
-class _BaseBertSampler(ContextSampler):
-    """Shared utilities for BERT-based samplers."""
+# class _BaseBertSampler(ContextSampler):
+#     """Shared utilities for BERT-based samplers."""
 
-    def __init__(
-        self,
-        *,
-        model_name: str,
-        seed: int | None = None,
-        device: str | None = None,
-    ) -> None:
-        import torch
-        from transformers import AutoModelForMaskedLM, AutoTokenizer
+#     def __init__(
+#         self,
+#         *,
+#         model_name: str,
+#         seed: int | None = None,
+#         device: str | None = None,
+#     ) -> None:
+#         import torch
+#         from transformers import AutoModelForMaskedLM, AutoTokenizer
 
-        self._torch = torch
-        self._rng = np.random.default_rng(seed)
-        self._device = (
-            device if device is not None else ("cuda" if torch.cuda.is_available() else "cpu")
-        )
-        self._tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self._model = AutoModelForMaskedLM.from_pretrained(model_name).to(self._device).eval()
+#         self._torch = torch
+#         self._rng = np.random.default_rng(seed)
+#         self._device = (
+#             device if device is not None else ("cuda" if torch.cuda.is_available() else "cpu")
+#         )
+#         self._tokenizer = AutoTokenizer.from_pretrained(model_name)
+#         self._model = AutoModelForMaskedLM.from_pretrained(model_name).to(self._device).eval()
 
-    def _filter_non_special_distribution(
-        self,
-        distribution: List[Tuple[str, float]],
-    ) -> List[Tuple[str, float]]:
-        special_tokens = set(self._tokenizer.all_special_tokens)
-        filtered = [
-            (token, prob)
-            for token, prob in distribution
-            if not token.startswith("[") and not token.startswith("<") and token not in special_tokens
-        ]
-        if not filtered:
-            raise ValueError("Filtering removed every token from the BERT vocabulary distribution")
+#     def _filter_non_special_distribution(
+#         self,
+#         distribution: List[Tuple[str, float]],
+#     ) -> List[Tuple[str, float]]:
+#         special_tokens = set(self._tokenizer.all_special_tokens)
+#         filtered = [
+#             (token, prob)
+#             for token, prob in distribution
+#             if not token.startswith("[") and not token.startswith("<") and token not in special_tokens
+#         ]
+#         if not filtered:
+#             raise ValueError("Filtering removed every token from the BERT vocabulary distribution")
 
-        total_prob = sum(prob for _, prob in filtered)
-        if total_prob <= 0:
-            raise ValueError("Filtered BERT vocabulary distribution has non-positive total probability")
+#         total_prob = sum(prob for _, prob in filtered)
+#         if total_prob <= 0:
+#             raise ValueError("Filtered BERT vocabulary distribution has non-positive total probability")
 
-        return [(token, prob / total_prob) for token, prob in filtered]
+#         return [(token, prob / total_prob) for token, prob in filtered]
 
-    def _sample_ordering(self, distribution: List[Tuple[str, float]]) -> List[str]:
-        tokens = [tok for tok, _ in distribution]
-        probs = np.array([p for _, p in distribution], dtype=float)
-        probs = probs / probs.sum()
-        idx = self._rng.choice(len(tokens), size=len(tokens), replace=False, p=probs)
-        return [tokens[i] for i in idx]
+#     def _sample_ordering(self, distribution: List[Tuple[str, float]]) -> List[str]:
+#         tokens = [tok for tok, _ in distribution]
+#         probs = np.array([p for _, p in distribution], dtype=float)
+#         probs = probs / probs.sum()
+#         idx = self._rng.choice(len(tokens), size=len(tokens), replace=False, p=probs)
+#         return [tokens[i] for i in idx]
 
+# class BertSampler(_BaseBertSampler):
+#     """Sampler for BERT masked-token distributions conditioned on context."""
 
-class BertSampler(_BaseBertSampler):
-    """Sampler for BERT masked-token distributions conditioned on context."""
+#     def __init__(
+#         self,
+#         prompts_df: pd.DataFrame,
+#         *,
+#         context_col: str = "story",
+#         prompt_col: str = "prompt",
+#         model_name: str = "google-bert/bert-large-uncased-whole-word-masking",
+#         seed: int | None = None,
+#         device: str | None = None,
+#     ) -> None:
+#         required = {context_col, prompt_col}
+#         missing = required.difference(prompts_df.columns)
+#         if missing:
+#             raise ValueError(f"Missing columns in prompts_df: {sorted(missing)}")
 
-    def __init__(
-        self,
-        prompts_df: pd.DataFrame,
-        *,
-        context_col: str = "story",
-        prompt_col: str = "prompt",
-        model_name: str = "google-bert/bert-large-uncased-whole-word-masking",
-        seed: int | None = None,
-        device: str | None = None,
-    ) -> None:
-        required = {context_col, prompt_col}
-        missing = required.difference(prompts_df.columns)
-        if missing:
-            raise ValueError(f"Missing columns in prompts_df: {sorted(missing)}")
+#         super().__init__(model_name=model_name, seed=seed, device=device)
+#         self._prompts = {
+#             str(row[context_col]): str(row[prompt_col])
+#             for _, row in prompts_df[[context_col, prompt_col]].drop_duplicates().iterrows()
+#         }
+#         self._distribution_cache: Dict[str, List[Tuple[str, float]]] = {}
+#         self._token_set_cache: Dict[str, set[str]] = {}
 
-        super().__init__(model_name=model_name, seed=seed, device=device)
-        self._prompts = {
-            str(row[context_col]): str(row[prompt_col])
-            for _, row in prompts_df[[context_col, prompt_col]].drop_duplicates().iterrows()
-        }
-        self._distribution_cache: Dict[str, List[Tuple[str, float]]] = {}
-        self._token_set_cache: Dict[str, set[str]] = {}
+#     def _get_distribution(self, context: str) -> List[Tuple[str, float]]:
+#         key = str(context)
+#         if key in self._distribution_cache:
+#             return self._distribution_cache[key]
+#         prompt = self._prompts.get(key)
+#         if prompt is None:
+#             raise KeyError(f"No prompt found for context '{key}'")
 
-    def _get_distribution(self, context: str) -> List[Tuple[str, float]]:
-        key = str(context)
-        if key in self._distribution_cache:
-            return self._distribution_cache[key]
-        prompt = self._prompts.get(key)
-        if prompt is None:
-            raise KeyError(f"No prompt found for context '{key}'")
+#         inputs = self._tokenizer(prompt, return_tensors="pt").to(self._device)
+#         mask_positions = (inputs.input_ids == self._tokenizer.mask_token_id).nonzero(as_tuple=True)[1]
+#         if len(mask_positions) != 1:
+#             raise ValueError(
+#                 f"Prompt for context '{key}' must contain exactly one [MASK], got {len(mask_positions)}"
+#             )
 
-        inputs = self._tokenizer(prompt, return_tensors="pt").to(self._device)
-        mask_positions = (inputs.input_ids == self._tokenizer.mask_token_id).nonzero(as_tuple=True)[1]
-        if len(mask_positions) != 1:
-            raise ValueError(
-                f"Prompt for context '{key}' must contain exactly one [MASK], got {len(mask_positions)}"
-            )
+#         with self._torch.no_grad():
+#             logits = self._model(**inputs).logits
+#         mask_logits = logits[0, mask_positions, :].squeeze(0)
+#         probs = self._torch.softmax(mask_logits, dim=-1).detach().cpu().numpy()
+#         tokens = self._tokenizer.convert_ids_to_tokens(range(mask_logits.shape[-1]))
+#         distribution = self._filter_non_special_distribution(list(zip(tokens, probs.tolist())))
 
-        with self._torch.no_grad():
-            logits = self._model(**inputs).logits
-        mask_logits = logits[0, mask_positions, :].squeeze(0)
-        probs = self._torch.softmax(mask_logits, dim=-1).detach().cpu().numpy()
-        tokens = self._tokenizer.convert_ids_to_tokens(range(mask_logits.shape[-1]))
-        distribution = self._filter_non_special_distribution(list(zip(tokens, probs.tolist())))
+#         self._distribution_cache[key] = distribution
+#         self._token_set_cache[key] = {token for token, _ in distribution}
+#         return distribution
 
-        self._distribution_cache[key] = distribution
-        self._token_set_cache[key] = {token for token, _ in distribution}
-        return distribution
+#     def prepare_contexts(self, contexts: Sequence[str]) -> None:
+#         for context in contexts:
+#             self._get_distribution(str(context))
 
-    def prepare_contexts(self, contexts: Sequence[str]) -> None:
-        for context in contexts:
-            self._get_distribution(str(context))
+#     def sample_contexts(
+#         self,
+#         contexts: Sequence[str],
+#         set_boundary: int,
+#         num_reps: int,
+#     ) -> ContextSamples:
+#         context_samples: ContextSamples = {}
+#         for context in contexts:
+#             key = str(context)
+#             distribution = self._get_distribution(key)
+#             sims: List[Sample] = []
+#             for _ in range(num_reps):
+#                 ordering = self._sample_ordering(distribution)
+#                 sims.append((ordering, ordering[:set_boundary]))
+#             context_samples[key] = sims
+#         return context_samples
 
-    def sample_contexts(
-        self,
-        contexts: Sequence[str],
-        set_boundary: int,
-        num_reps: int,
-    ) -> ContextSamples:
-        context_samples: ContextSamples = {}
-        for context in contexts:
-            key = str(context)
-            distribution = self._get_distribution(key)
-            sims: List[Sample] = []
-            for _ in range(num_reps):
-                ordering = self._sample_ordering(distribution)
-                sims.append((ordering, ordering[:set_boundary]))
-            context_samples[key] = sims
-        return context_samples
+#     def supports_token(self, context: str, token: str) -> bool:
+#         key = str(context)
+#         if key not in self._token_set_cache:
+#             self._get_distribution(key)
+#         return token in self._token_set_cache.get(key, set())
 
-    def supports_token(self, context: str, token: str) -> bool:
-        key = str(context)
-        if key not in self._token_set_cache:
-            self._get_distribution(key)
-        return token in self._token_set_cache.get(key, set())
+# class StaticBERTSampler(_BaseBertSampler):
+#     """Sampler for a context-free BERT vocabulary distribution.
 
+#     The distribution is computed once from a prompt containing only BERT's [MASK]
+#     token, then reused for every experimental context.
+#     """
 
-class StaticBERTSampler(_BaseBertSampler):
-    """Sampler for a context-free BERT vocabulary distribution.
+#     def __init__(
+#         self,
+#         *,
+#         model_name: str = "google-bert/bert-large-uncased-whole-word-masking",
+#         seed: int | None = None,
+#         device: str | None = None,
+#     ) -> None:
+#         super().__init__(model_name=model_name, seed=seed, device=device)
+#         self._distribution: List[Tuple[str, float]] | None = None
+#         self._token_set: set[str] = set()
 
-    The distribution is computed once from a prompt containing only BERT's [MASK]
-    token, then reused for every experimental context.
-    """
+#     def _get_distribution(self) -> List[Tuple[str, float]]:
+#         if self._distribution is not None:
+#             return self._distribution
 
-    def __init__(
-        self,
-        *,
-        model_name: str = "google-bert/bert-large-uncased-whole-word-masking",
-        seed: int | None = None,
-        device: str | None = None,
-    ) -> None:
-        super().__init__(model_name=model_name, seed=seed, device=device)
-        self._distribution: List[Tuple[str, float]] | None = None
-        self._token_set: set[str] = set()
+#         inputs = self._tokenizer(self._tokenizer.mask_token, return_tensors="pt").to(self._device)
+#         mask_positions = (inputs.input_ids == self._tokenizer.mask_token_id).nonzero(as_tuple=True)[1]
+#         if len(mask_positions) != 1:
+#             raise ValueError(
+#                 f"Static BERT prompt must contain exactly one [MASK], got {len(mask_positions)}"
+#             )
 
-    def _get_distribution(self) -> List[Tuple[str, float]]:
-        if self._distribution is not None:
-            return self._distribution
+#         with self._torch.no_grad():
+#             logits = self._model(**inputs).logits
+#         mask_logits = logits[0, mask_positions, :].squeeze(0)
+#         probs = self._torch.softmax(mask_logits, dim=-1).detach().cpu().numpy()
+#         tokens = self._tokenizer.convert_ids_to_tokens(range(mask_logits.shape[-1]))
+#         distribution = self._filter_non_special_distribution(list(zip(tokens, probs.tolist())))
 
-        inputs = self._tokenizer(self._tokenizer.mask_token, return_tensors="pt").to(self._device)
-        mask_positions = (inputs.input_ids == self._tokenizer.mask_token_id).nonzero(as_tuple=True)[1]
-        if len(mask_positions) != 1:
-            raise ValueError(
-                f"Static BERT prompt must contain exactly one [MASK], got {len(mask_positions)}"
-            )
+#         self._distribution = distribution
+#         self._token_set = {token for token, _ in distribution}
+#         return distribution
 
-        with self._torch.no_grad():
-            logits = self._model(**inputs).logits
-        mask_logits = logits[0, mask_positions, :].squeeze(0)
-        probs = self._torch.softmax(mask_logits, dim=-1).detach().cpu().numpy()
-        tokens = self._tokenizer.convert_ids_to_tokens(range(mask_logits.shape[-1]))
-        distribution = self._filter_non_special_distribution(list(zip(tokens, probs.tolist())))
+#     def prepare_contexts(self, contexts: Sequence[str]) -> None:
+#         del contexts
+#         self._get_distribution()
 
-        self._distribution = distribution
-        self._token_set = {token for token, _ in distribution}
-        return distribution
+#     def sample_contexts(
+#         self,
+#         contexts: Sequence[str],
+#         set_boundary: int,
+#         num_reps: int,
+#     ) -> ContextSamples:
+#         distribution = self._get_distribution()
+#         context_samples: ContextSamples = {}
+#         for context in contexts:
+#             key = str(context)
+#             sims: List[Sample] = []
+#             for _ in range(num_reps):
+#                 ordering = self._sample_ordering(distribution)
+#                 sims.append((ordering, ordering[:set_boundary]))
+#             context_samples[key] = sims
+#         return context_samples
 
-    def prepare_contexts(self, contexts: Sequence[str]) -> None:
-        del contexts
-        self._get_distribution()
-
-    def sample_contexts(
-        self,
-        contexts: Sequence[str],
-        set_boundary: int,
-        num_reps: int,
-    ) -> ContextSamples:
-        distribution = self._get_distribution()
-        context_samples: ContextSamples = {}
-        for context in contexts:
-            key = str(context)
-            sims: List[Sample] = []
-            for _ in range(num_reps):
-                ordering = self._sample_ordering(distribution)
-                sims.append((ordering, ordering[:set_boundary]))
-            context_samples[key] = sims
-        return context_samples
-
-    def supports_token(self, context: str, token: str) -> bool:
-        del context
-        if not self._token_set:
-            self._get_distribution()
-        return token in self._token_set
+#     def supports_token(self, context: str, token: str) -> bool:
+#         del context
+#         if not self._token_set:
+#             self._get_distribution()
+#         return token in self._token_set

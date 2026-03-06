@@ -11,20 +11,25 @@ from __future__ import annotations
 import argparse
 import os
 from pathlib import Path
-from typing import Iterable, List
+from typing import List
 
 import pandas as pd
 
-from models import get_models
-from runner import run_experiment
-from samplers import BertSampler, ClozeSampler, StaticBERTSampler
+try:
+    from .models import get_models
+    from .runner import run_experiment
+    from .samplers import BertSampler, ClozeSampler, StaticBERTSampler
+except ImportError:
+    from models import get_models
+    from runner import run_experiment
+    from samplers import BertSampler, ClozeSampler, StaticBERTSampler
 
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
-DEFAULT_EXPERIMENTAL_DATA = ROOT_DIR / "data" / "sca_dataframe.csv"
-DEFAULT_CLOZE_DATA = ROOT_DIR / "data" / "inside_the_set" / "word_freq_and_cloze_prob.csv"
-DEFAULT_BERT_PROMPTS = ROOT_DIR / "data" / "prompts" / "prompts_BERT.csv"
-DEFAULT_RESULTS_DIR = ROOT_DIR / "results" / "focus_alt_exp"
+DEFAULT_EXPERIMENTAL_DATA = ROOT_DIR / "focus_alt_exp_pipline" / "human_exp_data" / "sca_dataframe.csv"
+DEFAULT_CLOZE_DATA = ROOT_DIR / "focus_alt_exp_pipline" / "cloze_data" / "all_cloze_prob.csv"
+DEFAULT_BERT_PROMPTS = ROOT_DIR / "prompts" / "prompt_files" / "prompts_llm_only.csv"
+DEFAULT_RESULTS_DIR = ROOT_DIR / "focus_alt_exp_pipline" / "results"
 
 
 def _parse_csv_list(raw: str) -> List[str]:
@@ -116,8 +121,8 @@ def parse_args() -> argparse.Namespace:
 
     parser.add_argument("--set-boundaries", type=str, default="")
     parser.add_argument("--set-start", type=int, default=3)
-    parser.add_argument("--set-stop", type=int, default=300)
-    parser.add_argument("--set-step", type=int, default=5)
+    parser.add_argument("--set-stop", type=int, default=25)
+    parser.add_argument("--set-step", type=int, default=1)
 
     parser.add_argument("--model-names", type=str, default="")
     parser.add_argument("--include-baselines", action="store_true")
