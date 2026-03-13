@@ -1,0 +1,481 @@
+story,trigger,query,neg_proportion_H1,neg_proportion_H2
+bag,a pen,cash,0.0,0.0
+bag,a pen,chalk,0.7272727272727273,1.0
+bag,a pen,crayons,0.7777777777777778,1.0
+bag,a pen,headphones,0.0,0.0
+bag,a pen,makeup,0.3333333333333333,0.0
+bag,cash,a pen,1.0,1.0
+bag,cash,chalk,1.0,1.0
+bag,cash,crayons,1.0,1.0
+bag,cash,headphones,0.0,0.0
+bag,cash,makeup,0.2,0.0
+bag,chalk,a pen,1.0,1.0
+bag,chalk,cash,0.0,0.0
+bag,chalk,crayons,1.0,1.0
+bag,chalk,headphones,0.0,0.5
+bag,chalk,makeup,0.3333333333333333,0.0
+bag,crayons,a pen,1.0,1.0
+bag,crayons,cash,0.0,0.0
+bag,crayons,chalk,0.7777777777777778,1.0
+bag,crayons,headphones,0.5,0.0
+bag,crayons,makeup,0.0,0.0
+bag,headphones,a pen,1.0,1.0
+bag,headphones,cash,0.14285714285714285,0.14285714285714285
+bag,headphones,chalk,0.3333333333333333,0.5
+bag,headphones,crayons,1.0,1.0
+bag,headphones,makeup,0.3,0.1111111111111111
+bag,makeup,a pen,1.0,1.0
+bag,makeup,cash,0.0,0.5
+bag,makeup,chalk,1.0,1.0
+bag,makeup,crayons,1.0,1.0
+bag,makeup,headphones,0.0,0.0
+bakery,cakes,ice cream,0.7,1.0
+bakery,cakes,muffins,0.8888888888888888,0.8888888888888888
+bakery,cakes,pretzels,0.3333333333333333,0.6666666666666666
+bakery,cakes,sandwiches,0.3333333333333333,0.5
+bakery,cakes,water,0.0,0.0
+bakery,ice cream,cakes,1.0,1.0
+bakery,ice cream,muffins,0.5555555555555556,0.625
+bakery,ice cream,pretzels,0.0,1.0
+bakery,ice cream,sandwiches,0.5,0.0
+bakery,ice cream,water,0.3333333333333333,0.0
+bakery,muffins,cakes,1.0,1.0
+bakery,muffins,ice cream,1.0,1.0
+bakery,muffins,pretzels,0.3333333333333333,0.5
+bakery,muffins,sandwiches,0.0,0.0
+bakery,muffins,water,0.0,0.0
+bakery,pretzels,cakes,1.0,1.0
+bakery,pretzels,ice cream,1.0,1.0
+bakery,pretzels,muffins,1.0,1.0
+bakery,pretzels,sandwiches,0.3333333333333333,0.5
+bakery,pretzels,water,0.0,0.0
+bakery,sandwiches,cakes,1.0,1.0
+bakery,sandwiches,ice cream,1.0,1.0
+bakery,sandwiches,muffins,1.0,0.0
+bakery,sandwiches,pretzels,0.6,0.5
+bakery,sandwiches,water,0.0,0.0
+bakery,water,cakes,0.5,1.0
+bakery,water,ice cream,1.0,0.3333333333333333
+bakery,water,muffins,0.6666666666666666,0.3333333333333333
+bakery,water,pretzels,0.42857142857142855,0.6666666666666666
+bakery,water,sandwiches,0.2727272727272727,0.6
+beach,a bikini,a coat,0.0,1.0
+beach,a bikini,a jacket,0.5,0.0
+beach,a bikini,jeans,0.6666666666666666,0.3333333333333333
+beach,a bikini,shorts,0.6,0.8
+beach,a bikini,sunglasses,0.1111111111111111,0.2222222222222222
+beach,a coat,a bikini,1.0,1.0
+beach,a coat,a jacket,0.3333333333333333,0.8
+beach,a coat,jeans,0.75,0.25
+beach,a coat,shorts,1.0,1.0
+beach,a coat,sunglasses,0.0,0.0
+beach,a jacket,a bikini,1.0,1.0
+beach,a jacket,a coat,1.0,1.0
+beach,a jacket,jeans,0.7,0.2
+beach,a jacket,shorts,0.6666666666666666,0.5
+beach,a jacket,sunglasses,0.5,0.5
+beach,jeans,a bikini,1.0,1.0
+beach,jeans,a coat,0.6666666666666666,0.5
+beach,jeans,a jacket,0.0,0.0
+beach,jeans,shorts,1.0,1.0
+beach,jeans,sunglasses,0.5,0.0
+beach,shorts,a bikini,0.5,1.0
+beach,shorts,a coat,1.0,0.5
+beach,shorts,a jacket,0.5,0.0
+beach,shorts,jeans,0.6666666666666666,0.5
+beach,shorts,sunglasses,0.2,0.1
+beach,sunglasses,a bikini,1.0,1.0
+beach,sunglasses,a coat,0.0,0.0
+beach,sunglasses,a jacket,0.6666666666666666,1.0
+beach,sunglasses,jeans,0.6666666666666666,0.3333333333333333
+beach,sunglasses,shorts,0.5,0.5
+cold,a fridge,a heater,0.6666666666666666,1.0
+cold,a fridge,a microwave,0.8571428571428571,0.5
+cold,a fridge,a sink,0.2727272727272727,0.2
+cold,a fridge,blankets,0.5,0.0
+cold,a fridge,tea,0.3333333333333333,0.6666666666666666
+cold,a heater,a fridge,0.0,0.0
+cold,a heater,a microwave,0.3333333333333333,0.0
+cold,a heater,a sink,0.0,0.0
+cold,a heater,blankets,0.8888888888888888,0.7777777777777778
+cold,a heater,tea,0.0,0.25
+cold,a microwave,a fridge,0.5,0.5
+cold,a microwave,a heater,1.0,1.0
+cold,a microwave,a sink,0.0,0.0
+cold,a microwave,blankets,0.6666666666666666,0.5
+cold,a microwave,tea,0.3333333333333333,0.0
+cold,a sink,a fridge,0.0,0.5
+cold,a sink,a heater,1.0,1.0
+cold,a sink,a microwave,0.5555555555555556,0.5
+cold,a sink,blankets,0.5,0.0
+cold,a sink,tea,0.0,0.0
+cold,blankets,a fridge,0.0,0.0
+cold,blankets,a heater,1.0,1.0
+cold,blankets,a microwave,0.0,0.0
+cold,blankets,a sink,0.0,0.0
+cold,blankets,tea,0.3,0.1
+cold,tea,a fridge,0.0,0.0
+cold,tea,a heater,0.6666666666666666,0.3333333333333333
+cold,tea,a microwave,0.0,0.0
+cold,tea,a sink,0.0,0.0
+cold,tea,blankets,0.3333333333333333,1.0
+cut,a stapler,batteries,0.0,0.0
+cut,a stapler,keys,0.3333333333333333,0.0
+cut,a stapler,nail clippers,0.6666666666666666,0.6666666666666666
+cut,a stapler,scissors,1.0,1.0
+cut,a stapler,thumb tacks,0.1111111111111111,0.125
+cut,batteries,a stapler,0.4444444444444444,0.4444444444444444
+cut,batteries,keys,0.0,0.3333333333333333
+cut,batteries,nail clippers,0.6666666666666666,1.0
+cut,batteries,scissors,1.0,0.5
+cut,batteries,thumb tacks,0.36363636363636365,0.4
+cut,keys,a stapler,0.0,0.5
+cut,keys,batteries,0.5,0.0
+cut,keys,nail clippers,0.6666666666666666,1.0
+cut,keys,scissors,1.0,1.0
+cut,keys,thumb tacks,0.3333333333333333,0.0
+cut,nail clippers,a stapler,1.0,0.0
+cut,nail clippers,batteries,0.0,0.0
+cut,nail clippers,keys,0.25,0.375
+cut,nail clippers,scissors,1.0,1.0
+cut,nail clippers,thumb tacks,0.5,1.0
+cut,scissors,a stapler,0.0,0.3333333333333333
+cut,scissors,batteries,0.0,0.0
+cut,scissors,keys,0.1,0.2
+cut,scissors,nail clippers,0.8333333333333334,0.4
+cut,scissors,thumb tacks,0.0,0.0
+cut,thumb tacks,a stapler,0.0,0.0
+cut,thumb tacks,batteries,0.0,0.0
+cut,thumb tacks,keys,0.0,1.0
+cut,thumb tacks,nail clippers,0.6666666666666666,0.5
+cut,thumb tacks,scissors,1.0,0.5
+fridge,juice,ketchup,0.3333333333333333,0.3333333333333333
+fridge,juice,meat,0.0,0.0
+fridge,juice,milk,1.0,1.0
+fridge,juice,water,1.0,1.0
+fridge,juice,yogurt,0.0,0.0
+fridge,ketchup,juice,1.0,1.0
+fridge,ketchup,meat,0.0,0.0
+fridge,ketchup,milk,1.0,1.0
+fridge,ketchup,water,1.0,1.0
+fridge,ketchup,yogurt,0.3333333333333333,0.1111111111111111
+fridge,meat,juice,1.0,1.0
+fridge,meat,ketchup,0.2222222222222222,0.1111111111111111
+fridge,meat,milk,0.5,1.0
+fridge,meat,water,1.0,1.0
+fridge,meat,yogurt,0.5,0.75
+fridge,milk,juice,1.0,1.0
+fridge,milk,ketchup,0.0,0.0
+fridge,milk,meat,0.0,0.0
+fridge,milk,water,1.0,0.6666666666666666
+fridge,milk,yogurt,0.0,0.5
+fridge,water,juice,1.0,1.0
+fridge,water,ketchup,0.0,0.0
+fridge,water,meat,0.0,0.0
+fridge,water,milk,0.8888888888888888,1.0
+fridge,water,yogurt,0.0,0.0
+fridge,yogurt,juice,1.0,1.0
+fridge,yogurt,ketchup,0.0,0.5
+fridge,yogurt,meat,0.3333333333333333,0.5
+fridge,yogurt,milk,0.5,1.0
+fridge,yogurt,water,1.0,1.0
+gym,basketball,lacrosse,0.875,1.0
+gym,basketball,meditation,0.0,0.0
+gym,basketball,softball,1.0,0.8
+gym,basketball,swimming,0.6666666666666666,0.0
+gym,basketball,weightlifting,1.0,0.5
+gym,lacrosse,basketball,1.0,1.0
+gym,lacrosse,meditation,0.0,0.0
+gym,lacrosse,softball,1.0,1.0
+gym,lacrosse,swimming,0.5,0.0
+gym,lacrosse,weightlifting,0.5,1.0
+gym,meditation,basketball,0.5,1.0
+gym,meditation,lacrosse,1.0,1.0
+gym,meditation,softball,1.0,1.0
+gym,meditation,swimming,0.7,0.8888888888888888
+gym,meditation,weightlifting,0.5,0.6
+gym,softball,basketball,1.0,1.0
+gym,softball,lacrosse,0.9,1.0
+gym,softball,meditation,0.6666666666666666,0.5
+gym,softball,swimming,0.6666666666666666,1.0
+gym,softball,weightlifting,0.0,1.0
+gym,swimming,basketball,1.0,1.0
+gym,swimming,lacrosse,1.0,1.0
+gym,swimming,meditation,0.0,0.0
+gym,swimming,softball,1.0,0.5
+gym,swimming,weightlifting,0.3333333333333333,0.5
+gym,weightlifting,basketball,1.0,1.0
+gym,weightlifting,lacrosse,1.0,1.0
+gym,weightlifting,meditation,1.0,1.0
+gym,weightlifting,softball,0.6666666666666666,1.0
+gym,weightlifting,swimming,0.7,1.0
+hot,a couch,a fan,0.0,0.0
+hot,a couch,a heater,0.0,0.0
+hot,a couch,a pool,0.3333333333333333,0.6666666666666666
+hot,a couch,a shower,1.0,1.0
+hot,a couch,blankets,0.0,0.5
+hot,a fan,a couch,0.0,0.0
+hot,a fan,a heater,0.3333333333333333,0.0
+hot,a fan,a pool,0.5,0.6
+hot,a fan,a shower,0.1,0.0
+hot,a fan,blankets,0.0,0.0
+hot,a heater,a couch,0.0,0.0
+hot,a heater,a fan,1.0,1.0
+hot,a heater,a pool,0.5,0.0
+hot,a heater,a shower,0.0,0.0
+hot,a heater,blankets,0.14285714285714285,0.3333333333333333
+hot,a pool,a couch,0.0,0.0
+hot,a pool,a fan,0.0,0.5
+hot,a pool,a heater,0.0,0.0
+hot,a pool,a shower,0.2,0.3333333333333333
+hot,a pool,blankets,0.3333333333333333,0.5
+hot,a shower,a couch,0.0,0.0
+hot,a shower,a fan,0.6666666666666666,1.0
+hot,a shower,a heater,0.3333333333333333,0.3333333333333333
+hot,a shower,a pool,1.0,1.0
+hot,a shower,blankets,0.0,0.0
+hot,blankets,a couch,0.0,0.0
+hot,blankets,a fan,0.0,0.5
+hot,blankets,a heater,0.5,1.0
+hot,blankets,a pool,0.0,0.0
+hot,blankets,a shower,0.3333333333333333,0.0
+mall,a burger joint,a coffee shop,0.75,0.5
+mall,a burger joint,a gift shop,0.0,0.3333333333333333
+mall,a burger joint,a grocery store,1.0,0.5
+mall,a burger joint,a pretzel stand,0.9,0.7777777777777778
+mall,a burger joint,an electronics store,0.0,0.0
+mall,a coffee shop,a burger joint,1.0,0.0
+mall,a coffee shop,a gift shop,0.0,0.0
+mall,a coffee shop,a grocery store,1.0,0.0
+mall,a coffee shop,a pretzel stand,1.0,1.0
+mall,a coffee shop,an electronics store,0.3333333333333333,0.5
+mall,a gift shop,a burger joint,1.0,1.0
+mall,a gift shop,a coffee shop,0.0,1.0
+mall,a gift shop,a grocery store,0.875,0.8571428571428571
+mall,a gift shop,a pretzel stand,1.0,1.0
+mall,a gift shop,an electronics store,0.5,0.5
+mall,a grocery store,a burger joint,1.0,1.0
+mall,a grocery store,a coffee shop,0.6666666666666666,1.0
+mall,a grocery store,a gift shop,0.0,0.5
+mall,a grocery store,a pretzel stand,0.6666666666666666,1.0
+mall,a grocery store,an electronics store,0.0,0.0
+mall,a pretzel stand,a burger joint,1.0,1.0
+mall,a pretzel stand,a coffee shop,0.7,0.9
+mall,a pretzel stand,a gift shop,0.0,0.0
+mall,a pretzel stand,a grocery store,0.6666666666666666,0.5
+mall,a pretzel stand,an electronics store,0.0,0.0
+mall,an electronics store,a burger joint,1.0,1.0
+mall,an electronics store,a coffee shop,1.0,0.5
+mall,an electronics store,a gift shop,0.7,0.5
+mall,an electronics store,a grocery store,0.8,0.8888888888888888
+mall,an electronics store,a pretzel stand,1.0,0.0
+mask,a bandana,a handkerchief,0.8571428571428571,0.3333333333333333
+mask,a bandana,a wallet,0.3333333333333333,0.5
+mask,a bandana,candy,0.0,0.0
+mask,a bandana,gloves,0.0,1.0
+mask,a bandana,napkins,0.16666666666666666,0.16666666666666666
+mask,a handkerchief,a bandana,1.0,1.0
+mask,a handkerchief,a wallet,0.0,0.0
+mask,a handkerchief,candy,0.0,0.0
+mask,a handkerchief,gloves,0.3333333333333333,0.5
+mask,a handkerchief,napkins,0.4,0.2
+mask,a wallet,a bandana,1.0,0.5
+mask,a wallet,a handkerchief,0.6666666666666666,0.5
+mask,a wallet,candy,0.3333333333333333,0.0
+mask,a wallet,gloves,0.8,0.4444444444444444
+mask,a wallet,napkins,0.3333333333333333,0.6666666666666666
+mask,candy,a bandana,1.0,0.5
+mask,candy,a handkerchief,0.6666666666666666,0.6666666666666666
+mask,candy,a wallet,0.2,0.2
+mask,candy,gloves,0.125,0.0
+mask,candy,napkins,0.0,1.0
+mask,gloves,a bandana,0.6666666666666666,0.3333333333333333
+mask,gloves,a handkerchief,0.3333333333333333,0.5
+mask,gloves,a wallet,0.0,0.0
+mask,gloves,candy,0.0,0.5
+mask,gloves,napkins,0.5,0.5
+mask,napkins,a bandana,1.0,1.0
+mask,napkins,a handkerchief,0.3333333333333333,1.0
+mask,napkins,a wallet,0.0,0.0
+mask,napkins,candy,0.0,0.5
+mask,napkins,gloves,0.3333333333333333,0.0
+meat,chicken,crab,0.6666666666666666,0.875
+meat,chicken,mushrooms,0.3333333333333333,0.0
+meat,chicken,rice,1.0,0.0
+meat,chicken,tofu,0.0,0.0
+meat,chicken,turkey,1.0,0.9
+meat,crab,chicken,1.0,1.0
+meat,crab,mushrooms,0.0,0.0
+meat,crab,rice,0.0,0.0
+meat,crab,tofu,0.5,1.0
+meat,crab,turkey,1.0,1.0
+meat,mushrooms,chicken,1.0,1.0
+meat,mushrooms,crab,1.0,1.0
+meat,mushrooms,rice,0.0,0.0
+meat,mushrooms,tofu,0.6,0.4444444444444444
+meat,mushrooms,turkey,1.0,1.0
+meat,rice,chicken,1.0,1.0
+meat,rice,crab,0.0,1.0
+meat,rice,mushrooms,0.1111111111111111,0.375
+meat,rice,tofu,0.5555555555555556,0.2222222222222222
+meat,rice,turkey,1.0,1.0
+meat,tofu,chicken,1.0,1.0
+meat,tofu,crab,0.6666666666666666,1.0
+meat,tofu,mushrooms,0.0,0.0
+meat,tofu,rice,0.0,0.0
+meat,tofu,turkey,1.0,1.0
+meat,turkey,chicken,1.0,1.0
+meat,turkey,crab,0.8571428571428571,0.6666666666666666
+meat,turkey,mushrooms,0.0,0.0
+meat,turkey,rice,0.0,0.0
+meat,turkey,tofu,0.3333333333333333,0.0
+restaurant,cake,cocktails,1.0,1.0
+restaurant,cake,salad,0.6666666666666666,0.5
+restaurant,cake,soda,1.0,0.5
+restaurant,cake,soup,0.4444444444444444,0.3333333333333333
+restaurant,cake,vodka,1.0,1.0
+restaurant,cocktails,cake,0.3333333333333333,1.0
+restaurant,cocktails,salad,0.0,0.0
+restaurant,cocktails,soda,0.3,0.5555555555555556
+restaurant,cocktails,soup,0.0,0.0
+restaurant,cocktails,vodka,0.5714285714285714,0.42857142857142855
+restaurant,salad,cake,0.6,0.5
+restaurant,salad,cocktails,1.0,0.5
+restaurant,salad,soda,0.6666666666666666,0.5
+restaurant,salad,soup,0.6,0.8
+restaurant,salad,vodka,1.0,1.0
+restaurant,soda,cake,0.0,0.0
+restaurant,soda,cocktails,1.0,1.0
+restaurant,soda,salad,0.0,0.0
+restaurant,soda,soup,0.0,0.0
+restaurant,soda,vodka,1.0,1.0
+restaurant,soup,cake,0.5,0.0
+restaurant,soup,cocktails,1.0,1.0
+restaurant,soup,salad,0.6666666666666666,0.3333333333333333
+restaurant,soup,soda,1.0,0.6666666666666666
+restaurant,soup,vodka,1.0,1.0
+restaurant,vodka,cake,0.0,0.0
+restaurant,vodka,cocktails,1.0,1.0
+restaurant,vodka,salad,0.0,0.0
+restaurant,vodka,soda,0.3,0.3333333333333333
+restaurant,vodka,soup,0.0,0.0
+salad,chips,cigarettes,0.3333333333333333,0.0
+salad,chips,dressing,0.6666666666666666,0.0
+salad,chips,lettuce,1.0,1.0
+salad,chips,meat,0.18181818181818182,0.4
+salad,chips,tuna,0.3333333333333333,0.0
+salad,cigarettes,chips,0.375,0.5
+salad,cigarettes,dressing,1.0,1.0
+salad,cigarettes,lettuce,0.5,1.0
+salad,cigarettes,meat,0.6,0.5555555555555556
+salad,cigarettes,tuna,0.3333333333333333,0.3333333333333333
+salad,dressing,chips,0.0,0.0
+salad,dressing,cigarettes,0.0,0.0
+salad,dressing,lettuce,1.0,1.0
+salad,dressing,meat,0.5,0.0
+salad,dressing,tuna,0.25,0.625
+salad,lettuce,chips,0.0,0.0
+salad,lettuce,cigarettes,0.0,0.0
+salad,lettuce,dressing,0.5555555555555556,0.6666666666666666
+salad,lettuce,meat,0.5,1.0
+salad,lettuce,tuna,0.4444444444444444,0.3333333333333333
+salad,meat,chips,0.0,0.0
+salad,meat,cigarettes,0.0,0.0
+salad,meat,dressing,0.0,0.0
+salad,meat,lettuce,1.0,1.0
+salad,meat,tuna,0.5,0.0
+salad,tuna,chips,0.0,0.0
+salad,tuna,cigarettes,0.0,0.0
+salad,tuna,dressing,0.6666666666666666,0.5
+salad,tuna,lettuce,1.0,1.0
+salad,tuna,meat,0.6666666666666666,1.0
+science,art,geology,1.0,1.0
+science,art,math,0.6,0.8
+science,art,philosophy,0.6666666666666666,0.5555555555555556
+science,art,physics,1.0,1.0
+science,art,zoology,0.6666666666666666,1.0
+science,geology,art,0.6666666666666666,0.5
+science,geology,math,0.6666666666666666,1.0
+science,geology,philosophy,0.5,1.0
+science,geology,physics,1.0,1.0
+science,geology,zoology,1.0,1.0
+science,math,art,1.0,0.0
+science,math,geology,0.5,1.0
+science,math,philosophy,0.6666666666666666,0.0
+science,math,physics,1.0,0.0
+science,math,zoology,0.6666666666666666,1.0
+science,philosophy,art,1.0,1.0
+science,philosophy,geology,0.6666666666666666,1.0
+science,philosophy,math,0.875,0.5
+science,philosophy,physics,1.0,1.0
+science,philosophy,zoology,1.0,0.6666666666666666
+science,physics,art,0.3333333333333333,0.5
+science,physics,geology,0.7272727272727273,1.0
+science,physics,math,0.5,0.0
+science,physics,philosophy,0.5,0.0
+science,physics,zoology,0.7,0.6
+science,zoology,art,0.5,1.0
+science,zoology,geology,0.5,1.0
+science,zoology,math,0.3333333333333333,0.5
+science,zoology,philosophy,0.6666666666666666,0.6666666666666666
+science,zoology,physics,1.0,1.0
+throw,a beach ball,a boomerang,0.6,0.6666666666666666
+throw,a beach ball,a football,1.0,1.0
+throw,a beach ball,a lawnmower,0.0,0.0
+throw,a beach ball,a shovel,0.0,0.0
+throw,a beach ball,tires,0.0,0.0
+throw,a boomerang,a beach ball,0.5,1.0
+throw,a boomerang,a football,1.0,1.0
+throw,a boomerang,a lawnmower,0.0,0.0
+throw,a boomerang,a shovel,0.0,0.0
+throw,a boomerang,tires,0.0,0.0
+throw,a football,a beach ball,0.875,0.875
+throw,a football,a boomerang,0.6363636363636364,0.6
+throw,a football,a lawnmower,0.0,0.0
+throw,a football,a shovel,0.0,0.0
+throw,a football,tires,0.0,0.0
+throw,a lawnmower,a beach ball,1.0,1.0
+throw,a lawnmower,a boomerang,0.6666666666666666,1.0
+throw,a lawnmower,a football,1.0,1.0
+throw,a lawnmower,a shovel,0.36363636363636365,0.3
+throw,a lawnmower,tires,0.0,0.16666666666666666
+throw,a shovel,a beach ball,0.5,1.0
+throw,a shovel,a boomerang,0.6666666666666666,0.5
+throw,a shovel,a football,1.0,1.0
+throw,a shovel,a lawnmower,0.0,0.0
+throw,a shovel,tires,0.0,0.25
+throw,tires,a beach ball,0.3333333333333333,1.0
+throw,tires,a boomerang,1.0,1.0
+throw,tires,a football,1.0,0.5
+throw,tires,a lawnmower,0.6666666666666666,1.0
+throw,tires,a shovel,0.6666666666666666,0.0
+transport,a car,a hammer,0.3333333333333333,0.0
+transport,a car,a lawnmower,0.0,0.5
+transport,a car,a motorcycle,1.0,0.8
+transport,a car,chairs,0.0,0.0
+transport,a car,roller blades,0.625,0.5
+transport,a hammer,a car,0.6666666666666666,0.5
+transport,a hammer,a lawnmower,0.8888888888888888,0.2222222222222222
+transport,a hammer,a motorcycle,0.5,0.5
+transport,a hammer,chairs,0.125,0.0
+transport,a hammer,roller blades,0.6666666666666666,1.0
+transport,a lawnmower,a car,1.0,1.0
+transport,a lawnmower,a hammer,0.0,0.5
+transport,a lawnmower,a motorcycle,1.0,1.0
+transport,a lawnmower,chairs,0.3333333333333333,0.0
+transport,a lawnmower,roller blades,1.0,0.0
+transport,a motorcycle,a car,1.0,0.5
+transport,a motorcycle,a hammer,0.0,0.0
+transport,a motorcycle,a lawnmower,0.0,0.0
+transport,a motorcycle,chairs,0.0,0.0
+transport,a motorcycle,roller blades,0.7142857142857143,0.3333333333333333
+transport,chairs,a car,1.0,1.0
+transport,chairs,a hammer,0.0,0.0
+transport,chairs,a lawnmower,0.09090909090909091,0.09090909090909091
+transport,chairs,a motorcycle,0.6666666666666666,0.5
+transport,chairs,roller blades,0.5,1.0
+transport,roller blades,a car,1.0,1.0
+transport,roller blades,a hammer,0.0,0.5
+transport,roller blades,a lawnmower,0.0,0.0
+transport,roller blades,a motorcycle,1.0,1.0
+transport,roller blades,chairs,1.0,0.0
