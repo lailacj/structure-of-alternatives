@@ -27,7 +27,7 @@ except ImportError:
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DEFAULT_EXPERIMENTAL_DATA = ROOT_DIR / "focus_alt_exp_pipline" / "human_exp_data" / "sca_dataframe.csv"
-DEFAULT_CLOZE_DATA = ROOT_DIR / "focus_alt_exp_pipline" / "cloze_data" / "all_cloze_prob.csv"
+DEFAULT_CLOZE_DATA = ROOT_DIR / "focus_alt_exp_pipline" / "cloze_data" / "all_cloze_prob_data_preprocessed.csv"
 DEFAULT_BERT_PROMPTS = ROOT_DIR / "prompts" / "prompt_files" / "prompts_llm_only.csv"
 DEFAULT_RESULTS_DIR = ROOT_DIR / "focus_alt_exp_pipline" / "results"
 
