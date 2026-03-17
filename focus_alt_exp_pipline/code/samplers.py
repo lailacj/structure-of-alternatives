@@ -16,6 +16,44 @@ Sample = Tuple[List[str], List[str]]
 ContextSamples = Dict[str, List[Sample]]
 
 
+def _gumbel_max_weighted_sampling_without_replacement(
+    weights: np.ndarray,
+    rng: np.random.Generator,
+) -> np.ndarray:
+    """Weighted sampling without replacement via Gumbel-max trick.
+
+    For each weight w_i, compute key_i = log(w_i) + Gumbel(0,1)
+    where Gumbel(0,1) = -log(-log(U)), U ~ Uniform(0,1).
+
+    Sorting by descending key is equivalent to sequential sampling
+    without replacement with probabilities proportional to weights.
+
+    Parameters
+    ----------
+    weights : np.ndarray
+        1-D array of positive floats.
+    rng : np.random.Generator
+        Random number generator.
+
+    Returns
+    -------
+    np.ndarray
+        1-D array of indices in descending order by key.
+    """
+    num_items = len(weights)
+    if num_items == 0:
+        return np.array([], dtype=np.intp)
+
+    weights_float = np.asarray(weights, dtype=np.float64)
+    log_weights = np.log(weights_float)
+    uniforms = rng.random(num_items)
+    gumbel_noise = -np.log(-np.log(uniforms))
+    keys = log_weights + gumbel_noise
+
+    ordered_indices = np.argsort(keys)[::-1]
+    return ordered_indices
+
+
 class ContextSampler(ABC):
     """Interface for dataset-specific context sampling."""
 
@@ -84,12 +122,8 @@ class ClozeSampler(ContextSampler):
 
         pos_probs = probs[positive_idx]
         pos_probs = pos_probs / pos_probs.sum()
-        sampled_positive = self._rng.choice(
-            positive_idx,
-            size=len(positive_idx),
-            replace=False,
-            p=pos_probs,
-        )
+        sampled_order = _gumbel_max_weighted_sampling_without_replacement(pos_probs, self._rng)
+        sampled_positive = positive_idx[sampled_order]
 
         if len(zero_idx) > 0:
             sampled_zero = self._rng.permutation(zero_idx)
