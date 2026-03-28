@@ -1,0 +1,7 @@
+{
+  "context": "bag",
+  "prompt": "You and your friend Taylor are sitting in a park. You pull out a piece of paper and tell Taylor, 'I just had an idea that I want to remember, but don't have anything to write with.' Taylor looks through her handbag and responds, 'Sure, I have ",
+  "model_path": "/oscar/data/rfeiman/ljohnst7/hf-cache/models--Qwen--Qwen2-7B/snapshots/453ed1575b739b5b03ce3758b23befdb0967f40e",
+  "manifest_path": "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipline/results/qwen_full_vocab_log_probs_smoke/vocab_manifest.json",
+  "output_path": "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipline/results/qwen_full_vocab_log_probs_smoke/bag.log_probs.npy"
+}

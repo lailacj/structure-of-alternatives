@@ -21,7 +21,8 @@ import pandas as pd
 
 
 FILE_PATTERN = re.compile(r"^(set|ordering|conjunction|disjunction)_results_(.+)\.csv$")
-DEFAULT_STRUCTURE_ORDER = ["set", "ordering", "conjunction", "disjunction"]
+DEFAULT_STRUCTURE_FILTER = ["ordering", "set", "conjunction", "disjunction"]
+DEFAULT_MODEL_FILTER = ["cloze", "frequency"]
 LOG_LIKELIHOOD_FLOOR = float(np.log(1e-10))
 MISSING_SUMMARY_COLUMNS = [
     "missing_rows",
@@ -38,6 +39,7 @@ def _parse_csv_list(raw: str) -> List[str]:
 
 def _pretty_model_name(raw_name: str) -> str:
     acronym_map = {
+        "frequency": "Frequency",
         "bert": "BERT",
         "bert_static": "Static BERT",
         "qwen": "Qwen",
@@ -52,8 +54,13 @@ def _safe_stem(text: str) -> str:
     return safe.strip("_")
 
 
-def _collect_results(results_dir: Path, structures: Iterable[str]) -> pd.DataFrame:
+def _collect_results(
+    results_dir: Path,
+    structures: Iterable[str],
+    model_names: Iterable[str] | None = None,
+) -> pd.DataFrame:
     structure_set = set(structures)
+    model_set = set(model_names) if model_names else None
     frames = []
 
     for path in sorted(results_dir.glob("*_results_*.csv")):
@@ -63,6 +70,8 @@ def _collect_results(results_dir: Path, structures: Iterable[str]) -> pd.DataFra
 
         structure, model_raw = match.groups()
         if structure not in structure_set:
+            continue
+        if model_set is not None and model_raw not in model_set:
             continue
 
         df = pd.read_csv(path)
@@ -111,6 +120,34 @@ def _collect_missing_trials(results_dir: Path, model_names: Iterable[str]) -> pd
         )
 
     return pd.concat(frames, ignore_index=True)
+
+
+def _align_frequency_to_cloze(
+    all_results: pd.DataFrame,
+    *,
+    reference_model: str = "cloze",
+    target_model: str = "frequency",
+) -> pd.DataFrame:
+    required_cols = {"context", "trigger", "query", "NextWordPredictionModelRaw"}
+    if not required_cols.issubset(all_results.columns):
+        return all_results
+
+    model_names = set(all_results["NextWordPredictionModelRaw"].astype(str).unique())
+    if reference_model not in model_names or target_model not in model_names:
+        return all_results
+
+    key_cols = ["context", "trigger", "query"]
+    reference_keys = (
+        all_results.loc[all_results["NextWordPredictionModelRaw"] == reference_model, key_cols]
+        .drop_duplicates()
+        .assign(_keep=1)
+    )
+
+    target_rows = all_results.loc[all_results["NextWordPredictionModelRaw"] == target_model].copy()
+    other_rows = all_results.loc[all_results["NextWordPredictionModelRaw"] != target_model].copy()
+    aligned_target = target_rows.merge(reference_keys, on=key_cols, how="inner").drop(columns="_keep")
+
+    return pd.concat([other_rows, aligned_target], ignore_index=True)
 
 
 def _apply_model_order(
@@ -310,10 +347,15 @@ def plot_avg_log_likelihood_by_model(
     summary: pd.DataFrame,
     out_dir: Path,
     *,
+    structures: Sequence[str],
     n_bootstrap: int,
     ci_level: float,
 ) -> Path:
     x_positions = list(range(len(summary)))
+    title = "Average Log Likelihood by NextWordPredictionModel"
+    if len(structures) == 1:
+        title += f" ({structures[0].capitalize()})"
+    title += _plot_title_suffix(n_bootstrap, ci_level)
 
     plt.figure(figsize=(9, 5))
     if n_bootstrap > 0:
@@ -338,7 +380,7 @@ def plot_avg_log_likelihood_by_model(
     )
     plt.xlabel("NextWordPredictionModel")
     plt.ylabel("Average log likelihood")
-    plt.title("Average Log Likelihood by NextWordPredictionModel" + _plot_title_suffix(n_bootstrap, ci_level))
+    plt.title(title)
     plt.xticks(x_positions, summary["NextWordPredictionModel"], rotation=20, ha="right")
     _style_axes()
     plt.tight_layout()
@@ -412,7 +454,7 @@ def plot_avg_log_likelihood_by_structure_per_model(
 
 def parse_args() -> argparse.Namespace:
     root_dir = Path(__file__).resolve().parents[2]
-    default_results_dir = root_dir / "results" / "focus_alt_exp"
+    default_results_dir = root_dir / "focus_alt_exp_pipline" / "results"
 
     parser = argparse.ArgumentParser(description="Plot focus_alt_exp result summaries")
     parser.add_argument("--results-dir", type=Path, default=default_results_dir)
@@ -425,14 +467,20 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--structures",
         type=str,
-        default=",".join(DEFAULT_STRUCTURE_ORDER),
-        help="Comma-separated structures to include (default: set,ordering,conjunction,disjunction)",
+        default=",".join(DEFAULT_STRUCTURE_FILTER),
+        help="Comma-separated structures to include",
+    )
+    parser.add_argument(
+        "--models",
+        type=str,
+        default=",".join(DEFAULT_MODEL_FILTER),
+        help="Comma-separated next-word prediction models to include (default: cloze,frequency)",
     )
     parser.add_argument(
         "--model-order",
         type=str,
-        default="",
-        help="Optional comma-separated model order (raw names like cloze,bert,bert_static,qwen)",
+        default=",".join(DEFAULT_MODEL_FILTER),
+        help="Optional comma-separated model order (raw names like cloze,frequency,bert,bert_static,qwen)",
     )
     parser.add_argument(
         "--bootstrap-samples",
@@ -461,6 +509,7 @@ def main() -> None:
     structures = _parse_csv_list(args.structures)
     if not structures:
         raise ValueError("--structures produced an empty list")
+    selected_models = _parse_csv_list(args.models)
     if args.bootstrap_samples < 0:
         raise ValueError("--bootstrap-samples must be >= 0")
     if not 0 < args.ci_level < 1:
@@ -470,7 +519,12 @@ def main() -> None:
     out_dir = args.output_dir if args.output_dir is not None else args.results_dir / "plots"
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    all_results = _collect_results(args.results_dir, structures)
+    all_results = _collect_results(
+        args.results_dir,
+        structures,
+        model_names=selected_models if selected_models else None,
+    )
+    all_results = _align_frequency_to_cloze(all_results)
     missing_trials = _collect_missing_trials(
         args.results_dir,
         model_names=all_results["NextWordPredictionModelRaw"].unique(),
@@ -509,15 +563,18 @@ def main() -> None:
     high_level_plot = plot_avg_log_likelihood_by_model(
         summary=model_summary,
         out_dir=out_dir,
+        structures=structures,
         n_bootstrap=args.bootstrap_samples,
         ci_level=args.ci_level,
     )
-    per_model_plots = plot_avg_log_likelihood_by_structure_per_model(
-        summary=structure_summary,
-        out_dir=out_dir,
-        n_bootstrap=args.bootstrap_samples,
-        ci_level=args.ci_level,
-    )
+    per_model_plots: List[Path] = []
+    if len(structures) > 1:
+        per_model_plots = plot_avg_log_likelihood_by_structure_per_model(
+            summary=structure_summary,
+            out_dir=out_dir,
+            n_bootstrap=args.bootstrap_samples,
+            ci_level=args.ci_level,
+        )
 
     model_csv = out_dir / "average_log_likelihood_by_next_word_prediction_model.csv"
     model_diag_csv = out_dir / "diagnostics_by_next_word_prediction_model.csv"

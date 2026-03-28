@@ -4,6 +4,7 @@ Examples:
   python run_experiment.py --dataset cloze --set-boundaries 2,3,4 --num-reps 100
   python run_experiment.py --dataset bert --set-start 3 --set-stop 300 --set-step 5 --num-reps 500
   python run_experiment.py --dataset bert_static --set-start 3 --set-stop 300 --set-step 5 --num-reps 500
+  python run_experiment.py --dataset frequency --model-names ordering --set-boundaries 5,10,15 --num-reps 500
 """
 
 from __future__ import annotations
@@ -17,12 +18,12 @@ import pandas as pd
 
 try:
     from .models import get_models
-    from .runner import run_experiment
-    from .samplers import BertSampler, ClozeSampler, StaticBERTSampler
+    from .runner import prepare_experimental_data, run_experiment
+    from .samplers import BertSampler, ClozeSampler, FrequencySampler, StaticBERTSampler
 except ImportError:
     from models import get_models
-    from runner import run_experiment
-    from samplers import BertSampler, ClozeSampler, StaticBERTSampler
+    from runner import prepare_experimental_data, run_experiment
+    from samplers import BertSampler, ClozeSampler, FrequencySampler, StaticBERTSampler
 
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
@@ -30,6 +31,8 @@ DEFAULT_EXPERIMENTAL_DATA = ROOT_DIR / "focus_alt_exp_pipline" / "human_exp_data
 DEFAULT_CLOZE_DATA = ROOT_DIR / "focus_alt_exp_pipline" / "cloze_data" / "all_cloze_prob_data_preprocessed.csv"
 DEFAULT_BERT_PROMPTS = ROOT_DIR / "prompts" / "prompt_files" / "prompts_llm_only.csv"
 DEFAULT_RESULTS_DIR = ROOT_DIR / "focus_alt_exp_pipline" / "results"
+DEFAULT_FREQUENCY_1GRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "vocab_1gram_counts.tsv"
+DEFAULT_FREQUENCY_2GRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "vocab_2gram_counts.tsv"
 
 
 def _parse_csv_list(raw: str) -> List[str]:
@@ -51,14 +54,31 @@ def _resolve_set_boundaries(args: argparse.Namespace) -> List[int]:
     return list(range(args.set_start, args.set_stop, args.set_step))
 
 
-def _normalize_suffix(raw_suffix: str) -> str:
-    suffix = raw_suffix.strip()
+def _normalize_suffix(raw_suffix: str | None) -> str:
+    suffix = "" if raw_suffix is None else raw_suffix.strip()
     if suffix and not suffix.startswith("_"):
         return f"_{suffix}"
     return suffix
 
 
-def _build_sampler(args: argparse.Namespace):
+def _extract_frequency_tokens(experimental_data: pd.DataFrame) -> List[str]:
+    prepared = prepare_experimental_data(experimental_data)
+    query_col = "cleaned_query" if "cleaned_query" in prepared.columns else "query"
+    trigger_col = "cleaned_trigger" if "cleaned_trigger" in prepared.columns else "trigger"
+
+    tokens: List[str] = []
+    seen = set()
+    values = pd.concat([prepared[query_col], prepared[trigger_col]], ignore_index=True).dropna()
+    for value in values:
+        token = str(value).strip().lower()
+        if not token or token in seen:
+            continue
+        seen.add(token)
+        tokens.append(token)
+    return tokens
+
+
+def _build_sampler(args: argparse.Namespace, experimental_data: pd.DataFrame):
     if args.dataset == "cloze":
         cloze_df = pd.read_csv(args.cloze_data)
         sampler = ClozeSampler(
@@ -84,6 +104,17 @@ def _build_sampler(args: argparse.Namespace):
         contexts = set(prompts_df[args.bert_context_col].astype(str).unique())
         return sampler, contexts
 
+    if args.dataset == "frequency":
+        sampler = FrequencySampler(
+            supported_tokens=_extract_frequency_tokens(experimental_data),
+            unigram_counts_path=args.frequency_1gram_counts,
+            bigram_counts_path=args.frequency_2gram_counts,
+            background_vocab_size=args.frequency_background_vocab_size,
+            max_vocab_size=args.frequency_max_vocab_size,
+            seed=args.seed,
+        )
+        return sampler, None
+
     sampler = StaticBERTSampler(
         model_name=args.bert_model_name,
         seed=args.seed,
@@ -102,7 +133,11 @@ def _resolve_models(args: argparse.Namespace):
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run focus_alt_exp pipeline")
 
-    parser.add_argument("--dataset", choices=["cloze", "bert", "bert_static"], required=True)
+    parser.add_argument(
+        "--dataset",
+        choices=["cloze", "bert", "bert_static", "frequency"],
+        required=True,
+    )
     parser.add_argument("--experimental-data", type=Path, default=DEFAULT_EXPERIMENTAL_DATA)
     parser.add_argument(
         "--contexts",
@@ -128,7 +163,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--include-baselines", action="store_true")
 
     parser.add_argument("--results-dir", type=Path, default=DEFAULT_RESULTS_DIR)
-    parser.add_argument("--file-suffix", type=str, default="")
+    parser.add_argument(
+        "--file-suffix",
+        type=str,
+        default=None,
+        help="Optional suffix for output filenames. Defaults to the selected dataset name.",
+    )
     parser.add_argument("--no-write", action="store_true")
     parser.add_argument("--print-head", type=int, default=10)
 
@@ -151,12 +191,41 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Set HF/Transformers offline env vars to avoid network retries.",
     )
+    parser.add_argument(
+        "--frequency-1gram-counts",
+        type=Path,
+        default=DEFAULT_FREQUENCY_1GRAM_COUNTS,
+        help="Path to unigram count TSV used by --dataset frequency.",
+    )
+    parser.add_argument(
+        "--frequency-2gram-counts",
+        type=Path,
+        default=DEFAULT_FREQUENCY_2GRAM_COUNTS,
+        help="Path to bigram count TSV used by --dataset frequency.",
+    )
+    parser.add_argument(
+        "--frequency-background-vocab-size",
+        type=int,
+        default=None,
+        help=(
+            "Optional top-K global frequency vocab to include alongside all experimental "
+            "query/trigger tokens."
+        ),
+    )
+    parser.add_argument(
+        "--frequency-max-vocab-size",
+        type=int,
+        default=None,
+        help="Optional top-N frequency vocab cap. Currently only supported with --dataset frequency --model-names set.",
+    )
 
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    if args.file_suffix is None:
+        args.file_suffix = args.dataset
 
     if args.hf_offline:
         os.environ["HF_HUB_OFFLINE"] = "1"
@@ -169,9 +238,36 @@ def main() -> None:
     experimental_data = pd.read_csv(args.experimental_data)
     boundaries = _resolve_set_boundaries(args)
     models = _resolve_models(args)
-    sampler, available_contexts = _build_sampler(args)
+    if (
+        args.frequency_background_vocab_size is not None
+        and args.frequency_max_vocab_size is not None
+    ):
+        raise ValueError(
+            "--frequency-background-vocab-size and --frequency-max-vocab-size cannot be used together"
+        )
+    if args.frequency_background_vocab_size is not None:
+        if args.frequency_background_vocab_size <= 0:
+            raise ValueError("--frequency-background-vocab-size must be > 0")
+        if args.dataset != "frequency":
+            raise ValueError(
+                "--frequency-background-vocab-size can only be used with --dataset frequency"
+            )
+    if args.frequency_max_vocab_size is not None:
+        if args.frequency_max_vocab_size <= 0:
+            raise ValueError("--frequency-max-vocab-size must be > 0")
+        if args.dataset != "frequency":
+            raise ValueError("--frequency-max-vocab-size can only be used with --dataset frequency")
+        if len(models) != 1 or models[0].name != "set":
+            raise ValueError(
+                "--frequency-max-vocab-size is only supported with --dataset frequency --model-names set"
+            )
 
     context_col = "story" if "story" in experimental_data.columns else "context"
+    sampler = None
+    available_contexts = None
+    if args.dataset != "frequency":
+        sampler, available_contexts = _build_sampler(args, experimental_data)
+
     if available_contexts is not None:
         original_rows = len(experimental_data)
         experimental_data = experimental_data[
@@ -212,6 +308,9 @@ def main() -> None:
 
     if len(experimental_data) == 0:
         raise ValueError("No experimental rows remain after optional context filters.")
+
+    if args.dataset == "frequency":
+        sampler, _ = _build_sampler(args, experimental_data)
 
     results_dir = None if args.no_write else args.results_dir
     results = run_experiment(

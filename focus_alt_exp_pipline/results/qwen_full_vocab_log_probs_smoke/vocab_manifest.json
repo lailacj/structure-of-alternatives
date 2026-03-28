@@ -1,0 +1,18 @@
+{
+  "dtype": "float32",
+  "sources": [
+    {
+      "name": "1gram",
+      "path": "/oscar/data/rfeiman/ljohnst7/ngrams/vocab_1gram.txt",
+      "count": 98502,
+      "offset": 0
+    },
+    {
+      "name": "2gram",
+      "path": "/oscar/data/rfeiman/ljohnst7/ngrams/vocab_2gram.txt",
+      "count": 20339027,
+      "offset": 98502
+    }
+  ],
+  "total_count": 20437529
+}

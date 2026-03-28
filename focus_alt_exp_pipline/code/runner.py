@@ -103,6 +103,10 @@ def run_experiment(
         context_samples = sampler.sample_contexts(contexts, set_boundary=set_boundary, num_reps=num_reps)
         boundary_rows: Dict[str, list] = {spec.name: [] for spec in models}
         boundary_missing: list = []
+        allow_unsupported_query = (
+            all(spec.name == "set" for spec in models)
+            and sampler.allow_unsupported_query_for_model("set")
+        )
 
         for _, row in df.iterrows():
             context = str(row[context_col])
@@ -110,7 +114,7 @@ def run_experiment(
             trigger = str(row[trigger_col])
             query_negated = int(row[neg_col])
 
-            if not sampler.supports_token(context, query):
+            if not sampler.supports_token(context, query) and not allow_unsupported_query:
                 boundary_missing.append([set_boundary, context, trigger, query, "query_not_in_context"])
                 continue
 
