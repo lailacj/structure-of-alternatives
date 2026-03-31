@@ -1,52 +1,40 @@
-"""Plot summaries and diagnostics for focus_alt_exp result CSVs.
+"""Plot per-context average log likelihood within one next-word model.
 
-Generates:
-1) Average log likelihood by NextWordPredictionModel with confidence intervals.
-2) For each NextWordPredictionModel, average log likelihood by AlternativeStructure
-   with confidence intervals.
-3) Diagnostics CSVs covering missingness, dispersion, floor effects, and boundary
-   imbalance.
+This script is intentionally narrow in scope. For one model's result folder
+(for example ``results/cloze_probability``), it makes a plot with:
+
+- x-axis: alternative structure (`set`, `ordering`, `conjunction`, `disjunction`)
+- y-axis: average log likelihood
+- one dot per context for each alternative structure
+- one black dot per alternative structure showing the mean across contexts
+
+It also writes the summary CSVs that feed the plot.
 """
 
 from __future__ import annotations
 
 import argparse
+import os
 import re
 from pathlib import Path
-from typing import Iterable, List, Sequence
+from typing import Iterable, List
 
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
 
 FILE_PATTERN = re.compile(r"^(set|ordering|conjunction|disjunction)_results_(.+)\.csv$")
-DEFAULT_STRUCTURE_FILTER = ["ordering", "set", "conjunction", "disjunction"]
-DEFAULT_MODEL_FILTER = ["cloze", "frequency"]
-LOG_LIKELIHOOD_FLOOR = float(np.log(1e-10))
-MISSING_SUMMARY_COLUMNS = [
-    "missing_rows",
-    "missing_query_rows",
-    "missing_trigger_rows",
-    "missing_boundaries",
-    "missing_contexts",
-]
+DEFAULT_STRUCTURE_ORDER = ["set", "ordering", "conjunction", "disjunction"]
+STRUCTURE_LABELS = {
+    "set": "Set",
+    "ordering": "Ordering",
+    "conjunction": "Conjunction",
+    "disjunction": "Disjunction",
+}
 
 
 def _parse_csv_list(raw: str) -> List[str]:
     return [chunk.strip() for chunk in raw.split(",") if chunk.strip()]
-
-
-def _pretty_model_name(raw_name: str) -> str:
-    acronym_map = {
-        "frequency": "Frequency",
-        "bert": "BERT",
-        "bert_static": "Static BERT",
-        "qwen": "Qwen",
-        "cloze": "Cloze",
-    }
-    parts = raw_name.replace("-", "_").split("_")
-    return " ".join(acronym_map.get(part.lower(), part.capitalize()) for part in parts)
 
 
 def _safe_stem(text: str) -> str:
@@ -54,560 +42,300 @@ def _safe_stem(text: str) -> str:
     return safe.strip("_")
 
 
+def _pretty_model_name(raw_name: str) -> str:
+    acronym_map = {
+        "frequency": "Frequency",
+        "qwen": "Qwen",
+        "cloze": "Cloze",
+        "uniform": "Uniform",
+    }
+    parts = raw_name.replace("-", "_").split("_")
+    return " ".join(acronym_map.get(part.lower(), part.capitalize()) for part in parts)
+
+
 def _collect_results(
     results_dir: Path,
+    *,
     structures: Iterable[str],
-    model_names: Iterable[str] | None = None,
-) -> pd.DataFrame:
+    model_name: str | None = None,
+) -> tuple[pd.DataFrame, str]:
     structure_set = set(structures)
-    model_set = set(model_names) if model_names else None
-    frames = []
+    frames: list[pd.DataFrame] = []
+    found_models: set[str] = set()
 
     for path in sorted(results_dir.glob("*_results_*.csv")):
         match = FILE_PATTERN.match(path.name)
         if not match:
             continue
 
-        structure, model_raw = match.groups()
+        structure, raw_model_name = match.groups()
         if structure not in structure_set:
             continue
-        if model_set is not None and model_raw not in model_set:
+        if model_name is not None and raw_model_name != model_name:
             continue
 
         df = pd.read_csv(path)
-        if "log_likelihood" not in df.columns:
-            raise ValueError(f"Missing 'log_likelihood' in {path}")
+        required = {"context", "log_likelihood"}
+        missing = required.difference(df.columns)
+        if missing:
+            raise ValueError(f"{path} is missing required columns: {sorted(missing)}")
 
         frame = df.copy()
         frame["AlternativeStructure"] = structure
-        frame["NextWordPredictionModelRaw"] = model_raw
-        frame["NextWordPredictionModel"] = _pretty_model_name(model_raw)
+        frame["NextWordPredictionModelRaw"] = raw_model_name
+        frame["SourceFile"] = path.name
         frames.append(frame)
+        found_models.add(raw_model_name)
 
     if not frames:
         raise FileNotFoundError(
-            f"No result files found in {results_dir} matching *_results_<model>.csv "
-            f"for structures {sorted(structure_set)}"
+            f"No matching result CSVs found in {results_dir} for structures {sorted(structure_set)}"
         )
 
-    return pd.concat(frames, ignore_index=True)
-
-
-def _collect_missing_trials(results_dir: Path, model_names: Iterable[str]) -> pd.DataFrame:
-    frames = []
-    for model_raw in sorted(set(model_names)):
-        path = results_dir / f"missing_trials_{model_raw}.csv"
-        if not path.exists():
-            continue
-
-        df = pd.read_csv(path)
-        frame = df.copy()
-        frame["NextWordPredictionModelRaw"] = model_raw
-        frame["NextWordPredictionModel"] = _pretty_model_name(model_raw)
-        frames.append(frame)
-
-    if not frames:
-        return pd.DataFrame(
-            columns=[
-                "set_boundary",
-                "context",
-                "trigger",
-                "query",
-                "reason",
-                "NextWordPredictionModelRaw",
-                "NextWordPredictionModel",
-            ]
+    if model_name is None and len(found_models) > 1:
+        raise ValueError(
+            "Multiple next-word models were found in the same results directory. "
+            "Pass --model to choose one explicitly."
         )
 
-    return pd.concat(frames, ignore_index=True)
+    resolved_model = model_name if model_name is not None else next(iter(found_models))
+    return pd.concat(frames, ignore_index=True), resolved_model
 
 
-def _align_frequency_to_cloze(
+def _summarize_by_context(
     all_results: pd.DataFrame,
     *,
-    reference_model: str = "cloze",
-    target_model: str = "frequency",
+    structure_order: List[str],
 ) -> pd.DataFrame:
-    required_cols = {"context", "trigger", "query", "NextWordPredictionModelRaw"}
-    if not required_cols.issubset(all_results.columns):
-        return all_results
-
-    model_names = set(all_results["NextWordPredictionModelRaw"].astype(str).unique())
-    if reference_model not in model_names or target_model not in model_names:
-        return all_results
-
-    key_cols = ["context", "trigger", "query"]
-    reference_keys = (
-        all_results.loc[all_results["NextWordPredictionModelRaw"] == reference_model, key_cols]
-        .drop_duplicates()
-        .assign(_keep=1)
+    summary = (
+        all_results.groupby(
+            ["NextWordPredictionModelRaw", "AlternativeStructure", "context"],
+            as_index=False,
+            sort=False,
+            dropna=False,
+        )
+        .agg(
+            observed_rows=("log_likelihood", "size"),
+            observed_boundaries=("set_boundary", "nunique"),
+            average_log_likelihood=("log_likelihood", "mean"),
+        )
+    )
+    summary["AlternativeStructure"] = pd.Categorical(
+        summary["AlternativeStructure"],
+        categories=structure_order,
+        ordered=True,
+    )
+    return summary.sort_values(
+        ["AlternativeStructure", "context"],
+        ignore_index=True,
     )
 
-    target_rows = all_results.loc[all_results["NextWordPredictionModelRaw"] == target_model].copy()
-    other_rows = all_results.loc[all_results["NextWordPredictionModelRaw"] != target_model].copy()
-    aligned_target = target_rows.merge(reference_keys, on=key_cols, how="inner").drop(columns="_keep")
 
-    return pd.concat([other_rows, aligned_target], ignore_index=True)
-
-
-def _apply_model_order(
-    summary_df: pd.DataFrame,
-    model_order: List[str],
-    extra_sort_cols: Sequence[str] | None = None,
+def _summarize_structure_means(
+    context_summary: pd.DataFrame,
+    *,
+    structure_order: List[str],
 ) -> pd.DataFrame:
-    sort_cols = ["NextWordPredictionModel"]
-    with_order = summary_df.copy()
+    summary = (
+        context_summary.groupby(
+            ["NextWordPredictionModelRaw", "AlternativeStructure"],
+            as_index=False,
+            sort=False,
+            observed=False,
+        )
+        .agg(
+            context_count=("context", "nunique"),
+            mean_log_likelihood=("average_log_likelihood", "mean"),
+        )
+    )
+    summary["AlternativeStructure"] = pd.Categorical(
+        summary["AlternativeStructure"],
+        categories=structure_order,
+        ordered=True,
+    )
+    return summary.sort_values(["AlternativeStructure"], ignore_index=True)
 
-    if model_order:
-        normalized_order = [item.strip() for item in model_order if item.strip()]
-        order_lookup = {}
-        for idx, raw in enumerate(normalized_order):
-            pretty = _pretty_model_name(raw)
-            order_lookup[pretty] = idx
-        with_order["_order"] = with_order["NextWordPredictionModel"].map(order_lookup).fillna(10**6)
-        sort_cols = ["_order", "NextWordPredictionModel"]
 
-    if extra_sort_cols:
-        sort_cols.extend(extra_sort_cols)
-
-    with_order = with_order.sort_values(sort_cols, ignore_index=True)
-    if "_order" in with_order.columns:
-        with_order = with_order.drop(columns=["_order"])
-    return with_order
-
-
-def _style_axes() -> None:
-    ax = plt.gca()
+def _style_axes(ax) -> None:
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.grid(axis="y", alpha=0.25)
 
 
-def _bootstrap_mean_ci(
-    group_df: pd.DataFrame,
+def _make_plot(
+    context_summary: pd.DataFrame,
+    mean_summary: pd.DataFrame,
     *,
-    n_bootstrap: int,
-    ci_level: float,
+    structure_order: List[str],
+    model_display_name: str,
+    output_path: Path,
+    title: str | None,
+    point_alpha: float,
+    point_size: float,
+    mean_point_size: float,
+    jitter: float,
     seed: int,
-) -> tuple[float, float]:
-    mean_value = float(group_df["log_likelihood"].mean())
-    if n_bootstrap <= 0:
-        return mean_value, mean_value
+) -> None:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    if "context" not in group_df.columns or group_df["context"].nunique() <= 1:
-        return mean_value, mean_value
+    mpl_config_dir = output_path.parent / ".mplconfig"
+    mpl_config_dir.mkdir(parents=True, exist_ok=True)
+    os.environ.setdefault("MPLCONFIGDIR", str(mpl_config_dir))
 
-    context_stats = group_df.groupby("context", sort=False)["log_likelihood"].agg(["sum", "count"])
-    context_sums = context_stats["sum"].to_numpy(dtype=float)
-    context_counts = context_stats["count"].to_numpy(dtype=float)
-    num_contexts = len(context_stats)
+    import matplotlib.pyplot as plt
 
     rng = np.random.default_rng(seed)
-    bootstrap_means = np.empty(n_bootstrap, dtype=float)
-    for idx in range(n_bootstrap):
-        sampled = rng.integers(0, num_contexts, size=num_contexts)
-        bootstrap_means[idx] = context_sums[sampled].sum() / context_counts[sampled].sum()
+    fig, ax = plt.subplots(figsize=(8.5, 6.0))
+    x_positions = {structure: idx for idx, structure in enumerate(structure_order)}
 
-    alpha = (1.0 - ci_level) / 2.0
-    lower, upper = np.quantile(bootstrap_means, [alpha, 1.0 - alpha])
-    return float(lower), float(upper)
+    for structure in structure_order:
+        structure_rows = context_summary[
+            context_summary["AlternativeStructure"].astype(str) == structure
+        ].copy()
+        if structure_rows.empty:
+            continue
 
-
-def _summarize_missing_trials(missing_trials: pd.DataFrame) -> pd.DataFrame:
-    if missing_trials.empty:
-        return pd.DataFrame(
-            columns=[
-                "NextWordPredictionModelRaw",
-                "NextWordPredictionModel",
-                *MISSING_SUMMARY_COLUMNS,
-            ]
-        )
-
-    summary = (
-        missing_trials.groupby(
-            ["NextWordPredictionModelRaw", "NextWordPredictionModel"],
-            as_index=False,
-        )
-        .agg(
-            missing_rows=("reason", "size"),
-            missing_boundaries=("set_boundary", "nunique"),
-            missing_contexts=("context", "nunique"),
-        )
-    )
-
-    reason_counts = (
-        missing_trials.assign(
-            is_query_missing=(missing_trials["reason"] == "query_not_in_context").astype(int),
-            is_trigger_missing=(missing_trials["reason"] == "trigger_not_in_context").astype(int),
-        )
-        .groupby(["NextWordPredictionModelRaw", "NextWordPredictionModel"], as_index=False)
-        .agg(
-            missing_query_rows=("is_query_missing", "sum"),
-            missing_trigger_rows=("is_trigger_missing", "sum"),
-        )
-    )
-
-    return summary.merge(
-        reason_counts,
-        on=["NextWordPredictionModelRaw", "NextWordPredictionModel"],
-        how="left",
-    )
-
-
-def _summarize_results(
-    all_results: pd.DataFrame,
-    *,
-    group_cols: Sequence[str],
-    missing_summary: pd.DataFrame,
-    n_bootstrap: int,
-    ci_level: float,
-    bootstrap_seed: int,
-) -> pd.DataFrame:
-    rows = []
-    grouped = all_results.groupby(list(group_cols), sort=False, dropna=False)
-
-    for idx, (group_key, group_df) in enumerate(grouped):
-        if not isinstance(group_key, tuple):
-            group_key = (group_key,)
-
-        row = dict(zip(group_cols, group_key))
-        values = group_df["log_likelihood"].to_numpy(dtype=float)
-        floor_rows = int(np.isclose(values, LOG_LIKELIHOOD_FLOOR).sum())
-        ci_lower, ci_upper = _bootstrap_mean_ci(
-            group_df,
-            n_bootstrap=n_bootstrap,
-            ci_level=ci_level,
-            seed=bootstrap_seed + idx,
-        )
-
-        row["observed_rows"] = len(group_df)
-        row["observed_boundaries"] = int(group_df["set_boundary"].nunique()) if "set_boundary" in group_df.columns else 0
-        row["observed_contexts"] = int(group_df["context"].nunique()) if "context" in group_df.columns else 0
-        row["average_log_likelihood"] = float(values.mean())
-        row["median_log_likelihood"] = float(np.median(values))
-        row["std_log_likelihood"] = float(np.std(values, ddof=1)) if len(values) > 1 else 0.0
-        row["min_log_likelihood"] = float(values.min())
-        row["max_log_likelihood"] = float(values.max())
-        row["log_floor_rows"] = floor_rows
-        row["log_floor_rate"] = float(floor_rows / len(group_df))
-        row["ci_lower"] = ci_lower
-        row["ci_upper"] = ci_upper
-        row["ci_level"] = ci_level
-        row["bootstrap_samples"] = n_bootstrap
-
-        if "probability_query_observed" in group_df.columns:
-            zero_prob = int((group_df["probability_query_observed"].to_numpy(dtype=float) <= 1e-10).sum())
-            row["zero_probability_rows"] = zero_prob
-            row["zero_probability_rate"] = float(zero_prob / len(group_df))
-
-        if "set_boundary" in group_df.columns:
-            boundary_counts = group_df.groupby("set_boundary").size()
-            row["boundary_rows_min"] = int(boundary_counts.min())
-            row["boundary_rows_max"] = int(boundary_counts.max())
-            row["boundary_rows_range"] = int(boundary_counts.max() - boundary_counts.min())
-            row["boundary_rows_imbalanced"] = bool(boundary_counts.nunique() > 1)
-
-        rows.append(row)
-
-    summary = pd.DataFrame(rows)
-    summary = summary.merge(
-        missing_summary,
-        on=["NextWordPredictionModelRaw", "NextWordPredictionModel"],
-        how="left",
-    )
-
-    for column in MISSING_SUMMARY_COLUMNS:
-        if column not in summary.columns:
-            summary[column] = 0
-        summary[column] = summary[column].fillna(0).astype(int)
-
-    summary["total_candidate_rows"] = summary["observed_rows"] + summary["missing_rows"]
-    summary["coverage"] = np.where(
-        summary["total_candidate_rows"] > 0,
-        summary["observed_rows"] / summary["total_candidate_rows"],
-        np.nan,
-    )
-
-    return summary
-
-
-def _error_bars(summary_df: pd.DataFrame) -> np.ndarray:
-    lower = summary_df["average_log_likelihood"] - summary_df["ci_lower"]
-    upper = summary_df["ci_upper"] - summary_df["average_log_likelihood"]
-    return np.vstack([lower.to_numpy(dtype=float), upper.to_numpy(dtype=float)])
-
-
-def _plot_title_suffix(n_bootstrap: int, ci_level: float) -> str:
-    if n_bootstrap <= 0:
-        return ""
-    return f" ({int(round(ci_level * 100))}% context-bootstrap CI)"
-
-
-def plot_avg_log_likelihood_by_model(
-    summary: pd.DataFrame,
-    out_dir: Path,
-    *,
-    structures: Sequence[str],
-    n_bootstrap: int,
-    ci_level: float,
-) -> Path:
-    x_positions = list(range(len(summary)))
-    title = "Average Log Likelihood by NextWordPredictionModel"
-    if len(structures) == 1:
-        title += f" ({structures[0].capitalize()})"
-    title += _plot_title_suffix(n_bootstrap, ci_level)
-
-    plt.figure(figsize=(9, 5))
-    if n_bootstrap > 0:
-        plt.errorbar(
-            x_positions,
-            summary["average_log_likelihood"],
-            yerr=_error_bars(summary),
-            fmt="none",
-            ecolor="#4C78A8",
-            elinewidth=1.2,
-            capsize=4,
+        x0 = x_positions[structure]
+        offsets = rng.uniform(-jitter, jitter, size=len(structure_rows)) if jitter > 0 else 0.0
+        ax.scatter(
+            np.full(len(structure_rows), x0, dtype=float) + offsets,
+            structure_rows["average_log_likelihood"],
+            s=point_size,
+            color="#4C78A8",
+            alpha=point_alpha,
+            edgecolors="white",
+            linewidths=0.5,
             zorder=2,
         )
-    plt.scatter(
-        x_positions,
-        summary["average_log_likelihood"],
-        s=90,
-        color="#4C78A8",
-        edgecolors="black",
-        linewidths=0.6,
-        zorder=3,
-    )
-    plt.xlabel("NextWordPredictionModel")
-    plt.ylabel("Average log likelihood")
-    plt.title(title)
-    plt.xticks(x_positions, summary["NextWordPredictionModel"], rotation=20, ha="right")
-    _style_axes()
-    plt.tight_layout()
 
-    plot_path = out_dir / "average_log_likelihood_by_next_word_prediction_model.png"
-    plt.savefig(plot_path, dpi=300)
-    plt.close()
-    return plot_path
-
-
-def plot_avg_log_likelihood_by_structure_per_model(
-    summary: pd.DataFrame,
-    out_dir: Path,
-    *,
-    n_bootstrap: int,
-    ci_level: float,
-) -> List[Path]:
-    models_df = (
-        summary[["NextWordPredictionModelRaw", "NextWordPredictionModel"]]
-        .drop_duplicates()
-        .reset_index(drop=True)
-    )
-
-    saved_paths: List[Path] = []
-    for _, model_row in models_df.iterrows():
-        model_raw = model_row["NextWordPredictionModelRaw"]
-        model_label = model_row["NextWordPredictionModel"]
-
-        model_df = summary[summary["NextWordPredictionModelRaw"] == model_raw].copy()
-        x_positions = list(range(len(model_df)))
-
-        plt.figure(figsize=(8, 5))
-        if n_bootstrap > 0:
-            plt.errorbar(
-                x_positions,
-                model_df["average_log_likelihood"],
-                yerr=_error_bars(model_df),
-                fmt="none",
-                ecolor="#F58518",
-                elinewidth=1.2,
-                capsize=4,
-                zorder=2,
+        mean_rows = mean_summary[mean_summary["AlternativeStructure"].astype(str) == structure]
+        if not mean_rows.empty:
+            ax.scatter(
+                [x0],
+                [float(mean_rows.iloc[0]["mean_log_likelihood"])],
+                s=mean_point_size,
+                color="black",
+                edgecolors="white",
+                linewidths=0.8,
+                zorder=3,
             )
-        plt.scatter(
-            x_positions,
-            model_df["average_log_likelihood"],
-            s=90,
-            color="#F58518",
-            edgecolors="black",
-            linewidths=0.6,
-            zorder=3,
-        )
-        plt.xlabel("AlternativeStructure")
-        plt.ylabel("Average log likelihood")
-        plt.title(
-            f"Average Log Likelihood by AlternativeStructure ({model_label})"
-            + _plot_title_suffix(n_bootstrap, ci_level)
-        )
-        plt.xticks(x_positions, model_df["AlternativeStructure"], rotation=15, ha="right")
-        _style_axes()
-        plt.tight_layout()
 
-        stem = _safe_stem(model_raw)
-        plot_path = out_dir / f"average_log_likelihood_by_alternative_structure__{stem}.png"
-        plt.savefig(plot_path, dpi=300)
-        plt.close()
-        saved_paths.append(plot_path)
+    ax.set_xlim(-0.5, len(structure_order) - 0.5)
+    ax.set_xticks(
+        list(x_positions.values()),
+        [STRUCTURE_LABELS.get(structure, structure.title()) for structure in structure_order],
+    )
+    ax.set_xlabel("Alternative Structure")
+    ax.set_ylabel("Average Log Likelihood")
+    ax.set_title(
+        title if title is not None else f"{model_display_name}: Average Log Likelihood by Structure"
+    )
 
-    return saved_paths
+    _style_axes(ax)
+    fig.tight_layout()
+    fig.savefig(output_path, dpi=300)
+    plt.close(fig)
 
 
 def parse_args() -> argparse.Namespace:
     root_dir = Path(__file__).resolve().parents[2]
-    default_results_dir = root_dir / "focus_alt_exp_pipline" / "results"
+    default_results_dir = root_dir / "focus_alt_exp_pipline" / "results" / "cloze_probability"
 
-    parser = argparse.ArgumentParser(description="Plot focus_alt_exp result summaries")
-    parser.add_argument("--results-dir", type=Path, default=default_results_dir)
+    parser = argparse.ArgumentParser(
+        description="Plot per-context average log likelihood within one next-word model"
+    )
     parser.add_argument(
-        "--output-dir",
+        "--results-dir",
         type=Path,
-        default=None,
-        help="Directory for plot outputs (default: <results-dir>/plots)",
+        default=default_results_dir,
+        help="Directory containing one model's raw *_results_<model>.csv files.",
+    )
+    parser.add_argument(
+        "--model",
+        type=str,
+        default="",
+        help="Optional raw model name such as cloze or frequency. Usually inferred from filenames.",
     )
     parser.add_argument(
         "--structures",
         type=str,
-        default=",".join(DEFAULT_STRUCTURE_FILTER),
-        help="Comma-separated structures to include",
+        default=",".join(DEFAULT_STRUCTURE_ORDER),
+        help="Comma-separated alternative structures in plotting order.",
     )
     parser.add_argument(
-        "--models",
+        "--output-dir",
+        type=Path,
+        default=None,
+        help="Directory for plot outputs (default: <results-dir>/plots).",
+    )
+    parser.add_argument(
+        "--title",
         type=str,
-        default=",".join(DEFAULT_MODEL_FILTER),
-        help="Comma-separated next-word prediction models to include (default: cloze,frequency)",
+        default=None,
+        help="Optional custom plot title.",
     )
+    parser.add_argument("--point-alpha", type=float, default=0.75)
+    parser.add_argument("--point-size", type=float, default=46.0)
+    parser.add_argument("--mean-point-size", type=float, default=95.0)
     parser.add_argument(
-        "--model-order",
-        type=str,
-        default=",".join(DEFAULT_MODEL_FILTER),
-        help="Optional comma-separated model order (raw names like cloze,frequency,bert,bert_static,qwen)",
-    )
-    parser.add_argument(
-        "--bootstrap-samples",
-        type=int,
-        default=1000,
-        help="Number of context-bootstrap resamples for confidence intervals (default: 1000, use 0 to disable)",
-    )
-    parser.add_argument(
-        "--ci-level",
+        "--jitter",
         type=float,
-        default=0.95,
-        help="Confidence level for intervals, expressed as a value in (0, 1).",
+        default=0.10,
+        help="Horizontal jitter for context dots.",
     )
-    parser.add_argument(
-        "--bootstrap-seed",
-        type=int,
-        default=7,
-        help="Random seed for bootstrap confidence intervals.",
-    )
+    parser.add_argument("--seed", type=int, default=7)
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-
-    structures = _parse_csv_list(args.structures)
-    if not structures:
+    structure_order = _parse_csv_list(args.structures)
+    if not structure_order:
         raise ValueError("--structures produced an empty list")
-    selected_models = _parse_csv_list(args.models)
-    if args.bootstrap_samples < 0:
-        raise ValueError("--bootstrap-samples must be >= 0")
-    if not 0 < args.ci_level < 1:
-        raise ValueError("--ci-level must be in the open interval (0, 1)")
 
-    model_order = _parse_csv_list(args.model_order)
+    model_name = args.model.strip() or None
     out_dir = args.output_dir if args.output_dir is not None else args.results_dir / "plots"
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    all_results = _collect_results(
+    all_results, resolved_model_name = _collect_results(
         args.results_dir,
-        structures,
-        model_names=selected_models if selected_models else None,
+        structures=structure_order,
+        model_name=model_name,
     )
-    all_results = _align_frequency_to_cloze(all_results)
-    missing_trials = _collect_missing_trials(
-        args.results_dir,
-        model_names=all_results["NextWordPredictionModelRaw"].unique(),
-    )
-    missing_summary = _summarize_missing_trials(missing_trials)
-
-    model_summary = _summarize_results(
+    context_summary = _summarize_by_context(
         all_results,
-        group_cols=["NextWordPredictionModelRaw", "NextWordPredictionModel"],
-        missing_summary=missing_summary,
-        n_bootstrap=args.bootstrap_samples,
-        ci_level=args.ci_level,
-        bootstrap_seed=args.bootstrap_seed,
+        structure_order=structure_order,
     )
-    model_summary = _apply_model_order(model_summary, model_order)
-
-    structure_summary = _summarize_results(
-        all_results,
-        group_cols=["NextWordPredictionModelRaw", "NextWordPredictionModel", "AlternativeStructure"],
-        missing_summary=missing_summary,
-        n_bootstrap=args.bootstrap_samples,
-        ci_level=args.ci_level,
-        bootstrap_seed=args.bootstrap_seed,
-    )
-    structure_summary["AlternativeStructure"] = pd.Categorical(
-        structure_summary["AlternativeStructure"],
-        categories=structures,
-        ordered=True,
-    )
-    structure_summary = _apply_model_order(
-        structure_summary,
-        model_order,
-        extra_sort_cols=["AlternativeStructure"],
+    mean_summary = _summarize_structure_means(
+        context_summary,
+        structure_order=structure_order,
     )
 
-    high_level_plot = plot_avg_log_likelihood_by_model(
-        summary=model_summary,
-        out_dir=out_dir,
-        structures=structures,
-        n_bootstrap=args.bootstrap_samples,
-        ci_level=args.ci_level,
+    model_stem = _safe_stem(resolved_model_name)
+    model_display_name = _pretty_model_name(resolved_model_name)
+    context_csv = out_dir / f"average_log_likelihood_by_context_and_structure__{model_stem}.csv"
+    mean_csv = out_dir / f"mean_log_likelihood_by_structure__{model_stem}.csv"
+    plot_path = out_dir / f"log_likelihood_by_structure_with_context_dots__{model_stem}.png"
+
+    context_summary.to_csv(context_csv, index=False)
+    mean_summary.to_csv(mean_csv, index=False)
+    _make_plot(
+        context_summary,
+        mean_summary,
+        structure_order=structure_order,
+        model_display_name=model_display_name,
+        output_path=plot_path,
+        title=args.title,
+        point_alpha=args.point_alpha,
+        point_size=args.point_size,
+        mean_point_size=args.mean_point_size,
+        jitter=args.jitter,
+        seed=args.seed,
     )
-    per_model_plots: List[Path] = []
-    if len(structures) > 1:
-        per_model_plots = plot_avg_log_likelihood_by_structure_per_model(
-            summary=structure_summary,
-            out_dir=out_dir,
-            n_bootstrap=args.bootstrap_samples,
-            ci_level=args.ci_level,
-        )
 
-    model_csv = out_dir / "average_log_likelihood_by_next_word_prediction_model.csv"
-    model_diag_csv = out_dir / "diagnostics_by_next_word_prediction_model.csv"
-    structure_diag_csv = out_dir / "diagnostics_by_model_and_alternative_structure.csv"
-    missing_csv = out_dir / "missing_trials_by_next_word_prediction_model.csv"
-
-    model_summary.to_csv(model_csv, index=False)
-    model_summary.to_csv(model_diag_csv, index=False)
-    structure_summary.to_csv(structure_diag_csv, index=False)
-    if not missing_summary.empty:
-        missing_summary.to_csv(missing_csv, index=False)
-
-    saved_paths = [high_level_plot, model_csv, model_diag_csv, structure_diag_csv]
-    if not missing_summary.empty:
-        saved_paths.append(missing_csv)
-
-    for _, model_row in (
-        structure_summary[["NextWordPredictionModelRaw", "NextWordPredictionModel"]]
-        .drop_duplicates()
-        .iterrows()
-    ):
-        model_raw = model_row["NextWordPredictionModelRaw"]
-        stem = _safe_stem(model_raw)
-        csv_path = out_dir / f"average_log_likelihood_by_alternative_structure__{stem}.csv"
-        structure_summary[structure_summary["NextWordPredictionModelRaw"] == model_raw].to_csv(
-            csv_path,
-            index=False,
-        )
-        saved_paths.append(csv_path)
-
-    saved_paths.extend(per_model_plots)
-    for path in saved_paths:
-        print("Saved:", path)
+    print("Saved:", context_csv)
+    print("Saved:", mean_csv)
+    print("Saved:", plot_path)
 
 
 if __name__ == "__main__":

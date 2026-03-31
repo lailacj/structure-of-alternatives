@@ -68,6 +68,22 @@ def _append_csv(rows: Sequence[list], out_path: Path) -> None:
     df.to_csv(out_path, mode="a", header=not out_path.exists(), index=False)
 
 
+def _clear_previous_outputs(
+    out_dir: Path | None,
+    *,
+    models: Sequence[ModelSpec],
+    suffix: str,
+) -> None:
+    if out_dir is None:
+        return
+
+    targets = [out_dir / f"{spec.name}_results{suffix}.csv" for spec in models]
+    targets.append(out_dir / f"missing_trials{suffix}.csv")
+    for path in targets:
+        if path.exists():
+            path.unlink()
+
+
 def run_experiment(
     experimental_data: pd.DataFrame,
     sampler: ContextSampler,
@@ -77,6 +93,7 @@ def run_experiment(
     model_specs: Sequence[ModelSpec] | None = None,
     results_dir: str | Path | None = None,
     file_suffix: str = "",
+    overwrite_existing: bool = True,
 ) -> Dict[str, pd.DataFrame]:
 
     """Run the full experiment loop and return in-memory result DataFrames."""
@@ -94,6 +111,8 @@ def run_experiment(
     suffix = file_suffix.strip()
     if suffix and not suffix.startswith("_"):
         suffix = f"_{suffix}"
+    if overwrite_existing:
+        _clear_previous_outputs(out_dir, models=models, suffix=suffix)
 
     contexts = [str(c) for c in df[context_col].dropna().unique()]
     sampler.prepare_contexts(contexts)
