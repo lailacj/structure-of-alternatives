@@ -5,8 +5,11 @@ This script is intentionally narrow in scope. For one model's result folder
 
 - x-axis: alternative structure (`set`, `ordering`, `conjunction`, `disjunction`)
 - y-axis: average log likelihood
-- one dot per context for each alternative structure
+- one color-coded dot per context for each alternative structure
 - one black dot per alternative structure showing the mean across contexts
+- a legend mapping colors to contexts
+- one correlation scatter plot per alternative structure comparing model and human
+  negation probabilities by trial type
 
 It also writes the summary CSVs that feed the plot.
 """
@@ -51,6 +54,10 @@ def _pretty_model_name(raw_name: str) -> str:
     }
     parts = raw_name.replace("-", "_").split("_")
     return " ".join(acronym_map.get(part.lower(), part.capitalize()) for part in parts)
+
+
+def _resolve_human_data_default() -> Path:
+    return Path(__file__).resolve().parents[1] / "human_exp_data" / "sca_dataframe.csv"
 
 
 def _collect_results(
@@ -162,6 +169,35 @@ def _style_axes(ax) -> None:
     ax.grid(axis="y", alpha=0.25)
 
 
+def _build_context_color_map(contexts: list[str], *, cmap_name: str = "tab20") -> dict[str, object]:
+    import matplotlib.pyplot as plt
+
+    cmap = plt.get_cmap(cmap_name)
+    return {
+        context: cmap(idx % cmap.N)
+        for idx, context in enumerate(sorted(contexts))
+    }
+
+
+def _legend_handles_for_contexts(contexts: list[str], context_colors: dict[str, object]):
+    import matplotlib.pyplot as plt
+
+    return [
+        plt.Line2D(
+            [0],
+            [0],
+            marker="o",
+            linestyle="",
+            markerfacecolor=context_colors[context],
+            markeredgecolor="white",
+            markeredgewidth=0.5,
+            markersize=7.5,
+            label=context,
+        )
+        for context in sorted(contexts)
+    ]
+
+
 def _make_plot(
     context_summary: pd.DataFrame,
     mean_summary: pd.DataFrame,
@@ -185,8 +221,10 @@ def _make_plot(
     import matplotlib.pyplot as plt
 
     rng = np.random.default_rng(seed)
-    fig, ax = plt.subplots(figsize=(8.5, 6.0))
+    fig, ax = plt.subplots(figsize=(11.5, 6.5))
     x_positions = {structure: idx for idx, structure in enumerate(structure_order)}
+    contexts = sorted(context_summary["context"].astype(str).unique().tolist())
+    context_colors = _build_context_color_map(contexts)
 
     for structure in structure_order:
         structure_rows = context_summary[
@@ -201,7 +239,7 @@ def _make_plot(
             np.full(len(structure_rows), x0, dtype=float) + offsets,
             structure_rows["average_log_likelihood"],
             s=point_size,
-            color="#4C78A8",
+            c=[context_colors[str(context)] for context in structure_rows["context"]],
             alpha=point_alpha,
             edgecolors="white",
             linewidths=0.5,
@@ -230,11 +268,200 @@ def _make_plot(
     ax.set_title(
         title if title is not None else f"{model_display_name}: Average Log Likelihood by Structure"
     )
+    legend_handles = _legend_handles_for_contexts(contexts, context_colors)
+    ax.legend(
+        handles=legend_handles,
+        title="Context",
+        loc="upper left",
+        bbox_to_anchor=(1.02, 1.0),
+        frameon=False,
+        borderaxespad=0.0,
+    )
 
     _style_axes(ax)
-    fig.tight_layout()
+    fig.tight_layout(rect=(0.0, 0.0, 0.82, 1.0))
     fig.savefig(output_path, dpi=300)
     plt.close(fig)
+
+
+def _load_human_trial_probabilities(human_data_path: Path) -> pd.DataFrame:
+    human_df = pd.read_csv(human_data_path)
+
+    context_col = "story" if "story" in human_df.columns else "context"
+    query_col = "cleaned_query" if "cleaned_query" in human_df.columns else "query"
+    trigger_col = "cleaned_trigger" if "cleaned_trigger" in human_df.columns else "trigger"
+    required = {context_col, query_col, trigger_col, "neg"}
+    missing = required.difference(human_df.columns)
+    if missing:
+        raise ValueError(
+            f"{human_data_path} is missing required columns: {sorted(missing)}"
+        )
+
+    prepared = human_df[[context_col, trigger_col, query_col, "neg"]].copy()
+    prepared.columns = ["context", "trigger", "query", "neg"]
+    prepared["context"] = prepared["context"].astype(str).str.strip()
+    prepared["trigger"] = prepared["trigger"].astype(str).str.strip()
+    prepared["query"] = prepared["query"].astype(str).str.strip()
+    prepared["neg"] = pd.to_numeric(prepared["neg"], errors="raise")
+
+    summary = (
+        prepared.groupby(
+            ["context", "trigger", "query"],
+            as_index=False,
+            sort=False,
+            dropna=False,
+        )
+        .agg(
+            human_negation_probability=("neg", "mean"),
+            human_trial_count=("neg", "size"),
+        )
+    )
+    return summary.sort_values(["context", "trigger", "query"], ignore_index=True)
+
+
+def _summarize_model_trial_probabilities(
+    all_results: pd.DataFrame,
+    *,
+    structure_order: list[str],
+) -> pd.DataFrame:
+    summary = (
+        all_results.groupby(
+            [
+                "NextWordPredictionModelRaw",
+                "AlternativeStructure",
+                "context",
+                "trigger",
+                "query",
+            ],
+            as_index=False,
+            sort=False,
+            dropna=False,
+        )
+        .agg(
+            model_negation_probability=("negation_probability", "mean"),
+            observed_rows=("negation_probability", "size"),
+            observed_boundaries=("set_boundary", "nunique"),
+        )
+    )
+    summary["AlternativeStructure"] = pd.Categorical(
+        summary["AlternativeStructure"],
+        categories=structure_order,
+        ordered=True,
+    )
+    return summary.sort_values(
+        ["AlternativeStructure", "context", "trigger", "query"],
+        ignore_index=True,
+    )
+
+
+def _build_correlation_summary(
+    all_results: pd.DataFrame,
+    *,
+    structure_order: list[str],
+    human_data_path: Path,
+) -> pd.DataFrame:
+    model_summary = _summarize_model_trial_probabilities(
+        all_results,
+        structure_order=structure_order,
+    )
+    human_summary = _load_human_trial_probabilities(human_data_path)
+    merged = model_summary.merge(
+        human_summary,
+        on=["context", "trigger", "query"],
+        how="inner",
+    )
+    return merged.sort_values(
+        ["AlternativeStructure", "context", "trigger", "query"],
+        ignore_index=True,
+    )
+
+
+def _pearson_correlation(x: pd.Series, y: pd.Series) -> float:
+    x_values = x.to_numpy(dtype=float)
+    y_values = y.to_numpy(dtype=float)
+    if len(x_values) < 2:
+        return float("nan")
+    if np.std(x_values) == 0 or np.std(y_values) == 0:
+        return float("nan")
+    return float(np.corrcoef(x_values, y_values)[0, 1])
+
+
+def _make_correlation_plots(
+    correlation_summary: pd.DataFrame,
+    *,
+    structure_order: list[str],
+    model_display_name: str,
+    model_stem: str,
+    output_dir: Path,
+    point_alpha: float,
+    point_size: float,
+) -> list[Path]:
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    mpl_config_dir = output_dir / ".mplconfig"
+    mpl_config_dir.mkdir(parents=True, exist_ok=True)
+    os.environ.setdefault("MPLCONFIGDIR", str(mpl_config_dir))
+
+    import matplotlib.pyplot as plt
+
+    contexts = sorted(correlation_summary["context"].astype(str).unique().tolist())
+    context_colors = _build_context_color_map(contexts)
+    legend_handles = _legend_handles_for_contexts(contexts, context_colors)
+    saved_paths: list[Path] = []
+
+    for structure in structure_order:
+        structure_rows = correlation_summary[
+            correlation_summary["AlternativeStructure"].astype(str) == structure
+        ].copy()
+        if structure_rows.empty:
+            continue
+
+        fig, ax = plt.subplots(figsize=(11.5, 6.5))
+        ax.scatter(
+            structure_rows["model_negation_probability"],
+            structure_rows["human_negation_probability"],
+            s=point_size,
+            c=[context_colors[str(context)] for context in structure_rows["context"]],
+            alpha=point_alpha,
+            edgecolors="white",
+            linewidths=0.5,
+            zorder=2,
+        )
+        ax.plot([0, 1], [0, 1], linestyle="--", color="black", alpha=0.5, linewidth=1.0, zorder=1)
+        ax.set_xlim(-0.02, 1.02)
+        ax.set_ylim(-0.02, 1.02)
+        ax.set_xlabel("Model Negation Probability")
+        ax.set_ylabel("Human Negation Probability")
+
+        corr_value = _pearson_correlation(
+            structure_rows["model_negation_probability"],
+            structure_rows["human_negation_probability"],
+        )
+        structure_label = STRUCTURE_LABELS.get(structure, structure.title())
+        title = f"{model_display_name}: {structure_label} Negation Probability Correlation"
+        if not np.isnan(corr_value):
+            title = f"{title}\nPearson r = {corr_value:.3f}"
+        ax.set_title(title)
+
+        ax.legend(
+            handles=legend_handles,
+            title="Context",
+            loc="upper left",
+            bbox_to_anchor=(1.02, 1.0),
+            frameon=False,
+            borderaxespad=0.0,
+        )
+        _style_axes(ax)
+        fig.tight_layout(rect=(0.0, 0.0, 0.82, 1.0))
+
+        plot_path = output_dir / (
+            f"negation_probability_correlation__{_safe_stem(structure)}__{model_stem}.png"
+        )
+        fig.savefig(plot_path, dpi=300)
+        plt.close(fig)
+        saved_paths.append(plot_path)
+
+    return saved_paths
 
 
 def parse_args() -> argparse.Namespace:
@@ -273,6 +500,12 @@ def parse_args() -> argparse.Namespace:
         type=str,
         default=None,
         help="Optional custom plot title.",
+    )
+    parser.add_argument(
+        "--human-data",
+        type=Path,
+        default=_resolve_human_data_default(),
+        help="Human participant-level CSV used to compute human negation probabilities.",
     )
     parser.add_argument("--point-alpha", type=float, default=0.75)
     parser.add_argument("--point-size", type=float, default=46.0)
@@ -316,6 +549,7 @@ def main() -> None:
     context_csv = out_dir / f"average_log_likelihood_by_context_and_structure__{model_stem}.csv"
     mean_csv = out_dir / f"mean_log_likelihood_by_structure__{model_stem}.csv"
     plot_path = out_dir / f"log_likelihood_by_structure_with_context_dots__{model_stem}.png"
+    correlation_csv = out_dir / f"negation_probability_correlation_points__{model_stem}.csv"
 
     context_summary.to_csv(context_csv, index=False)
     mean_summary.to_csv(mean_csv, index=False)
@@ -332,10 +566,28 @@ def main() -> None:
         jitter=args.jitter,
         seed=args.seed,
     )
+    correlation_summary = _build_correlation_summary(
+        all_results,
+        structure_order=structure_order,
+        human_data_path=args.human_data,
+    )
+    correlation_summary.to_csv(correlation_csv, index=False)
+    correlation_plot_paths = _make_correlation_plots(
+        correlation_summary,
+        structure_order=structure_order,
+        model_display_name=model_display_name,
+        model_stem=model_stem,
+        output_dir=out_dir,
+        point_alpha=args.point_alpha,
+        point_size=args.point_size,
+    )
 
     print("Saved:", context_csv)
     print("Saved:", mean_csv)
     print("Saved:", plot_path)
+    print("Saved:", correlation_csv)
+    for saved_path in correlation_plot_paths:
+        print("Saved:", saved_path)
 
 
 if __name__ == "__main__":
