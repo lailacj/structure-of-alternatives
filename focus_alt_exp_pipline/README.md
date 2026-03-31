@@ -11,6 +11,13 @@ At a high level, the pipeline does this:
 5. Turn those samples into negation probabilities for different alternative-structure models.
 6. Compare model predictions to human responses, currently with log likelihood.
 
+Current active next-word sources in this pipeline:
+
+- human cloze probabilities
+- frequency counts from Google Ngram-derived vocab/count tables
+
+Qwen preparation code exists in this directory, but Qwen is not yet fully wired into the end-to-end runner.
+
 ## Directory Layout
 
 - `code/`
@@ -66,8 +73,6 @@ This is the CLI for the current negation-modeling pipeline. It currently support
 
 - `--dataset cloze`
 - `--dataset frequency`
-- `--dataset bert`
-- `--dataset bert_static`
 
 Qwen is conceptually part of the project, but it is not yet exposed as a dataset option in this CLI.
 
@@ -125,18 +130,15 @@ Current active samplers:
 - `ClozeSampler`
 - `FrequencySampler`
 
-Also present:
-
-- `BertSampler`
-- `StaticBERTSampler`
-
 ### Analysis and plotting
 
 - `code/summarize_log_likelihood_by_context.py`
   Produces per-context summary CSVs from the raw trial-level results.
 
 - `code/plot_results.py`
-  Produces summary plots and diagnostics from result CSVs.
+  Produces:
+  - a per-model plot of average log likelihood by alternative structure, with one colored dot per context and a black mean dot
+  - one negation-probability correlation plot per alternative structure, comparing model negation probability to human negation probability at the trial-type level
 
 - `code/plot_negation_probability_heatmaps.py`
   Makes heatmap-style visualizations of negation probabilities.
@@ -167,7 +169,14 @@ For a given context:
 
 ## Outputs
 
-The main raw outputs in `results/` follow this pattern:
+Results are now organized by next-word model under `results/<model>/`.
+
+Examples:
+
+- `results/cloze_probability/`
+- `results/frequency/`
+
+The main raw outputs within one model folder follow this pattern:
 
 - `ordering_results_<model>.csv`
 - `set_results_<model>.csv`
@@ -175,14 +184,21 @@ The main raw outputs in `results/` follow this pattern:
 - `disjunction_results_<model>.csv`
 - `missing_trials_<model>.csv`
 
-Current examples include:
+For example:
 
-- `ordering_results_cloze.csv`
-- `set_results_frequency.csv`
+- `results/cloze_probability/ordering_results_cloze.csv`
+- `results/frequency/set_results_frequency.csv`
 
-Plot and summary outputs live in:
+Plot and summary outputs for a model live in:
 
-- `results/plots/`
+- `results/<model>/plots/`
+
+For example:
+
+- `results/cloze_probability/plots/average_log_likelihood_by_context_and_structure__cloze.csv`
+- `results/cloze_probability/plots/mean_log_likelihood_by_structure__cloze.csv`
+- `results/cloze_probability/plots/log_likelihood_by_structure_with_context_dots__cloze.png`
+- `results/cloze_probability/plots/negation_probability_correlation__set__cloze.png`
 
 ## Typical Commands
 
@@ -204,19 +220,33 @@ python focus_alt_exp_pipline/code/run_experiment.py \
   --num-reps 500
 ```
 
-Summarize results by context:
+Summarize results by context from a model-specific result folder:
 
 ```bash
 python focus_alt_exp_pipline/code/summarize_log_likelihood_by_context.py \
-  --models cloze,frequency
+  --results-dir focus_alt_exp_pipline/results/cloze_probability \
+  --models cloze
 ```
 
-Plot model summaries:
+Make the current cloze plots:
 
 ```bash
 python focus_alt_exp_pipline/code/plot_results.py \
-  --models cloze,frequency
+  --results-dir focus_alt_exp_pipline/results/cloze_probability \
+  --title "Cloze Probability: Average Log Likelihood by Structure"
 ```
+
+This plotting command currently writes:
+
+- the per-context average-log-likelihood-by-structure plot
+- a trial-level CSV aligning model and human negation probabilities
+- one negation-probability correlation scatter plot for each of:
+  - `set`
+  - `ordering`
+  - `conjunction`
+  - `disjunction`
+
+Human negation probability is computed as the proportion of participants with `neg = 1` for each `(context, trigger, query)` trial type.
 
 ## What Is Implemented vs Planned
 
@@ -225,6 +255,7 @@ Implemented now:
 - Trial-level log-likelihood evaluation
 - Cloze-based next-word modeling
 - Frequency-based next-word modeling
+- Trial-level model-vs-human negation-probability correlation plots
 - Split-half analysis of human negation responses
 
 Partially implemented:
@@ -234,13 +265,13 @@ Partially implemented:
 Not implemented yet in this pipeline:
 
 - Uniform next-word baseline
-- Correlation between model negation probabilities and human negation probabilities for matched trials
+- Combined across-model comparison plots such as cloze vs frequency vs qwen vs uniform on one figure
 
 ## Practical Organization Notes
 
 This directory is the best place to start if you are extending the main project.
 
-If you are adding the planned model-vs-human negation correlation analysis, the natural inputs are:
+If you are extending the model-vs-human negation correlation analysis, the natural inputs are:
 
 - model output CSVs from `results/`, using `negation_probability`
 - human trial data from `human_exp_data/sca_dataframe.csv`, aggregated by `(story, trigger, query)`
