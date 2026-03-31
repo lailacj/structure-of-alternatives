@@ -1,87 +1,196 @@
 # Structure of Alternatives
 
-**Work in progress.** Not intended for public use.
+Research code for modeling focus-alternative generation as a next-word prediction problem.
 
-Modeling and analysis of the generation of foucs alternatives. Our main claim is that a good model for human next word predicition is a good model for how humans generate foucs alternatives. 
+The central claim of this project is:
+if a model is good at predicting what word people expect next in a context, then it should also be good at predicting which alternatives people treat as relevant in a focus-alternative negation task.
 
-There are some main projects in this repo. 
-1) Correlating next word probabilities of different LLMs to the next word probabilites of humans (cloze probability). 
-2) Modeling foucs alternative generation. 
+This repo currently supports four conceptual next-word sources:
 
-Description of repo directories: 
-- *archive*: Self explanatory. Includes code, data, figures, write ups, etc that I no longer use but don't want to delete. 
-- *code*: All code. 
-    - *bert_modeling*: Code for when BERT was the main and only language model we were using. (Not used now).
-        - `bert_model.py`: Gets a next word distrubtion from BERT given a prompt. Samples sets and orderings from that distrubtion. Then runs the set, ordering, disjunction, conjunction models. Gets the log likelihood of a trial from the experimental data for each of the set, ordering, disjunction, conjunction models. Outputs result dataframes for each alternative models. 
-        - `bert_top_words.py`: Get top next words from BERT given a prompt.
-        - `bert_uniform_alternatives_model.py`: Use BERT's vocabulary to get a uniform distrubtion over next words. Run alternative models on this uniform distrubition. 
-        - `cloze_prob_model.py`: Run the alternative models on the pesudo cloze probability from our inside the set task. This did not work.
-        - `heat_map_plots.py`: Produce heat maps.
-        - `ranking_correlations.py`: Calculate Spearman correlation between BERT next word distrubtion and the 6 words from the focus alternatives task. 
-        - `results_analysis_aug25.Rmd`: R Markdown code. Used for plots and analysis on BERT output. 
-        - `results_analysis.Rmd`: R Markdown code. The older version of `results_analysis_aug25.Rmd`
-        - `scatterplots_log_likelihood_sepearman_comparsion.py`: Make scatter plots of pearman_drop vs mean log likelihood per context.
-        - `tokenization_script.py`: Generate the BERT tokenization of a word. 
-        - `word2Vec_top_words.py`: Word2Vec model. Finds the top N most similar words to a given word based on cosine similarity using the static BERT embedding space. 
-        - `wordNet_top_words.py`: Word Net model. Finds the top N most similar words to a given word based on Resnik similarity. 
-    - *llm*: Code used for comparing different LLMs to human cloze probability. 
-        - *external_cloze_prob_dataset*: Code used for comparing different LLMs to the human cloze probability dataset of Peelle et al (2020). 
-            - `llm_external_cloze_prob.py`: Get the probability of a next word for multiple LLMs against cloze dataset.
-            - `organizing_data.py`: Reformat the data from Peelle et al (2020) as a long data csv file. 
-            - `plots_analysis.py`: Getting plots.
-            - `resumable_llm_external_cloze_prob.py`: A resumable of `llm_external_cloze_prob.py`.
-        - *inside_the_set*: Code used for comparing different LLMs to the word frequencies from the human stimulus generation experiments on the inside the set task.
-            - `correlate_half_cloze_prob.py`: Spilt the participant data in half and do a spearman correlation between the two halfs. Are participants correlated with each other?
-            - `llm_clozprob_comparison.py`: Compute spearman correlation between human frequency probabilities and LLM next-word probabilities.
-            - `llm_logits_target_words.py`: Get the next word probabilities of the words from our inside the set task for multiple LLMs given a context.
-            - `llm_playground.py`: A playground script that I used to figure out how to get next word probabilities from LLMs. 
-            - `plots.py`: Getting plots.
-            - `split_half_human_llm_spearman.py`: Split half of the human word data and compute spearman correlations between each half and LLM next word probabilities. 
-            - `word_freq_to_cloze_prob.py`: Get the pesudo cloze probability for the words in the inside the set task. 
-        - `alternative_task_model.py`: Code to run the alternatives negation task on the top model from the next word probability correlations. Work in progress. 
-    - *ollama*: Code I used when I was exploring how to use the Ollama framework on Oscar. Don't use this anymore.
-    - *prompts*: Code to output LLM prompts in the format I want. 
-        - `prompts_script_only.py`: Prompts with 'only' - "I only have "
-        - `prompts_script_stim.py`: Prompts without 'only'. Used in the stimulus generation, inside the set experiments. "Sure, I have "
-        - `prompts_trigger.py`: Include the trigger word in the prompt. Replace the last "only have " or "only has " clause in prompt with "only have/has {trigger} and [MASK].'"
-    - `clean_queries.py`: When the query word has an "a" or "an" in front of it, remove this. 
-- *data*: All the data. 
-    - *BERT_Word2Vec_WordNet*
-        - `BERT_top_words.csv`: The top next words from BERT given a context. The output of `bert_top_words.py`. 
-        - `query_positions_results.csv`: The same thing as `bert_top_words.py` but with the ranking of the word included. 
-        - `word2Vec_top_words.csv`: The output of `word2Vec_top_words.py`. 
-        - `wordNet_top_words.csv`: The output of `wordNet_top_words.py`. 
-    - *external_cloze_prob_dataset*
-        - `cloze_data.csv`: Data from Peelle et al 2020. Output of `organizing_data.py`
-        - `output.md`: Original data file from Peelle et al 2020. 
-    - *inside_the_set*: Data for the inside the set task.
-        - `Generative_Data_RAW.csv`: Data from the stimulus generation experiment. Inside the set case are rows where `positive = TRUE`.
-        - `word_freq_to_cloze_prob.csv`: Output of `word_freq_to_cloze_prob.py`. 
-    - *prompts*: All the different prompt files. The output of the prompts code.
-    - `sca_dataframe_filtered.csv`: Filtered version of the data. 
-    - `sca_dataframe.csv`: All the data from the alternative negation experiment.
-- *figures*: A bunch of different plots and figures. 
-- *presentations*: All the presentations I have given associated with this project. 
-- *results* 
-    - *BERT_results*: Results from when BERT was the LM we were primarily interested in. 
-    - *fyp_results*: Results I used in my FYP. 
-    - *llm* 
-        - *external_cloze_prob_dataset*
-            - `llm_next_word_from_external_cloze.csv`: The output of `llm_external_cloze_prob.py`. The next word probabilities of the words from Peelle et al, for all tested LLMs. 
-            - `mean_spearman_by_llm.csv`: The mean spearman correlation for each LLM. 
-            - `per_sentence_spearman.csv`: The spearman correlation for each sentence from Peelle et al, for each LLM. 
-        - *inside_the_set*
-            - `llm_human_half_spearman_per_split.csv`: Results of spliting half of participant data and spearman correlating to LLMs, for each context, and each split.
-            - `llm_human_half_spearman_summary.csv`:  Mean spearman correlation between spliting half of participant data and LLMs; for each LLM.
-            - `mean_spearman_by_split.csv`: Spliting half of participant data. Mean of spearman corraltions for each split.
-            - `per_context_rank_agreement.csv`: Spearman correlation for each context and each LLM. 
-            - `results_llm_next_word_probs.csv`: Main results! Output from `llm_logits_target_words.py`. Shows the next word probability for each LLM, each context, and each word. 
-            - `split_half_spearman_by_context.csv`: Results of spliting half of participant data and correlating participants to participants. 
-            - `split_half_spearman_summary.csv`: Spliting half of participant data. Mean of spearman corraltions for each context. Mean of `split_half_spearman_by_context.csv`. 
-            - `summary_by_llm.csv`: Mean of spearman correlations for each LLM. Mean of `per_context_rank_agreement.csv`.
-- *write_ups*: Writings I have done related to this project. 
+1. A uniform distribution over words. Planned, not yet implemented in the active pipeline.
+2. Human cloze probabilities. Implemented.
+3. Word-frequency distributions from Google Ngram counts. Implemented.
+4. Qwen next-word probabilities conditioned on context. Partially implemented: vocabulary-wide Qwen scoring exists, but Qwen is not fully wired into the main `run_experiment.py` CLI yet.
 
+## Main Question
 
-        
+For each context shown in the human focus-alternative experiment:
 
+1. Build a next-word distribution.
+2. Sample sets and orderings from that distribution.
+3. Convert those samples into negation probabilities for several alternative-structure models.
+4. Compare model predictions against human responses.
 
+The main implemented evaluation is log likelihood.
+The next planned evaluation is correlation between:
+
+- the model's negation probability for a given `(context, trigger, query)` trial, and
+- the human negation probability for that same trial.
+
+## Active Data Sources
+
+There are two main human datasets in the active pipeline:
+
+1. Cloze probability data:
+   `focus_alt_exp_pipline/cloze_data/all_cloze_prob_data_preprocessed.csv`
+
+2. Focus-alternative human experiment data:
+   `focus_alt_exp_pipline/human_exp_data/sca_dataframe.csv`
+
+Useful columns in the focus-alternative experiment data include:
+
+- `story`: context name
+- `trigger`: trigger item in the trial
+- `query`: queried alternative
+- `neg`: whether participants negated the query on that trial
+- `cleaned_trigger`, `cleaned_query`: normalized forms used by the current pipeline
+
+## Where The Main Pipeline Lives
+
+The active negation-modeling pipeline is in:
+
+- `focus_alt_exp_pipline/`
+
+Important files:
+
+- `focus_alt_exp_pipline/code/models.py`
+  Defines how sampled orderings/sets are turned into negation probabilities for the `ordering`, `set`, `conjunction`, and `disjunction` models. Also contains `_to_log_likelihood`.
+
+- `focus_alt_exp_pipline/code/samplers.py`
+  Builds sampled next-word orderings/sets from different next-word distributions.
+
+- `focus_alt_exp_pipline/code/runner.py`
+  Dataset-agnostic experiment loop. It applies the models to each trial and writes standardized result CSVs.
+
+- `focus_alt_exp_pipline/code/run_experiment.py`
+  Main CLI entrypoint for running the active pipeline.
+
+- `focus_alt_exp_pipline/code/plot_results.py`
+  Summarizes result CSVs and produces log-likelihood plots and diagnostics.
+
+- `focus_alt_exp_pipline/code/summarize_log_likelihood_by_context.py`
+  Produces per-context summaries from the raw result CSVs.
+
+- `focus_alt_exp_pipline/code/precompute_qwen_vocab_log_probs.py`
+  Precomputes Qwen continuation log probabilities over the full ngram vocabulary for each prompt context.
+
+- `focus_alt_exp_pipline/code/split_half_neg_correlation.py`
+  Estimates split-half reliability for human negation responses.
+
+There is also a more focused guide at:
+
+- `focus_alt_exp_pipline/README.md`
+
+## Repo Map
+
+These directories are the ones that matter most right now:
+
+- `focus_alt_exp_pipline/`
+  Main focus-alternative negation-modeling pipeline.
+
+- `next_word_prediction_correlations/`
+  Earlier and parallel work comparing next-word predictions from LLMs to human cloze-like distributions. This is useful background for the motivation that Qwen should be a good focus-alternative model.
+
+- `prompts/`
+  Prompt templates and generated prompt CSVs used for language-model continuation scoring.
+
+- `building_vocab_from_ngrams/`
+  Scripts and data for constructing vocabulary resources from ngram corpora.
+
+- `archive/`
+  Older code, results, figures, and writeups that are kept for reference but are not the main working pipeline.
+
+- `hsp_poster_code/`
+  One-off poster-era scripts related to Qwen top-word exploration.
+
+## Current Pipeline Flow
+
+The active focus-alternative workflow is:
+
+1. Load the human focus-alternative trials from `focus_alt_exp_pipline/human_exp_data/sca_dataframe.csv`.
+2. Choose a next-word source such as cloze or frequency.
+3. Use a sampler to draw repeated orderings of candidate next words.
+4. Define the set as the first `set_boundary` items in each sampled ordering.
+5. Score each human trial with one or more alternative-structure models from `models.py`.
+6. Save trial-level outputs including:
+   - `log_likelihood`
+   - `negation_probability`
+   - `probability_query_observed`
+7. Summarize and plot the resulting CSVs.
+
+The result naming convention is:
+
+- `<alternative_structure>_results_<next_word_model>.csv`
+- `missing_trials_<next_word_model>.csv`
+
+For example:
+
+- `ordering_results_cloze.csv`
+- `set_results_frequency.csv`
+
+## Quick Start
+
+Install dependencies from the repo root:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the active pipeline with human cloze distributions:
+
+```bash
+python focus_alt_exp_pipline/code/run_experiment.py \
+  --dataset cloze \
+  --set-boundaries 2,3,4,5 \
+  --num-reps 500
+```
+
+Run the frequency baseline:
+
+```bash
+python focus_alt_exp_pipline/code/run_experiment.py \
+  --dataset frequency \
+  --set-boundaries 2,3,4,5 \
+  --num-reps 500
+```
+
+Summarize log likelihood by context:
+
+```bash
+python focus_alt_exp_pipline/code/summarize_log_likelihood_by_context.py \
+  --models cloze,frequency
+```
+
+Make summary plots:
+
+```bash
+python focus_alt_exp_pipline/code/plot_results.py \
+  --models cloze,frequency
+```
+
+## Current Status
+
+Implemented in the active pipeline:
+
+- Human cloze-based next-word distributions
+- Google Ngram frequency-based next-word distributions
+- Trial-level negation probabilities for `ordering`, `set`, `conjunction`, and `disjunction`
+- Trial-level log-likelihood evaluation
+- Plotting and per-context log-likelihood summaries
+
+Implemented, but not fully integrated into the main CLI:
+
+- Qwen full-vocabulary continuation scoring
+
+Planned next:
+
+- Uniform next-word baseline
+- Correlation analysis between model negation probabilities and human negation probabilities on matched trials
+- End-to-end Qwen integration into the main negation pipeline
+
+## Notes For Future Contributors And AI Agents
+
+- If you are trying to understand the current project, start in `focus_alt_exp_pipline/code/run_experiment.py`, `focus_alt_exp_pipline/code/runner.py`, and `focus_alt_exp_pipline/code/models.py`.
+- The active evaluation target is the human negation task, not just next-word agreement.
+- The repo still contains older BERT-era work and exploratory scripts; do not assume all top-level directories reflect the current main workflow.
+- The directory name `focus_alt_exp_pipline` is misspelled but preserved because many existing scripts and paths depend on it.
