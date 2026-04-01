@@ -55,8 +55,6 @@ def _safe_stem(text: str) -> str:
 def _pretty_model_name(raw_name: str) -> str:
     acronym_map = {
         "frequency": "Frequency",
-        "bert": "BERT",
-        "bert_static": "Static BERT",
         "qwen": "Qwen",
         "cloze": "Cloze",
     }
@@ -159,7 +157,7 @@ def _collect_results(
     requested_models = set(model_names) if model_names else None
     frames = []
 
-    for path in sorted(results_dir.glob("*_results_*.csv")):
+    for path in sorted(results_dir.rglob("*_results_*.csv")):
         match = FILE_PATTERN.match(path.name)
         if not match:
             continue

@@ -20,16 +20,16 @@ from pathlib import Path
 import pandas as pd
 
 DEFAULT_INPUT = Path(
-    "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipline/cloze_data/all_cloze_prob_data.csv"
+    "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/cloze_data/all_cloze_prob_data.csv"
 )
 DEFAULT_OUTPUT = Path(
-    "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipline/cloze_data/all_cloze_prob_data_preprocessed.csv"
+    "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/cloze_data/all_cloze_prob_data_preprocessed.csv"
 )
 DEFAULT_HUMAN_INPUT = Path(
-    "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipline/human_exp_data/sca_dataframe.csv"
+    "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/human_exp_data/sca_dataframe.csv"
 )
 DEFAULT_MISSING_OUTPUT = Path(
-    "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipline/cloze_data/human_words_missing_from_cloze.csv"
+    "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/cloze_data/human_words_missing_from_cloze.csv"
 )
 
 REQUIRED_COLUMNS = {"context", "word", "cloze_probability"}

@@ -9,11 +9,11 @@ import pandas as pd
 
 DEFAULT_INPUT = Path(
     "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/"
-    "focus_alt_exp_pipline/human_exp_data/sca_dataframe.csv"
+    "focus_alt_exp_pipeline/human_exp_data/sca_dataframe.csv"
 )
 DEFAULT_OUTPUT = Path(
     "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/"
-    "focus_alt_exp_pipline/results/split_half_neg_proportions.csv"
+    "focus_alt_exp_pipeline/results/split_half_neg_proportions.csv"
 )
 GROUP_COLUMNS = ["story", "trigger", "query"]
 REQUIRED_COLUMNS = GROUP_COLUMNS + ["neg"]

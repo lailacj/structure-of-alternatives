@@ -20,11 +20,11 @@ The main active evaluation is trial-level log likelihood. Correlation analyses b
 If you need to understand or modify the active pipeline, start here in this order:
 
 1. `README.md`
-2. `focus_alt_exp_pipline/README.md`
-3. `focus_alt_exp_pipline/code/run_experiment.py`
-4. `focus_alt_exp_pipline/code/runner.py`
-5. `focus_alt_exp_pipline/code/models.py`
-6. `focus_alt_exp_pipline/code/samplers.py`
+2. `focus_alt_exp_pipeline/README.md`
+3. `focus_alt_exp_pipeline/code/run_experiment.py`
+4. `focus_alt_exp_pipeline/code/runner.py`
+5. `focus_alt_exp_pipeline/code/models.py`
+6. `focus_alt_exp_pipeline/code/samplers.py`
 
 Those files define the current workflow, main abstractions, and output format.
 
@@ -32,7 +32,7 @@ Those files define the current workflow, main abstractions, and output format.
 
 Treat these as the main active parts of the repo:
 
-- `focus_alt_exp_pipline/`
+- `focus_alt_exp_pipeline/`
 - `prompts/`
 - `building_vocab_from_ngrams/`
 - `next_word_prediction_correlations/` for related or supporting analyses
@@ -43,34 +43,34 @@ There is also older BERT-era and exploratory code in the repo. Do not assume old
 
 ## Important Repo-Specific Gotcha
 
-The directory name `focus_alt_exp_pipline` is misspelled. Keep that spelling exactly as-is when editing code, writing paths, or adding documentation, because existing scripts depend on it.
+Use `focus_alt_exp_pipeline` in current code, paths, and documentation.
 
 ## Active Pipeline
 
-The current working pipeline lives in `focus_alt_exp_pipline/`.
+The current working pipeline lives in `focus_alt_exp_pipeline/`.
 
 Main inputs:
 
 - Human focus-alternative data:
-  `focus_alt_exp_pipline/human_exp_data/sca_dataframe.csv`
+  `focus_alt_exp_pipeline/human_exp_data/sca_dataframe.csv`
 - Human cloze data:
-  `focus_alt_exp_pipline/cloze_data/all_cloze_prob_data_preprocessed.csv`
+  `focus_alt_exp_pipeline/cloze_data/all_cloze_prob_data_preprocessed.csv`
 
 Main scripts:
 
-- `focus_alt_exp_pipline/code/run_experiment.py`
+- `focus_alt_exp_pipeline/code/run_experiment.py`
   Main CLI entrypoint.
-- `focus_alt_exp_pipline/code/runner.py`
+- `focus_alt_exp_pipeline/code/runner.py`
   Dataset-agnostic experiment loop and result writing.
-- `focus_alt_exp_pipline/code/models.py`
+- `focus_alt_exp_pipeline/code/models.py`
   Alternative-structure models and log-likelihood conversion.
-- `focus_alt_exp_pipline/code/samplers.py`
+- `focus_alt_exp_pipeline/code/samplers.py`
   Next-word sampling implementations.
-- `focus_alt_exp_pipline/code/plot_results.py`
+- `focus_alt_exp_pipeline/code/plot_results.py`
   Plot and summary generation.
-- `focus_alt_exp_pipline/code/summarize_log_likelihood_by_context.py`
+- `focus_alt_exp_pipeline/code/summarize_log_likelihood_by_context.py`
   Per-context summaries.
-- `focus_alt_exp_pipline/code/precompute_qwen_vocab_log_probs.py`
+- `focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py`
   Qwen preparation code.
 
 ## Current Model Status
@@ -100,7 +100,7 @@ Planned or partially future-facing:
 
 Most current outputs are written under:
 
-- `focus_alt_exp_pipline/results/<model>/`
+- `focus_alt_exp_pipeline/results/<model>/`
 
 Common filenames:
 
@@ -112,7 +112,7 @@ Common filenames:
 
 Plots and summaries are typically written under:
 
-- `focus_alt_exp_pipline/results/<model>/plots/`
+- `focus_alt_exp_pipeline/results/<model>/plots/`
 
 When changing output behavior, preserve these conventions unless the task explicitly asks for a new structure.
 
@@ -127,7 +127,7 @@ pip install -r requirements.txt
 Run the cloze pipeline:
 
 ```bash
-python focus_alt_exp_pipline/code/run_experiment.py \
+python focus_alt_exp_pipeline/code/run_experiment.py \
   --dataset cloze \
   --set-boundaries 2,3,4,5 \
   --num-reps 500
@@ -136,7 +136,7 @@ python focus_alt_exp_pipline/code/run_experiment.py \
 Run the frequency baseline:
 
 ```bash
-python focus_alt_exp_pipline/code/run_experiment.py \
+python focus_alt_exp_pipeline/code/run_experiment.py \
   --dataset frequency \
   --set-boundaries 2,3,4,5 \
   --num-reps 500
@@ -145,16 +145,16 @@ python focus_alt_exp_pipline/code/run_experiment.py \
 Summarize results by context:
 
 ```bash
-python focus_alt_exp_pipline/code/summarize_log_likelihood_by_context.py \
-  --results-dir focus_alt_exp_pipline/results/cloze_probability \
+python focus_alt_exp_pipeline/code/summarize_log_likelihood_by_context.py \
+  --results-dir focus_alt_exp_pipeline/results/cloze_probability \
   --models cloze
 ```
 
 Generate plots:
 
 ```bash
-python focus_alt_exp_pipline/code/plot_results.py \
-  --results-dir focus_alt_exp_pipline/results/cloze_probability \
+python focus_alt_exp_pipeline/code/plot_results.py \
+  --results-dir focus_alt_exp_pipeline/results/cloze_probability \
   --title "Cloze Probability: Average Log Likelihood by Structure"
 ```
 
@@ -188,4 +188,4 @@ When changing data loading or preprocessing logic, prefer keeping compatibility 
 
 ## Safe Default Mental Model
 
-If you are unsure what the user means, assume they care most about the active focus-alternative negation pipeline in `focus_alt_exp_pipline/`, not the archived historical analyses.
+If you are unsure what the user means, assume they care most about the active focus-alternative negation pipeline in `focus_alt_exp_pipeline/`, not the archived historical analyses.

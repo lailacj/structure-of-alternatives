@@ -32,10 +32,10 @@ The next planned evaluation is correlation between:
 There are two main human datasets in the active pipeline:
 
 1. Cloze probability data:
-   `focus_alt_exp_pipline/cloze_data/all_cloze_prob_data_preprocessed.csv`
+   `focus_alt_exp_pipeline/cloze_data/all_cloze_prob_data_preprocessed.csv`
 
 2. Focus-alternative human experiment data:
-   `focus_alt_exp_pipline/human_exp_data/sca_dataframe.csv`
+   `focus_alt_exp_pipeline/human_exp_data/sca_dataframe.csv`
 
 Useful columns in the focus-alternative experiment data include:
 
@@ -49,43 +49,43 @@ Useful columns in the focus-alternative experiment data include:
 
 The active negation-modeling pipeline is in:
 
-- `focus_alt_exp_pipline/`
+- `focus_alt_exp_pipeline/`
 
 Important files:
 
-- `focus_alt_exp_pipline/code/models.py`
+- `focus_alt_exp_pipeline/code/models.py`
   Defines how sampled orderings/sets are turned into negation probabilities for the `ordering`, `set`, `conjunction`, and `disjunction` models. Also contains `_to_log_likelihood`.
 
-- `focus_alt_exp_pipline/code/samplers.py`
+- `focus_alt_exp_pipeline/code/samplers.py`
   Builds sampled next-word orderings/sets from different next-word distributions.
 
-- `focus_alt_exp_pipline/code/runner.py`
+- `focus_alt_exp_pipeline/code/runner.py`
   Dataset-agnostic experiment loop. It applies the models to each trial and writes standardized result CSVs.
 
-- `focus_alt_exp_pipline/code/run_experiment.py`
+- `focus_alt_exp_pipeline/code/run_experiment.py`
   Main CLI entrypoint for running the active pipeline.
 
-- `focus_alt_exp_pipline/code/plot_results.py`
+- `focus_alt_exp_pipeline/code/plot_results.py`
   Summarizes result CSVs and produces log-likelihood plots and diagnostics.
 
-- `focus_alt_exp_pipline/code/summarize_log_likelihood_by_context.py`
+- `focus_alt_exp_pipeline/code/summarize_log_likelihood_by_context.py`
   Produces per-context summaries from the raw result CSVs.
 
-- `focus_alt_exp_pipline/code/precompute_qwen_vocab_log_probs.py`
+- `focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py`
   Precomputes Qwen continuation log probabilities over the full ngram vocabulary for each prompt context.
 
-- `focus_alt_exp_pipline/code/split_half_neg_correlation.py`
+- `focus_alt_exp_pipeline/code/split_half_neg_correlation.py`
   Estimates split-half reliability for human negation responses.
 
 There is also a more focused guide at:
 
-- `focus_alt_exp_pipline/README.md`
+- `focus_alt_exp_pipeline/README.md`
 
 ## Repo Map
 
 These directories are the ones that matter most right now:
 
-- `focus_alt_exp_pipline/`
+- `focus_alt_exp_pipeline/`
   Main focus-alternative negation-modeling pipeline.
 
 - `next_word_prediction_correlations/`
@@ -107,7 +107,7 @@ These directories are the ones that matter most right now:
 
 The active focus-alternative workflow is:
 
-1. Load the human focus-alternative trials from `focus_alt_exp_pipline/human_exp_data/sca_dataframe.csv`.
+1. Load the human focus-alternative trials from `focus_alt_exp_pipeline/human_exp_data/sca_dataframe.csv`.
 2. Choose a next-word source such as cloze or frequency.
 3. Use a sampler to draw repeated orderings of candidate next words.
 4. Define the set as the first `set_boundary` items in each sampled ordering.
@@ -139,7 +139,7 @@ pip install -r requirements.txt
 Run the active pipeline with human cloze distributions:
 
 ```bash
-python focus_alt_exp_pipline/code/run_experiment.py \
+python focus_alt_exp_pipeline/code/run_experiment.py \
   --dataset cloze \
   --set-boundaries 2,3,4,5 \
   --num-reps 500
@@ -148,7 +148,7 @@ python focus_alt_exp_pipline/code/run_experiment.py \
 Run the frequency baseline:
 
 ```bash
-python focus_alt_exp_pipline/code/run_experiment.py \
+python focus_alt_exp_pipeline/code/run_experiment.py \
   --dataset frequency \
   --set-boundaries 2,3,4,5 \
   --num-reps 500
@@ -157,14 +157,14 @@ python focus_alt_exp_pipline/code/run_experiment.py \
 Summarize log likelihood by context:
 
 ```bash
-python focus_alt_exp_pipline/code/summarize_log_likelihood_by_context.py \
+python focus_alt_exp_pipeline/code/summarize_log_likelihood_by_context.py \
   --models cloze,frequency
 ```
 
 Make summary plots:
 
 ```bash
-python focus_alt_exp_pipline/code/plot_results.py \
+python focus_alt_exp_pipeline/code/plot_results.py \
   --models cloze,frequency
 ```
 
@@ -190,7 +190,7 @@ Planned next:
 
 ## Notes For Future Contributors And AI Agents
 
-- If you are trying to understand the current project, start in `focus_alt_exp_pipline/code/run_experiment.py`, `focus_alt_exp_pipline/code/runner.py`, and `focus_alt_exp_pipline/code/models.py`.
+- If you are trying to understand the current project, start in `focus_alt_exp_pipeline/code/run_experiment.py`, `focus_alt_exp_pipeline/code/runner.py`, and `focus_alt_exp_pipeline/code/models.py`.
 - The active evaluation target is the human negation task, not just next-word agreement.
 - The repo still contains older BERT-era work and exploratory scripts; do not assume all top-level directories reflect the current main workflow.
-- The directory name `focus_alt_exp_pipline` is misspelled but preserved because many existing scripts and paths depend on it.
+- The active directory is `focus_alt_exp_pipeline`.

@@ -205,7 +205,7 @@ For example:
 Run the cloze-based model:
 
 ```bash
-python focus_alt_exp_pipline/code/run_experiment.py \
+python focus_alt_exp_pipeline/code/run_experiment.py \
   --dataset cloze \
   --set-boundaries 2,3,4,5 \
   --num-reps 500
@@ -214,7 +214,7 @@ python focus_alt_exp_pipline/code/run_experiment.py \
 Run the frequency baseline:
 
 ```bash
-python focus_alt_exp_pipline/code/run_experiment.py \
+python focus_alt_exp_pipeline/code/run_experiment.py \
   --dataset frequency \
   --set-boundaries 2,3,4,5 \
   --num-reps 500
@@ -223,16 +223,16 @@ python focus_alt_exp_pipline/code/run_experiment.py \
 Summarize results by context from a model-specific result folder:
 
 ```bash
-python focus_alt_exp_pipline/code/summarize_log_likelihood_by_context.py \
-  --results-dir focus_alt_exp_pipline/results/cloze_probability \
+python focus_alt_exp_pipeline/code/summarize_log_likelihood_by_context.py \
+  --results-dir focus_alt_exp_pipeline/results/cloze_probability \
   --models cloze
 ```
 
 Make the current cloze plots:
 
 ```bash
-python focus_alt_exp_pipline/code/plot_results.py \
-  --results-dir focus_alt_exp_pipline/results/cloze_probability \
+python focus_alt_exp_pipeline/code/plot_results.py \
+  --results-dir focus_alt_exp_pipeline/results/cloze_probability \
   --title "Cloze Probability: Average Log Likelihood by Structure"
 ```
 

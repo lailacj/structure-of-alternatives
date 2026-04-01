@@ -9,6 +9,27 @@ from collections import Counter
 from pathlib import Path
 
 
+def resolve_default_missing_csv(project_root: Path) -> Path:
+    candidates = [
+        project_root / "results" / "cloze_probability" / "missing_trials_cloze.csv",
+        project_root / "results" / "missing_trials_cloze.csv",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return candidates[0]
+
+
+def resolve_default_output_csv(project_root: Path) -> Path:
+    nested = project_root / "results" / "cloze_probability" / "missing_trials_summary_cloze.csv"
+    flat = project_root / "results" / "missing_trials_summary_cloze.csv"
+    if nested.parent.exists():
+        return nested
+    if flat.parent.exists():
+        return nested
+    return nested
+
+
 def normalize_set_boundary(value: str) -> str:
     """Normalize CSV set-boundary values to an integer-like string."""
     try:
@@ -143,7 +164,8 @@ def write_output_csv(
 def parse_args() -> argparse.Namespace:
     project_root = Path(__file__).resolve().parents[1]
     default_human = project_root / "human_exp_data" / "sca_dataframe.csv"
-    default_missing = project_root / "results" / "missing_trials_cloze.csv"
+    default_missing = resolve_default_missing_csv(project_root)
+    default_out = resolve_default_output_csv(project_root)
 
     parser = argparse.ArgumentParser(
         description=(
@@ -171,7 +193,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--out-csv",
         type=Path,
-        default= project_root / "results" / "missing_trials_summary.csv",
+        default=default_out,
         help="Optional output path for the summary as CSV.",
     )
     return parser.parse_args()

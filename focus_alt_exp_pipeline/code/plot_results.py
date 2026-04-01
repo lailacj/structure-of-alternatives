@@ -466,7 +466,7 @@ def _make_correlation_plots(
 
 def parse_args() -> argparse.Namespace:
     root_dir = Path(__file__).resolve().parents[2]
-    default_results_dir = root_dir / "focus_alt_exp_pipline" / "results" / "cloze_probability"
+    default_results_dir = root_dir / "focus_alt_exp_pipeline" / "results" / "cloze_probability"
 
     parser = argparse.ArgumentParser(
         description="Plot per-context average log likelihood within one next-word model"

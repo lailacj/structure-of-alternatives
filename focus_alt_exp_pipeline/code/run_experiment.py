@@ -24,9 +24,9 @@ except ImportError:
 
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
-DEFAULT_EXPERIMENTAL_DATA = ROOT_DIR / "focus_alt_exp_pipline" / "human_exp_data" / "sca_dataframe.csv"
-DEFAULT_CLOZE_DATA = ROOT_DIR / "focus_alt_exp_pipline" / "cloze_data" / "all_cloze_prob_data_preprocessed.csv"
-DEFAULT_RESULTS_DIR = ROOT_DIR / "focus_alt_exp_pipline" / "results"
+DEFAULT_EXPERIMENTAL_DATA = ROOT_DIR / "focus_alt_exp_pipeline" / "human_exp_data" / "sca_dataframe.csv"
+DEFAULT_CLOZE_DATA = ROOT_DIR / "focus_alt_exp_pipeline" / "cloze_data" / "all_cloze_prob_data_preprocessed.csv"
+DEFAULT_RESULTS_DIR = ROOT_DIR / "focus_alt_exp_pipeline" / "results"
 DEFAULT_FREQUENCY_1GRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "vocab_1gram_counts.tsv"
 DEFAULT_FREQUENCY_2GRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "vocab_2gram_counts.tsv"
 RESULTS_SUBDIR_BY_DATASET = {

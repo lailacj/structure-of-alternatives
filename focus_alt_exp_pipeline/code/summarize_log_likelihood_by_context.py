@@ -27,8 +27,6 @@ def _parse_csv_list(raw: str) -> List[str]:
 def _pretty_model_name(raw_name: str) -> str:
     acronym_map = {
         "frequency": "Frequency",
-        "bert": "BERT",
-        "bert_static": "Static BERT",
         "qwen": "Qwen",
         "cloze": "Cloze",
     }
@@ -50,7 +48,7 @@ def _collect_results(
     model_set = set(model_names) if model_names else None
     frames = []
 
-    for path in sorted(results_dir.glob("*_results_*.csv")):
+    for path in sorted(results_dir.rglob("*_results_*.csv")):
         match = FILE_PATTERN.match(path.name)
         if not match:
             continue
@@ -134,7 +132,7 @@ def _summarize_results_by_context(all_results: pd.DataFrame) -> pd.DataFrame:
 
 def parse_args() -> argparse.Namespace:
     root_dir = Path(__file__).resolve().parents[2]
-    default_results_dir = root_dir / "focus_alt_exp_pipline" / "results"
+    default_results_dir = root_dir / "focus_alt_exp_pipeline" / "results"
 
     parser = argparse.ArgumentParser(
         description="Summarize average log likelihood by context and alternative structure"

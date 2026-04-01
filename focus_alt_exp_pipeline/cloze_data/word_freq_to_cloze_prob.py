@@ -22,10 +22,10 @@ DEFAULT_INPUT_A = Path(
     "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/next_word_prediction_correlations/data/inside_the_set/Generative_Data_RAW.csv"
 )
 DEFAULT_INPUT_B = Path(
-    "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipline/cloze_data/generative_data_raw_pt2.csv"
+    "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/cloze_data/generative_data_raw_pt2.csv"
 )
 DEFAULT_OUTPUT = Path(
-    "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipline/cloze_data/all_cloze_prob_data.csv"
+    "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/cloze_data/all_cloze_prob_data.csv"
 )
 
 RESPONSES_PER_CONTEXT = 6
