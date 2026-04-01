@@ -2,7 +2,7 @@
 
 Examples:
   python run_experiment.py --dataset cloze --set-boundaries 2,3,4 --num-reps 100
-  python run_experiment.py --dataset frequency --model-names ordering --set-boundaries 5,10,15 --num-reps 500
+  python run_experiment.py --dataset frequency --frequency-background-vocab-size 10000 --model-names ordering --set-boundaries 5,10,15 --num-reps 500
 """
 
 from __future__ import annotations
@@ -14,12 +14,14 @@ from typing import List
 import pandas as pd
 
 try:
+    from .data_utils import normalize_unique_tokens, prepare_experimental_data, resolve_context_col
     from .models import get_models
-    from .runner import prepare_experimental_data, run_experiment
+    from .runner import run_experiment
     from .samplers import ClozeSampler, FrequencySampler
 except ImportError:
+    from data_utils import normalize_unique_tokens, prepare_experimental_data, resolve_context_col
     from models import get_models
-    from runner import prepare_experimental_data, run_experiment
+    from runner import run_experiment
     from samplers import ClozeSampler, FrequencySampler
 
 
@@ -29,6 +31,7 @@ DEFAULT_CLOZE_DATA = ROOT_DIR / "focus_alt_exp_pipeline" / "cloze_data" / "all_c
 DEFAULT_RESULTS_DIR = ROOT_DIR / "focus_alt_exp_pipeline" / "results"
 DEFAULT_FREQUENCY_1GRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "vocab_1gram_counts.tsv"
 DEFAULT_FREQUENCY_2GRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "vocab_2gram_counts.tsv"
+DEFAULT_FREQUENCY_BACKGROUND_VOCAB_SIZE = 800_000
 RESULTS_SUBDIR_BY_DATASET = {
     "cloze": "cloze_probability",
     "frequency": "frequency",
@@ -65,21 +68,12 @@ def _default_results_subdir(dataset: str) -> str:
     return RESULTS_SUBDIR_BY_DATASET.get(dataset, dataset)
 
 
-def _extract_frequency_tokens(experimental_data: pd.DataFrame) -> List[str]:
+def _extract_frequency_required_tokens(experimental_data: pd.DataFrame) -> List[str]:
     prepared = prepare_experimental_data(experimental_data)
     query_col = "cleaned_query" if "cleaned_query" in prepared.columns else "query"
     trigger_col = "cleaned_trigger" if "cleaned_trigger" in prepared.columns else "trigger"
-
-    tokens: List[str] = []
-    seen = set()
     values = pd.concat([prepared[query_col], prepared[trigger_col]], ignore_index=True).dropna()
-    for value in values:
-        token = str(value).strip().lower()
-        if not token or token in seen:
-            continue
-        seen.add(token)
-        tokens.append(token)
-    return tokens
+    return normalize_unique_tokens(values.tolist())
 
 
 def _build_sampler(args: argparse.Namespace, experimental_data: pd.DataFrame):
@@ -97,7 +91,7 @@ def _build_sampler(args: argparse.Namespace, experimental_data: pd.DataFrame):
 
     if args.dataset == "frequency":
         sampler = FrequencySampler(
-            supported_tokens=_extract_frequency_tokens(experimental_data),
+            required_tokens=_extract_frequency_required_tokens(experimental_data),
             unigram_counts_path=args.frequency_1gram_counts,
             bigram_counts_path=args.frequency_2gram_counts,
             background_vocab_size=args.frequency_background_vocab_size,
@@ -141,8 +135,8 @@ def parse_args() -> argparse.Namespace:
 
     parser.add_argument("--set-boundaries", type=str, default="")
     parser.add_argument("--set-start", type=int, default=3)
-    parser.add_argument("--set-stop", type=int, default=25)
-    parser.add_argument("--set-step", type=int, default=1)
+    parser.add_argument("--set-stop", type=int, default=101)
+    parser.add_argument("--set-step", type=int, default=3)
 
     parser.add_argument("--model-names", type=str, default="")
     parser.add_argument("--include-baselines", action="store_true")
@@ -193,8 +187,10 @@ def parse_args() -> argparse.Namespace:
         type=int,
         default=None,
         help=(
-            "Optional top-K global frequency vocab to include alongside all experimental "
-            "query/trigger tokens."
+            "Optional top-K global Google Ngram vocabulary to include alongside all "
+            "experimental query/trigger tokens that must remain in the frequency model. "
+            f"Defaults to {DEFAULT_FREQUENCY_BACKGROUND_VOCAB_SIZE} when --dataset frequency "
+            "and --frequency-max-vocab-size is not set."
         ),
     )
     parser.add_argument(
@@ -213,6 +209,12 @@ def main() -> None:
         args.file_suffix = args.dataset
     if not args.results_subdir:
         args.results_subdir = _default_results_subdir(args.dataset)
+    if (
+        args.dataset == "frequency"
+        and args.frequency_background_vocab_size is None
+        and args.frequency_max_vocab_size is None
+    ):
+        args.frequency_background_vocab_size = DEFAULT_FREQUENCY_BACKGROUND_VOCAB_SIZE
 
     if args.num_reps <= 0:
         raise ValueError("--num-reps must be > 0")
@@ -244,7 +246,7 @@ def main() -> None:
                 "--frequency-max-vocab-size is only supported with --dataset frequency --model-names set"
             )
 
-    context_col = "story" if "story" in experimental_data.columns else "context"
+    context_col = resolve_context_col(experimental_data)
     sampler = None
     available_contexts = None
     if args.dataset != "frequency":

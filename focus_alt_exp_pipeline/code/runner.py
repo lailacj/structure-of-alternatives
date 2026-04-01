@@ -12,10 +12,12 @@ from typing import Dict, Iterable, Sequence
 import pandas as pd
 
 try:
-    from .models import ModelSpec, get_models
+    from .data_utils import prepare_experimental_data, resolve_context_col
+    from .models import ModelSpec, get_models, probability_to_model_result
     from .samplers import ContextSampler
 except ImportError:
-    from models import ModelSpec, get_models
+    from data_utils import prepare_experimental_data, resolve_context_col
+    from models import ModelSpec, get_models, probability_to_model_result
     from samplers import ContextSampler
 
 RESULT_COLUMNS = [
@@ -29,27 +31,6 @@ RESULT_COLUMNS = [
     "negation_probability",
     "probability_query_observed",
 ]
-
-
-def clean_word(word: str) -> str:
-    token = str(word).strip().lower()
-    if token.startswith("a "):
-        return token[2:]
-    if token.startswith("an "):
-        return token[3:]
-    return token
-
-
-def prepare_experimental_data(experimental_data: pd.DataFrame) -> pd.DataFrame:
-    """Return a copy with standardized cleaned query/trigger columns."""
-    df = experimental_data.copy()
-    if "cleaned_query" not in df.columns and "query" in df.columns:
-        df["cleaned_query"] = df["query"].apply(clean_word)
-    if "cleaned_trigger" not in df.columns and "trigger" in df.columns:
-        df["cleaned_trigger"] = df["trigger"].apply(clean_word)
-    if "story" in df.columns:
-        df = df.sort_values(by="story")
-    return df
 
 
 def _resolve_col(df: pd.DataFrame, preferred: str, fallback: str) -> str:
@@ -98,7 +79,7 @@ def run_experiment(
 
     """Run the full experiment loop and return in-memory result DataFrames."""
     df = prepare_experimental_data(experimental_data)
-    context_col = _resolve_col(df, "story", "context")
+    context_col = resolve_context_col(df)
     query_col = _resolve_col(df, "cleaned_query", "query")
     trigger_col = _resolve_col(df, "cleaned_trigger", "trigger")
     neg_col = _resolve_col(df, "neg", None)
@@ -119,7 +100,15 @@ def run_experiment(
 
     for set_boundary in set_boundaries:
         print(f"Set Boundary: {set_boundary}")
-        context_samples = sampler.sample_contexts(contexts, set_boundary=set_boundary, num_reps=num_reps)
+        needs_sampled_contexts = any(
+            spec.uses_samples and not sampler.supports_exact_model(spec.name)
+            for spec in models
+        )
+        context_samples = (
+            sampler.sample_contexts(contexts, set_boundary=set_boundary, num_reps=num_reps)
+            if needs_sampled_contexts
+            else {}
+        )
         boundary_rows: Dict[str, list] = {spec.name: [] for spec in models}
         boundary_missing: list = []
         allow_unsupported_query = (
@@ -142,14 +131,32 @@ def run_experiment(
                 boundary_missing.append([set_boundary, context, trigger, query, "trigger_not_in_context"])
                 continue
 
-            samples = context_samples[context]
             for spec in models:
-                log_likelihood, negation_probability, prob_obs = spec.fn(
-                    samples=samples,
+                exact_negation_probability = sampler.exact_negation_probability(
+                    model_name=spec.name,
+                    context=context,
                     query=query,
                     trigger=trigger,
-                    query_negated=query_negated,
+                    set_boundary=set_boundary,
                 )
+                if exact_negation_probability is not None:
+                    log_likelihood, negation_probability, prob_obs = probability_to_model_result(
+                        exact_negation_probability,
+                        query_negated,
+                    )
+                else:
+                    if spec.uses_samples and context not in context_samples:
+                        raise RuntimeError(
+                            f"Missing sampled contexts for model '{spec.name}' at set boundary "
+                            f"{set_boundary}"
+                        )
+                    samples = () if not spec.uses_samples else context_samples[context]
+                    log_likelihood, negation_probability, prob_obs = spec.fn(
+                        samples=samples,
+                        query=query,
+                        trigger=trigger,
+                        query_negated=query_negated,
+                    )
                 boundary_rows[spec.name].append(
                     [
                         set_boundary,

@@ -12,12 +12,15 @@ ModelResult = Tuple[float, float, float]
 ModelFn = Callable[[Sequence[Sample], str, str, int], ModelResult]
 
 
-def _to_log_likelihood(negation_probability: float, query_negated: int) -> ModelResult:
+def probability_to_model_result(
+    negation_probability: float,
+    query_negated: int,
+) -> ModelResult:
     if query_negated == 1:
         prob_query_observed = negation_probability
     else:
         prob_query_observed = 1 - negation_probability
-    
+
     if prob_query_observed > 0:
         log_likelihood = np.log(prob_query_observed)
     else:
@@ -44,7 +47,7 @@ def ordering_model(
             count_query_above_trigger += 1
 
     negation_probability = float(count_query_above_trigger) / float(len(samples))
-    return _to_log_likelihood(negation_probability, query_negated)
+    return probability_to_model_result(negation_probability, query_negated)
 
 
 def set_model(
@@ -61,7 +64,7 @@ def set_model(
             count_query_in_set += 1
 
     negation_probability = float(count_query_in_set) / float(len(samples))
-    return _to_log_likelihood(negation_probability, query_negated)
+    return probability_to_model_result(negation_probability, query_negated)
 
 
 def conjunction_model(
@@ -84,7 +87,7 @@ def conjunction_model(
             count_conjunction += 1
 
     negation_probability = float(count_conjunction) / float(len(samples))
-    return _to_log_likelihood(negation_probability, query_negated)
+    return probability_to_model_result(negation_probability, query_negated)
 
 
 def disjunction_model(
@@ -105,7 +108,7 @@ def disjunction_model(
             count_disjunction += 1
 
     negation_probability = float(count_disjunction) / float(len(samples))
-    return _to_log_likelihood(negation_probability, query_negated)
+    return probability_to_model_result(negation_probability, query_negated)
 
 
 def always_negate_model(
@@ -116,7 +119,7 @@ def always_negate_model(
 ) -> ModelResult:
 
     del samples, query, trigger
-    return _to_log_likelihood(1.0, query_negated)
+    return probability_to_model_result(1.0, query_negated)
 
 
 def never_negate_model(
@@ -127,7 +130,7 @@ def never_negate_model(
 ) -> ModelResult:
 
     del samples, query, trigger
-    return _to_log_likelihood(0.0, query_negated)
+    return probability_to_model_result(0.0, query_negated)
 
 
 @dataclass(frozen=True)
@@ -135,15 +138,26 @@ class ModelSpec:
     name: str
     fn: ModelFn
     requires_trigger: bool = True
+    uses_samples: bool = True
 
 
 MODEL_REGISTRY: Dict[str, ModelSpec] = {
-    "ordering": ModelSpec("ordering", ordering_model, requires_trigger=True),
-    "set": ModelSpec("set", set_model, requires_trigger=False),
-    "conjunction": ModelSpec("conjunction", conjunction_model, requires_trigger=True),
-    "disjunction": ModelSpec("disjunction", disjunction_model, requires_trigger=True),
-    "always_negate": ModelSpec("always_negate", always_negate_model, requires_trigger=False),
-    "never_negate": ModelSpec("never_negate", never_negate_model, requires_trigger=False),
+    "ordering": ModelSpec("ordering", ordering_model, requires_trigger=True, uses_samples=True),
+    "set": ModelSpec("set", set_model, requires_trigger=False, uses_samples=True),
+    "conjunction": ModelSpec("conjunction", conjunction_model, requires_trigger=True, uses_samples=True),
+    "disjunction": ModelSpec("disjunction", disjunction_model, requires_trigger=True, uses_samples=True),
+    "always_negate": ModelSpec(
+        "always_negate",
+        always_negate_model,
+        requires_trigger=False,
+        uses_samples=False,
+    ),
+    "never_negate": ModelSpec(
+        "never_negate",
+        never_negate_model,
+        requires_trigger=False,
+        uses_samples=False,
+    ),
 }
 
 

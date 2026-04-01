@@ -13,6 +13,11 @@ from typing import Dict, List, Sequence, Tuple
 import numpy as np
 import pandas as pd
 
+try:
+    from .data_utils import normalize_unique_tokens, read_frequency_counts
+except ImportError:
+    from data_utils import normalize_unique_tokens, read_frequency_counts
+
 Sample = Tuple[List[str], List[str]]
 ContextSamples = Dict[str, List[Sample]]
 
@@ -29,6 +34,24 @@ class ContextSampler(ABC):
         del model_name
         return False
 
+    def supports_exact_model(self, model_name: str) -> bool:
+        """Whether this sampler can score `model_name` without sampling."""
+        del model_name
+        return False
+
+    def exact_negation_probability(
+        self,
+        *,
+        model_name: str,
+        context: str,
+        query: str,
+        trigger: str,
+        set_boundary: int,
+    ) -> float | None:
+        """Return an exact negation probability when available."""
+        del model_name, context, query, trigger, set_boundary
+        return None
+
     @abstractmethod
     def sample_contexts(
         self,
@@ -44,11 +67,12 @@ class ContextSampler(ABC):
 
 
 class FrequencySampler(ContextSampler):
-    """Context-free sampler backed by unigram and bigram frequency counts."""
+    """Global Google Ngram baseline shared across all experiment contexts."""
 
     def __init__(
         self,
         *,
+        required_tokens: Sequence[str] | None = None,
         supported_tokens: Sequence[str] | None = None,
         unigram_counts_path: str | Path,
         bigram_counts_path: str | Path,
@@ -65,20 +89,26 @@ class FrequencySampler(ContextSampler):
                 "FrequencySampler background_vocab_size and max_vocab_size cannot both be set"
             )
 
-        normalized_tokens = self._normalize_tokens(supported_tokens)
+        if required_tokens is not None and supported_tokens is not None:
+            raise ValueError(
+                "FrequencySampler received both required_tokens and supported_tokens; "
+                "use required_tokens"
+            )
+        if required_tokens is None:
+            required_tokens = supported_tokens
+
+        normalized_tokens = normalize_unique_tokens(required_tokens)
 
         if max_vocab_size is not None:
             if max_vocab_size <= 0:
                 raise ValueError("FrequencySampler max_vocab_size must be > 0")
-            top_rows = self._read_top_counts(
+            kept_rows = self._read_top_counts(
                 unigram_counts_path=unigram_counts_path,
                 bigram_counts_path=bigram_counts_path,
                 limit=max_vocab_size,
             )
-            if not top_rows:
+            if not kept_rows:
                 raise ValueError("FrequencySampler could not load any top-vocab counts")
-            kept_tokens = [token for token, _ in top_rows]
-            probs = np.array([float(count) for _, count in top_rows], dtype=float)
         elif background_vocab_size is not None:
             if background_vocab_size <= 0:
                 raise ValueError("FrequencySampler background_vocab_size must be > 0")
@@ -86,68 +116,39 @@ class FrequencySampler(ContextSampler):
             counts = self._read_combined_counts(
                 unigram_counts_path=unigram_counts_path,
                 bigram_counts_path=bigram_counts_path,
-                supported_tokens=normalized_tokens,
+                required_tokens=normalized_tokens,
                 background_vocab_size=background_vocab_size,
             )
             if not counts:
                 raise ValueError("FrequencySampler could not load any positive token counts")
             kept_rows = sorted(counts.items(), key=lambda item: (-item[1], item[0]))
-            kept_tokens = [token for token, _ in kept_rows]
-            probs = np.array([float(count) for _, count in kept_rows], dtype=float)
         else:
             if not normalized_tokens:
-                raise ValueError("FrequencySampler requires supported_tokens when max_vocab_size is not set")
+                raise ValueError(
+                    "FrequencySampler requires required_tokens when max_vocab_size is not set"
+                )
 
-            unigram_targets = {token for token in normalized_tokens if " " not in token}
-            bigram_targets = {token for token in normalized_tokens if " " in token}
-
-            counts: Dict[str, int] = {}
-            if unigram_targets:
-                counts.update(self._read_counts(unigram_counts_path, unigram_targets))
-            if bigram_targets:
-                counts.update(self._read_counts(bigram_counts_path, bigram_targets))
-
-            kept_tokens = [token for token in normalized_tokens if counts.get(token, 0) > 0]
-            if not kept_tokens:
+            counts = read_frequency_counts(
+                normalized_tokens,
+                unigram_counts_path=unigram_counts_path,
+                bigram_counts_path=bigram_counts_path,
+            )
+            kept_rows = [
+                (token, counts[token])
+                for token in normalized_tokens
+                if counts.get(token, 0) > 0
+            ]
+            if not kept_rows:
                 raise ValueError("FrequencySampler could not load any positive token counts")
-            probs = np.array([float(counts[token]) for token in kept_tokens], dtype=float)
+
+        kept_tokens = [token for token, _ in kept_rows]
+        probs = np.array([float(count) for _, count in kept_rows], dtype=float)
 
         probs = probs / probs.sum()
         self._tokens = np.array(kept_tokens, dtype=object)
         self._probs = probs
         self._token_set = set(kept_tokens)
-
-    @staticmethod
-    def _normalize_tokens(tokens: Sequence[str] | None) -> List[str]:
-        if tokens is None:
-            return []
-
-        normalized: List[str] = []
-        seen = set()
-        for token in tokens:
-            key = str(token).strip().lower()
-            if not key or key in seen:
-                continue
-            seen.add(key)
-            normalized.append(key)
-        return normalized
-
-    @staticmethod
-    def _read_counts(path: str | Path, targets: set[str]) -> Dict[str, int]:
-        counts: Dict[str, int] = {}
-        remaining = set(targets)
-
-        with Path(path).open("r", encoding="utf-8") as handle:
-            for raw_line in handle:
-                token, sep, count_str = raw_line.rstrip("\n").partition("\t")
-                if not sep or token not in remaining:
-                    continue
-                counts[token] = int(count_str)
-                remaining.remove(token)
-                if not remaining:
-                    break
-
-        return counts
+        self._token_counts = {token: int(count) for token, count in kept_rows}
 
     @staticmethod
     def _read_top_counts(
@@ -175,7 +176,7 @@ class FrequencySampler(ContextSampler):
         *,
         unigram_counts_path: str | Path,
         bigram_counts_path: str | Path,
-        supported_tokens: Sequence[str],
+        required_tokens: Sequence[str],
         background_vocab_size: int,
     ) -> Dict[str, int]:
         counts: Dict[str, int] = {}
@@ -186,16 +187,15 @@ class FrequencySampler(ContextSampler):
         ):
             counts[token] = count
 
-        remaining_unigrams = {
-            token for token in supported_tokens if " " not in token and token not in counts
-        }
-        remaining_bigrams = {
-            token for token in supported_tokens if " " in token and token not in counts
-        }
-        if remaining_unigrams:
-            counts.update(cls._read_counts(unigram_counts_path, remaining_unigrams))
-        if remaining_bigrams:
-            counts.update(cls._read_counts(bigram_counts_path, remaining_bigrams))
+        remaining_tokens = [token for token in required_tokens if token not in counts]
+        if remaining_tokens:
+            counts.update(
+                read_frequency_counts(
+                    remaining_tokens,
+                    unigram_counts_path=unigram_counts_path,
+                    bigram_counts_path=bigram_counts_path,
+                )
+            )
 
         return {token: count for token, count in counts.items() if count > 0}
 
@@ -233,6 +233,32 @@ class FrequencySampler(ContextSampler):
 
     def allow_unsupported_query_for_model(self, model_name: str) -> bool:
         return self._max_vocab_size is not None and model_name == "set"
+
+    def supports_exact_model(self, model_name: str) -> bool:
+        return model_name == "ordering"
+
+    def exact_negation_probability(
+        self,
+        *,
+        model_name: str,
+        context: str,
+        query: str,
+        trigger: str,
+        set_boundary: int,
+    ) -> float | None:
+        del context, set_boundary
+        if model_name != "ordering":
+            return None
+
+        query_key = str(query).strip().lower()
+        trigger_key = str(trigger).strip().lower()
+        if query_key == trigger_key:
+            return 0.0
+        query_count = self._token_counts.get(query_key)
+        trigger_count = self._token_counts.get(trigger_key)
+        if query_count is None or trigger_count is None:
+            return None
+        return float(query_count) / float(query_count + trigger_count)
 
 
 class ClozeSampler(ContextSampler):

@@ -5,7 +5,7 @@ This directory contains the active pipeline for testing whether next-word predic
 At a high level, the pipeline does this:
 
 1. Start from human focus-alternative trials in `human_exp_data/sca_dataframe.csv`.
-2. Build a next-word distribution for each context.
+2. Build a next-word distribution for each context, or use a shared global baseline.
 3. Sample repeated orderings from that distribution.
 4. Define a set by taking the first `set_boundary` items in each sampled ordering.
 5. Turn those samples into negation probabilities for different alternative-structure models.
@@ -14,7 +14,7 @@ At a high level, the pipeline does this:
 Current active next-word sources in this pipeline:
 
 - human cloze probabilities
-- frequency counts from Google Ngram-derived vocab/count tables
+- a global Google Ngram frequency baseline shared across all contexts
 
 Qwen preparation code exists in this directory, but Qwen is not yet fully wired into the end-to-end runner.
 
@@ -113,7 +113,7 @@ This file defines the current alternative-structure models:
 - `always_negate`
 - `never_negate`
 
-The key helper is `_to_log_likelihood`, which converts a model's negation probability and the observed human response into:
+The key helper is `probability_to_model_result`, which converts a model's negation probability and the observed human response into:
 
 - `log_likelihood`
 - `negation_probability`
@@ -129,6 +129,11 @@ Current active samplers:
 
 - `ClozeSampler`
 - `FrequencySampler`
+
+`FrequencySampler` is intentionally context-free. The intended frequency
+baseline is a single global distribution built from a top-K Google Ngram
+vocabulary plus all experimental query/trigger tokens force-included so they
+remain scoreable.
 
 ### Analysis and plotting
 
@@ -216,9 +221,13 @@ Run the frequency baseline:
 ```bash
 python focus_alt_exp_pipeline/code/run_experiment.py \
   --dataset frequency \
-  --set-boundaries 2,3,4,5 \
   --num-reps 500
 ```
+
+By default, `--dataset frequency` now uses
+`--frequency-background-vocab-size 800000` unless you override it or use
+`--frequency-max-vocab-size`. The default set-boundary sweep is `3, 6, ..., 99`
+because the step size is `3`.
 
 Summarize results by context from a model-specific result folder:
 
@@ -254,7 +263,7 @@ Implemented now:
 
 - Trial-level log-likelihood evaluation
 - Cloze-based next-word modeling
-- Frequency-based next-word modeling
+- Frequency-based next-word modeling with a global Google Ngram baseline
 - Trial-level model-vs-human negation-probability correlation plots
 - Split-half analysis of human negation responses
 

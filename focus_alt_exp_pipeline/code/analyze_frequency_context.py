@@ -11,7 +11,7 @@ This script focuses on a single context (for example, ``bag``) and reports:
   ``ordering_results_frequency.csv``
 
 The exact pairwise probability comes from the Plackett-Luce / weighted without
-replacement sampler used by ``FrequencySampler``.
+replacement sampler used by the global ``FrequencySampler`` baseline.
 """
 
 from __future__ import annotations
@@ -19,10 +19,25 @@ from __future__ import annotations
 import argparse
 from itertools import permutations
 from pathlib import Path
-from typing import Dict, Iterable, List, Sequence
 
 import pandas as pd
 
+try:
+    from .data_utils import (
+        clean_word,
+        normalize_unique_tokens,
+        prepare_experimental_data,
+        read_frequency_counts,
+        resolve_context_col,
+    )
+except ImportError:
+    from data_utils import (
+        clean_word,
+        normalize_unique_tokens,
+        prepare_experimental_data,
+        read_frequency_counts,
+        resolve_context_col,
+    )
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DEFAULT_EXPERIMENTAL_DATA = ROOT_DIR / "focus_alt_exp_pipeline" / "human_exp_data" / "sca_dataframe.csv"
@@ -44,82 +59,6 @@ def resolve_default_ordering_results() -> Path:
 DEFAULT_ORDERING_RESULTS = resolve_default_ordering_results()
 
 
-def clean_word(word: str) -> str:
-    token = str(word).strip().lower()
-    if token.startswith("a "):
-        return token[2:]
-    if token.startswith("an "):
-        return token[3:]
-    return token
-
-
-def prepare_experimental_data(experimental_data: pd.DataFrame) -> pd.DataFrame:
-    df = experimental_data.copy()
-    if "cleaned_query" not in df.columns and "query" in df.columns:
-        df["cleaned_query"] = df["query"].apply(clean_word)
-    if "cleaned_trigger" not in df.columns and "trigger" in df.columns:
-        df["cleaned_trigger"] = df["trigger"].apply(clean_word)
-    if "story" in df.columns:
-        df = df.sort_values(by="story")
-    return df
-
-
-def _read_counts(path: Path, targets: Iterable[str]) -> Dict[str, int]:
-    remaining = {str(token).strip().lower() for token in targets if str(token).strip()}
-    counts: Dict[str, int] = {}
-    if not remaining:
-        return counts
-
-    with path.open("r", encoding="utf-8") as handle:
-        for raw_line in handle:
-            token, sep, count_str = raw_line.rstrip("\n").partition("\t")
-            if not sep or token not in remaining:
-                continue
-            counts[token] = int(count_str)
-            remaining.remove(token)
-            if not remaining:
-                break
-    return counts
-
-
-def _read_frequency_counts(
-    tokens: Sequence[str],
-    *,
-    unigram_counts_path: Path,
-    bigram_counts_path: Path,
-) -> Dict[str, int]:
-    normalized = [clean_word(token) for token in tokens]
-    unigram_targets = {token for token in normalized if " " not in token}
-    bigram_targets = {token for token in normalized if " " in token}
-
-    counts: Dict[str, int] = {}
-    if unigram_targets:
-        counts.update(_read_counts(unigram_counts_path, unigram_targets))
-    if bigram_targets:
-        counts.update(_read_counts(bigram_counts_path, bigram_targets))
-    return counts
-
-
-def _extract_unique_tokens(values: Sequence[str]) -> List[str]:
-    seen = set()
-    tokens: List[str] = []
-    for value in values:
-        token = clean_word(value)
-        if not token or token in seen:
-            continue
-        seen.add(token)
-        tokens.append(token)
-    return tokens
-
-
-def _resolve_context_col(df: pd.DataFrame) -> str:
-    if "story" in df.columns:
-        return "story"
-    if "context" in df.columns:
-        return "context"
-    raise KeyError("Expected either a 'story' or 'context' column in experimental data")
-
-
 def _build_token_summary(
     experimental_data: pd.DataFrame,
     *,
@@ -128,25 +67,25 @@ def _build_token_summary(
     bigram_counts_path: Path,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     prepared = prepare_experimental_data(experimental_data)
-    context_col = _resolve_context_col(prepared)
+    context_col = resolve_context_col(prepared)
     context_df = prepared[prepared[context_col].astype(str) == context].copy()
     if context_df.empty:
         raise ValueError(f"Context '{context}' was not found in {context_col}")
 
-    all_tokens = _extract_unique_tokens(
+    all_tokens = normalize_unique_tokens(
         pd.concat(
             [prepared["cleaned_query"], prepared["cleaned_trigger"]],
             ignore_index=True,
         ).tolist()
     )
-    context_tokens = _extract_unique_tokens(
+    context_tokens = normalize_unique_tokens(
         pd.concat(
             [context_df["cleaned_query"], context_df["cleaned_trigger"]],
             ignore_index=True,
         ).tolist()
     )
 
-    all_counts = _read_frequency_counts(
+    all_counts = read_frequency_counts(
         all_tokens,
         unigram_counts_path=unigram_counts_path,
         bigram_counts_path=bigram_counts_path,
@@ -205,13 +144,13 @@ def _build_pairwise_summary(
     context_df: pd.DataFrame,
     ordering_results: pd.DataFrame,
 ) -> pd.DataFrame:
-    supported_tokens = token_summary[token_summary["supported_by_frequency_model"]].copy()
-    if supported_tokens.empty:
+    available_tokens = token_summary[token_summary["supported_by_frequency_model"]].copy()
+    if available_tokens.empty:
         raise ValueError(f"No supported frequency-model tokens were found for context '{context}'")
 
-    token_lookup = supported_tokens.set_index("token").to_dict(orient="index")
+    token_lookup = available_tokens.set_index("token").to_dict(orient="index")
     pair_rows = []
-    for query, trigger in permutations(supported_tokens["token"].tolist(), 2):
+    for query, trigger in permutations(available_tokens["token"].tolist(), 2):
         query_count = int(token_lookup[query]["count"])
         trigger_count = int(token_lookup[trigger]["count"])
         pair_rows.append(
