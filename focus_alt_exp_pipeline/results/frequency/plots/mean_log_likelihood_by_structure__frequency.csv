@@ -1,0 +1,5 @@
+NextWordPredictionModelRaw,AlternativeStructure,context_count,mean_log_likelihood
+frequency,set,16,-10.699883816830136
+frequency,ordering,16,-1.395642759456281
+frequency,conjunction,16,-10.699883816830136
+frequency,disjunction,16,-1.3956427594562808

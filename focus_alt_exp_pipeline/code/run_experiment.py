@@ -3,6 +3,7 @@
 Examples:
   python run_experiment.py --dataset cloze --set-boundaries 2,3,4 --num-reps 100
   python run_experiment.py --dataset frequency --frequency-background-vocab-size 10000 --model-names ordering --set-boundaries 5,10,15 --num-reps 500
+  python run_experiment.py --dataset qwen --qwen-top-vocab-size 100000 --model-names ordering,set,conjunction,disjunction --num-reps 500
 """
 
 from __future__ import annotations
@@ -17,12 +18,12 @@ try:
     from .data_utils import normalize_unique_tokens, prepare_experimental_data, resolve_context_col
     from .models import get_models
     from .runner import run_experiment
-    from .samplers import ClozeSampler, FrequencySampler
+    from .samplers import ClozeSampler, FrequencySampler, QwenSampler
 except ImportError:
     from data_utils import normalize_unique_tokens, prepare_experimental_data, resolve_context_col
     from models import get_models
     from runner import run_experiment
-    from samplers import ClozeSampler, FrequencySampler
+    from samplers import ClozeSampler, FrequencySampler, QwenSampler
 
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
@@ -32,9 +33,12 @@ DEFAULT_RESULTS_DIR = ROOT_DIR / "focus_alt_exp_pipeline" / "results"
 DEFAULT_FREQUENCY_1GRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "vocab_1gram_counts.tsv"
 DEFAULT_FREQUENCY_2GRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "vocab_2gram_counts.tsv"
 DEFAULT_FREQUENCY_BACKGROUND_VOCAB_SIZE = 800_000
+DEFAULT_QWEN_LOG_PROBS_DIR = ROOT_DIR.parent / "ngrams" / "qwen_full_vocab_log_probs"
+DEFAULT_QWEN_TOP_VOCAB_SIZE = 100_000
 RESULTS_SUBDIR_BY_DATASET = {
     "cloze": "cloze_probability",
     "frequency": "frequency",
+    "qwen": "qwen",
 }
 
 
@@ -76,6 +80,19 @@ def _extract_frequency_required_tokens(experimental_data: pd.DataFrame) -> List[
     return normalize_unique_tokens(values.tolist())
 
 
+def _extract_required_tokens_by_context(experimental_data: pd.DataFrame) -> dict[str, List[str]]:
+    prepared = prepare_experimental_data(experimental_data)
+    context_col = resolve_context_col(prepared)
+    query_col = "cleaned_query" if "cleaned_query" in prepared.columns else "query"
+    trigger_col = "cleaned_trigger" if "cleaned_trigger" in prepared.columns else "trigger"
+
+    required_by_context: dict[str, List[str]] = {}
+    for context, subset in prepared.groupby(context_col, sort=False):
+        tokens = pd.concat([subset[query_col], subset[trigger_col]], ignore_index=True).dropna()
+        required_by_context[str(context)] = normalize_unique_tokens(tokens.tolist())
+    return required_by_context
+
+
 def _build_sampler(args: argparse.Namespace, experimental_data: pd.DataFrame):
     if args.dataset == "cloze":
         cloze_df = pd.read_csv(args.cloze_data)
@@ -99,6 +116,14 @@ def _build_sampler(args: argparse.Namespace, experimental_data: pd.DataFrame):
             seed=args.seed,
         )
         return sampler, None
+    if args.dataset == "qwen":
+        sampler = QwenSampler(
+            required_tokens_by_context=_extract_required_tokens_by_context(experimental_data),
+            log_probs_dir=args.qwen_log_probs_dir,
+            top_vocab_size=args.qwen_top_vocab_size,
+            seed=args.seed,
+        )
+        return sampler, set(sampler.available_contexts)
     raise ValueError(f"Unsupported dataset '{args.dataset}'")
 
 
@@ -114,7 +139,7 @@ def parse_args() -> argparse.Namespace:
 
     parser.add_argument(
         "--dataset",
-        choices=["cloze", "frequency"],
+        choices=["cloze", "frequency", "qwen"],
         required=True,
     )
     parser.add_argument("--experimental-data", type=Path, default=DEFAULT_EXPERIMENTAL_DATA)
@@ -199,6 +224,22 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Optional top-N frequency vocab cap. Currently only supported with --dataset frequency --model-names set.",
     )
+    parser.add_argument(
+        "--qwen-log-probs-dir",
+        type=Path,
+        default=DEFAULT_QWEN_LOG_PROBS_DIR,
+        help="Directory containing precomputed per-context Qwen log-prob arrays and vocab_manifest.json.",
+    )
+    parser.add_argument(
+        "--qwen-top-vocab-size",
+        type=int,
+        default=DEFAULT_QWEN_TOP_VOCAB_SIZE,
+        help=(
+            "Top-M Qwen continuations to keep per context for sampled set/conjunction estimation. "
+            "Experimental query/trigger tokens for that context are force-included even when they "
+            "fall outside the top-M support."
+        ),
+    )
 
     return parser.parse_args()
 
@@ -245,6 +286,8 @@ def main() -> None:
             raise ValueError(
                 "--frequency-max-vocab-size is only supported with --dataset frequency --model-names set"
             )
+    if args.qwen_top_vocab_size <= 0:
+        raise ValueError("--qwen-top-vocab-size must be > 0")
 
     context_col = resolve_context_col(experimental_data)
     sampler = None

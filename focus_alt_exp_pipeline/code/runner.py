@@ -78,6 +78,7 @@ def run_experiment(
 ) -> Dict[str, pd.DataFrame]:
 
     """Run the full experiment loop and return in-memory result DataFrames."""
+    resolved_set_boundaries = [int(boundary) for boundary in set_boundaries]
     df = prepare_experimental_data(experimental_data)
     context_col = resolve_context_col(df)
     query_col = _resolve_col(df, "cleaned_query", "query")
@@ -97,11 +98,19 @@ def run_experiment(
 
     contexts = [str(c) for c in df[context_col].dropna().unique()]
     sampler.prepare_contexts(contexts)
+    sampler.prepare_run(
+        contexts=contexts,
+        set_boundaries=resolved_set_boundaries,
+        num_reps=num_reps,
+        model_names=[spec.name for spec in models],
+    )
 
-    for set_boundary in set_boundaries:
+    for set_boundary in resolved_set_boundaries:
         print(f"Set Boundary: {set_boundary}")
         needs_sampled_contexts = any(
-            spec.uses_samples and not sampler.supports_exact_model(spec.name)
+            spec.uses_samples
+            and not sampler.supports_direct_model(spec.name)
+            and not sampler.supports_exact_model(spec.name)
             for spec in models
         )
         context_samples = (
@@ -132,6 +141,31 @@ def run_experiment(
                 continue
 
             for spec in models:
+                direct_result = sampler.direct_model_result(
+                    model_name=spec.name,
+                    context=context,
+                    query=query,
+                    trigger=trigger,
+                    query_negated=query_negated,
+                    set_boundary=set_boundary,
+                )
+                if direct_result is not None:
+                    log_likelihood, negation_probability, prob_obs = direct_result
+                    boundary_rows[spec.name].append(
+                        [
+                            set_boundary,
+                            num_reps,
+                            context,
+                            trigger,
+                            query,
+                            query_negated,
+                            log_likelihood,
+                            negation_probability,
+                            prob_obs,
+                        ]
+                    )
+                    continue
+
                 exact_negation_probability = sampler.exact_negation_probability(
                     model_name=spec.name,
                     context=context,
