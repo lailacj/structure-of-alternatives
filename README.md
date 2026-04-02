@@ -10,7 +10,7 @@ This repo currently supports four conceptual next-word sources:
 1. A uniform distribution over words. Planned, not yet implemented in the active pipeline.
 2. Human cloze probabilities. Implemented.
 3. Word-frequency distributions from Google Ngram counts. Implemented.
-4. Qwen next-word probabilities conditioned on context. Partially implemented: vocabulary-wide Qwen scoring exists, but Qwen is not fully wired into the main `run_experiment.py` CLI yet.
+4. Qwen next-word probabilities conditioned on context. In progress: sparse precompute and runner support exist, but the full 16-context precompute and end-to-end Qwen results are still being completed.
 
 ## Main Question
 
@@ -72,7 +72,7 @@ Important files:
   Produces per-context summaries from the raw result CSVs.
 
 - `focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py`
-  Precomputes Qwen continuation log probabilities over the full ngram vocabulary for each prompt context.
+  Precomputes sparse Qwen continuation log probabilities for each prompt context.
 
 - `focus_alt_exp_pipeline/code/split_half_neg_correlation.py`
   Estimates split-half reliability for human negation responses.
@@ -178,15 +178,16 @@ Implemented in the active pipeline:
 - Trial-level log-likelihood evaluation
 - Plotting and per-context log-likelihood summaries
 
-Implemented, but not fully integrated into the main CLI:
+In progress:
 
-- Qwen full-vocabulary continuation scoring
+- Qwen sparse continuation precompute for the focus-alternative prompts
+- Qwen end-to-end runs through the main negation pipeline while the full context precompute is being completed
 
 Planned next:
 
 - Uniform next-word baseline
 - Correlation analysis between model negation probabilities and human negation probabilities on matched trials
-- End-to-end Qwen integration into the main negation pipeline
+- Finalized Qwen results and plots once the precompute has finished
 
 ## Notes For Future Contributors And AI Agents
 

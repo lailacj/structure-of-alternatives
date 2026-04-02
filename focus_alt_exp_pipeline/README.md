@@ -11,12 +11,13 @@ At a high level, the pipeline does this:
 5. Turn those samples into negation probabilities for different alternative-structure models.
 6. Compare model predictions to human responses, currently with log likelihood.
 
-Current active next-word sources in this pipeline:
+Current stable next-word sources in this pipeline:
 
 - human cloze probabilities
 - a global Google Ngram frequency baseline shared across all contexts
 
-Qwen preparation code exists in this directory, but Qwen is not yet fully wired into the end-to-end runner.
+Qwen support now exists in code, but it is still an in-progress path while the
+full sparse precompute and end-to-end Qwen runs are being finished.
 
 ## Directory Layout
 
@@ -73,8 +74,10 @@ This is the CLI for the current negation-modeling pipeline. It currently support
 
 - `--dataset cloze`
 - `--dataset frequency`
+- `--dataset qwen`
 
-Qwen is conceptually part of the project, but it is not yet exposed as a dataset option in this CLI.
+`--dataset qwen` is available for runs backed by completed precomputed context
+files, but the project-level Qwen results are still being built.
 
 ### Experiment loop
 
@@ -129,6 +132,7 @@ Current active samplers:
 
 - `ClozeSampler`
 - `FrequencySampler`
+- `QwenSampler`
 
 `FrequencySampler` is intentionally context-free. The intended frequency
 baseline is a single global distribution built from a top-K Google Ngram
@@ -155,7 +159,15 @@ remain scoreable.
 
 - `code/precompute_qwen_vocab_log_probs.py`
 
-This script precomputes Qwen continuation log probabilities over the full ngram vocabulary for each prompt context. It is an important bridge toward the planned Qwen-based focus-alternative model, but it is not yet fully integrated into the main experiment runner.
+This script now defaults to a sparse precompute that is sufficient for the Qwen focus-alternative model:
+
+- all unigrams
+- the exact top remaining bigrams needed to reach a chosen `--target-vocab-size`
+- any required experimental bigrams for that context
+
+The main runner consumes those precomputed files through `--dataset qwen`, using exact context-specific ordering probabilities plus cached sampled estimates for `set`, `conjunction`, and `disjunction`.
+That said, Qwen should still be treated as an in-progress model path until the
+full 16-context precompute and main result set are complete.
 
 ## Conceptual Pipeline
 
@@ -180,6 +192,7 @@ Examples:
 
 - `results/cloze_probability/`
 - `results/frequency/`
+- `results/qwen/`
 
 The main raw outputs within one model folder follow this pattern:
 
@@ -229,6 +242,35 @@ By default, `--dataset frequency` now uses
 `--frequency-max-vocab-size`. The default set-boundary sweep is `3, 6, ..., 99`
 because the step size is `3`.
 
+Run the Qwen model from precomputed context files:
+
+```bash
+python focus_alt_exp_pipeline/code/run_experiment.py \
+  --dataset qwen \
+  --qwen-top-vocab-size 100000 \
+  --num-reps 500
+```
+
+For Qwen, each context now samples `num_reps` top-prefix orderings once at the
+maximum requested set boundary and reuses those same samples across all smaller
+set boundaries and across `set`, `conjunction`, and `disjunction`. `ordering`
+is computed exactly from the context-specific Qwen probabilities, and
+`disjunction` is computed from `set + ordering - conjunction`.
+
+Build the sparse Qwen precompute for one context:
+
+```bash
+python focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py \
+  --contexts bag \
+  --target-vocab-size 100000 \
+  --local-files-only \
+  --hf-offline
+```
+
+For Oscar, there is also an array-job wrapper in:
+
+- `oscar_jobs/precompute_qwen_focus_alt.sh`
+
 Summarize results by context from a model-specific result folder:
 
 ```bash
@@ -267,9 +309,11 @@ Implemented now:
 - Trial-level model-vs-human negation-probability correlation plots
 - Split-half analysis of human negation responses
 
-Partially implemented:
+In progress:
 
-- Qwen continuation scoring over a large vocabulary
+- Qwen runner/sampler support from precomputed context-specific continuation probabilities
+- Large-scale sparse Qwen precomputation over all 16 contexts
+- End-to-end Qwen result generation and plotting
 
 Not implemented yet in this pipeline:
 
@@ -285,7 +329,8 @@ If you are extending the model-vs-human negation correlation analysis, the natur
 - model output CSVs from `results/`, using `negation_probability`
 - human trial data from `human_exp_data/sca_dataframe.csv`, aggregated by `(story, trigger, query)`
 
-If you are adding Qwen to the end-to-end pipeline, the natural integration point is:
+If you are extending the Qwen path further, the natural integration points are:
 
-- a new sampler in `code/samplers.py`
-- a new dataset option in `code/run_experiment.py`
+- `code/precompute_qwen_vocab_log_probs.py` for generating more context files
+- `code/samplers.py` for Qwen-specific sampling and approximation logic
+- `code/run_experiment.py` for CLI options and defaults

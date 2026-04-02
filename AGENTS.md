@@ -71,7 +71,7 @@ Main scripts:
 - `focus_alt_exp_pipeline/code/summarize_log_likelihood_by_context.py`
   Per-context summaries.
 - `focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py`
-  Qwen preparation code.
+  Sparse Qwen precompute for focus-alternative contexts.
 
 ## Current Model Status
 
@@ -87,14 +87,16 @@ Implemented in the active pipeline:
 - Trial-level log-likelihood evaluation
 - Plotting and context summaries
 
-Present but not fully wired into the main CLI:
+In progress:
 
-- Qwen full-vocabulary continuation scoring
+- Qwen sparse continuation precompute over the focus-alternative contexts
+- Qwen runs through the active pipeline from completed precomputed context files
+- End-to-end Qwen results and plots while the full 16-context precompute is being completed
 
-Planned or partially future-facing:
+Planned or future-facing:
 
 - Uniform next-word baseline
-- More end-to-end Qwen integration
+- Finalized project-level Qwen results once the current precompute finishes
 
 ## Result Conventions
 
@@ -138,9 +140,14 @@ Run the frequency baseline:
 ```bash
 python focus_alt_exp_pipeline/code/run_experiment.py \
   --dataset frequency \
-  --set-boundaries 2,3,4,5 \
   --num-reps 500
 ```
+
+Qwen is still in progress, but the current code path uses:
+
+- `focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py` for sparse context precompute
+- `focus_alt_exp_pipeline/code/run_experiment.py --dataset qwen` for runs backed by completed precomputed context files
+- `oscar_jobs/precompute_qwen_focus_alt.sh` for the current Oscar array-job precompute
 
 Summarize results by context:
 
@@ -184,7 +191,8 @@ When changing data loading or preprocessing logic, prefer keeping compatibility 
 - Preserve existing result filenames and directory layout where possible.
 - Be careful with long-running scripts or large generated outputs; this repo contains many result artifacts already.
 - If adding documentation, keep it aligned with the current active workflow rather than archival code.
-- If asked to integrate Qwen more fully, inspect `precompute_qwen_vocab_log_probs.py`, `run_experiment.py`, and `runner.py` together before making assumptions.
+- If asked to work on Qwen, inspect `precompute_qwen_vocab_log_probs.py`, `samplers.py`, `run_experiment.py`, and `runner.py` together before making assumptions.
+- Treat cloze and frequency as stable baselines; treat Qwen as an active in-progress path until the full precompute and result set are complete.
 
 ## Safe Default Mental Model
 
