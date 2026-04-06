@@ -33,7 +33,7 @@ DEFAULT_RESULTS_DIR = ROOT_DIR / "focus_alt_exp_pipeline" / "results"
 DEFAULT_FREQUENCY_1GRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "vocab_1gram_counts.tsv"
 DEFAULT_FREQUENCY_2GRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "vocab_2gram_counts.tsv"
 DEFAULT_FREQUENCY_BACKGROUND_VOCAB_SIZE = 800_000
-DEFAULT_QWEN_LOG_PROBS_DIR = ROOT_DIR.parent / "ngrams" / "qwen_full_vocab_log_probs"
+DEFAULT_QWEN_LOG_PROBS_DIR = ROOT_DIR.parent / "ngrams" / "qwen_context_balanced_log_probs"
 DEFAULT_QWEN_TOP_VOCAB_SIZE = 100_000
 RESULTS_SUBDIR_BY_DATASET = {
     "cloze": "cloze_probability",

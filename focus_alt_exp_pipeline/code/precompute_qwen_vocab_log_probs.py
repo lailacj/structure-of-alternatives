@@ -1,48 +1,26 @@
-"""Precompute Qwen continuation log-probabilities for the focus-alternative pipeline.
-
-By default, this script writes a sparse per-context artifact that is sufficient for the
-Qwen focus-alternative model with a chosen top-M support size:
-  - all unigrams are scored
-  - the exact top remaining bigrams are scored
-  - any required experimental bigrams for that context are force-scored
-
-If `--dense-output` is provided, the script falls back to scoring the full 2-gram
-vocabulary as well.
-
-Each context still writes one float32 .npy aligned to a shared vocab manifest. Entries
-that were not scored remain NaN.
-
-The output is designed to be resumable:
-  - <context>.log_probs.npy stores the values
-  - <context>.progress.json tracks where scoring has reached
-  - vocab_manifest.json stores the shared vocab layout
-"""
+"""Precompute Qwen continuation log-probabilities over a context-balanced vocab."""
 
 from __future__ import annotations
 
 import argparse
+import copy
+import csv
 import gc
-import heapq
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Iterable, Iterator, List, Sequence
+from typing import Iterable, Iterator, List
 
 import numpy as np
 import pandas as pd
 
-try:
-    from .data_utils import normalize_unique_tokens, prepare_experimental_data, resolve_context_col
-except ImportError:
-    from data_utils import normalize_unique_tokens, prepare_experimental_data, resolve_context_col
-
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DEFAULT_PROMPTS_CSV = ROOT_DIR / "prompts" / "prompt_files" / "prompts_llm_next_word.csv"
-DEFAULT_EXPERIMENTAL_DATA = ROOT_DIR / "focus_alt_exp_pipeline" / "human_exp_data" / "sca_dataframe.csv"
+DEFAULT_OUTPUT_DIR = ROOT_DIR.parent / "ngrams" / "qwen_context_balanced_log_probs"
 DEFAULT_VOCAB_1GRAM = ROOT_DIR.parent / "ngrams" / "vocab_1gram.txt"
-DEFAULT_VOCAB_2GRAM = ROOT_DIR.parent / "ngrams" / "vocab_2gram.txt"
-DEFAULT_OUTPUT_DIR = ROOT_DIR.parent / "ngrams" / "qwen_full_vocab_log_probs"
+DEFAULT_BIGRAM_SUPPORT_DIR = ROOT_DIR.parent / "ngrams" / "qwen_bigram_support"
+DEFAULT_BIGRAM_SUPPORT_MANIFEST = DEFAULT_BIGRAM_SUPPORT_DIR / "selection_manifest.json"
 DEFAULT_MODEL_PATH = ROOT_DIR.parent / "hf-cache" / "models--Qwen--Qwen2-7B"
 DEFAULT_TARGET_VOCAB_SIZE = 100_000
 
@@ -156,22 +134,23 @@ def _load_prompts(
     return rows
 
 
-def _extract_required_bigrams_by_context(experimental_data_path: Path) -> Dict[str, set[str]]:
-    experimental_data = pd.read_csv(experimental_data_path)
-    prepared = prepare_experimental_data(experimental_data)
-    context_col = resolve_context_col(prepared)
-    query_col = "cleaned_query" if "cleaned_query" in prepared.columns else "query"
-    trigger_col = "cleaned_trigger" if "cleaned_trigger" in prepared.columns else "trigger"
+def _load_bigram_support_manifest(path: Path) -> dict:
+    if not path.exists():
+        raise FileNotFoundError(f"Missing bigram support manifest: {path}")
+    with path.open("r", encoding="utf-8") as handle:
+        manifest = json.load(handle)
 
-    required_by_context: Dict[str, set[str]] = {}
-    for context, subset in prepared.groupby(context_col, sort=False):
-        values = pd.concat([subset[query_col], subset[trigger_col]], ignore_index=True).dropna()
-        tokens = normalize_unique_tokens(values.tolist())
-        required_by_context[str(context)] = {token for token in tokens if " " in token}
-    return required_by_context
+    outputs = manifest.get("outputs", {})
+    contexts = manifest.get("contexts", {})
+    global_vocab_path = outputs.get("global_vocab_path")
+    if not global_vocab_path:
+        raise ValueError(f"Bigram support manifest is missing outputs.global_vocab_path: {path}")
+    if not isinstance(contexts, dict) or not contexts:
+        raise ValueError(f"Bigram support manifest is missing context specs: {path}")
+    return manifest
 
 
-def _load_or_create_manifest(
+def _load_or_create_vocab_manifest(
     output_dir: Path,
     *,
     vocab_1gram: Path,
@@ -207,6 +186,13 @@ def _load_or_create_manifest(
     return manifest
 
 
+def _source_by_name(manifest: dict, name: str) -> dict:
+    for source in manifest["sources"]:
+        if str(source["name"]) == name:
+            return source
+    raise KeyError(f"Missing source '{name}' in manifest")
+
+
 def _load_progress(progress_path: Path, source_names: Iterable[str]) -> dict:
     if progress_path.exists():
         with progress_path.open("r", encoding="utf-8") as handle:
@@ -233,7 +219,13 @@ def _init_output_array(output_path: Path, total_count: int, overwrite: bool) -> 
         output_path.unlink()
 
     if output_path.exists():
-        return np.lib.format.open_memmap(output_path, mode="r+")
+        arr = np.lib.format.open_memmap(output_path, mode="r+")
+        if tuple(arr.shape) != (total_count,):
+            raise ValueError(
+                f"Existing output array has shape {arr.shape}, expected {(total_count,)}. "
+                "Use --overwrite or a fresh output directory."
+            )
+        return arr
 
     arr = np.lib.format.open_memmap(output_path, mode="w+", dtype=np.float32, shape=(total_count,))
     arr[:] = np.nan
@@ -293,6 +285,35 @@ def _prepare_prompt_state(torch_module, tokenizer, model, prompt: str) -> Prompt
     )
 
 
+def _clone_past_key_values(past_key_values):
+    if past_key_values is None:
+        return None
+
+    try:
+        return copy.deepcopy(past_key_values)
+    except Exception:
+        pass
+
+    if hasattr(past_key_values, "to_legacy_cache"):
+        legacy_cache = past_key_values.to_legacy_cache()
+        cloned_legacy_cache = tuple(
+            (key_states.clone(), value_states.clone())
+            for key_states, value_states in legacy_cache
+        )
+        from_legacy_cache = getattr(past_key_values.__class__, "from_legacy_cache", None)
+        if callable(from_legacy_cache):
+            return from_legacy_cache(cloned_legacy_cache)
+        return cloned_legacy_cache
+
+    if isinstance(past_key_values, (tuple, list)):
+        return tuple(
+            (key_states.clone(), value_states.clone())
+            for key_states, value_states in past_key_values
+        )
+
+    raise TypeError(f"Unsupported past_key_values type: {type(past_key_values)!r}")
+
+
 def _score_continuation_log_prob(
     torch_module,
     tokenizer,
@@ -308,7 +329,10 @@ def _score_continuation_log_prob(
 
     total_log_prob = 0.0
     next_log_probs = prompt_state.next_log_probs
-    past_key_values = prompt_state.past_key_values
+    if len(token_ids) == 1:
+        return float(next_log_probs[token_ids[0]].item())
+
+    past_key_values = _clone_past_key_values(prompt_state.past_key_values)
 
     with torch_module.no_grad():
         for idx, token_id in enumerate(token_ids):
@@ -328,7 +352,49 @@ def _score_continuation_log_prob(
     return total_log_prob
 
 
-def _process_source(
+def _reset_source_state(*, output_array: np.memmap, source_info: dict, progress: dict) -> None:
+    offset = int(source_info["offset"])
+    count = int(source_info["count"])
+    output_array[offset : offset + count] = np.nan
+    progress["sources"][str(source_info["name"])] = {
+        "last_line": 0,
+        "done": False,
+    }
+
+
+def _ensure_bigram_mode_compatibility(
+    *,
+    output_array: np.memmap,
+    manifest: dict,
+    progress: dict,
+    selected_bigrams_path: Path,
+    selection_manifest_path: Path,
+    target_vocab_size: int,
+) -> None:
+    bigram_source = _source_by_name(manifest, "2gram")
+    source_progress = progress["sources"].setdefault("2gram", {"last_line": 0, "done": False})
+    existing_mode = source_progress.get("selection_mode")
+    existing_target = source_progress.get("target_vocab_size")
+    existing_selection_path = source_progress.get("selected_bigrams_path")
+    existing_manifest_path = source_progress.get("selection_manifest_path")
+
+    if existing_mode != "context_balanced_support":
+        if int(source_progress.get("last_line", 0)) > 0 or bool(source_progress.get("done")):
+            print("[reset] Clearing legacy/dense 2gram state before context-balanced run")
+            _reset_source_state(output_array=output_array, source_info=bigram_source, progress=progress)
+        return
+
+    if (
+        existing_selection_path != str(selected_bigrams_path)
+        or existing_manifest_path != str(selection_manifest_path)
+        or existing_target is None
+        or int(existing_target) != int(target_vocab_size)
+    ):
+        print("[reset] Clearing 2gram state because the selected support changed")
+        _reset_source_state(output_array=output_array, source_info=bigram_source, progress=progress)
+
+
+def _process_unigram_source(
     *,
     torch_module,
     tokenizer,
@@ -388,46 +454,32 @@ def _process_source(
 
     output_array.flush()
     source_progress["last_line"] = last_seen_line
-    source_progress["done"] = last_seen_line >= source_count
+    source_progress["done"] = last_seen_line >= source_count and (limit is None or last_seen_line >= limit)
     _save_progress(progress_path, progress)
     print(f"[done] source={source_name} line={processed_total} complete={source_progress['done']}")
 
 
-def _read_unigram_log_probs(source_info: dict, output_array: np.memmap) -> Dict[str, float]:
-    source_path = Path(source_info["path"])
-    source_offset = int(source_info["offset"])
-    source_count = int(source_info["count"])
-    values = np.asarray(output_array[source_offset : source_offset + source_count], dtype=np.float32)
+def _load_context_bigram_entries(context_info: dict) -> List[dict]:
+    selected_path = Path(str(context_info["selected_bigrams_path"]))
+    if not selected_path.exists():
+        raise FileNotFoundError(f"Missing selected bigram file: {selected_path}")
 
-    unigram_log_probs: Dict[str, float] = {}
-    for line_no, word in _iter_vocab(source_path):
-        value = float(values[line_no - 1])
-        if np.isfinite(value):
-            unigram_log_probs[word] = value
-    return unigram_log_probs
-
-
-def _serialize_top_heap(top_heap: Sequence[tuple[float, int]]) -> List[dict]:
-    return [
-        {
-            "log_prob": float(log_prob),
-            "line_no": int(line_no),
-        }
-        for log_prob, line_no in sorted(top_heap, reverse=True)
-    ]
+    entries: List[dict] = []
+    with selected_path.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t")
+        for row in reader:
+            entries.append(
+                {
+                    "line_no": int(row["line_no"]),
+                    "token": row["token"],
+                    "selection_source": row["selection_source"],
+                }
+            )
+    entries.sort(key=lambda item: item["line_no"])
+    return entries
 
 
-def _deserialize_top_heap(raw_heap: Sequence[dict], max_size: int) -> List[tuple[float, int]]:
-    heap: List[tuple[float, int]] = []
-    for entry in raw_heap:
-        if len(heap) >= max_size:
-            break
-        heap.append((float(entry["log_prob"]), int(entry["line_no"])))
-    heapq.heapify(heap)
-    return heap
-
-
-def _process_sparse_bigram_source(
+def _process_selected_bigram_source(
     *,
     torch_module,
     tokenizer,
@@ -439,158 +491,111 @@ def _process_sparse_bigram_source(
     progress_path: Path,
     flush_every: int,
     limit: int | None,
-    unigram_log_probs: Dict[str, float],
-    required_bigrams: set[str],
-    target_bigram_count: int,
+    selected_entries: Sequence[dict],
+    required_bigrams: Sequence[str],
+    unigram_count: int,
+    selected_bigrams_path: Path,
+    selection_manifest_path: Path,
 ) -> None:
     source_name = str(source_info["name"])
-    if source_name != "2gram":
-        raise ValueError("_process_sparse_bigram_source only supports the 2gram source")
-
-    source_path = Path(source_info["path"])
-    source_offset = int(source_info["offset"])
     source_count = int(source_info["count"])
+    source_offset = int(source_info["offset"])
     source_progress = progress["sources"].setdefault(source_name, {"last_line": 0, "done": False})
-    source_progress["selection_mode"] = "sparse_top_support"
+    target_bigram_count = len(selected_entries)
+    target_vocab_size = int(unigram_count + target_bigram_count)
+    required_bigram_set = {str(token) for token in required_bigrams}
+
+    source_progress["selection_mode"] = "context_balanced_support"
     source_progress["target_bigram_count"] = int(target_bigram_count)
-    source_progress["target_vocab_size"] = int(target_bigram_count + len(unigram_log_probs))
-    source_progress["required_total"] = len(required_bigrams)
+    source_progress["target_vocab_size"] = target_vocab_size
+    source_progress["required_total"] = len(required_bigram_set)
+    source_progress["selected_bigrams_path"] = str(selected_bigrams_path)
+    source_progress["selection_manifest_path"] = str(selection_manifest_path)
 
-    if source_progress.get("done") and (limit is None or int(source_progress.get("last_line", 0)) >= limit):
+    if source_progress.get("done") and (limit is None or source_progress.get("scored_candidates", 0) >= limit):
         print(f"[skip] source={source_name} already complete")
-        return
-    if limit is not None and int(source_progress.get("last_line", 0)) >= limit:
-        print(f"[skip] source={source_name} already reached requested limit={limit}")
-        return
-
-    if target_bigram_count <= 0 and not required_bigrams:
-        source_progress["last_line"] = min(source_count, limit if limit is not None else source_count)
-        source_progress["done"] = limit is None or source_progress["last_line"] >= source_count
-        source_progress["top_heap"] = []
-        source_progress["required_scored"] = []
-        _save_progress(progress_path, progress)
-        print(f"[done] source={source_name} no bigram scoring needed")
         return
 
     last_line = int(source_progress.get("last_line", 0))
-    top_heap = _deserialize_top_heap(source_progress.get("top_heap", []), target_bigram_count)
     required_scored = set(str(value) for value in source_progress.get("required_scored", []))
     scored_candidates = int(source_progress.get("scored_candidates", 0))
-
     processed_since_flush = 0
-    processed_total = last_line
     last_seen_line = last_line
 
     print(
         f"[start] source={source_name} resume_line={last_line} "
-        f"target_lines={limit if limit is not None else source_count} "
-        f"target_bigram_count={target_bigram_count} required_bigrams={len(required_bigrams)}"
+        f"selected_bigrams={target_bigram_count} required_bigrams={len(required_bigram_set)}"
     )
 
-    with source_path.open("r", encoding="utf-8") as handle:
-        for line_no, raw_line in enumerate(handle, start=1):
-            if line_no <= last_line:
-                continue
-            if limit is not None and line_no > limit:
-                break
+    processed_entries = 0
+    for entry in selected_entries:
+        line_no = int(entry["line_no"])
+        token = str(entry["token"])
+        if line_no <= last_line:
+            processed_entries += 1
+            continue
+        if line_no > source_count:
+            raise ValueError(f"Selected bigram line {line_no} exceeds source size {source_count}")
+        if limit is not None and processed_entries >= limit:
+            break
 
-            phrase = raw_line.rstrip("\n")
-            if not phrase:
-                continue
+        global_index = source_offset + line_no - 1
+        output_array[global_index] = np.float32(
+            _score_continuation_log_prob(torch_module, tokenizer, model, prompt_state, token)
+        )
+        if token in required_bigram_set:
+            required_scored.add(token)
 
-            last_seen_line = line_no
-            processed_total = line_no
-            global_index = source_offset + line_no - 1
-            first_word = phrase.split(" ", 1)[0]
-            upper_bound = unigram_log_probs.get(first_word)
-            is_required = phrase in required_bigrams
-            current_threshold = top_heap[0][0] if len(top_heap) >= target_bigram_count and top_heap else float("-inf")
+        scored_candidates += 1
+        processed_since_flush += 1
+        processed_entries += 1
+        last_seen_line = line_no
 
-            if not is_required and upper_bound is not None and len(top_heap) >= target_bigram_count and upper_bound <= current_threshold:
-                continue
-            if not is_required and upper_bound is None:
-                continue
-
-            log_prob = _score_continuation_log_prob(
-                torch_module,
-                tokenizer,
-                model,
-                prompt_state,
-                phrase,
+        if processed_since_flush >= flush_every:
+            output_array.flush()
+            source_progress["last_line"] = line_no
+            source_progress["done"] = False
+            source_progress["scored_candidates"] = scored_candidates
+            source_progress["required_scored"] = sorted(required_scored)
+            source_progress["required_scored_count"] = len(required_scored)
+            _save_progress(progress_path, progress)
+            print(
+                f"[progress] source={source_name} line={line_no} "
+                f"scored_candidates={scored_candidates}"
             )
-            output_array[global_index] = np.float32(log_prob)
-            processed_since_flush += 1
-            scored_candidates += 1
-
-            if is_required:
-                required_scored.add(phrase)
-
-            if target_bigram_count > 0 and np.isfinite(log_prob):
-                if len(top_heap) < target_bigram_count:
-                    heapq.heappush(top_heap, (float(log_prob), line_no))
-                elif float(log_prob) > top_heap[0][0]:
-                    heapq.heapreplace(top_heap, (float(log_prob), line_no))
-
-            if processed_since_flush >= flush_every:
-                output_array.flush()
-                source_progress["last_line"] = line_no
-                source_progress["done"] = False
-                source_progress["scored_candidates"] = scored_candidates
-                source_progress["required_scored"] = sorted(required_scored)
-                source_progress["required_scored_count"] = len(required_scored)
-                source_progress["top_heap"] = _serialize_top_heap(top_heap)
-                _save_progress(progress_path, progress)
-                print(
-                    f"[progress] source={source_name} line={line_no} "
-                    f"scored_candidates={scored_candidates} heap_size={len(top_heap)}"
-                )
-                processed_since_flush = 0
+            processed_since_flush = 0
 
     output_array.flush()
     source_progress["last_line"] = last_seen_line
-    source_progress["done"] = last_seen_line >= source_count and limit is None
+    source_progress["done"] = processed_entries >= len(selected_entries) and limit is None
     source_progress["scored_candidates"] = scored_candidates
     source_progress["required_scored"] = sorted(required_scored)
     source_progress["required_scored_count"] = len(required_scored)
-    source_progress["top_heap"] = _serialize_top_heap(top_heap)
-    missing_required = sorted(required_bigrams.difference(required_scored))
+    missing_required = sorted(required_bigram_set.difference(required_scored))
     if missing_required:
         source_progress["required_missing"] = missing_required
         print(f"[warn] source={source_name} missing required bigrams: {missing_required}")
+    else:
+        source_progress.pop("required_missing", None)
     _save_progress(progress_path, progress)
     print(
-        f"[done] source={source_name} line={processed_total} complete={source_progress['done']} "
-        f"scored_candidates={scored_candidates} heap_size={len(top_heap)}"
+        f"[done] source={source_name} line={last_seen_line} complete={source_progress['done']} "
+        f"scored_candidates={scored_candidates}"
     )
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Precompute Qwen log-probabilities over the full ngram vocab")
+    parser = argparse.ArgumentParser(description="Precompute Qwen log-probabilities over a context-balanced vocab")
     parser.add_argument("--prompts-csv", type=Path, default=DEFAULT_PROMPTS_CSV)
-    parser.add_argument("--experimental-data", type=Path, default=DEFAULT_EXPERIMENTAL_DATA)
     parser.add_argument("--prompt-context-col", type=str, default="story")
     parser.add_argument("--prompt-col", type=str, default="prompt")
     parser.add_argument("--contexts", type=str, default="")
     parser.add_argument("--max-contexts", type=int, default=None)
     parser.add_argument("--vocab-1gram", type=Path, default=DEFAULT_VOCAB_1GRAM)
-    parser.add_argument("--vocab-2gram", type=Path, default=DEFAULT_VOCAB_2GRAM)
+    parser.add_argument("--bigram-support-manifest", type=Path, default=DEFAULT_BIGRAM_SUPPORT_MANIFEST)
     parser.add_argument("--model-path", type=str, default=str(DEFAULT_MODEL_PATH))
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
-    parser.add_argument(
-        "--target-vocab-size",
-        type=int,
-        default=DEFAULT_TARGET_VOCAB_SIZE,
-        help=(
-            "Total number of finite Qwen entries to preserve per context in sparse mode. "
-            "The script keeps all unigrams, the exact top remaining bigrams, and any "
-            "required experimental bigrams for that context."
-        ),
-    )
-    parser.add_argument(
-        "--dense-output",
-        action="store_true",
-        help="Score the full 2-gram vocabulary instead of the sparse top-support output.",
-    )
+    parser.add_argument("--target-vocab-size", type=int, default=DEFAULT_TARGET_VOCAB_SIZE)
     parser.add_argument("--flush-every", type=int, default=1000)
     parser.add_argument("--limit-1gram", type=int, default=None)
     parser.add_argument("--limit-2gram", type=int, default=None)
@@ -600,61 +605,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--local-files-only", action="store_true")
     parser.add_argument("--hf-offline", action="store_true")
     return parser.parse_args()
-
-
-def _source_by_name(manifest: dict, name: str) -> dict:
-    for source in manifest["sources"]:
-        if str(source["name"]) == name:
-            return source
-    raise KeyError(f"Missing source '{name}' in manifest")
-
-
-def _reset_source_state(
-    *,
-    output_array: np.memmap,
-    source_info: dict,
-    progress: dict,
-) -> None:
-    offset = int(source_info["offset"])
-    count = int(source_info["count"])
-    output_array[offset : offset + count] = np.nan
-    progress["sources"][str(source_info["name"])] = {
-        "last_line": 0,
-        "done": False,
-    }
-
-
-def _ensure_bigram_mode_compatibility(
-    *,
-    output_array: np.memmap,
-    manifest: dict,
-    progress: dict,
-    dense_output: bool,
-    target_vocab_size: int,
-) -> None:
-    bigram_source = _source_by_name(manifest, "2gram")
-    source_progress = progress["sources"].setdefault("2gram", {"last_line": 0, "done": False})
-    existing_mode = source_progress.get("selection_mode")
-
-    if dense_output:
-        if existing_mode == "sparse_top_support":
-            print("[reset] Clearing sparse 2gram state before dense output run")
-            _reset_source_state(output_array=output_array, source_info=bigram_source, progress=progress)
-        return
-
-    existing_target = source_progress.get("target_vocab_size")
-    if existing_mode != "sparse_top_support":
-        if int(source_progress.get("last_line", 0)) > 0 or bool(source_progress.get("done")):
-            print("[reset] Clearing legacy/dense 2gram state before sparse output run")
-            _reset_source_state(output_array=output_array, source_info=bigram_source, progress=progress)
-        return
-
-    if existing_target is None or int(existing_target) != int(target_vocab_size):
-        print(
-            "[reset] Clearing sparse 2gram state because target_vocab_size changed: "
-            f"existing={existing_target} requested={target_vocab_size}"
-        )
-        _reset_source_state(output_array=output_array, source_info=bigram_source, progress=progress)
 
 
 def main() -> None:
@@ -673,16 +623,20 @@ def main() -> None:
         os.environ["HF_HUB_OFFLINE"] = "1"
         os.environ["TRANSFORMERS_OFFLINE"] = "1"
 
+    bigram_support_manifest = _load_bigram_support_manifest(args.bigram_support_manifest)
+    vocab_2gram = Path(str(bigram_support_manifest["outputs"]["global_vocab_path"]))
+    if not vocab_2gram.exists():
+        raise FileNotFoundError(f"Missing global bigram support vocab: {vocab_2gram}")
+
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    manifest = _load_or_create_manifest(
+    vocab_manifest = _load_or_create_vocab_manifest(
         args.output_dir,
         vocab_1gram=args.vocab_1gram,
-        vocab_2gram=args.vocab_2gram,
+        vocab_2gram=vocab_2gram,
     )
-    unigram_source = _source_by_name(manifest, "1gram")
-    bigram_source = _source_by_name(manifest, "2gram")
+    unigram_source = _source_by_name(vocab_manifest, "1gram")
+    bigram_source = _source_by_name(vocab_manifest, "2gram")
     unigram_count = int(unigram_source["count"])
-    target_bigram_count = max(int(args.target_vocab_size) - unigram_count, 0)
 
     selected_contexts = _load_prompts(
         args.prompts_csv,
@@ -691,7 +645,6 @@ def main() -> None:
         contexts=_parse_csv_list(args.contexts),
         max_contexts=args.max_contexts,
     )
-    required_bigrams_by_context = _extract_required_bigrams_by_context(args.experimental_data)
 
     torch_module, tokenizer, model, resolved_model_path = _load_model(
         args.model_path,
@@ -711,20 +664,34 @@ def main() -> None:
         progress_path = args.output_dir / f"{stem}.progress.json"
         meta_path = args.output_dir / f"{stem}.meta.json"
 
+        if context not in bigram_support_manifest["contexts"]:
+            raise KeyError(f"Context {context!r} is missing from bigram support manifest {args.bigram_support_manifest}")
+
+        context_info = bigram_support_manifest["contexts"][context]
+        selected_entries = _load_context_bigram_entries(context_info)
+        actual_target_vocab_size = unigram_count + len(selected_entries)
+        if actual_target_vocab_size < args.target_vocab_size:
+            raise ValueError(
+                f"Context {context!r} only has {actual_target_vocab_size} total supported tokens, "
+                f"below requested target {args.target_vocab_size}."
+            )
+        selected_bigrams_path = Path(str(context_info["selected_bigrams_path"]))
+
         if args.overwrite:
             for path in [output_path, progress_path, meta_path]:
                 if path.exists():
                     path.unlink()
 
         print(f"[context] {context}")
-        output_array = _init_output_array(output_path, int(manifest["total_count"]), overwrite=False)
-        progress = _load_progress(progress_path, [source["name"] for source in manifest["sources"]])
+        output_array = _init_output_array(output_path, int(vocab_manifest["total_count"]), overwrite=False)
+        progress = _load_progress(progress_path, [source["name"] for source in vocab_manifest["sources"]])
         _ensure_bigram_mode_compatibility(
             output_array=output_array,
-            manifest=manifest,
+            manifest=vocab_manifest,
             progress=progress,
-            dense_output=args.dense_output,
-            target_vocab_size=int(args.target_vocab_size),
+            selected_bigrams_path=selected_bigrams_path,
+            selection_manifest_path=args.bigram_support_manifest,
+            target_vocab_size=actual_target_vocab_size,
         )
         _write_context_metadata(
             meta_path,
@@ -734,15 +701,18 @@ def main() -> None:
                 "model_path": resolved_model_path,
                 "manifest_path": str(args.output_dir / "vocab_manifest.json"),
                 "output_path": str(output_path),
-                "selection_mode": "dense_full_vocab" if args.dense_output else "sparse_top_support",
-                "target_vocab_size": int(args.target_vocab_size),
-                "target_bigram_count": int(target_bigram_count),
-                "required_bigrams": sorted(required_bigrams_by_context.get(str(context), set())),
+                "selection_mode": "context_balanced_support",
+                "target_vocab_size": int(actual_target_vocab_size),
+                "requested_target_vocab_size": int(args.target_vocab_size),
+                "target_bigram_count": len(selected_entries),
+                "required_bigrams": context_info["required_bigrams"],
+                "selected_bigrams_path": str(selected_bigrams_path),
+                "selection_manifest_path": str(args.bigram_support_manifest),
             },
         )
 
         prompt_state = _prepare_prompt_state(torch_module, tokenizer, model, prompt)
-        _process_source(
+        _process_unigram_source(
             torch_module=torch_module,
             tokenizer=tokenizer,
             model=model,
@@ -754,37 +724,23 @@ def main() -> None:
             flush_every=args.flush_every,
             limit=limits.get("1gram"),
         )
-
-        if args.dense_output:
-            _process_source(
-                torch_module=torch_module,
-                tokenizer=tokenizer,
-                model=model,
-                prompt_state=prompt_state,
-                source_info=bigram_source,
-                output_array=output_array,
-                progress=progress,
-                progress_path=progress_path,
-                flush_every=args.flush_every,
-                limit=limits.get("2gram"),
-            )
-        else:
-            unigram_log_probs = _read_unigram_log_probs(unigram_source, output_array)
-            _process_sparse_bigram_source(
-                torch_module=torch_module,
-                tokenizer=tokenizer,
-                model=model,
-                prompt_state=prompt_state,
-                source_info=bigram_source,
-                output_array=output_array,
-                progress=progress,
-                progress_path=progress_path,
-                flush_every=args.flush_every,
-                limit=limits.get("2gram"),
-                unigram_log_probs=unigram_log_probs,
-                required_bigrams=required_bigrams_by_context.get(str(context), set()),
-                target_bigram_count=target_bigram_count,
-            )
+        _process_selected_bigram_source(
+            torch_module=torch_module,
+            tokenizer=tokenizer,
+            model=model,
+            prompt_state=prompt_state,
+            source_info=bigram_source,
+            output_array=output_array,
+            progress=progress,
+            progress_path=progress_path,
+            flush_every=args.flush_every,
+            limit=limits.get("2gram"),
+            selected_entries=selected_entries,
+            required_bigrams=context_info["required_bigrams"],
+            unigram_count=unigram_count,
+            selected_bigrams_path=selected_bigrams_path,
+            selection_manifest_path=args.bigram_support_manifest,
+        )
 
         del output_array
         del prompt_state

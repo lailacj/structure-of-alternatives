@@ -73,6 +73,8 @@ Important files:
 
 - `focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py`
   Precomputes sparse Qwen continuation log probabilities for each prompt context.
+- `building_vocab_from_ngrams/code/build_qwen_bigram_support.py`
+  Builds the context-balanced bigram support set that the Qwen precompute consumes.
 
 - `focus_alt_exp_pipeline/code/split_half_neg_correlation.py`
   Estimates split-half reliability for human negation responses.

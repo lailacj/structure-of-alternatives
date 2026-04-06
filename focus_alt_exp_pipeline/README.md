@@ -157,13 +157,24 @@ remain scoreable.
 
 ### Qwen preparation
 
+- `../building_vocab_from_ngrams/code/build_qwen_bigram_support.py`
+
+This builder derives required tokens directly from `human_exp_data/sca_dataframe.csv`
+and creates a neutral, context-balanced bigram support set for Qwen:
+
+- all human bigrams are force-included for their context
+- each context gets the same total bigram budget
+- context-specific expansions come from first-word families defined by that
+  context's required human tokens
+- any remaining slots are filled from a shared background pool ranked by the
+  corpus conditional score `count(w1 w2) / count(w1)`
+
 - `code/precompute_qwen_vocab_log_probs.py`
 
-This script now defaults to a sparse precompute that is sufficient for the Qwen focus-alternative model:
+This script now defaults to a context-balanced sparse precompute that is sufficient for the Qwen focus-alternative model:
 
 - all unigrams
-- the exact top remaining bigrams needed to reach a chosen `--target-vocab-size`
-- any required experimental bigrams for that context
+- the context-selected bigrams from `ngrams/qwen_bigram_support/`
 
 The main runner consumes those precomputed files through `--dataset qwen`, using exact context-specific ordering probabilities plus cached sampled estimates for `set`, `conjunction`, and `disjunction`.
 That said, Qwen should still be treated as an in-progress model path until the
@@ -257,6 +268,14 @@ set boundaries and across `set`, `conjunction`, and `disjunction`. `ordering`
 is computed exactly from the context-specific Qwen probabilities, and
 `disjunction` is computed from `set + ordering - conjunction`.
 
+Build the context-balanced Qwen bigram support files:
+
+```bash
+python building_vocab_from_ngrams/code/build_qwen_bigram_support.py \
+  --context-bigram-budget 1500 \
+  --shared-background-pool-size 500
+```
+
 Build the sparse Qwen precompute for one context:
 
 ```bash
@@ -312,7 +331,7 @@ Implemented now:
 In progress:
 
 - Qwen runner/sampler support from precomputed context-specific continuation probabilities
-- Large-scale sparse Qwen precomputation over all 16 contexts
+- Large-scale sparse Qwen precomputation over all 16 contexts from the context-balanced support set
 - End-to-end Qwen result generation and plotting
 
 Not implemented yet in this pipeline:

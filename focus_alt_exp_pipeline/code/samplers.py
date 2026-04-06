@@ -617,7 +617,7 @@ class QwenSampler(ContextSampler):
             return False
 
         selection_mode = bigram_progress.get("selection_mode")
-        if selection_mode == "sparse_top_support":
+        if selection_mode in {"sparse_top_support", "context_balanced_support"}:
             target_vocab_size = bigram_progress.get("target_vocab_size")
             if target_vocab_size is None or int(target_vocab_size) < self._top_vocab_size:
                 return False
