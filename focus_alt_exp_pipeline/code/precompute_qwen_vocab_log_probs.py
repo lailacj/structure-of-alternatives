@@ -18,7 +18,7 @@ import pandas as pd
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DEFAULT_PROMPTS_CSV = ROOT_DIR / "prompts" / "prompt_files" / "prompts_llm_next_word.csv"
 DEFAULT_OUTPUT_DIR = ROOT_DIR.parent / "ngrams" / "qwen_context_balanced_log_probs"
-DEFAULT_VOCAB_1GRAM = ROOT_DIR.parent / "ngrams" / "vocab_1gram.txt"
+DEFAULT_VOCAB_1GRAM = ROOT_DIR.parent / "ngrams" / "frequency_info" / "vocab_1gram.txt"
 DEFAULT_BIGRAM_SUPPORT_DIR = ROOT_DIR.parent / "ngrams" / "qwen_bigram_support"
 DEFAULT_BIGRAM_SUPPORT_MANIFEST = DEFAULT_BIGRAM_SUPPORT_DIR / "selection_manifest.json"
 DEFAULT_MODEL_PATH = ROOT_DIR.parent / "hf-cache" / "models--Qwen--Qwen2-7B"

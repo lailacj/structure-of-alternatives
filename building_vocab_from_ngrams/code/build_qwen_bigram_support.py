@@ -29,8 +29,8 @@ from data_utils import clean_word, prepare_experimental_data, resolve_context_co
 
 DEFAULT_EXPERIMENTAL_DATA = ROOT_DIR / "focus_alt_exp_pipeline" / "human_exp_data" / "sca_dataframe.csv"
 DEFAULT_OUTPUT_DIR = ROOT_DIR.parent / "ngrams" / "qwen_bigram_support"
-DEFAULT_UNIGRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "vocab_1gram_counts.tsv"
-DEFAULT_BACKGROUND_BIGRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "vocab_2gram_counts.tsv"
+DEFAULT_UNIGRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "frequency_info" / "vocab_1gram_counts.tsv"
+DEFAULT_BACKGROUND_BIGRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "frequency_info" / "vocab_2gram_counts.tsv"
 DEFAULT_NGRAM_DIR = ROOT_DIR.parent / "ngrams" / "downloaded_files"
 DEFAULT_UNIGRAM_GLOB = "googlebooks-eng-all-1gram-*.gz"
 DEFAULT_BIGRAM_GLOB = "googlebooks-eng-all-2gram-*.gz"
