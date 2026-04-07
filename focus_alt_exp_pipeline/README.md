@@ -180,6 +180,41 @@ The main runner consumes those precomputed files through `--dataset qwen`, using
 That said, Qwen should still be treated as an in-progress model path until the
 full 16-context precompute and main result set are complete.
 
+### Qwen implementation handoff (April 6, 2026)
+
+The current Qwen implementation status is:
+
+- `ngrams/qwen_bigram_support/` has been built successfully from the new
+  context-balanced builder
+- every context has `1500` selected bigrams
+- the shared global selected-bigram union is `22789`
+- the active precompute output directory is now
+  `ngrams/qwen_context_balanced_log_probs/`
+- the old dense `20M+` bigram scan is no longer the intended path
+
+Important path note:
+
+- the unigram and frequency bigram source files live under `ngrams/frequency_info/`
+- the Qwen precompute defaults and the Oscar wrapper were updated to use those
+  files explicitly
+
+Smoke-test status:
+
+- the first `mall` smoke-test failed on a missing `vocab_1gram.txt` path and
+  that bug has been fixed
+- the rerun created:
+  - `ngrams/qwen_context_balanced_log_probs/mall.log_probs.npy`
+  - `ngrams/qwen_context_balanced_log_probs/mall.meta.json`
+  - `ngrams/qwen_context_balanced_log_probs/mall.progress.json`
+- as of April 6, 2026 at about 9:06 PM EDT, `mall.progress.json` reported:
+  - `1gram.last_line = 71000`
+  - `1gram.done = false`
+  - `2gram.last_line = 0`
+  - `2gram.done = false`
+
+That means the current smoke-test is no longer failing immediately; it is in
+the unigram scoring phase and has not yet reached the selected-bigram phase.
+
 ## Conceptual Pipeline
 
 For a given context:
@@ -280,8 +315,9 @@ Build the sparse Qwen precompute for one context:
 
 ```bash
 python focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py \
-  --contexts bag \
+  --contexts mall \
   --target-vocab-size 100000 \
+  --vocab-1gram /users/ljohnst7/data/ljohnst7/ngrams/frequency_info/vocab_1gram.txt \
   --local-files-only \
   --hf-offline
 ```
@@ -289,6 +325,18 @@ python focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py \
 For Oscar, there is also an array-job wrapper in:
 
 - `oscar_jobs/precompute_qwen_focus_alt.sh`
+
+Check smoke-test progress with:
+
+```bash
+cat /users/ljohnst7/data/ljohnst7/ngrams/qwen_context_balanced_log_probs/mall.progress.json
+```
+
+If the `mall` smoke-test completes cleanly, the next command is:
+
+```bash
+sbatch oscar_jobs/precompute_qwen_focus_alt.sh
+```
 
 Summarize results by context from a model-specific result folder:
 

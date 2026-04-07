@@ -98,6 +98,55 @@ Planned or future-facing:
 - Uniform next-word baseline
 - Finalized project-level Qwen results once the current precompute finishes
 
+## Qwen Handoff Status
+
+As of April 6, 2026, the active Qwen path is the new context-balanced sparse
+support pipeline, not the older global 2-gram threshold workflow.
+
+Finished:
+
+- `building_vocab_from_ngrams/code/build_qwen_bigram_support.py` replaces the
+  old threshold-based 2-gram builder for active work
+- the old threshold builders were archived under `archive/code_archive/`
+- `ngrams/qwen_bigram_support/` has already been generated successfully
+- every context has exactly `1500` selected bigrams
+- the selected bigram union size is `22789`
+- `focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py` now scores
+  context-selected bigrams instead of scanning the full 2-gram vocabulary
+- `focus_alt_exp_pipeline/code/run_experiment.py` and
+  `focus_alt_exp_pipeline/code/samplers.py` are already wired to the new
+  `qwen_context_balanced_log_probs` outputs
+
+Recent bug fix:
+
+- the initial smoke-test failed because the precompute script expected
+  `ngrams/vocab_1gram.txt`
+- the actual unigram vocabulary lives at
+  `ngrams/frequency_info/vocab_1gram.txt`
+- the defaults and Oscar wrapper were updated to use the `frequency_info`
+  unigram/count files
+
+Current runtime state:
+
+- a `mall` smoke-test rerun is in progress or was recently in progress under
+  `ngrams/qwen_context_balanced_log_probs/`
+- at the latest observed checkpoint on April 6, 2026 around 9:06 PM EDT:
+  - `mall.progress.json` showed `1gram.last_line = 71000`
+  - `1gram.done = false`
+  - `2gram.last_line = 0`
+  - `2gram.done = false`
+- this indicates the sparse Qwen precompute got past model loading and path
+  setup and is actively scoring unigrams
+
+Default next step after reopening:
+
+1. Check whether `ngrams/qwen_context_balanced_log_probs/mall.progress.json`
+   now shows both sources done.
+2. If `mall` completed cleanly, launch the full array job with
+   `sbatch oscar_jobs/precompute_qwen_focus_alt.sh`.
+3. Once all contexts are complete, run
+   `focus_alt_exp_pipeline/code/run_experiment.py --dataset qwen`.
+
 ## Result Conventions
 
 Most current outputs are written under:
