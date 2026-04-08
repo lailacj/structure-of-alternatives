@@ -174,7 +174,7 @@ and creates a neutral, context-balanced bigram support set for Qwen:
 This script now defaults to a context-balanced sparse precompute that is sufficient for the Qwen focus-alternative model:
 
 - all unigrams
-- the context-selected bigrams from `ngrams/qwen_bigram_support/`
+- the full global union of selected bigrams from `ngrams/qwen_bigram_support/`
 
 The main runner consumes those precomputed files through `--dataset qwen`, using exact context-specific ordering probabilities plus cached sampled estimates for `set`, `conjunction`, and `disjunction`.
 That said, Qwen should still be treated as an in-progress model path until the
@@ -191,6 +191,10 @@ The current Qwen implementation status is:
 - the active precompute output directory is now
   `ngrams/qwen_context_balanced_log_probs/`
 - the old dense `20M+` bigram scan is no longer the intended path
+- Qwen now scores the same shared global vocab for every context:
+  - `98502` unigrams
+  - `22789` union bigrams
+  - `121291` total tokens per context
 
 Important path note:
 
@@ -321,6 +325,10 @@ python focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py \
   --local-files-only \
   --hf-offline
 ```
+
+Even though the support builder uses context-balanced selection to define the
+global union, the Qwen scorer now evaluates that same union vocabulary for every
+context prompt rather than scoring a smaller context-specific subset.
 
 For Oscar, there is also an array-job wrapper in:
 

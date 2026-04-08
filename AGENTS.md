@@ -112,7 +112,8 @@ Finished:
 - every context has exactly `1500` selected bigrams
 - the selected bigram union size is `22789`
 - `focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py` now scores
-  context-selected bigrams instead of scanning the full 2-gram vocabulary
+  the same global-union bigram vocab for every context instead of scanning the
+  full 2-gram vocabulary
 - `focus_alt_exp_pipeline/code/run_experiment.py` and
   `focus_alt_exp_pipeline/code/samplers.py` are already wired to the new
   `qwen_context_balanced_log_probs` outputs

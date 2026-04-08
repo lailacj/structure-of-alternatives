@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import argparse
 import copy
-import csv
 import gc
 import json
 from dataclasses import dataclass
@@ -367,7 +366,7 @@ def _ensure_bigram_mode_compatibility(
     output_array: np.memmap,
     manifest: dict,
     progress: dict,
-    selected_bigrams_path: Path,
+    global_bigram_vocab_path: Path,
     selection_manifest_path: Path,
     target_vocab_size: int,
 ) -> None:
@@ -375,17 +374,17 @@ def _ensure_bigram_mode_compatibility(
     source_progress = progress["sources"].setdefault("2gram", {"last_line": 0, "done": False})
     existing_mode = source_progress.get("selection_mode")
     existing_target = source_progress.get("target_vocab_size")
-    existing_selection_path = source_progress.get("selected_bigrams_path")
+    existing_global_vocab_path = source_progress.get("global_bigram_vocab_path")
     existing_manifest_path = source_progress.get("selection_manifest_path")
 
-    if existing_mode != "context_balanced_support":
+    if existing_mode != "context_balanced_support_global_union":
         if int(source_progress.get("last_line", 0)) > 0 or bool(source_progress.get("done")):
             print("[reset] Clearing legacy/dense 2gram state before context-balanced run")
             _reset_source_state(output_array=output_array, source_info=bigram_source, progress=progress)
         return
 
     if (
-        existing_selection_path != str(selected_bigrams_path)
+        existing_global_vocab_path != str(global_bigram_vocab_path)
         or existing_manifest_path != str(selection_manifest_path)
         or existing_target is None
         or int(existing_target) != int(target_vocab_size)
@@ -459,27 +458,7 @@ def _process_unigram_source(
     print(f"[done] source={source_name} line={processed_total} complete={source_progress['done']}")
 
 
-def _load_context_bigram_entries(context_info: dict) -> List[dict]:
-    selected_path = Path(str(context_info["selected_bigrams_path"]))
-    if not selected_path.exists():
-        raise FileNotFoundError(f"Missing selected bigram file: {selected_path}")
-
-    entries: List[dict] = []
-    with selected_path.open("r", encoding="utf-8", newline="") as handle:
-        reader = csv.DictReader(handle, delimiter="\t")
-        for row in reader:
-            entries.append(
-                {
-                    "line_no": int(row["line_no"]),
-                    "token": row["token"],
-                    "selection_source": row["selection_source"],
-                }
-            )
-    entries.sort(key=lambda item: item["line_no"])
-    return entries
-
-
-def _process_selected_bigram_source(
+def _process_global_bigram_source(
     *,
     torch_module,
     tokenizer,
@@ -491,25 +470,24 @@ def _process_selected_bigram_source(
     progress_path: Path,
     flush_every: int,
     limit: int | None,
-    selected_entries: Sequence[dict],
     required_bigrams: Sequence[str],
-    unigram_count: int,
-    selected_bigrams_path: Path,
+    global_bigram_vocab_path: Path,
     selection_manifest_path: Path,
 ) -> None:
     source_name = str(source_info["name"])
+    source_path = Path(str(source_info["path"]))
     source_count = int(source_info["count"])
     source_offset = int(source_info["offset"])
     source_progress = progress["sources"].setdefault(source_name, {"last_line": 0, "done": False})
-    target_bigram_count = len(selected_entries)
-    target_vocab_size = int(unigram_count + target_bigram_count)
+    target_bigram_count = int(source_count)
+    target_vocab_size = int(source_offset + source_count)
     required_bigram_set = {str(token) for token in required_bigrams}
 
-    source_progress["selection_mode"] = "context_balanced_support"
+    source_progress["selection_mode"] = "context_balanced_support_global_union"
     source_progress["target_bigram_count"] = int(target_bigram_count)
     source_progress["target_vocab_size"] = target_vocab_size
     source_progress["required_total"] = len(required_bigram_set)
-    source_progress["selected_bigrams_path"] = str(selected_bigrams_path)
+    source_progress["global_bigram_vocab_path"] = str(global_bigram_vocab_path)
     source_progress["selection_manifest_path"] = str(selection_manifest_path)
 
     if source_progress.get("done") and (limit is None or source_progress.get("scored_candidates", 0) >= limit):
@@ -524,19 +502,13 @@ def _process_selected_bigram_source(
 
     print(
         f"[start] source={source_name} resume_line={last_line} "
-        f"selected_bigrams={target_bigram_count} required_bigrams={len(required_bigram_set)}"
+        f"global_bigrams={target_bigram_count} required_bigrams={len(required_bigram_set)}"
     )
 
-    processed_entries = 0
-    for entry in selected_entries:
-        line_no = int(entry["line_no"])
-        token = str(entry["token"])
+    for line_no, token in _iter_vocab(source_path):
         if line_no <= last_line:
-            processed_entries += 1
             continue
-        if line_no > source_count:
-            raise ValueError(f"Selected bigram line {line_no} exceeds source size {source_count}")
-        if limit is not None and processed_entries >= limit:
+        if limit is not None and scored_candidates >= limit:
             break
 
         global_index = source_offset + line_no - 1
@@ -548,7 +520,6 @@ def _process_selected_bigram_source(
 
         scored_candidates += 1
         processed_since_flush += 1
-        processed_entries += 1
         last_seen_line = line_no
 
         if processed_since_flush >= flush_every:
@@ -567,7 +538,7 @@ def _process_selected_bigram_source(
 
     output_array.flush()
     source_progress["last_line"] = last_seen_line
-    source_progress["done"] = processed_entries >= len(selected_entries) and limit is None
+    source_progress["done"] = last_seen_line >= source_count and limit is None
     source_progress["scored_candidates"] = scored_candidates
     source_progress["required_scored"] = sorted(required_scored)
     source_progress["required_scored_count"] = len(required_scored)
@@ -668,14 +639,12 @@ def main() -> None:
             raise KeyError(f"Context {context!r} is missing from bigram support manifest {args.bigram_support_manifest}")
 
         context_info = bigram_support_manifest["contexts"][context]
-        selected_entries = _load_context_bigram_entries(context_info)
-        actual_target_vocab_size = unigram_count + len(selected_entries)
+        actual_target_vocab_size = int(vocab_manifest["total_count"])
         if actual_target_vocab_size < args.target_vocab_size:
             raise ValueError(
                 f"Context {context!r} only has {actual_target_vocab_size} total supported tokens, "
                 f"below requested target {args.target_vocab_size}."
             )
-        selected_bigrams_path = Path(str(context_info["selected_bigrams_path"]))
 
         if args.overwrite:
             for path in [output_path, progress_path, meta_path]:
@@ -689,7 +658,7 @@ def main() -> None:
             output_array=output_array,
             manifest=vocab_manifest,
             progress=progress,
-            selected_bigrams_path=selected_bigrams_path,
+            global_bigram_vocab_path=vocab_2gram,
             selection_manifest_path=args.bigram_support_manifest,
             target_vocab_size=actual_target_vocab_size,
         )
@@ -701,12 +670,12 @@ def main() -> None:
                 "model_path": resolved_model_path,
                 "manifest_path": str(args.output_dir / "vocab_manifest.json"),
                 "output_path": str(output_path),
-                "selection_mode": "context_balanced_support",
+                "selection_mode": "context_balanced_support_global_union",
                 "target_vocab_size": int(actual_target_vocab_size),
                 "requested_target_vocab_size": int(args.target_vocab_size),
-                "target_bigram_count": len(selected_entries),
+                "target_bigram_count": int(bigram_source["count"]),
                 "required_bigrams": context_info["required_bigrams"],
-                "selected_bigrams_path": str(selected_bigrams_path),
+                "global_bigram_vocab_path": str(vocab_2gram),
                 "selection_manifest_path": str(args.bigram_support_manifest),
             },
         )
@@ -724,7 +693,7 @@ def main() -> None:
             flush_every=args.flush_every,
             limit=limits.get("1gram"),
         )
-        _process_selected_bigram_source(
+        _process_global_bigram_source(
             torch_module=torch_module,
             tokenizer=tokenizer,
             model=model,
@@ -735,10 +704,8 @@ def main() -> None:
             progress_path=progress_path,
             flush_every=args.flush_every,
             limit=limits.get("2gram"),
-            selected_entries=selected_entries,
             required_bigrams=context_info["required_bigrams"],
-            unigram_count=unigram_count,
-            selected_bigrams_path=selected_bigrams_path,
+            global_bigram_vocab_path=vocab_2gram,
             selection_manifest_path=args.bigram_support_manifest,
         )
 

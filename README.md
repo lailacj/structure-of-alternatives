@@ -201,7 +201,13 @@ What is finished:
 - the selected bigram union size is `22789`
 - `focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py` now scores:
   - all unigrams from `ngrams/frequency_info/vocab_1gram.txt`
-  - only the selected context-balanced bigrams from `ngrams/qwen_bigram_support/`
+  - the full global union of selected bigrams from `ngrams/qwen_bigram_support/`
+    for every context prompt
+
+- this means each context now uses the same shared Qwen scoring vocab:
+  - `98502` unigrams
+  - `22789` global-union bigrams
+  - `121291` total tokens scored per context
 
 What was fixed during smoke-testing:
 
