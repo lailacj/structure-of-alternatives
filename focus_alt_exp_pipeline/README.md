@@ -15,9 +15,7 @@ Current stable next-word sources in this pipeline:
 
 - human cloze probabilities
 - a global Google Ngram frequency baseline shared across all contexts
-
-Qwen support now exists in code, but it is still an in-progress path while the
-full sparse precompute and end-to-end Qwen runs are being finished.
+- Qwen next-word probabilities from the completed sparse precompute path
 
 ## Directory Layout
 
@@ -77,7 +75,7 @@ This is the CLI for the current negation-modeling pipeline. It currently support
 - `--dataset qwen`
 
 `--dataset qwen` is available for runs backed by completed precomputed context
-files, but the project-level Qwen results are still being built.
+files, and the current project already has completed Qwen result CSVs and plots.
 
 ### Experiment loop
 
@@ -177,10 +175,8 @@ This script now defaults to a context-balanced sparse precompute that is suffici
 - the full global union of selected bigrams from `ngrams/qwen_bigram_support/`
 
 The main runner consumes those precomputed files through `--dataset qwen`, using exact context-specific ordering probabilities plus cached sampled estimates for `set`, `conjunction`, and `disjunction`.
-That said, Qwen should still be treated as an in-progress model path until the
-full 16-context precompute and main result set are complete.
 
-### Qwen implementation handoff (April 6, 2026)
+### Qwen Status (April 9, 2026)
 
 The current Qwen implementation status is:
 
@@ -202,22 +198,24 @@ Important path note:
 - the Qwen precompute defaults and the Oscar wrapper were updated to use those
   files explicitly
 
-Smoke-test status:
+Completed runtime state:
 
-- the first `mall` smoke-test failed on a missing `vocab_1gram.txt` path and
-  that bug has been fixed
-- the rerun created:
-  - `ngrams/qwen_context_balanced_log_probs/mall.log_probs.npy`
-  - `ngrams/qwen_context_balanced_log_probs/mall.meta.json`
-  - `ngrams/qwen_context_balanced_log_probs/mall.progress.json`
-- as of April 6, 2026 at about 9:06 PM EDT, `mall.progress.json` reported:
-  - `1gram.last_line = 71000`
-  - `1gram.done = false`
-  - `2gram.last_line = 0`
-  - `2gram.done = false`
-
-That means the current smoke-test is no longer failing immediately; it is in
-the unigram scoring phase and has not yet reached the selected-bigram phase.
+- all 16 contexts now have completed sparse precompute artifacts under
+  `ngrams/qwen_context_balanced_log_probs/`
+- the Qwen experiment run has completed and wrote:
+  - `results/qwen/ordering_results_qwen.csv`
+  - `results/qwen/set_results_qwen.csv`
+  - `results/qwen/conjunction_results_qwen.csv`
+  - `results/qwen/disjunction_results_qwen.csv`
+- the Qwen plotting step has also completed and wrote:
+  - `results/qwen/plots/average_log_likelihood_by_context_and_structure__qwen.csv`
+  - `results/qwen/plots/mean_log_likelihood_by_structure__qwen.csv`
+  - `results/qwen/plots/log_likelihood_by_structure_with_context_dots__qwen.png`
+  - `results/qwen/plots/negation_probability_correlation_points__qwen.csv`
+  - `results/qwen/plots/negation_probability_correlation__set__qwen.png`
+  - `results/qwen/plots/negation_probability_correlation__ordering__qwen.png`
+  - `results/qwen/plots/negation_probability_correlation__conjunction__qwen.png`
+  - `results/qwen/plots/negation_probability_correlation__disjunction__qwen.png`
 
 ## Conceptual Pipeline
 
@@ -334,24 +332,10 @@ For Oscar, there is also an array-job wrapper in:
 
 - `oscar_jobs/precompute_qwen_focus_alt.sh`
 
-Check smoke-test progress with:
+Run the full Qwen experiment on Oscar with:
 
 ```bash
-cat /users/ljohnst7/data/ljohnst7/ngrams/qwen_context_balanced_log_probs/mall.progress.json
-```
-
-If the `mall` smoke-test completes cleanly, the next command is:
-
-```bash
-sbatch oscar_jobs/precompute_qwen_focus_alt.sh
-```
-
-Summarize results by context from a model-specific result folder:
-
-```bash
-python focus_alt_exp_pipeline/code/summarize_log_likelihood_by_context.py \
-  --results-dir focus_alt_exp_pipeline/results/cloze_probability \
-  --models cloze
+sbatch oscar_jobs/focus_alt_exp.sh
 ```
 
 Make the current cloze plots:
@@ -359,7 +343,24 @@ Make the current cloze plots:
 ```bash
 python focus_alt_exp_pipeline/code/plot_results.py \
   --results-dir focus_alt_exp_pipeline/results/cloze_probability \
-  --title "Cloze Probability: Average Log Likelihood by Structure"
+  --model cloze
+```
+
+Summarize results by context across the current model result folders:
+
+```bash
+python focus_alt_exp_pipeline/code/summarize_log_likelihood_by_context.py \
+  --results-dir focus_alt_exp_pipeline/results \
+  --models cloze,frequency,qwen \
+  --model-order cloze,frequency,qwen
+```
+
+Make the current Qwen plots:
+
+```bash
+python focus_alt_exp_pipeline/code/plot_results.py \
+  --results-dir focus_alt_exp_pipeline/results/qwen \
+  --model qwen
 ```
 
 This plotting command currently writes:
@@ -381,14 +382,9 @@ Implemented now:
 - Trial-level log-likelihood evaluation
 - Cloze-based next-word modeling
 - Frequency-based next-word modeling with a global Google Ngram baseline
+- Qwen next-word modeling from sparse precomputed continuation probabilities
 - Trial-level model-vs-human negation-probability correlation plots
 - Split-half analysis of human negation responses
-
-In progress:
-
-- Qwen runner/sampler support from precomputed context-specific continuation probabilities
-- Large-scale sparse Qwen precomputation over all 16 contexts from the context-balanced support set
-- End-to-end Qwen result generation and plotting
 
 Not implemented yet in this pipeline:
 
@@ -409,3 +405,4 @@ If you are extending the Qwen path further, the natural integration points are:
 - `code/precompute_qwen_vocab_log_probs.py` for generating more context files
 - `code/samplers.py` for Qwen-specific sampling and approximation logic
 - `code/run_experiment.py` for CLI options and defaults
+- `code/plot_results.py` for model-specific result visualization

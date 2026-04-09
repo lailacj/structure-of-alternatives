@@ -79,28 +79,24 @@ Implemented in the active pipeline:
 
 - Human cloze probabilities
 - Google Ngram frequency-based distributions
+- Qwen next-word distributions from sparse precomputed continuation log probabilities
 - Alternative-structure models:
   - `ordering`
   - `set`
   - `conjunction`
   - `disjunction`
 - Trial-level log-likelihood evaluation
+- Trial-level model-vs-human negation-probability correlation plots
 - Plotting and context summaries
-
-In progress:
-
-- Qwen sparse continuation precompute over the focus-alternative contexts
-- Qwen runs through the active pipeline from completed precomputed context files
-- End-to-end Qwen results and plots while the full 16-context precompute is being completed
 
 Planned or future-facing:
 
 - Uniform next-word baseline
-- Finalized project-level Qwen results once the current precompute finishes
+- Combined across-model comparison plots
 
 ## Qwen Handoff Status
 
-As of April 6, 2026, the active Qwen path is the new context-balanced sparse
+As of April 9, 2026, the active Qwen path is the completed context-balanced sparse
 support pipeline, not the older global 2-gram threshold workflow.
 
 Finished:
@@ -115,7 +111,7 @@ Finished:
   the same global-union bigram vocab for every context instead of scanning the
   full 2-gram vocabulary
 - `focus_alt_exp_pipeline/code/run_experiment.py` and
-  `focus_alt_exp_pipeline/code/samplers.py` are already wired to the new
+  `focus_alt_exp_pipeline/code/samplers.py` are wired to the
   `qwen_context_balanced_log_probs` outputs
 
 Recent bug fix:
@@ -129,24 +125,22 @@ Recent bug fix:
 
 Current runtime state:
 
-- a `mall` smoke-test rerun is in progress or was recently in progress under
+- all 16 Qwen sparse precompute contexts are complete under
   `ngrams/qwen_context_balanced_log_probs/`
-- at the latest observed checkpoint on April 6, 2026 around 9:06 PM EDT:
-  - `mall.progress.json` showed `1gram.last_line = 71000`
-  - `1gram.done = false`
-  - `2gram.last_line = 0`
-  - `2gram.done = false`
-- this indicates the sparse Qwen precompute got past model loading and path
-  setup and is actively scoring unigrams
+- the end-to-end Qwen experiment run has completed
+- Qwen raw results live under `focus_alt_exp_pipeline/results/qwen/`
+- Qwen plots and summary CSVs live under `focus_alt_exp_pipeline/results/qwen/plots/`
 
-Default next step after reopening:
+Useful current rerun path:
 
-1. Check whether `ngrams/qwen_context_balanced_log_probs/mall.progress.json`
-   now shows both sources done.
-2. If `mall` completed cleanly, launch the full array job with
+1. Rebuild support if needed with
+   `building_vocab_from_ngrams/code/build_qwen_bigram_support.py`.
+2. Re-run sparse precompute with
    `sbatch oscar_jobs/precompute_qwen_focus_alt.sh`.
-3. Once all contexts are complete, run
-   `focus_alt_exp_pipeline/code/run_experiment.py --dataset qwen`.
+3. Re-run the Qwen experiment with
+   `sbatch oscar_jobs/focus_alt_exp.sh`.
+4. Rebuild Qwen plots with
+   `python focus_alt_exp_pipeline/code/plot_results.py --results-dir focus_alt_exp_pipeline/results/qwen --model qwen`.
 
 ## Result Conventions
 
@@ -193,26 +187,31 @@ python focus_alt_exp_pipeline/code/run_experiment.py \
   --num-reps 500
 ```
 
-Qwen is still in progress, but the current code path uses:
+Run the Qwen experiment from completed precomputed context files:
 
-- `focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py` for sparse context precompute
-- `focus_alt_exp_pipeline/code/run_experiment.py --dataset qwen` for runs backed by completed precomputed context files
-- `oscar_jobs/precompute_qwen_focus_alt.sh` for the current Oscar array-job precompute
+```bash
+python focus_alt_exp_pipeline/code/run_experiment.py \
+  --dataset qwen \
+  --qwen-top-vocab-size 100000 \
+  --model-names ordering,set,conjunction,disjunction \
+  --num-reps 500
+```
 
 Summarize results by context:
 
 ```bash
 python focus_alt_exp_pipeline/code/summarize_log_likelihood_by_context.py \
-  --results-dir focus_alt_exp_pipeline/results/cloze_probability \
-  --models cloze
+  --results-dir focus_alt_exp_pipeline/results \
+  --models cloze,frequency,qwen \
+  --model-order cloze,frequency,qwen
 ```
 
 Generate plots:
 
 ```bash
 python focus_alt_exp_pipeline/code/plot_results.py \
-  --results-dir focus_alt_exp_pipeline/results/cloze_probability \
-  --title "Cloze Probability: Average Log Likelihood by Structure"
+  --results-dir focus_alt_exp_pipeline/results/qwen \
+  --model qwen
 ```
 
 ## Data Assumptions
@@ -242,7 +241,7 @@ When changing data loading or preprocessing logic, prefer keeping compatibility 
 - Be careful with long-running scripts or large generated outputs; this repo contains many result artifacts already.
 - If adding documentation, keep it aligned with the current active workflow rather than archival code.
 - If asked to work on Qwen, inspect `precompute_qwen_vocab_log_probs.py`, `samplers.py`, `run_experiment.py`, and `runner.py` together before making assumptions.
-- Treat cloze and frequency as stable baselines; treat Qwen as an active in-progress path until the full precompute and result set are complete.
+- Treat cloze, frequency, and Qwen as implemented active model paths in the main pipeline.
 
 ## Safe Default Mental Model
 
