@@ -160,7 +160,7 @@ def parse_args() -> argparse.Namespace:
 
     parser.add_argument("--set-boundaries", type=str, default="")
     parser.add_argument("--set-start", type=int, default=3)
-    parser.add_argument("--set-stop", type=int, default=101)
+    parser.add_argument("--set-stop", type=int, default=300)
     parser.add_argument("--set-step", type=int, default=3)
 
     parser.add_argument("--model-names", type=str, default="")

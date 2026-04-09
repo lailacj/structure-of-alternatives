@@ -1,0 +1,5 @@
+NextWordPredictionModelRaw,AlternativeStructure,context_count,mean_log_likelihood
+qwen,set,16,-1.938479645024996
+qwen,ordering,16,-1.3870310969794657
+qwen,conjunction,16,-2.2653737142332933
+qwen,disjunction,16,-1.3227027920047079
