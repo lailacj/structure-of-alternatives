@@ -1,0 +1,13 @@
+NextWordPredictionModelRaw,NextWordPredictionModel,AlternativeStructure,context_count,mean_log_likelihood
+cloze,Cloze Probability,set,15,-0.9678770315778138
+cloze,Cloze Probability,ordering,15,-1.1566749934884786
+cloze,Cloze Probability,conjunction,15,-1.0670474352752701
+cloze,Cloze Probability,disjunction,15,-1.1030442789016066
+frequency,Frequency,set,16,-10.699883816830136
+frequency,Frequency,ordering,16,-1.395642759456281
+frequency,Frequency,conjunction,16,-10.699883816830136
+frequency,Frequency,disjunction,16,-1.3956427594562808
+qwen,Qwen,set,16,-1.938479645024996
+qwen,Qwen,ordering,16,-1.3870310969794657
+qwen,Qwen,conjunction,16,-2.2653737142332933
+qwen,Qwen,disjunction,16,-1.3227027920047079

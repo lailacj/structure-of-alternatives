@@ -140,7 +140,10 @@ remain scoreable.
 ### Analysis and plotting
 
 - `code/summarize_log_likelihood_by_context.py`
-  Produces per-context summary CSVs from the raw trial-level results.
+  Produces per-context summary CSVs from the raw trial-level results, plus a
+  combined across-model plot with one colored dot per alternative structure and
+  a black mean dot per next-word model for both average log likelihood and
+  negation-probability correlation.
 
 - `code/plot_results.py`
   Produces:
@@ -355,6 +358,16 @@ python focus_alt_exp_pipeline/code/summarize_log_likelihood_by_context.py \
   --model-order cloze,frequency,qwen
 ```
 
+This summary command now also writes:
+
+- `results/plots/mean_log_likelihood_by_model_and_structure.csv`
+- `results/plots/mean_log_likelihood_by_model.csv`
+- `results/plots/log_likelihood_by_model_with_structure_dots.png`
+- `results/plots/negation_probability_correlation_points.csv`
+- `results/plots/negation_probability_correlation_by_model_and_structure.csv`
+- `results/plots/negation_probability_correlation_by_model.csv`
+- `results/plots/negation_probability_correlation_by_model_with_structure_dots.png`
+
 Make the current Qwen plots:
 
 ```bash
@@ -389,7 +402,6 @@ Implemented now:
 Not implemented yet in this pipeline:
 
 - Uniform next-word baseline
-- Combined across-model comparison plots such as cloze vs frequency vs qwen vs uniform on one figure
 
 ## Practical Organization Notes
 
