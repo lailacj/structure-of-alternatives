@@ -25,6 +25,43 @@ Sample = Tuple[List[str], List[str]]
 ContextSamples = Dict[str, List[Sample]]
 
 
+def _sample_weighted_indices(
+    rng: np.random.Generator,
+    probs: np.ndarray,
+    *,
+    sample_size: int | None = None,
+) -> np.ndarray:
+    total_size = len(probs)
+    if sample_size is None:
+        sample_size = total_size
+    sample_size = min(int(sample_size), total_size)
+    if sample_size <= 0:
+        return np.empty(0, dtype=np.int64)
+
+    positive_idx = np.flatnonzero(probs > 0)
+    zero_idx = np.flatnonzero(probs <= 0)
+
+    if len(positive_idx) == 0:
+        return rng.permutation(total_size)[:sample_size].astype(np.int64)
+
+    positive_sample_size = min(sample_size, len(positive_idx))
+    positive_probs = np.asarray(probs[positive_idx], dtype=np.float64)
+    positive_probs = positive_probs / positive_probs.sum()
+    sampled_positive = rng.choice(
+        positive_idx,
+        size=positive_sample_size,
+        replace=False,
+        p=positive_probs,
+    ).astype(np.int64)
+
+    if positive_sample_size == sample_size:
+        return sampled_positive
+
+    remaining = sample_size - positive_sample_size
+    sampled_zero = rng.permutation(zero_idx)[:remaining].astype(np.int64)
+    return np.concatenate([sampled_positive, sampled_zero]).astype(np.int64)
+
+
 class ContextSampler(ABC):
     """Interface for dataset-specific context sampling."""
 
@@ -111,11 +148,15 @@ class FrequencySampler(ContextSampler):
         bigram_counts_path: str | Path,
         background_vocab_size: int | None = None,
         max_vocab_size: int | None = None,
+        keep_zero_count_tokens: bool = False,
+        empirical_ordering: bool = False,
         seed: int | None = None,
     ) -> None:
         self._rng = np.random.default_rng(seed)
         self._background_vocab_size = background_vocab_size
         self._max_vocab_size = max_vocab_size
+        self._keep_zero_count_tokens = bool(keep_zero_count_tokens)
+        self._empirical_ordering = bool(empirical_ordering)
 
         if background_vocab_size is not None and max_vocab_size is not None:
             raise ValueError(
@@ -166,13 +207,15 @@ class FrequencySampler(ContextSampler):
                 unigram_counts_path=unigram_counts_path,
                 bigram_counts_path=bigram_counts_path,
             )
-            kept_rows = [
-                (token, counts[token])
-                for token in normalized_tokens
-                if counts.get(token, 0) > 0
-            ]
-            if not kept_rows:
+            kept_rows = []
+            for token in normalized_tokens:
+                count = counts.get(token, 0)
+                if count > 0 or self._keep_zero_count_tokens:
+                    kept_rows.append((token, count))
+            if not any(count > 0 for _, count in kept_rows):
                 raise ValueError("FrequencySampler could not load any positive token counts")
+            if not kept_rows:
+                raise ValueError("FrequencySampler could not load any supported tokens")
 
         kept_tokens = [token for token, _ in kept_rows]
         probs = np.array([float(count) for _, count in kept_rows], dtype=float)
@@ -186,10 +229,18 @@ class FrequencySampler(ContextSampler):
         self._required_token_to_index = {
             token: idx for idx, token in enumerate(self._required_tokens)
         }
+        self._support_index_to_required_index = np.full(len(self._tokens), -1, dtype=np.int32)
+        for support_idx, token in enumerate(kept_tokens):
+            required_idx = self._required_token_to_index.get(token)
+            if required_idx is not None:
+                self._support_index_to_required_index[support_idx] = required_idx
         self._cached_num_reps: int | None = None
         self._cached_max_boundary: int | None = None
         self._cached_position_sentinel: int | None = None
         self._cached_required_positions: np.ndarray | None = None
+        self._cached_empirical_num_reps: int | None = None
+        self._cached_empirical_position_sentinel: int | None = None
+        self._cached_empirical_required_positions: np.ndarray | None = None
         self._cached_probability_lookup: Dict[Tuple[str, str, str, int], float] = {}
 
     @staticmethod
@@ -242,21 +293,14 @@ class FrequencySampler(ContextSampler):
         return {token: count for token, count in counts.items() if count > 0}
 
     def _sample_ordering(self) -> List[str]:
-        sampled_idx = self._rng.choice(
-            len(self._tokens),
-            size=len(self._tokens),
-            replace=False,
-            p=self._probs,
-        )
+        sampled_idx = _sample_weighted_indices(self._rng, self._probs)
         return self._tokens[sampled_idx].tolist()
 
     def _sample_prefix_indices(self, prefix_size: int) -> np.ndarray:
-        sample_size = min(prefix_size, len(self._tokens))
-        return self._rng.choice(
-            len(self._tokens),
-            size=sample_size,
-            replace=False,
-            p=self._probs,
+        return _sample_weighted_indices(
+            self._rng,
+            self._probs,
+            sample_size=prefix_size,
         )
 
     def _ensure_global_prefix_cache(
@@ -298,27 +342,67 @@ class FrequencySampler(ContextSampler):
         self._cached_required_positions = required_positions
         self._cached_probability_lookup = {}
 
+    def _ensure_global_empirical_cache(
+        self,
+        *,
+        num_reps: int,
+    ) -> None:
+        sentinel = len(self._tokens)
+        if (
+            self._cached_empirical_num_reps == num_reps
+            and self._cached_empirical_required_positions is not None
+        ):
+            return
+
+        dtype = np.int16 if sentinel <= np.iinfo(np.int16).max else np.int32
+        required_positions = np.full(
+            (num_reps, len(self._required_tokens)),
+            sentinel,
+            dtype=dtype,
+        )
+
+        for rep_idx in range(num_reps):
+            sampled_idx = _sample_weighted_indices(self._rng, self._probs)
+            for position, support_idx in enumerate(sampled_idx):
+                required_idx = int(self._support_index_to_required_index[int(support_idx)])
+                if required_idx >= 0:
+                    required_positions[rep_idx, required_idx] = position
+
+        self._cached_empirical_num_reps = num_reps
+        self._cached_empirical_position_sentinel = sentinel
+        self._cached_empirical_required_positions = required_positions
+        self._cached_probability_lookup = {}
+
     def _get_required_positions(self, token: str) -> np.ndarray | None:
-        if self._cached_required_positions is None:
+        positions = (
+            self._cached_empirical_required_positions
+            if self._empirical_ordering
+            else self._cached_required_positions
+        )
+        if positions is None:
             return None
 
         token_key = str(token).strip().lower()
         token_idx = self._required_token_to_index.get(token_key)
         if token_idx is None:
             return None
-        return self._cached_required_positions[:, token_idx]
+        return positions[:, token_idx]
 
     def _estimate_set_probability(self, query: str, set_boundary: int) -> float:
-        if self._cached_required_positions is None or self._cached_max_boundary is None:
-            raise RuntimeError("FrequencySampler prefix cache is not prepared")
-
         query_positions = self._get_required_positions(query)
         if query_positions is None:
             return 0.0
         if str(query).strip().lower() not in self._token_set:
             return 0.0
 
-        boundary = min(set_boundary, self._cached_max_boundary)
+        if self._empirical_ordering:
+            if self._cached_empirical_position_sentinel is None:
+                raise RuntimeError("FrequencySampler empirical cache is not prepared")
+            boundary = min(set_boundary, self._cached_empirical_position_sentinel)
+        else:
+            if self._cached_required_positions is None or self._cached_max_boundary is None:
+                raise RuntimeError("FrequencySampler prefix cache is not prepared")
+            boundary = min(set_boundary, self._cached_max_boundary)
         return float(np.mean(query_positions < boundary))
 
     def _estimate_conjunction_probability(
@@ -327,23 +411,52 @@ class FrequencySampler(ContextSampler):
         trigger: str,
         set_boundary: int,
     ) -> float:
-        if (
-            self._cached_required_positions is None
-            or self._cached_max_boundary is None
-            or self._cached_position_sentinel is None
-        ):
-            raise RuntimeError("FrequencySampler prefix cache is not prepared")
-
         query_positions = self._get_required_positions(query)
         if query_positions is None:
             return 0.0
 
         trigger_positions = self._get_required_positions(trigger)
         if trigger_positions is None:
-            trigger_positions = np.full_like(query_positions, self._cached_position_sentinel)
+            if self._empirical_ordering:
+                if self._cached_empirical_position_sentinel is None:
+                    raise RuntimeError("FrequencySampler empirical cache is not prepared")
+                trigger_positions = np.full_like(
+                    query_positions,
+                    self._cached_empirical_position_sentinel,
+                )
+            else:
+                if self._cached_position_sentinel is None:
+                    raise RuntimeError("FrequencySampler prefix cache is not prepared")
+                trigger_positions = np.full_like(query_positions, self._cached_position_sentinel)
 
-        boundary = min(set_boundary, self._cached_max_boundary)
+        if self._empirical_ordering:
+            if self._cached_empirical_position_sentinel is None:
+                raise RuntimeError("FrequencySampler empirical cache is not prepared")
+            boundary = min(set_boundary, self._cached_empirical_position_sentinel)
+        else:
+            if self._cached_max_boundary is None:
+                raise RuntimeError("FrequencySampler prefix cache is not prepared")
+            boundary = min(set_boundary, self._cached_max_boundary)
         return float(np.mean((query_positions < boundary) & (query_positions < trigger_positions)))
+
+    def _estimate_empirical_ordering_probability(
+        self,
+        query: str,
+        trigger: str,
+    ) -> float:
+        if self._cached_empirical_required_positions is None:
+            raise RuntimeError("FrequencySampler empirical cache is not prepared")
+
+        query_key = str(query).strip().lower()
+        trigger_key = str(trigger).strip().lower()
+        if query_key == trigger_key:
+            return 0.0
+
+        query_positions = self._get_required_positions(query_key)
+        trigger_positions = self._get_required_positions(trigger_key)
+        if query_positions is None or trigger_positions is None:
+            return 0.0
+        return float(np.mean(query_positions < trigger_positions))
 
     def prepare_contexts(self, contexts: Sequence[str]) -> None:
         del contexts
@@ -357,8 +470,14 @@ class FrequencySampler(ContextSampler):
         model_names: Sequence[str],
     ) -> None:
         del contexts
-        sampled_models = {"set", "conjunction", "disjunction"}
+        if self._empirical_ordering:
+            sampled_models = {"ordering", "set", "conjunction", "disjunction"}
+        else:
+            sampled_models = {"set", "conjunction", "disjunction"}
         if not any(model_name in sampled_models for model_name in model_names):
+            return
+        if self._empirical_ordering:
+            self._ensure_global_empirical_cache(num_reps=num_reps)
             return
         if not set_boundaries:
             return
@@ -414,13 +533,16 @@ class FrequencySampler(ContextSampler):
             )
 
         if model_name == "ordering":
-            negation_probability = self.exact_negation_probability(
-                model_name=model_name,
-                context="",
-                query=query,
-                trigger=trigger,
-                set_boundary=set_boundary,
-            )
+            if self._empirical_ordering:
+                negation_probability = self._estimate_empirical_ordering_probability(query, trigger)
+            else:
+                negation_probability = self.exact_negation_probability(
+                    model_name=model_name,
+                    context="",
+                    query=query,
+                    trigger=trigger,
+                    set_boundary=set_boundary,
+                )
         elif model_name == "set":
             negation_probability = self._estimate_set_probability(query, set_boundary)
         elif model_name == "conjunction":
@@ -436,15 +558,18 @@ class FrequencySampler(ContextSampler):
                 trigger,
                 set_boundary,
             )
-            ordering_probability = self.exact_negation_probability(
-                model_name="ordering",
-                context="",
-                query=query,
-                trigger=trigger,
-                set_boundary=set_boundary,
-            )
-            if ordering_probability is None:
-                return None
+            if self._empirical_ordering:
+                ordering_probability = self._estimate_empirical_ordering_probability(query, trigger)
+            else:
+                ordering_probability = self.exact_negation_probability(
+                    model_name="ordering",
+                    context="",
+                    query=query,
+                    trigger=trigger,
+                    set_boundary=set_boundary,
+                )
+                if ordering_probability is None:
+                    return None
             negation_probability = float(
                 np.clip(
                     set_probability + ordering_probability - conjunction_probability,
@@ -462,7 +587,7 @@ class FrequencySampler(ContextSampler):
         return probability_to_model_result(negation_probability, query_negated)
 
     def supports_exact_model(self, model_name: str) -> bool:
-        return model_name == "ordering"
+        return (not self._empirical_ordering) and model_name == "ordering"
 
     def exact_negation_probability(
         self,
@@ -485,7 +610,10 @@ class FrequencySampler(ContextSampler):
         trigger_count = self._token_counts.get(trigger_key)
         if query_count is None or trigger_count is None:
             return None
-        return float(query_count) / float(query_count + trigger_count)
+        total = query_count + trigger_count
+        if total <= 0:
+            return None
+        return float(query_count) / float(total)
 
 
 class QwenSampler(ContextSampler):
@@ -499,14 +627,20 @@ class QwenSampler(ContextSampler):
         required_tokens_by_context: Dict[str, Sequence[str]],
         log_probs_dir: str | Path,
         top_vocab_size: int = 100_000,
+        empirical_ordering: bool = False,
+        support_mode: str = "top_plus_required",
         seed: int | None = None,
     ) -> None:
         if top_vocab_size <= 0:
             raise ValueError("QwenSampler top_vocab_size must be > 0")
+        if support_mode not in {"top_plus_required", "required_only"}:
+            raise ValueError(f"Unsupported QwenSampler support_mode '{support_mode}'")
 
         self._rng = np.random.default_rng(seed)
         self._log_probs_dir = Path(log_probs_dir)
         self._top_vocab_size = int(top_vocab_size)
+        self._empirical_ordering = bool(empirical_ordering)
+        self._support_mode = str(support_mode)
         self._manifest = self._load_manifest(self._log_probs_dir / "vocab_manifest.json")
         self._total_count = int(self._manifest["total_count"])
         self._unigram_count = next(
@@ -623,7 +757,8 @@ class QwenSampler(ContextSampler):
             "context_balanced_support_global_union",
         }:
             target_vocab_size = bigram_progress.get("target_vocab_size")
-            if target_vocab_size is None or int(target_vocab_size) < self._top_vocab_size:
+            required_target = 1 if self._support_mode == "required_only" else self._top_vocab_size
+            if target_vocab_size is None or int(target_vocab_size) < required_target:
                 return False
             required_missing = bigram_progress.get("required_missing", [])
             if required_missing:
@@ -738,15 +873,18 @@ class QwenSampler(ContextSampler):
             if np.isfinite(log_probs[token_idx]):
                 required_indices.append(token_idx)
 
-        support_indices = self._top_finite_indices(log_probs, self._top_vocab_size)
-        merged_indices = np.unique(
-            np.concatenate(
-                [
-                    support_indices,
-                    np.asarray(required_indices, dtype=np.int64),
-                ]
+        if self._support_mode == "required_only":
+            merged_indices = np.asarray(required_indices, dtype=np.int64)
+        else:
+            support_indices = self._top_finite_indices(log_probs, self._top_vocab_size)
+            merged_indices = np.unique(
+                np.concatenate(
+                    [
+                        support_indices,
+                        np.asarray(required_indices, dtype=np.int64),
+                    ]
+                )
             )
-        )
         if len(merged_indices) == 0:
             return (
                 np.empty(0, dtype=np.int64),
@@ -855,6 +993,78 @@ class QwenSampler(ContextSampler):
         }
         self._context_probability_lookup[key] = {}
 
+    def _ensure_context_empirical_cache(
+        self,
+        context: str,
+        *,
+        num_reps: int,
+    ) -> None:
+        key = str(context)
+        state = self._context_cache_state.get(key)
+        if (
+            state is not None
+            and state.get("cache_mode") == "empirical"
+            and state.get("num_reps") == num_reps
+        ):
+            return
+
+        if key not in self._available_contexts:
+            self._context_cache_state[key] = {
+                "cache_mode": "empirical",
+                "num_reps": num_reps,
+                "cache_boundary": 0,
+                "position_sentinel": 0,
+                "required_positions": None,
+                "required_token_to_index": {
+                    token: idx
+                    for idx, token in enumerate(self._required_tokens_by_context.get(key, []))
+                },
+            }
+            self._context_probability_lookup[key] = {}
+            return
+
+        log_probs = self._load_context_log_probs(key)
+        support_indices, support_probs, required_token_to_index = self._build_context_support(
+            key,
+            log_probs,
+        )
+        cache_boundary = len(support_indices)
+        sentinel = cache_boundary
+        dtype = np.int16 if sentinel <= np.iinfo(np.int16).max else np.int32
+        required_positions = np.full(
+            (num_reps, len(required_token_to_index)),
+            sentinel,
+            dtype=dtype,
+        )
+
+        global_index_to_required_index = {
+            self._token_to_global_index[token]: required_idx
+            for token, required_idx in required_token_to_index.items()
+            if token in self._token_to_global_index
+        }
+        support_required_lookup = np.full(len(support_indices), -1, dtype=np.int32)
+        for support_position, global_index in enumerate(support_indices):
+            required_idx = global_index_to_required_index.get(int(global_index))
+            if required_idx is not None:
+                support_required_lookup[support_position] = required_idx
+
+        for rep_idx in range(num_reps):
+            sampled_support_positions = _sample_weighted_indices(self._rng, support_probs)
+            for sampled_position, support_position in enumerate(sampled_support_positions):
+                required_idx = support_required_lookup[int(support_position)]
+                if required_idx >= 0:
+                    required_positions[rep_idx, required_idx] = sampled_position
+
+        self._context_cache_state[key] = {
+            "cache_mode": "empirical",
+            "num_reps": num_reps,
+            "cache_boundary": cache_boundary,
+            "position_sentinel": sentinel,
+            "required_positions": required_positions,
+            "required_token_to_index": required_token_to_index,
+        }
+        self._context_probability_lookup[key] = {}
+
     def _get_required_positions(self, context: str, token: str) -> np.ndarray | None:
         key = str(context)
         state = self._context_cache_state.get(key)
@@ -903,6 +1113,27 @@ class QwenSampler(ContextSampler):
         boundary = min(int(set_boundary), int(state["cache_boundary"]))
         return float(np.mean((query_positions < boundary) & (query_positions < trigger_positions)))
 
+    def _estimate_empirical_ordering_probability(
+        self,
+        context: str,
+        query: str,
+        trigger: str,
+    ) -> float:
+        state = self._context_cache_state.get(str(context))
+        if state is None:
+            raise RuntimeError(f"QwenSampler cache not prepared for context '{context}'")
+
+        query_key = str(query).strip().lower()
+        trigger_key = str(trigger).strip().lower()
+        if query_key == trigger_key:
+            return 0.0
+
+        query_positions = self._get_required_positions(context, query_key)
+        trigger_positions = self._get_required_positions(context, trigger_key)
+        if query_positions is None or trigger_positions is None:
+            return 0.0
+        return float(np.mean(query_positions < trigger_positions))
+
     def prepare_run(
         self,
         *,
@@ -911,14 +1142,24 @@ class QwenSampler(ContextSampler):
         num_reps: int,
         model_names: Sequence[str],
     ) -> None:
-        sampled_models = {"set", "conjunction", "disjunction"}
-        needs_samples = any(model_name in sampled_models for model_name in model_names)
-        max_boundary = max((int(boundary) for boundary in set_boundaries), default=0)
+        if self._empirical_ordering:
+            sampled_models = {"ordering", "set", "conjunction", "disjunction"}
+            needs_samples = any(model_name in sampled_models for model_name in model_names)
+            max_boundary = 0
+        else:
+            sampled_models = {"set", "conjunction", "disjunction"}
+            needs_samples = any(model_name in sampled_models for model_name in model_names)
+            max_boundary = max((int(boundary) for boundary in set_boundaries), default=0)
 
         for context in contexts:
             key = str(context)
             self._ensure_context_token_log_probs(key)
-            if needs_samples and max_boundary > 0:
+            if self._empirical_ordering and needs_samples:
+                self._ensure_context_empirical_cache(
+                    key,
+                    num_reps=num_reps,
+                )
+            elif needs_samples and max_boundary > 0:
                 self._ensure_context_prefix_cache(
                     key,
                     num_reps=num_reps,
@@ -964,13 +1205,20 @@ class QwenSampler(ContextSampler):
             return probability_to_model_result(context_lookup[cache_key], query_negated)
 
         if model_name == "ordering":
-            negation_probability = self.exact_negation_probability(
-                model_name="ordering",
-                context=context_key,
-                query=query_key,
-                trigger=trigger_key,
-                set_boundary=set_boundary,
-            )
+            if self._empirical_ordering:
+                negation_probability = self._estimate_empirical_ordering_probability(
+                    context_key,
+                    query_key,
+                    trigger_key,
+                )
+            else:
+                negation_probability = self.exact_negation_probability(
+                    model_name="ordering",
+                    context=context_key,
+                    query=query_key,
+                    trigger=trigger_key,
+                    set_boundary=set_boundary,
+                )
         elif model_name == "set":
             negation_probability = self._estimate_set_probability(context_key, query_key, set_boundary)
         elif model_name == "conjunction":
@@ -988,15 +1236,22 @@ class QwenSampler(ContextSampler):
                 trigger_key,
                 set_boundary,
             )
-            ordering_probability = self.exact_negation_probability(
-                model_name="ordering",
-                context=context_key,
-                query=query_key,
-                trigger=trigger_key,
-                set_boundary=set_boundary,
-            )
-            if ordering_probability is None:
-                return None
+            if self._empirical_ordering:
+                ordering_probability = self._estimate_empirical_ordering_probability(
+                    context_key,
+                    query_key,
+                    trigger_key,
+                )
+            else:
+                ordering_probability = self.exact_negation_probability(
+                    model_name="ordering",
+                    context=context_key,
+                    query=query_key,
+                    trigger=trigger_key,
+                    set_boundary=set_boundary,
+                )
+                if ordering_probability is None:
+                    return None
             negation_probability = float(
                 np.clip(
                     set_probability + ordering_probability - conjunction_probability,
@@ -1014,7 +1269,7 @@ class QwenSampler(ContextSampler):
         return probability_to_model_result(negation_probability, query_negated)
 
     def supports_exact_model(self, model_name: str) -> bool:
-        return model_name == "ordering"
+        return (not self._empirical_ordering) and model_name == "ordering"
 
     def exact_negation_probability(
         self,

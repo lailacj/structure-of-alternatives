@@ -1,0 +1,13 @@
+NextWordPredictionModelRaw,NextWordPredictionModel,AlternativeStructure,trial_type_count,context_count,pearson_correlation
+cloze,Cloze Probability,set,354,15,0.71112873798033
+cloze,Cloze Probability,ordering,354,15,0.5910726108242812
+cloze,Cloze Probability,conjunction,354,15,0.6781914650895718
+cloze,Cloze Probability,disjunction,354,15,0.6621234034394995
+frequency,Frequency,set,354,15,0.03238365555269064
+frequency,Frequency,ordering,354,15,-0.03668798094542204
+frequency,Frequency,conjunction,354,15,0.03141000713234401
+frequency,Frequency,disjunction,354,15,-0.03654442802557863
+qwen,Qwen,set,354,15,0.6075160592534374
+qwen,Qwen,ordering,354,15,0.5042731164208081
+qwen,Qwen,conjunction,354,15,0.577003248579065
+qwen,Qwen,disjunction,354,15,0.5668516217240898

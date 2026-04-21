@@ -1,0 +1,4 @@
+NextWordPredictionModelRaw,NextWordPredictionModel,structure_count,mean_pearson_correlation
+cloze,Cloze Probability,4,0.6606290543334207
+frequency,Frequency,4,-0.0023596865714915066
+qwen,Qwen,4,0.5639110114943501

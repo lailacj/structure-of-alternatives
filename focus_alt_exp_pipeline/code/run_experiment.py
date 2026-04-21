@@ -15,12 +15,24 @@ from typing import List
 import pandas as pd
 
 try:
-    from .data_utils import normalize_unique_tokens, prepare_experimental_data, resolve_context_col
+    from .data_utils import (
+        extract_global_support_tokens,
+        extract_support_tokens_by_context,
+        normalize_unique_tokens,
+        prepare_experimental_data,
+        resolve_context_col,
+    )
     from .models import get_models
     from .runner import run_experiment
     from .samplers import ClozeSampler, FrequencySampler, QwenSampler
 except ImportError:
-    from data_utils import normalize_unique_tokens, prepare_experimental_data, resolve_context_col
+    from data_utils import (
+        extract_global_support_tokens,
+        extract_support_tokens_by_context,
+        normalize_unique_tokens,
+        prepare_experimental_data,
+        resolve_context_col,
+    )
     from models import get_models
     from runner import run_experiment
     from samplers import ClozeSampler, FrequencySampler, QwenSampler
@@ -30,8 +42,12 @@ ROOT_DIR = Path(__file__).resolve().parents[2]
 DEFAULT_EXPERIMENTAL_DATA = ROOT_DIR / "focus_alt_exp_pipeline" / "human_exp_data" / "sca_dataframe.csv"
 DEFAULT_CLOZE_DATA = ROOT_DIR / "focus_alt_exp_pipeline" / "cloze_data" / "all_cloze_prob_data_preprocessed.csv"
 DEFAULT_RESULTS_DIR = ROOT_DIR / "focus_alt_exp_pipeline" / "results"
-DEFAULT_FREQUENCY_1GRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "vocab_1gram_counts.tsv"
-DEFAULT_FREQUENCY_2GRAM_COUNTS = ROOT_DIR.parent / "ngrams" / "vocab_2gram_counts.tsv"
+DEFAULT_FREQUENCY_1GRAM_COUNTS = (
+    ROOT_DIR.parent / "ngrams" / "google_ngram_frequency_info" / "vocab_1gram_counts.tsv"
+)
+DEFAULT_FREQUENCY_2GRAM_COUNTS = (
+    ROOT_DIR.parent / "ngrams" / "google_ngram_frequency_info" / "vocab_2gram_counts.tsv"
+)
 DEFAULT_FREQUENCY_BACKGROUND_VOCAB_SIZE = 800_000
 DEFAULT_QWEN_LOG_PROBS_DIR = ROOT_DIR.parent / "ngrams" / "qwen_context_balanced_log_probs"
 DEFAULT_QWEN_TOP_VOCAB_SIZE = 100_000
@@ -93,7 +109,68 @@ def _extract_required_tokens_by_context(experimental_data: pd.DataFrame) -> dict
     return required_by_context
 
 
-def _build_sampler(args: argparse.Namespace, experimental_data: pd.DataFrame):
+def _filter_experimental_data_to_support(
+    experimental_data: pd.DataFrame,
+    support_data: pd.DataFrame,
+    *,
+    support_context_col: str,
+    support_word_col: str,
+    model_requires_trigger: bool,
+) -> pd.DataFrame:
+    prepared = prepare_experimental_data(experimental_data)
+    context_col = resolve_context_col(prepared)
+    query_col = "cleaned_query" if "cleaned_query" in prepared.columns else "query"
+    trigger_col = "cleaned_trigger" if "cleaned_trigger" in prepared.columns else "trigger"
+
+    support_by_context = {
+        context: set(tokens)
+        for context, tokens in extract_support_tokens_by_context(
+            support_data,
+            context_col=support_context_col,
+            word_col=support_word_col,
+        ).items()
+    }
+
+    keep_mask = []
+    dropped_reason_counts: dict[str, int] = {}
+    for _, row in prepared.iterrows():
+        context = str(row[context_col])
+        query = str(row[query_col])
+        trigger = str(row[trigger_col])
+        context_support = support_by_context.get(context)
+        reason = None
+        if not context_support:
+            reason = "context_not_in_support"
+        elif query not in context_support:
+            reason = "query_not_in_support"
+        elif model_requires_trigger and trigger not in context_support:
+            reason = "trigger_not_in_support"
+
+        keep_mask.append(reason is None)
+        if reason is not None:
+            dropped_reason_counts[reason] = dropped_reason_counts.get(reason, 0) + 1
+
+    filtered = prepared.loc[keep_mask].copy()
+    kept_rows = len(filtered)
+    dropped_rows = len(prepared) - kept_rows
+    print(
+        "Applied support-data filter: "
+        f"kept={kept_rows}, dropped={dropped_rows}, requires_trigger={model_requires_trigger}"
+    )
+    if dropped_reason_counts:
+        ordered_reasons = ", ".join(
+            f"{reason}={count}" for reason, count in sorted(dropped_reason_counts.items())
+        )
+        print(f"  drop_reasons: {ordered_reasons}")
+    return filtered
+
+
+def _build_sampler(
+    args: argparse.Namespace,
+    experimental_data: pd.DataFrame,
+    *,
+    support_data: pd.DataFrame | None = None,
+):
     if args.dataset == "cloze":
         cloze_df = pd.read_csv(args.cloze_data)
         sampler = ClozeSampler(
@@ -107,20 +184,50 @@ def _build_sampler(args: argparse.Namespace, experimental_data: pd.DataFrame):
         return sampler, contexts
 
     if args.dataset == "frequency":
+        if support_data is not None:
+            frequency_tokens = extract_global_support_tokens(
+                support_data,
+                context_col=args.support_context_col,
+                word_col=args.support_word_col,
+            )
+            sampler = FrequencySampler(
+                required_tokens=frequency_tokens,
+                unigram_counts_path=args.frequency_1gram_counts,
+                bigram_counts_path=args.frequency_2gram_counts,
+                background_vocab_size=None,
+                max_vocab_size=None,
+                keep_zero_count_tokens=True,
+                empirical_ordering=args.empirical_ordering,
+                seed=args.seed,
+            )
+            return sampler, None
+
         sampler = FrequencySampler(
             required_tokens=_extract_frequency_required_tokens(experimental_data),
             unigram_counts_path=args.frequency_1gram_counts,
             bigram_counts_path=args.frequency_2gram_counts,
             background_vocab_size=args.frequency_background_vocab_size,
             max_vocab_size=args.frequency_max_vocab_size,
+            empirical_ordering=args.empirical_ordering,
             seed=args.seed,
         )
         return sampler, None
     if args.dataset == "qwen":
+        required_tokens_by_context = (
+            extract_support_tokens_by_context(
+                support_data,
+                context_col=args.support_context_col,
+                word_col=args.support_word_col,
+            )
+            if support_data is not None
+            else _extract_required_tokens_by_context(experimental_data)
+        )
         sampler = QwenSampler(
-            required_tokens_by_context=_extract_required_tokens_by_context(experimental_data),
+            required_tokens_by_context=required_tokens_by_context,
             log_probs_dir=args.qwen_log_probs_dir,
             top_vocab_size=args.qwen_top_vocab_size,
+            empirical_ordering=args.empirical_ordering,
+            support_mode=args.qwen_support_mode,
             seed=args.seed,
         )
         return sampler, set(sampler.available_contexts)
@@ -194,6 +301,26 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--cloze-context-col", type=str, default="context")
     parser.add_argument("--cloze-word-col", type=str, default="word")
     parser.add_argument("--cloze-prob-col", type=str, default="cloze_probability")
+    parser.add_argument(
+        "--support-data",
+        type=Path,
+        default=None,
+        help=(
+            "Optional context-word support CSV used to define a shared candidate vocabulary. "
+            "For frequency this becomes one global deduplicated vocabulary; for Qwen it "
+            "becomes the per-context candidate set."
+        ),
+    )
+    parser.add_argument("--support-context-col", type=str, default="context")
+    parser.add_argument("--support-word-col", type=str, default="word")
+    parser.add_argument(
+        "--filter-experimental-to-support",
+        action="store_true",
+        help=(
+            "Restrict human trials to rows whose query (and trigger when required by the "
+            "selected models) are present in the context-specific support CSV."
+        ),
+    )
 
     parser.add_argument(
         "--frequency-1gram-counts",
@@ -240,18 +367,37 @@ def parse_args() -> argparse.Namespace:
             "fall outside the top-M support."
         ),
     )
+    parser.add_argument(
+        "--qwen-support-mode",
+        choices=["top_plus_required", "required_only"],
+        default="top_plus_required",
+        help=(
+            "How to define each context's Qwen sampling support. "
+            "'required_only' restricts Qwen to the context-specific support CSV tokens."
+        ),
+    )
+    parser.add_argument(
+        "--empirical-ordering",
+        action="store_true",
+        help=(
+            "Estimate ordering probabilities from sampled rankings instead of direct pairwise "
+            "closed-form scoring."
+        ),
+    )
 
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    support_data = pd.read_csv(args.support_data) if args.support_data is not None else None
     if args.file_suffix is None:
         args.file_suffix = args.dataset
     if not args.results_subdir:
         args.results_subdir = _default_results_subdir(args.dataset)
     if (
         args.dataset == "frequency"
+        and support_data is None
         and args.frequency_background_vocab_size is None
         and args.frequency_max_vocab_size is None
     ):
@@ -277,6 +423,11 @@ def main() -> None:
             raise ValueError(
                 "--frequency-background-vocab-size can only be used with --dataset frequency"
             )
+        if support_data is not None:
+            raise ValueError(
+                "--frequency-background-vocab-size cannot be combined with --support-data "
+                "because the support CSV defines the exact frequency vocabulary"
+            )
     if args.frequency_max_vocab_size is not None:
         if args.frequency_max_vocab_size <= 0:
             raise ValueError("--frequency-max-vocab-size must be > 0")
@@ -286,28 +437,15 @@ def main() -> None:
             raise ValueError(
                 "--frequency-max-vocab-size is only supported with --dataset frequency --model-names set"
             )
+        if support_data is not None:
+            raise ValueError(
+                "--frequency-max-vocab-size cannot be combined with --support-data "
+                "because the support CSV defines the exact frequency vocabulary"
+            )
     if args.qwen_top_vocab_size <= 0:
         raise ValueError("--qwen-top-vocab-size must be > 0")
 
     context_col = resolve_context_col(experimental_data)
-    sampler = None
-    available_contexts = None
-    if args.dataset != "frequency":
-        sampler, available_contexts = _build_sampler(args, experimental_data)
-
-    if available_contexts is not None:
-        original_rows = len(experimental_data)
-        experimental_data = experimental_data[
-            experimental_data[context_col].astype(str).isin(available_contexts)
-        ].copy()
-        filtered_rows = len(experimental_data)
-        dropped_rows = original_rows - filtered_rows
-        if dropped_rows > 0:
-            print(
-                f"Filtered experimental_data by available contexts: kept={filtered_rows}, dropped={dropped_rows}"
-            )
-        if filtered_rows == 0:
-            raise ValueError("No experimental rows remain after context filtering.")
 
     if args.contexts:
         requested_contexts = set(_parse_csv_list(args.contexts))
@@ -333,11 +471,37 @@ def main() -> None:
         ].copy()
         print(f"Applied max-contexts filter: max_contexts={args.max_contexts}, kept={kept_contexts}")
 
+    if support_data is not None and args.filter_experimental_to_support:
+        experimental_data = _filter_experimental_data_to_support(
+            experimental_data,
+            support_data,
+            support_context_col=args.support_context_col,
+            support_word_col=args.support_word_col,
+            model_requires_trigger=any(spec.requires_trigger for spec in models),
+        )
+
     if len(experimental_data) == 0:
         raise ValueError("No experimental rows remain after optional context filters.")
 
-    if args.dataset == "frequency":
-        sampler, _ = _build_sampler(args, experimental_data)
+    sampler, available_contexts = _build_sampler(
+        args,
+        experimental_data,
+        support_data=support_data,
+    )
+
+    if available_contexts is not None:
+        original_rows = len(experimental_data)
+        experimental_data = experimental_data[
+            experimental_data[context_col].astype(str).isin(available_contexts)
+        ].copy()
+        filtered_rows = len(experimental_data)
+        dropped_rows = original_rows - filtered_rows
+        if dropped_rows > 0:
+            print(
+                f"Filtered experimental_data by available contexts: kept={filtered_rows}, dropped={dropped_rows}"
+            )
+        if filtered_rows == 0:
+            raise ValueError("No experimental rows remain after context filtering.")
 
     results_dir = None
     if not args.no_write:

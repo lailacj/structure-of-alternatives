@@ -1,0 +1,1417 @@
+NextWordPredictionModelRaw,AlternativeStructure,context,trigger,query,model_negation_probability,observed_rows,observed_boundaries,human_negation_probability,human_trial_count
+cloze,set,bag,chalk,crayons,0.7896,60,10,1.0,6
+cloze,set,bag,chalk,headphones,0.0738,50,10,0.2,5
+cloze,set,bag,chalk,makeup,0.3066,50,10,0.2,5
+cloze,set,bag,chalk,pen,0.872,50,10,1.0,5
+cloze,set,bag,crayons,chalk,0.33340000000000003,180,10,0.8888888888888888,18
+cloze,set,bag,crayons,headphones,0.0738,40,10,0.25,4
+cloze,set,bag,crayons,makeup,0.3066,50,10,0.0,5
+cloze,set,bag,crayons,pen,0.8720000000000001,40,10,1.0,4
+cloze,set,bag,headphones,chalk,0.33340000000000003,50,10,0.4,5
+cloze,set,bag,headphones,crayons,0.7896,30,10,1.0,3
+cloze,set,bag,headphones,makeup,0.3066,190,10,0.21052631578947367,19
+cloze,set,bag,headphones,pen,0.872,50,10,1.0,5
+cloze,set,bag,makeup,chalk,0.33340000000000003,20,10,1.0,2
+cloze,set,bag,makeup,crayons,0.7896,20,10,1.0,2
+cloze,set,bag,makeup,headphones,0.0738,40,10,0.0,4
+cloze,set,bag,makeup,pen,0.872,30,10,1.0,3
+cloze,set,bag,pen,chalk,0.3334,210,10,0.8571428571428571,21
+cloze,set,bag,pen,crayons,0.7896,170,10,0.8823529411764706,17
+cloze,set,bag,pen,headphones,0.0738,50,10,0.0,5
+cloze,set,bag,pen,makeup,0.30660000000000004,60,10,0.16666666666666666,6
+cloze,set,bakery,cakes,ice cream,0.44480000000000003,190,10,0.8421052631578947,19
+cloze,set,bakery,cakes,muffins,0.4956,180,10,0.8888888888888888,18
+cloze,set,bakery,cakes,pretzels,0.1198,60,10,0.5,6
+cloze,set,bakery,cakes,sandwiches,0.10460000000000001,50,10,0.4,5
+cloze,set,bakery,cakes,water,0.0502,50,10,0.0,5
+cloze,set,bakery,ice cream,cakes,0.8268,50,10,1.0,5
+cloze,set,bakery,ice cream,muffins,0.4956,170,10,0.5882352941176471,17
+cloze,set,bakery,ice cream,pretzels,0.11979999999999999,20,10,0.5,2
+cloze,set,bakery,ice cream,sandwiches,0.1046,40,10,0.25,4
+cloze,set,bakery,ice cream,water,0.0502,60,10,0.16666666666666666,6
+cloze,set,bakery,muffins,cakes,0.8268,50,10,1.0,5
+cloze,set,bakery,muffins,ice cream,0.44480000000000003,20,10,1.0,2
+cloze,set,bakery,muffins,pretzels,0.1198,50,10,0.4,5
+cloze,set,bakery,muffins,sandwiches,0.1046,20,10,0.0,2
+cloze,set,bakery,muffins,water,0.0502,50,10,0.0,5
+cloze,set,bakery,pretzels,cakes,0.8268,50,10,1.0,5
+cloze,set,bakery,pretzels,ice cream,0.4448,50,10,1.0,5
+cloze,set,bakery,pretzels,muffins,0.4956,30,10,1.0,3
+cloze,set,bakery,pretzels,sandwiches,0.10460000000000001,50,10,0.4,5
+cloze,set,bakery,pretzels,water,0.0502,40,10,0.0,4
+cloze,set,bakery,sandwiches,cakes,0.8268,30,10,1.0,3
+cloze,set,bakery,sandwiches,ice cream,0.4448,50,10,1.0,5
+cloze,set,bakery,sandwiches,muffins,0.4956,30,10,0.6666666666666666,3
+cloze,set,bakery,sandwiches,pretzels,0.1198,200,10,0.55,20
+cloze,set,bakery,sandwiches,water,0.0502,50,10,0.0,5
+cloze,set,bakery,water,cakes,0.8268,30,10,0.6666666666666666,3
+cloze,set,bakery,water,ice cream,0.4448,60,10,0.6666666666666666,6
+cloze,set,bakery,water,muffins,0.4956,60,10,0.5,6
+cloze,set,bakery,water,pretzels,0.1198,130,10,0.5384615384615384,13
+cloze,set,bakery,water,sandwiches,0.1046,210,10,0.42857142857142855,21
+cloze,set,beach,bikini,coat,0.066,30,10,0.3333333333333333,3
+cloze,set,beach,bikini,jacket,0.1842,40,10,0.25,4
+cloze,set,beach,bikini,jeans,0.2038,60,10,0.5,6
+cloze,set,beach,bikini,shorts,0.8092,200,10,0.7,20
+cloze,set,beach,bikini,sunglasses,0.3362,180,10,0.16666666666666666,18
+cloze,set,beach,coat,bikini,0.24800000000000003,60,10,1.0,6
+cloze,set,beach,coat,jacket,0.1842,110,10,0.5454545454545454,11
+cloze,set,beach,coat,jeans,0.20379999999999998,160,10,0.5,16
+cloze,set,beach,coat,shorts,0.8092,50,10,1.0,5
+cloze,set,beach,coat,sunglasses,0.3362,30,10,0.0,3
+cloze,set,beach,jacket,bikini,0.248,20,10,1.0,2
+cloze,set,beach,jacket,coat,0.066,30,10,1.0,3
+cloze,set,beach,jacket,jeans,0.20379999999999998,200,10,0.45,20
+cloze,set,beach,jacket,shorts,0.8092,50,10,0.6,5
+cloze,set,beach,jacket,sunglasses,0.3362,40,10,0.5,4
+cloze,set,beach,jeans,bikini,0.248,50,10,1.0,5
+cloze,set,beach,jeans,coat,0.066,50,10,0.6,5
+cloze,set,beach,jeans,jacket,0.1842,60,10,0.0,6
+cloze,set,beach,jeans,shorts,0.8092,50,10,1.0,5
+cloze,set,beach,jeans,sunglasses,0.3362,40,10,0.25,4
+cloze,set,beach,shorts,bikini,0.248,40,10,0.75,4
+cloze,set,beach,shorts,coat,0.066,40,10,0.75,4
+cloze,set,beach,shorts,jacket,0.1842,40,10,0.25,4
+cloze,set,beach,shorts,jeans,0.20379999999999998,50,10,0.6,5
+cloze,set,beach,shorts,sunglasses,0.3362,200,10,0.15,20
+cloze,set,beach,sunglasses,bikini,0.248,50,10,1.0,5
+cloze,set,beach,sunglasses,coat,0.066,50,10,0.0,5
+cloze,set,beach,sunglasses,jacket,0.18420000000000003,50,10,0.8,5
+cloze,set,beach,sunglasses,jeans,0.2038,60,10,0.5,6
+cloze,set,beach,sunglasses,shorts,0.8092,40,10,0.5,4
+cloze,set,cold,blankets,heater,0.5237999999999999,20,10,1.0,2
+cloze,set,cold,blankets,sink,0.05619999999999999,40,10,0.0,4
+cloze,set,cold,blankets,tea,0.0574,200,10,0.2,20
+cloze,set,cold,heater,blankets,0.7226,180,10,0.8333333333333334,18
+cloze,set,cold,heater,sink,0.0562,50,10,0.0,5
+cloze,set,cold,heater,tea,0.05739999999999999,160,10,0.125,16
+cloze,set,cold,sink,blankets,0.7226,30,10,0.3333333333333333,3
+cloze,set,cold,sink,heater,0.5238,40,10,1.0,4
+cloze,set,cold,sink,tea,0.0574,50,10,0.0,5
+cloze,set,cold,tea,blankets,0.7226,50,10,0.6,5
+cloze,set,cold,tea,heater,0.5238,60,10,0.5,6
+cloze,set,cold,tea,sink,0.05619999999999999,40,10,0.0,4
+cloze,set,cut,batteries,keys,0.1074,60,10,0.16666666666666666,6
+cloze,set,cut,batteries,nail clippers,0.4336,50,10,0.8,5
+cloze,set,cut,batteries,scissors,0.8236,50,10,0.8,5
+cloze,set,cut,batteries,stapler,0.049,180,10,0.4444444444444444,18
+cloze,set,cut,batteries,thumb tacks,0.10540000000000001,210,10,0.38095238095238093,21
+cloze,set,cut,keys,batteries,0.0538,40,10,0.25,4
+cloze,set,cut,keys,nail clippers,0.4336,50,10,0.8,5
+cloze,set,cut,keys,scissors,0.8236,50,10,1.0,5
+cloze,set,cut,keys,stapler,0.049,50,10,0.2,5
+cloze,set,cut,keys,thumb tacks,0.1054,50,10,0.2,5
+cloze,set,cut,nail clippers,batteries,0.0538,50,10,0.0,5
+cloze,set,cut,nail clippers,keys,0.10740000000000001,160,10,0.3125,16
+cloze,set,cut,nail clippers,scissors,0.8236000000000001,40,10,1.0,4
+cloze,set,cut,nail clippers,stapler,0.049,20,10,0.5,2
+cloze,set,cut,nail clippers,thumb tacks,0.1054,30,10,0.6666666666666666,3
+cloze,set,cut,scissors,batteries,0.0538,40,10,0.0,4
+cloze,set,cut,scissors,keys,0.1074,200,10,0.15,20
+cloze,set,cut,scissors,nail clippers,0.4336,110,10,0.6363636363636364,11
+cloze,set,cut,scissors,stapler,0.049,60,10,0.16666666666666666,6
+cloze,set,cut,scissors,thumb tacks,0.10540000000000001,40,10,0.0,4
+cloze,set,cut,stapler,batteries,0.0538,50,10,0.0,5
+cloze,set,cut,stapler,keys,0.1074,50,10,0.2,5
+cloze,set,cut,stapler,nail clippers,0.4336,60,10,0.6666666666666666,6
+cloze,set,cut,stapler,scissors,0.8236000000000001,40,10,1.0,4
+cloze,set,cut,stapler,thumb tacks,0.1054,170,10,0.11764705882352941,17
+cloze,set,cut,thumb tacks,batteries,0.0538,40,10,0.0,4
+cloze,set,cut,thumb tacks,keys,0.1074,30,10,0.3333333333333333,3
+cloze,set,cut,thumb tacks,nail clippers,0.4336,50,10,0.6,5
+cloze,set,cut,thumb tacks,scissors,0.8236,50,10,0.8,5
+cloze,set,cut,thumb tacks,stapler,0.049,50,10,0.0,5
+cloze,set,fridge,juice,ketchup,0.1574,60,10,0.3333333333333333,6
+cloze,set,fridge,juice,meat,0.0,30,10,0.0,3
+cloze,set,fridge,juice,milk,0.8456,150,10,1.0,15
+cloze,set,fridge,juice,water,0.9027999999999999,60,10,1.0,6
+cloze,set,fridge,juice,yogurt,0.1226,50,10,0.0,5
+cloze,set,fridge,ketchup,juice,0.8966,50,10,1.0,5
+cloze,set,fridge,ketchup,meat,0.0,40,10,0.0,4
+cloze,set,fridge,ketchup,milk,0.8456,50,10,1.0,5
+cloze,set,fridge,ketchup,water,0.9028,20,10,1.0,2
+cloze,set,fridge,ketchup,yogurt,0.12260000000000001,180,10,0.2222222222222222,18
+cloze,set,fridge,meat,juice,0.8966,50,10,1.0,5
+cloze,set,fridge,meat,ketchup,0.1574,180,10,0.16666666666666666,18
+cloze,set,fridge,meat,milk,0.8455999999999999,30,10,0.6666666666666666,3
+cloze,set,fridge,meat,water,0.9028,20,10,1.0,2
+cloze,set,fridge,meat,yogurt,0.1226,160,10,0.625,16
+cloze,set,fridge,milk,juice,0.8966,50,10,1.0,5
+cloze,set,fridge,milk,ketchup,0.1574,50,10,0.0,5
+cloze,set,fridge,milk,meat,0.0,60,10,0.0,6
+cloze,set,fridge,milk,water,0.9027999999999999,60,10,0.8333333333333334,6
+cloze,set,fridge,milk,yogurt,0.1226,50,10,0.2,5
+cloze,set,fridge,water,juice,0.8966000000000001,220,10,1.0,22
+cloze,set,fridge,water,ketchup,0.1574,40,10,0.0,4
+cloze,set,fridge,water,meat,0.0,30,10,0.0,3
+cloze,set,fridge,water,milk,0.8456,180,10,0.9444444444444444,18
+cloze,set,fridge,water,yogurt,0.1226,50,10,0.0,5
+cloze,set,fridge,yogurt,juice,0.8966,50,10,1.0,5
+cloze,set,fridge,yogurt,ketchup,0.1574,50,10,0.2,5
+cloze,set,fridge,yogurt,meat,0.0,50,10,0.4,5
+cloze,set,fridge,yogurt,milk,0.8455999999999999,40,10,0.75,4
+cloze,set,fridge,yogurt,water,0.9028,20,10,1.0,2
+cloze,set,gym,basketball,lacrosse,0.4576,150,10,0.9333333333333333,15
+cloze,set,gym,basketball,meditation,0.06420000000000001,20,10,0.0,2
+cloze,set,gym,basketball,softball,0.3494,200,10,0.9,20
+cloze,set,gym,basketball,swimming,0.3146,50,10,0.4,5
+cloze,set,gym,lacrosse,basketball,0.7692,40,10,1.0,4
+cloze,set,gym,lacrosse,meditation,0.06420000000000001,20,10,0.0,2
+cloze,set,gym,lacrosse,softball,0.3494,30,10,1.0,3
+cloze,set,gym,lacrosse,swimming,0.31460000000000005,30,10,0.3333333333333333,3
+cloze,set,gym,meditation,basketball,0.7692,40,10,0.75,4
+cloze,set,gym,meditation,lacrosse,0.45760000000000006,40,10,1.0,4
+cloze,set,gym,meditation,softball,0.34940000000000004,40,10,1.0,4
+cloze,set,gym,meditation,swimming,0.3146,190,10,0.7894736842105263,19
+cloze,set,gym,softball,basketball,0.7692,60,10,1.0,6
+cloze,set,gym,softball,lacrosse,0.4576,190,10,0.9473684210526315,19
+cloze,set,gym,softball,meditation,0.0642,50,10,0.6,5
+cloze,set,gym,softball,swimming,0.3146,50,10,0.8,5
+cloze,set,gym,swimming,basketball,0.7692,50,10,1.0,5
+cloze,set,gym,swimming,lacrosse,0.45760000000000006,40,10,1.0,4
+cloze,set,gym,swimming,meditation,0.0642,50,10,0.0,5
+cloze,set,gym,swimming,softball,0.34940000000000004,40,10,0.75,4
+cloze,set,hot,blankets,couch,0.0,120,10,0.0,12
+cloze,set,hot,blankets,fan,0.7236,50,10,0.2,5
+cloze,set,hot,blankets,heater,0.0406,40,10,0.75,4
+cloze,set,hot,blankets,pool,0.33380000000000004,50,10,0.0,5
+cloze,set,hot,blankets,shower,0.1888,50,10,0.2,5
+cloze,set,hot,couch,blankets,0.0046,50,10,0.2,5
+cloze,set,hot,couch,fan,0.7235999999999999,30,10,0.0,3
+cloze,set,hot,couch,heater,0.0406,30,10,0.0,3
+cloze,set,hot,couch,pool,0.3338,60,10,0.5,6
+cloze,set,hot,couch,shower,0.18880000000000002,20,10,1.0,2
+cloze,set,hot,fan,blankets,0.0046,40,10,0.0,4
+cloze,set,hot,fan,couch,0.0,40,10,0.0,4
+cloze,set,hot,fan,heater,0.0406,60,10,0.16666666666666666,6
+cloze,set,hot,fan,pool,0.33380000000000004,200,10,0.55,20
+cloze,set,hot,fan,shower,0.1888,200,10,0.05,20
+cloze,set,hot,heater,blankets,0.0046,130,10,0.23076923076923078,13
+cloze,set,hot,heater,couch,0.0,200,10,0.0,20
+cloze,set,hot,heater,fan,0.7236,50,10,1.0,5
+cloze,set,hot,heater,pool,0.3338,40,10,0.25,4
+cloze,set,hot,heater,shower,0.1888,50,10,0.0,5
+cloze,set,hot,pool,blankets,0.0046,50,10,0.4,5
+cloze,set,hot,pool,couch,0.0,40,10,0.0,4
+cloze,set,hot,pool,fan,0.7236,40,10,0.25,4
+cloze,set,hot,pool,heater,0.0406,40,10,0.0,4
+cloze,set,hot,pool,shower,0.1888,190,10,0.2631578947368421,19
+cloze,set,hot,shower,blankets,0.0046,40,10,0.0,4
+cloze,set,hot,shower,couch,0.0,60,10,0.0,6
+cloze,set,hot,shower,fan,0.7236,50,10,0.8,5
+cloze,set,hot,shower,heater,0.0406,60,10,0.3333333333333333,6
+cloze,set,hot,shower,pool,0.33380000000000004,50,10,1.0,5
+cloze,set,mask,bandana,candy,0.048,40,10,0.0,4
+cloze,set,mask,bandana,handkerchief,0.40740000000000004,130,10,0.6153846153846154,13
+cloze,set,mask,bandana,napkins,0.26280000000000003,120,10,0.16666666666666666,12
+cloze,set,mask,bandana,wallet,0.0,50,10,0.4,5
+cloze,set,mask,candy,bandana,0.7028,50,10,0.8,5
+cloze,set,mask,candy,handkerchief,0.4074,60,10,0.6666666666666666,6
+cloze,set,mask,candy,napkins,0.26280000000000003,40,10,0.5,4
+cloze,set,mask,candy,wallet,0.0,200,10,0.2,20
+cloze,set,mask,handkerchief,bandana,0.7028,30,10,1.0,3
+cloze,set,mask,handkerchief,candy,0.048,60,10,0.0,6
+cloze,set,mask,handkerchief,napkins,0.26280000000000003,200,10,0.3,20
+cloze,set,mask,handkerchief,wallet,0.0,50,10,0.0,5
+cloze,set,mask,napkins,bandana,0.7028,50,10,1.0,5
+cloze,set,mask,napkins,candy,0.048,50,10,0.2,5
+cloze,set,mask,napkins,handkerchief,0.40740000000000004,50,10,0.6,5
+cloze,set,mask,napkins,wallet,0.0,40,10,0.0,4
+cloze,set,mask,wallet,bandana,0.7028,50,10,0.8,5
+cloze,set,mask,wallet,candy,0.048,50,10,0.2,5
+cloze,set,mask,wallet,handkerchief,0.40740000000000004,50,10,0.6,5
+cloze,set,mask,wallet,napkins,0.26280000000000003,60,10,0.5,6
+cloze,set,meat,chicken,crab,0.1892,170,10,0.7647058823529411,17
+cloze,set,meat,chicken,mushrooms,0.044399999999999995,50,10,0.2,5
+cloze,set,meat,chicken,tofu,0.1338,50,10,0.0,5
+cloze,set,meat,chicken,turkey,0.3996,210,10,0.9523809523809523,21
+cloze,set,meat,crab,chicken,0.82,50,10,1.0,5
+cloze,set,meat,crab,mushrooms,0.0444,30,10,0.0,3
+cloze,set,meat,crab,tofu,0.1338,30,10,0.6666666666666666,3
+cloze,set,meat,crab,turkey,0.3996,50,10,1.0,5
+cloze,set,meat,mushrooms,chicken,0.8200000000000001,60,10,1.0,6
+cloze,set,meat,mushrooms,crab,0.1892,50,10,1.0,5
+cloze,set,meat,mushrooms,tofu,0.1338,190,10,0.5263157894736842,19
+cloze,set,meat,mushrooms,turkey,0.3996,60,10,1.0,6
+cloze,set,meat,tofu,chicken,0.82,40,10,1.0,4
+cloze,set,meat,tofu,crab,0.1892,50,10,0.8,5
+cloze,set,meat,tofu,mushrooms,0.044399999999999995,50,10,0.0,5
+cloze,set,meat,tofu,turkey,0.3996,50,10,1.0,5
+cloze,set,meat,turkey,chicken,0.82,40,10,1.0,4
+cloze,set,meat,turkey,crab,0.1892,130,10,0.7692307692307693,13
+cloze,set,meat,turkey,mushrooms,0.0444,40,10,0.0,4
+cloze,set,meat,turkey,tofu,0.1338,60,10,0.16666666666666666,6
+cloze,set,restaurant,cake,cocktails,0.8019999999999999,40,10,1.0,4
+cloze,set,restaurant,cake,salad,0.0524,50,10,0.6,5
+cloze,set,restaurant,cake,soda,0.6134000000000001,50,10,0.8,5
+cloze,set,restaurant,cake,soup,0.1234,180,10,0.3888888888888889,18
+cloze,set,restaurant,cake,vodka,0.632,60,10,1.0,6
+cloze,set,restaurant,cocktails,cake,0.07339999999999999,50,10,0.6,5
+cloze,set,restaurant,cocktails,salad,0.0524,40,10,0.0,4
+cloze,set,restaurant,cocktails,soda,0.6134000000000001,190,10,0.42105263157894735,19
+cloze,set,restaurant,cocktails,soup,0.1234,20,10,0.0,2
+cloze,set,restaurant,cocktails,vodka,0.632,140,10,0.5,14
+cloze,set,restaurant,salad,cake,0.07339999999999999,200,10,0.55,20
+cloze,set,restaurant,salad,cocktails,0.8019999999999999,40,10,0.75,4
+cloze,set,restaurant,salad,soda,0.6134000000000001,50,10,0.6,5
+cloze,set,restaurant,salad,soup,0.1234,200,10,0.7,20
+cloze,set,restaurant,salad,vodka,0.632,50,10,1.0,5
+cloze,set,restaurant,soda,cake,0.07339999999999999,30,10,0.0,3
+cloze,set,restaurant,soda,cocktails,0.8019999999999999,30,10,1.0,3
+cloze,set,restaurant,soda,salad,0.0524,50,10,0.0,5
+cloze,set,restaurant,soda,soup,0.1234,20,10,0.0,2
+cloze,set,restaurant,soda,vodka,0.632,50,10,1.0,5
+cloze,set,restaurant,soup,cake,0.07339999999999999,30,10,0.3333333333333333,3
+cloze,set,restaurant,soup,cocktails,0.8019999999999999,60,10,1.0,6
+cloze,set,restaurant,soup,salad,0.0524,60,10,0.5,6
+cloze,set,restaurant,soup,soda,0.6134000000000001,60,10,0.8333333333333334,6
+cloze,set,restaurant,soup,vodka,0.632,40,10,1.0,4
+cloze,set,restaurant,vodka,cake,0.07339999999999999,50,10,0.0,5
+cloze,set,restaurant,vodka,cocktails,0.8019999999999999,30,10,1.0,3
+cloze,set,restaurant,vodka,salad,0.0524,20,10,0.0,2
+cloze,set,restaurant,vodka,soda,0.6134000000000001,190,10,0.3157894736842105,19
+cloze,set,restaurant,vodka,soup,0.1234,50,10,0.0,5
+cloze,set,salad,chips,cigarettes,0.0144,60,10,0.16666666666666666,6
+cloze,set,salad,chips,dressing,0.488,50,10,0.4,5
+cloze,set,salad,chips,lettuce,0.7669999999999999,60,10,1.0,6
+cloze,set,salad,chips,meat,0.087,210,10,0.2857142857142857,21
+cloze,set,salad,cigarettes,chips,0.054200000000000005,160,10,0.4375,16
+cloze,set,salad,cigarettes,dressing,0.488,40,10,1.0,4
+cloze,set,salad,cigarettes,lettuce,0.767,40,10,0.75,4
+cloze,set,salad,cigarettes,meat,0.08700000000000001,190,10,0.5789473684210527,19
+cloze,set,salad,dressing,chips,0.054200000000000005,20,10,0.0,2
+cloze,set,salad,dressing,cigarettes,0.0144,50,10,0.0,5
+cloze,set,salad,dressing,lettuce,0.7669999999999999,30,10,1.0,3
+cloze,set,salad,dressing,meat,0.087,30,10,0.3333333333333333,3
+cloze,set,salad,lettuce,chips,0.054200000000000005,20,10,0.0,2
+cloze,set,salad,lettuce,cigarettes,0.0144,60,10,0.0,6
+cloze,set,salad,lettuce,dressing,0.48800000000000004,180,10,0.6111111111111112,18
+cloze,set,salad,lettuce,meat,0.087,40,10,0.75,4
+cloze,set,salad,meat,chips,0.054200000000000005,20,10,0.0,2
+cloze,set,salad,meat,cigarettes,0.0144,50,10,0.0,5
+cloze,set,salad,meat,dressing,0.48800000000000004,30,10,0.0,3
+cloze,set,salad,meat,lettuce,0.7669999999999999,60,10,1.0,6
+cloze,set,science,art,geology,0.5032,40,10,1.0,4
+cloze,set,science,art,math,0.1042,200,10,0.7,20
+cloze,set,science,art,philosophy,0.044199999999999996,180,10,0.6111111111111112,18
+cloze,set,science,art,physics,0.7395999999999999,50,10,1.0,5
+cloze,set,science,art,zoology,0.311,50,10,0.8,5
+cloze,set,science,geology,art,0.022400000000000003,50,10,0.6,5
+cloze,set,science,geology,math,0.1042,60,10,0.8333333333333334,6
+cloze,set,science,geology,philosophy,0.0442,30,10,0.6666666666666666,3
+cloze,set,science,geology,physics,0.7396,40,10,1.0,4
+cloze,set,science,geology,zoology,0.311,130,10,1.0,13
+cloze,set,science,math,art,0.0224,20,10,0.5,2
+cloze,set,science,math,geology,0.5032,40,10,0.75,4
+cloze,set,science,math,philosophy,0.044199999999999996,50,10,0.4,5
+cloze,set,science,math,physics,0.7396,40,10,0.5,4
+cloze,set,science,math,zoology,0.311,50,10,0.8,5
+cloze,set,science,philosophy,art,0.022400000000000003,50,10,1.0,5
+cloze,set,science,philosophy,geology,0.5032,50,10,0.8,5
+cloze,set,science,philosophy,math,0.1042,160,10,0.6875,16
+cloze,set,science,philosophy,physics,0.7396,40,10,1.0,4
+cloze,set,science,philosophy,zoology,0.311,60,10,0.8333333333333334,6
+cloze,set,science,physics,art,0.022400000000000003,50,10,0.4,5
+cloze,set,science,physics,geology,0.5032,210,10,0.8571428571428571,21
+cloze,set,science,physics,math,0.1042,30,10,0.3333333333333333,3
+cloze,set,science,physics,philosophy,0.0442,30,10,0.3333333333333333,3
+cloze,set,science,physics,zoology,0.311,200,10,0.65,20
+cloze,set,science,zoology,art,0.0224,30,10,0.6666666666666666,3
+cloze,set,science,zoology,geology,0.5032,40,10,0.75,4
+cloze,set,science,zoology,math,0.1042,50,10,0.4,5
+cloze,set,science,zoology,philosophy,0.0442,60,10,0.6666666666666666,6
+cloze,set,science,zoology,physics,0.7396,40,10,1.0,4
+cloze,set,throw,beach ball,boomerang,0.2706,190,10,0.631578947368421,19
+cloze,set,throw,beach ball,football,0.8344,50,10,1.0,5
+cloze,set,throw,beach ball,lawnmower,0.0852,30,10,0.0,3
+cloze,set,throw,beach ball,tires,0.111,60,10,0.0,6
+cloze,set,throw,boomerang,beach ball,0.388,40,10,0.75,4
+cloze,set,throw,boomerang,football,0.8343999999999999,40,10,1.0,4
+cloze,set,throw,boomerang,lawnmower,0.0852,50,10,0.0,5
+cloze,set,throw,boomerang,tires,0.111,50,10,0.0,5
+cloze,set,throw,football,beach ball,0.388,160,10,0.875,16
+cloze,set,throw,football,boomerang,0.2706,210,10,0.6190476190476191,21
+cloze,set,throw,football,lawnmower,0.0852,30,10,0.0,3
+cloze,set,throw,football,tires,0.111,30,10,0.0,3
+cloze,set,throw,lawnmower,beach ball,0.388,20,10,1.0,2
+cloze,set,throw,lawnmower,boomerang,0.2706,50,10,0.8,5
+cloze,set,throw,lawnmower,football,0.8344,50,10,1.0,5
+cloze,set,throw,lawnmower,tires,0.111,130,10,0.07692307692307693,13
+cloze,set,throw,tires,beach ball,0.38799999999999996,50,10,0.6,5
+cloze,set,throw,tires,boomerang,0.2706,40,10,1.0,4
+cloze,set,throw,tires,football,0.8344,50,10,0.8,5
+cloze,set,throw,tires,lawnmower,0.0852,50,10,0.8,5
+cloze,set,transport,car,chairs,0.0426,50,10,0.0,5
+cloze,set,transport,car,hammer,0.0304,50,10,0.2,5
+cloze,set,transport,car,lawnmower,0.0622,40,10,0.25,4
+cloze,set,transport,chairs,car,0.7728,30,10,1.0,3
+cloze,set,transport,chairs,hammer,0.0304,40,10,0.0,4
+cloze,set,transport,chairs,lawnmower,0.0622,220,10,0.09090909090909091,22
+cloze,set,transport,hammer,car,0.7728,50,10,0.6,5
+cloze,set,transport,hammer,chairs,0.0426,150,10,0.06666666666666667,15
+cloze,set,transport,hammer,lawnmower,0.0622,180,10,0.5555555555555556,18
+cloze,set,transport,lawnmower,car,0.7728,60,10,1.0,6
+cloze,set,transport,lawnmower,chairs,0.0426,50,10,0.2,5
+cloze,set,transport,lawnmower,hammer,0.0304,40,10,0.25,4
+cloze,ordering,bag,chalk,crayons,0.8542,60,10,1.0,6
+cloze,ordering,bag,chalk,headphones,0.1494,50,10,0.2,5
+cloze,ordering,bag,chalk,makeup,0.48119999999999996,50,10,0.2,5
+cloze,ordering,bag,chalk,pen,0.9114,50,10,1.0,5
+cloze,ordering,bag,crayons,chalk,0.14579999999999999,180,10,0.8888888888888888,18
+cloze,ordering,bag,crayons,headphones,0.027999999999999997,40,10,0.25,4
+cloze,ordering,bag,crayons,makeup,0.1352,50,10,0.0,5
+cloze,ordering,bag,crayons,pen,0.6242,40,10,1.0,4
+cloze,ordering,bag,headphones,chalk,0.8506,50,10,0.4,5
+cloze,ordering,bag,headphones,crayons,0.972,30,10,1.0,3
+cloze,ordering,bag,headphones,makeup,0.8324,190,10,0.21052631578947367,19
+cloze,ordering,bag,headphones,pen,0.9812000000000001,50,10,1.0,5
+cloze,ordering,bag,makeup,chalk,0.5188,20,10,1.0,2
+cloze,ordering,bag,makeup,crayons,0.8648,20,10,1.0,2
+cloze,ordering,bag,makeup,headphones,0.1676,40,10,0.0,4
+cloze,ordering,bag,makeup,pen,0.9186,30,10,1.0,3
+cloze,ordering,bag,pen,chalk,0.08859999999999998,210,10,0.8571428571428571,21
+cloze,ordering,bag,pen,crayons,0.3758,170,10,0.8823529411764706,17
+cloze,ordering,bag,pen,headphones,0.018799999999999997,50,10,0.0,5
+cloze,ordering,bag,pen,makeup,0.0814,60,10,0.16666666666666666,6
+cloze,ordering,bakery,cakes,ice cream,0.17679999999999998,190,10,0.8421052631578947,19
+cloze,ordering,bakery,cakes,muffins,0.21719999999999998,180,10,0.8888888888888888,18
+cloze,ordering,bakery,cakes,pretzels,0.0436,60,10,0.5,6
+cloze,ordering,bakery,cakes,sandwiches,0.0358,50,10,0.4,5
+cloze,ordering,bakery,cakes,water,0.0174,50,10,0.0,5
+cloze,ordering,bakery,ice cream,cakes,0.8231999999999999,50,10,1.0,5
+cloze,ordering,bakery,ice cream,muffins,0.5404000000000001,170,10,0.5882352941176471,17
+cloze,ordering,bakery,ice cream,pretzels,0.1652,20,10,0.5,2
+cloze,ordering,bakery,ice cream,sandwiches,0.1416,40,10,0.25,4
+cloze,ordering,bakery,ice cream,water,0.0692,60,10,0.16666666666666666,6
+cloze,ordering,bakery,muffins,cakes,0.7828,50,10,1.0,5
+cloze,ordering,bakery,muffins,ice cream,0.4596,20,10,1.0,2
+cloze,ordering,bakery,muffins,pretzels,0.1436,50,10,0.4,5
+cloze,ordering,bakery,muffins,sandwiches,0.11699999999999999,20,10,0.0,2
+cloze,ordering,bakery,muffins,water,0.0616,50,10,0.0,5
+cloze,ordering,bakery,pretzels,cakes,0.9564,50,10,1.0,5
+cloze,ordering,bakery,pretzels,ice cream,0.8348,50,10,1.0,5
+cloze,ordering,bakery,pretzels,muffins,0.8564,30,10,1.0,3
+cloze,ordering,bakery,pretzels,sandwiches,0.44620000000000004,50,10,0.4,5
+cloze,ordering,bakery,pretzels,water,0.2912,40,10,0.0,4
+cloze,ordering,bakery,sandwiches,cakes,0.9642,30,10,1.0,3
+cloze,ordering,bakery,sandwiches,ice cream,0.8584,50,10,1.0,5
+cloze,ordering,bakery,sandwiches,muffins,0.8830000000000001,30,10,0.6666666666666666,3
+cloze,ordering,bakery,sandwiches,pretzels,0.5538000000000001,200,10,0.55,20
+cloze,ordering,bakery,sandwiches,water,0.3224,50,10,0.0,5
+cloze,ordering,bakery,water,cakes,0.9825999999999999,30,10,0.6666666666666666,3
+cloze,ordering,bakery,water,ice cream,0.9308,60,10,0.6666666666666666,6
+cloze,ordering,bakery,water,muffins,0.9384,60,10,0.5,6
+cloze,ordering,bakery,water,pretzels,0.7088,130,10,0.5384615384615384,13
+cloze,ordering,bakery,water,sandwiches,0.6776,210,10,0.42857142857142855,21
+cloze,ordering,beach,bikini,coat,0.1858,30,10,0.3333333333333333,3
+cloze,ordering,beach,bikini,jacket,0.4136,40,10,0.25,4
+cloze,ordering,beach,bikini,jeans,0.43620000000000003,60,10,0.5,6
+cloze,ordering,beach,bikini,shorts,0.8956000000000001,200,10,0.7,20
+cloze,ordering,beach,bikini,sunglasses,0.592,180,10,0.16666666666666666,18
+cloze,ordering,beach,coat,bikini,0.8141999999999999,60,10,1.0,6
+cloze,ordering,beach,coat,jacket,0.7528,110,10,0.5454545454545454,11
+cloze,ordering,beach,coat,jeans,0.7666000000000001,160,10,0.5,16
+cloze,ordering,beach,coat,shorts,0.9764,50,10,1.0,5
+cloze,ordering,beach,coat,sunglasses,0.8634000000000001,30,10,0.0,3
+cloze,ordering,beach,jacket,bikini,0.5864,20,10,1.0,2
+cloze,ordering,beach,jacket,coat,0.2472,30,10,1.0,3
+cloze,ordering,beach,jacket,jeans,0.5204,200,10,0.45,20
+cloze,ordering,beach,jacket,shorts,0.9298000000000001,50,10,0.6,5
+cloze,ordering,beach,jacket,sunglasses,0.6828000000000001,40,10,0.5,4
+cloze,ordering,beach,jeans,bikini,0.5638000000000001,50,10,1.0,5
+cloze,ordering,beach,jeans,coat,0.2334,50,10,0.6,5
+cloze,ordering,beach,jeans,jacket,0.47959999999999997,60,10,0.0,6
+cloze,ordering,beach,jeans,shorts,0.9156,50,10,1.0,5
+cloze,ordering,beach,jeans,sunglasses,0.6596,40,10,0.25,4
+cloze,ordering,beach,shorts,bikini,0.1044,40,10,0.75,4
+cloze,ordering,beach,shorts,coat,0.0236,40,10,0.75,4
+cloze,ordering,beach,shorts,jacket,0.0702,40,10,0.25,4
+cloze,ordering,beach,shorts,jeans,0.08439999999999999,50,10,0.6,5
+cloze,ordering,beach,shorts,sunglasses,0.1396,200,10,0.15,20
+cloze,ordering,beach,sunglasses,bikini,0.408,50,10,1.0,5
+cloze,ordering,beach,sunglasses,coat,0.1366,50,10,0.0,5
+cloze,ordering,beach,sunglasses,jacket,0.3172,50,10,0.8,5
+cloze,ordering,beach,sunglasses,jeans,0.3404,60,10,0.5,6
+cloze,ordering,beach,sunglasses,shorts,0.8603999999999999,40,10,0.5,4
+cloze,ordering,cold,blankets,heater,0.3322,20,10,1.0,2
+cloze,ordering,cold,blankets,sink,0.033600000000000005,40,10,0.0,4
+cloze,ordering,cold,blankets,tea,0.0308,200,10,0.2,20
+cloze,ordering,cold,heater,blankets,0.6678000000000001,180,10,0.8333333333333334,18
+cloze,ordering,cold,heater,sink,0.0654,50,10,0.0,5
+cloze,ordering,cold,heater,tea,0.0656,160,10,0.125,16
+cloze,ordering,cold,sink,blankets,0.9663999999999999,30,10,0.3333333333333333,3
+cloze,ordering,cold,sink,heater,0.9346,40,10,1.0,4
+cloze,ordering,cold,sink,tea,0.5002,50,10,0.0,5
+cloze,ordering,cold,tea,blankets,0.9692000000000001,50,10,0.6,5
+cloze,ordering,cold,tea,heater,0.9344,60,10,0.5,6
+cloze,ordering,cold,tea,sink,0.4998,40,10,0.0,4
+cloze,ordering,cut,batteries,keys,0.678,60,10,0.16666666666666666,6
+cloze,ordering,cut,batteries,nail clippers,0.9166,50,10,0.8,5
+cloze,ordering,cut,batteries,scissors,0.983,50,10,0.8,5
+cloze,ordering,cut,batteries,stapler,0.4708,180,10,0.4444444444444444,18
+cloze,ordering,cut,batteries,thumb tacks,0.6706,210,10,0.38095238095238093,21
+cloze,ordering,cut,keys,batteries,0.322,40,10,0.25,4
+cloze,ordering,cut,keys,nail clippers,0.841,50,10,0.8,5
+cloze,ordering,cut,keys,scissors,0.9595999999999999,50,10,1.0,5
+cloze,ordering,cut,keys,stapler,0.298,50,10,0.2,5
+cloze,ordering,cut,keys,thumb tacks,0.4842,50,10,0.2,5
+cloze,ordering,cut,nail clippers,batteries,0.0834,50,10,0.0,5
+cloze,ordering,cut,nail clippers,keys,0.159,160,10,0.3125,16
+cloze,ordering,cut,nail clippers,scissors,0.8106,40,10,1.0,4
+cloze,ordering,cut,nail clippers,stapler,0.0696,20,10,0.5,2
+cloze,ordering,cut,nail clippers,thumb tacks,0.14679999999999999,30,10,0.6666666666666666,3
+cloze,ordering,cut,scissors,batteries,0.017,40,10,0.0,4
+cloze,ordering,cut,scissors,keys,0.0404,200,10,0.15,20
+cloze,ordering,cut,scissors,nail clippers,0.18939999999999999,110,10,0.6363636363636364,11
+cloze,ordering,cut,scissors,stapler,0.019399999999999997,60,10,0.16666666666666666,6
+cloze,ordering,cut,scissors,thumb tacks,0.038400000000000004,40,10,0.0,4
+cloze,ordering,cut,stapler,batteries,0.5292,50,10,0.0,5
+cloze,ordering,cut,stapler,keys,0.7020000000000001,50,10,0.2,5
+cloze,ordering,cut,stapler,nail clippers,0.9304,60,10,0.6666666666666666,6
+cloze,ordering,cut,stapler,scissors,0.9805999999999999,40,10,1.0,4
+cloze,ordering,cut,stapler,thumb tacks,0.6876,170,10,0.11764705882352941,17
+cloze,ordering,cut,thumb tacks,batteries,0.3294,40,10,0.0,4
+cloze,ordering,cut,thumb tacks,keys,0.5158,30,10,0.3333333333333333,3
+cloze,ordering,cut,thumb tacks,nail clippers,0.8532,50,10,0.6,5
+cloze,ordering,cut,thumb tacks,scissors,0.9616,50,10,0.8,5
+cloze,ordering,cut,thumb tacks,stapler,0.3124,50,10,0.0,5
+cloze,ordering,fridge,juice,ketchup,0.0248,60,10,0.3333333333333333,6
+cloze,ordering,fridge,juice,meat,0.0,30,10,0.0,3
+cloze,ordering,fridge,juice,milk,0.3956,150,10,1.0,15
+cloze,ordering,fridge,juice,water,0.5362000000000001,60,10,1.0,6
+cloze,ordering,fridge,juice,yogurt,0.014199999999999999,50,10,0.0,5
+cloze,ordering,fridge,ketchup,juice,0.9752,50,10,1.0,5
+cloze,ordering,fridge,ketchup,meat,0.0,40,10,0.0,4
+cloze,ordering,fridge,ketchup,milk,0.9643999999999999,50,10,1.0,5
+cloze,ordering,fridge,ketchup,water,0.9795999999999999,20,10,1.0,2
+cloze,ordering,fridge,ketchup,yogurt,0.4252,180,10,0.2222222222222222,18
+cloze,ordering,fridge,meat,juice,1.0,50,10,1.0,5
+cloze,ordering,fridge,meat,ketchup,1.0,180,10,0.16666666666666666,18
+cloze,ordering,fridge,meat,milk,1.0,30,10,0.6666666666666666,3
+cloze,ordering,fridge,meat,water,1.0,20,10,1.0,2
+cloze,ordering,fridge,meat,yogurt,1.0,160,10,0.625,16
+cloze,ordering,fridge,milk,juice,0.6043999999999999,50,10,1.0,5
+cloze,ordering,fridge,milk,ketchup,0.0356,50,10,0.0,5
+cloze,ordering,fridge,milk,meat,0.0,60,10,0.0,6
+cloze,ordering,fridge,milk,water,0.625,60,10,0.8333333333333334,6
+cloze,ordering,fridge,milk,yogurt,0.0232,50,10,0.2,5
+cloze,ordering,fridge,water,juice,0.4638,220,10,1.0,22
+cloze,ordering,fridge,water,ketchup,0.020399999999999998,40,10,0.0,4
+cloze,ordering,fridge,water,meat,0.0,30,10,0.0,3
+cloze,ordering,fridge,water,milk,0.375,180,10,0.9444444444444444,18
+cloze,ordering,fridge,water,yogurt,0.0132,50,10,0.0,5
+cloze,ordering,fridge,yogurt,juice,0.9858,50,10,1.0,5
+cloze,ordering,fridge,yogurt,ketchup,0.5748,50,10,0.2,5
+cloze,ordering,fridge,yogurt,meat,0.0,50,10,0.4,5
+cloze,ordering,fridge,yogurt,milk,0.9768000000000001,40,10,0.75,4
+cloze,ordering,fridge,yogurt,water,0.9868,20,10,1.0,2
+cloze,ordering,gym,basketball,lacrosse,0.23940000000000003,150,10,0.9333333333333333,15
+cloze,ordering,gym,basketball,meditation,0.0298,20,10,0.0,2
+cloze,ordering,gym,basketball,softball,0.1726,200,10,0.9,20
+cloze,ordering,gym,basketball,swimming,0.1628,50,10,0.4,5
+cloze,ordering,gym,lacrosse,basketball,0.7605999999999999,40,10,1.0,4
+cloze,ordering,gym,lacrosse,meditation,0.0978,20,10,0.0,2
+cloze,ordering,gym,lacrosse,softball,0.4048,30,10,1.0,3
+cloze,ordering,gym,lacrosse,swimming,0.3812,30,10,0.3333333333333333,3
+cloze,ordering,gym,meditation,basketball,0.9702,40,10,0.75,4
+cloze,ordering,gym,meditation,lacrosse,0.9022,40,10,1.0,4
+cloze,ordering,gym,meditation,softball,0.8736,40,10,1.0,4
+cloze,ordering,gym,meditation,swimming,0.8595999999999999,190,10,0.7894736842105263,19
+cloze,ordering,gym,softball,basketball,0.8274,60,10,1.0,6
+cloze,ordering,gym,softball,lacrosse,0.5952,190,10,0.9473684210526315,19
+cloze,ordering,gym,softball,meditation,0.1264,50,10,0.6,5
+cloze,ordering,gym,softball,swimming,0.4764,50,10,0.8,5
+cloze,ordering,gym,swimming,basketball,0.8371999999999999,50,10,1.0,5
+cloze,ordering,gym,swimming,lacrosse,0.6188,40,10,1.0,4
+cloze,ordering,gym,swimming,meditation,0.1404,50,10,0.0,5
+cloze,ordering,gym,swimming,softball,0.5236000000000001,40,10,0.75,4
+cloze,ordering,hot,blankets,couch,0.0,120,10,0.0,12
+cloze,ordering,hot,blankets,fan,0.9976,50,10,0.2,5
+cloze,ordering,hot,blankets,heater,0.9359999999999999,40,10,0.75,4
+cloze,ordering,hot,blankets,pool,0.9914000000000001,50,10,0.0,5
+cloze,ordering,hot,blankets,shower,0.9817999999999999,50,10,0.2,5
+cloze,ordering,hot,couch,blankets,1.0,50,10,0.2,5
+cloze,ordering,hot,couch,fan,1.0,30,10,0.0,3
+cloze,ordering,hot,couch,heater,1.0,30,10,0.0,3
+cloze,ordering,hot,couch,pool,1.0,60,10,0.5,6
+cloze,ordering,hot,couch,shower,1.0,20,10,1.0,2
+cloze,ordering,hot,fan,blankets,0.0024000000000000002,40,10,0.0,4
+cloze,ordering,hot,fan,couch,0.0,40,10,0.0,4
+cloze,ordering,hot,fan,heater,0.0248,60,10,0.16666666666666666,6
+cloze,ordering,hot,fan,pool,0.205,200,10,0.55,20
+cloze,ordering,hot,fan,shower,0.1088,200,10,0.05,20
+cloze,ordering,hot,heater,blankets,0.064,130,10,0.23076923076923078,13
+cloze,ordering,hot,heater,couch,0.0,200,10,0.0,20
+cloze,ordering,hot,heater,fan,0.9752,50,10,1.0,5
+cloze,ordering,hot,heater,pool,0.9036,40,10,0.25,4
+cloze,ordering,hot,heater,shower,0.8214,50,10,0.0,5
+cloze,ordering,hot,pool,blankets,0.0086,50,10,0.4,5
+cloze,ordering,hot,pool,couch,0.0,40,10,0.0,4
+cloze,ordering,hot,pool,fan,0.795,40,10,0.25,4
+cloze,ordering,hot,pool,heater,0.0964,40,10,0.0,4
+cloze,ordering,hot,pool,shower,0.335,190,10,0.2631578947368421,19
+cloze,ordering,hot,shower,blankets,0.0182,40,10,0.0,4
+cloze,ordering,hot,shower,couch,0.0,60,10,0.0,6
+cloze,ordering,hot,shower,fan,0.8912,50,10,0.8,5
+cloze,ordering,hot,shower,heater,0.17859999999999998,60,10,0.3333333333333333,6
+cloze,ordering,hot,shower,pool,0.665,50,10,1.0,5
+cloze,ordering,mask,bandana,candy,0.0324,40,10,0.0,4
+cloze,ordering,mask,bandana,handkerchief,0.2756,130,10,0.6153846153846154,13
+cloze,ordering,mask,bandana,napkins,0.1676,120,10,0.16666666666666666,12
+cloze,ordering,mask,bandana,wallet,0.0,50,10,0.4,5
+cloze,ordering,mask,candy,bandana,0.9675999999999999,50,10,0.8,5
+cloze,ordering,mask,candy,handkerchief,0.9152,60,10,0.6666666666666666,6
+cloze,ordering,mask,candy,napkins,0.8583999999999999,40,10,0.5,4
+cloze,ordering,mask,candy,wallet,0.0,200,10,0.2,20
+cloze,ordering,mask,handkerchief,bandana,0.7243999999999999,30,10,1.0,3
+cloze,ordering,mask,handkerchief,candy,0.0848,60,10,0.0,6
+cloze,ordering,mask,handkerchief,napkins,0.3594,200,10,0.3,20
+cloze,ordering,mask,handkerchief,wallet,0.0,50,10,0.0,5
+cloze,ordering,mask,napkins,bandana,0.8323999999999999,50,10,1.0,5
+cloze,ordering,mask,napkins,candy,0.1416,50,10,0.2,5
+cloze,ordering,mask,napkins,handkerchief,0.6406000000000001,50,10,0.6,5
+cloze,ordering,mask,napkins,wallet,0.0,40,10,0.0,4
+cloze,ordering,mask,wallet,bandana,1.0,50,10,0.8,5
+cloze,ordering,mask,wallet,candy,1.0,50,10,0.2,5
+cloze,ordering,mask,wallet,handkerchief,1.0,50,10,0.6,5
+cloze,ordering,mask,wallet,napkins,1.0,60,10,0.5,6
+cloze,ordering,meat,chicken,crab,0.0628,170,10,0.7647058823529411,17
+cloze,ordering,meat,chicken,mushrooms,0.0166,50,10,0.2,5
+cloze,ordering,meat,chicken,tofu,0.047599999999999996,50,10,0.0,5
+cloze,ordering,meat,chicken,turkey,0.16499999999999998,210,10,0.9523809523809523,21
+cloze,ordering,meat,crab,chicken,0.9372,50,10,1.0,5
+cloze,ordering,meat,crab,mushrooms,0.1898,30,10,0.0,3
+cloze,ordering,meat,crab,tofu,0.412,30,10,0.6666666666666666,3
+cloze,ordering,meat,crab,turkey,0.7186,50,10,1.0,5
+cloze,ordering,meat,mushrooms,chicken,0.9833999999999999,60,10,1.0,6
+cloze,ordering,meat,mushrooms,crab,0.8101999999999999,50,10,1.0,5
+cloze,ordering,meat,mushrooms,tofu,0.741,190,10,0.5263157894736842,19
+cloze,ordering,meat,mushrooms,turkey,0.9226,60,10,1.0,6
+cloze,ordering,meat,tofu,chicken,0.9523999999999999,40,10,1.0,4
+cloze,ordering,meat,tofu,crab,0.588,50,10,0.8,5
+cloze,ordering,meat,tofu,mushrooms,0.259,50,10,0.0,5
+cloze,ordering,meat,tofu,turkey,0.7976000000000001,50,10,1.0,5
+cloze,ordering,meat,turkey,chicken,0.835,40,10,1.0,4
+cloze,ordering,meat,turkey,crab,0.2814,130,10,0.7692307692307693,13
+cloze,ordering,meat,turkey,mushrooms,0.0774,40,10,0.0,4
+cloze,ordering,meat,turkey,tofu,0.2024,60,10,0.16666666666666666,6
+cloze,ordering,restaurant,cake,cocktails,0.9728,40,10,1.0,4
+cloze,ordering,restaurant,cake,salad,0.4078,50,10,0.6,5
+cloze,ordering,restaurant,cake,soda,0.9412,50,10,0.8,5
+cloze,ordering,restaurant,cake,soup,0.629,180,10,0.3888888888888889,18
+cloze,ordering,restaurant,cake,vodka,0.9468,60,10,1.0,6
+cloze,ordering,restaurant,cocktails,cake,0.027200000000000002,50,10,0.6,5
+cloze,ordering,restaurant,cocktails,salad,0.0194,40,10,0.0,4
+cloze,ordering,restaurant,cocktails,soda,0.322,190,10,0.42105263157894735,19
+cloze,ordering,restaurant,cocktails,soup,0.0494,20,10,0.0,2
+cloze,ordering,restaurant,cocktails,vodka,0.338,140,10,0.5,14
+cloze,ordering,restaurant,salad,cake,0.5922,200,10,0.55,20
+cloze,ordering,restaurant,salad,cocktails,0.9805999999999999,40,10,0.75,4
+cloze,ordering,restaurant,salad,soda,0.9570000000000001,50,10,0.6,5
+cloze,ordering,restaurant,salad,soup,0.6962,200,10,0.7,20
+cloze,ordering,restaurant,salad,vodka,0.9611999999999999,50,10,1.0,5
+cloze,ordering,restaurant,soda,cake,0.0588,30,10,0.0,3
+cloze,ordering,restaurant,soda,cocktails,0.678,30,10,1.0,3
+cloze,ordering,restaurant,soda,salad,0.043,50,10,0.0,5
+cloze,ordering,restaurant,soda,soup,0.0964,20,10,0.0,2
+cloze,ordering,restaurant,soda,vodka,0.514,50,10,1.0,5
+cloze,ordering,restaurant,soup,cake,0.37100000000000005,30,10,0.3333333333333333,3
+cloze,ordering,restaurant,soup,cocktails,0.9505999999999999,60,10,1.0,6
+cloze,ordering,restaurant,soup,salad,0.3038,60,10,0.5,6
+cloze,ordering,restaurant,soup,soda,0.9036000000000001,60,10,0.8333333333333334,6
+cloze,ordering,restaurant,soup,vodka,0.9067999999999999,40,10,1.0,4
+cloze,ordering,restaurant,vodka,cake,0.053200000000000004,50,10,0.0,5
+cloze,ordering,restaurant,vodka,cocktails,0.662,30,10,1.0,3
+cloze,ordering,restaurant,vodka,salad,0.0388,20,10,0.0,2
+cloze,ordering,restaurant,vodka,soda,0.48600000000000004,190,10,0.3157894736842105,19
+cloze,ordering,restaurant,vodka,soup,0.0932,50,10,0.0,5
+cloze,ordering,salad,chips,cigarettes,0.221,60,10,0.16666666666666666,6
+cloze,ordering,salad,chips,dressing,0.9316,50,10,0.4,5
+cloze,ordering,salad,chips,lettuce,0.9754,60,10,1.0,6
+cloze,ordering,salad,chips,meat,0.6372000000000001,210,10,0.2857142857142857,21
+cloze,ordering,salad,cigarettes,chips,0.779,160,10,0.4375,16
+cloze,ordering,salad,cigarettes,dressing,0.9798,40,10,1.0,4
+cloze,ordering,salad,cigarettes,lettuce,0.9926,40,10,0.75,4
+cloze,ordering,salad,cigarettes,meat,0.867,190,10,0.5789473684210527,19
+cloze,ordering,salad,dressing,chips,0.06839999999999999,20,10,0.0,2
+cloze,ordering,salad,dressing,cigarettes,0.0202,50,10,0.0,5
+cloze,ordering,salad,dressing,lettuce,0.7373999999999999,30,10,1.0,3
+cloze,ordering,salad,dressing,meat,0.1174,30,10,0.3333333333333333,3
+cloze,ordering,salad,lettuce,chips,0.0246,20,10,0.0,2
+cloze,ordering,salad,lettuce,cigarettes,0.0074,60,10,0.0,6
+cloze,ordering,salad,lettuce,dressing,0.2626,180,10,0.6111111111111112,18
+cloze,ordering,salad,lettuce,meat,0.0424,40,10,0.75,4
+cloze,ordering,salad,meat,chips,0.3628,20,10,0.0,2
+cloze,ordering,salad,meat,cigarettes,0.13299999999999998,50,10,0.0,5
+cloze,ordering,salad,meat,dressing,0.8826,30,10,0.0,3
+cloze,ordering,salad,meat,lettuce,0.9575999999999999,60,10,1.0,6
+cloze,ordering,science,art,geology,0.9736,40,10,1.0,4
+cloze,ordering,science,art,math,0.8508,200,10,0.7,20
+cloze,ordering,science,art,philosophy,0.6858,180,10,0.6111111111111112,18
+cloze,ordering,science,art,physics,0.9876,50,10,1.0,5
+cloze,ordering,science,art,zoology,0.9486,50,10,0.8,5
+cloze,ordering,science,geology,art,0.0264,50,10,0.6,5
+cloze,ordering,science,geology,math,0.1256,60,10,0.8333333333333334,6
+cloze,ordering,science,geology,philosophy,0.048,30,10,0.6666666666666666,3
+cloze,ordering,science,geology,physics,0.6928,40,10,1.0,4
+cloze,ordering,science,geology,zoology,0.33440000000000003,130,10,1.0,13
+cloze,ordering,science,math,art,0.1492,20,10,0.5,2
+cloze,ordering,science,math,geology,0.8744,40,10,0.75,4
+cloze,ordering,science,math,philosophy,0.2734,50,10,0.4,5
+cloze,ordering,science,math,physics,0.9448000000000001,40,10,0.5,4
+cloze,ordering,science,math,zoology,0.7760000000000001,50,10,0.8,5
+cloze,ordering,science,philosophy,art,0.3142,50,10,1.0,5
+cloze,ordering,science,philosophy,geology,0.9519999999999998,50,10,0.8,5
+cloze,ordering,science,philosophy,math,0.7266,160,10,0.6875,16
+cloze,ordering,science,philosophy,physics,0.9792,40,10,1.0,4
+cloze,ordering,science,philosophy,zoology,0.905,60,10,0.8333333333333334,6
+cloze,ordering,science,physics,art,0.0124,50,10,0.4,5
+cloze,ordering,science,physics,geology,0.30720000000000003,210,10,0.8571428571428571,21
+cloze,ordering,science,physics,math,0.055200000000000006,30,10,0.3333333333333333,3
+cloze,ordering,science,physics,philosophy,0.0208,30,10,0.3333333333333333,3
+cloze,ordering,science,physics,zoology,0.17600000000000002,200,10,0.65,20
+cloze,ordering,science,zoology,art,0.0514,30,10,0.6666666666666666,3
+cloze,ordering,science,zoology,geology,0.6656000000000001,40,10,0.75,4
+cloze,ordering,science,zoology,math,0.22399999999999998,50,10,0.4,5
+cloze,ordering,science,zoology,philosophy,0.095,60,10,0.6666666666666666,6
+cloze,ordering,science,zoology,physics,0.8240000000000001,40,10,1.0,4
+cloze,ordering,throw,beach ball,boomerang,0.38639999999999997,190,10,0.631578947368421,19
+cloze,ordering,throw,beach ball,football,0.841,50,10,1.0,5
+cloze,ordering,throw,beach ball,lawnmower,0.14279999999999998,30,10,0.0,3
+cloze,ordering,throw,beach ball,tires,0.182,60,10,0.0,6
+cloze,ordering,throw,boomerang,beach ball,0.6136,40,10,0.75,4
+cloze,ordering,throw,boomerang,football,0.9064,40,10,1.0,4
+cloze,ordering,throw,boomerang,lawnmower,0.20879999999999999,50,10,0.0,5
+cloze,ordering,throw,boomerang,tires,0.26039999999999996,50,10,0.0,5
+cloze,ordering,throw,football,beach ball,0.159,160,10,0.875,16
+cloze,ordering,throw,football,boomerang,0.09359999999999999,210,10,0.6190476190476191,21
+cloze,ordering,throw,football,lawnmower,0.0298,30,10,0.0,3
+cloze,ordering,throw,football,tires,0.039799999999999995,30,10,0.0,3
+cloze,ordering,throw,lawnmower,beach ball,0.8572,20,10,1.0,2
+cloze,ordering,throw,lawnmower,boomerang,0.7912,50,10,0.8,5
+cloze,ordering,throw,lawnmower,football,0.9702,50,10,1.0,5
+cloze,ordering,throw,lawnmower,tires,0.5871999999999999,130,10,0.07692307692307693,13
+cloze,ordering,throw,tires,beach ball,0.818,50,10,0.6,5
+cloze,ordering,throw,tires,boomerang,0.7396,40,10,1.0,4
+cloze,ordering,throw,tires,football,0.9601999999999999,50,10,0.8,5
+cloze,ordering,throw,tires,lawnmower,0.4128,50,10,0.8,5
+cloze,ordering,transport,car,chairs,0.0208,50,10,0.0,5
+cloze,ordering,transport,car,hammer,0.0126,50,10,0.2,5
+cloze,ordering,transport,car,lawnmower,0.032,40,10,0.25,4
+cloze,ordering,transport,chairs,car,0.9792,30,10,1.0,3
+cloze,ordering,transport,chairs,hammer,0.36160000000000003,40,10,0.0,4
+cloze,ordering,transport,chairs,lawnmower,0.576,220,10,0.09090909090909091,22
+cloze,ordering,transport,hammer,car,0.9873999999999999,50,10,0.6,5
+cloze,ordering,transport,hammer,chairs,0.6384000000000001,150,10,0.06666666666666667,15
+cloze,ordering,transport,hammer,lawnmower,0.702,180,10,0.5555555555555556,18
+cloze,ordering,transport,lawnmower,car,0.968,60,10,1.0,6
+cloze,ordering,transport,lawnmower,chairs,0.424,50,10,0.2,5
+cloze,ordering,transport,lawnmower,hammer,0.298,40,10,0.25,4
+cloze,conjunction,bag,chalk,crayons,0.7,60,10,1.0,6
+cloze,conjunction,bag,chalk,headphones,0.0564,50,10,0.2,5
+cloze,conjunction,bag,chalk,makeup,0.23920000000000002,50,10,0.2,5
+cloze,conjunction,bag,chalk,pen,0.8058,50,10,1.0,5
+cloze,conjunction,bag,crayons,chalk,0.12059999999999998,180,10,0.8888888888888888,18
+cloze,conjunction,bag,crayons,headphones,0.0216,40,10,0.25,4
+cloze,conjunction,bag,crayons,makeup,0.10620000000000002,50,10,0.0,5
+cloze,conjunction,bag,crayons,pen,0.5806,40,10,1.0,4
+cloze,conjunction,bag,headphones,chalk,0.3192,50,10,0.4,5
+cloze,conjunction,bag,headphones,crayons,0.7737999999999999,30,10,1.0,3
+cloze,conjunction,bag,headphones,makeup,0.2932,190,10,0.21052631578947367,19
+cloze,conjunction,bag,headphones,pen,0.858,50,10,1.0,5
+cloze,conjunction,bag,makeup,chalk,0.265,20,10,1.0,2
+cloze,conjunction,bag,makeup,crayons,0.7112,20,10,1.0,2
+cloze,conjunction,bag,makeup,headphones,0.055400000000000005,40,10,0.0,4
+cloze,conjunction,bag,makeup,pen,0.8146,30,10,1.0,3
+cloze,conjunction,bag,pen,chalk,0.0786,210,10,0.8571428571428571,21
+cloze,conjunction,bag,pen,crayons,0.3518,170,10,0.8823529411764706,17
+cloze,conjunction,bag,pen,headphones,0.0172,50,10,0.0,5
+cloze,conjunction,bag,pen,makeup,0.071,60,10,0.16666666666666666,6
+cloze,conjunction,bakery,cakes,ice cream,0.1504,190,10,0.8421052631578947,19
+cloze,conjunction,bakery,cakes,muffins,0.18660000000000002,180,10,0.8888888888888888,18
+cloze,conjunction,bakery,cakes,pretzels,0.036000000000000004,60,10,0.5,6
+cloze,conjunction,bakery,cakes,sandwiches,0.0278,50,10,0.4,5
+cloze,conjunction,bakery,cakes,water,0.0138,50,10,0.0,5
+cloze,conjunction,bakery,ice cream,cakes,0.7090000000000001,50,10,1.0,5
+cloze,conjunction,bakery,ice cream,muffins,0.35760000000000003,170,10,0.5882352941176471,17
+cloze,conjunction,bakery,ice cream,pretzels,0.08180000000000001,20,10,0.5,2
+cloze,conjunction,bakery,ice cream,sandwiches,0.07039999999999999,40,10,0.25,4
+cloze,conjunction,bakery,ice cream,water,0.0328,60,10,0.16666666666666666,6
+cloze,conjunction,bakery,muffins,cakes,0.6818000000000001,50,10,1.0,5
+cloze,conjunction,bakery,muffins,ice cream,0.30579999999999996,20,10,1.0,2
+cloze,conjunction,bakery,muffins,pretzels,0.0746,50,10,0.4,5
+cloze,conjunction,bakery,muffins,sandwiches,0.0648,20,10,0.0,2
+cloze,conjunction,bakery,muffins,water,0.032,50,10,0.0,5
+cloze,conjunction,bakery,pretzels,cakes,0.8006,50,10,1.0,5
+cloze,conjunction,bakery,pretzels,ice cream,0.4144,50,10,1.0,5
+cloze,conjunction,bakery,pretzels,muffins,0.4646,30,10,1.0,3
+cloze,conjunction,bakery,pretzels,sandwiches,0.0974,50,10,0.4,5
+cloze,conjunction,bakery,pretzels,water,0.0472,40,10,0.0,4
+cloze,conjunction,bakery,sandwiches,cakes,0.8046,30,10,1.0,3
+cloze,conjunction,bakery,sandwiches,ice cream,0.42,50,10,1.0,5
+cloze,conjunction,bakery,sandwiches,muffins,0.4692,30,10,0.6666666666666666,3
+cloze,conjunction,bakery,sandwiches,pretzels,0.1128,200,10,0.55,20
+cloze,conjunction,bakery,sandwiches,water,0.047599999999999996,50,10,0.0,5
+cloze,conjunction,bakery,water,cakes,0.8160000000000001,30,10,0.6666666666666666,3
+cloze,conjunction,bakery,water,ice cream,0.43160000000000004,60,10,0.6666666666666666,6
+cloze,conjunction,bakery,water,muffins,0.4832,60,10,0.5,6
+cloze,conjunction,bakery,water,pretzels,0.1154,130,10,0.5384615384615384,13
+cloze,conjunction,bakery,water,sandwiches,0.1004,210,10,0.42857142857142855,21
+cloze,conjunction,beach,bikini,coat,0.0542,30,10,0.3333333333333333,3
+cloze,conjunction,beach,bikini,jacket,0.1494,40,10,0.25,4
+cloze,conjunction,beach,bikini,jeans,0.174,60,10,0.5,6
+cloze,conjunction,beach,bikini,shorts,0.7458,200,10,0.7,20
+cloze,conjunction,beach,bikini,sunglasses,0.2848,180,10,0.16666666666666666,18
+cloze,conjunction,beach,coat,bikini,0.24020000000000002,60,10,1.0,6
+cloze,conjunction,beach,coat,jacket,0.177,110,10,0.5454545454545454,11
+cloze,conjunction,beach,coat,jeans,0.1972,160,10,0.5,16
+cloze,conjunction,beach,coat,shorts,0.7968,50,10,1.0,5
+cloze,conjunction,beach,coat,sunglasses,0.3244,30,10,0.0,3
+cloze,conjunction,beach,jacket,bikini,0.2202,20,10,1.0,2
+cloze,conjunction,beach,jacket,coat,0.0572,30,10,1.0,3
+cloze,conjunction,beach,jacket,jeans,0.1832,200,10,0.45,20
+cloze,conjunction,beach,jacket,shorts,0.7676000000000001,50,10,0.6,5
+cloze,conjunction,beach,jacket,sunglasses,0.3044,40,10,0.5,4
+cloze,conjunction,beach,jeans,bikini,0.2186,50,10,1.0,5
+cloze,conjunction,beach,jeans,coat,0.0548,50,10,0.6,5
+cloze,conjunction,beach,jeans,jacket,0.158,60,10,0.0,6
+cloze,conjunction,beach,jeans,shorts,0.7559999999999999,50,10,1.0,5
+cloze,conjunction,beach,jeans,sunglasses,0.2952,40,10,0.25,4
+cloze,conjunction,beach,shorts,bikini,0.0848,40,10,0.75,4
+cloze,conjunction,beach,shorts,coat,0.0182,40,10,0.75,4
+cloze,conjunction,beach,shorts,jacket,0.05739999999999999,40,10,0.25,4
+cloze,conjunction,beach,shorts,jeans,0.0684,50,10,0.6,5
+cloze,conjunction,beach,shorts,sunglasses,0.1192,200,10,0.15,20
+cloze,conjunction,beach,sunglasses,bikini,0.1918,50,10,1.0,5
+cloze,conjunction,beach,sunglasses,coat,0.049800000000000004,50,10,0.0,5
+cloze,conjunction,beach,sunglasses,jacket,0.13720000000000002,50,10,0.8,5
+cloze,conjunction,beach,sunglasses,jeans,0.157,60,10,0.5,6
+cloze,conjunction,beach,sunglasses,shorts,0.7216,40,10,0.5,4
+cloze,conjunction,cold,blankets,heater,0.2702,20,10,1.0,2
+cloze,conjunction,cold,blankets,sink,0.025,40,10,0.0,4
+cloze,conjunction,cold,blankets,tea,0.022799999999999997,200,10,0.2,20
+cloze,conjunction,cold,heater,blankets,0.55,180,10,0.8333333333333334,18
+cloze,conjunction,cold,heater,sink,0.0336,50,10,0.0,5
+cloze,conjunction,cold,heater,tea,0.034199999999999994,160,10,0.125,16
+cloze,conjunction,cold,sink,blankets,0.7048,30,10,0.3333333333333333,3
+cloze,conjunction,cold,sink,heater,0.5084,40,10,1.0,4
+cloze,conjunction,cold,sink,tea,0.0558,50,10,0.0,5
+cloze,conjunction,cold,tea,blankets,0.7086,50,10,0.6,5
+cloze,conjunction,cold,tea,heater,0.5082,60,10,0.5,6
+cloze,conjunction,cold,tea,sink,0.054000000000000006,40,10,0.0,4
+cloze,conjunction,cut,batteries,keys,0.1028,60,10,0.16666666666666666,6
+cloze,conjunction,cut,batteries,nail clippers,0.42200000000000004,50,10,0.8,5
+cloze,conjunction,cut,batteries,scissors,0.8146,50,10,0.8,5
+cloze,conjunction,cut,batteries,stapler,0.04699999999999999,180,10,0.4444444444444444,18
+cloze,conjunction,cut,batteries,thumb tacks,0.1022,210,10,0.38095238095238093,21
+cloze,conjunction,cut,keys,batteries,0.0498,40,10,0.25,4
+cloze,conjunction,cut,keys,nail clippers,0.4092,50,10,0.8,5
+cloze,conjunction,cut,keys,scissors,0.7994,50,10,1.0,5
+cloze,conjunction,cut,keys,stapler,0.0458,50,10,0.2,5
+cloze,conjunction,cut,keys,thumb tacks,0.1002,50,10,0.2,5
+cloze,conjunction,cut,nail clippers,batteries,0.04,50,10,0.0,5
+cloze,conjunction,cut,nail clippers,keys,0.0786,160,10,0.3125,16
+cloze,conjunction,cut,nail clippers,scissors,0.7006,40,10,1.0,4
+cloze,conjunction,cut,nail clippers,stapler,0.0298,20,10,0.5,2
+cloze,conjunction,cut,nail clippers,thumb tacks,0.0746,30,10,0.6666666666666666,3
+cloze,conjunction,cut,scissors,batteries,0.013600000000000001,40,10,0.0,4
+cloze,conjunction,cut,scissors,keys,0.0336,200,10,0.15,20
+cloze,conjunction,cut,scissors,nail clippers,0.16179999999999997,110,10,0.6363636363636364,11
+cloze,conjunction,cut,scissors,stapler,0.0164,60,10,0.16666666666666666,6
+cloze,conjunction,cut,scissors,thumb tacks,0.0328,40,10,0.0,4
+cloze,conjunction,cut,stapler,batteries,0.0524,50,10,0.0,5
+cloze,conjunction,cut,stapler,keys,0.10460000000000001,50,10,0.2,5
+cloze,conjunction,cut,stapler,nail clippers,0.42400000000000004,60,10,0.6666666666666666,6
+cloze,conjunction,cut,stapler,scissors,0.8102,40,10,1.0,4
+cloze,conjunction,cut,stapler,thumb tacks,0.1016,170,10,0.11764705882352941,17
+cloze,conjunction,cut,thumb tacks,batteries,0.0508,40,10,0.0,4
+cloze,conjunction,cut,thumb tacks,keys,0.10099999999999999,30,10,0.3333333333333333,3
+cloze,conjunction,cut,thumb tacks,nail clippers,0.4068,50,10,0.6,5
+cloze,conjunction,cut,thumb tacks,scissors,0.7984,50,10,0.8,5
+cloze,conjunction,cut,thumb tacks,stapler,0.0454,50,10,0.0,5
+cloze,conjunction,fridge,juice,ketchup,0.0214,60,10,0.3333333333333333,6
+cloze,conjunction,fridge,juice,meat,0.0,30,10,0.0,3
+cloze,conjunction,fridge,juice,milk,0.37579999999999997,150,10,1.0,15
+cloze,conjunction,fridge,juice,water,0.5184000000000001,60,10,1.0,6
+cloze,conjunction,fridge,juice,yogurt,0.0132,50,10,0.0,5
+cloze,conjunction,fridge,ketchup,juice,0.8784000000000001,50,10,1.0,5
+cloze,conjunction,fridge,ketchup,meat,0.0,40,10,0.0,4
+cloze,conjunction,fridge,ketchup,milk,0.8218,50,10,1.0,5
+cloze,conjunction,fridge,ketchup,water,0.8865999999999999,20,10,1.0,2
+cloze,conjunction,fridge,ketchup,yogurt,0.10719999999999999,180,10,0.2222222222222222,18
+cloze,conjunction,fridge,meat,juice,0.8966,50,10,1.0,5
+cloze,conjunction,fridge,meat,ketchup,0.1574,180,10,0.16666666666666666,18
+cloze,conjunction,fridge,meat,milk,0.8455999999999999,30,10,0.6666666666666666,3
+cloze,conjunction,fridge,meat,water,0.9028,20,10,1.0,2
+cloze,conjunction,fridge,meat,yogurt,0.1226,160,10,0.625,16
+cloze,conjunction,fridge,milk,juice,0.5744,50,10,1.0,5
+cloze,conjunction,fridge,milk,ketchup,0.0302,50,10,0.0,5
+cloze,conjunction,fridge,milk,meat,0.0,60,10,0.0,6
+cloze,conjunction,fridge,milk,water,0.5968,60,10,0.8333333333333334,6
+cloze,conjunction,fridge,milk,yogurt,0.019,50,10,0.2,5
+cloze,conjunction,fridge,water,juice,0.4452,220,10,1.0,22
+cloze,conjunction,fridge,water,ketchup,0.0198,40,10,0.0,4
+cloze,conjunction,fridge,water,meat,0.0,30,10,0.0,3
+cloze,conjunction,fridge,water,milk,0.35259999999999997,180,10,0.9444444444444444,18
+cloze,conjunction,fridge,water,yogurt,0.0116,50,10,0.0,5
+cloze,conjunction,fridge,yogurt,juice,0.885,50,10,1.0,5
+cloze,conjunction,fridge,yogurt,ketchup,0.145,50,10,0.2,5
+cloze,conjunction,fridge,yogurt,meat,0.0,50,10,0.4,5
+cloze,conjunction,fridge,yogurt,milk,0.8298,40,10,0.75,4
+cloze,conjunction,fridge,yogurt,water,0.8932,20,10,1.0,2
+cloze,conjunction,gym,basketball,lacrosse,0.1968,150,10,0.9333333333333333,15
+cloze,conjunction,gym,basketball,meditation,0.0218,20,10,0.0,2
+cloze,conjunction,gym,basketball,softball,0.1398,200,10,0.9,20
+cloze,conjunction,gym,basketball,swimming,0.132,50,10,0.4,5
+cloze,conjunction,gym,lacrosse,basketball,0.6294,40,10,1.0,4
+cloze,conjunction,gym,lacrosse,meditation,0.044,20,10,0.0,2
+cloze,conjunction,gym,lacrosse,softball,0.2442,30,10,1.0,3
+cloze,conjunction,gym,lacrosse,swimming,0.2236,30,10,0.3333333333333333,3
+cloze,conjunction,gym,meditation,basketball,0.7548,40,10,0.75,4
+cloze,conjunction,gym,meditation,lacrosse,0.44299999999999995,40,10,1.0,4
+cloze,conjunction,gym,meditation,softball,0.3376,40,10,1.0,4
+cloze,conjunction,gym,meditation,swimming,0.302,190,10,0.7894736842105263,19
+cloze,conjunction,gym,softball,basketball,0.6704,60,10,1.0,6
+cloze,conjunction,gym,softball,lacrosse,0.36260000000000003,190,10,0.9473684210526315,19
+cloze,conjunction,gym,softball,meditation,0.0472,50,10,0.6,5
+cloze,conjunction,gym,softball,swimming,0.2482,50,10,0.8,5
+cloze,conjunction,gym,swimming,basketball,0.6772,50,10,1.0,5
+cloze,conjunction,gym,swimming,lacrosse,0.3752,40,10,1.0,4
+cloze,conjunction,gym,swimming,meditation,0.049,50,10,0.0,5
+cloze,conjunction,gym,swimming,softball,0.281,40,10,0.75,4
+cloze,conjunction,hot,blankets,couch,0.0,120,10,0.0,12
+cloze,conjunction,hot,blankets,fan,0.7226,50,10,0.2,5
+cloze,conjunction,hot,blankets,heater,0.0402,40,10,0.75,4
+cloze,conjunction,hot,blankets,pool,0.3326,50,10,0.0,5
+cloze,conjunction,hot,blankets,shower,0.1882,50,10,0.2,5
+cloze,conjunction,hot,couch,blankets,0.0046,50,10,0.2,5
+cloze,conjunction,hot,couch,fan,0.7235999999999999,30,10,0.0,3
+cloze,conjunction,hot,couch,heater,0.0406,30,10,0.0,3
+cloze,conjunction,hot,couch,pool,0.3338,60,10,0.5,6
+cloze,conjunction,hot,couch,shower,0.18880000000000002,20,10,1.0,2
+cloze,conjunction,hot,fan,blankets,0.002,40,10,0.0,4
+cloze,conjunction,hot,fan,couch,0.0,40,10,0.0,4
+cloze,conjunction,hot,fan,heater,0.018000000000000002,60,10,0.16666666666666666,6
+cloze,conjunction,hot,fan,pool,0.157,200,10,0.55,20
+cloze,conjunction,hot,fan,shower,0.0816,200,10,0.05,20
+cloze,conjunction,hot,heater,blankets,0.0046,130,10,0.23076923076923078,13
+cloze,conjunction,hot,heater,couch,0.0,200,10,0.0,20
+cloze,conjunction,hot,heater,fan,0.711,50,10,1.0,5
+cloze,conjunction,hot,heater,pool,0.32720000000000005,40,10,0.25,4
+cloze,conjunction,hot,heater,shower,0.18400000000000002,50,10,0.0,5
+cloze,conjunction,hot,pool,blankets,0.0036,50,10,0.4,5
+cloze,conjunction,hot,pool,couch,0.0,40,10,0.0,4
+cloze,conjunction,hot,pool,fan,0.6205999999999999,40,10,0.25,4
+cloze,conjunction,hot,pool,heater,0.03,40,10,0.0,4
+cloze,conjunction,hot,pool,shower,0.14880000000000002,190,10,0.2631578947368421,19
+cloze,conjunction,hot,shower,blankets,0.004200000000000001,40,10,0.0,4
+cloze,conjunction,hot,shower,couch,0.0,60,10,0.0,6
+cloze,conjunction,hot,shower,fan,0.6724,50,10,0.8,5
+cloze,conjunction,hot,shower,heater,0.0364,60,10,0.3333333333333333,6
+cloze,conjunction,hot,shower,pool,0.2964,50,10,1.0,5
+cloze,conjunction,mask,bandana,candy,0.0242,40,10,0.0,4
+cloze,conjunction,mask,bandana,handkerchief,0.21459999999999999,130,10,0.6153846153846154,13
+cloze,conjunction,mask,bandana,napkins,0.1262,120,10,0.16666666666666666,12
+cloze,conjunction,mask,bandana,wallet,0.0,50,10,0.4,5
+cloze,conjunction,mask,candy,bandana,0.6901999999999999,50,10,0.8,5
+cloze,conjunction,mask,candy,handkerchief,0.39580000000000004,60,10,0.6666666666666666,6
+cloze,conjunction,mask,candy,napkins,0.2562,40,10,0.5,4
+cloze,conjunction,mask,candy,wallet,0.0,200,10,0.2,20
+cloze,conjunction,mask,handkerchief,bandana,0.5700000000000001,30,10,1.0,3
+cloze,conjunction,mask,handkerchief,candy,0.0356,60,10,0.0,6
+cloze,conjunction,mask,handkerchief,napkins,0.1906,200,10,0.3,20
+cloze,conjunction,mask,handkerchief,wallet,0.0,50,10,0.0,5
+cloze,conjunction,mask,napkins,bandana,0.6286,50,10,1.0,5
+cloze,conjunction,mask,napkins,candy,0.04100000000000001,50,10,0.2,5
+cloze,conjunction,mask,napkins,handkerchief,0.3468,50,10,0.6,5
+cloze,conjunction,mask,napkins,wallet,0.0,40,10,0.0,4
+cloze,conjunction,mask,wallet,bandana,0.7028,50,10,0.8,5
+cloze,conjunction,mask,wallet,candy,0.048,50,10,0.2,5
+cloze,conjunction,mask,wallet,handkerchief,0.40740000000000004,50,10,0.6,5
+cloze,conjunction,mask,wallet,napkins,0.26280000000000003,60,10,0.5,6
+cloze,conjunction,meat,chicken,crab,0.05179999999999999,170,10,0.7647058823529411,17
+cloze,conjunction,meat,chicken,mushrooms,0.0128,50,10,0.2,5
+cloze,conjunction,meat,chicken,tofu,0.038,50,10,0.0,5
+cloze,conjunction,meat,chicken,turkey,0.1388,210,10,0.9523809523809523,21
+cloze,conjunction,meat,crab,chicken,0.7818,50,10,1.0,5
+cloze,conjunction,meat,crab,mushrooms,0.039599999999999996,30,10,0.0,3
+cloze,conjunction,meat,crab,tofu,0.1154,30,10,0.6666666666666666,3
+cloze,conjunction,meat,crab,turkey,0.354,50,10,1.0,5
+cloze,conjunction,meat,mushrooms,chicken,0.8104,60,10,1.0,6
+cloze,conjunction,meat,mushrooms,crab,0.18239999999999998,50,10,1.0,5
+cloze,conjunction,meat,mushrooms,tofu,0.1296,190,10,0.5263157894736842,19
+cloze,conjunction,meat,mushrooms,turkey,0.38999999999999996,60,10,1.0,6
+cloze,conjunction,meat,tofu,chicken,0.792,40,10,1.0,4
+cloze,conjunction,meat,tofu,crab,0.1724,50,10,0.8,5
+cloze,conjunction,meat,tofu,mushrooms,0.0404,50,10,0.0,5
+cloze,conjunction,meat,tofu,turkey,0.3728,50,10,1.0,5
+cloze,conjunction,meat,turkey,chicken,0.717,40,10,1.0,4
+cloze,conjunction,meat,turkey,crab,0.13759999999999997,130,10,0.7692307692307693,13
+cloze,conjunction,meat,turkey,mushrooms,0.031,40,10,0.0,4
+cloze,conjunction,meat,turkey,tofu,0.0928,60,10,0.16666666666666666,6
+cloze,conjunction,restaurant,cake,cocktails,0.7849999999999999,40,10,1.0,4
+cloze,conjunction,restaurant,cake,salad,0.049400000000000006,50,10,0.6,5
+cloze,conjunction,restaurant,cake,soda,0.594,50,10,0.8,5
+cloze,conjunction,restaurant,cake,soup,0.1176,180,10,0.3888888888888889,18
+cloze,conjunction,restaurant,cake,vodka,0.6115999999999999,60,10,1.0,6
+cloze,conjunction,restaurant,cocktails,cake,0.0218,50,10,0.6,5
+cloze,conjunction,restaurant,cocktails,salad,0.0158,40,10,0.0,4
+cloze,conjunction,restaurant,cocktails,soda,0.2768,190,10,0.42105263157894735,19
+cloze,conjunction,restaurant,cocktails,soup,0.04,20,10,0.0,2
+cloze,conjunction,restaurant,cocktails,vodka,0.296,140,10,0.5,14
+cloze,conjunction,restaurant,salad,cake,0.07139999999999999,200,10,0.55,20
+cloze,conjunction,restaurant,salad,cocktails,0.792,40,10,0.75,4
+cloze,conjunction,restaurant,salad,soda,0.6014,50,10,0.6,5
+cloze,conjunction,restaurant,salad,soup,0.11960000000000001,200,10,0.7,20
+cloze,conjunction,restaurant,salad,vodka,0.62,50,10,1.0,5
+cloze,conjunction,restaurant,soda,cake,0.0352,30,10,0.0,3
+cloze,conjunction,restaurant,soda,cocktails,0.5884,30,10,1.0,3
+cloze,conjunction,restaurant,soda,salad,0.025,50,10,0.0,5
+cloze,conjunction,restaurant,soda,soup,0.064,20,10,0.0,2
+cloze,conjunction,restaurant,soda,vodka,0.4104,50,10,1.0,5
+cloze,conjunction,restaurant,soup,cake,0.0656,30,10,0.3333333333333333,3
+cloze,conjunction,restaurant,soup,cocktails,0.7726000000000001,60,10,1.0,6
+cloze,conjunction,restaurant,soup,salad,0.048799999999999996,60,10,0.5,6
+cloze,conjunction,restaurant,soup,soda,0.5762,60,10,0.8333333333333334,6
+cloze,conjunction,restaurant,soup,vodka,0.5988,40,10,1.0,4
+cloze,conjunction,restaurant,vodka,cake,0.0338,50,10,0.0,5
+cloze,conjunction,restaurant,vodka,cocktails,0.5766000000000001,30,10,1.0,3
+cloze,conjunction,restaurant,vodka,salad,0.0222,20,10,0.0,2
+cloze,conjunction,restaurant,vodka,soda,0.3834,190,10,0.3157894736842105,19
+cloze,conjunction,restaurant,vodka,soup,0.061200000000000004,50,10,0.0,5
+cloze,conjunction,salad,chips,cigarettes,0.014199999999999999,60,10,0.16666666666666666,6
+cloze,conjunction,salad,chips,dressing,0.4764,50,10,0.4,5
+cloze,conjunction,salad,chips,lettuce,0.754,60,10,1.0,6
+cloze,conjunction,salad,chips,meat,0.08320000000000001,210,10,0.2857142857142857,21
+cloze,conjunction,salad,cigarettes,chips,0.0528,160,10,0.4375,16
+cloze,conjunction,salad,cigarettes,dressing,0.484,40,10,1.0,4
+cloze,conjunction,salad,cigarettes,lettuce,0.763,40,10,0.75,4
+cloze,conjunction,salad,cigarettes,meat,0.0866,190,10,0.5789473684210527,19
+cloze,conjunction,salad,dressing,chips,0.0344,20,10,0.0,2
+cloze,conjunction,salad,dressing,cigarettes,0.0104,50,10,0.0,5
+cloze,conjunction,salad,dressing,lettuce,0.6138,30,10,1.0,3
+cloze,conjunction,salad,dressing,meat,0.0582,30,10,0.3333333333333333,3
+cloze,conjunction,salad,lettuce,chips,0.019200000000000002,20,10,0.0,2
+cloze,conjunction,salad,lettuce,cigarettes,0.0058000000000000005,60,10,0.0,6
+cloze,conjunction,salad,lettuce,dressing,0.2226,180,10,0.6111111111111112,18
+cloze,conjunction,salad,lettuce,meat,0.0334,40,10,0.75,4
+cloze,conjunction,salad,meat,chips,0.0506,20,10,0.0,2
+cloze,conjunction,salad,meat,cigarettes,0.013000000000000001,50,10,0.0,5
+cloze,conjunction,salad,meat,dressing,0.46359999999999996,30,10,0.0,3
+cloze,conjunction,salad,meat,lettuce,0.7452000000000001,60,10,1.0,6
+cloze,conjunction,science,art,geology,0.49720000000000003,40,10,1.0,4
+cloze,conjunction,science,art,math,0.10339999999999999,200,10,0.7,20
+cloze,conjunction,science,art,philosophy,0.044,180,10,0.6111111111111112,18
+cloze,conjunction,science,art,physics,0.7336,50,10,1.0,5
+cloze,conjunction,science,art,zoology,0.3074,50,10,0.8,5
+cloze,conjunction,science,geology,art,0.0152,50,10,0.6,5
+cloze,conjunction,science,geology,math,0.0682,60,10,0.8333333333333334,6
+cloze,conjunction,science,geology,philosophy,0.0274,30,10,0.6666666666666666,3
+cloze,conjunction,science,geology,physics,0.5688,40,10,1.0,4
+cloze,conjunction,science,geology,zoology,0.2106,130,10,1.0,13
+cloze,conjunction,science,math,art,0.0214,20,10,0.5,2
+cloze,conjunction,science,math,geology,0.47300000000000003,40,10,0.75,4
+cloze,conjunction,science,math,philosophy,0.041400000000000006,50,10,0.4,5
+cloze,conjunction,science,math,physics,0.7112,40,10,0.5,4
+cloze,conjunction,science,math,zoology,0.2896,50,10,0.8,5
+cloze,conjunction,science,philosophy,art,0.0212,50,10,1.0,5
+cloze,conjunction,science,philosophy,geology,0.49219999999999997,50,10,0.8,5
+cloze,conjunction,science,philosophy,math,0.1014,160,10,0.6875,16
+cloze,conjunction,science,philosophy,physics,0.729,40,10,1.0,4
+cloze,conjunction,science,philosophy,zoology,0.30360000000000004,60,10,0.8333333333333334,6
+cloze,conjunction,science,physics,art,0.008,50,10,0.4,5
+cloze,conjunction,science,physics,geology,0.2552,210,10,0.8571428571428571,21
+cloze,conjunction,science,physics,math,0.0432,30,10,0.3333333333333333,3
+cloze,conjunction,science,physics,philosophy,0.015799999999999998,30,10,0.3333333333333333,3
+cloze,conjunction,science,physics,zoology,0.1418,200,10,0.65,20
+cloze,conjunction,science,zoology,art,0.018000000000000002,30,10,0.6666666666666666,3
+cloze,conjunction,science,zoology,geology,0.4176,40,10,0.75,4
+cloze,conjunction,science,zoology,math,0.0824,50,10,0.4,5
+cloze,conjunction,science,zoology,philosophy,0.0344,60,10,0.6666666666666666,6
+cloze,conjunction,science,zoology,physics,0.6472,40,10,1.0,4
+cloze,conjunction,throw,beach ball,boomerang,0.19799999999999998,190,10,0.631578947368421,19
+cloze,conjunction,throw,beach ball,football,0.7236,50,10,1.0,5
+cloze,conjunction,throw,beach ball,lawnmower,0.062400000000000004,30,10,0.0,3
+cloze,conjunction,throw,beach ball,tires,0.07980000000000001,60,10,0.0,6
+cloze,conjunction,throw,boomerang,beach ball,0.3262,40,10,0.75,4
+cloze,conjunction,throw,boomerang,football,0.7696,40,10,1.0,4
+cloze,conjunction,throw,boomerang,lawnmower,0.0716,50,10,0.0,5
+cloze,conjunction,throw,boomerang,tires,0.09119999999999999,50,10,0.0,5
+cloze,conjunction,throw,football,beach ball,0.1416,160,10,0.875,16
+cloze,conjunction,throw,football,boomerang,0.0794,210,10,0.6190476190476191,21
+cloze,conjunction,throw,football,lawnmower,0.024399999999999998,30,10,0.0,3
+cloze,conjunction,throw,football,tires,0.0344,30,10,0.0,3
+cloze,conjunction,throw,lawnmower,beach ball,0.3698,20,10,1.0,2
+cloze,conjunction,throw,lawnmower,boomerang,0.2544,50,10,0.8,5
+cloze,conjunction,throw,lawnmower,football,0.8148000000000001,50,10,1.0,5
+cloze,conjunction,throw,lawnmower,tires,0.1042,130,10,0.07692307692307693,13
+cloze,conjunction,throw,tires,beach ball,0.3644,50,10,0.6,5
+cloze,conjunction,throw,tires,boomerang,0.25339999999999996,40,10,1.0,4
+cloze,conjunction,throw,tires,football,0.8098000000000001,50,10,0.8,5
+cloze,conjunction,throw,tires,lawnmower,0.07919999999999999,50,10,0.8,5
+cloze,conjunction,transport,car,chairs,0.015600000000000001,50,10,0.0,5
+cloze,conjunction,transport,car,hammer,0.0096,50,10,0.2,5
+cloze,conjunction,transport,car,lawnmower,0.026000000000000002,40,10,0.25,4
+cloze,conjunction,transport,chairs,car,0.7638,30,10,1.0,3
+cloze,conjunction,transport,chairs,hammer,0.030199999999999998,40,10,0.0,4
+cloze,conjunction,transport,chairs,lawnmower,0.06,220,10,0.09090909090909091,22
+cloze,conjunction,transport,hammer,car,0.7654,50,10,0.6,5
+cloze,conjunction,transport,hammer,chairs,0.041,150,10,0.06666666666666667,15
+cloze,conjunction,transport,hammer,lawnmower,0.061000000000000006,180,10,0.5555555555555556,18
+cloze,conjunction,transport,lawnmower,car,0.7545999999999999,60,10,1.0,6
+cloze,conjunction,transport,lawnmower,chairs,0.0412,50,10,0.2,5
+cloze,conjunction,transport,lawnmower,hammer,0.029199999999999997,40,10,0.25,4
+cloze,disjunction,bag,chalk,crayons,0.9438,60,10,1.0,6
+cloze,disjunction,bag,chalk,headphones,0.1668,50,10,0.2,5
+cloze,disjunction,bag,chalk,makeup,0.5486,50,10,0.2,5
+cloze,disjunction,bag,chalk,pen,0.9776,50,10,1.0,5
+cloze,disjunction,bag,crayons,chalk,0.35860000000000003,180,10,0.8888888888888888,18
+cloze,disjunction,bag,crayons,headphones,0.08020000000000001,40,10,0.25,4
+cloze,disjunction,bag,crayons,makeup,0.3356,50,10,0.0,5
+cloze,disjunction,bag,crayons,pen,0.9156000000000001,40,10,1.0,4
+cloze,disjunction,bag,headphones,chalk,0.8648,50,10,0.4,5
+cloze,disjunction,bag,headphones,crayons,0.9878,30,10,1.0,3
+cloze,disjunction,bag,headphones,makeup,0.8458,190,10,0.21052631578947367,19
+cloze,disjunction,bag,headphones,pen,0.9952,50,10,1.0,5
+cloze,disjunction,bag,makeup,chalk,0.5871999999999999,20,10,1.0,2
+cloze,disjunction,bag,makeup,crayons,0.9432,20,10,1.0,2
+cloze,disjunction,bag,makeup,headphones,0.186,40,10,0.0,4
+cloze,disjunction,bag,makeup,pen,0.9760000000000001,30,10,1.0,3
+cloze,disjunction,bag,pen,chalk,0.34340000000000004,210,10,0.8571428571428571,21
+cloze,disjunction,bag,pen,crayons,0.8136000000000001,170,10,0.8823529411764706,17
+cloze,disjunction,bag,pen,headphones,0.0754,50,10,0.0,5
+cloze,disjunction,bag,pen,makeup,0.317,60,10,0.16666666666666666,6
+cloze,disjunction,bakery,cakes,ice cream,0.4712,190,10,0.8421052631578947,19
+cloze,disjunction,bakery,cakes,muffins,0.5262,180,10,0.8888888888888888,18
+cloze,disjunction,bakery,cakes,pretzels,0.1274,60,10,0.5,6
+cloze,disjunction,bakery,cakes,sandwiches,0.11259999999999999,50,10,0.4,5
+cloze,disjunction,bakery,cakes,water,0.0538,50,10,0.0,5
+cloze,disjunction,bakery,ice cream,cakes,0.941,50,10,1.0,5
+cloze,disjunction,bakery,ice cream,muffins,0.6784,170,10,0.5882352941176471,17
+cloze,disjunction,bakery,ice cream,pretzels,0.2032,20,10,0.5,2
+cloze,disjunction,bakery,ice cream,sandwiches,0.1758,40,10,0.25,4
+cloze,disjunction,bakery,ice cream,water,0.0866,60,10,0.16666666666666666,6
+cloze,disjunction,bakery,muffins,cakes,0.9278,50,10,1.0,5
+cloze,disjunction,bakery,muffins,ice cream,0.5986,20,10,1.0,2
+cloze,disjunction,bakery,muffins,pretzels,0.1888,50,10,0.4,5
+cloze,disjunction,bakery,muffins,sandwiches,0.1568,20,10,0.0,2
+cloze,disjunction,bakery,muffins,water,0.07980000000000001,50,10,0.0,5
+cloze,disjunction,bakery,pretzels,cakes,0.9826,50,10,1.0,5
+cloze,disjunction,bakery,pretzels,ice cream,0.8652,50,10,1.0,5
+cloze,disjunction,bakery,pretzels,muffins,0.8874,30,10,1.0,3
+cloze,disjunction,bakery,pretzels,sandwiches,0.4534,50,10,0.4,5
+cloze,disjunction,bakery,pretzels,water,0.2942,40,10,0.0,4
+cloze,disjunction,bakery,sandwiches,cakes,0.9863999999999999,30,10,1.0,3
+cloze,disjunction,bakery,sandwiches,ice cream,0.8832000000000001,50,10,1.0,5
+cloze,disjunction,bakery,sandwiches,muffins,0.9094,30,10,0.6666666666666666,3
+cloze,disjunction,bakery,sandwiches,pretzels,0.5608,200,10,0.55,20
+cloze,disjunction,bakery,sandwiches,water,0.325,50,10,0.0,5
+cloze,disjunction,bakery,water,cakes,0.9934,30,10,0.6666666666666666,3
+cloze,disjunction,bakery,water,ice cream,0.9440000000000001,60,10,0.6666666666666666,6
+cloze,disjunction,bakery,water,muffins,0.9508,60,10,0.5,6
+cloze,disjunction,bakery,water,pretzels,0.7132,130,10,0.5384615384615384,13
+cloze,disjunction,bakery,water,sandwiches,0.6818,210,10,0.42857142857142855,21
+cloze,disjunction,beach,bikini,coat,0.1976,30,10,0.3333333333333333,3
+cloze,disjunction,beach,bikini,jacket,0.4484,40,10,0.25,4
+cloze,disjunction,beach,bikini,jeans,0.466,60,10,0.5,6
+cloze,disjunction,beach,bikini,shorts,0.9590000000000001,200,10,0.7,20
+cloze,disjunction,beach,bikini,sunglasses,0.6434,180,10,0.16666666666666666,18
+cloze,disjunction,beach,coat,bikini,0.822,60,10,1.0,6
+cloze,disjunction,beach,coat,jacket,0.7599999999999999,110,10,0.5454545454545454,11
+cloze,disjunction,beach,coat,jeans,0.7732,160,10,0.5,16
+cloze,disjunction,beach,coat,shorts,0.9887999999999999,50,10,1.0,5
+cloze,disjunction,beach,coat,sunglasses,0.8752,30,10,0.0,3
+cloze,disjunction,beach,jacket,bikini,0.6142000000000001,20,10,1.0,2
+cloze,disjunction,beach,jacket,coat,0.256,30,10,1.0,3
+cloze,disjunction,beach,jacket,jeans,0.541,200,10,0.45,20
+cloze,disjunction,beach,jacket,shorts,0.9714,50,10,0.6,5
+cloze,disjunction,beach,jacket,sunglasses,0.7146,40,10,0.5,4
+cloze,disjunction,beach,jeans,bikini,0.5932,50,10,1.0,5
+cloze,disjunction,beach,jeans,coat,0.2446,50,10,0.6,5
+cloze,disjunction,beach,jeans,jacket,0.5058,60,10,0.0,6
+cloze,disjunction,beach,jeans,shorts,0.9688,50,10,1.0,5
+cloze,disjunction,beach,jeans,sunglasses,0.7006,40,10,0.25,4
+cloze,disjunction,beach,shorts,bikini,0.2676,40,10,0.75,4
+cloze,disjunction,beach,shorts,coat,0.07139999999999999,40,10,0.75,4
+cloze,disjunction,beach,shorts,jacket,0.197,40,10,0.25,4
+cloze,disjunction,beach,shorts,jeans,0.2198,50,10,0.6,5
+cloze,disjunction,beach,shorts,sunglasses,0.3566,200,10,0.15,20
+cloze,disjunction,beach,sunglasses,bikini,0.4642,50,10,1.0,5
+cloze,disjunction,beach,sunglasses,coat,0.15280000000000002,50,10,0.0,5
+cloze,disjunction,beach,sunglasses,jacket,0.3642,50,10,0.8,5
+cloze,disjunction,beach,sunglasses,jeans,0.3872,60,10,0.5,6
+cloze,disjunction,beach,sunglasses,shorts,0.9480000000000001,40,10,0.5,4
+cloze,disjunction,cold,blankets,heater,0.5858,20,10,1.0,2
+cloze,disjunction,cold,blankets,sink,0.0648,40,10,0.0,4
+cloze,disjunction,cold,blankets,tea,0.0654,200,10,0.2,20
+cloze,disjunction,cold,heater,blankets,0.8403999999999999,180,10,0.8333333333333334,18
+cloze,disjunction,cold,heater,sink,0.08800000000000001,50,10,0.0,5
+cloze,disjunction,cold,heater,tea,0.0888,160,10,0.125,16
+cloze,disjunction,cold,sink,blankets,0.9842,30,10,0.3333333333333333,3
+cloze,disjunction,cold,sink,heater,0.95,40,10,1.0,4
+cloze,disjunction,cold,sink,tea,0.5018,50,10,0.0,5
+cloze,disjunction,cold,tea,blankets,0.9832,50,10,0.6,5
+cloze,disjunction,cold,tea,heater,0.95,60,10,0.5,6
+cloze,disjunction,cold,tea,sink,0.502,40,10,0.0,4
+cloze,disjunction,cut,batteries,keys,0.6826000000000001,60,10,0.16666666666666666,6
+cloze,disjunction,cut,batteries,nail clippers,0.9282,50,10,0.8,5
+cloze,disjunction,cut,batteries,scissors,0.992,50,10,0.8,5
+cloze,disjunction,cut,batteries,stapler,0.4728,180,10,0.4444444444444444,18
+cloze,disjunction,cut,batteries,thumb tacks,0.6738,210,10,0.38095238095238093,21
+cloze,disjunction,cut,keys,batteries,0.32599999999999996,40,10,0.25,4
+cloze,disjunction,cut,keys,nail clippers,0.8654,50,10,0.8,5
+cloze,disjunction,cut,keys,scissors,0.9838,50,10,1.0,5
+cloze,disjunction,cut,keys,stapler,0.3012,50,10,0.2,5
+cloze,disjunction,cut,keys,thumb tacks,0.4894,50,10,0.2,5
+cloze,disjunction,cut,nail clippers,batteries,0.09720000000000001,50,10,0.0,5
+cloze,disjunction,cut,nail clippers,keys,0.18780000000000002,160,10,0.3125,16
+cloze,disjunction,cut,nail clippers,scissors,0.9336,40,10,1.0,4
+cloze,disjunction,cut,nail clippers,stapler,0.0888,20,10,0.5,2
+cloze,disjunction,cut,nail clippers,thumb tacks,0.1776,30,10,0.6666666666666666,3
+cloze,disjunction,cut,scissors,batteries,0.057199999999999994,40,10,0.0,4
+cloze,disjunction,cut,scissors,keys,0.1142,200,10,0.15,20
+cloze,disjunction,cut,scissors,nail clippers,0.4612,110,10,0.6363636363636364,11
+cloze,disjunction,cut,scissors,stapler,0.052000000000000005,60,10,0.16666666666666666,6
+cloze,disjunction,cut,scissors,thumb tacks,0.11100000000000002,40,10,0.0,4
+cloze,disjunction,cut,stapler,batteries,0.5306000000000001,50,10,0.0,5
+cloze,disjunction,cut,stapler,keys,0.7048000000000001,50,10,0.2,5
+cloze,disjunction,cut,stapler,nail clippers,0.94,60,10,0.6666666666666666,6
+cloze,disjunction,cut,stapler,scissors,0.994,40,10,1.0,4
+cloze,disjunction,cut,stapler,thumb tacks,0.6914,170,10,0.11764705882352941,17
+cloze,disjunction,cut,thumb tacks,batteries,0.3324,40,10,0.0,4
+cloze,disjunction,cut,thumb tacks,keys,0.5222,30,10,0.3333333333333333,3
+cloze,disjunction,cut,thumb tacks,nail clippers,0.88,50,10,0.6,5
+cloze,disjunction,cut,thumb tacks,scissors,0.9867999999999999,50,10,0.8,5
+cloze,disjunction,cut,thumb tacks,stapler,0.316,50,10,0.0,5
+cloze,disjunction,fridge,juice,ketchup,0.1608,60,10,0.3333333333333333,6
+cloze,disjunction,fridge,juice,meat,0.0,30,10,0.0,3
+cloze,disjunction,fridge,juice,milk,0.8654000000000001,150,10,1.0,15
+cloze,disjunction,fridge,juice,water,0.9206,60,10,1.0,6
+cloze,disjunction,fridge,juice,yogurt,0.12360000000000002,50,10,0.0,5
+cloze,disjunction,fridge,ketchup,juice,0.9934000000000001,50,10,1.0,5
+cloze,disjunction,fridge,ketchup,meat,0.0,40,10,0.0,4
+cloze,disjunction,fridge,ketchup,milk,0.9882,50,10,1.0,5
+cloze,disjunction,fridge,ketchup,water,0.9958,20,10,1.0,2
+cloze,disjunction,fridge,ketchup,yogurt,0.44059999999999994,180,10,0.2222222222222222,18
+cloze,disjunction,fridge,meat,juice,1.0,50,10,1.0,5
+cloze,disjunction,fridge,meat,ketchup,1.0,180,10,0.16666666666666666,18
+cloze,disjunction,fridge,meat,milk,1.0,30,10,0.6666666666666666,3
+cloze,disjunction,fridge,meat,water,1.0,20,10,1.0,2
+cloze,disjunction,fridge,meat,yogurt,1.0,160,10,0.625,16
+cloze,disjunction,fridge,milk,juice,0.9266,50,10,1.0,5
+cloze,disjunction,fridge,milk,ketchup,0.1628,50,10,0.0,5
+cloze,disjunction,fridge,milk,meat,0.0,60,10,0.0,6
+cloze,disjunction,fridge,milk,water,0.9309999999999999,60,10,0.8333333333333334,6
+cloze,disjunction,fridge,milk,yogurt,0.1268,50,10,0.2,5
+cloze,disjunction,fridge,water,juice,0.9152,220,10,1.0,22
+cloze,disjunction,fridge,water,ketchup,0.158,40,10,0.0,4
+cloze,disjunction,fridge,water,meat,0.0,30,10,0.0,3
+cloze,disjunction,fridge,water,milk,0.8680000000000001,180,10,0.9444444444444444,18
+cloze,disjunction,fridge,water,yogurt,0.1242,50,10,0.0,5
+cloze,disjunction,fridge,yogurt,juice,0.9974,50,10,1.0,5
+cloze,disjunction,fridge,yogurt,ketchup,0.5871999999999999,50,10,0.2,5
+cloze,disjunction,fridge,yogurt,meat,0.0,50,10,0.4,5
+cloze,disjunction,fridge,yogurt,milk,0.9926,40,10,0.75,4
+cloze,disjunction,fridge,yogurt,water,0.9964000000000001,20,10,1.0,2
+cloze,disjunction,gym,basketball,lacrosse,0.5002,150,10,0.9333333333333333,15
+cloze,disjunction,gym,basketball,meditation,0.0722,20,10,0.0,2
+cloze,disjunction,gym,basketball,softball,0.3822,200,10,0.9,20
+cloze,disjunction,gym,basketball,swimming,0.3454,50,10,0.4,5
+cloze,disjunction,gym,lacrosse,basketball,0.9004,40,10,1.0,4
+cloze,disjunction,gym,lacrosse,meditation,0.118,20,10,0.0,2
+cloze,disjunction,gym,lacrosse,softball,0.51,30,10,1.0,3
+cloze,disjunction,gym,lacrosse,swimming,0.4722,30,10,0.3333333333333333,3
+cloze,disjunction,gym,meditation,basketball,0.9846,40,10,0.75,4
+cloze,disjunction,gym,meditation,lacrosse,0.9168000000000001,40,10,1.0,4
+cloze,disjunction,gym,meditation,softball,0.8854,40,10,1.0,4
+cloze,disjunction,gym,meditation,swimming,0.8722,190,10,0.7894736842105263,19
+cloze,disjunction,gym,softball,basketball,0.9262,60,10,1.0,6
+cloze,disjunction,gym,softball,lacrosse,0.6902,190,10,0.9473684210526315,19
+cloze,disjunction,gym,softball,meditation,0.1434,50,10,0.6,5
+cloze,disjunction,gym,softball,swimming,0.5428000000000001,50,10,0.8,5
+cloze,disjunction,gym,swimming,basketball,0.9292,50,10,1.0,5
+cloze,disjunction,gym,swimming,lacrosse,0.7012,40,10,1.0,4
+cloze,disjunction,gym,swimming,meditation,0.15560000000000002,50,10,0.0,5
+cloze,disjunction,gym,swimming,softball,0.592,40,10,0.75,4
+cloze,disjunction,hot,blankets,couch,0.0,120,10,0.0,12
+cloze,disjunction,hot,blankets,fan,0.9986,50,10,0.2,5
+cloze,disjunction,hot,blankets,heater,0.9364000000000001,40,10,0.75,4
+cloze,disjunction,hot,blankets,pool,0.9926,50,10,0.0,5
+cloze,disjunction,hot,blankets,shower,0.9823999999999999,50,10,0.2,5
+cloze,disjunction,hot,couch,blankets,1.0,50,10,0.2,5
+cloze,disjunction,hot,couch,fan,1.0,30,10,0.0,3
+cloze,disjunction,hot,couch,heater,1.0,30,10,0.0,3
+cloze,disjunction,hot,couch,pool,1.0,60,10,0.5,6
+cloze,disjunction,hot,couch,shower,1.0,20,10,1.0,2
+cloze,disjunction,hot,fan,blankets,0.005,40,10,0.0,4
+cloze,disjunction,hot,fan,couch,0.0,40,10,0.0,4
+cloze,disjunction,hot,fan,heater,0.0474,60,10,0.16666666666666666,6
+cloze,disjunction,hot,fan,pool,0.3818,200,10,0.55,20
+cloze,disjunction,hot,fan,shower,0.21599999999999997,200,10,0.05,20
+cloze,disjunction,hot,heater,blankets,0.064,130,10,0.23076923076923078,13
+cloze,disjunction,hot,heater,couch,0.0,200,10,0.0,20
+cloze,disjunction,hot,heater,fan,0.9878,50,10,1.0,5
+cloze,disjunction,hot,heater,pool,0.9102,40,10,0.25,4
+cloze,disjunction,hot,heater,shower,0.8262,50,10,0.0,5
+cloze,disjunction,hot,pool,blankets,0.0096,50,10,0.4,5
+cloze,disjunction,hot,pool,couch,0.0,40,10,0.0,4
+cloze,disjunction,hot,pool,fan,0.898,40,10,0.25,4
+cloze,disjunction,hot,pool,heater,0.10700000000000001,40,10,0.0,4
+cloze,disjunction,hot,pool,shower,0.375,190,10,0.2631578947368421,19
+cloze,disjunction,hot,shower,blankets,0.0186,40,10,0.0,4
+cloze,disjunction,hot,shower,couch,0.0,60,10,0.0,6
+cloze,disjunction,hot,shower,fan,0.9423999999999999,50,10,0.8,5
+cloze,disjunction,hot,shower,heater,0.1828,60,10,0.3333333333333333,6
+cloze,disjunction,hot,shower,pool,0.7023999999999999,50,10,1.0,5
+cloze,disjunction,mask,bandana,candy,0.05620000000000001,40,10,0.0,4
+cloze,disjunction,mask,bandana,handkerchief,0.46840000000000004,130,10,0.6153846153846154,13
+cloze,disjunction,mask,bandana,napkins,0.30419999999999997,120,10,0.16666666666666666,12
+cloze,disjunction,mask,bandana,wallet,0.0,50,10,0.4,5
+cloze,disjunction,mask,candy,bandana,0.9802,50,10,0.8,5
+cloze,disjunction,mask,candy,handkerchief,0.9268000000000001,60,10,0.6666666666666666,6
+cloze,disjunction,mask,candy,napkins,0.865,40,10,0.5,4
+cloze,disjunction,mask,candy,wallet,0.0,200,10,0.2,20
+cloze,disjunction,mask,handkerchief,bandana,0.8572000000000001,30,10,1.0,3
+cloze,disjunction,mask,handkerchief,candy,0.0972,60,10,0.0,6
+cloze,disjunction,mask,handkerchief,napkins,0.4316,200,10,0.3,20
+cloze,disjunction,mask,handkerchief,wallet,0.0,50,10,0.0,5
+cloze,disjunction,mask,napkins,bandana,0.9066,50,10,1.0,5
+cloze,disjunction,mask,napkins,candy,0.14859999999999998,50,10,0.2,5
+cloze,disjunction,mask,napkins,handkerchief,0.7012,50,10,0.6,5
+cloze,disjunction,mask,napkins,wallet,0.0,40,10,0.0,4
+cloze,disjunction,mask,wallet,bandana,1.0,50,10,0.8,5
+cloze,disjunction,mask,wallet,candy,1.0,50,10,0.2,5
+cloze,disjunction,mask,wallet,handkerchief,1.0,50,10,0.6,5
+cloze,disjunction,mask,wallet,napkins,1.0,60,10,0.5,6
+cloze,disjunction,meat,chicken,crab,0.2002,170,10,0.7647058823529411,17
+cloze,disjunction,meat,chicken,mushrooms,0.0482,50,10,0.2,5
+cloze,disjunction,meat,chicken,tofu,0.1434,50,10,0.0,5
+cloze,disjunction,meat,chicken,turkey,0.4258,210,10,0.9523809523809523,21
+cloze,disjunction,meat,crab,chicken,0.9753999999999999,50,10,1.0,5
+cloze,disjunction,meat,crab,mushrooms,0.1946,30,10,0.0,3
+cloze,disjunction,meat,crab,tofu,0.4304,30,10,0.6666666666666666,3
+cloze,disjunction,meat,crab,turkey,0.7642,50,10,1.0,5
+cloze,disjunction,meat,mushrooms,chicken,0.993,60,10,1.0,6
+cloze,disjunction,meat,mushrooms,crab,0.8170000000000001,50,10,1.0,5
+cloze,disjunction,meat,mushrooms,tofu,0.7452,190,10,0.5263157894736842,19
+cloze,disjunction,meat,mushrooms,turkey,0.9322,60,10,1.0,6
+cloze,disjunction,meat,tofu,chicken,0.9804,40,10,1.0,4
+cloze,disjunction,meat,tofu,crab,0.6048,50,10,0.8,5
+cloze,disjunction,meat,tofu,mushrooms,0.263,50,10,0.0,5
+cloze,disjunction,meat,tofu,turkey,0.8244,50,10,1.0,5
+cloze,disjunction,meat,turkey,chicken,0.938,40,10,1.0,4
+cloze,disjunction,meat,turkey,crab,0.333,130,10,0.7692307692307693,13
+cloze,disjunction,meat,turkey,mushrooms,0.0908,40,10,0.0,4
+cloze,disjunction,meat,turkey,tofu,0.2434,60,10,0.16666666666666666,6
+cloze,disjunction,restaurant,cake,cocktails,0.9898,40,10,1.0,4
+cloze,disjunction,restaurant,cake,salad,0.4108,50,10,0.6,5
+cloze,disjunction,restaurant,cake,soda,0.9606,50,10,0.8,5
+cloze,disjunction,restaurant,cake,soup,0.6348,180,10,0.3888888888888889,18
+cloze,disjunction,restaurant,cake,vodka,0.9672,60,10,1.0,6
+cloze,disjunction,restaurant,cocktails,cake,0.0788,50,10,0.6,5
+cloze,disjunction,restaurant,cocktails,salad,0.055999999999999994,40,10,0.0,4
+cloze,disjunction,restaurant,cocktails,soda,0.6586,190,10,0.42105263157894735,19
+cloze,disjunction,restaurant,cocktails,soup,0.1328,20,10,0.0,2
+cloze,disjunction,restaurant,cocktails,vodka,0.674,140,10,0.5,14
+cloze,disjunction,restaurant,salad,cake,0.5942,200,10,0.55,20
+cloze,disjunction,restaurant,salad,cocktails,0.9906,40,10,0.75,4
+cloze,disjunction,restaurant,salad,soda,0.9689999999999999,50,10,0.6,5
+cloze,disjunction,restaurant,salad,soup,0.7,200,10,0.7,20
+cloze,disjunction,restaurant,salad,vodka,0.9732,50,10,1.0,5
+cloze,disjunction,restaurant,soda,cake,0.097,30,10,0.0,3
+cloze,disjunction,restaurant,soda,cocktails,0.8916000000000001,30,10,1.0,3
+cloze,disjunction,restaurant,soda,salad,0.0704,50,10,0.0,5
+cloze,disjunction,restaurant,soda,soup,0.1558,20,10,0.0,2
+cloze,disjunction,restaurant,soda,vodka,0.7356,50,10,1.0,5
+cloze,disjunction,restaurant,soup,cake,0.3788,30,10,0.3333333333333333,3
+cloze,disjunction,restaurant,soup,cocktails,0.98,60,10,1.0,6
+cloze,disjunction,restaurant,soup,salad,0.3074,60,10,0.5,6
+cloze,disjunction,restaurant,soup,soda,0.9408,60,10,0.8333333333333334,6
+cloze,disjunction,restaurant,soup,vodka,0.9400000000000001,40,10,1.0,4
+cloze,disjunction,restaurant,vodka,cake,0.0928,50,10,0.0,5
+cloze,disjunction,restaurant,vodka,cocktails,0.8874,30,10,1.0,3
+cloze,disjunction,restaurant,vodka,salad,0.06899999999999999,20,10,0.0,2
+cloze,disjunction,restaurant,vodka,soda,0.716,190,10,0.3157894736842105,19
+cloze,disjunction,restaurant,vodka,soup,0.15539999999999998,50,10,0.0,5
+cloze,disjunction,salad,chips,cigarettes,0.2212,60,10,0.16666666666666666,6
+cloze,disjunction,salad,chips,dressing,0.9431999999999999,50,10,0.4,5
+cloze,disjunction,salad,chips,lettuce,0.9884000000000001,60,10,1.0,6
+cloze,disjunction,salad,chips,meat,0.641,210,10,0.2857142857142857,21
+cloze,disjunction,salad,cigarettes,chips,0.7804,160,10,0.4375,16
+cloze,disjunction,salad,cigarettes,dressing,0.9837999999999999,40,10,1.0,4
+cloze,disjunction,salad,cigarettes,lettuce,0.9965999999999999,40,10,0.75,4
+cloze,disjunction,salad,cigarettes,meat,0.8674000000000001,190,10,0.5789473684210527,19
+cloze,disjunction,salad,dressing,chips,0.0882,20,10,0.0,2
+cloze,disjunction,salad,dressing,cigarettes,0.0242,50,10,0.0,5
+cloze,disjunction,salad,dressing,lettuce,0.8906,30,10,1.0,3
+cloze,disjunction,salad,dressing,meat,0.1462,30,10,0.3333333333333333,3
+cloze,disjunction,salad,lettuce,chips,0.0596,20,10,0.0,2
+cloze,disjunction,salad,lettuce,cigarettes,0.016,60,10,0.0,6
+cloze,disjunction,salad,lettuce,dressing,0.528,180,10,0.6111111111111112,18
+cloze,disjunction,salad,lettuce,meat,0.096,40,10,0.75,4
+cloze,disjunction,salad,meat,chips,0.36639999999999995,20,10,0.0,2
+cloze,disjunction,salad,meat,cigarettes,0.1344,50,10,0.0,5
+cloze,disjunction,salad,meat,dressing,0.907,30,10,0.0,3
+cloze,disjunction,salad,meat,lettuce,0.9793999999999999,60,10,1.0,6
+cloze,disjunction,science,art,geology,0.9795999999999999,40,10,1.0,4
+cloze,disjunction,science,art,math,0.8515999999999999,200,10,0.7,20
+cloze,disjunction,science,art,philosophy,0.686,180,10,0.6111111111111112,18
+cloze,disjunction,science,art,physics,0.9936,50,10,1.0,5
+cloze,disjunction,science,art,zoology,0.9521999999999999,50,10,0.8,5
+cloze,disjunction,science,geology,art,0.0336,50,10,0.6,5
+cloze,disjunction,science,geology,math,0.1616,60,10,0.8333333333333334,6
+cloze,disjunction,science,geology,philosophy,0.0648,30,10,0.6666666666666666,3
+cloze,disjunction,science,geology,physics,0.8635999999999999,40,10,1.0,4
+cloze,disjunction,science,geology,zoology,0.4348,130,10,1.0,13
+cloze,disjunction,science,math,art,0.1502,20,10,0.5,2
+cloze,disjunction,science,math,geology,0.9046,40,10,0.75,4
+cloze,disjunction,science,math,philosophy,0.2762,50,10,0.4,5
+cloze,disjunction,science,math,physics,0.9732,40,10,0.5,4
+cloze,disjunction,science,math,zoology,0.7974,50,10,0.8,5
+cloze,disjunction,science,philosophy,art,0.3154,50,10,1.0,5
+cloze,disjunction,science,philosophy,geology,0.963,50,10,0.8,5
+cloze,disjunction,science,philosophy,math,0.7293999999999999,160,10,0.6875,16
+cloze,disjunction,science,philosophy,physics,0.9898,40,10,1.0,4
+cloze,disjunction,science,philosophy,zoology,0.9124,60,10,0.8333333333333334,6
+cloze,disjunction,science,physics,art,0.0268,50,10,0.4,5
+cloze,disjunction,science,physics,geology,0.5552,210,10,0.8571428571428571,21
+cloze,disjunction,science,physics,math,0.1162,30,10,0.3333333333333333,3
+cloze,disjunction,science,physics,philosophy,0.0492,30,10,0.3333333333333333,3
+cloze,disjunction,science,physics,zoology,0.3452,200,10,0.65,20
+cloze,disjunction,science,zoology,art,0.055799999999999995,30,10,0.6666666666666666,3
+cloze,disjunction,science,zoology,geology,0.7512,40,10,0.75,4
+cloze,disjunction,science,zoology,math,0.24580000000000002,50,10,0.4,5
+cloze,disjunction,science,zoology,philosophy,0.1048,60,10,0.6666666666666666,6
+cloze,disjunction,science,zoology,physics,0.9164,40,10,1.0,4
+cloze,disjunction,throw,beach ball,boomerang,0.459,190,10,0.631578947368421,19
+cloze,disjunction,throw,beach ball,football,0.9518,50,10,1.0,5
+cloze,disjunction,throw,beach ball,lawnmower,0.1656,30,10,0.0,3
+cloze,disjunction,throw,beach ball,tires,0.2132,60,10,0.0,6
+cloze,disjunction,throw,boomerang,beach ball,0.6754,40,10,0.75,4
+cloze,disjunction,throw,boomerang,football,0.9712,40,10,1.0,4
+cloze,disjunction,throw,boomerang,lawnmower,0.22240000000000001,50,10,0.0,5
+cloze,disjunction,throw,boomerang,tires,0.2802,50,10,0.0,5
+cloze,disjunction,throw,football,beach ball,0.40540000000000004,160,10,0.875,16
+cloze,disjunction,throw,football,boomerang,0.2848,210,10,0.6190476190476191,21
+cloze,disjunction,throw,football,lawnmower,0.0906,30,10,0.0,3
+cloze,disjunction,throw,football,tires,0.1164,30,10,0.0,3
+cloze,disjunction,throw,lawnmower,beach ball,0.8754,20,10,1.0,2
+cloze,disjunction,throw,lawnmower,boomerang,0.8074000000000001,50,10,0.8,5
+cloze,disjunction,throw,lawnmower,football,0.9898,50,10,1.0,5
+cloze,disjunction,throw,lawnmower,tires,0.594,130,10,0.07692307692307693,13
+cloze,disjunction,throw,tires,beach ball,0.8416,50,10,0.6,5
+cloze,disjunction,throw,tires,boomerang,0.7567999999999999,40,10,1.0,4
+cloze,disjunction,throw,tires,football,0.9848,50,10,0.8,5
+cloze,disjunction,throw,tires,lawnmower,0.4188,50,10,0.8,5
+cloze,disjunction,transport,car,chairs,0.0478,50,10,0.0,5
+cloze,disjunction,transport,car,hammer,0.0334,50,10,0.2,5
+cloze,disjunction,transport,car,lawnmower,0.06820000000000001,40,10,0.25,4
+cloze,disjunction,transport,chairs,car,0.9882000000000001,30,10,1.0,3
+cloze,disjunction,transport,chairs,hammer,0.3618,40,10,0.0,4
+cloze,disjunction,transport,chairs,lawnmower,0.5781999999999999,220,10,0.09090909090909091,22
+cloze,disjunction,transport,hammer,car,0.9948,50,10,0.6,5
+cloze,disjunction,transport,hammer,chairs,0.64,150,10,0.06666666666666667,15
+cloze,disjunction,transport,hammer,lawnmower,0.7031999999999999,180,10,0.5555555555555556,18
+cloze,disjunction,transport,lawnmower,car,0.9862,60,10,1.0,6
+cloze,disjunction,transport,lawnmower,chairs,0.4254,50,10,0.2,5
+cloze,disjunction,transport,lawnmower,hammer,0.2992,40,10,0.25,4

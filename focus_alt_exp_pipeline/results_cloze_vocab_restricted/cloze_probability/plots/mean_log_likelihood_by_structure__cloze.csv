@@ -1,0 +1,5 @@
+NextWordPredictionModelRaw,AlternativeStructure,context_count,mean_log_likelihood
+cloze,set,15,-0.9026961122726335
+cloze,ordering,15,-1.166479080011245
+cloze,conjunction,15,-1.0064244146164365
+cloze,disjunction,15,-1.1200589722358623

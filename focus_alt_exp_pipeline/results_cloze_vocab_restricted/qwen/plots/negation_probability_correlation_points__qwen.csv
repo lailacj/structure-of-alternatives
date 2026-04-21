@@ -1,0 +1,1417 @@
+NextWordPredictionModelRaw,AlternativeStructure,context,trigger,query,model_negation_probability,observed_rows,observed_boundaries,human_negation_probability,human_trial_count
+qwen,set,bag,chalk,crayons,0.8604,60,10,1.0,6
+qwen,set,bag,chalk,headphones,0.0456,50,10,0.2,5
+qwen,set,bag,chalk,makeup,0.4536,50,10,0.2,5
+qwen,set,bag,chalk,pen,0.9723999999999999,50,10,1.0,5
+qwen,set,bag,crayons,chalk,0.7754,180,10,0.8888888888888888,18
+qwen,set,bag,crayons,headphones,0.0456,40,10,0.25,4
+qwen,set,bag,crayons,makeup,0.4536,50,10,0.0,5
+qwen,set,bag,crayons,pen,0.9724,40,10,1.0,4
+qwen,set,bag,headphones,chalk,0.7753999999999999,50,10,0.4,5
+qwen,set,bag,headphones,crayons,0.8604,30,10,1.0,3
+qwen,set,bag,headphones,makeup,0.4536,190,10,0.21052631578947367,19
+qwen,set,bag,headphones,pen,0.9723999999999999,50,10,1.0,5
+qwen,set,bag,makeup,chalk,0.7754,20,10,1.0,2
+qwen,set,bag,makeup,crayons,0.8603999999999999,20,10,1.0,2
+qwen,set,bag,makeup,headphones,0.0456,40,10,0.0,4
+qwen,set,bag,makeup,pen,0.9724,30,10,1.0,3
+qwen,set,bag,pen,chalk,0.7754,210,10,0.8571428571428571,21
+qwen,set,bag,pen,crayons,0.8604,170,10,0.8823529411764706,17
+qwen,set,bag,pen,headphones,0.0456,50,10,0.0,5
+qwen,set,bag,pen,makeup,0.4536,60,10,0.16666666666666666,6
+qwen,set,bakery,cakes,ice cream,0.8126,190,10,0.8421052631578947,19
+qwen,set,bakery,cakes,muffins,0.22960000000000003,180,10,0.8888888888888888,18
+qwen,set,bakery,cakes,pretzels,0.19119999999999998,60,10,0.5,6
+qwen,set,bakery,cakes,sandwiches,0.0388,50,10,0.4,5
+qwen,set,bakery,cakes,water,0.11539999999999999,50,10,0.0,5
+qwen,set,bakery,ice cream,cakes,0.8726,50,10,1.0,5
+qwen,set,bakery,ice cream,muffins,0.22960000000000003,170,10,0.5882352941176471,17
+qwen,set,bakery,ice cream,pretzels,0.19119999999999998,20,10,0.5,2
+qwen,set,bakery,ice cream,sandwiches,0.0388,40,10,0.25,4
+qwen,set,bakery,ice cream,water,0.1154,60,10,0.16666666666666666,6
+qwen,set,bakery,muffins,cakes,0.8726,50,10,1.0,5
+qwen,set,bakery,muffins,ice cream,0.8126,20,10,1.0,2
+qwen,set,bakery,muffins,pretzels,0.1912,50,10,0.4,5
+qwen,set,bakery,muffins,sandwiches,0.0388,20,10,0.0,2
+qwen,set,bakery,muffins,water,0.11539999999999999,50,10,0.0,5
+qwen,set,bakery,pretzels,cakes,0.8726,50,10,1.0,5
+qwen,set,bakery,pretzels,ice cream,0.8126000000000001,50,10,1.0,5
+qwen,set,bakery,pretzels,muffins,0.2296,30,10,1.0,3
+qwen,set,bakery,pretzels,sandwiches,0.0388,50,10,0.4,5
+qwen,set,bakery,pretzels,water,0.11539999999999999,40,10,0.0,4
+qwen,set,bakery,sandwiches,cakes,0.8726,30,10,1.0,3
+qwen,set,bakery,sandwiches,ice cream,0.8126000000000001,50,10,1.0,5
+qwen,set,bakery,sandwiches,muffins,0.2296,30,10,0.6666666666666666,3
+qwen,set,bakery,sandwiches,pretzels,0.1912,200,10,0.55,20
+qwen,set,bakery,sandwiches,water,0.11539999999999999,50,10,0.0,5
+qwen,set,bakery,water,cakes,0.8726,30,10,0.6666666666666666,3
+qwen,set,bakery,water,ice cream,0.8126,60,10,0.6666666666666666,6
+qwen,set,bakery,water,muffins,0.2296,60,10,0.5,6
+qwen,set,bakery,water,pretzels,0.1912,130,10,0.5384615384615384,13
+qwen,set,bakery,water,sandwiches,0.0388,210,10,0.42857142857142855,21
+qwen,set,beach,bikini,coat,0.0944,30,10,0.3333333333333333,3
+qwen,set,beach,bikini,jacket,0.25880000000000003,40,10,0.25,4
+qwen,set,beach,bikini,jeans,0.6814,60,10,0.5,6
+qwen,set,beach,bikini,shorts,0.9652,200,10,0.7,20
+qwen,set,beach,bikini,sunglasses,0.5684,180,10,0.16666666666666666,18
+qwen,set,beach,coat,bikini,0.6602,60,10,1.0,6
+qwen,set,beach,coat,jacket,0.2588,110,10,0.5454545454545454,11
+qwen,set,beach,coat,jeans,0.6814,160,10,0.5,16
+qwen,set,beach,coat,shorts,0.9652,50,10,1.0,5
+qwen,set,beach,coat,sunglasses,0.5684,30,10,0.0,3
+qwen,set,beach,jacket,bikini,0.6602,20,10,1.0,2
+qwen,set,beach,jacket,coat,0.0944,30,10,1.0,3
+qwen,set,beach,jacket,jeans,0.6814,200,10,0.45,20
+qwen,set,beach,jacket,shorts,0.9652,50,10,0.6,5
+qwen,set,beach,jacket,sunglasses,0.5684,40,10,0.5,4
+qwen,set,beach,jeans,bikini,0.6602,50,10,1.0,5
+qwen,set,beach,jeans,coat,0.0944,50,10,0.6,5
+qwen,set,beach,jeans,jacket,0.25880000000000003,60,10,0.0,6
+qwen,set,beach,jeans,shorts,0.9652,50,10,1.0,5
+qwen,set,beach,jeans,sunglasses,0.5684,40,10,0.25,4
+qwen,set,beach,shorts,bikini,0.6602,40,10,0.75,4
+qwen,set,beach,shorts,coat,0.0944,40,10,0.75,4
+qwen,set,beach,shorts,jacket,0.25880000000000003,40,10,0.25,4
+qwen,set,beach,shorts,jeans,0.6814,50,10,0.6,5
+qwen,set,beach,shorts,sunglasses,0.5684,200,10,0.15,20
+qwen,set,beach,sunglasses,bikini,0.6602,50,10,1.0,5
+qwen,set,beach,sunglasses,coat,0.0944,50,10,0.0,5
+qwen,set,beach,sunglasses,jacket,0.2588,50,10,0.8,5
+qwen,set,beach,sunglasses,jeans,0.6814,60,10,0.5,6
+qwen,set,beach,sunglasses,shorts,0.9652,40,10,0.5,4
+qwen,set,cold,blankets,heater,0.933,20,10,1.0,2
+qwen,set,cold,blankets,sink,0.029199999999999997,40,10,0.0,4
+qwen,set,cold,blankets,tea,0.0074,200,10,0.2,20
+qwen,set,cold,heater,blankets,0.0014,180,10,0.8333333333333334,18
+qwen,set,cold,heater,sink,0.0292,50,10,0.0,5
+qwen,set,cold,heater,tea,0.0073999999999999995,160,10,0.125,16
+qwen,set,cold,sink,blankets,0.0014,30,10,0.3333333333333333,3
+qwen,set,cold,sink,heater,0.933,40,10,1.0,4
+qwen,set,cold,sink,tea,0.0074,50,10,0.0,5
+qwen,set,cold,tea,blankets,0.0014000000000000002,50,10,0.6,5
+qwen,set,cold,tea,heater,0.9329999999999999,60,10,0.5,6
+qwen,set,cold,tea,sink,0.029199999999999997,40,10,0.0,4
+qwen,set,cut,batteries,keys,0.43879999999999997,60,10,0.16666666666666666,6
+qwen,set,cut,batteries,nail clippers,0.6556000000000001,50,10,0.8,5
+qwen,set,cut,batteries,scissors,0.9940000000000001,50,10,0.8,5
+qwen,set,cut,batteries,stapler,0.2846,180,10,0.4444444444444444,18
+qwen,set,cut,batteries,thumb tacks,0.0036,210,10,0.38095238095238093,21
+qwen,set,cut,keys,batteries,0.06,40,10,0.25,4
+qwen,set,cut,keys,nail clippers,0.6556000000000001,50,10,0.8,5
+qwen,set,cut,keys,scissors,0.9940000000000001,50,10,1.0,5
+qwen,set,cut,keys,stapler,0.2846,50,10,0.2,5
+qwen,set,cut,keys,thumb tacks,0.0036,50,10,0.2,5
+qwen,set,cut,nail clippers,batteries,0.06,50,10,0.0,5
+qwen,set,cut,nail clippers,keys,0.43879999999999997,160,10,0.3125,16
+qwen,set,cut,nail clippers,scissors,0.994,40,10,1.0,4
+qwen,set,cut,nail clippers,stapler,0.2846,20,10,0.5,2
+qwen,set,cut,nail clippers,thumb tacks,0.0036,30,10,0.6666666666666666,3
+qwen,set,cut,scissors,batteries,0.06,40,10,0.0,4
+qwen,set,cut,scissors,keys,0.4388,200,10,0.15,20
+qwen,set,cut,scissors,nail clippers,0.6556,110,10,0.6363636363636364,11
+qwen,set,cut,scissors,stapler,0.2846,60,10,0.16666666666666666,6
+qwen,set,cut,scissors,thumb tacks,0.0036000000000000003,40,10,0.0,4
+qwen,set,cut,stapler,batteries,0.06,50,10,0.0,5
+qwen,set,cut,stapler,keys,0.4388,50,10,0.2,5
+qwen,set,cut,stapler,nail clippers,0.6556,60,10,0.6666666666666666,6
+qwen,set,cut,stapler,scissors,0.994,40,10,1.0,4
+qwen,set,cut,stapler,thumb tacks,0.0036,170,10,0.11764705882352941,17
+qwen,set,cut,thumb tacks,batteries,0.06,40,10,0.0,4
+qwen,set,cut,thumb tacks,keys,0.43879999999999997,30,10,0.3333333333333333,3
+qwen,set,cut,thumb tacks,nail clippers,0.6556000000000001,50,10,0.6,5
+qwen,set,cut,thumb tacks,scissors,0.9940000000000001,50,10,0.8,5
+qwen,set,cut,thumb tacks,stapler,0.2846,50,10,0.0,5
+qwen,set,fridge,juice,ketchup,0.0354,60,10,0.3333333333333333,6
+qwen,set,fridge,juice,meat,0.1454,30,10,0.0,3
+qwen,set,fridge,juice,milk,0.849,150,10,1.0,15
+qwen,set,fridge,juice,water,0.9957999999999999,60,10,1.0,6
+qwen,set,fridge,juice,yogurt,0.2146,50,10,0.0,5
+qwen,set,fridge,ketchup,juice,0.768,50,10,1.0,5
+qwen,set,fridge,ketchup,meat,0.1454,40,10,0.0,4
+qwen,set,fridge,ketchup,milk,0.8490000000000001,50,10,1.0,5
+qwen,set,fridge,ketchup,water,0.9958,20,10,1.0,2
+qwen,set,fridge,ketchup,yogurt,0.2146,180,10,0.2222222222222222,18
+qwen,set,fridge,meat,juice,0.768,50,10,1.0,5
+qwen,set,fridge,meat,ketchup,0.0354,180,10,0.16666666666666666,18
+qwen,set,fridge,meat,milk,0.849,30,10,0.6666666666666666,3
+qwen,set,fridge,meat,water,0.9958,20,10,1.0,2
+qwen,set,fridge,meat,yogurt,0.21459999999999999,160,10,0.625,16
+qwen,set,fridge,milk,juice,0.768,50,10,1.0,5
+qwen,set,fridge,milk,ketchup,0.0354,50,10,0.0,5
+qwen,set,fridge,milk,meat,0.1454,60,10,0.0,6
+qwen,set,fridge,milk,water,0.9957999999999999,60,10,0.8333333333333334,6
+qwen,set,fridge,milk,yogurt,0.2146,50,10,0.2,5
+qwen,set,fridge,water,juice,0.768,220,10,1.0,22
+qwen,set,fridge,water,ketchup,0.0354,40,10,0.0,4
+qwen,set,fridge,water,meat,0.1454,30,10,0.0,3
+qwen,set,fridge,water,milk,0.849,180,10,0.9444444444444444,18
+qwen,set,fridge,water,yogurt,0.2146,50,10,0.0,5
+qwen,set,fridge,yogurt,juice,0.768,50,10,1.0,5
+qwen,set,fridge,yogurt,ketchup,0.0354,50,10,0.2,5
+qwen,set,fridge,yogurt,meat,0.1454,50,10,0.4,5
+qwen,set,fridge,yogurt,milk,0.849,40,10,0.75,4
+qwen,set,fridge,yogurt,water,0.9958,20,10,1.0,2
+qwen,set,gym,basketball,lacrosse,0.14859999999999998,150,10,0.9333333333333333,15
+qwen,set,gym,basketball,meditation,0.005200000000000001,20,10,0.0,2
+qwen,set,gym,basketball,softball,0.8623999999999999,200,10,0.9,20
+qwen,set,gym,basketball,swimming,0.2776,50,10,0.4,5
+qwen,set,gym,lacrosse,basketball,0.9625999999999999,40,10,1.0,4
+qwen,set,gym,lacrosse,meditation,0.005200000000000001,20,10,0.0,2
+qwen,set,gym,lacrosse,softball,0.8623999999999999,30,10,1.0,3
+qwen,set,gym,lacrosse,swimming,0.27759999999999996,30,10,0.3333333333333333,3
+qwen,set,gym,meditation,basketball,0.9625999999999999,40,10,0.75,4
+qwen,set,gym,meditation,lacrosse,0.1486,40,10,1.0,4
+qwen,set,gym,meditation,softball,0.8624,40,10,1.0,4
+qwen,set,gym,meditation,swimming,0.2776,190,10,0.7894736842105263,19
+qwen,set,gym,softball,basketball,0.9626,60,10,1.0,6
+qwen,set,gym,softball,lacrosse,0.1486,190,10,0.9473684210526315,19
+qwen,set,gym,softball,meditation,0.0052,50,10,0.6,5
+qwen,set,gym,softball,swimming,0.2776,50,10,0.8,5
+qwen,set,gym,swimming,basketball,0.9626,50,10,1.0,5
+qwen,set,gym,swimming,lacrosse,0.1486,40,10,1.0,4
+qwen,set,gym,swimming,meditation,0.0052,50,10,0.0,5
+qwen,set,gym,swimming,softball,0.8624,40,10,0.75,4
+qwen,set,hot,blankets,couch,0.0252,120,10,0.0,12
+qwen,set,hot,blankets,fan,0.861,50,10,0.2,5
+qwen,set,hot,blankets,heater,0.6950000000000001,40,10,0.75,4
+qwen,set,hot,blankets,pool,0.12120000000000002,50,10,0.0,5
+qwen,set,hot,blankets,shower,0.0836,50,10,0.2,5
+qwen,set,hot,couch,blankets,0.0068000000000000005,50,10,0.2,5
+qwen,set,hot,couch,fan,0.861,30,10,0.0,3
+qwen,set,hot,couch,heater,0.6950000000000001,30,10,0.0,3
+qwen,set,hot,couch,pool,0.1212,60,10,0.5,6
+qwen,set,hot,couch,shower,0.0836,20,10,1.0,2
+qwen,set,hot,fan,blankets,0.0068000000000000005,40,10,0.0,4
+qwen,set,hot,fan,couch,0.0252,40,10,0.0,4
+qwen,set,hot,fan,heater,0.6950000000000001,60,10,0.16666666666666666,6
+qwen,set,hot,fan,pool,0.12120000000000002,200,10,0.55,20
+qwen,set,hot,fan,shower,0.0836,200,10,0.05,20
+qwen,set,hot,heater,blankets,0.0068000000000000005,130,10,0.23076923076923078,13
+qwen,set,hot,heater,couch,0.0252,200,10,0.0,20
+qwen,set,hot,heater,fan,0.861,50,10,1.0,5
+qwen,set,hot,heater,pool,0.1212,40,10,0.25,4
+qwen,set,hot,heater,shower,0.0836,50,10,0.0,5
+qwen,set,hot,pool,blankets,0.0068000000000000005,50,10,0.4,5
+qwen,set,hot,pool,couch,0.0252,40,10,0.0,4
+qwen,set,hot,pool,fan,0.861,40,10,0.25,4
+qwen,set,hot,pool,heater,0.6950000000000001,40,10,0.0,4
+qwen,set,hot,pool,shower,0.0836,190,10,0.2631578947368421,19
+qwen,set,hot,shower,blankets,0.0068000000000000005,40,10,0.0,4
+qwen,set,hot,shower,couch,0.0252,60,10,0.0,6
+qwen,set,hot,shower,fan,0.861,50,10,0.8,5
+qwen,set,hot,shower,heater,0.6950000000000001,60,10,0.3333333333333333,6
+qwen,set,hot,shower,pool,0.12120000000000002,50,10,1.0,5
+qwen,set,mask,bandana,candy,0.0128,40,10,0.0,4
+qwen,set,mask,bandana,handkerchief,0.2302,130,10,0.6153846153846154,13
+qwen,set,mask,bandana,napkins,0.0008,120,10,0.16666666666666666,12
+qwen,set,mask,bandana,wallet,0.0756,50,10,0.4,5
+qwen,set,mask,candy,bandana,0.303,50,10,0.8,5
+qwen,set,mask,candy,handkerchief,0.2302,60,10,0.6666666666666666,6
+qwen,set,mask,candy,napkins,0.0008,40,10,0.5,4
+qwen,set,mask,candy,wallet,0.0756,200,10,0.2,20
+qwen,set,mask,handkerchief,bandana,0.303,30,10,1.0,3
+qwen,set,mask,handkerchief,candy,0.0128,60,10,0.0,6
+qwen,set,mask,handkerchief,napkins,0.0008,200,10,0.3,20
+qwen,set,mask,handkerchief,wallet,0.0756,50,10,0.0,5
+qwen,set,mask,napkins,bandana,0.303,50,10,1.0,5
+qwen,set,mask,napkins,candy,0.0128,50,10,0.2,5
+qwen,set,mask,napkins,handkerchief,0.2302,50,10,0.6,5
+qwen,set,mask,napkins,wallet,0.0756,40,10,0.0,4
+qwen,set,mask,wallet,bandana,0.303,50,10,0.8,5
+qwen,set,mask,wallet,candy,0.0128,50,10,0.2,5
+qwen,set,mask,wallet,handkerchief,0.2302,50,10,0.6,5
+qwen,set,mask,wallet,napkins,0.0008,60,10,0.5,6
+qwen,set,meat,chicken,crab,0.1074,170,10,0.7647058823529411,17
+qwen,set,meat,chicken,mushrooms,0.0632,50,10,0.2,5
+qwen,set,meat,chicken,tofu,0.46880000000000005,50,10,0.0,5
+qwen,set,meat,chicken,turkey,0.27340000000000003,210,10,0.9523809523809523,21
+qwen,set,meat,crab,chicken,0.9690000000000001,50,10,1.0,5
+qwen,set,meat,crab,mushrooms,0.0632,30,10,0.0,3
+qwen,set,meat,crab,tofu,0.4688,30,10,0.6666666666666666,3
+qwen,set,meat,crab,turkey,0.2734,50,10,1.0,5
+qwen,set,meat,mushrooms,chicken,0.969,60,10,1.0,6
+qwen,set,meat,mushrooms,crab,0.1074,50,10,1.0,5
+qwen,set,meat,mushrooms,tofu,0.4688,190,10,0.5263157894736842,19
+qwen,set,meat,mushrooms,turkey,0.2734,60,10,1.0,6
+qwen,set,meat,tofu,chicken,0.969,40,10,1.0,4
+qwen,set,meat,tofu,crab,0.1074,50,10,0.8,5
+qwen,set,meat,tofu,mushrooms,0.0632,50,10,0.0,5
+qwen,set,meat,tofu,turkey,0.2734,50,10,1.0,5
+qwen,set,meat,turkey,chicken,0.969,40,10,1.0,4
+qwen,set,meat,turkey,crab,0.1074,130,10,0.7692307692307693,13
+qwen,set,meat,turkey,mushrooms,0.0632,40,10,0.0,4
+qwen,set,meat,turkey,tofu,0.4688,60,10,0.16666666666666666,6
+qwen,set,restaurant,cake,cocktails,0.3442,40,10,1.0,4
+qwen,set,restaurant,cake,salad,0.060200000000000004,50,10,0.6,5
+qwen,set,restaurant,cake,soda,0.6951999999999999,50,10,0.8,5
+qwen,set,restaurant,cake,soup,0.0812,180,10,0.3888888888888889,18
+qwen,set,restaurant,cake,vodka,0.5358,60,10,1.0,6
+qwen,set,restaurant,cocktails,cake,0.08,50,10,0.6,5
+qwen,set,restaurant,cocktails,salad,0.0602,40,10,0.0,4
+qwen,set,restaurant,cocktails,soda,0.6951999999999999,190,10,0.42105263157894735,19
+qwen,set,restaurant,cocktails,soup,0.08120000000000001,20,10,0.0,2
+qwen,set,restaurant,cocktails,vodka,0.5358,140,10,0.5,14
+qwen,set,restaurant,salad,cake,0.08,200,10,0.55,20
+qwen,set,restaurant,salad,cocktails,0.3442,40,10,0.75,4
+qwen,set,restaurant,salad,soda,0.6951999999999999,50,10,0.6,5
+qwen,set,restaurant,salad,soup,0.0812,200,10,0.7,20
+qwen,set,restaurant,salad,vodka,0.5357999999999999,50,10,1.0,5
+qwen,set,restaurant,soda,cake,0.08,30,10,0.0,3
+qwen,set,restaurant,soda,cocktails,0.3442,30,10,1.0,3
+qwen,set,restaurant,soda,salad,0.060200000000000004,50,10,0.0,5
+qwen,set,restaurant,soda,soup,0.08120000000000001,20,10,0.0,2
+qwen,set,restaurant,soda,vodka,0.5357999999999999,50,10,1.0,5
+qwen,set,restaurant,soup,cake,0.08,30,10,0.3333333333333333,3
+qwen,set,restaurant,soup,cocktails,0.3442,60,10,1.0,6
+qwen,set,restaurant,soup,salad,0.060200000000000004,60,10,0.5,6
+qwen,set,restaurant,soup,soda,0.6951999999999999,60,10,0.8333333333333334,6
+qwen,set,restaurant,soup,vodka,0.5357999999999999,40,10,1.0,4
+qwen,set,restaurant,vodka,cake,0.08,50,10,0.0,5
+qwen,set,restaurant,vodka,cocktails,0.3442,30,10,1.0,3
+qwen,set,restaurant,vodka,salad,0.0602,20,10,0.0,2
+qwen,set,restaurant,vodka,soda,0.6951999999999999,190,10,0.3157894736842105,19
+qwen,set,restaurant,vodka,soup,0.0812,50,10,0.0,5
+qwen,set,salad,chips,cigarettes,0.0022,60,10,0.16666666666666666,6
+qwen,set,salad,chips,dressing,0.007000000000000001,50,10,0.4,5
+qwen,set,salad,chips,lettuce,0.9502,60,10,1.0,6
+qwen,set,salad,chips,meat,0.0592,210,10,0.2857142857142857,21
+qwen,set,salad,cigarettes,chips,0.017599999999999998,160,10,0.4375,16
+qwen,set,salad,cigarettes,dressing,0.007000000000000001,40,10,1.0,4
+qwen,set,salad,cigarettes,lettuce,0.9502,40,10,0.75,4
+qwen,set,salad,cigarettes,meat,0.059199999999999996,190,10,0.5789473684210527,19
+qwen,set,salad,dressing,chips,0.017599999999999998,20,10,0.0,2
+qwen,set,salad,dressing,cigarettes,0.0022,50,10,0.0,5
+qwen,set,salad,dressing,lettuce,0.9502,30,10,1.0,3
+qwen,set,salad,dressing,meat,0.0592,30,10,0.3333333333333333,3
+qwen,set,salad,lettuce,chips,0.017599999999999998,20,10,0.0,2
+qwen,set,salad,lettuce,cigarettes,0.0022,60,10,0.0,6
+qwen,set,salad,lettuce,dressing,0.007,180,10,0.6111111111111112,18
+qwen,set,salad,lettuce,meat,0.059199999999999996,40,10,0.75,4
+qwen,set,salad,meat,chips,0.017599999999999998,20,10,0.0,2
+qwen,set,salad,meat,cigarettes,0.0022,50,10,0.0,5
+qwen,set,salad,meat,dressing,0.007,30,10,0.0,3
+qwen,set,salad,meat,lettuce,0.9502,60,10,1.0,6
+qwen,set,science,art,geology,0.4992,40,10,1.0,4
+qwen,set,science,art,math,0.3428,200,10,0.7,20
+qwen,set,science,art,philosophy,0.011800000000000001,180,10,0.6111111111111112,18
+qwen,set,science,art,physics,0.9570000000000001,50,10,1.0,5
+qwen,set,science,art,zoology,0.102,50,10,0.8,5
+qwen,set,science,geology,art,0.009000000000000001,50,10,0.6,5
+qwen,set,science,geology,math,0.34280000000000005,60,10,0.8333333333333334,6
+qwen,set,science,geology,philosophy,0.0118,30,10,0.6666666666666666,3
+qwen,set,science,geology,physics,0.9570000000000001,40,10,1.0,4
+qwen,set,science,geology,zoology,0.102,130,10,1.0,13
+qwen,set,science,math,art,0.009,20,10,0.5,2
+qwen,set,science,math,geology,0.4992,40,10,0.75,4
+qwen,set,science,math,philosophy,0.0118,50,10,0.4,5
+qwen,set,science,math,physics,0.9570000000000001,40,10,0.5,4
+qwen,set,science,math,zoology,0.102,50,10,0.8,5
+qwen,set,science,philosophy,art,0.009000000000000001,50,10,1.0,5
+qwen,set,science,philosophy,geology,0.49920000000000003,50,10,0.8,5
+qwen,set,science,philosophy,math,0.3428,160,10,0.6875,16
+qwen,set,science,philosophy,physics,0.9570000000000001,40,10,1.0,4
+qwen,set,science,philosophy,zoology,0.10200000000000001,60,10,0.8333333333333334,6
+qwen,set,science,physics,art,0.009000000000000001,50,10,0.4,5
+qwen,set,science,physics,geology,0.4992,210,10,0.8571428571428571,21
+qwen,set,science,physics,math,0.34280000000000005,30,10,0.3333333333333333,3
+qwen,set,science,physics,philosophy,0.0118,30,10,0.3333333333333333,3
+qwen,set,science,physics,zoology,0.102,200,10,0.65,20
+qwen,set,science,zoology,art,0.009000000000000001,30,10,0.6666666666666666,3
+qwen,set,science,zoology,geology,0.4992,40,10,0.75,4
+qwen,set,science,zoology,math,0.3428,50,10,0.4,5
+qwen,set,science,zoology,philosophy,0.0118,60,10,0.6666666666666666,6
+qwen,set,science,zoology,physics,0.9570000000000001,40,10,1.0,4
+qwen,set,throw,beach ball,boomerang,0.051,190,10,0.631578947368421,19
+qwen,set,throw,beach ball,football,0.9690000000000001,50,10,1.0,5
+qwen,set,throw,beach ball,lawnmower,0.0346,30,10,0.0,3
+qwen,set,throw,beach ball,tires,0.0,60,10,0.0,6
+qwen,set,throw,boomerang,beach ball,0.5608,40,10,0.75,4
+qwen,set,throw,boomerang,football,0.969,40,10,1.0,4
+qwen,set,throw,boomerang,lawnmower,0.0346,50,10,0.0,5
+qwen,set,throw,boomerang,tires,0.0,50,10,0.0,5
+qwen,set,throw,football,beach ball,0.5608,160,10,0.875,16
+qwen,set,throw,football,boomerang,0.051,210,10,0.6190476190476191,21
+qwen,set,throw,football,lawnmower,0.0346,30,10,0.0,3
+qwen,set,throw,football,tires,0.0,30,10,0.0,3
+qwen,set,throw,lawnmower,beach ball,0.5608,20,10,1.0,2
+qwen,set,throw,lawnmower,boomerang,0.051,50,10,0.8,5
+qwen,set,throw,lawnmower,football,0.9690000000000001,50,10,1.0,5
+qwen,set,throw,lawnmower,tires,0.0,130,10,0.07692307692307693,13
+qwen,set,throw,tires,beach ball,0.5608,50,10,0.6,5
+qwen,set,throw,tires,boomerang,0.051000000000000004,40,10,1.0,4
+qwen,set,throw,tires,football,0.9690000000000001,50,10,0.8,5
+qwen,set,throw,tires,lawnmower,0.0346,50,10,0.8,5
+qwen,set,transport,car,chairs,0.0,50,10,0.0,5
+qwen,set,transport,car,hammer,0.011399999999999999,50,10,0.2,5
+qwen,set,transport,car,lawnmower,0.3652,40,10,0.25,4
+qwen,set,transport,chairs,car,0.9946,30,10,1.0,3
+qwen,set,transport,chairs,hammer,0.011399999999999999,40,10,0.0,4
+qwen,set,transport,chairs,lawnmower,0.36519999999999997,220,10,0.09090909090909091,22
+qwen,set,transport,hammer,car,0.9945999999999999,50,10,0.6,5
+qwen,set,transport,hammer,chairs,0.0,150,10,0.06666666666666667,15
+qwen,set,transport,hammer,lawnmower,0.3652,180,10,0.5555555555555556,18
+qwen,set,transport,lawnmower,car,0.9946,60,10,1.0,6
+qwen,set,transport,lawnmower,chairs,0.0,50,10,0.2,5
+qwen,set,transport,lawnmower,hammer,0.011399999999999999,40,10,0.25,4
+qwen,ordering,bag,chalk,crayons,0.734,60,10,1.0,6
+qwen,ordering,bag,chalk,headphones,0.008,50,10,0.2,5
+qwen,ordering,bag,chalk,makeup,0.124,50,10,0.2,5
+qwen,ordering,bag,chalk,pen,0.944,50,10,1.0,5
+qwen,ordering,bag,crayons,chalk,0.266,180,10,0.8888888888888888,18
+qwen,ordering,bag,crayons,headphones,0.006,40,10,0.25,4
+qwen,ordering,bag,crayons,makeup,0.052000000000000005,50,10,0.0,5
+qwen,ordering,bag,crayons,pen,0.8560000000000001,40,10,1.0,4
+qwen,ordering,bag,headphones,chalk,0.992,50,10,0.4,5
+qwen,ordering,bag,headphones,crayons,0.994,30,10,1.0,3
+qwen,ordering,bag,headphones,makeup,0.944,190,10,0.21052631578947367,19
+qwen,ordering,bag,headphones,pen,1.0,50,10,1.0,5
+qwen,ordering,bag,makeup,chalk,0.876,20,10,1.0,2
+qwen,ordering,bag,makeup,crayons,0.9480000000000001,20,10,1.0,2
+qwen,ordering,bag,makeup,headphones,0.05600000000000001,40,10,0.0,4
+qwen,ordering,bag,makeup,pen,0.99,30,10,1.0,3
+qwen,ordering,bag,pen,chalk,0.056,210,10,0.8571428571428571,21
+qwen,ordering,bag,pen,crayons,0.144,170,10,0.8823529411764706,17
+qwen,ordering,bag,pen,headphones,0.0,50,10,0.0,5
+qwen,ordering,bag,pen,makeup,0.01,60,10,0.16666666666666666,6
+qwen,ordering,bakery,cakes,ice cream,0.404,190,10,0.8421052631578947,19
+qwen,ordering,bakery,cakes,muffins,0.036,180,10,0.8888888888888888,18
+qwen,ordering,bakery,cakes,pretzels,0.046,60,10,0.5,6
+qwen,ordering,bakery,cakes,sandwiches,0.006,50,10,0.4,5
+qwen,ordering,bakery,cakes,water,0.03,50,10,0.0,5
+qwen,ordering,bakery,ice cream,cakes,0.596,50,10,1.0,5
+qwen,ordering,bakery,ice cream,muffins,0.07,170,10,0.5882352941176471,17
+qwen,ordering,bakery,ice cream,pretzels,0.054000000000000006,20,10,0.5,2
+qwen,ordering,bakery,ice cream,sandwiches,0.008,40,10,0.25,4
+qwen,ordering,bakery,ice cream,water,0.034,60,10,0.16666666666666666,6
+qwen,ordering,bakery,muffins,cakes,0.964,50,10,1.0,5
+qwen,ordering,bakery,muffins,ice cream,0.93,20,10,1.0,2
+qwen,ordering,bakery,muffins,pretzels,0.478,50,10,0.4,5
+qwen,ordering,bakery,muffins,sandwiches,0.128,20,10,0.0,2
+qwen,ordering,bakery,muffins,water,0.324,50,10,0.0,5
+qwen,ordering,bakery,pretzels,cakes,0.954,50,10,1.0,5
+qwen,ordering,bakery,pretzels,ice cream,0.946,50,10,1.0,5
+qwen,ordering,bakery,pretzels,muffins,0.522,30,10,1.0,3
+qwen,ordering,bakery,pretzels,sandwiches,0.148,50,10,0.4,5
+qwen,ordering,bakery,pretzels,water,0.348,40,10,0.0,4
+qwen,ordering,bakery,sandwiches,cakes,0.994,30,10,1.0,3
+qwen,ordering,bakery,sandwiches,ice cream,0.992,50,10,1.0,5
+qwen,ordering,bakery,sandwiches,muffins,0.872,30,10,0.6666666666666666,3
+qwen,ordering,bakery,sandwiches,pretzels,0.852,200,10,0.55,20
+qwen,ordering,bakery,sandwiches,water,0.718,50,10,0.0,5
+qwen,ordering,bakery,water,cakes,0.97,30,10,0.6666666666666666,3
+qwen,ordering,bakery,water,ice cream,0.966,60,10,0.6666666666666666,6
+qwen,ordering,bakery,water,muffins,0.676,60,10,0.5,6
+qwen,ordering,bakery,water,pretzels,0.652,130,10,0.5384615384615384,13
+qwen,ordering,bakery,water,sandwiches,0.282,210,10,0.42857142857142855,21
+qwen,ordering,beach,bikini,coat,0.048,30,10,0.3333333333333333,3
+qwen,ordering,beach,bikini,jacket,0.144,40,10,0.25,4
+qwen,ordering,beach,bikini,jeans,0.498,60,10,0.5,6
+qwen,ordering,beach,bikini,shorts,0.93,200,10,0.7,20
+qwen,ordering,beach,bikini,sunglasses,0.41,180,10,0.16666666666666666,18
+qwen,ordering,beach,coat,bikini,0.952,60,10,1.0,6
+qwen,ordering,beach,coat,jacket,0.758,110,10,0.5454545454545454,11
+qwen,ordering,beach,coat,jeans,0.952,160,10,0.5,16
+qwen,ordering,beach,coat,shorts,0.996,50,10,1.0,5
+qwen,ordering,beach,coat,sunglasses,0.936,30,10,0.0,3
+qwen,ordering,beach,jacket,bikini,0.8560000000000001,20,10,1.0,2
+qwen,ordering,beach,jacket,coat,0.242,30,10,1.0,3
+qwen,ordering,beach,jacket,jeans,0.846,200,10,0.45,20
+qwen,ordering,beach,jacket,shorts,0.9739999999999999,50,10,0.6,5
+qwen,ordering,beach,jacket,sunglasses,0.79,40,10,0.5,4
+qwen,ordering,beach,jeans,bikini,0.502,50,10,1.0,5
+qwen,ordering,beach,jeans,coat,0.048,50,10,0.6,5
+qwen,ordering,beach,jeans,jacket,0.154,60,10,0.0,6
+qwen,ordering,beach,jeans,shorts,0.9,50,10,1.0,5
+qwen,ordering,beach,jeans,sunglasses,0.352,40,10,0.25,4
+qwen,ordering,beach,shorts,bikini,0.07,40,10,0.75,4
+qwen,ordering,beach,shorts,coat,0.004,40,10,0.75,4
+qwen,ordering,beach,shorts,jacket,0.026000000000000002,40,10,0.25,4
+qwen,ordering,beach,shorts,jeans,0.1,50,10,0.6,5
+qwen,ordering,beach,shorts,sunglasses,0.064,200,10,0.15,20
+qwen,ordering,beach,sunglasses,bikini,0.59,50,10,1.0,5
+qwen,ordering,beach,sunglasses,coat,0.064,50,10,0.0,5
+qwen,ordering,beach,sunglasses,jacket,0.21,50,10,0.8,5
+qwen,ordering,beach,sunglasses,jeans,0.648,60,10,0.5,6
+qwen,ordering,beach,sunglasses,shorts,0.9360000000000002,40,10,0.5,4
+qwen,ordering,cold,blankets,heater,1.0,20,10,1.0,2
+qwen,ordering,cold,blankets,sink,0.8859999999999999,40,10,0.0,4
+qwen,ordering,cold,blankets,tea,0.664,200,10,0.2,20
+qwen,ordering,cold,heater,blankets,0.0,180,10,0.8333333333333334,18
+qwen,ordering,cold,heater,sink,0.0,50,10,0.0,5
+qwen,ordering,cold,heater,tea,0.0,160,10,0.125,16
+qwen,ordering,cold,sink,blankets,0.114,30,10,0.3333333333333333,3
+qwen,ordering,cold,sink,heater,1.0,40,10,1.0,4
+qwen,ordering,cold,sink,tea,0.2,50,10,0.0,5
+qwen,ordering,cold,tea,blankets,0.336,50,10,0.6,5
+qwen,ordering,cold,tea,heater,1.0,60,10,0.5,6
+qwen,ordering,cold,tea,sink,0.8,40,10,0.0,4
+qwen,ordering,cut,batteries,keys,0.926,60,10,0.16666666666666666,6
+qwen,ordering,cut,batteries,nail clippers,0.97,50,10,0.8,5
+qwen,ordering,cut,batteries,scissors,1.0,50,10,0.8,5
+qwen,ordering,cut,batteries,stapler,0.8600000000000001,180,10,0.4444444444444444,18
+qwen,ordering,cut,batteries,thumb tacks,0.022000000000000002,210,10,0.38095238095238093,21
+qwen,ordering,cut,keys,batteries,0.074,40,10,0.25,4
+qwen,ordering,cut,keys,nail clippers,0.706,50,10,0.8,5
+qwen,ordering,cut,keys,scissors,0.998,50,10,1.0,5
+qwen,ordering,cut,keys,stapler,0.352,50,10,0.2,5
+qwen,ordering,cut,keys,thumb tacks,0.006,50,10,0.2,5
+qwen,ordering,cut,nail clippers,batteries,0.03,50,10,0.0,5
+qwen,ordering,cut,nail clippers,keys,0.294,160,10,0.3125,16
+qwen,ordering,cut,nail clippers,scissors,0.9719999999999999,40,10,1.0,4
+qwen,ordering,cut,nail clippers,stapler,0.184,20,10,0.5,2
+qwen,ordering,cut,nail clippers,thumb tacks,0.0,30,10,0.6666666666666666,3
+qwen,ordering,cut,scissors,batteries,0.0,40,10,0.0,4
+qwen,ordering,cut,scissors,keys,0.002,200,10,0.15,20
+qwen,ordering,cut,scissors,nail clippers,0.028,110,10,0.6363636363636364,11
+qwen,ordering,cut,scissors,stapler,0.008,60,10,0.16666666666666666,6
+qwen,ordering,cut,scissors,thumb tacks,0.0,40,10,0.0,4
+qwen,ordering,cut,stapler,batteries,0.14,50,10,0.0,5
+qwen,ordering,cut,stapler,keys,0.648,50,10,0.2,5
+qwen,ordering,cut,stapler,nail clippers,0.816,60,10,0.6666666666666666,6
+qwen,ordering,cut,stapler,scissors,0.992,40,10,1.0,4
+qwen,ordering,cut,stapler,thumb tacks,0.006,170,10,0.11764705882352941,17
+qwen,ordering,cut,thumb tacks,batteries,0.978,40,10,0.0,4
+qwen,ordering,cut,thumb tacks,keys,0.994,30,10,0.3333333333333333,3
+qwen,ordering,cut,thumb tacks,nail clippers,1.0,50,10,0.6,5
+qwen,ordering,cut,thumb tacks,scissors,1.0,50,10,0.8,5
+qwen,ordering,cut,thumb tacks,stapler,0.9940000000000001,50,10,0.0,5
+qwen,ordering,fridge,juice,ketchup,0.008,60,10,0.3333333333333333,6
+qwen,ordering,fridge,juice,meat,0.022,30,10,0.0,3
+qwen,ordering,fridge,juice,milk,0.688,150,10,1.0,15
+qwen,ordering,fridge,juice,water,0.974,60,10,1.0,6
+qwen,ordering,fridge,juice,yogurt,0.032,50,10,0.0,5
+qwen,ordering,fridge,ketchup,juice,0.992,50,10,1.0,5
+qwen,ordering,fridge,ketchup,meat,0.766,40,10,0.0,4
+qwen,ordering,fridge,ketchup,milk,0.9940000000000001,50,10,1.0,5
+qwen,ordering,fridge,ketchup,water,0.998,20,10,1.0,2
+qwen,ordering,fridge,ketchup,yogurt,0.878,180,10,0.2222222222222222,18
+qwen,ordering,fridge,meat,juice,0.978,50,10,1.0,5
+qwen,ordering,fridge,meat,ketchup,0.234,180,10,0.16666666666666666,18
+qwen,ordering,fridge,meat,milk,0.984,30,10,0.6666666666666666,3
+qwen,ordering,fridge,meat,water,1.0,20,10,1.0,2
+qwen,ordering,fridge,meat,yogurt,0.65,160,10,0.625,16
+qwen,ordering,fridge,milk,juice,0.312,50,10,1.0,5
+qwen,ordering,fridge,milk,ketchup,0.006,50,10,0.0,5
+qwen,ordering,fridge,milk,meat,0.016,60,10,0.0,6
+qwen,ordering,fridge,milk,water,0.972,60,10,0.8333333333333334,6
+qwen,ordering,fridge,milk,yogurt,0.014000000000000002,50,10,0.2,5
+qwen,ordering,fridge,water,juice,0.026,220,10,1.0,22
+qwen,ordering,fridge,water,ketchup,0.002,40,10,0.0,4
+qwen,ordering,fridge,water,meat,0.0,30,10,0.0,3
+qwen,ordering,fridge,water,milk,0.028,180,10,0.9444444444444444,18
+qwen,ordering,fridge,water,yogurt,0.002,50,10,0.0,5
+qwen,ordering,fridge,yogurt,juice,0.968,50,10,1.0,5
+qwen,ordering,fridge,yogurt,ketchup,0.122,50,10,0.2,5
+qwen,ordering,fridge,yogurt,meat,0.35,50,10,0.4,5
+qwen,ordering,fridge,yogurt,milk,0.986,40,10,0.75,4
+qwen,ordering,fridge,yogurt,water,0.998,20,10,1.0,2
+qwen,ordering,gym,basketball,lacrosse,0.004,150,10,0.9333333333333333,15
+qwen,ordering,gym,basketball,meditation,0.0,20,10,0.0,2
+qwen,ordering,gym,basketball,softball,0.242,200,10,0.9,20
+qwen,ordering,gym,basketball,swimming,0.018,50,10,0.4,5
+qwen,ordering,gym,lacrosse,basketball,0.9960000000000001,40,10,1.0,4
+qwen,ordering,gym,lacrosse,meditation,0.02,20,10,0.0,2
+qwen,ordering,gym,lacrosse,softball,0.982,30,10,1.0,3
+qwen,ordering,gym,lacrosse,swimming,0.69,30,10,0.3333333333333333,3
+qwen,ordering,gym,meditation,basketball,1.0,40,10,0.75,4
+qwen,ordering,gym,meditation,lacrosse,0.9800000000000001,40,10,1.0,4
+qwen,ordering,gym,meditation,softball,0.998,40,10,1.0,4
+qwen,ordering,gym,meditation,swimming,0.992,190,10,0.7894736842105263,19
+qwen,ordering,gym,softball,basketball,0.7580000000000001,60,10,1.0,6
+qwen,ordering,gym,softball,lacrosse,0.018,190,10,0.9473684210526315,19
+qwen,ordering,gym,softball,meditation,0.002,50,10,0.6,5
+qwen,ordering,gym,softball,swimming,0.05,50,10,0.8,5
+qwen,ordering,gym,swimming,basketball,0.982,50,10,1.0,5
+qwen,ordering,gym,swimming,lacrosse,0.31,40,10,1.0,4
+qwen,ordering,gym,swimming,meditation,0.008,50,10,0.0,5
+qwen,ordering,gym,swimming,softball,0.95,40,10,0.75,4
+qwen,ordering,hot,blankets,couch,0.874,120,10,0.0,12
+qwen,ordering,hot,blankets,fan,0.998,50,10,0.2,5
+qwen,ordering,hot,blankets,heater,0.9960000000000001,40,10,0.75,4
+qwen,ordering,hot,blankets,pool,0.976,50,10,0.0,5
+qwen,ordering,hot,blankets,shower,0.9620000000000001,50,10,0.2,5
+qwen,ordering,hot,couch,blankets,0.126,50,10,0.2,5
+qwen,ordering,hot,couch,fan,0.998,30,10,0.0,3
+qwen,ordering,hot,couch,heater,0.996,30,10,0.0,3
+qwen,ordering,hot,couch,pool,0.84,60,10,0.5,6
+qwen,ordering,hot,couch,shower,0.792,20,10,1.0,2
+qwen,ordering,hot,fan,blankets,0.002,40,10,0.0,4
+qwen,ordering,hot,fan,couch,0.002,40,10,0.0,4
+qwen,ordering,hot,fan,heater,0.232,60,10,0.16666666666666666,6
+qwen,ordering,hot,fan,pool,0.006,200,10,0.55,20
+qwen,ordering,hot,fan,shower,0.004,200,10,0.05,20
+qwen,ordering,hot,heater,blankets,0.004,130,10,0.23076923076923078,13
+qwen,ordering,hot,heater,couch,0.004,200,10,0.0,20
+qwen,ordering,hot,heater,fan,0.768,50,10,1.0,5
+qwen,ordering,hot,heater,pool,0.024,40,10,0.25,4
+qwen,ordering,hot,heater,shower,0.022,50,10,0.0,5
+qwen,ordering,hot,pool,blankets,0.024,50,10,0.4,5
+qwen,ordering,hot,pool,couch,0.16,40,10,0.0,4
+qwen,ordering,hot,pool,fan,0.994,40,10,0.25,4
+qwen,ordering,hot,pool,heater,0.976,40,10,0.0,4
+qwen,ordering,hot,pool,shower,0.392,190,10,0.2631578947368421,19
+qwen,ordering,hot,shower,blankets,0.038,40,10,0.0,4
+qwen,ordering,hot,shower,couch,0.208,60,10,0.0,6
+qwen,ordering,hot,shower,fan,0.996,50,10,0.8,5
+qwen,ordering,hot,shower,heater,0.978,60,10,0.3333333333333333,6
+qwen,ordering,hot,shower,pool,0.608,50,10,1.0,5
+qwen,ordering,mask,bandana,candy,0.038,40,10,0.0,4
+qwen,ordering,mask,bandana,handkerchief,0.418,130,10,0.6153846153846154,13
+qwen,ordering,mask,bandana,napkins,0.002,120,10,0.16666666666666666,12
+qwen,ordering,mask,bandana,wallet,0.154,50,10,0.4,5
+qwen,ordering,mask,candy,bandana,0.9620000000000001,50,10,0.8,5
+qwen,ordering,mask,candy,handkerchief,0.946,60,10,0.6666666666666666,6
+qwen,ordering,mask,candy,napkins,0.046,40,10,0.5,4
+qwen,ordering,mask,candy,wallet,0.82,200,10,0.2,20
+qwen,ordering,mask,handkerchief,bandana,0.582,30,10,1.0,3
+qwen,ordering,mask,handkerchief,candy,0.054,60,10,0.0,6
+qwen,ordering,mask,handkerchief,napkins,0.006,200,10,0.3,20
+qwen,ordering,mask,handkerchief,wallet,0.22,50,10,0.0,5
+qwen,ordering,mask,napkins,bandana,0.998,50,10,1.0,5
+qwen,ordering,mask,napkins,candy,0.954,50,10,0.2,5
+qwen,ordering,mask,napkins,handkerchief,0.9940000000000001,50,10,0.6,5
+qwen,ordering,mask,napkins,wallet,0.99,40,10,0.0,4
+qwen,ordering,mask,wallet,bandana,0.846,50,10,0.8,5
+qwen,ordering,mask,wallet,candy,0.18,50,10,0.2,5
+qwen,ordering,mask,wallet,handkerchief,0.78,50,10,0.6,5
+qwen,ordering,mask,wallet,napkins,0.01,60,10,0.5,6
+qwen,ordering,meat,chicken,crab,0.002,170,10,0.7647058823529411,17
+qwen,ordering,meat,chicken,mushrooms,0.0,50,10,0.2,5
+qwen,ordering,meat,chicken,tofu,0.016,50,10,0.0,5
+qwen,ordering,meat,chicken,turkey,0.008,210,10,0.9523809523809523,21
+qwen,ordering,meat,crab,chicken,0.998,50,10,1.0,5
+qwen,ordering,meat,crab,mushrooms,0.382,30,10,0.0,3
+qwen,ordering,meat,crab,tofu,0.888,30,10,0.6666666666666666,3
+qwen,ordering,meat,crab,turkey,0.762,50,10,1.0,5
+qwen,ordering,meat,mushrooms,chicken,1.0,60,10,1.0,6
+qwen,ordering,meat,mushrooms,crab,0.618,50,10,1.0,5
+qwen,ordering,meat,mushrooms,tofu,0.932,190,10,0.5263157894736842,19
+qwen,ordering,meat,mushrooms,turkey,0.834,60,10,1.0,6
+qwen,ordering,meat,tofu,chicken,0.984,40,10,1.0,4
+qwen,ordering,meat,tofu,crab,0.11200000000000002,50,10,0.8,5
+qwen,ordering,meat,tofu,mushrooms,0.068,50,10,0.0,5
+qwen,ordering,meat,tofu,turkey,0.298,50,10,1.0,5
+qwen,ordering,meat,turkey,chicken,0.992,40,10,1.0,4
+qwen,ordering,meat,turkey,crab,0.238,130,10,0.7692307692307693,13
+qwen,ordering,meat,turkey,mushrooms,0.166,40,10,0.0,4
+qwen,ordering,meat,turkey,tofu,0.702,60,10,0.16666666666666666,6
+qwen,ordering,restaurant,cake,cocktails,0.8539999999999999,40,10,1.0,4
+qwen,ordering,restaurant,cake,salad,0.374,50,10,0.6,5
+qwen,ordering,restaurant,cake,soda,0.966,50,10,0.8,5
+qwen,ordering,restaurant,cake,soup,0.48600000000000004,180,10,0.3888888888888889,18
+qwen,ordering,restaurant,cake,vodka,0.92,60,10,1.0,6
+qwen,ordering,restaurant,cocktails,cake,0.146,50,10,0.6,5
+qwen,ordering,restaurant,cocktails,salad,0.10800000000000001,40,10,0.0,4
+qwen,ordering,restaurant,cocktails,soda,0.794,190,10,0.42105263157894735,19
+qwen,ordering,restaurant,cocktails,soup,0.158,20,10,0.0,2
+qwen,ordering,restaurant,cocktails,vodka,0.67,140,10,0.5,14
+qwen,ordering,restaurant,salad,cake,0.626,200,10,0.55,20
+qwen,ordering,restaurant,salad,cocktails,0.892,40,10,0.75,4
+qwen,ordering,restaurant,salad,soda,0.966,50,10,0.6,5
+qwen,ordering,restaurant,salad,soup,0.596,200,10,0.7,20
+qwen,ordering,restaurant,salad,vodka,0.924,50,10,1.0,5
+qwen,ordering,restaurant,soda,cake,0.034,30,10,0.0,3
+qwen,ordering,restaurant,soda,cocktails,0.206,30,10,1.0,3
+qwen,ordering,restaurant,soda,salad,0.034,50,10,0.0,5
+qwen,ordering,restaurant,soda,soup,0.04,20,10,0.0,2
+qwen,ordering,restaurant,soda,vodka,0.338,50,10,1.0,5
+qwen,ordering,restaurant,soup,cake,0.514,30,10,0.3333333333333333,3
+qwen,ordering,restaurant,soup,cocktails,0.842,60,10,1.0,6
+qwen,ordering,restaurant,soup,salad,0.404,60,10,0.5,6
+qwen,ordering,restaurant,soup,soda,0.9599999999999999,60,10,0.8333333333333334,6
+qwen,ordering,restaurant,soup,vodka,0.9339999999999999,40,10,1.0,4
+qwen,ordering,restaurant,vodka,cake,0.08,50,10,0.0,5
+qwen,ordering,restaurant,vodka,cocktails,0.33,30,10,1.0,3
+qwen,ordering,restaurant,vodka,salad,0.076,20,10,0.0,2
+qwen,ordering,restaurant,vodka,soda,0.662,190,10,0.3157894736842105,19
+qwen,ordering,restaurant,vodka,soup,0.066,50,10,0.0,5
+qwen,ordering,salad,chips,cigarettes,0.058,60,10,0.16666666666666666,6
+qwen,ordering,salad,chips,dressing,0.31,50,10,0.4,5
+qwen,ordering,salad,chips,lettuce,0.998,60,10,1.0,6
+qwen,ordering,salad,chips,meat,0.762,210,10,0.2857142857142857,21
+qwen,ordering,salad,cigarettes,chips,0.942,160,10,0.4375,16
+qwen,ordering,salad,cigarettes,dressing,0.86,40,10,1.0,4
+qwen,ordering,salad,cigarettes,lettuce,1.0,40,10,0.75,4
+qwen,ordering,salad,cigarettes,meat,0.976,190,10,0.5789473684210527,19
+qwen,ordering,salad,dressing,chips,0.69,20,10,0.0,2
+qwen,ordering,salad,dressing,cigarettes,0.14,50,10,0.0,5
+qwen,ordering,salad,dressing,lettuce,1.0,30,10,1.0,3
+qwen,ordering,salad,dressing,meat,0.864,30,10,0.3333333333333333,3
+qwen,ordering,salad,lettuce,chips,0.002,20,10,0.0,2
+qwen,ordering,salad,lettuce,cigarettes,0.0,60,10,0.0,6
+qwen,ordering,salad,lettuce,dressing,0.0,180,10,0.6111111111111112,18
+qwen,ordering,salad,lettuce,meat,0.002,40,10,0.75,4
+qwen,ordering,salad,meat,chips,0.238,20,10,0.0,2
+qwen,ordering,salad,meat,cigarettes,0.024,50,10,0.0,5
+qwen,ordering,salad,meat,dressing,0.136,30,10,0.0,3
+qwen,ordering,salad,meat,lettuce,0.998,60,10,1.0,6
+qwen,ordering,science,art,geology,0.992,40,10,1.0,4
+qwen,ordering,science,art,math,0.97,200,10,0.7,20
+qwen,ordering,science,art,philosophy,0.594,180,10,0.6111111111111112,18
+qwen,ordering,science,art,physics,1.0,50,10,1.0,5
+qwen,ordering,science,art,zoology,0.9079999999999999,50,10,0.8,5
+qwen,ordering,science,geology,art,0.008,50,10,0.6,5
+qwen,ordering,science,geology,math,0.344,60,10,0.8333333333333334,6
+qwen,ordering,science,geology,philosophy,0.012,30,10,0.6666666666666666,3
+qwen,ordering,science,geology,physics,0.946,40,10,1.0,4
+qwen,ordering,science,geology,zoology,0.104,130,10,1.0,13
+qwen,ordering,science,math,art,0.03,20,10,0.5,2
+qwen,ordering,science,math,geology,0.656,40,10,0.75,4
+qwen,ordering,science,math,philosophy,0.026000000000000002,50,10,0.4,5
+qwen,ordering,science,math,physics,0.976,40,10,0.5,4
+qwen,ordering,science,math,zoology,0.196,50,10,0.8,5
+qwen,ordering,science,philosophy,art,0.406,50,10,1.0,5
+qwen,ordering,science,philosophy,geology,0.988,50,10,0.8,5
+qwen,ordering,science,philosophy,math,0.974,160,10,0.6875,16
+qwen,ordering,science,philosophy,physics,1.0,40,10,1.0,4
+qwen,ordering,science,philosophy,zoology,0.87,60,10,0.8333333333333334,6
+qwen,ordering,science,physics,art,0.0,50,10,0.4,5
+qwen,ordering,science,physics,geology,0.054,210,10,0.8571428571428571,21
+qwen,ordering,science,physics,math,0.024,30,10,0.3333333333333333,3
+qwen,ordering,science,physics,philosophy,0.0,30,10,0.3333333333333333,3
+qwen,ordering,science,physics,zoology,0.002,200,10,0.65,20
+qwen,ordering,science,zoology,art,0.092,30,10,0.6666666666666666,3
+qwen,ordering,science,zoology,geology,0.8960000000000001,40,10,0.75,4
+qwen,ordering,science,zoology,math,0.804,50,10,0.4,5
+qwen,ordering,science,zoology,philosophy,0.13,60,10,0.6666666666666666,6
+qwen,ordering,science,zoology,physics,0.998,40,10,1.0,4
+qwen,ordering,throw,beach ball,boomerang,0.032,190,10,0.631578947368421,19
+qwen,ordering,throw,beach ball,football,1.0,50,10,1.0,5
+qwen,ordering,throw,beach ball,lawnmower,0.014,30,10,0.0,3
+qwen,ordering,throw,beach ball,tires,0.0,60,10,0.0,6
+qwen,ordering,throw,boomerang,beach ball,0.968,40,10,0.75,4
+qwen,ordering,throw,boomerang,football,1.0,40,10,1.0,4
+qwen,ordering,throw,boomerang,lawnmower,0.398,50,10,0.0,5
+qwen,ordering,throw,boomerang,tires,0.014000000000000002,50,10,0.0,5
+qwen,ordering,throw,football,beach ball,0.0,160,10,0.875,16
+qwen,ordering,throw,football,boomerang,0.0,210,10,0.6190476190476191,21
+qwen,ordering,throw,football,lawnmower,0.0,30,10,0.0,3
+qwen,ordering,throw,football,tires,0.0,30,10,0.0,3
+qwen,ordering,throw,lawnmower,beach ball,0.986,20,10,1.0,2
+qwen,ordering,throw,lawnmower,boomerang,0.602,50,10,0.8,5
+qwen,ordering,throw,lawnmower,football,1.0,50,10,1.0,5
+qwen,ordering,throw,lawnmower,tires,0.02,130,10,0.07692307692307693,13
+qwen,ordering,throw,tires,beach ball,1.0,50,10,0.6,5
+qwen,ordering,throw,tires,boomerang,0.986,40,10,1.0,4
+qwen,ordering,throw,tires,football,1.0,50,10,0.8,5
+qwen,ordering,throw,tires,lawnmower,0.98,50,10,0.8,5
+qwen,ordering,transport,car,chairs,0.0,50,10,0.0,5
+qwen,ordering,transport,car,hammer,0.0,50,10,0.2,5
+qwen,ordering,transport,car,lawnmower,0.0,40,10,0.25,4
+qwen,ordering,transport,chairs,car,1.0,30,10,1.0,3
+qwen,ordering,transport,chairs,hammer,0.958,40,10,0.0,4
+qwen,ordering,transport,chairs,lawnmower,1.0,220,10,0.09090909090909091,22
+qwen,ordering,transport,hammer,car,1.0,50,10,0.6,5
+qwen,ordering,transport,hammer,chairs,0.042,150,10,0.06666666666666667,15
+qwen,ordering,transport,hammer,lawnmower,0.982,180,10,0.5555555555555556,18
+qwen,ordering,transport,lawnmower,car,1.0,60,10,1.0,6
+qwen,ordering,transport,lawnmower,chairs,0.0,50,10,0.2,5
+qwen,ordering,transport,lawnmower,hammer,0.018,40,10,0.25,4
+qwen,conjunction,bag,chalk,crayons,0.6519999999999999,60,10,1.0,6
+qwen,conjunction,bag,chalk,headphones,0.0068000000000000005,50,10,0.2,5
+qwen,conjunction,bag,chalk,makeup,0.0996,50,10,0.2,5
+qwen,conjunction,bag,chalk,pen,0.9214,50,10,1.0,5
+qwen,conjunction,bag,crayons,chalk,0.23900000000000002,180,10,0.8888888888888888,18
+qwen,conjunction,bag,crayons,headphones,0.005200000000000001,40,10,0.25,4
+qwen,conjunction,bag,crayons,makeup,0.046,50,10,0.0,5
+qwen,conjunction,bag,crayons,pen,0.8394,40,10,1.0,4
+qwen,conjunction,bag,headphones,chalk,0.7696,50,10,0.4,5
+qwen,conjunction,bag,headphones,crayons,0.8558,30,10,1.0,3
+qwen,conjunction,bag,headphones,makeup,0.44079999999999997,190,10,0.21052631578947367,19
+qwen,conjunction,bag,headphones,pen,0.9723999999999999,50,10,1.0,5
+qwen,conjunction,bag,makeup,chalk,0.6921999999999999,20,10,1.0,2
+qwen,conjunction,bag,makeup,crayons,0.8196,20,10,1.0,2
+qwen,conjunction,bag,makeup,headphones,0.024,40,10,0.0,4
+qwen,conjunction,bag,makeup,pen,0.9634,30,10,1.0,3
+qwen,conjunction,bag,pen,chalk,0.0546,210,10,0.8571428571428571,21
+qwen,conjunction,bag,pen,crayons,0.1408,170,10,0.8823529411764706,17
+qwen,conjunction,bag,pen,headphones,0.0,50,10,0.0,5
+qwen,conjunction,bag,pen,makeup,0.0094,60,10,0.16666666666666666,6
+qwen,conjunction,bakery,cakes,ice cream,0.37720000000000004,190,10,0.8421052631578947,19
+qwen,conjunction,bakery,cakes,muffins,0.0328,180,10,0.8888888888888888,18
+qwen,conjunction,bakery,cakes,pretzels,0.04,60,10,0.5,6
+qwen,conjunction,bakery,cakes,sandwiches,0.005,50,10,0.4,5
+qwen,conjunction,bakery,cakes,water,0.027399999999999997,50,10,0.0,5
+qwen,conjunction,bakery,ice cream,cakes,0.5509999999999999,50,10,1.0,5
+qwen,conjunction,bakery,ice cream,muffins,0.054400000000000004,170,10,0.5882352941176471,17
+qwen,conjunction,bakery,ice cream,pretzels,0.0458,20,10,0.5,2
+qwen,conjunction,bakery,ice cream,sandwiches,0.0062,40,10,0.25,4
+qwen,conjunction,bakery,ice cream,water,0.0274,60,10,0.16666666666666666,6
+qwen,conjunction,bakery,muffins,cakes,0.8464,50,10,1.0,5
+qwen,conjunction,bakery,muffins,ice cream,0.771,20,10,1.0,2
+qwen,conjunction,bakery,muffins,pretzels,0.1612,50,10,0.4,5
+qwen,conjunction,bakery,muffins,sandwiches,0.0274,20,10,0.0,2
+qwen,conjunction,bakery,muffins,water,0.1026,50,10,0.0,5
+qwen,conjunction,bakery,pretzels,cakes,0.8393999999999999,50,10,1.0,5
+qwen,conjunction,bakery,pretzels,ice cream,0.7772,50,10,1.0,5
+qwen,conjunction,bakery,pretzels,muffins,0.19499999999999998,30,10,1.0,3
+qwen,conjunction,bakery,pretzels,sandwiches,0.031200000000000002,50,10,0.4,5
+qwen,conjunction,bakery,pretzels,water,0.1,40,10,0.0,4
+qwen,conjunction,bakery,sandwiches,cakes,0.8682,30,10,1.0,3
+qwen,conjunction,bakery,sandwiches,ice cream,0.8073999999999999,50,10,1.0,5
+qwen,conjunction,bakery,sandwiches,muffins,0.2264,30,10,0.6666666666666666,3
+qwen,conjunction,bakery,sandwiches,pretzels,0.18760000000000002,200,10,0.55,20
+qwen,conjunction,bakery,sandwiches,water,0.1116,50,10,0.0,5
+qwen,conjunction,bakery,water,cakes,0.8485999999999999,30,10,0.6666666666666666,3
+qwen,conjunction,bakery,water,ice cream,0.7924,60,10,0.6666666666666666,6
+qwen,conjunction,bakery,water,muffins,0.20900000000000002,60,10,0.5,6
+qwen,conjunction,bakery,water,pretzels,0.1714,130,10,0.5384615384615384,13
+qwen,conjunction,bakery,water,sandwiches,0.0368,210,10,0.42857142857142855,21
+qwen,conjunction,beach,bikini,coat,0.0326,30,10,0.3333333333333333,3
+qwen,conjunction,beach,bikini,jacket,0.1058,40,10,0.25,4
+qwen,conjunction,beach,bikini,jeans,0.4016,60,10,0.5,6
+qwen,conjunction,beach,bikini,shorts,0.9024000000000001,200,10,0.7,20
+qwen,conjunction,beach,bikini,sunglasses,0.3092,180,10,0.16666666666666666,18
+qwen,conjunction,beach,coat,bikini,0.638,60,10,1.0,6
+qwen,conjunction,beach,coat,jacket,0.24459999999999998,110,10,0.5454545454545454,11
+qwen,conjunction,beach,coat,jeans,0.6576,160,10,0.5,16
+qwen,conjunction,beach,coat,shorts,0.9617999999999999,50,10,1.0,5
+qwen,conjunction,beach,coat,sunglasses,0.5474,30,10,0.0,3
+qwen,conjunction,beach,jacket,bikini,0.5952,20,10,1.0,2
+qwen,conjunction,beach,jacket,coat,0.07440000000000001,30,10,1.0,3
+qwen,conjunction,beach,jacket,jeans,0.6042000000000001,200,10,0.45,20
+qwen,conjunction,beach,jacket,shorts,0.9412,50,10,0.6,5
+qwen,conjunction,beach,jacket,sunglasses,0.49260000000000004,40,10,0.5,4
+qwen,conjunction,beach,jeans,bikini,0.397,50,10,1.0,5
+qwen,conjunction,beach,jeans,coat,0.0344,50,10,0.6,5
+qwen,conjunction,beach,jeans,jacket,0.1094,60,10,0.0,6
+qwen,conjunction,beach,jeans,shorts,0.8746,50,10,1.0,5
+qwen,conjunction,beach,jeans,sunglasses,0.2718,40,10,0.25,4
+qwen,conjunction,beach,shorts,bikini,0.0684,40,10,0.75,4
+qwen,conjunction,beach,shorts,coat,0.004,40,10,0.75,4
+qwen,conjunction,beach,shorts,jacket,0.0254,40,10,0.25,4
+qwen,conjunction,beach,shorts,jeans,0.098,50,10,0.6,5
+qwen,conjunction,beach,shorts,sunglasses,0.0626,200,10,0.15,20
+qwen,conjunction,beach,sunglasses,bikini,0.452,50,10,1.0,5
+qwen,conjunction,beach,sunglasses,coat,0.0388,50,10,0.0,5
+qwen,conjunction,beach,sunglasses,jacket,0.1326,50,10,0.8,5
+qwen,conjunction,beach,sunglasses,jeans,0.4954,60,10,0.5,6
+qwen,conjunction,beach,sunglasses,shorts,0.9078000000000002,40,10,0.5,4
+qwen,conjunction,cold,blankets,heater,0.933,20,10,1.0,2
+qwen,conjunction,cold,blankets,sink,0.029199999999999997,40,10,0.0,4
+qwen,conjunction,cold,blankets,tea,0.0074,200,10,0.2,20
+qwen,conjunction,cold,heater,blankets,0.0,180,10,0.8333333333333334,18
+qwen,conjunction,cold,heater,sink,0.0,50,10,0.0,5
+qwen,conjunction,cold,heater,tea,0.0,160,10,0.125,16
+qwen,conjunction,cold,sink,blankets,0.0014,30,10,0.3333333333333333,3
+qwen,conjunction,cold,sink,heater,0.933,40,10,1.0,4
+qwen,conjunction,cold,sink,tea,0.006999999999999999,50,10,0.0,5
+qwen,conjunction,cold,tea,blankets,0.0014000000000000002,50,10,0.6,5
+qwen,conjunction,cold,tea,heater,0.9329999999999999,60,10,0.5,6
+qwen,conjunction,cold,tea,sink,0.029199999999999997,40,10,0.0,4
+qwen,conjunction,cut,batteries,keys,0.4248,60,10,0.16666666666666666,6
+qwen,conjunction,cut,batteries,nail clippers,0.6434000000000001,50,10,0.8,5
+qwen,conjunction,cut,batteries,scissors,0.9940000000000001,50,10,0.8,5
+qwen,conjunction,cut,batteries,stapler,0.272,180,10,0.4444444444444444,18
+qwen,conjunction,cut,batteries,thumb tacks,0.0036,210,10,0.38095238095238093,21
+qwen,conjunction,cut,keys,batteries,0.0382,40,10,0.25,4
+qwen,conjunction,cut,keys,nail clippers,0.5115999999999999,50,10,0.8,5
+qwen,conjunction,cut,keys,scissors,0.9922,50,10,1.0,5
+qwen,conjunction,cut,keys,stapler,0.182,50,10,0.2,5
+qwen,conjunction,cut,keys,thumb tacks,0.0024,50,10,0.2,5
+qwen,conjunction,cut,nail clippers,batteries,0.0212,50,10,0.0,5
+qwen,conjunction,cut,nail clippers,keys,0.2172,160,10,0.3125,16
+qwen,conjunction,cut,nail clippers,scissors,0.967,40,10,1.0,4
+qwen,conjunction,cut,nail clippers,stapler,0.1268,20,10,0.5,2
+qwen,conjunction,cut,nail clippers,thumb tacks,0.0,30,10,0.6666666666666666,3
+qwen,conjunction,cut,scissors,batteries,0.0,40,10,0.0,4
+qwen,conjunction,cut,scissors,keys,0.002,200,10,0.15,20
+qwen,conjunction,cut,scissors,nail clippers,0.0278,110,10,0.6363636363636364,11
+qwen,conjunction,cut,scissors,stapler,0.008,60,10,0.16666666666666666,6
+qwen,conjunction,cut,scissors,thumb tacks,0.0,40,10,0.0,4
+qwen,conjunction,cut,stapler,batteries,0.052000000000000005,50,10,0.0,5
+qwen,conjunction,cut,stapler,keys,0.3664,50,10,0.2,5
+qwen,conjunction,cut,stapler,nail clippers,0.5686,60,10,0.6666666666666666,6
+qwen,conjunction,cut,stapler,scissors,0.9862,40,10,1.0,4
+qwen,conjunction,cut,stapler,thumb tacks,0.0026,170,10,0.11764705882352941,17
+qwen,conjunction,cut,thumb tacks,batteries,0.06,40,10,0.0,4
+qwen,conjunction,cut,thumb tacks,keys,0.43660000000000004,30,10,0.3333333333333333,3
+qwen,conjunction,cut,thumb tacks,nail clippers,0.6556000000000001,50,10,0.6,5
+qwen,conjunction,cut,thumb tacks,scissors,0.9940000000000001,50,10,0.8,5
+qwen,conjunction,cut,thumb tacks,stapler,0.2844,50,10,0.0,5
+qwen,conjunction,fridge,juice,ketchup,0.0068000000000000005,60,10,0.3333333333333333,6
+qwen,conjunction,fridge,juice,meat,0.018399999999999996,30,10,0.0,3
+qwen,conjunction,fridge,juice,milk,0.6098,150,10,1.0,15
+qwen,conjunction,fridge,juice,water,0.971,60,10,1.0,6
+qwen,conjunction,fridge,juice,yogurt,0.0268,50,10,0.0,5
+qwen,conjunction,fridge,ketchup,juice,0.762,50,10,1.0,5
+qwen,conjunction,fridge,ketchup,meat,0.1418,40,10,0.0,4
+qwen,conjunction,fridge,ketchup,milk,0.8442000000000001,50,10,1.0,5
+qwen,conjunction,fridge,ketchup,water,0.9938,20,10,1.0,2
+qwen,conjunction,fridge,ketchup,yogurt,0.2096,180,10,0.2222222222222222,18
+qwen,conjunction,fridge,meat,juice,0.753,50,10,1.0,5
+qwen,conjunction,fridge,meat,ketchup,0.0318,180,10,0.16666666666666666,18
+qwen,conjunction,fridge,meat,milk,0.8368,30,10,0.6666666666666666,3
+qwen,conjunction,fridge,meat,water,0.9958,20,10,1.0,2
+qwen,conjunction,fridge,meat,yogurt,0.1852,160,10,0.625,16
+qwen,conjunction,fridge,milk,juice,0.2758,50,10,1.0,5
+qwen,conjunction,fridge,milk,ketchup,0.0052,50,10,0.0,5
+qwen,conjunction,fridge,milk,meat,0.014,60,10,0.0,6
+qwen,conjunction,fridge,milk,water,0.9697999999999999,60,10,0.8333333333333334,6
+qwen,conjunction,fridge,milk,yogurt,0.012199999999999999,50,10,0.2,5
+qwen,conjunction,fridge,water,juice,0.026,220,10,1.0,22
+qwen,conjunction,fridge,water,ketchup,0.002,40,10,0.0,4
+qwen,conjunction,fridge,water,meat,0.0,30,10,0.0,3
+qwen,conjunction,fridge,water,milk,0.028,180,10,0.9444444444444444,18
+qwen,conjunction,fridge,water,yogurt,0.002,50,10,0.0,5
+qwen,conjunction,fridge,yogurt,juice,0.7474,50,10,1.0,5
+qwen,conjunction,fridge,yogurt,ketchup,0.026600000000000002,50,10,0.2,5
+qwen,conjunction,fridge,yogurt,meat,0.11599999999999999,50,10,0.4,5
+qwen,conjunction,fridge,yogurt,milk,0.8394,40,10,0.75,4
+qwen,conjunction,fridge,yogurt,water,0.994,20,10,1.0,2
+qwen,conjunction,gym,basketball,lacrosse,0.0036000000000000003,150,10,0.9333333333333333,15
+qwen,conjunction,gym,basketball,meditation,0.0,20,10,0.0,2
+qwen,conjunction,gym,basketball,softball,0.237,200,10,0.9,20
+qwen,conjunction,gym,basketball,swimming,0.0172,50,10,0.4,5
+qwen,conjunction,gym,lacrosse,basketball,0.9593999999999999,40,10,1.0,4
+qwen,conjunction,gym,lacrosse,meditation,0.004,20,10,0.0,2
+qwen,conjunction,gym,lacrosse,softball,0.8492,30,10,1.0,3
+qwen,conjunction,gym,lacrosse,swimming,0.24799999999999997,30,10,0.3333333333333333,3
+qwen,conjunction,gym,meditation,basketball,0.9625999999999999,40,10,0.75,4
+qwen,conjunction,gym,meditation,lacrosse,0.1486,40,10,1.0,4
+qwen,conjunction,gym,meditation,softball,0.861,40,10,1.0,4
+qwen,conjunction,gym,meditation,swimming,0.277,190,10,0.7894736842105263,19
+qwen,conjunction,gym,softball,basketball,0.7432,60,10,1.0,6
+qwen,conjunction,gym,softball,lacrosse,0.016399999999999998,190,10,0.9473684210526315,19
+qwen,conjunction,gym,softball,meditation,0.0016,50,10,0.6,5
+qwen,conjunction,gym,softball,swimming,0.0436,50,10,0.8,5
+qwen,conjunction,gym,swimming,basketball,0.9464,50,10,1.0,5
+qwen,conjunction,gym,swimming,lacrosse,0.1146,40,10,1.0,4
+qwen,conjunction,gym,swimming,meditation,0.003,50,10,0.0,5
+qwen,conjunction,gym,swimming,softball,0.8282,40,10,0.75,4
+qwen,conjunction,hot,blankets,couch,0.023,120,10,0.0,12
+qwen,conjunction,hot,blankets,fan,0.86,50,10,0.2,5
+qwen,conjunction,hot,blankets,heater,0.6921999999999999,40,10,0.75,4
+qwen,conjunction,hot,blankets,pool,0.12040000000000001,50,10,0.0,5
+qwen,conjunction,hot,blankets,shower,0.0834,50,10,0.2,5
+qwen,conjunction,hot,couch,blankets,0.0068000000000000005,50,10,0.2,5
+qwen,conjunction,hot,couch,fan,0.86,30,10,0.0,3
+qwen,conjunction,hot,couch,heater,0.6928,30,10,0.0,3
+qwen,conjunction,hot,couch,pool,0.119,60,10,0.5,6
+qwen,conjunction,hot,couch,shower,0.082,20,10,1.0,2
+qwen,conjunction,hot,fan,blankets,0.002,40,10,0.0,4
+qwen,conjunction,hot,fan,couch,0.0012000000000000001,40,10,0.0,4
+qwen,conjunction,hot,fan,heater,0.2034,60,10,0.16666666666666666,6
+qwen,conjunction,hot,fan,pool,0.0048,200,10,0.55,20
+qwen,conjunction,hot,fan,shower,0.0032,200,10,0.05,20
+qwen,conjunction,hot,heater,blankets,0.0034000000000000002,130,10,0.23076923076923078,13
+qwen,conjunction,hot,heater,couch,0.0026,200,10,0.0,20
+qwen,conjunction,hot,heater,fan,0.6866,50,10,1.0,5
+qwen,conjunction,hot,heater,pool,0.0154,40,10,0.25,4
+qwen,conjunction,hot,heater,shower,0.016,50,10,0.0,5
+qwen,conjunction,hot,pool,blankets,0.005600000000000001,50,10,0.4,5
+qwen,conjunction,hot,pool,couch,0.0222,40,10,0.0,4
+qwen,conjunction,hot,pool,fan,0.8566,40,10,0.25,4
+qwen,conjunction,hot,pool,heater,0.6824,40,10,0.0,4
+qwen,conjunction,hot,pool,shower,0.07100000000000001,190,10,0.2631578947368421,19
+qwen,conjunction,hot,shower,blankets,0.0064,40,10,0.0,4
+qwen,conjunction,hot,shower,couch,0.023399999999999997,60,10,0.0,6
+qwen,conjunction,hot,shower,fan,0.8582,50,10,0.8,5
+qwen,conjunction,hot,shower,heater,0.6829999999999999,60,10,0.3333333333333333,6
+qwen,conjunction,hot,shower,pool,0.11199999999999999,50,10,1.0,5
+qwen,conjunction,mask,bandana,candy,0.0078,40,10,0.0,4
+qwen,conjunction,mask,bandana,handkerchief,0.1734,130,10,0.6153846153846154,13
+qwen,conjunction,mask,bandana,napkins,0.0006000000000000001,120,10,0.16666666666666666,12
+qwen,conjunction,mask,bandana,wallet,0.051399999999999994,50,10,0.4,5
+qwen,conjunction,mask,candy,bandana,0.3014,50,10,0.8,5
+qwen,conjunction,mask,candy,handkerchief,0.2286,60,10,0.6666666666666666,6
+qwen,conjunction,mask,candy,napkins,0.0008,40,10,0.5,4
+qwen,conjunction,mask,candy,wallet,0.07440000000000001,200,10,0.2,20
+qwen,conjunction,mask,handkerchief,bandana,0.2438,30,10,1.0,3
+qwen,conjunction,mask,handkerchief,candy,0.0096,60,10,0.0,6
+qwen,conjunction,mask,handkerchief,napkins,0.0008,200,10,0.3,20
+qwen,conjunction,mask,handkerchief,wallet,0.057,50,10,0.0,5
+qwen,conjunction,mask,napkins,bandana,0.303,50,10,1.0,5
+qwen,conjunction,mask,napkins,candy,0.0128,50,10,0.2,5
+qwen,conjunction,mask,napkins,handkerchief,0.2302,50,10,0.6,5
+qwen,conjunction,mask,napkins,wallet,0.0756,40,10,0.0,4
+qwen,conjunction,mask,wallet,bandana,0.2846,50,10,0.8,5
+qwen,conjunction,mask,wallet,candy,0.011000000000000001,50,10,0.2,5
+qwen,conjunction,mask,wallet,handkerchief,0.2176,50,10,0.6,5
+qwen,conjunction,mask,wallet,napkins,0.0008,60,10,0.5,6
+qwen,conjunction,meat,chicken,crab,0.002,170,10,0.7647058823529411,17
+qwen,conjunction,meat,chicken,mushrooms,0.0,50,10,0.2,5
+qwen,conjunction,meat,chicken,tofu,0.0154,50,10,0.0,5
+qwen,conjunction,meat,chicken,turkey,0.0076,210,10,0.9523809523809523,21
+qwen,conjunction,meat,crab,chicken,0.9670000000000001,50,10,1.0,5
+qwen,conjunction,meat,crab,mushrooms,0.059000000000000004,30,10,0.0,3
+qwen,conjunction,meat,crab,tofu,0.43960000000000005,30,10,0.6666666666666666,3
+qwen,conjunction,meat,crab,turkey,0.25079999999999997,50,10,1.0,5
+qwen,conjunction,meat,mushrooms,chicken,0.969,60,10,1.0,6
+qwen,conjunction,meat,mushrooms,crab,0.0984,50,10,1.0,5
+qwen,conjunction,meat,mushrooms,tofu,0.45199999999999996,190,10,0.5263157894736842,19
+qwen,conjunction,meat,mushrooms,turkey,0.2592,60,10,1.0,6
+qwen,conjunction,meat,tofu,chicken,0.9548,40,10,1.0,4
+qwen,conjunction,meat,tofu,crab,0.056799999999999996,50,10,0.8,5
+qwen,conjunction,meat,tofu,mushrooms,0.0358,50,10,0.0,5
+qwen,conjunction,meat,tofu,turkey,0.1636,50,10,1.0,5
+qwen,conjunction,meat,turkey,chicken,0.962,40,10,1.0,4
+qwen,conjunction,meat,turkey,crab,0.0806,130,10,0.7692307692307693,13
+qwen,conjunction,meat,turkey,mushrooms,0.051000000000000004,40,10,0.0,4
+qwen,conjunction,meat,turkey,tofu,0.393,60,10,0.16666666666666666,6
+qwen,conjunction,restaurant,cake,cocktails,0.32799999999999996,40,10,1.0,4
+qwen,conjunction,restaurant,cake,salad,0.055,50,10,0.6,5
+qwen,conjunction,restaurant,cake,soda,0.6778,50,10,0.8,5
+qwen,conjunction,restaurant,cake,soup,0.0792,180,10,0.3888888888888889,18
+qwen,conjunction,restaurant,cake,vodka,0.5172,60,10,1.0,6
+qwen,conjunction,restaurant,cocktails,cake,0.055,50,10,0.6,5
+qwen,conjunction,restaurant,cocktails,salad,0.045200000000000004,40,10,0.0,4
+qwen,conjunction,restaurant,cocktails,soda,0.592,190,10,0.42105263157894735,19
+qwen,conjunction,restaurant,cocktails,soup,0.06520000000000001,20,10,0.0,2
+qwen,conjunction,restaurant,cocktails,vodka,0.4388,140,10,0.5,14
+qwen,conjunction,restaurant,salad,cake,0.077,200,10,0.55,20
+qwen,conjunction,restaurant,salad,cocktails,0.3324,40,10,0.75,4
+qwen,conjunction,restaurant,salad,soda,0.6778,50,10,0.6,5
+qwen,conjunction,restaurant,salad,soup,0.07440000000000001,200,10,0.7,20
+qwen,conjunction,restaurant,salad,vodka,0.518,50,10,1.0,5
+qwen,conjunction,restaurant,soda,cake,0.0246,30,10,0.0,3
+qwen,conjunction,restaurant,soda,cocktails,0.1486,30,10,1.0,3
+qwen,conjunction,restaurant,soda,salad,0.0246,50,10,0.0,5
+qwen,conjunction,restaurant,soda,soup,0.0264,20,10,0.0,2
+qwen,conjunction,restaurant,soda,vodka,0.2646,50,10,1.0,5
+qwen,conjunction,restaurant,soup,cake,0.075,30,10,0.3333333333333333,3
+qwen,conjunction,restaurant,soup,cocktails,0.3218,60,10,1.0,6
+qwen,conjunction,restaurant,soup,salad,0.0578,60,10,0.5,6
+qwen,conjunction,restaurant,soup,soda,0.6784,60,10,0.8333333333333334,6
+qwen,conjunction,restaurant,soup,vodka,0.5208,40,10,1.0,4
+qwen,conjunction,restaurant,vodka,cake,0.0408,50,10,0.0,5
+qwen,conjunction,restaurant,vodka,cocktails,0.2048,30,10,1.0,3
+qwen,conjunction,restaurant,vodka,salad,0.041800000000000004,20,10,0.0,2
+qwen,conjunction,restaurant,vodka,soda,0.5194000000000001,190,10,0.3157894736842105,19
+qwen,conjunction,restaurant,vodka,soup,0.0398,50,10,0.0,5
+qwen,conjunction,salad,chips,cigarettes,0.0022,60,10,0.16666666666666666,6
+qwen,conjunction,salad,chips,dressing,0.0062,50,10,0.4,5
+qwen,conjunction,salad,chips,lettuce,0.9483999999999999,60,10,1.0,6
+qwen,conjunction,salad,chips,meat,0.0576,210,10,0.2857142857142857,21
+qwen,conjunction,salad,cigarettes,chips,0.017599999999999998,160,10,0.4375,16
+qwen,conjunction,salad,cigarettes,dressing,0.007000000000000001,40,10,1.0,4
+qwen,conjunction,salad,cigarettes,lettuce,0.9502,40,10,0.75,4
+qwen,conjunction,salad,cigarettes,meat,0.059199999999999996,190,10,0.5789473684210527,19
+qwen,conjunction,salad,dressing,chips,0.017599999999999998,20,10,0.0,2
+qwen,conjunction,salad,dressing,cigarettes,0.0022,50,10,0.0,5
+qwen,conjunction,salad,dressing,lettuce,0.9502,30,10,1.0,3
+qwen,conjunction,salad,dressing,meat,0.0592,30,10,0.3333333333333333,3
+qwen,conjunction,salad,lettuce,chips,0.0018000000000000002,20,10,0.0,2
+qwen,conjunction,salad,lettuce,cigarettes,0.0,60,10,0.0,6
+qwen,conjunction,salad,lettuce,dressing,0.0,180,10,0.6111111111111112,18
+qwen,conjunction,salad,lettuce,meat,0.002,40,10,0.75,4
+qwen,conjunction,salad,meat,chips,0.017599999999999998,20,10,0.0,2
+qwen,conjunction,salad,meat,cigarettes,0.0022,50,10,0.0,5
+qwen,conjunction,salad,meat,dressing,0.0056,30,10,0.0,3
+qwen,conjunction,salad,meat,lettuce,0.9482,60,10,1.0,6
+qwen,conjunction,science,art,geology,0.497,40,10,1.0,4
+qwen,conjunction,science,art,math,0.34119999999999995,200,10,0.7,20
+qwen,conjunction,science,art,philosophy,0.011800000000000001,180,10,0.6111111111111112,18
+qwen,conjunction,science,art,physics,0.9570000000000001,50,10,1.0,5
+qwen,conjunction,science,art,zoology,0.10039999999999999,50,10,0.8,5
+qwen,conjunction,science,geology,art,0.0038,50,10,0.6,5
+qwen,conjunction,science,geology,math,0.2068,60,10,0.8333333333333334,6
+qwen,conjunction,science,geology,philosophy,0.0058000000000000005,30,10,0.6666666666666666,3
+qwen,conjunction,science,geology,physics,0.9086000000000001,40,10,1.0,4
+qwen,conjunction,science,geology,zoology,0.06160000000000001,130,10,1.0,13
+qwen,conjunction,science,math,art,0.0062,20,10,0.5,2
+qwen,conjunction,science,math,geology,0.4,40,10,0.75,4
+qwen,conjunction,science,math,philosophy,0.0074,50,10,0.4,5
+qwen,conjunction,science,math,physics,0.9368000000000001,40,10,0.5,4
+qwen,conjunction,science,math,zoology,0.067,50,10,0.8,5
+qwen,conjunction,science,philosophy,art,0.009000000000000001,50,10,1.0,5
+qwen,conjunction,science,philosophy,geology,0.495,50,10,0.8,5
+qwen,conjunction,science,philosophy,math,0.3408,160,10,0.6875,16
+qwen,conjunction,science,philosophy,physics,0.9570000000000001,40,10,1.0,4
+qwen,conjunction,science,philosophy,zoology,0.1008,60,10,0.8333333333333334,6
+qwen,conjunction,science,physics,art,0.0,50,10,0.4,5
+qwen,conjunction,science,physics,geology,0.052,210,10,0.8571428571428571,21
+qwen,conjunction,science,physics,math,0.0224,30,10,0.3333333333333333,3
+qwen,conjunction,science,physics,philosophy,0.0,30,10,0.3333333333333333,3
+qwen,conjunction,science,physics,zoology,0.002,200,10,0.65,20
+qwen,conjunction,science,zoology,art,0.0086,30,10,0.6666666666666666,3
+qwen,conjunction,science,zoology,geology,0.4742,40,10,0.75,4
+qwen,conjunction,science,zoology,math,0.32159999999999994,50,10,0.4,5
+qwen,conjunction,science,zoology,philosophy,0.0108,60,10,0.6666666666666666,6
+qwen,conjunction,science,zoology,physics,0.9551999999999999,40,10,1.0,4
+qwen,conjunction,throw,beach ball,boomerang,0.0164,190,10,0.631578947368421,19
+qwen,conjunction,throw,beach ball,football,0.9690000000000001,50,10,1.0,5
+qwen,conjunction,throw,beach ball,lawnmower,0.008,30,10,0.0,3
+qwen,conjunction,throw,beach ball,tires,0.0,60,10,0.0,6
+qwen,conjunction,throw,boomerang,beach ball,0.5514,40,10,0.75,4
+qwen,conjunction,throw,boomerang,football,0.969,40,10,1.0,4
+qwen,conjunction,throw,boomerang,lawnmower,0.033600000000000005,50,10,0.0,5
+qwen,conjunction,throw,boomerang,tires,0.0,50,10,0.0,5
+qwen,conjunction,throw,football,beach ball,0.0,160,10,0.875,16
+qwen,conjunction,throw,football,boomerang,0.0,210,10,0.6190476190476191,21
+qwen,conjunction,throw,football,lawnmower,0.0,30,10,0.0,3
+qwen,conjunction,throw,football,tires,0.0,30,10,0.0,3
+qwen,conjunction,throw,lawnmower,beach ball,0.5556,20,10,1.0,2
+qwen,conjunction,throw,lawnmower,boomerang,0.047599999999999996,50,10,0.8,5
+qwen,conjunction,throw,lawnmower,football,0.9690000000000001,50,10,1.0,5
+qwen,conjunction,throw,lawnmower,tires,0.0,130,10,0.07692307692307693,13
+qwen,conjunction,throw,tires,beach ball,0.5608,50,10,0.6,5
+qwen,conjunction,throw,tires,boomerang,0.051000000000000004,40,10,1.0,4
+qwen,conjunction,throw,tires,football,0.9690000000000001,50,10,0.8,5
+qwen,conjunction,throw,tires,lawnmower,0.0346,50,10,0.8,5
+qwen,conjunction,transport,car,chairs,0.0,50,10,0.0,5
+qwen,conjunction,transport,car,hammer,0.0,50,10,0.2,5
+qwen,conjunction,transport,car,lawnmower,0.0,40,10,0.25,4
+qwen,conjunction,transport,chairs,car,0.9946,30,10,1.0,3
+qwen,conjunction,transport,chairs,hammer,0.011399999999999999,40,10,0.0,4
+qwen,conjunction,transport,chairs,lawnmower,0.36519999999999997,220,10,0.09090909090909091,22
+qwen,conjunction,transport,hammer,car,0.9945999999999999,50,10,0.6,5
+qwen,conjunction,transport,hammer,chairs,0.0,150,10,0.06666666666666667,15
+qwen,conjunction,transport,hammer,lawnmower,0.36219999999999997,180,10,0.5555555555555556,18
+qwen,conjunction,transport,lawnmower,car,0.9946,60,10,1.0,6
+qwen,conjunction,transport,lawnmower,chairs,0.0,50,10,0.2,5
+qwen,conjunction,transport,lawnmower,hammer,0.0068000000000000005,40,10,0.25,4
+qwen,disjunction,bag,chalk,crayons,0.9423999999999999,60,10,1.0,6
+qwen,disjunction,bag,chalk,headphones,0.04679999999999998,50,10,0.2,5
+qwen,disjunction,bag,chalk,makeup,0.47800000000000004,50,10,0.2,5
+qwen,disjunction,bag,chalk,pen,0.995,50,10,1.0,5
+qwen,disjunction,bag,crayons,chalk,0.8023999999999999,180,10,0.8888888888888888,18
+qwen,disjunction,bag,crayons,headphones,0.046400000000000004,40,10,0.25,4
+qwen,disjunction,bag,crayons,makeup,0.4596,50,10,0.0,5
+qwen,disjunction,bag,crayons,pen,0.9890000000000001,40,10,1.0,4
+qwen,disjunction,bag,headphones,chalk,0.9978,50,10,0.4,5
+qwen,disjunction,bag,headphones,crayons,0.9985999999999999,30,10,1.0,3
+qwen,disjunction,bag,headphones,makeup,0.9568,190,10,0.21052631578947367,19
+qwen,disjunction,bag,headphones,pen,1.0,50,10,1.0,5
+qwen,disjunction,bag,makeup,chalk,0.9592,20,10,1.0,2
+qwen,disjunction,bag,makeup,crayons,0.9888,20,10,1.0,2
+qwen,disjunction,bag,makeup,headphones,0.07759999999999999,40,10,0.0,4
+qwen,disjunction,bag,makeup,pen,0.999,30,10,1.0,3
+qwen,disjunction,bag,pen,chalk,0.7767999999999999,210,10,0.8571428571428571,21
+qwen,disjunction,bag,pen,crayons,0.8636,170,10,0.8823529411764706,17
+qwen,disjunction,bag,pen,headphones,0.0456,50,10,0.0,5
+qwen,disjunction,bag,pen,makeup,0.45420000000000005,60,10,0.16666666666666666,6
+qwen,disjunction,bakery,cakes,ice cream,0.8393999999999999,190,10,0.8421052631578947,19
+qwen,disjunction,bakery,cakes,muffins,0.23279999999999998,180,10,0.8888888888888888,18
+qwen,disjunction,bakery,cakes,pretzels,0.1972,60,10,0.5,6
+qwen,disjunction,bakery,cakes,sandwiches,0.0398,50,10,0.4,5
+qwen,disjunction,bakery,cakes,water,0.118,50,10,0.0,5
+qwen,disjunction,bakery,ice cream,cakes,0.9175999999999999,50,10,1.0,5
+qwen,disjunction,bakery,ice cream,muffins,0.24519999999999997,170,10,0.5882352941176471,17
+qwen,disjunction,bakery,ice cream,pretzels,0.19939999999999997,20,10,0.5,2
+qwen,disjunction,bakery,ice cream,sandwiches,0.04059999999999998,40,10,0.25,4
+qwen,disjunction,bakery,ice cream,water,0.12200000000000001,60,10,0.16666666666666666,6
+qwen,disjunction,bakery,muffins,cakes,0.9902,50,10,1.0,5
+qwen,disjunction,bakery,muffins,ice cream,0.9716000000000001,20,10,1.0,2
+qwen,disjunction,bakery,muffins,pretzels,0.508,50,10,0.4,5
+qwen,disjunction,bakery,muffins,sandwiches,0.1394,20,10,0.0,2
+qwen,disjunction,bakery,muffins,water,0.3368,50,10,0.0,5
+qwen,disjunction,bakery,pretzels,cakes,0.9872,50,10,1.0,5
+qwen,disjunction,bakery,pretzels,ice cream,0.9814,50,10,1.0,5
+qwen,disjunction,bakery,pretzels,muffins,0.5566,30,10,1.0,3
+qwen,disjunction,bakery,pretzels,sandwiches,0.1556,50,10,0.4,5
+qwen,disjunction,bakery,pretzels,water,0.3634,40,10,0.0,4
+qwen,disjunction,bakery,sandwiches,cakes,0.9984,30,10,1.0,3
+qwen,disjunction,bakery,sandwiches,ice cream,0.9972,50,10,1.0,5
+qwen,disjunction,bakery,sandwiches,muffins,0.8752,30,10,0.6666666666666666,3
+qwen,disjunction,bakery,sandwiches,pretzels,0.8556,200,10,0.55,20
+qwen,disjunction,bakery,sandwiches,water,0.7217999999999999,50,10,0.0,5
+qwen,disjunction,bakery,water,cakes,0.994,30,10,0.6666666666666666,3
+qwen,disjunction,bakery,water,ice cream,0.9862,60,10,0.6666666666666666,6
+qwen,disjunction,bakery,water,muffins,0.6966,60,10,0.5,6
+qwen,disjunction,bakery,water,pretzels,0.6718000000000001,130,10,0.5384615384615384,13
+qwen,disjunction,bakery,water,sandwiches,0.284,210,10,0.42857142857142855,21
+qwen,disjunction,beach,bikini,coat,0.10979999999999998,30,10,0.3333333333333333,3
+qwen,disjunction,beach,bikini,jacket,0.297,40,10,0.25,4
+qwen,disjunction,beach,bikini,jeans,0.7777999999999999,60,10,0.5,6
+qwen,disjunction,beach,bikini,shorts,0.9928,200,10,0.7,20
+qwen,disjunction,beach,bikini,sunglasses,0.6691999999999999,180,10,0.16666666666666666,18
+qwen,disjunction,beach,coat,bikini,0.9742,60,10,1.0,6
+qwen,disjunction,beach,coat,jacket,0.7721999999999999,110,10,0.5454545454545454,11
+qwen,disjunction,beach,coat,jeans,0.9757999999999999,160,10,0.5,16
+qwen,disjunction,beach,coat,shorts,0.9994,50,10,1.0,5
+qwen,disjunction,beach,coat,sunglasses,0.9570000000000001,30,10,0.0,3
+qwen,disjunction,beach,jacket,bikini,0.9209999999999999,20,10,1.0,2
+qwen,disjunction,beach,jacket,coat,0.26199999999999996,30,10,1.0,3
+qwen,disjunction,beach,jacket,jeans,0.9231999999999999,200,10,0.45,20
+qwen,disjunction,beach,jacket,shorts,0.998,50,10,0.6,5
+qwen,disjunction,beach,jacket,sunglasses,0.8657999999999999,40,10,0.5,4
+qwen,disjunction,beach,jeans,bikini,0.7652,50,10,1.0,5
+qwen,disjunction,beach,jeans,coat,0.10799999999999998,50,10,0.6,5
+qwen,disjunction,beach,jeans,jacket,0.30339999999999995,60,10,0.0,6
+qwen,disjunction,beach,jeans,shorts,0.9906,50,10,1.0,5
+qwen,disjunction,beach,jeans,sunglasses,0.6486,40,10,0.25,4
+qwen,disjunction,beach,shorts,bikini,0.6617999999999999,40,10,0.75,4
+qwen,disjunction,beach,shorts,coat,0.09439999999999998,40,10,0.75,4
+qwen,disjunction,beach,shorts,jacket,0.25939999999999996,40,10,0.25,4
+qwen,disjunction,beach,shorts,jeans,0.6834,50,10,0.6,5
+qwen,disjunction,beach,shorts,sunglasses,0.5698,200,10,0.15,20
+qwen,disjunction,beach,sunglasses,bikini,0.7981999999999999,50,10,1.0,5
+qwen,disjunction,beach,sunglasses,coat,0.11959999999999997,50,10,0.0,5
+qwen,disjunction,beach,sunglasses,jacket,0.3362,50,10,0.8,5
+qwen,disjunction,beach,sunglasses,jeans,0.834,60,10,0.5,6
+qwen,disjunction,beach,sunglasses,shorts,0.9934000000000001,40,10,0.5,4
+qwen,disjunction,cold,blankets,heater,1.0,20,10,1.0,2
+qwen,disjunction,cold,blankets,sink,0.8859999999999999,40,10,0.0,4
+qwen,disjunction,cold,blankets,tea,0.664,200,10,0.2,20
+qwen,disjunction,cold,heater,blankets,0.0014,180,10,0.8333333333333334,18
+qwen,disjunction,cold,heater,sink,0.0292,50,10,0.0,5
+qwen,disjunction,cold,heater,tea,0.0073999999999999995,160,10,0.125,16
+qwen,disjunction,cold,sink,blankets,0.114,30,10,0.3333333333333333,3
+qwen,disjunction,cold,sink,heater,1.0,40,10,1.0,4
+qwen,disjunction,cold,sink,tea,0.20040000000000002,50,10,0.0,5
+qwen,disjunction,cold,tea,blankets,0.336,50,10,0.6,5
+qwen,disjunction,cold,tea,heater,1.0,60,10,0.5,6
+qwen,disjunction,cold,tea,sink,0.8,40,10,0.0,4
+qwen,disjunction,cut,batteries,keys,0.9400000000000001,60,10,0.16666666666666666,6
+qwen,disjunction,cut,batteries,nail clippers,0.9822,50,10,0.8,5
+qwen,disjunction,cut,batteries,scissors,1.0,50,10,0.8,5
+qwen,disjunction,cut,batteries,stapler,0.8726,180,10,0.4444444444444444,18
+qwen,disjunction,cut,batteries,thumb tacks,0.022000000000000002,210,10,0.38095238095238093,21
+qwen,disjunction,cut,keys,batteries,0.09579999999999997,40,10,0.25,4
+qwen,disjunction,cut,keys,nail clippers,0.85,50,10,0.8,5
+qwen,disjunction,cut,keys,scissors,0.9998,50,10,1.0,5
+qwen,disjunction,cut,keys,stapler,0.4546,50,10,0.2,5
+qwen,disjunction,cut,keys,thumb tacks,0.0072,50,10,0.2,5
+qwen,disjunction,cut,nail clippers,batteries,0.06879999999999999,50,10,0.0,5
+qwen,disjunction,cut,nail clippers,keys,0.5156,160,10,0.3125,16
+qwen,disjunction,cut,nail clippers,scissors,0.999,40,10,1.0,4
+qwen,disjunction,cut,nail clippers,stapler,0.3418,20,10,0.5,2
+qwen,disjunction,cut,nail clippers,thumb tacks,0.0036,30,10,0.6666666666666666,3
+qwen,disjunction,cut,scissors,batteries,0.06,40,10,0.0,4
+qwen,disjunction,cut,scissors,keys,0.4388,200,10,0.15,20
+qwen,disjunction,cut,scissors,nail clippers,0.6557999999999999,110,10,0.6363636363636364,11
+qwen,disjunction,cut,scissors,stapler,0.2846,60,10,0.16666666666666666,6
+qwen,disjunction,cut,scissors,thumb tacks,0.0036000000000000003,40,10,0.0,4
+qwen,disjunction,cut,stapler,batteries,0.14800000000000002,50,10,0.0,5
+qwen,disjunction,cut,stapler,keys,0.7204,50,10,0.2,5
+qwen,disjunction,cut,stapler,nail clippers,0.9029999999999999,60,10,0.6666666666666666,6
+qwen,disjunction,cut,stapler,scissors,0.9997999999999999,40,10,1.0,4
+qwen,disjunction,cut,stapler,thumb tacks,0.006999999999999999,170,10,0.11764705882352941,17
+qwen,disjunction,cut,thumb tacks,batteries,0.978,40,10,0.0,4
+qwen,disjunction,cut,thumb tacks,keys,0.9962,30,10,0.3333333333333333,3
+qwen,disjunction,cut,thumb tacks,nail clippers,1.0,50,10,0.6,5
+qwen,disjunction,cut,thumb tacks,scissors,1.0,50,10,0.8,5
+qwen,disjunction,cut,thumb tacks,stapler,0.9942,50,10,0.0,5
+qwen,disjunction,fridge,juice,ketchup,0.036599999999999994,60,10,0.3333333333333333,6
+qwen,disjunction,fridge,juice,meat,0.149,30,10,0.0,3
+qwen,disjunction,fridge,juice,milk,0.9271999999999999,150,10,1.0,15
+qwen,disjunction,fridge,juice,water,0.9987999999999999,60,10,1.0,6
+qwen,disjunction,fridge,juice,yogurt,0.2198,50,10,0.0,5
+qwen,disjunction,fridge,ketchup,juice,0.998,50,10,1.0,5
+qwen,disjunction,fridge,ketchup,meat,0.7696,40,10,0.0,4
+qwen,disjunction,fridge,ketchup,milk,0.9987999999999999,50,10,1.0,5
+qwen,disjunction,fridge,ketchup,water,1.0,20,10,1.0,2
+qwen,disjunction,fridge,ketchup,yogurt,0.883,180,10,0.2222222222222222,18
+qwen,disjunction,fridge,meat,juice,0.993,50,10,1.0,5
+qwen,disjunction,fridge,meat,ketchup,0.2376,180,10,0.16666666666666666,18
+qwen,disjunction,fridge,meat,milk,0.9962,30,10,0.6666666666666666,3
+qwen,disjunction,fridge,meat,water,1.0,20,10,1.0,2
+qwen,disjunction,fridge,meat,yogurt,0.6794,160,10,0.625,16
+qwen,disjunction,fridge,milk,juice,0.8042,50,10,1.0,5
+qwen,disjunction,fridge,milk,ketchup,0.0362,50,10,0.0,5
+qwen,disjunction,fridge,milk,meat,0.1474,60,10,0.0,6
+qwen,disjunction,fridge,milk,water,0.998,60,10,0.8333333333333334,6
+qwen,disjunction,fridge,milk,yogurt,0.2164,50,10,0.2,5
+qwen,disjunction,fridge,water,juice,0.768,220,10,1.0,22
+qwen,disjunction,fridge,water,ketchup,0.03539999999999999,40,10,0.0,4
+qwen,disjunction,fridge,water,meat,0.1454,30,10,0.0,3
+qwen,disjunction,fridge,water,milk,0.849,180,10,0.9444444444444444,18
+qwen,disjunction,fridge,water,yogurt,0.2146,50,10,0.0,5
+qwen,disjunction,fridge,yogurt,juice,0.9886,50,10,1.0,5
+qwen,disjunction,fridge,yogurt,ketchup,0.13079999999999997,50,10,0.2,5
+qwen,disjunction,fridge,yogurt,meat,0.37939999999999996,50,10,0.4,5
+qwen,disjunction,fridge,yogurt,milk,0.9955999999999999,40,10,0.75,4
+qwen,disjunction,fridge,yogurt,water,0.9997999999999999,20,10,1.0,2
+qwen,disjunction,gym,basketball,lacrosse,0.149,150,10,0.9333333333333333,15
+qwen,disjunction,gym,basketball,meditation,0.005200000000000001,20,10,0.0,2
+qwen,disjunction,gym,basketball,softball,0.8674,200,10,0.9,20
+qwen,disjunction,gym,basketball,swimming,0.2784,50,10,0.4,5
+qwen,disjunction,gym,lacrosse,basketball,0.9992000000000001,40,10,1.0,4
+qwen,disjunction,gym,lacrosse,meditation,0.021199999999999962,20,10,0.0,2
+qwen,disjunction,gym,lacrosse,softball,0.9952000000000001,30,10,1.0,3
+qwen,disjunction,gym,lacrosse,swimming,0.7195999999999999,30,10,0.3333333333333333,3
+qwen,disjunction,gym,meditation,basketball,1.0,40,10,0.75,4
+qwen,disjunction,gym,meditation,lacrosse,0.9800000000000001,40,10,1.0,4
+qwen,disjunction,gym,meditation,softball,0.9994,40,10,1.0,4
+qwen,disjunction,gym,meditation,swimming,0.9925999999999999,190,10,0.7894736842105263,19
+qwen,disjunction,gym,softball,basketball,0.9773999999999999,60,10,1.0,6
+qwen,disjunction,gym,softball,lacrosse,0.15019999999999997,190,10,0.9473684210526315,19
+qwen,disjunction,gym,softball,meditation,0.005600000000000001,50,10,0.6,5
+qwen,disjunction,gym,softball,swimming,0.284,50,10,0.8,5
+qwen,disjunction,gym,swimming,basketball,0.9982,50,10,1.0,5
+qwen,disjunction,gym,swimming,lacrosse,0.344,40,10,1.0,4
+qwen,disjunction,gym,swimming,meditation,0.0102,50,10,0.0,5
+qwen,disjunction,gym,swimming,softball,0.9842000000000001,40,10,0.75,4
+qwen,disjunction,hot,blankets,couch,0.8762000000000001,120,10,0.0,12
+qwen,disjunction,hot,blankets,fan,0.9990000000000001,50,10,0.2,5
+qwen,disjunction,hot,blankets,heater,0.9987999999999999,40,10,0.75,4
+qwen,disjunction,hot,blankets,pool,0.9767999999999999,50,10,0.0,5
+qwen,disjunction,hot,blankets,shower,0.9621999999999999,50,10,0.2,5
+qwen,disjunction,hot,couch,blankets,0.126,50,10,0.2,5
+qwen,disjunction,hot,couch,fan,0.999,30,10,0.0,3
+qwen,disjunction,hot,couch,heater,0.9982000000000001,30,10,0.0,3
+qwen,disjunction,hot,couch,pool,0.8422,60,10,0.5,6
+qwen,disjunction,hot,couch,shower,0.7936,20,10,1.0,2
+qwen,disjunction,hot,fan,blankets,0.006799999999999989,40,10,0.0,4
+qwen,disjunction,hot,fan,couch,0.026000000000000002,40,10,0.0,4
+qwen,disjunction,hot,fan,heater,0.7235999999999999,60,10,0.16666666666666666,6
+qwen,disjunction,hot,fan,pool,0.12240000000000001,200,10,0.55,20
+qwen,disjunction,hot,fan,shower,0.08439999999999999,200,10,0.05,20
+qwen,disjunction,hot,heater,blankets,0.0073999999999999995,130,10,0.23076923076923078,13
+qwen,disjunction,hot,heater,couch,0.02659999999999997,200,10,0.0,20
+qwen,disjunction,hot,heater,fan,0.9423999999999999,50,10,1.0,5
+qwen,disjunction,hot,heater,pool,0.1298,40,10,0.25,4
+qwen,disjunction,hot,heater,shower,0.08959999999999999,50,10,0.0,5
+qwen,disjunction,hot,pool,blankets,0.0252,50,10,0.4,5
+qwen,disjunction,hot,pool,couch,0.16299999999999998,40,10,0.0,4
+qwen,disjunction,hot,pool,fan,0.9984,40,10,0.25,4
+qwen,disjunction,hot,pool,heater,0.9885999999999999,40,10,0.0,4
+qwen,disjunction,hot,pool,shower,0.40459999999999996,190,10,0.2631578947368421,19
+qwen,disjunction,hot,shower,blankets,0.038399999999999976,40,10,0.0,4
+qwen,disjunction,hot,shower,couch,0.2098,60,10,0.0,6
+qwen,disjunction,hot,shower,fan,0.9987999999999999,50,10,0.8,5
+qwen,disjunction,hot,shower,heater,0.99,60,10,0.3333333333333333,6
+qwen,disjunction,hot,shower,pool,0.6172,50,10,1.0,5
+qwen,disjunction,mask,bandana,candy,0.04299999999999998,40,10,0.0,4
+qwen,disjunction,mask,bandana,handkerchief,0.4748,130,10,0.6153846153846154,13
+qwen,disjunction,mask,bandana,napkins,0.0022,120,10,0.16666666666666666,12
+qwen,disjunction,mask,bandana,wallet,0.17819999999999997,50,10,0.4,5
+qwen,disjunction,mask,candy,bandana,0.9636,50,10,0.8,5
+qwen,disjunction,mask,candy,handkerchief,0.9475999999999999,60,10,0.6666666666666666,6
+qwen,disjunction,mask,candy,napkins,0.046,40,10,0.5,4
+qwen,disjunction,mask,candy,wallet,0.8211999999999999,200,10,0.2,20
+qwen,disjunction,mask,handkerchief,bandana,0.6411999999999999,30,10,1.0,3
+qwen,disjunction,mask,handkerchief,candy,0.057199999999999994,60,10,0.0,6
+qwen,disjunction,mask,handkerchief,napkins,0.006,200,10,0.3,20
+qwen,disjunction,mask,handkerchief,wallet,0.2386,50,10,0.0,5
+qwen,disjunction,mask,napkins,bandana,0.998,50,10,1.0,5
+qwen,disjunction,mask,napkins,candy,0.954,50,10,0.2,5
+qwen,disjunction,mask,napkins,handkerchief,0.9940000000000001,50,10,0.6,5
+qwen,disjunction,mask,napkins,wallet,0.99,40,10,0.0,4
+qwen,disjunction,mask,wallet,bandana,0.8644,50,10,0.8,5
+qwen,disjunction,mask,wallet,candy,0.1818,50,10,0.2,5
+qwen,disjunction,mask,wallet,handkerchief,0.7926000000000001,50,10,0.6,5
+qwen,disjunction,mask,wallet,napkins,0.01,60,10,0.5,6
+qwen,disjunction,meat,chicken,crab,0.1074,170,10,0.7647058823529411,17
+qwen,disjunction,meat,chicken,mushrooms,0.0632,50,10,0.2,5
+qwen,disjunction,meat,chicken,tofu,0.4694,50,10,0.0,5
+qwen,disjunction,meat,chicken,turkey,0.2738,210,10,0.9523809523809523,21
+qwen,disjunction,meat,crab,chicken,1.0,50,10,1.0,5
+qwen,disjunction,meat,crab,mushrooms,0.3862,30,10,0.0,3
+qwen,disjunction,meat,crab,tofu,0.9172,30,10,0.6666666666666666,3
+qwen,disjunction,meat,crab,turkey,0.7846000000000001,50,10,1.0,5
+qwen,disjunction,meat,mushrooms,chicken,1.0,60,10,1.0,6
+qwen,disjunction,meat,mushrooms,crab,0.627,50,10,1.0,5
+qwen,disjunction,meat,mushrooms,tofu,0.9488000000000001,190,10,0.5263157894736842,19
+qwen,disjunction,meat,mushrooms,turkey,0.8482,60,10,1.0,6
+qwen,disjunction,meat,tofu,chicken,0.9982,40,10,1.0,4
+qwen,disjunction,meat,tofu,crab,0.16259999999999997,50,10,0.8,5
+qwen,disjunction,meat,tofu,mushrooms,0.09540000000000001,50,10,0.0,5
+qwen,disjunction,meat,tofu,turkey,0.40779999999999994,50,10,1.0,5
+qwen,disjunction,meat,turkey,chicken,0.999,40,10,1.0,4
+qwen,disjunction,meat,turkey,crab,0.2647999999999999,130,10,0.7692307692307693,13
+qwen,disjunction,meat,turkey,mushrooms,0.1782,40,10,0.0,4
+qwen,disjunction,meat,turkey,tofu,0.7777999999999999,60,10,0.16666666666666666,6
+qwen,disjunction,restaurant,cake,cocktails,0.8702,40,10,1.0,4
+qwen,disjunction,restaurant,cake,salad,0.37920000000000004,50,10,0.6,5
+qwen,disjunction,restaurant,cake,soda,0.9834,50,10,0.8,5
+qwen,disjunction,restaurant,cake,soup,0.48799999999999993,180,10,0.3888888888888889,18
+qwen,disjunction,restaurant,cake,vodka,0.9386,60,10,1.0,6
+qwen,disjunction,restaurant,cocktails,cake,0.17099999999999993,50,10,0.6,5
+qwen,disjunction,restaurant,cocktails,salad,0.12299999999999997,40,10,0.0,4
+qwen,disjunction,restaurant,cocktails,soda,0.8972,190,10,0.42105263157894735,19
+qwen,disjunction,restaurant,cocktails,soup,0.174,20,10,0.0,2
+qwen,disjunction,restaurant,cocktails,vodka,0.767,140,10,0.5,14
+qwen,disjunction,restaurant,salad,cake,0.629,200,10,0.55,20
+qwen,disjunction,restaurant,salad,cocktails,0.9038,40,10,0.75,4
+qwen,disjunction,restaurant,salad,soda,0.9834,50,10,0.6,5
+qwen,disjunction,restaurant,salad,soup,0.6027999999999999,200,10,0.7,20
+qwen,disjunction,restaurant,salad,vodka,0.9418000000000001,50,10,1.0,5
+qwen,disjunction,restaurant,soda,cake,0.0894,30,10,0.0,3
+qwen,disjunction,restaurant,soda,cocktails,0.4016,30,10,1.0,3
+qwen,disjunction,restaurant,soda,salad,0.0696,50,10,0.0,5
+qwen,disjunction,restaurant,soda,soup,0.0948,20,10,0.0,2
+qwen,disjunction,restaurant,soda,vodka,0.6092,50,10,1.0,5
+qwen,disjunction,restaurant,soup,cake,0.519,30,10,0.3333333333333333,3
+qwen,disjunction,restaurant,soup,cocktails,0.8644,60,10,1.0,6
+qwen,disjunction,restaurant,soup,salad,0.4064,60,10,0.5,6
+qwen,disjunction,restaurant,soup,soda,0.9768,60,10,0.8333333333333334,6
+qwen,disjunction,restaurant,soup,vodka,0.9490000000000001,40,10,1.0,4
+qwen,disjunction,restaurant,vodka,cake,0.11919999999999999,50,10,0.0,5
+qwen,disjunction,restaurant,vodka,cocktails,0.4694,30,10,1.0,3
+qwen,disjunction,restaurant,vodka,salad,0.09439999999999998,20,10,0.0,2
+qwen,disjunction,restaurant,vodka,soda,0.8378,190,10,0.3157894736842105,19
+qwen,disjunction,restaurant,vodka,soup,0.1074,50,10,0.0,5
+qwen,disjunction,salad,chips,cigarettes,0.05799999999999996,60,10,0.16666666666666666,6
+qwen,disjunction,salad,chips,dressing,0.31079999999999997,50,10,0.4,5
+qwen,disjunction,salad,chips,lettuce,0.9998,60,10,1.0,6
+qwen,disjunction,salad,chips,meat,0.7636,210,10,0.2857142857142857,21
+qwen,disjunction,salad,cigarettes,chips,0.942,160,10,0.4375,16
+qwen,disjunction,salad,cigarettes,dressing,0.86,40,10,1.0,4
+qwen,disjunction,salad,cigarettes,lettuce,1.0,40,10,0.75,4
+qwen,disjunction,salad,cigarettes,meat,0.976,190,10,0.5789473684210527,19
+qwen,disjunction,salad,dressing,chips,0.69,20,10,0.0,2
+qwen,disjunction,salad,dressing,cigarettes,0.14,50,10,0.0,5
+qwen,disjunction,salad,dressing,lettuce,1.0,30,10,1.0,3
+qwen,disjunction,salad,dressing,meat,0.864,30,10,0.3333333333333333,3
+qwen,disjunction,salad,lettuce,chips,0.01779999999999999,20,10,0.0,2
+qwen,disjunction,salad,lettuce,cigarettes,0.0022,60,10,0.0,6
+qwen,disjunction,salad,lettuce,dressing,0.007,180,10,0.6111111111111112,18
+qwen,disjunction,salad,lettuce,meat,0.05919999999999999,40,10,0.75,4
+qwen,disjunction,salad,meat,chips,0.238,20,10,0.0,2
+qwen,disjunction,salad,meat,cigarettes,0.024,50,10,0.0,5
+qwen,disjunction,salad,meat,dressing,0.1374,30,10,0.0,3
+qwen,disjunction,salad,meat,lettuce,1.0,60,10,1.0,6
+qwen,disjunction,science,art,geology,0.9942,40,10,1.0,4
+qwen,disjunction,science,art,math,0.9716,200,10,0.7,20
+qwen,disjunction,science,art,philosophy,0.594,180,10,0.6111111111111112,18
+qwen,disjunction,science,art,physics,1.0,50,10,1.0,5
+qwen,disjunction,science,art,zoology,0.9096000000000001,50,10,0.8,5
+qwen,disjunction,science,geology,art,0.0132,50,10,0.6,5
+qwen,disjunction,science,geology,math,0.4799999999999999,60,10,0.8333333333333334,6
+qwen,disjunction,science,geology,philosophy,0.01799999999999999,30,10,0.6666666666666666,3
+qwen,disjunction,science,geology,physics,0.9944,40,10,1.0,4
+qwen,disjunction,science,geology,zoology,0.14439999999999997,130,10,1.0,13
+qwen,disjunction,science,math,art,0.03279999999999999,20,10,0.5,2
+qwen,disjunction,science,math,geology,0.7552000000000001,40,10,0.75,4
+qwen,disjunction,science,math,philosophy,0.030399999999999962,50,10,0.4,5
+qwen,disjunction,science,math,physics,0.9962,40,10,0.5,4
+qwen,disjunction,science,math,zoology,0.23099999999999998,50,10,0.8,5
+qwen,disjunction,science,philosophy,art,0.406,50,10,1.0,5
+qwen,disjunction,science,philosophy,geology,0.9922,50,10,0.8,5
+qwen,disjunction,science,philosophy,math,0.976,160,10,0.6875,16
+qwen,disjunction,science,philosophy,physics,1.0,40,10,1.0,4
+qwen,disjunction,science,philosophy,zoology,0.8712,60,10,0.8333333333333334,6
+qwen,disjunction,science,physics,art,0.009000000000000001,50,10,0.4,5
+qwen,disjunction,science,physics,geology,0.5012,210,10,0.8571428571428571,21
+qwen,disjunction,science,physics,math,0.3444,30,10,0.3333333333333333,3
+qwen,disjunction,science,physics,philosophy,0.0118,30,10,0.3333333333333333,3
+qwen,disjunction,science,physics,zoology,0.102,200,10,0.65,20
+qwen,disjunction,science,zoology,art,0.0924,30,10,0.6666666666666666,3
+qwen,disjunction,science,zoology,geology,0.921,40,10,0.75,4
+qwen,disjunction,science,zoology,math,0.8252000000000002,50,10,0.4,5
+qwen,disjunction,science,zoology,philosophy,0.131,60,10,0.6666666666666666,6
+qwen,disjunction,science,zoology,physics,0.9997999999999999,40,10,1.0,4
+qwen,disjunction,throw,beach ball,boomerang,0.0666,190,10,0.631578947368421,19
+qwen,disjunction,throw,beach ball,football,1.0,50,10,1.0,5
+qwen,disjunction,throw,beach ball,lawnmower,0.0406,30,10,0.0,3
+qwen,disjunction,throw,beach ball,tires,0.0,60,10,0.0,6
+qwen,disjunction,throw,boomerang,beach ball,0.9773999999999999,40,10,0.75,4
+qwen,disjunction,throw,boomerang,football,1.0,40,10,1.0,4
+qwen,disjunction,throw,boomerang,lawnmower,0.39899999999999997,50,10,0.0,5
+qwen,disjunction,throw,boomerang,tires,0.014000000000000002,50,10,0.0,5
+qwen,disjunction,throw,football,beach ball,0.5608,160,10,0.875,16
+qwen,disjunction,throw,football,boomerang,0.051,210,10,0.6190476190476191,21
+qwen,disjunction,throw,football,lawnmower,0.0346,30,10,0.0,3
+qwen,disjunction,throw,football,tires,0.0,30,10,0.0,3
+qwen,disjunction,throw,lawnmower,beach ball,0.9911999999999999,20,10,1.0,2
+qwen,disjunction,throw,lawnmower,boomerang,0.6053999999999999,50,10,0.8,5
+qwen,disjunction,throw,lawnmower,football,1.0,50,10,1.0,5
+qwen,disjunction,throw,lawnmower,tires,0.02,130,10,0.07692307692307693,13
+qwen,disjunction,throw,tires,beach ball,1.0,50,10,0.6,5
+qwen,disjunction,throw,tires,boomerang,0.986,40,10,1.0,4
+qwen,disjunction,throw,tires,football,1.0,50,10,0.8,5
+qwen,disjunction,throw,tires,lawnmower,0.98,50,10,0.8,5
+qwen,disjunction,transport,car,chairs,0.0,50,10,0.0,5
+qwen,disjunction,transport,car,hammer,0.011399999999999999,50,10,0.2,5
+qwen,disjunction,transport,car,lawnmower,0.3652,40,10,0.25,4
+qwen,disjunction,transport,chairs,car,1.0,30,10,1.0,3
+qwen,disjunction,transport,chairs,hammer,0.958,40,10,0.0,4
+qwen,disjunction,transport,chairs,lawnmower,1.0,220,10,0.09090909090909091,22
+qwen,disjunction,transport,hammer,car,1.0,50,10,0.6,5
+qwen,disjunction,transport,hammer,chairs,0.042,150,10,0.06666666666666667,15
+qwen,disjunction,transport,hammer,lawnmower,0.9850000000000001,180,10,0.5555555555555556,18
+qwen,disjunction,transport,lawnmower,car,1.0,60,10,1.0,6
+qwen,disjunction,transport,lawnmower,chairs,0.0,50,10,0.2,5
+qwen,disjunction,transport,lawnmower,hammer,0.02259999999999997,40,10,0.25,4

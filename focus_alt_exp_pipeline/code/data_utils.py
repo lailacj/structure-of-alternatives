@@ -52,6 +52,56 @@ def normalize_unique_tokens(values: Sequence[str] | None) -> List[str]:
     return normalized
 
 
+def prepare_context_word_support(
+    support_data: pd.DataFrame,
+    *,
+    context_col: str = "context",
+    word_col: str = "word",
+) -> pd.DataFrame:
+    required = {context_col, word_col}
+    missing = required.difference(support_data.columns)
+    if missing:
+        raise ValueError(f"Missing columns in support_data: {sorted(missing)}")
+
+    prepared = support_data[[context_col, word_col]].copy()
+    prepared[context_col] = prepared[context_col].astype(str).str.strip()
+    prepared[word_col] = prepared[word_col].apply(clean_word)
+    prepared = prepared[prepared[word_col] != ""].copy()
+    return prepared.drop_duplicates(ignore_index=True)
+
+
+def extract_support_tokens_by_context(
+    support_data: pd.DataFrame,
+    *,
+    context_col: str = "context",
+    word_col: str = "word",
+) -> Dict[str, List[str]]:
+    prepared = prepare_context_word_support(
+        support_data,
+        context_col=context_col,
+        word_col=word_col,
+    )
+
+    support_by_context: Dict[str, List[str]] = {}
+    for context, subset in prepared.groupby(context_col, sort=False):
+        support_by_context[str(context)] = normalize_unique_tokens(subset[word_col].tolist())
+    return support_by_context
+
+
+def extract_global_support_tokens(
+    support_data: pd.DataFrame,
+    *,
+    context_col: str = "context",
+    word_col: str = "word",
+) -> List[str]:
+    prepared = prepare_context_word_support(
+        support_data,
+        context_col=context_col,
+        word_col=word_col,
+    )
+    return normalize_unique_tokens(prepared[word_col].tolist())
+
+
 def read_token_counts(path: str | Path, targets: Iterable[str]) -> Dict[str, int]:
     normalized_targets = normalize_unique_tokens(list(targets))
     remaining = set(normalized_targets)

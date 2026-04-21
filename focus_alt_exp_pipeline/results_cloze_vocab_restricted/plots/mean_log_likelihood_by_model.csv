@@ -1,0 +1,4 @@
+NextWordPredictionModelRaw,NextWordPredictionModel,structure_count,overall_mean_log_likelihood
+cloze,Cloze Probability,4,-1.0489146447840443
+frequency,Frequency,4,-3.9171549541241792
+qwen,Qwen,4,-2.151196033437804

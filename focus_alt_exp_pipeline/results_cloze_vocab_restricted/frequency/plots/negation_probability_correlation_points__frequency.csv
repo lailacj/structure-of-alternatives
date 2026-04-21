@@ -1,0 +1,1417 @@
+NextWordPredictionModelRaw,AlternativeStructure,context,trigger,query,model_negation_probability,observed_rows,observed_boundaries,human_negation_probability,human_trial_count
+frequency,set,bag,chalk,crayons,0.0,60,10,1.0,6
+frequency,set,bag,chalk,headphones,0.0,50,10,0.2,5
+frequency,set,bag,chalk,makeup,0.0032,50,10,0.2,5
+frequency,set,bag,chalk,pen,0.009399999999999999,50,10,1.0,5
+frequency,set,bag,crayons,chalk,0.004,180,10,0.8888888888888888,18
+frequency,set,bag,crayons,headphones,0.0,40,10,0.25,4
+frequency,set,bag,crayons,makeup,0.0032,50,10,0.0,5
+frequency,set,bag,crayons,pen,0.0094,40,10,1.0,4
+frequency,set,bag,headphones,chalk,0.004,50,10,0.4,5
+frequency,set,bag,headphones,crayons,0.0,30,10,1.0,3
+frequency,set,bag,headphones,makeup,0.0031999999999999997,190,10,0.21052631578947367,19
+frequency,set,bag,headphones,pen,0.009399999999999999,50,10,1.0,5
+frequency,set,bag,makeup,chalk,0.004,20,10,1.0,2
+frequency,set,bag,makeup,crayons,0.0,20,10,1.0,2
+frequency,set,bag,makeup,headphones,0.0,40,10,0.0,4
+frequency,set,bag,makeup,pen,0.009399999999999999,30,10,1.0,3
+frequency,set,bag,pen,chalk,0.004,210,10,0.8571428571428571,21
+frequency,set,bag,pen,crayons,0.0,170,10,0.8823529411764706,17
+frequency,set,bag,pen,headphones,0.0,50,10,0.0,5
+frequency,set,bag,pen,makeup,0.0032,60,10,0.16666666666666666,6
+frequency,set,bakery,cakes,ice cream,0.004,190,10,0.8421052631578947,19
+frequency,set,bakery,cakes,muffins,0.0,180,10,0.8888888888888888,18
+frequency,set,bakery,cakes,pretzels,0.0,60,10,0.5,6
+frequency,set,bakery,cakes,sandwiches,0.0002,50,10,0.4,5
+frequency,set,bakery,cakes,water,0.2354,50,10,0.0,5
+frequency,set,bakery,ice cream,cakes,0.0046,50,10,1.0,5
+frequency,set,bakery,ice cream,muffins,0.0,170,10,0.5882352941176471,17
+frequency,set,bakery,ice cream,pretzels,0.0,20,10,0.5,2
+frequency,set,bakery,ice cream,sandwiches,0.0002,40,10,0.25,4
+frequency,set,bakery,ice cream,water,0.2354,60,10,0.16666666666666666,6
+frequency,set,bakery,muffins,cakes,0.0046,50,10,1.0,5
+frequency,set,bakery,muffins,ice cream,0.004,20,10,1.0,2
+frequency,set,bakery,muffins,pretzels,0.0,50,10,0.4,5
+frequency,set,bakery,muffins,sandwiches,0.0002,20,10,0.0,2
+frequency,set,bakery,muffins,water,0.2354,50,10,0.0,5
+frequency,set,bakery,pretzels,cakes,0.0046,50,10,1.0,5
+frequency,set,bakery,pretzels,ice cream,0.004,50,10,1.0,5
+frequency,set,bakery,pretzels,muffins,0.0,30,10,1.0,3
+frequency,set,bakery,pretzels,sandwiches,0.0002,50,10,0.4,5
+frequency,set,bakery,pretzels,water,0.2354,40,10,0.0,4
+frequency,set,bakery,sandwiches,cakes,0.004600000000000001,30,10,1.0,3
+frequency,set,bakery,sandwiches,ice cream,0.004,50,10,1.0,5
+frequency,set,bakery,sandwiches,muffins,0.0,30,10,0.6666666666666666,3
+frequency,set,bakery,sandwiches,pretzels,0.0,200,10,0.55,20
+frequency,set,bakery,sandwiches,water,0.2354,50,10,0.0,5
+frequency,set,bakery,water,cakes,0.004600000000000001,30,10,0.6666666666666666,3
+frequency,set,bakery,water,ice cream,0.004,60,10,0.6666666666666666,6
+frequency,set,bakery,water,muffins,0.0,60,10,0.5,6
+frequency,set,bakery,water,pretzels,0.0,130,10,0.5384615384615384,13
+frequency,set,bakery,water,sandwiches,0.0002,210,10,0.42857142857142855,21
+frequency,set,beach,bikini,coat,0.0242,30,10,0.3333333333333333,3
+frequency,set,beach,bikini,jacket,0.0106,40,10,0.25,4
+frequency,set,beach,bikini,jeans,0.0136,60,10,0.5,6
+frequency,set,beach,bikini,shorts,0.0058,200,10,0.7,20
+frequency,set,beach,bikini,sunglasses,0.001,180,10,0.16666666666666666,18
+frequency,set,beach,coat,bikini,0.0,60,10,1.0,6
+frequency,set,beach,coat,jacket,0.0106,110,10,0.5454545454545454,11
+frequency,set,beach,coat,jeans,0.013600000000000001,160,10,0.5,16
+frequency,set,beach,coat,shorts,0.0058,50,10,1.0,5
+frequency,set,beach,coat,sunglasses,0.001,30,10,0.0,3
+frequency,set,beach,jacket,bikini,0.0,20,10,1.0,2
+frequency,set,beach,jacket,coat,0.0242,30,10,1.0,3
+frequency,set,beach,jacket,jeans,0.013600000000000001,200,10,0.45,20
+frequency,set,beach,jacket,shorts,0.0058,50,10,0.6,5
+frequency,set,beach,jacket,sunglasses,0.001,40,10,0.5,4
+frequency,set,beach,jeans,bikini,0.0,50,10,1.0,5
+frequency,set,beach,jeans,coat,0.0242,50,10,0.6,5
+frequency,set,beach,jeans,jacket,0.0106,60,10,0.0,6
+frequency,set,beach,jeans,shorts,0.0058,50,10,1.0,5
+frequency,set,beach,jeans,sunglasses,0.001,40,10,0.25,4
+frequency,set,beach,shorts,bikini,0.0,40,10,0.75,4
+frequency,set,beach,shorts,coat,0.0242,40,10,0.75,4
+frequency,set,beach,shorts,jacket,0.0106,40,10,0.25,4
+frequency,set,beach,shorts,jeans,0.013600000000000001,50,10,0.6,5
+frequency,set,beach,shorts,sunglasses,0.001,200,10,0.15,20
+frequency,set,beach,sunglasses,bikini,0.0,50,10,1.0,5
+frequency,set,beach,sunglasses,coat,0.0242,50,10,0.0,5
+frequency,set,beach,sunglasses,jacket,0.0106,50,10,0.8,5
+frequency,set,beach,sunglasses,jeans,0.0136,60,10,0.5,6
+frequency,set,beach,sunglasses,shorts,0.0058000000000000005,40,10,0.5,4
+frequency,set,cold,blankets,heater,0.0016,20,10,1.0,2
+frequency,set,cold,blankets,sink,0.0076,40,10,0.0,4
+frequency,set,cold,blankets,tea,0.022399999999999996,200,10,0.2,20
+frequency,set,cold,heater,blankets,0.0036,180,10,0.8333333333333334,18
+frequency,set,cold,heater,sink,0.0076,50,10,0.0,5
+frequency,set,cold,heater,tea,0.0224,160,10,0.125,16
+frequency,set,cold,sink,blankets,0.0036,30,10,0.3333333333333333,3
+frequency,set,cold,sink,heater,0.0016,40,10,1.0,4
+frequency,set,cold,sink,tea,0.022399999999999996,50,10,0.0,5
+frequency,set,cold,tea,blankets,0.0036,50,10,0.6,5
+frequency,set,cold,tea,heater,0.0016,60,10,0.5,6
+frequency,set,cold,tea,sink,0.0076,40,10,0.0,4
+frequency,set,cut,batteries,keys,0.0088,60,10,0.16666666666666666,6
+frequency,set,cut,batteries,nail clippers,0.0,50,10,0.8,5
+frequency,set,cut,batteries,scissors,0.0018,50,10,0.8,5
+frequency,set,cut,batteries,stapler,0.0,180,10,0.4444444444444444,18
+frequency,set,cut,batteries,thumb tacks,0.0,210,10,0.38095238095238093,21
+frequency,set,cut,keys,batteries,0.0036000000000000003,40,10,0.25,4
+frequency,set,cut,keys,nail clippers,0.0,50,10,0.8,5
+frequency,set,cut,keys,scissors,0.0018,50,10,1.0,5
+frequency,set,cut,keys,stapler,0.0,50,10,0.2,5
+frequency,set,cut,keys,thumb tacks,0.0,50,10,0.2,5
+frequency,set,cut,nail clippers,batteries,0.0036,50,10,0.0,5
+frequency,set,cut,nail clippers,keys,0.008799999999999999,160,10,0.3125,16
+frequency,set,cut,nail clippers,scissors,0.0018000000000000002,40,10,1.0,4
+frequency,set,cut,nail clippers,stapler,0.0,20,10,0.5,2
+frequency,set,cut,nail clippers,thumb tacks,0.0,30,10,0.6666666666666666,3
+frequency,set,cut,scissors,batteries,0.0036000000000000003,40,10,0.0,4
+frequency,set,cut,scissors,keys,0.0088,200,10,0.15,20
+frequency,set,cut,scissors,nail clippers,0.0,110,10,0.6363636363636364,11
+frequency,set,cut,scissors,stapler,0.0,60,10,0.16666666666666666,6
+frequency,set,cut,scissors,thumb tacks,0.0,40,10,0.0,4
+frequency,set,cut,stapler,batteries,0.0036,50,10,0.0,5
+frequency,set,cut,stapler,keys,0.0088,50,10,0.2,5
+frequency,set,cut,stapler,nail clippers,0.0,60,10,0.6666666666666666,6
+frequency,set,cut,stapler,scissors,0.0018000000000000002,40,10,1.0,4
+frequency,set,cut,stapler,thumb tacks,0.0,170,10,0.11764705882352941,17
+frequency,set,cut,thumb tacks,batteries,0.0036000000000000003,40,10,0.0,4
+frequency,set,cut,thumb tacks,keys,0.0088,30,10,0.3333333333333333,3
+frequency,set,cut,thumb tacks,nail clippers,0.0,50,10,0.6,5
+frequency,set,cut,thumb tacks,scissors,0.0018,50,10,0.8,5
+frequency,set,cut,thumb tacks,stapler,0.0,50,10,0.0,5
+frequency,set,fridge,juice,ketchup,0.0,60,10,0.3333333333333333,6
+frequency,set,fridge,juice,meat,0.0214,30,10,0.0,3
+frequency,set,fridge,juice,milk,0.0292,150,10,1.0,15
+frequency,set,fridge,juice,water,0.2354,60,10,1.0,6
+frequency,set,fridge,juice,yogurt,0.0,50,10,0.0,5
+frequency,set,fridge,ketchup,juice,0.013999999999999999,50,10,1.0,5
+frequency,set,fridge,ketchup,meat,0.0214,40,10,0.0,4
+frequency,set,fridge,ketchup,milk,0.0292,50,10,1.0,5
+frequency,set,fridge,ketchup,water,0.2354,20,10,1.0,2
+frequency,set,fridge,ketchup,yogurt,0.0,180,10,0.2222222222222222,18
+frequency,set,fridge,meat,juice,0.013999999999999999,50,10,1.0,5
+frequency,set,fridge,meat,ketchup,0.0,180,10,0.16666666666666666,18
+frequency,set,fridge,meat,milk,0.0292,30,10,0.6666666666666666,3
+frequency,set,fridge,meat,water,0.2354,20,10,1.0,2
+frequency,set,fridge,meat,yogurt,0.0,160,10,0.625,16
+frequency,set,fridge,milk,juice,0.013999999999999999,50,10,1.0,5
+frequency,set,fridge,milk,ketchup,0.0,50,10,0.0,5
+frequency,set,fridge,milk,meat,0.0214,60,10,0.0,6
+frequency,set,fridge,milk,water,0.2354,60,10,0.8333333333333334,6
+frequency,set,fridge,milk,yogurt,0.0,50,10,0.2,5
+frequency,set,fridge,water,juice,0.014,220,10,1.0,22
+frequency,set,fridge,water,ketchup,0.0,40,10,0.0,4
+frequency,set,fridge,water,meat,0.0214,30,10,0.0,3
+frequency,set,fridge,water,milk,0.0292,180,10,0.9444444444444444,18
+frequency,set,fridge,water,yogurt,0.0,50,10,0.0,5
+frequency,set,fridge,yogurt,juice,0.013999999999999999,50,10,1.0,5
+frequency,set,fridge,yogurt,ketchup,0.0,50,10,0.2,5
+frequency,set,fridge,yogurt,meat,0.021400000000000002,50,10,0.4,5
+frequency,set,fridge,yogurt,milk,0.029199999999999997,40,10,0.75,4
+frequency,set,fridge,yogurt,water,0.2354,20,10,1.0,2
+frequency,set,gym,basketball,lacrosse,0.0,150,10,0.9333333333333333,15
+frequency,set,gym,basketball,meditation,0.0082,20,10,0.0,2
+frequency,set,gym,basketball,softball,0.0,200,10,0.9,20
+frequency,set,gym,basketball,swimming,0.0086,50,10,0.4,5
+frequency,set,gym,lacrosse,basketball,0.0108,40,10,1.0,4
+frequency,set,gym,lacrosse,meditation,0.0082,20,10,0.0,2
+frequency,set,gym,lacrosse,softball,0.0,30,10,1.0,3
+frequency,set,gym,lacrosse,swimming,0.0086,30,10,0.3333333333333333,3
+frequency,set,gym,meditation,basketball,0.0108,40,10,0.75,4
+frequency,set,gym,meditation,lacrosse,0.0,40,10,1.0,4
+frequency,set,gym,meditation,softball,0.0,40,10,1.0,4
+frequency,set,gym,meditation,swimming,0.0086,190,10,0.7894736842105263,19
+frequency,set,gym,softball,basketball,0.0108,60,10,1.0,6
+frequency,set,gym,softball,lacrosse,0.0,190,10,0.9473684210526315,19
+frequency,set,gym,softball,meditation,0.008199999999999999,50,10,0.6,5
+frequency,set,gym,softball,swimming,0.0086,50,10,0.8,5
+frequency,set,gym,swimming,basketball,0.0108,50,10,1.0,5
+frequency,set,gym,swimming,lacrosse,0.0,40,10,1.0,4
+frequency,set,gym,swimming,meditation,0.008199999999999999,50,10,0.0,5
+frequency,set,gym,swimming,softball,0.0,40,10,0.75,4
+frequency,set,hot,blankets,couch,0.0018,120,10,0.0,12
+frequency,set,hot,blankets,fan,0.0054,50,10,0.2,5
+frequency,set,hot,blankets,heater,0.0016,40,10,0.75,4
+frequency,set,hot,blankets,pool,0.019799999999999998,50,10,0.0,5
+frequency,set,hot,blankets,shower,0.0074,50,10,0.2,5
+frequency,set,hot,couch,blankets,0.0036,50,10,0.2,5
+frequency,set,hot,couch,fan,0.0054,30,10,0.0,3
+frequency,set,hot,couch,heater,0.0016,30,10,0.0,3
+frequency,set,hot,couch,pool,0.019799999999999998,60,10,0.5,6
+frequency,set,hot,couch,shower,0.0073999999999999995,20,10,1.0,2
+frequency,set,hot,fan,blankets,0.0036000000000000003,40,10,0.0,4
+frequency,set,hot,fan,couch,0.0018000000000000002,40,10,0.0,4
+frequency,set,hot,fan,heater,0.0016,60,10,0.16666666666666666,6
+frequency,set,hot,fan,pool,0.019799999999999998,200,10,0.55,20
+frequency,set,hot,fan,shower,0.0074,200,10,0.05,20
+frequency,set,hot,heater,blankets,0.0036000000000000003,130,10,0.23076923076923078,13
+frequency,set,hot,heater,couch,0.0018,200,10,0.0,20
+frequency,set,hot,heater,fan,0.0054,50,10,1.0,5
+frequency,set,hot,heater,pool,0.0198,40,10,0.25,4
+frequency,set,hot,heater,shower,0.0074,50,10,0.0,5
+frequency,set,hot,pool,blankets,0.0036,50,10,0.4,5
+frequency,set,hot,pool,couch,0.0018000000000000002,40,10,0.0,4
+frequency,set,hot,pool,fan,0.0054,40,10,0.25,4
+frequency,set,hot,pool,heater,0.0016,40,10,0.0,4
+frequency,set,hot,pool,shower,0.0074,190,10,0.2631578947368421,19
+frequency,set,hot,shower,blankets,0.0036000000000000003,40,10,0.0,4
+frequency,set,hot,shower,couch,0.0018,60,10,0.0,6
+frequency,set,hot,shower,fan,0.0054,50,10,0.8,5
+frequency,set,hot,shower,heater,0.0016,60,10,0.3333333333333333,6
+frequency,set,hot,shower,pool,0.019799999999999998,50,10,1.0,5
+frequency,set,mask,bandana,candy,0.0032,40,10,0.0,4
+frequency,set,mask,bandana,handkerchief,0.0034000000000000002,130,10,0.6153846153846154,13
+frequency,set,mask,bandana,napkins,0.0006000000000000001,120,10,0.16666666666666666,12
+frequency,set,mask,bandana,wallet,0.0,50,10,0.4,5
+frequency,set,mask,candy,bandana,0.0,50,10,0.8,5
+frequency,set,mask,candy,handkerchief,0.0034000000000000002,60,10,0.6666666666666666,6
+frequency,set,mask,candy,napkins,0.0006000000000000001,40,10,0.5,4
+frequency,set,mask,candy,wallet,0.0,200,10,0.2,20
+frequency,set,mask,handkerchief,bandana,0.0,30,10,1.0,3
+frequency,set,mask,handkerchief,candy,0.0032,60,10,0.0,6
+frequency,set,mask,handkerchief,napkins,0.0006,200,10,0.3,20
+frequency,set,mask,handkerchief,wallet,0.0,50,10,0.0,5
+frequency,set,mask,napkins,bandana,0.0,50,10,1.0,5
+frequency,set,mask,napkins,candy,0.0032,50,10,0.2,5
+frequency,set,mask,napkins,handkerchief,0.0034000000000000002,50,10,0.6,5
+frequency,set,mask,napkins,wallet,0.0,40,10,0.0,4
+frequency,set,mask,wallet,bandana,0.0,50,10,0.8,5
+frequency,set,mask,wallet,candy,0.0032,50,10,0.2,5
+frequency,set,mask,wallet,handkerchief,0.0034000000000000002,50,10,0.6,5
+frequency,set,mask,wallet,napkins,0.0006000000000000001,60,10,0.5,6
+frequency,set,meat,chicken,crab,0.0016,170,10,0.7647058823529411,17
+frequency,set,meat,chicken,mushrooms,0.0024,50,10,0.2,5
+frequency,set,meat,chicken,tofu,0.0,50,10,0.0,5
+frequency,set,meat,chicken,turkey,0.0148,210,10,0.9523809523809523,21
+frequency,set,meat,crab,chicken,0.0152,50,10,1.0,5
+frequency,set,meat,crab,mushrooms,0.0024000000000000002,30,10,0.0,3
+frequency,set,meat,crab,tofu,0.0,30,10,0.6666666666666666,3
+frequency,set,meat,crab,turkey,0.0148,50,10,1.0,5
+frequency,set,meat,mushrooms,chicken,0.0152,60,10,1.0,6
+frequency,set,meat,mushrooms,crab,0.0016,50,10,1.0,5
+frequency,set,meat,mushrooms,tofu,0.0,190,10,0.5263157894736842,19
+frequency,set,meat,mushrooms,turkey,0.0148,60,10,1.0,6
+frequency,set,meat,tofu,chicken,0.0152,40,10,1.0,4
+frequency,set,meat,tofu,crab,0.0016,50,10,0.8,5
+frequency,set,meat,tofu,mushrooms,0.0024,50,10,0.0,5
+frequency,set,meat,tofu,turkey,0.0148,50,10,1.0,5
+frequency,set,meat,turkey,chicken,0.0152,40,10,1.0,4
+frequency,set,meat,turkey,crab,0.0016,130,10,0.7692307692307693,13
+frequency,set,meat,turkey,mushrooms,0.0024000000000000002,40,10,0.0,4
+frequency,set,meat,turkey,tofu,0.0,60,10,0.16666666666666666,6
+frequency,set,restaurant,cake,cocktails,0.0,40,10,1.0,4
+frequency,set,restaurant,cake,salad,0.0046,50,10,0.6,5
+frequency,set,restaurant,cake,soda,0.0042,50,10,0.8,5
+frequency,set,restaurant,cake,soup,0.006400000000000001,180,10,0.3888888888888889,18
+frequency,set,restaurant,cake,vodka,0.0,60,10,1.0,6
+frequency,set,restaurant,cocktails,cake,0.005,50,10,0.6,5
+frequency,set,restaurant,cocktails,salad,0.0046,40,10,0.0,4
+frequency,set,restaurant,cocktails,soda,0.004200000000000001,190,10,0.42105263157894735,19
+frequency,set,restaurant,cocktails,soup,0.0064,20,10,0.0,2
+frequency,set,restaurant,cocktails,vodka,0.0,140,10,0.5,14
+frequency,set,restaurant,salad,cake,0.005,200,10,0.55,20
+frequency,set,restaurant,salad,cocktails,0.0,40,10,0.75,4
+frequency,set,restaurant,salad,soda,0.0042,50,10,0.6,5
+frequency,set,restaurant,salad,soup,0.0064,200,10,0.7,20
+frequency,set,restaurant,salad,vodka,0.0,50,10,1.0,5
+frequency,set,restaurant,soda,cake,0.005,30,10,0.0,3
+frequency,set,restaurant,soda,cocktails,0.0,30,10,1.0,3
+frequency,set,restaurant,soda,salad,0.0046,50,10,0.0,5
+frequency,set,restaurant,soda,soup,0.0064,20,10,0.0,2
+frequency,set,restaurant,soda,vodka,0.0,50,10,1.0,5
+frequency,set,restaurant,soup,cake,0.005,30,10,0.3333333333333333,3
+frequency,set,restaurant,soup,cocktails,0.0,60,10,1.0,6
+frequency,set,restaurant,soup,salad,0.004600000000000001,60,10,0.5,6
+frequency,set,restaurant,soup,soda,0.0042,60,10,0.8333333333333334,6
+frequency,set,restaurant,soup,vodka,0.0,40,10,1.0,4
+frequency,set,restaurant,vodka,cake,0.005,50,10,0.0,5
+frequency,set,restaurant,vodka,cocktails,0.0,30,10,1.0,3
+frequency,set,restaurant,vodka,salad,0.0046,20,10,0.0,2
+frequency,set,restaurant,vodka,soda,0.004200000000000001,190,10,0.3157894736842105,19
+frequency,set,restaurant,vodka,soup,0.0064,50,10,0.0,5
+frequency,set,salad,chips,cigarettes,0.011000000000000001,60,10,0.16666666666666666,6
+frequency,set,salad,chips,dressing,0.0126,50,10,0.4,5
+frequency,set,salad,chips,lettuce,0.0014,60,10,1.0,6
+frequency,set,salad,chips,meat,0.0214,210,10,0.2857142857142857,21
+frequency,set,salad,cigarettes,chips,0.0018000000000000002,160,10,0.4375,16
+frequency,set,salad,cigarettes,dressing,0.0126,40,10,1.0,4
+frequency,set,salad,cigarettes,lettuce,0.0014,40,10,0.75,4
+frequency,set,salad,cigarettes,meat,0.0214,190,10,0.5789473684210527,19
+frequency,set,salad,dressing,chips,0.0018000000000000002,20,10,0.0,2
+frequency,set,salad,dressing,cigarettes,0.011000000000000001,50,10,0.0,5
+frequency,set,salad,dressing,lettuce,0.0014,30,10,1.0,3
+frequency,set,salad,dressing,meat,0.0214,30,10,0.3333333333333333,3
+frequency,set,salad,lettuce,chips,0.0018000000000000002,20,10,0.0,2
+frequency,set,salad,lettuce,cigarettes,0.011000000000000001,60,10,0.0,6
+frequency,set,salad,lettuce,dressing,0.012599999999999998,180,10,0.6111111111111112,18
+frequency,set,salad,lettuce,meat,0.0214,40,10,0.75,4
+frequency,set,salad,meat,chips,0.0018000000000000002,20,10,0.0,2
+frequency,set,salad,meat,cigarettes,0.011000000000000001,50,10,0.0,5
+frequency,set,salad,meat,dressing,0.0126,30,10,0.0,3
+frequency,set,salad,meat,lettuce,0.0014,60,10,1.0,6
+frequency,set,science,art,geology,0.0102,40,10,1.0,4
+frequency,set,science,art,math,0.0064,200,10,0.7,20
+frequency,set,science,art,philosophy,0.0578,180,10,0.6111111111111112,18
+frequency,set,science,art,physics,0.023399999999999997,50,10,1.0,5
+frequency,set,science,art,zoology,0.0016,50,10,0.8,5
+frequency,set,science,geology,art,0.1508,50,10,0.6,5
+frequency,set,science,geology,math,0.0064,60,10,0.8333333333333334,6
+frequency,set,science,geology,philosophy,0.0578,30,10,0.6666666666666666,3
+frequency,set,science,geology,physics,0.023399999999999997,40,10,1.0,4
+frequency,set,science,geology,zoology,0.0016,130,10,1.0,13
+frequency,set,science,math,art,0.1508,20,10,0.5,2
+frequency,set,science,math,geology,0.0102,40,10,0.75,4
+frequency,set,science,math,philosophy,0.057800000000000004,50,10,0.4,5
+frequency,set,science,math,physics,0.023399999999999997,40,10,0.5,4
+frequency,set,science,math,zoology,0.0016,50,10,0.8,5
+frequency,set,science,philosophy,art,0.1508,50,10,1.0,5
+frequency,set,science,philosophy,geology,0.0102,50,10,0.8,5
+frequency,set,science,philosophy,math,0.0064,160,10,0.6875,16
+frequency,set,science,philosophy,physics,0.023399999999999997,40,10,1.0,4
+frequency,set,science,philosophy,zoology,0.0016,60,10,0.8333333333333334,6
+frequency,set,science,physics,art,0.1508,50,10,0.4,5
+frequency,set,science,physics,geology,0.010199999999999999,210,10,0.8571428571428571,21
+frequency,set,science,physics,math,0.0064,30,10,0.3333333333333333,3
+frequency,set,science,physics,philosophy,0.0578,30,10,0.3333333333333333,3
+frequency,set,science,physics,zoology,0.0016,200,10,0.65,20
+frequency,set,science,zoology,art,0.1508,30,10,0.6666666666666666,3
+frequency,set,science,zoology,geology,0.0102,40,10,0.75,4
+frequency,set,science,zoology,math,0.0064,50,10,0.4,5
+frequency,set,science,zoology,philosophy,0.0578,60,10,0.6666666666666666,6
+frequency,set,science,zoology,physics,0.023399999999999997,40,10,1.0,4
+frequency,set,throw,beach ball,boomerang,0.0,190,10,0.631578947368421,19
+frequency,set,throw,beach ball,football,0.0104,50,10,1.0,5
+frequency,set,throw,beach ball,lawnmower,0.0,30,10,0.0,3
+frequency,set,throw,beach ball,tires,0.0004,60,10,0.0,6
+frequency,set,throw,boomerang,beach ball,0.0,40,10,0.75,4
+frequency,set,throw,boomerang,football,0.010400000000000001,40,10,1.0,4
+frequency,set,throw,boomerang,lawnmower,0.0,50,10,0.0,5
+frequency,set,throw,boomerang,tires,0.0004,50,10,0.0,5
+frequency,set,throw,football,beach ball,0.0,160,10,0.875,16
+frequency,set,throw,football,boomerang,0.0,210,10,0.6190476190476191,21
+frequency,set,throw,football,lawnmower,0.0,30,10,0.0,3
+frequency,set,throw,football,tires,0.0004,30,10,0.0,3
+frequency,set,throw,lawnmower,beach ball,0.0,20,10,1.0,2
+frequency,set,throw,lawnmower,boomerang,0.0,50,10,0.8,5
+frequency,set,throw,lawnmower,football,0.0104,50,10,1.0,5
+frequency,set,throw,lawnmower,tires,0.0004,130,10,0.07692307692307693,13
+frequency,set,throw,tires,beach ball,0.0,50,10,0.6,5
+frequency,set,throw,tires,boomerang,0.0,40,10,1.0,4
+frequency,set,throw,tires,football,0.0104,50,10,0.8,5
+frequency,set,throw,tires,lawnmower,0.0,50,10,0.8,5
+frequency,set,transport,car,chairs,0.0034000000000000002,50,10,0.0,5
+frequency,set,transport,car,hammer,0.0058,50,10,0.2,5
+frequency,set,transport,car,lawnmower,0.0,40,10,0.25,4
+frequency,set,transport,chairs,car,0.0596,30,10,1.0,3
+frequency,set,transport,chairs,hammer,0.0058000000000000005,40,10,0.0,4
+frequency,set,transport,chairs,lawnmower,0.0,220,10,0.09090909090909091,22
+frequency,set,transport,hammer,car,0.0596,50,10,0.6,5
+frequency,set,transport,hammer,chairs,0.0034000000000000002,150,10,0.06666666666666667,15
+frequency,set,transport,hammer,lawnmower,0.0,180,10,0.5555555555555556,18
+frequency,set,transport,lawnmower,car,0.0596,60,10,1.0,6
+frequency,set,transport,lawnmower,chairs,0.0034000000000000002,50,10,0.2,5
+frequency,set,transport,lawnmower,hammer,0.0058000000000000005,40,10,0.25,4
+frequency,ordering,bag,chalk,crayons,0.116,60,10,1.0,6
+frequency,ordering,bag,chalk,headphones,0.064,50,10,0.2,5
+frequency,ordering,bag,chalk,makeup,0.428,50,10,0.2,5
+frequency,ordering,bag,chalk,pen,0.806,50,10,1.0,5
+frequency,ordering,bag,crayons,chalk,0.884,180,10,0.8888888888888888,18
+frequency,ordering,bag,crayons,headphones,0.364,40,10,0.25,4
+frequency,ordering,bag,crayons,makeup,0.828,50,10,0.0,5
+frequency,ordering,bag,crayons,pen,0.9640000000000001,40,10,1.0,4
+frequency,ordering,bag,headphones,chalk,0.936,50,10,0.4,5
+frequency,ordering,bag,headphones,crayons,0.636,30,10,1.0,3
+frequency,ordering,bag,headphones,makeup,0.894,190,10,0.21052631578947367,19
+frequency,ordering,bag,headphones,pen,0.986,50,10,1.0,5
+frequency,ordering,bag,makeup,chalk,0.572,20,10,1.0,2
+frequency,ordering,bag,makeup,crayons,0.172,20,10,1.0,2
+frequency,ordering,bag,makeup,headphones,0.10600000000000001,40,10,0.0,4
+frequency,ordering,bag,makeup,pen,0.826,30,10,1.0,3
+frequency,ordering,bag,pen,chalk,0.194,210,10,0.8571428571428571,21
+frequency,ordering,bag,pen,crayons,0.036,170,10,0.8823529411764706,17
+frequency,ordering,bag,pen,headphones,0.014000000000000002,50,10,0.0,5
+frequency,ordering,bag,pen,makeup,0.174,60,10,0.16666666666666666,6
+frequency,ordering,bakery,cakes,ice cream,0.47,190,10,0.8421052631578947,19
+frequency,ordering,bakery,cakes,muffins,0.124,180,10,0.8888888888888888,18
+frequency,ordering,bakery,cakes,pretzels,0.02,60,10,0.5,6
+frequency,ordering,bakery,cakes,sandwiches,0.4,50,10,0.4,5
+frequency,ordering,bakery,cakes,water,0.982,50,10,0.0,5
+frequency,ordering,bakery,ice cream,cakes,0.53,50,10,1.0,5
+frequency,ordering,bakery,ice cream,muffins,0.158,170,10,0.5882352941176471,17
+frequency,ordering,bakery,ice cream,pretzels,0.03,20,10,0.5,2
+frequency,ordering,bakery,ice cream,sandwiches,0.41600000000000004,40,10,0.25,4
+frequency,ordering,bakery,ice cream,water,0.988,60,10,0.16666666666666666,6
+frequency,ordering,bakery,muffins,cakes,0.8759999999999999,50,10,1.0,5
+frequency,ordering,bakery,muffins,ice cream,0.842,20,10,1.0,2
+frequency,ordering,bakery,muffins,pretzels,0.212,50,10,0.4,5
+frequency,ordering,bakery,muffins,sandwiches,0.794,20,10,0.0,2
+frequency,ordering,bakery,muffins,water,1.0,50,10,0.0,5
+frequency,ordering,bakery,pretzels,cakes,0.98,50,10,1.0,5
+frequency,ordering,bakery,pretzels,ice cream,0.97,50,10,1.0,5
+frequency,ordering,bakery,pretzels,muffins,0.788,30,10,1.0,3
+frequency,ordering,bakery,pretzels,sandwiches,0.936,50,10,0.4,5
+frequency,ordering,bakery,pretzels,water,0.998,40,10,0.0,4
+frequency,ordering,bakery,sandwiches,cakes,0.6,30,10,1.0,3
+frequency,ordering,bakery,sandwiches,ice cream,0.584,50,10,1.0,5
+frequency,ordering,bakery,sandwiches,muffins,0.206,30,10,0.6666666666666666,3
+frequency,ordering,bakery,sandwiches,pretzels,0.064,200,10,0.55,20
+frequency,ordering,bakery,sandwiches,water,0.996,50,10,0.0,5
+frequency,ordering,bakery,water,cakes,0.018,30,10,0.6666666666666666,3
+frequency,ordering,bakery,water,ice cream,0.012,60,10,0.6666666666666666,6
+frequency,ordering,bakery,water,muffins,0.0,60,10,0.5,6
+frequency,ordering,bakery,water,pretzels,0.002,130,10,0.5384615384615384,13
+frequency,ordering,bakery,water,sandwiches,0.004,210,10,0.42857142857142855,21
+frequency,ordering,beach,bikini,coat,0.98,30,10,0.3333333333333333,3
+frequency,ordering,beach,bikini,jacket,0.95,40,10,0.25,4
+frequency,ordering,beach,bikini,jeans,0.886,60,10,0.5,6
+frequency,ordering,beach,bikini,shorts,0.838,200,10,0.7,20
+frequency,ordering,beach,bikini,sunglasses,0.64,180,10,0.16666666666666666,18
+frequency,ordering,beach,coat,bikini,0.02,60,10,1.0,6
+frequency,ordering,beach,coat,jacket,0.32799999999999996,110,10,0.5454545454545454,11
+frequency,ordering,beach,coat,jeans,0.178,160,10,0.5,16
+frequency,ordering,beach,coat,shorts,0.10800000000000001,50,10,1.0,5
+frequency,ordering,beach,coat,sunglasses,0.046,30,10,0.0,3
+frequency,ordering,beach,jacket,bikini,0.05,20,10,1.0,2
+frequency,ordering,beach,jacket,coat,0.672,30,10,1.0,3
+frequency,ordering,beach,jacket,jeans,0.262,200,10,0.45,20
+frequency,ordering,beach,jacket,shorts,0.196,50,10,0.6,5
+frequency,ordering,beach,jacket,sunglasses,0.084,40,10,0.5,4
+frequency,ordering,beach,jeans,bikini,0.114,50,10,1.0,5
+frequency,ordering,beach,jeans,coat,0.8219999999999998,50,10,0.6,5
+frequency,ordering,beach,jeans,jacket,0.738,60,10,0.0,6
+frequency,ordering,beach,jeans,shorts,0.376,50,10,1.0,5
+frequency,ordering,beach,jeans,sunglasses,0.174,40,10,0.25,4
+frequency,ordering,beach,shorts,bikini,0.162,40,10,0.75,4
+frequency,ordering,beach,shorts,coat,0.892,40,10,0.75,4
+frequency,ordering,beach,shorts,jacket,0.804,40,10,0.25,4
+frequency,ordering,beach,shorts,jeans,0.624,50,10,0.6,5
+frequency,ordering,beach,shorts,sunglasses,0.268,200,10,0.15,20
+frequency,ordering,beach,sunglasses,bikini,0.36,50,10,1.0,5
+frequency,ordering,beach,sunglasses,coat,0.954,50,10,0.0,5
+frequency,ordering,beach,sunglasses,jacket,0.916,50,10,0.8,5
+frequency,ordering,beach,sunglasses,jeans,0.826,60,10,0.5,6
+frequency,ordering,beach,sunglasses,shorts,0.732,40,10,0.5,4
+frequency,ordering,cold,blankets,heater,0.39,20,10,1.0,2
+frequency,ordering,cold,blankets,sink,0.696,40,10,0.0,4
+frequency,ordering,cold,blankets,tea,0.872,200,10,0.2,20
+frequency,ordering,cold,heater,blankets,0.61,180,10,0.8333333333333334,18
+frequency,ordering,cold,heater,sink,0.782,50,10,0.0,5
+frequency,ordering,cold,heater,tea,0.892,160,10,0.125,16
+frequency,ordering,cold,sink,blankets,0.304,30,10,0.3333333333333333,3
+frequency,ordering,cold,sink,heater,0.21800000000000003,40,10,1.0,4
+frequency,ordering,cold,sink,tea,0.698,50,10,0.0,5
+frequency,ordering,cold,tea,blankets,0.128,50,10,0.6,5
+frequency,ordering,cold,tea,heater,0.108,60,10,0.5,6
+frequency,ordering,cold,tea,sink,0.302,40,10,0.0,4
+frequency,ordering,cut,batteries,keys,0.658,60,10,0.16666666666666666,6
+frequency,ordering,cut,batteries,nail clippers,0.002,50,10,0.8,5
+frequency,ordering,cut,batteries,scissors,0.298,50,10,0.8,5
+frequency,ordering,cut,batteries,stapler,0.018,180,10,0.4444444444444444,18
+frequency,ordering,cut,batteries,thumb tacks,0.006,210,10,0.38095238095238093,21
+frequency,ordering,cut,keys,batteries,0.342,40,10,0.25,4
+frequency,ordering,cut,keys,nail clippers,0.0,50,10,0.8,5
+frequency,ordering,cut,keys,scissors,0.2,50,10,1.0,5
+frequency,ordering,cut,keys,stapler,0.01,50,10,0.2,5
+frequency,ordering,cut,keys,thumb tacks,0.006,50,10,0.2,5
+frequency,ordering,cut,nail clippers,batteries,0.998,50,10,0.0,5
+frequency,ordering,cut,nail clippers,keys,1.0,160,10,0.3125,16
+frequency,ordering,cut,nail clippers,scissors,0.994,40,10,1.0,4
+frequency,ordering,cut,nail clippers,stapler,0.866,20,10,0.5,2
+frequency,ordering,cut,nail clippers,thumb tacks,0.49,30,10,0.6666666666666666,3
+frequency,ordering,cut,scissors,batteries,0.702,40,10,0.0,4
+frequency,ordering,cut,scissors,keys,0.8,200,10,0.15,20
+frequency,ordering,cut,scissors,nail clippers,0.006,110,10,0.6363636363636364,11
+frequency,ordering,cut,scissors,stapler,0.04,60,10,0.16666666666666666,6
+frequency,ordering,cut,scissors,thumb tacks,0.014000000000000002,40,10,0.0,4
+frequency,ordering,cut,stapler,batteries,0.982,50,10,0.0,5
+frequency,ordering,cut,stapler,keys,0.99,50,10,0.2,5
+frequency,ordering,cut,stapler,nail clippers,0.134,60,10,0.6666666666666666,6
+frequency,ordering,cut,stapler,scissors,0.96,40,10,1.0,4
+frequency,ordering,cut,stapler,thumb tacks,0.12,170,10,0.11764705882352941,17
+frequency,ordering,cut,thumb tacks,batteries,0.994,40,10,0.0,4
+frequency,ordering,cut,thumb tacks,keys,0.994,30,10,0.3333333333333333,3
+frequency,ordering,cut,thumb tacks,nail clippers,0.51,50,10,0.6,5
+frequency,ordering,cut,thumb tacks,scissors,0.986,50,10,0.8,5
+frequency,ordering,cut,thumb tacks,stapler,0.88,50,10,0.0,5
+frequency,ordering,fridge,juice,ketchup,0.024,60,10,0.3333333333333333,6
+frequency,ordering,fridge,juice,meat,0.68,30,10,0.0,3
+frequency,ordering,fridge,juice,milk,0.766,150,10,1.0,15
+frequency,ordering,fridge,juice,water,0.946,60,10,1.0,6
+frequency,ordering,fridge,juice,yogurt,0.1,50,10,0.0,5
+frequency,ordering,fridge,ketchup,juice,0.976,50,10,1.0,5
+frequency,ordering,fridge,ketchup,meat,0.9960000000000001,40,10,0.0,4
+frequency,ordering,fridge,ketchup,milk,0.9940000000000001,50,10,1.0,5
+frequency,ordering,fridge,ketchup,water,0.998,20,10,1.0,2
+frequency,ordering,fridge,ketchup,yogurt,0.768,180,10,0.2222222222222222,18
+frequency,ordering,fridge,meat,juice,0.32,50,10,1.0,5
+frequency,ordering,fridge,meat,ketchup,0.004,180,10,0.16666666666666666,18
+frequency,ordering,fridge,meat,milk,0.592,30,10,0.6666666666666666,3
+frequency,ordering,fridge,meat,water,0.942,20,10,1.0,2
+frequency,ordering,fridge,meat,yogurt,0.044,160,10,0.625,16
+frequency,ordering,fridge,milk,juice,0.234,50,10,1.0,5
+frequency,ordering,fridge,milk,ketchup,0.006,50,10,0.0,5
+frequency,ordering,fridge,milk,meat,0.408,60,10,0.0,6
+frequency,ordering,fridge,milk,water,0.876,60,10,0.8333333333333334,6
+frequency,ordering,fridge,milk,yogurt,0.018,50,10,0.2,5
+frequency,ordering,fridge,water,juice,0.05399999999999999,220,10,1.0,22
+frequency,ordering,fridge,water,ketchup,0.002,40,10,0.0,4
+frequency,ordering,fridge,water,meat,0.058,30,10,0.0,3
+frequency,ordering,fridge,water,milk,0.124,180,10,0.9444444444444444,18
+frequency,ordering,fridge,water,yogurt,0.0,50,10,0.0,5
+frequency,ordering,fridge,yogurt,juice,0.9,50,10,1.0,5
+frequency,ordering,fridge,yogurt,ketchup,0.23200000000000004,50,10,0.2,5
+frequency,ordering,fridge,yogurt,meat,0.956,50,10,0.4,5
+frequency,ordering,fridge,yogurt,milk,0.982,40,10,0.75,4
+frequency,ordering,fridge,yogurt,water,1.0,20,10,1.0,2
+frequency,ordering,gym,basketball,lacrosse,0.086,150,10,0.9333333333333333,15
+frequency,ordering,gym,basketball,meditation,0.66,20,10,0.0,2
+frequency,ordering,gym,basketball,softball,0.10800000000000001,200,10,0.9,20
+frequency,ordering,gym,basketball,swimming,0.728,50,10,0.4,5
+frequency,ordering,gym,lacrosse,basketball,0.914,40,10,1.0,4
+frequency,ordering,gym,lacrosse,meditation,0.958,20,10,0.0,2
+frequency,ordering,gym,lacrosse,softball,0.608,30,10,1.0,3
+frequency,ordering,gym,lacrosse,swimming,0.9760000000000001,30,10,0.3333333333333333,3
+frequency,ordering,gym,meditation,basketball,0.34,40,10,0.75,4
+frequency,ordering,gym,meditation,lacrosse,0.042,40,10,1.0,4
+frequency,ordering,gym,meditation,softball,0.054000000000000006,40,10,1.0,4
+frequency,ordering,gym,meditation,swimming,0.572,190,10,0.7894736842105263,19
+frequency,ordering,gym,softball,basketball,0.892,60,10,1.0,6
+frequency,ordering,gym,softball,lacrosse,0.392,190,10,0.9473684210526315,19
+frequency,ordering,gym,softball,meditation,0.946,50,10,0.6,5
+frequency,ordering,gym,softball,swimming,0.98,50,10,0.8,5
+frequency,ordering,gym,swimming,basketball,0.272,50,10,1.0,5
+frequency,ordering,gym,swimming,lacrosse,0.024,40,10,1.0,4
+frequency,ordering,gym,swimming,meditation,0.428,50,10,0.0,5
+frequency,ordering,gym,swimming,softball,0.02,40,10,0.75,4
+frequency,ordering,hot,blankets,couch,0.536,120,10,0.0,12
+frequency,ordering,hot,blankets,fan,0.652,50,10,0.2,5
+frequency,ordering,hot,blankets,heater,0.39,40,10,0.75,4
+frequency,ordering,hot,blankets,pool,0.8080000000000002,50,10,0.0,5
+frequency,ordering,hot,blankets,shower,0.6,50,10,0.2,5
+frequency,ordering,hot,couch,blankets,0.4640000000000001,50,10,0.2,5
+frequency,ordering,hot,couch,fan,0.652,30,10,0.0,3
+frequency,ordering,hot,couch,heater,0.34,30,10,0.0,3
+frequency,ordering,hot,couch,pool,0.798,60,10,0.5,6
+frequency,ordering,hot,couch,shower,0.564,20,10,1.0,2
+frequency,ordering,hot,fan,blankets,0.348,40,10,0.0,4
+frequency,ordering,hot,fan,couch,0.348,40,10,0.0,4
+frequency,ordering,hot,fan,heater,0.24400000000000002,60,10,0.16666666666666666,6
+frequency,ordering,hot,fan,pool,0.684,200,10,0.55,20
+frequency,ordering,hot,fan,shower,0.412,200,10,0.05,20
+frequency,ordering,hot,heater,blankets,0.61,130,10,0.23076923076923078,13
+frequency,ordering,hot,heater,couch,0.66,200,10,0.0,20
+frequency,ordering,hot,heater,fan,0.7559999999999999,50,10,1.0,5
+frequency,ordering,hot,heater,pool,0.8699999999999999,40,10,0.25,4
+frequency,ordering,hot,heater,shower,0.684,50,10,0.0,5
+frequency,ordering,hot,pool,blankets,0.192,50,10,0.4,5
+frequency,ordering,hot,pool,couch,0.202,40,10,0.0,4
+frequency,ordering,hot,pool,fan,0.316,40,10,0.25,4
+frequency,ordering,hot,pool,heater,0.13,40,10,0.0,4
+frequency,ordering,hot,pool,shower,0.258,190,10,0.2631578947368421,19
+frequency,ordering,hot,shower,blankets,0.4,40,10,0.0,4
+frequency,ordering,hot,shower,couch,0.436,60,10,0.0,6
+frequency,ordering,hot,shower,fan,0.588,50,10,0.8,5
+frequency,ordering,hot,shower,heater,0.316,60,10,0.3333333333333333,6
+frequency,ordering,hot,shower,pool,0.742,50,10,1.0,5
+frequency,ordering,mask,bandana,candy,0.968,40,10,0.0,4
+frequency,ordering,mask,bandana,handkerchief,0.966,130,10,0.6153846153846154,13
+frequency,ordering,mask,bandana,napkins,0.868,120,10,0.16666666666666666,12
+frequency,ordering,mask,bandana,wallet,0.934,50,10,0.4,5
+frequency,ordering,mask,candy,bandana,0.032,50,10,0.8,5
+frequency,ordering,mask,candy,handkerchief,0.46,60,10,0.6666666666666666,6
+frequency,ordering,mask,candy,napkins,0.148,40,10,0.5,4
+frequency,ordering,mask,candy,wallet,0.282,200,10,0.2,20
+frequency,ordering,mask,handkerchief,bandana,0.034,30,10,1.0,3
+frequency,ordering,mask,handkerchief,candy,0.5400000000000001,60,10,0.0,6
+frequency,ordering,mask,handkerchief,napkins,0.166,200,10,0.3,20
+frequency,ordering,mask,handkerchief,wallet,0.308,50,10,0.0,5
+frequency,ordering,mask,napkins,bandana,0.132,50,10,1.0,5
+frequency,ordering,mask,napkins,candy,0.852,50,10,0.2,5
+frequency,ordering,mask,napkins,handkerchief,0.834,50,10,0.6,5
+frequency,ordering,mask,napkins,wallet,0.708,40,10,0.0,4
+frequency,ordering,mask,wallet,bandana,0.066,50,10,0.8,5
+frequency,ordering,mask,wallet,candy,0.718,50,10,0.2,5
+frequency,ordering,mask,wallet,handkerchief,0.6919999999999998,50,10,0.6,5
+frequency,ordering,mask,wallet,napkins,0.292,60,10,0.5,6
+frequency,ordering,meat,chicken,crab,0.136,170,10,0.7647058823529411,17
+frequency,ordering,meat,chicken,mushrooms,0.158,50,10,0.2,5
+frequency,ordering,meat,chicken,tofu,0.048,50,10,0.0,5
+frequency,ordering,meat,chicken,turkey,0.52,210,10,0.9523809523809523,21
+frequency,ordering,meat,crab,chicken,0.8640000000000001,50,10,1.0,5
+frequency,ordering,meat,crab,mushrooms,0.49,30,10,0.0,3
+frequency,ordering,meat,crab,tofu,0.164,30,10,0.6666666666666666,3
+frequency,ordering,meat,crab,turkey,0.862,50,10,1.0,5
+frequency,ordering,meat,mushrooms,chicken,0.842,60,10,1.0,6
+frequency,ordering,meat,mushrooms,crab,0.51,50,10,1.0,5
+frequency,ordering,meat,mushrooms,tofu,0.17999999999999997,190,10,0.5263157894736842,19
+frequency,ordering,meat,mushrooms,turkey,0.858,60,10,1.0,6
+frequency,ordering,meat,tofu,chicken,0.952,40,10,1.0,4
+frequency,ordering,meat,tofu,crab,0.836,50,10,0.8,5
+frequency,ordering,meat,tofu,mushrooms,0.82,50,10,0.0,5
+frequency,ordering,meat,tofu,turkey,0.966,50,10,1.0,5
+frequency,ordering,meat,turkey,chicken,0.48,40,10,1.0,4
+frequency,ordering,meat,turkey,crab,0.138,130,10,0.7692307692307693,13
+frequency,ordering,meat,turkey,mushrooms,0.142,40,10,0.0,4
+frequency,ordering,meat,turkey,tofu,0.034,60,10,0.16666666666666666,6
+frequency,ordering,restaurant,cake,cocktails,0.072,40,10,1.0,4
+frequency,ordering,restaurant,cake,salad,0.402,50,10,0.6,5
+frequency,ordering,restaurant,cake,soda,0.42,50,10,0.8,5
+frequency,ordering,restaurant,cake,soup,0.45999999999999996,180,10,0.3888888888888889,18
+frequency,ordering,restaurant,cake,vodka,0.13,60,10,1.0,6
+frequency,ordering,restaurant,cocktails,cake,0.9280000000000002,50,10,0.6,5
+frequency,ordering,restaurant,cocktails,salad,0.8720000000000001,40,10,0.0,4
+frequency,ordering,restaurant,cocktails,soda,0.8919999999999999,190,10,0.42105263157894735,19
+frequency,ordering,restaurant,cocktails,soup,0.9,20,10,0.0,2
+frequency,ordering,restaurant,cocktails,vodka,0.638,140,10,0.5,14
+frequency,ordering,restaurant,salad,cake,0.598,200,10,0.55,20
+frequency,ordering,restaurant,salad,cocktails,0.128,40,10,0.75,4
+frequency,ordering,restaurant,salad,soda,0.54,50,10,0.6,5
+frequency,ordering,restaurant,salad,soup,0.564,200,10,0.7,20
+frequency,ordering,restaurant,salad,vodka,0.18600000000000003,50,10,1.0,5
+frequency,ordering,restaurant,soda,cake,0.58,30,10,0.0,3
+frequency,ordering,restaurant,soda,cocktails,0.108,30,10,1.0,3
+frequency,ordering,restaurant,soda,salad,0.46,50,10,0.0,5
+frequency,ordering,restaurant,soda,soup,0.566,20,10,0.0,2
+frequency,ordering,restaurant,soda,vodka,0.174,50,10,1.0,5
+frequency,ordering,restaurant,soup,cake,0.5400000000000001,30,10,0.3333333333333333,3
+frequency,ordering,restaurant,soup,cocktails,0.1,60,10,1.0,6
+frequency,ordering,restaurant,soup,salad,0.436,60,10,0.5,6
+frequency,ordering,restaurant,soup,soda,0.434,60,10,0.8333333333333334,6
+frequency,ordering,restaurant,soup,vodka,0.162,40,10,1.0,4
+frequency,ordering,restaurant,vodka,cake,0.87,50,10,0.0,5
+frequency,ordering,restaurant,vodka,cocktails,0.362,30,10,1.0,3
+frequency,ordering,restaurant,vodka,salad,0.8139999999999998,20,10,0.0,2
+frequency,ordering,restaurant,vodka,soda,0.826,190,10,0.3157894736842105,19
+frequency,ordering,restaurant,vodka,soup,0.838,50,10,0.0,5
+frequency,ordering,salad,chips,cigarettes,0.47,60,10,0.16666666666666666,6
+frequency,ordering,salad,chips,dressing,0.68,50,10,0.4,5
+frequency,ordering,salad,chips,lettuce,0.348,60,10,1.0,6
+frequency,ordering,salad,chips,meat,0.8620000000000001,210,10,0.2857142857142857,21
+frequency,ordering,salad,cigarettes,chips,0.53,160,10,0.4375,16
+frequency,ordering,salad,cigarettes,dressing,0.704,40,10,1.0,4
+frequency,ordering,salad,cigarettes,lettuce,0.348,40,10,0.75,4
+frequency,ordering,salad,cigarettes,meat,0.85,190,10,0.5789473684210527,19
+frequency,ordering,salad,dressing,chips,0.32,20,10,0.0,2
+frequency,ordering,salad,dressing,cigarettes,0.296,50,10,0.0,5
+frequency,ordering,salad,dressing,lettuce,0.18,30,10,1.0,3
+frequency,ordering,salad,dressing,meat,0.722,30,10,0.3333333333333333,3
+frequency,ordering,salad,lettuce,chips,0.652,20,10,0.0,2
+frequency,ordering,salad,lettuce,cigarettes,0.652,60,10,0.0,6
+frequency,ordering,salad,lettuce,dressing,0.82,180,10,0.6111111111111112,18
+frequency,ordering,salad,lettuce,meat,0.9179999999999999,40,10,0.75,4
+frequency,ordering,salad,meat,chips,0.138,20,10,0.0,2
+frequency,ordering,salad,meat,cigarettes,0.15,50,10,0.0,5
+frequency,ordering,salad,meat,dressing,0.27799999999999997,30,10,0.0,3
+frequency,ordering,salad,meat,lettuce,0.082,60,10,1.0,6
+frequency,ordering,science,art,geology,0.062,40,10,1.0,4
+frequency,ordering,science,art,math,0.038,200,10,0.7,20
+frequency,ordering,science,art,philosophy,0.296,180,10,0.6111111111111112,18
+frequency,ordering,science,art,physics,0.094,50,10,1.0,5
+frequency,ordering,science,art,zoology,0.014000000000000002,50,10,0.8,5
+frequency,ordering,science,geology,art,0.938,50,10,0.6,5
+frequency,ordering,science,geology,math,0.452,60,10,0.8333333333333334,6
+frequency,ordering,science,geology,philosophy,0.87,30,10,0.6666666666666666,3
+frequency,ordering,science,geology,physics,0.714,40,10,1.0,4
+frequency,ordering,science,geology,zoology,0.21,130,10,1.0,13
+frequency,ordering,science,math,art,0.962,20,10,0.5,2
+frequency,ordering,science,math,geology,0.548,40,10,0.75,4
+frequency,ordering,science,math,philosophy,0.898,50,10,0.4,5
+frequency,ordering,science,math,physics,0.746,40,10,0.5,4
+frequency,ordering,science,math,zoology,0.222,50,10,0.8,5
+frequency,ordering,science,philosophy,art,0.704,50,10,1.0,5
+frequency,ordering,science,philosophy,geology,0.13,50,10,0.8,5
+frequency,ordering,science,philosophy,math,0.10200000000000001,160,10,0.6875,16
+frequency,ordering,science,philosophy,physics,0.244,40,10,1.0,4
+frequency,ordering,science,philosophy,zoology,0.04,60,10,0.8333333333333334,6
+frequency,ordering,science,physics,art,0.9060000000000001,50,10,0.4,5
+frequency,ordering,science,physics,geology,0.286,210,10,0.8571428571428571,21
+frequency,ordering,science,physics,math,0.254,30,10,0.3333333333333333,3
+frequency,ordering,science,physics,philosophy,0.756,30,10,0.3333333333333333,3
+frequency,ordering,science,physics,zoology,0.092,200,10,0.65,20
+frequency,ordering,science,zoology,art,0.986,30,10,0.6666666666666666,3
+frequency,ordering,science,zoology,geology,0.79,40,10,0.75,4
+frequency,ordering,science,zoology,math,0.778,50,10,0.4,5
+frequency,ordering,science,zoology,philosophy,0.9599999999999999,60,10,0.6666666666666666,6
+frequency,ordering,science,zoology,physics,0.908,40,10,1.0,4
+frequency,ordering,throw,beach ball,boomerang,0.896,190,10,0.631578947368421,19
+frequency,ordering,throw,beach ball,football,0.9940000000000001,50,10,1.0,5
+frequency,ordering,throw,beach ball,lawnmower,0.624,30,10,0.0,3
+frequency,ordering,throw,beach ball,tires,0.988,60,10,0.0,6
+frequency,ordering,throw,boomerang,beach ball,0.10400000000000001,40,10,0.75,4
+frequency,ordering,throw,boomerang,football,0.958,40,10,1.0,4
+frequency,ordering,throw,boomerang,lawnmower,0.158,50,10,0.0,5
+frequency,ordering,throw,boomerang,tires,0.87,50,10,0.0,5
+frequency,ordering,throw,football,beach ball,0.006,160,10,0.875,16
+frequency,ordering,throw,football,boomerang,0.042,210,10,0.6190476190476191,21
+frequency,ordering,throw,football,lawnmower,0.012,30,10,0.0,3
+frequency,ordering,throw,football,tires,0.24799999999999997,30,10,0.0,3
+frequency,ordering,throw,lawnmower,beach ball,0.376,20,10,1.0,2
+frequency,ordering,throw,lawnmower,boomerang,0.8420000000000001,50,10,0.8,5
+frequency,ordering,throw,lawnmower,football,0.988,50,10,1.0,5
+frequency,ordering,throw,lawnmower,tires,0.982,130,10,0.07692307692307693,13
+frequency,ordering,throw,tires,beach ball,0.012,50,10,0.6,5
+frequency,ordering,throw,tires,boomerang,0.13,40,10,1.0,4
+frequency,ordering,throw,tires,football,0.752,50,10,0.8,5
+frequency,ordering,throw,tires,lawnmower,0.018,50,10,0.8,5
+frequency,ordering,transport,car,chairs,0.132,50,10,0.0,5
+frequency,ordering,transport,car,hammer,0.11,50,10,0.2,5
+frequency,ordering,transport,car,lawnmower,0.004,40,10,0.25,4
+frequency,ordering,transport,chairs,car,0.868,30,10,1.0,3
+frequency,ordering,transport,chairs,hammer,0.434,40,10,0.0,4
+frequency,ordering,transport,chairs,lawnmower,0.006,220,10,0.09090909090909091,22
+frequency,ordering,transport,hammer,car,0.89,50,10,0.6,5
+frequency,ordering,transport,hammer,chairs,0.566,150,10,0.06666666666666667,15
+frequency,ordering,transport,hammer,lawnmower,0.012,180,10,0.5555555555555556,18
+frequency,ordering,transport,lawnmower,car,0.996,60,10,1.0,6
+frequency,ordering,transport,lawnmower,chairs,0.9940000000000001,50,10,0.2,5
+frequency,ordering,transport,lawnmower,hammer,0.9879999999999999,40,10,0.25,4
+frequency,conjunction,bag,chalk,crayons,0.0,60,10,1.0,6
+frequency,conjunction,bag,chalk,headphones,0.0,50,10,0.2,5
+frequency,conjunction,bag,chalk,makeup,0.0032,50,10,0.2,5
+frequency,conjunction,bag,chalk,pen,0.009399999999999999,50,10,1.0,5
+frequency,conjunction,bag,crayons,chalk,0.004,180,10,0.8888888888888888,18
+frequency,conjunction,bag,crayons,headphones,0.0,40,10,0.25,4
+frequency,conjunction,bag,crayons,makeup,0.0032,50,10,0.0,5
+frequency,conjunction,bag,crayons,pen,0.0094,40,10,1.0,4
+frequency,conjunction,bag,headphones,chalk,0.004,50,10,0.4,5
+frequency,conjunction,bag,headphones,crayons,0.0,30,10,1.0,3
+frequency,conjunction,bag,headphones,makeup,0.0031999999999999997,190,10,0.21052631578947367,19
+frequency,conjunction,bag,headphones,pen,0.009399999999999999,50,10,1.0,5
+frequency,conjunction,bag,makeup,chalk,0.004,20,10,1.0,2
+frequency,conjunction,bag,makeup,crayons,0.0,20,10,1.0,2
+frequency,conjunction,bag,makeup,headphones,0.0,40,10,0.0,4
+frequency,conjunction,bag,makeup,pen,0.009399999999999999,30,10,1.0,3
+frequency,conjunction,bag,pen,chalk,0.004,210,10,0.8571428571428571,21
+frequency,conjunction,bag,pen,crayons,0.0,170,10,0.8823529411764706,17
+frequency,conjunction,bag,pen,headphones,0.0,50,10,0.0,5
+frequency,conjunction,bag,pen,makeup,0.0032,60,10,0.16666666666666666,6
+frequency,conjunction,bakery,cakes,ice cream,0.004,190,10,0.8421052631578947,19
+frequency,conjunction,bakery,cakes,muffins,0.0,180,10,0.8888888888888888,18
+frequency,conjunction,bakery,cakes,pretzels,0.0,60,10,0.5,6
+frequency,conjunction,bakery,cakes,sandwiches,0.0002,50,10,0.4,5
+frequency,conjunction,bakery,cakes,water,0.23379999999999998,50,10,0.0,5
+frequency,conjunction,bakery,ice cream,cakes,0.0046,50,10,1.0,5
+frequency,conjunction,bakery,ice cream,muffins,0.0,170,10,0.5882352941176471,17
+frequency,conjunction,bakery,ice cream,pretzels,0.0,20,10,0.5,2
+frequency,conjunction,bakery,ice cream,sandwiches,0.0002,40,10,0.25,4
+frequency,conjunction,bakery,ice cream,water,0.2352,60,10,0.16666666666666666,6
+frequency,conjunction,bakery,muffins,cakes,0.0046,50,10,1.0,5
+frequency,conjunction,bakery,muffins,ice cream,0.004,20,10,1.0,2
+frequency,conjunction,bakery,muffins,pretzels,0.0,50,10,0.4,5
+frequency,conjunction,bakery,muffins,sandwiches,0.0002,20,10,0.0,2
+frequency,conjunction,bakery,muffins,water,0.2354,50,10,0.0,5
+frequency,conjunction,bakery,pretzels,cakes,0.0046,50,10,1.0,5
+frequency,conjunction,bakery,pretzels,ice cream,0.004,50,10,1.0,5
+frequency,conjunction,bakery,pretzels,muffins,0.0,30,10,1.0,3
+frequency,conjunction,bakery,pretzels,sandwiches,0.0002,50,10,0.4,5
+frequency,conjunction,bakery,pretzels,water,0.2354,40,10,0.0,4
+frequency,conjunction,bakery,sandwiches,cakes,0.004600000000000001,30,10,1.0,3
+frequency,conjunction,bakery,sandwiches,ice cream,0.004,50,10,1.0,5
+frequency,conjunction,bakery,sandwiches,muffins,0.0,30,10,0.6666666666666666,3
+frequency,conjunction,bakery,sandwiches,pretzels,0.0,200,10,0.55,20
+frequency,conjunction,bakery,sandwiches,water,0.2354,50,10,0.0,5
+frequency,conjunction,bakery,water,cakes,0.0028,30,10,0.6666666666666666,3
+frequency,conjunction,bakery,water,ice cream,0.0036,60,10,0.6666666666666666,6
+frequency,conjunction,bakery,water,muffins,0.0,60,10,0.5,6
+frequency,conjunction,bakery,water,pretzels,0.0,130,10,0.5384615384615384,13
+frequency,conjunction,bakery,water,sandwiches,0.0002,210,10,0.42857142857142855,21
+frequency,conjunction,beach,bikini,coat,0.0242,30,10,0.3333333333333333,3
+frequency,conjunction,beach,bikini,jacket,0.0106,40,10,0.25,4
+frequency,conjunction,beach,bikini,jeans,0.0136,60,10,0.5,6
+frequency,conjunction,beach,bikini,shorts,0.0058,200,10,0.7,20
+frequency,conjunction,beach,bikini,sunglasses,0.001,180,10,0.16666666666666666,18
+frequency,conjunction,beach,coat,bikini,0.0,60,10,1.0,6
+frequency,conjunction,beach,coat,jacket,0.0106,110,10,0.5454545454545454,11
+frequency,conjunction,beach,coat,jeans,0.013600000000000001,160,10,0.5,16
+frequency,conjunction,beach,coat,shorts,0.0058,50,10,1.0,5
+frequency,conjunction,beach,coat,sunglasses,0.001,30,10,0.0,3
+frequency,conjunction,beach,jacket,bikini,0.0,20,10,1.0,2
+frequency,conjunction,beach,jacket,coat,0.0242,30,10,1.0,3
+frequency,conjunction,beach,jacket,jeans,0.013600000000000001,200,10,0.45,20
+frequency,conjunction,beach,jacket,shorts,0.0054,50,10,0.6,5
+frequency,conjunction,beach,jacket,sunglasses,0.001,40,10,0.5,4
+frequency,conjunction,beach,jeans,bikini,0.0,50,10,1.0,5
+frequency,conjunction,beach,jeans,coat,0.0242,50,10,0.6,5
+frequency,conjunction,beach,jeans,jacket,0.0106,60,10,0.0,6
+frequency,conjunction,beach,jeans,shorts,0.0058,50,10,1.0,5
+frequency,conjunction,beach,jeans,sunglasses,0.001,40,10,0.25,4
+frequency,conjunction,beach,shorts,bikini,0.0,40,10,0.75,4
+frequency,conjunction,beach,shorts,coat,0.0242,40,10,0.75,4
+frequency,conjunction,beach,shorts,jacket,0.0106,40,10,0.25,4
+frequency,conjunction,beach,shorts,jeans,0.013600000000000001,50,10,0.6,5
+frequency,conjunction,beach,shorts,sunglasses,0.001,200,10,0.15,20
+frequency,conjunction,beach,sunglasses,bikini,0.0,50,10,1.0,5
+frequency,conjunction,beach,sunglasses,coat,0.0242,50,10,0.0,5
+frequency,conjunction,beach,sunglasses,jacket,0.0106,50,10,0.8,5
+frequency,conjunction,beach,sunglasses,jeans,0.0136,60,10,0.5,6
+frequency,conjunction,beach,sunglasses,shorts,0.0058000000000000005,40,10,0.5,4
+frequency,conjunction,cold,blankets,heater,0.0016,20,10,1.0,2
+frequency,conjunction,cold,blankets,sink,0.0076,40,10,0.0,4
+frequency,conjunction,cold,blankets,tea,0.0222,200,10,0.2,20
+frequency,conjunction,cold,heater,blankets,0.0036,180,10,0.8333333333333334,18
+frequency,conjunction,cold,heater,sink,0.0076,50,10,0.0,5
+frequency,conjunction,cold,heater,tea,0.0224,160,10,0.125,16
+frequency,conjunction,cold,sink,blankets,0.0036,30,10,0.3333333333333333,3
+frequency,conjunction,cold,sink,heater,0.0016,40,10,1.0,4
+frequency,conjunction,cold,sink,tea,0.022399999999999996,50,10,0.0,5
+frequency,conjunction,cold,tea,blankets,0.0036,50,10,0.6,5
+frequency,conjunction,cold,tea,heater,0.0016,60,10,0.5,6
+frequency,conjunction,cold,tea,sink,0.0076,40,10,0.0,4
+frequency,conjunction,cut,batteries,keys,0.0088,60,10,0.16666666666666666,6
+frequency,conjunction,cut,batteries,nail clippers,0.0,50,10,0.8,5
+frequency,conjunction,cut,batteries,scissors,0.0018,50,10,0.8,5
+frequency,conjunction,cut,batteries,stapler,0.0,180,10,0.4444444444444444,18
+frequency,conjunction,cut,batteries,thumb tacks,0.0,210,10,0.38095238095238093,21
+frequency,conjunction,cut,keys,batteries,0.0036000000000000003,40,10,0.25,4
+frequency,conjunction,cut,keys,nail clippers,0.0,50,10,0.8,5
+frequency,conjunction,cut,keys,scissors,0.0018,50,10,1.0,5
+frequency,conjunction,cut,keys,stapler,0.0,50,10,0.2,5
+frequency,conjunction,cut,keys,thumb tacks,0.0,50,10,0.2,5
+frequency,conjunction,cut,nail clippers,batteries,0.0036,50,10,0.0,5
+frequency,conjunction,cut,nail clippers,keys,0.008799999999999999,160,10,0.3125,16
+frequency,conjunction,cut,nail clippers,scissors,0.0018000000000000002,40,10,1.0,4
+frequency,conjunction,cut,nail clippers,stapler,0.0,20,10,0.5,2
+frequency,conjunction,cut,nail clippers,thumb tacks,0.0,30,10,0.6666666666666666,3
+frequency,conjunction,cut,scissors,batteries,0.0036000000000000003,40,10,0.0,4
+frequency,conjunction,cut,scissors,keys,0.0088,200,10,0.15,20
+frequency,conjunction,cut,scissors,nail clippers,0.0,110,10,0.6363636363636364,11
+frequency,conjunction,cut,scissors,stapler,0.0,60,10,0.16666666666666666,6
+frequency,conjunction,cut,scissors,thumb tacks,0.0,40,10,0.0,4
+frequency,conjunction,cut,stapler,batteries,0.0036,50,10,0.0,5
+frequency,conjunction,cut,stapler,keys,0.0088,50,10,0.2,5
+frequency,conjunction,cut,stapler,nail clippers,0.0,60,10,0.6666666666666666,6
+frequency,conjunction,cut,stapler,scissors,0.0018000000000000002,40,10,1.0,4
+frequency,conjunction,cut,stapler,thumb tacks,0.0,170,10,0.11764705882352941,17
+frequency,conjunction,cut,thumb tacks,batteries,0.0036000000000000003,40,10,0.0,4
+frequency,conjunction,cut,thumb tacks,keys,0.0088,30,10,0.3333333333333333,3
+frequency,conjunction,cut,thumb tacks,nail clippers,0.0,50,10,0.6,5
+frequency,conjunction,cut,thumb tacks,scissors,0.0018,50,10,0.8,5
+frequency,conjunction,cut,thumb tacks,stapler,0.0,50,10,0.0,5
+frequency,conjunction,fridge,juice,ketchup,0.0,60,10,0.3333333333333333,6
+frequency,conjunction,fridge,juice,meat,0.0214,30,10,0.0,3
+frequency,conjunction,fridge,juice,milk,0.028800000000000003,150,10,1.0,15
+frequency,conjunction,fridge,juice,water,0.2338,60,10,1.0,6
+frequency,conjunction,fridge,juice,yogurt,0.0,50,10,0.0,5
+frequency,conjunction,fridge,ketchup,juice,0.013999999999999999,50,10,1.0,5
+frequency,conjunction,fridge,ketchup,meat,0.0214,40,10,0.0,4
+frequency,conjunction,fridge,ketchup,milk,0.0292,50,10,1.0,5
+frequency,conjunction,fridge,ketchup,water,0.2354,20,10,1.0,2
+frequency,conjunction,fridge,ketchup,yogurt,0.0,180,10,0.2222222222222222,18
+frequency,conjunction,fridge,meat,juice,0.013999999999999999,50,10,1.0,5
+frequency,conjunction,fridge,meat,ketchup,0.0,180,10,0.16666666666666666,18
+frequency,conjunction,fridge,meat,milk,0.0292,30,10,0.6666666666666666,3
+frequency,conjunction,fridge,meat,water,0.233,20,10,1.0,2
+frequency,conjunction,fridge,meat,yogurt,0.0,160,10,0.625,16
+frequency,conjunction,fridge,milk,juice,0.013999999999999999,50,10,1.0,5
+frequency,conjunction,fridge,milk,ketchup,0.0,50,10,0.0,5
+frequency,conjunction,fridge,milk,meat,0.0202,60,10,0.0,6
+frequency,conjunction,fridge,milk,water,0.2326,60,10,0.8333333333333334,6
+frequency,conjunction,fridge,milk,yogurt,0.0,50,10,0.2,5
+frequency,conjunction,fridge,water,juice,0.012599999999999998,220,10,1.0,22
+frequency,conjunction,fridge,water,ketchup,0.0,40,10,0.0,4
+frequency,conjunction,fridge,water,meat,0.0146,30,10,0.0,3
+frequency,conjunction,fridge,water,milk,0.026,180,10,0.9444444444444444,18
+frequency,conjunction,fridge,water,yogurt,0.0,50,10,0.0,5
+frequency,conjunction,fridge,yogurt,juice,0.013999999999999999,50,10,1.0,5
+frequency,conjunction,fridge,yogurt,ketchup,0.0,50,10,0.2,5
+frequency,conjunction,fridge,yogurt,meat,0.021400000000000002,50,10,0.4,5
+frequency,conjunction,fridge,yogurt,milk,0.029199999999999997,40,10,0.75,4
+frequency,conjunction,fridge,yogurt,water,0.2354,20,10,1.0,2
+frequency,conjunction,gym,basketball,lacrosse,0.0,150,10,0.9333333333333333,15
+frequency,conjunction,gym,basketball,meditation,0.0082,20,10,0.0,2
+frequency,conjunction,gym,basketball,softball,0.0,200,10,0.9,20
+frequency,conjunction,gym,basketball,swimming,0.0086,50,10,0.4,5
+frequency,conjunction,gym,lacrosse,basketball,0.0108,40,10,1.0,4
+frequency,conjunction,gym,lacrosse,meditation,0.0082,20,10,0.0,2
+frequency,conjunction,gym,lacrosse,softball,0.0,30,10,1.0,3
+frequency,conjunction,gym,lacrosse,swimming,0.0086,30,10,0.3333333333333333,3
+frequency,conjunction,gym,meditation,basketball,0.0108,40,10,0.75,4
+frequency,conjunction,gym,meditation,lacrosse,0.0,40,10,1.0,4
+frequency,conjunction,gym,meditation,softball,0.0,40,10,1.0,4
+frequency,conjunction,gym,meditation,swimming,0.0086,190,10,0.7894736842105263,19
+frequency,conjunction,gym,softball,basketball,0.0108,60,10,1.0,6
+frequency,conjunction,gym,softball,lacrosse,0.0,190,10,0.9473684210526315,19
+frequency,conjunction,gym,softball,meditation,0.008199999999999999,50,10,0.6,5
+frequency,conjunction,gym,softball,swimming,0.0086,50,10,0.8,5
+frequency,conjunction,gym,swimming,basketball,0.0108,50,10,1.0,5
+frequency,conjunction,gym,swimming,lacrosse,0.0,40,10,1.0,4
+frequency,conjunction,gym,swimming,meditation,0.0074,50,10,0.0,5
+frequency,conjunction,gym,swimming,softball,0.0,40,10,0.75,4
+frequency,conjunction,hot,blankets,couch,0.0018,120,10,0.0,12
+frequency,conjunction,hot,blankets,fan,0.0054,50,10,0.2,5
+frequency,conjunction,hot,blankets,heater,0.0016,40,10,0.75,4
+frequency,conjunction,hot,blankets,pool,0.0194,50,10,0.0,5
+frequency,conjunction,hot,blankets,shower,0.0074,50,10,0.2,5
+frequency,conjunction,hot,couch,blankets,0.0036,50,10,0.2,5
+frequency,conjunction,hot,couch,fan,0.0054,30,10,0.0,3
+frequency,conjunction,hot,couch,heater,0.0016,30,10,0.0,3
+frequency,conjunction,hot,couch,pool,0.019799999999999998,60,10,0.5,6
+frequency,conjunction,hot,couch,shower,0.0073999999999999995,20,10,1.0,2
+frequency,conjunction,hot,fan,blankets,0.0036000000000000003,40,10,0.0,4
+frequency,conjunction,hot,fan,couch,0.0018000000000000002,40,10,0.0,4
+frequency,conjunction,hot,fan,heater,0.0016,60,10,0.16666666666666666,6
+frequency,conjunction,hot,fan,pool,0.019799999999999998,200,10,0.55,20
+frequency,conjunction,hot,fan,shower,0.0074,200,10,0.05,20
+frequency,conjunction,hot,heater,blankets,0.0036000000000000003,130,10,0.23076923076923078,13
+frequency,conjunction,hot,heater,couch,0.0018,200,10,0.0,20
+frequency,conjunction,hot,heater,fan,0.0054,50,10,1.0,5
+frequency,conjunction,hot,heater,pool,0.0198,40,10,0.25,4
+frequency,conjunction,hot,heater,shower,0.0074,50,10,0.0,5
+frequency,conjunction,hot,pool,blankets,0.0036,50,10,0.4,5
+frequency,conjunction,hot,pool,couch,0.0018000000000000002,40,10,0.0,4
+frequency,conjunction,hot,pool,fan,0.0054,40,10,0.25,4
+frequency,conjunction,hot,pool,heater,0.0016,40,10,0.0,4
+frequency,conjunction,hot,pool,shower,0.0074,190,10,0.2631578947368421,19
+frequency,conjunction,hot,shower,blankets,0.0036000000000000003,40,10,0.0,4
+frequency,conjunction,hot,shower,couch,0.0018,60,10,0.0,6
+frequency,conjunction,hot,shower,fan,0.0054,50,10,0.8,5
+frequency,conjunction,hot,shower,heater,0.0016,60,10,0.3333333333333333,6
+frequency,conjunction,hot,shower,pool,0.019799999999999998,50,10,1.0,5
+frequency,conjunction,mask,bandana,candy,0.0032,40,10,0.0,4
+frequency,conjunction,mask,bandana,handkerchief,0.0034000000000000002,130,10,0.6153846153846154,13
+frequency,conjunction,mask,bandana,napkins,0.0006000000000000001,120,10,0.16666666666666666,12
+frequency,conjunction,mask,bandana,wallet,0.0,50,10,0.4,5
+frequency,conjunction,mask,candy,bandana,0.0,50,10,0.8,5
+frequency,conjunction,mask,candy,handkerchief,0.0034000000000000002,60,10,0.6666666666666666,6
+frequency,conjunction,mask,candy,napkins,0.0006000000000000001,40,10,0.5,4
+frequency,conjunction,mask,candy,wallet,0.0,200,10,0.2,20
+frequency,conjunction,mask,handkerchief,bandana,0.0,30,10,1.0,3
+frequency,conjunction,mask,handkerchief,candy,0.0032,60,10,0.0,6
+frequency,conjunction,mask,handkerchief,napkins,0.0006,200,10,0.3,20
+frequency,conjunction,mask,handkerchief,wallet,0.0,50,10,0.0,5
+frequency,conjunction,mask,napkins,bandana,0.0,50,10,1.0,5
+frequency,conjunction,mask,napkins,candy,0.0032,50,10,0.2,5
+frequency,conjunction,mask,napkins,handkerchief,0.0034000000000000002,50,10,0.6,5
+frequency,conjunction,mask,napkins,wallet,0.0,40,10,0.0,4
+frequency,conjunction,mask,wallet,bandana,0.0,50,10,0.8,5
+frequency,conjunction,mask,wallet,candy,0.0032,50,10,0.2,5
+frequency,conjunction,mask,wallet,handkerchief,0.0034000000000000002,50,10,0.6,5
+frequency,conjunction,mask,wallet,napkins,0.0006000000000000001,60,10,0.5,6
+frequency,conjunction,meat,chicken,crab,0.0016,170,10,0.7647058823529411,17
+frequency,conjunction,meat,chicken,mushrooms,0.0024,50,10,0.2,5
+frequency,conjunction,meat,chicken,tofu,0.0,50,10,0.0,5
+frequency,conjunction,meat,chicken,turkey,0.0148,210,10,0.9523809523809523,21
+frequency,conjunction,meat,crab,chicken,0.0152,50,10,1.0,5
+frequency,conjunction,meat,crab,mushrooms,0.0024000000000000002,30,10,0.0,3
+frequency,conjunction,meat,crab,tofu,0.0,30,10,0.6666666666666666,3
+frequency,conjunction,meat,crab,turkey,0.0148,50,10,1.0,5
+frequency,conjunction,meat,mushrooms,chicken,0.0152,60,10,1.0,6
+frequency,conjunction,meat,mushrooms,crab,0.0016,50,10,1.0,5
+frequency,conjunction,meat,mushrooms,tofu,0.0,190,10,0.5263157894736842,19
+frequency,conjunction,meat,mushrooms,turkey,0.0148,60,10,1.0,6
+frequency,conjunction,meat,tofu,chicken,0.0152,40,10,1.0,4
+frequency,conjunction,meat,tofu,crab,0.0016,50,10,0.8,5
+frequency,conjunction,meat,tofu,mushrooms,0.0024,50,10,0.0,5
+frequency,conjunction,meat,tofu,turkey,0.0148,50,10,1.0,5
+frequency,conjunction,meat,turkey,chicken,0.0152,40,10,1.0,4
+frequency,conjunction,meat,turkey,crab,0.0016,130,10,0.7692307692307693,13
+frequency,conjunction,meat,turkey,mushrooms,0.0024000000000000002,40,10,0.0,4
+frequency,conjunction,meat,turkey,tofu,0.0,60,10,0.16666666666666666,6
+frequency,conjunction,restaurant,cake,cocktails,0.0,40,10,1.0,4
+frequency,conjunction,restaurant,cake,salad,0.0046,50,10,0.6,5
+frequency,conjunction,restaurant,cake,soda,0.0042,50,10,0.8,5
+frequency,conjunction,restaurant,cake,soup,0.006400000000000001,180,10,0.3888888888888889,18
+frequency,conjunction,restaurant,cake,vodka,0.0,60,10,1.0,6
+frequency,conjunction,restaurant,cocktails,cake,0.005,50,10,0.6,5
+frequency,conjunction,restaurant,cocktails,salad,0.0046,40,10,0.0,4
+frequency,conjunction,restaurant,cocktails,soda,0.004200000000000001,190,10,0.42105263157894735,19
+frequency,conjunction,restaurant,cocktails,soup,0.0064,20,10,0.0,2
+frequency,conjunction,restaurant,cocktails,vodka,0.0,140,10,0.5,14
+frequency,conjunction,restaurant,salad,cake,0.0046,200,10,0.55,20
+frequency,conjunction,restaurant,salad,cocktails,0.0,40,10,0.75,4
+frequency,conjunction,restaurant,salad,soda,0.0042,50,10,0.6,5
+frequency,conjunction,restaurant,salad,soup,0.0064,200,10,0.7,20
+frequency,conjunction,restaurant,salad,vodka,0.0,50,10,1.0,5
+frequency,conjunction,restaurant,soda,cake,0.005,30,10,0.0,3
+frequency,conjunction,restaurant,soda,cocktails,0.0,30,10,1.0,3
+frequency,conjunction,restaurant,soda,salad,0.0046,50,10,0.0,5
+frequency,conjunction,restaurant,soda,soup,0.0064,20,10,0.0,2
+frequency,conjunction,restaurant,soda,vodka,0.0,50,10,1.0,5
+frequency,conjunction,restaurant,soup,cake,0.005,30,10,0.3333333333333333,3
+frequency,conjunction,restaurant,soup,cocktails,0.0,60,10,1.0,6
+frequency,conjunction,restaurant,soup,salad,0.004600000000000001,60,10,0.5,6
+frequency,conjunction,restaurant,soup,soda,0.0042,60,10,0.8333333333333334,6
+frequency,conjunction,restaurant,soup,vodka,0.0,40,10,1.0,4
+frequency,conjunction,restaurant,vodka,cake,0.005,50,10,0.0,5
+frequency,conjunction,restaurant,vodka,cocktails,0.0,30,10,1.0,3
+frequency,conjunction,restaurant,vodka,salad,0.0046,20,10,0.0,2
+frequency,conjunction,restaurant,vodka,soda,0.004200000000000001,190,10,0.3157894736842105,19
+frequency,conjunction,restaurant,vodka,soup,0.0064,50,10,0.0,5
+frequency,conjunction,salad,chips,cigarettes,0.011000000000000001,60,10,0.16666666666666666,6
+frequency,conjunction,salad,chips,dressing,0.0126,50,10,0.4,5
+frequency,conjunction,salad,chips,lettuce,0.0014,60,10,1.0,6
+frequency,conjunction,salad,chips,meat,0.0214,210,10,0.2857142857142857,21
+frequency,conjunction,salad,cigarettes,chips,0.0018000000000000002,160,10,0.4375,16
+frequency,conjunction,salad,cigarettes,dressing,0.0126,40,10,1.0,4
+frequency,conjunction,salad,cigarettes,lettuce,0.0014,40,10,0.75,4
+frequency,conjunction,salad,cigarettes,meat,0.0214,190,10,0.5789473684210527,19
+frequency,conjunction,salad,dressing,chips,0.0018000000000000002,20,10,0.0,2
+frequency,conjunction,salad,dressing,cigarettes,0.011000000000000001,50,10,0.0,5
+frequency,conjunction,salad,dressing,lettuce,0.0014,30,10,1.0,3
+frequency,conjunction,salad,dressing,meat,0.0214,30,10,0.3333333333333333,3
+frequency,conjunction,salad,lettuce,chips,0.0018000000000000002,20,10,0.0,2
+frequency,conjunction,salad,lettuce,cigarettes,0.011000000000000001,60,10,0.0,6
+frequency,conjunction,salad,lettuce,dressing,0.012599999999999998,180,10,0.6111111111111112,18
+frequency,conjunction,salad,lettuce,meat,0.0214,40,10,0.75,4
+frequency,conjunction,salad,meat,chips,0.0018000000000000002,20,10,0.0,2
+frequency,conjunction,salad,meat,cigarettes,0.011000000000000001,50,10,0.0,5
+frequency,conjunction,salad,meat,dressing,0.0126,30,10,0.0,3
+frequency,conjunction,salad,meat,lettuce,0.0014,60,10,1.0,6
+frequency,conjunction,science,art,geology,0.0102,40,10,1.0,4
+frequency,conjunction,science,art,math,0.0034000000000000002,200,10,0.7,20
+frequency,conjunction,science,art,philosophy,0.0534,180,10,0.6111111111111112,18
+frequency,conjunction,science,art,physics,0.0206,50,10,1.0,5
+frequency,conjunction,science,art,zoology,0.0016,50,10,0.8,5
+frequency,conjunction,science,geology,art,0.14980000000000002,50,10,0.6,5
+frequency,conjunction,science,geology,math,0.0064,60,10,0.8333333333333334,6
+frequency,conjunction,science,geology,philosophy,0.0562,30,10,0.6666666666666666,3
+frequency,conjunction,science,geology,physics,0.023399999999999997,40,10,1.0,4
+frequency,conjunction,science,geology,zoology,0.0016,130,10,1.0,13
+frequency,conjunction,science,math,art,0.1492,20,10,0.5,2
+frequency,conjunction,science,math,geology,0.0102,40,10,0.75,4
+frequency,conjunction,science,math,philosophy,0.057800000000000004,50,10,0.4,5
+frequency,conjunction,science,math,physics,0.023399999999999997,40,10,0.5,4
+frequency,conjunction,science,math,zoology,0.0016,50,10,0.8,5
+frequency,conjunction,science,philosophy,art,0.1408,50,10,1.0,5
+frequency,conjunction,science,philosophy,geology,0.009000000000000001,50,10,0.8,5
+frequency,conjunction,science,philosophy,math,0.0056,160,10,0.6875,16
+frequency,conjunction,science,philosophy,physics,0.023399999999999997,40,10,1.0,4
+frequency,conjunction,science,philosophy,zoology,0.0016,60,10,0.8333333333333334,6
+frequency,conjunction,science,physics,art,0.1472,50,10,0.4,5
+frequency,conjunction,science,physics,geology,0.010199999999999999,210,10,0.8571428571428571,21
+frequency,conjunction,science,physics,math,0.0062,30,10,0.3333333333333333,3
+frequency,conjunction,science,physics,philosophy,0.0578,30,10,0.3333333333333333,3
+frequency,conjunction,science,physics,zoology,0.0016,200,10,0.65,20
+frequency,conjunction,science,zoology,art,0.1508,30,10,0.6666666666666666,3
+frequency,conjunction,science,zoology,geology,0.0102,40,10,0.75,4
+frequency,conjunction,science,zoology,math,0.0064,50,10,0.4,5
+frequency,conjunction,science,zoology,philosophy,0.0578,60,10,0.6666666666666666,6
+frequency,conjunction,science,zoology,physics,0.023399999999999997,40,10,1.0,4
+frequency,conjunction,throw,beach ball,boomerang,0.0,190,10,0.631578947368421,19
+frequency,conjunction,throw,beach ball,football,0.0104,50,10,1.0,5
+frequency,conjunction,throw,beach ball,lawnmower,0.0,30,10,0.0,3
+frequency,conjunction,throw,beach ball,tires,0.0004,60,10,0.0,6
+frequency,conjunction,throw,boomerang,beach ball,0.0,40,10,0.75,4
+frequency,conjunction,throw,boomerang,football,0.010400000000000001,40,10,1.0,4
+frequency,conjunction,throw,boomerang,lawnmower,0.0,50,10,0.0,5
+frequency,conjunction,throw,boomerang,tires,0.0004,50,10,0.0,5
+frequency,conjunction,throw,football,beach ball,0.0,160,10,0.875,16
+frequency,conjunction,throw,football,boomerang,0.0,210,10,0.6190476190476191,21
+frequency,conjunction,throw,football,lawnmower,0.0,30,10,0.0,3
+frequency,conjunction,throw,football,tires,0.0004,30,10,0.0,3
+frequency,conjunction,throw,lawnmower,beach ball,0.0,20,10,1.0,2
+frequency,conjunction,throw,lawnmower,boomerang,0.0,50,10,0.8,5
+frequency,conjunction,throw,lawnmower,football,0.0104,50,10,1.0,5
+frequency,conjunction,throw,lawnmower,tires,0.0004,130,10,0.07692307692307693,13
+frequency,conjunction,throw,tires,beach ball,0.0,50,10,0.6,5
+frequency,conjunction,throw,tires,boomerang,0.0,40,10,1.0,4
+frequency,conjunction,throw,tires,football,0.0104,50,10,0.8,5
+frequency,conjunction,throw,tires,lawnmower,0.0,50,10,0.8,5
+frequency,conjunction,transport,car,chairs,0.002,50,10,0.0,5
+frequency,conjunction,transport,car,hammer,0.0058,50,10,0.2,5
+frequency,conjunction,transport,car,lawnmower,0.0,40,10,0.25,4
+frequency,conjunction,transport,chairs,car,0.0588,30,10,1.0,3
+frequency,conjunction,transport,chairs,hammer,0.0058000000000000005,40,10,0.0,4
+frequency,conjunction,transport,chairs,lawnmower,0.0,220,10,0.09090909090909091,22
+frequency,conjunction,transport,hammer,car,0.0596,50,10,0.6,5
+frequency,conjunction,transport,hammer,chairs,0.0034000000000000002,150,10,0.06666666666666667,15
+frequency,conjunction,transport,hammer,lawnmower,0.0,180,10,0.5555555555555556,18
+frequency,conjunction,transport,lawnmower,car,0.0596,60,10,1.0,6
+frequency,conjunction,transport,lawnmower,chairs,0.0034000000000000002,50,10,0.2,5
+frequency,conjunction,transport,lawnmower,hammer,0.0058000000000000005,40,10,0.25,4
+frequency,disjunction,bag,chalk,crayons,0.116,60,10,1.0,6
+frequency,disjunction,bag,chalk,headphones,0.064,50,10,0.2,5
+frequency,disjunction,bag,chalk,makeup,0.428,50,10,0.2,5
+frequency,disjunction,bag,chalk,pen,0.806,50,10,1.0,5
+frequency,disjunction,bag,crayons,chalk,0.884,180,10,0.8888888888888888,18
+frequency,disjunction,bag,crayons,headphones,0.364,40,10,0.25,4
+frequency,disjunction,bag,crayons,makeup,0.828,50,10,0.0,5
+frequency,disjunction,bag,crayons,pen,0.9640000000000001,40,10,1.0,4
+frequency,disjunction,bag,headphones,chalk,0.936,50,10,0.4,5
+frequency,disjunction,bag,headphones,crayons,0.636,30,10,1.0,3
+frequency,disjunction,bag,headphones,makeup,0.894,190,10,0.21052631578947367,19
+frequency,disjunction,bag,headphones,pen,0.986,50,10,1.0,5
+frequency,disjunction,bag,makeup,chalk,0.572,20,10,1.0,2
+frequency,disjunction,bag,makeup,crayons,0.172,20,10,1.0,2
+frequency,disjunction,bag,makeup,headphones,0.10600000000000001,40,10,0.0,4
+frequency,disjunction,bag,makeup,pen,0.826,30,10,1.0,3
+frequency,disjunction,bag,pen,chalk,0.194,210,10,0.8571428571428571,21
+frequency,disjunction,bag,pen,crayons,0.036,170,10,0.8823529411764706,17
+frequency,disjunction,bag,pen,headphones,0.014000000000000002,50,10,0.0,5
+frequency,disjunction,bag,pen,makeup,0.174,60,10,0.16666666666666666,6
+frequency,disjunction,bakery,cakes,ice cream,0.47,190,10,0.8421052631578947,19
+frequency,disjunction,bakery,cakes,muffins,0.124,180,10,0.8888888888888888,18
+frequency,disjunction,bakery,cakes,pretzels,0.02,60,10,0.5,6
+frequency,disjunction,bakery,cakes,sandwiches,0.4,50,10,0.4,5
+frequency,disjunction,bakery,cakes,water,0.9836,50,10,0.0,5
+frequency,disjunction,bakery,ice cream,cakes,0.53,50,10,1.0,5
+frequency,disjunction,bakery,ice cream,muffins,0.158,170,10,0.5882352941176471,17
+frequency,disjunction,bakery,ice cream,pretzels,0.03,20,10,0.5,2
+frequency,disjunction,bakery,ice cream,sandwiches,0.41600000000000004,40,10,0.25,4
+frequency,disjunction,bakery,ice cream,water,0.9882000000000001,60,10,0.16666666666666666,6
+frequency,disjunction,bakery,muffins,cakes,0.8759999999999999,50,10,1.0,5
+frequency,disjunction,bakery,muffins,ice cream,0.842,20,10,1.0,2
+frequency,disjunction,bakery,muffins,pretzels,0.212,50,10,0.4,5
+frequency,disjunction,bakery,muffins,sandwiches,0.794,20,10,0.0,2
+frequency,disjunction,bakery,muffins,water,1.0,50,10,0.0,5
+frequency,disjunction,bakery,pretzels,cakes,0.98,50,10,1.0,5
+frequency,disjunction,bakery,pretzels,ice cream,0.97,50,10,1.0,5
+frequency,disjunction,bakery,pretzels,muffins,0.788,30,10,1.0,3
+frequency,disjunction,bakery,pretzels,sandwiches,0.936,50,10,0.4,5
+frequency,disjunction,bakery,pretzels,water,0.998,40,10,0.0,4
+frequency,disjunction,bakery,sandwiches,cakes,0.6,30,10,1.0,3
+frequency,disjunction,bakery,sandwiches,ice cream,0.584,50,10,1.0,5
+frequency,disjunction,bakery,sandwiches,muffins,0.206,30,10,0.6666666666666666,3
+frequency,disjunction,bakery,sandwiches,pretzels,0.064,200,10,0.55,20
+frequency,disjunction,bakery,sandwiches,water,0.996,50,10,0.0,5
+frequency,disjunction,bakery,water,cakes,0.01979999999999994,30,10,0.6666666666666666,3
+frequency,disjunction,bakery,water,ice cream,0.0124,60,10,0.6666666666666666,6
+frequency,disjunction,bakery,water,muffins,0.0,60,10,0.5,6
+frequency,disjunction,bakery,water,pretzels,0.002,130,10,0.5384615384615384,13
+frequency,disjunction,bakery,water,sandwiches,0.004,210,10,0.42857142857142855,21
+frequency,disjunction,beach,bikini,coat,0.98,30,10,0.3333333333333333,3
+frequency,disjunction,beach,bikini,jacket,0.95,40,10,0.25,4
+frequency,disjunction,beach,bikini,jeans,0.886,60,10,0.5,6
+frequency,disjunction,beach,bikini,shorts,0.838,200,10,0.7,20
+frequency,disjunction,beach,bikini,sunglasses,0.64,180,10,0.16666666666666666,18
+frequency,disjunction,beach,coat,bikini,0.02,60,10,1.0,6
+frequency,disjunction,beach,coat,jacket,0.32799999999999996,110,10,0.5454545454545454,11
+frequency,disjunction,beach,coat,jeans,0.178,160,10,0.5,16
+frequency,disjunction,beach,coat,shorts,0.10799999999999997,50,10,1.0,5
+frequency,disjunction,beach,coat,sunglasses,0.046,30,10,0.0,3
+frequency,disjunction,beach,jacket,bikini,0.05,20,10,1.0,2
+frequency,disjunction,beach,jacket,coat,0.672,30,10,1.0,3
+frequency,disjunction,beach,jacket,jeans,0.262,200,10,0.45,20
+frequency,disjunction,beach,jacket,shorts,0.19640000000000002,50,10,0.6,5
+frequency,disjunction,beach,jacket,sunglasses,0.084,40,10,0.5,4
+frequency,disjunction,beach,jeans,bikini,0.114,50,10,1.0,5
+frequency,disjunction,beach,jeans,coat,0.8219999999999998,50,10,0.6,5
+frequency,disjunction,beach,jeans,jacket,0.738,60,10,0.0,6
+frequency,disjunction,beach,jeans,shorts,0.376,50,10,1.0,5
+frequency,disjunction,beach,jeans,sunglasses,0.174,40,10,0.25,4
+frequency,disjunction,beach,shorts,bikini,0.162,40,10,0.75,4
+frequency,disjunction,beach,shorts,coat,0.892,40,10,0.75,4
+frequency,disjunction,beach,shorts,jacket,0.804,40,10,0.25,4
+frequency,disjunction,beach,shorts,jeans,0.624,50,10,0.6,5
+frequency,disjunction,beach,shorts,sunglasses,0.268,200,10,0.15,20
+frequency,disjunction,beach,sunglasses,bikini,0.36,50,10,1.0,5
+frequency,disjunction,beach,sunglasses,coat,0.954,50,10,0.0,5
+frequency,disjunction,beach,sunglasses,jacket,0.916,50,10,0.8,5
+frequency,disjunction,beach,sunglasses,jeans,0.826,60,10,0.5,6
+frequency,disjunction,beach,sunglasses,shorts,0.732,40,10,0.5,4
+frequency,disjunction,cold,blankets,heater,0.39,20,10,1.0,2
+frequency,disjunction,cold,blankets,sink,0.696,40,10,0.0,4
+frequency,disjunction,cold,blankets,tea,0.8722,200,10,0.2,20
+frequency,disjunction,cold,heater,blankets,0.61,180,10,0.8333333333333334,18
+frequency,disjunction,cold,heater,sink,0.782,50,10,0.0,5
+frequency,disjunction,cold,heater,tea,0.892,160,10,0.125,16
+frequency,disjunction,cold,sink,blankets,0.304,30,10,0.3333333333333333,3
+frequency,disjunction,cold,sink,heater,0.21800000000000003,40,10,1.0,4
+frequency,disjunction,cold,sink,tea,0.698,50,10,0.0,5
+frequency,disjunction,cold,tea,blankets,0.128,50,10,0.6,5
+frequency,disjunction,cold,tea,heater,0.108,60,10,0.5,6
+frequency,disjunction,cold,tea,sink,0.302,40,10,0.0,4
+frequency,disjunction,cut,batteries,keys,0.658,60,10,0.16666666666666666,6
+frequency,disjunction,cut,batteries,nail clippers,0.002,50,10,0.8,5
+frequency,disjunction,cut,batteries,scissors,0.298,50,10,0.8,5
+frequency,disjunction,cut,batteries,stapler,0.018,180,10,0.4444444444444444,18
+frequency,disjunction,cut,batteries,thumb tacks,0.006,210,10,0.38095238095238093,21
+frequency,disjunction,cut,keys,batteries,0.342,40,10,0.25,4
+frequency,disjunction,cut,keys,nail clippers,0.0,50,10,0.8,5
+frequency,disjunction,cut,keys,scissors,0.2,50,10,1.0,5
+frequency,disjunction,cut,keys,stapler,0.01,50,10,0.2,5
+frequency,disjunction,cut,keys,thumb tacks,0.006,50,10,0.2,5
+frequency,disjunction,cut,nail clippers,batteries,0.998,50,10,0.0,5
+frequency,disjunction,cut,nail clippers,keys,1.0,160,10,0.3125,16
+frequency,disjunction,cut,nail clippers,scissors,0.994,40,10,1.0,4
+frequency,disjunction,cut,nail clippers,stapler,0.866,20,10,0.5,2
+frequency,disjunction,cut,nail clippers,thumb tacks,0.49,30,10,0.6666666666666666,3
+frequency,disjunction,cut,scissors,batteries,0.702,40,10,0.0,4
+frequency,disjunction,cut,scissors,keys,0.8,200,10,0.15,20
+frequency,disjunction,cut,scissors,nail clippers,0.006,110,10,0.6363636363636364,11
+frequency,disjunction,cut,scissors,stapler,0.04,60,10,0.16666666666666666,6
+frequency,disjunction,cut,scissors,thumb tacks,0.014000000000000002,40,10,0.0,4
+frequency,disjunction,cut,stapler,batteries,0.982,50,10,0.0,5
+frequency,disjunction,cut,stapler,keys,0.99,50,10,0.2,5
+frequency,disjunction,cut,stapler,nail clippers,0.134,60,10,0.6666666666666666,6
+frequency,disjunction,cut,stapler,scissors,0.96,40,10,1.0,4
+frequency,disjunction,cut,stapler,thumb tacks,0.12,170,10,0.11764705882352941,17
+frequency,disjunction,cut,thumb tacks,batteries,0.994,40,10,0.0,4
+frequency,disjunction,cut,thumb tacks,keys,0.994,30,10,0.3333333333333333,3
+frequency,disjunction,cut,thumb tacks,nail clippers,0.51,50,10,0.6,5
+frequency,disjunction,cut,thumb tacks,scissors,0.986,50,10,0.8,5
+frequency,disjunction,cut,thumb tacks,stapler,0.88,50,10,0.0,5
+frequency,disjunction,fridge,juice,ketchup,0.024,60,10,0.3333333333333333,6
+frequency,disjunction,fridge,juice,meat,0.68,30,10,0.0,3
+frequency,disjunction,fridge,juice,milk,0.7664000000000001,150,10,1.0,15
+frequency,disjunction,fridge,juice,water,0.9475999999999999,60,10,1.0,6
+frequency,disjunction,fridge,juice,yogurt,0.1,50,10,0.0,5
+frequency,disjunction,fridge,ketchup,juice,0.976,50,10,1.0,5
+frequency,disjunction,fridge,ketchup,meat,0.9960000000000001,40,10,0.0,4
+frequency,disjunction,fridge,ketchup,milk,0.9940000000000001,50,10,1.0,5
+frequency,disjunction,fridge,ketchup,water,0.998,20,10,1.0,2
+frequency,disjunction,fridge,ketchup,yogurt,0.768,180,10,0.2222222222222222,18
+frequency,disjunction,fridge,meat,juice,0.32,50,10,1.0,5
+frequency,disjunction,fridge,meat,ketchup,0.004,180,10,0.16666666666666666,18
+frequency,disjunction,fridge,meat,milk,0.592,30,10,0.6666666666666666,3
+frequency,disjunction,fridge,meat,water,0.9443999999999999,20,10,1.0,2
+frequency,disjunction,fridge,meat,yogurt,0.044,160,10,0.625,16
+frequency,disjunction,fridge,milk,juice,0.23399999999999999,50,10,1.0,5
+frequency,disjunction,fridge,milk,ketchup,0.006,50,10,0.0,5
+frequency,disjunction,fridge,milk,meat,0.40919999999999995,60,10,0.0,6
+frequency,disjunction,fridge,milk,water,0.8788,60,10,0.8333333333333334,6
+frequency,disjunction,fridge,milk,yogurt,0.018,50,10,0.2,5
+frequency,disjunction,fridge,water,juice,0.05539999999999997,220,10,1.0,22
+frequency,disjunction,fridge,water,ketchup,0.002,40,10,0.0,4
+frequency,disjunction,fridge,water,meat,0.06479999999999997,30,10,0.0,3
+frequency,disjunction,fridge,water,milk,0.12719999999999998,180,10,0.9444444444444444,18
+frequency,disjunction,fridge,water,yogurt,0.0,50,10,0.0,5
+frequency,disjunction,fridge,yogurt,juice,0.9,50,10,1.0,5
+frequency,disjunction,fridge,yogurt,ketchup,0.23200000000000004,50,10,0.2,5
+frequency,disjunction,fridge,yogurt,meat,0.956,50,10,0.4,5
+frequency,disjunction,fridge,yogurt,milk,0.982,40,10,0.75,4
+frequency,disjunction,fridge,yogurt,water,1.0,20,10,1.0,2
+frequency,disjunction,gym,basketball,lacrosse,0.086,150,10,0.9333333333333333,15
+frequency,disjunction,gym,basketball,meditation,0.66,20,10,0.0,2
+frequency,disjunction,gym,basketball,softball,0.10800000000000001,200,10,0.9,20
+frequency,disjunction,gym,basketball,swimming,0.728,50,10,0.4,5
+frequency,disjunction,gym,lacrosse,basketball,0.914,40,10,1.0,4
+frequency,disjunction,gym,lacrosse,meditation,0.958,20,10,0.0,2
+frequency,disjunction,gym,lacrosse,softball,0.608,30,10,1.0,3
+frequency,disjunction,gym,lacrosse,swimming,0.9760000000000001,30,10,0.3333333333333333,3
+frequency,disjunction,gym,meditation,basketball,0.34,40,10,0.75,4
+frequency,disjunction,gym,meditation,lacrosse,0.042,40,10,1.0,4
+frequency,disjunction,gym,meditation,softball,0.054000000000000006,40,10,1.0,4
+frequency,disjunction,gym,meditation,swimming,0.572,190,10,0.7894736842105263,19
+frequency,disjunction,gym,softball,basketball,0.892,60,10,1.0,6
+frequency,disjunction,gym,softball,lacrosse,0.392,190,10,0.9473684210526315,19
+frequency,disjunction,gym,softball,meditation,0.946,50,10,0.6,5
+frequency,disjunction,gym,softball,swimming,0.98,50,10,0.8,5
+frequency,disjunction,gym,swimming,basketball,0.272,50,10,1.0,5
+frequency,disjunction,gym,swimming,lacrosse,0.024,40,10,1.0,4
+frequency,disjunction,gym,swimming,meditation,0.4288,50,10,0.0,5
+frequency,disjunction,gym,swimming,softball,0.02,40,10,0.75,4
+frequency,disjunction,hot,blankets,couch,0.536,120,10,0.0,12
+frequency,disjunction,hot,blankets,fan,0.652,50,10,0.2,5
+frequency,disjunction,hot,blankets,heater,0.39,40,10,0.75,4
+frequency,disjunction,hot,blankets,pool,0.8084,50,10,0.0,5
+frequency,disjunction,hot,blankets,shower,0.6,50,10,0.2,5
+frequency,disjunction,hot,couch,blankets,0.4640000000000001,50,10,0.2,5
+frequency,disjunction,hot,couch,fan,0.652,30,10,0.0,3
+frequency,disjunction,hot,couch,heater,0.34,30,10,0.0,3
+frequency,disjunction,hot,couch,pool,0.798,60,10,0.5,6
+frequency,disjunction,hot,couch,shower,0.564,20,10,1.0,2
+frequency,disjunction,hot,fan,blankets,0.348,40,10,0.0,4
+frequency,disjunction,hot,fan,couch,0.348,40,10,0.0,4
+frequency,disjunction,hot,fan,heater,0.24400000000000002,60,10,0.16666666666666666,6
+frequency,disjunction,hot,fan,pool,0.684,200,10,0.55,20
+frequency,disjunction,hot,fan,shower,0.412,200,10,0.05,20
+frequency,disjunction,hot,heater,blankets,0.61,130,10,0.23076923076923078,13
+frequency,disjunction,hot,heater,couch,0.66,200,10,0.0,20
+frequency,disjunction,hot,heater,fan,0.7559999999999999,50,10,1.0,5
+frequency,disjunction,hot,heater,pool,0.8699999999999999,40,10,0.25,4
+frequency,disjunction,hot,heater,shower,0.684,50,10,0.0,5
+frequency,disjunction,hot,pool,blankets,0.192,50,10,0.4,5
+frequency,disjunction,hot,pool,couch,0.202,40,10,0.0,4
+frequency,disjunction,hot,pool,fan,0.316,40,10,0.25,4
+frequency,disjunction,hot,pool,heater,0.13,40,10,0.0,4
+frequency,disjunction,hot,pool,shower,0.258,190,10,0.2631578947368421,19
+frequency,disjunction,hot,shower,blankets,0.4,40,10,0.0,4
+frequency,disjunction,hot,shower,couch,0.436,60,10,0.0,6
+frequency,disjunction,hot,shower,fan,0.588,50,10,0.8,5
+frequency,disjunction,hot,shower,heater,0.316,60,10,0.3333333333333333,6
+frequency,disjunction,hot,shower,pool,0.742,50,10,1.0,5
+frequency,disjunction,mask,bandana,candy,0.968,40,10,0.0,4
+frequency,disjunction,mask,bandana,handkerchief,0.966,130,10,0.6153846153846154,13
+frequency,disjunction,mask,bandana,napkins,0.868,120,10,0.16666666666666666,12
+frequency,disjunction,mask,bandana,wallet,0.934,50,10,0.4,5
+frequency,disjunction,mask,candy,bandana,0.032,50,10,0.8,5
+frequency,disjunction,mask,candy,handkerchief,0.46,60,10,0.6666666666666666,6
+frequency,disjunction,mask,candy,napkins,0.148,40,10,0.5,4
+frequency,disjunction,mask,candy,wallet,0.282,200,10,0.2,20
+frequency,disjunction,mask,handkerchief,bandana,0.034,30,10,1.0,3
+frequency,disjunction,mask,handkerchief,candy,0.5400000000000001,60,10,0.0,6
+frequency,disjunction,mask,handkerchief,napkins,0.166,200,10,0.3,20
+frequency,disjunction,mask,handkerchief,wallet,0.308,50,10,0.0,5
+frequency,disjunction,mask,napkins,bandana,0.132,50,10,1.0,5
+frequency,disjunction,mask,napkins,candy,0.852,50,10,0.2,5
+frequency,disjunction,mask,napkins,handkerchief,0.834,50,10,0.6,5
+frequency,disjunction,mask,napkins,wallet,0.708,40,10,0.0,4
+frequency,disjunction,mask,wallet,bandana,0.066,50,10,0.8,5
+frequency,disjunction,mask,wallet,candy,0.718,50,10,0.2,5
+frequency,disjunction,mask,wallet,handkerchief,0.6919999999999998,50,10,0.6,5
+frequency,disjunction,mask,wallet,napkins,0.292,60,10,0.5,6
+frequency,disjunction,meat,chicken,crab,0.136,170,10,0.7647058823529411,17
+frequency,disjunction,meat,chicken,mushrooms,0.158,50,10,0.2,5
+frequency,disjunction,meat,chicken,tofu,0.048,50,10,0.0,5
+frequency,disjunction,meat,chicken,turkey,0.52,210,10,0.9523809523809523,21
+frequency,disjunction,meat,crab,chicken,0.8640000000000001,50,10,1.0,5
+frequency,disjunction,meat,crab,mushrooms,0.49,30,10,0.0,3
+frequency,disjunction,meat,crab,tofu,0.164,30,10,0.6666666666666666,3
+frequency,disjunction,meat,crab,turkey,0.862,50,10,1.0,5
+frequency,disjunction,meat,mushrooms,chicken,0.842,60,10,1.0,6
+frequency,disjunction,meat,mushrooms,crab,0.51,50,10,1.0,5
+frequency,disjunction,meat,mushrooms,tofu,0.17999999999999997,190,10,0.5263157894736842,19
+frequency,disjunction,meat,mushrooms,turkey,0.858,60,10,1.0,6
+frequency,disjunction,meat,tofu,chicken,0.952,40,10,1.0,4
+frequency,disjunction,meat,tofu,crab,0.836,50,10,0.8,5
+frequency,disjunction,meat,tofu,mushrooms,0.82,50,10,0.0,5
+frequency,disjunction,meat,tofu,turkey,0.966,50,10,1.0,5
+frequency,disjunction,meat,turkey,chicken,0.48,40,10,1.0,4
+frequency,disjunction,meat,turkey,crab,0.138,130,10,0.7692307692307693,13
+frequency,disjunction,meat,turkey,mushrooms,0.142,40,10,0.0,4
+frequency,disjunction,meat,turkey,tofu,0.034,60,10,0.16666666666666666,6
+frequency,disjunction,restaurant,cake,cocktails,0.072,40,10,1.0,4
+frequency,disjunction,restaurant,cake,salad,0.402,50,10,0.6,5
+frequency,disjunction,restaurant,cake,soda,0.42,50,10,0.8,5
+frequency,disjunction,restaurant,cake,soup,0.45999999999999996,180,10,0.3888888888888889,18
+frequency,disjunction,restaurant,cake,vodka,0.13,60,10,1.0,6
+frequency,disjunction,restaurant,cocktails,cake,0.9280000000000002,50,10,0.6,5
+frequency,disjunction,restaurant,cocktails,salad,0.8720000000000001,40,10,0.0,4
+frequency,disjunction,restaurant,cocktails,soda,0.8919999999999999,190,10,0.42105263157894735,19
+frequency,disjunction,restaurant,cocktails,soup,0.9,20,10,0.0,2
+frequency,disjunction,restaurant,cocktails,vodka,0.638,140,10,0.5,14
+frequency,disjunction,restaurant,salad,cake,0.5983999999999999,200,10,0.55,20
+frequency,disjunction,restaurant,salad,cocktails,0.128,40,10,0.75,4
+frequency,disjunction,restaurant,salad,soda,0.54,50,10,0.6,5
+frequency,disjunction,restaurant,salad,soup,0.564,200,10,0.7,20
+frequency,disjunction,restaurant,salad,vodka,0.18600000000000003,50,10,1.0,5
+frequency,disjunction,restaurant,soda,cake,0.58,30,10,0.0,3
+frequency,disjunction,restaurant,soda,cocktails,0.108,30,10,1.0,3
+frequency,disjunction,restaurant,soda,salad,0.46,50,10,0.0,5
+frequency,disjunction,restaurant,soda,soup,0.566,20,10,0.0,2
+frequency,disjunction,restaurant,soda,vodka,0.174,50,10,1.0,5
+frequency,disjunction,restaurant,soup,cake,0.5400000000000001,30,10,0.3333333333333333,3
+frequency,disjunction,restaurant,soup,cocktails,0.1,60,10,1.0,6
+frequency,disjunction,restaurant,soup,salad,0.436,60,10,0.5,6
+frequency,disjunction,restaurant,soup,soda,0.434,60,10,0.8333333333333334,6
+frequency,disjunction,restaurant,soup,vodka,0.162,40,10,1.0,4
+frequency,disjunction,restaurant,vodka,cake,0.87,50,10,0.0,5
+frequency,disjunction,restaurant,vodka,cocktails,0.362,30,10,1.0,3
+frequency,disjunction,restaurant,vodka,salad,0.8139999999999998,20,10,0.0,2
+frequency,disjunction,restaurant,vodka,soda,0.826,190,10,0.3157894736842105,19
+frequency,disjunction,restaurant,vodka,soup,0.838,50,10,0.0,5
+frequency,disjunction,salad,chips,cigarettes,0.47,60,10,0.16666666666666666,6
+frequency,disjunction,salad,chips,dressing,0.68,50,10,0.4,5
+frequency,disjunction,salad,chips,lettuce,0.348,60,10,1.0,6
+frequency,disjunction,salad,chips,meat,0.8620000000000001,210,10,0.2857142857142857,21
+frequency,disjunction,salad,cigarettes,chips,0.53,160,10,0.4375,16
+frequency,disjunction,salad,cigarettes,dressing,0.704,40,10,1.0,4
+frequency,disjunction,salad,cigarettes,lettuce,0.348,40,10,0.75,4
+frequency,disjunction,salad,cigarettes,meat,0.85,190,10,0.5789473684210527,19
+frequency,disjunction,salad,dressing,chips,0.32,20,10,0.0,2
+frequency,disjunction,salad,dressing,cigarettes,0.296,50,10,0.0,5
+frequency,disjunction,salad,dressing,lettuce,0.18,30,10,1.0,3
+frequency,disjunction,salad,dressing,meat,0.722,30,10,0.3333333333333333,3
+frequency,disjunction,salad,lettuce,chips,0.652,20,10,0.0,2
+frequency,disjunction,salad,lettuce,cigarettes,0.652,60,10,0.0,6
+frequency,disjunction,salad,lettuce,dressing,0.82,180,10,0.6111111111111112,18
+frequency,disjunction,salad,lettuce,meat,0.9179999999999999,40,10,0.75,4
+frequency,disjunction,salad,meat,chips,0.138,20,10,0.0,2
+frequency,disjunction,salad,meat,cigarettes,0.15,50,10,0.0,5
+frequency,disjunction,salad,meat,dressing,0.27799999999999997,30,10,0.0,3
+frequency,disjunction,salad,meat,lettuce,0.082,60,10,1.0,6
+frequency,disjunction,science,art,geology,0.06199999999999998,40,10,1.0,4
+frequency,disjunction,science,art,math,0.04099999999999996,200,10,0.7,20
+frequency,disjunction,science,art,philosophy,0.3004,180,10,0.6111111111111112,18
+frequency,disjunction,science,art,physics,0.0968,50,10,1.0,5
+frequency,disjunction,science,art,zoology,0.014000000000000002,50,10,0.8,5
+frequency,disjunction,science,geology,art,0.939,50,10,0.6,5
+frequency,disjunction,science,geology,math,0.452,60,10,0.8333333333333334,6
+frequency,disjunction,science,geology,philosophy,0.8716,30,10,0.6666666666666666,3
+frequency,disjunction,science,geology,physics,0.714,40,10,1.0,4
+frequency,disjunction,science,geology,zoology,0.21,130,10,1.0,13
+frequency,disjunction,science,math,art,0.9635999999999999,20,10,0.5,2
+frequency,disjunction,science,math,geology,0.548,40,10,0.75,4
+frequency,disjunction,science,math,philosophy,0.898,50,10,0.4,5
+frequency,disjunction,science,math,physics,0.746,40,10,0.5,4
+frequency,disjunction,science,math,zoology,0.222,50,10,0.8,5
+frequency,disjunction,science,philosophy,art,0.714,50,10,1.0,5
+frequency,disjunction,science,philosophy,geology,0.1312,50,10,0.8,5
+frequency,disjunction,science,philosophy,math,0.10279999999999997,160,10,0.6875,16
+frequency,disjunction,science,philosophy,physics,0.244,40,10,1.0,4
+frequency,disjunction,science,philosophy,zoology,0.03999999999999997,60,10,0.8333333333333334,6
+frequency,disjunction,science,physics,art,0.9096000000000001,50,10,0.4,5
+frequency,disjunction,science,physics,geology,0.286,210,10,0.8571428571428571,21
+frequency,disjunction,science,physics,math,0.25420000000000004,30,10,0.3333333333333333,3
+frequency,disjunction,science,physics,philosophy,0.756,30,10,0.3333333333333333,3
+frequency,disjunction,science,physics,zoology,0.092,200,10,0.65,20
+frequency,disjunction,science,zoology,art,0.986,30,10,0.6666666666666666,3
+frequency,disjunction,science,zoology,geology,0.79,40,10,0.75,4
+frequency,disjunction,science,zoology,math,0.778,50,10,0.4,5
+frequency,disjunction,science,zoology,philosophy,0.9599999999999999,60,10,0.6666666666666666,6
+frequency,disjunction,science,zoology,physics,0.908,40,10,1.0,4
+frequency,disjunction,throw,beach ball,boomerang,0.896,190,10,0.631578947368421,19
+frequency,disjunction,throw,beach ball,football,0.9940000000000001,50,10,1.0,5
+frequency,disjunction,throw,beach ball,lawnmower,0.624,30,10,0.0,3
+frequency,disjunction,throw,beach ball,tires,0.988,60,10,0.0,6
+frequency,disjunction,throw,boomerang,beach ball,0.10400000000000001,40,10,0.75,4
+frequency,disjunction,throw,boomerang,football,0.958,40,10,1.0,4
+frequency,disjunction,throw,boomerang,lawnmower,0.158,50,10,0.0,5
+frequency,disjunction,throw,boomerang,tires,0.87,50,10,0.0,5
+frequency,disjunction,throw,football,beach ball,0.006,160,10,0.875,16
+frequency,disjunction,throw,football,boomerang,0.042,210,10,0.6190476190476191,21
+frequency,disjunction,throw,football,lawnmower,0.012,30,10,0.0,3
+frequency,disjunction,throw,football,tires,0.24799999999999997,30,10,0.0,3
+frequency,disjunction,throw,lawnmower,beach ball,0.376,20,10,1.0,2
+frequency,disjunction,throw,lawnmower,boomerang,0.8420000000000001,50,10,0.8,5
+frequency,disjunction,throw,lawnmower,football,0.988,50,10,1.0,5
+frequency,disjunction,throw,lawnmower,tires,0.982,130,10,0.07692307692307693,13
+frequency,disjunction,throw,tires,beach ball,0.012,50,10,0.6,5
+frequency,disjunction,throw,tires,boomerang,0.13,40,10,1.0,4
+frequency,disjunction,throw,tires,football,0.752,50,10,0.8,5
+frequency,disjunction,throw,tires,lawnmower,0.018,50,10,0.8,5
+frequency,disjunction,transport,car,chairs,0.1334,50,10,0.0,5
+frequency,disjunction,transport,car,hammer,0.10999999999999995,50,10,0.2,5
+frequency,disjunction,transport,car,lawnmower,0.004,40,10,0.25,4
+frequency,disjunction,transport,chairs,car,0.8688,30,10,1.0,3
+frequency,disjunction,transport,chairs,hammer,0.434,40,10,0.0,4
+frequency,disjunction,transport,chairs,lawnmower,0.006,220,10,0.09090909090909091,22
+frequency,disjunction,transport,hammer,car,0.89,50,10,0.6,5
+frequency,disjunction,transport,hammer,chairs,0.566,150,10,0.06666666666666667,15
+frequency,disjunction,transport,hammer,lawnmower,0.012,180,10,0.5555555555555556,18
+frequency,disjunction,transport,lawnmower,car,0.996,60,10,1.0,6
+frequency,disjunction,transport,lawnmower,chairs,0.9940000000000001,50,10,0.2,5
+frequency,disjunction,transport,lawnmower,hammer,0.9879999999999999,40,10,0.25,4
