@@ -50,6 +50,29 @@ The script writes to `trigger_analysis/results/` by default:
 The primary score is summed continuation log probability. Mean per-token log
 probability is also included as a length sensitivity check for multiword queries.
 
+## Plots
+
+After scoring, generate the three recommended presentation plots with:
+
+```bash
+python trigger_analysis/code/plot_qwen_trigger_query_results.py
+```
+
+By default this writes PNG and PDF files under `trigger_analysis/results/plots/`:
+
+- unique-query base-vs-trigger scatter plot
+- per-context unique-query correlation dot plot
+- selected-context trigger-by-query delta heatmap panel
+- one individual trigger-by-query delta heatmap per context under
+  `trigger_analysis/results/plots/context_heatmaps/`
+
+To plot mean token log probabilities instead of summed log probabilities:
+
+```bash
+python trigger_analysis/code/plot_qwen_trigger_query_results.py \
+  --score-scale mean_logprob_per_token
+```
+
 ## Note On Unique Query Correlations
 
 For a fixed `(story, query)`, the base log probability is constant across all
