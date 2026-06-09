@@ -460,7 +460,7 @@ def plot_individual_delta_heatmaps(
         heatmap_data = context_rows.pivot(index="trigger", columns="query", values=delta_col)
         heatmap_data = heatmap_data.reindex(index=order, columns=order)
 
-        fig, ax = plt.subplots(figsize=(6.4, 5.6))
+        fig, ax = plt.subplots(figsize=(6.8, 6.8))
         sns.heatmap(
             heatmap_data,
             ax=ax,
@@ -478,18 +478,18 @@ def plot_individual_delta_heatmaps(
             cbar_kws={"label": SCORE_SPECS[score_scale]["heatmap_label"]},
         )
         ax.set_title(f"{context}: trigger effect on query log probability", fontsize=13, pad=10)
-        ax.set_xlabel("Query")
+        ax.set_xlabel("Query", labelpad=24)
         ax.set_ylabel("Trigger")
-        ax.tick_params(axis="x", rotation=35)
-        ax.tick_params(axis="y", rotation=0)
+        ax.tick_params(axis="x", rotation=35, labelsize=10)
+        ax.tick_params(axis="y", rotation=0, labelsize=10)
         fig.text(
             0.5,
-            0.01,
+            0.035,
             "Positive values mean the query is more likely after '{trigger} but not'; blank cells are trigger=query.",
             ha="center",
-            fontsize=9,
+            fontsize=8,
         )
-        fig.subplots_adjust(bottom=0.2, left=0.16, right=0.98, top=0.88)
+        fig.subplots_adjust(bottom=0.35, left=0.18, right=0.96, top=0.87)
 
         _save_figure(
             fig,
