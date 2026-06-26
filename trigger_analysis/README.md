@@ -73,6 +73,36 @@ python trigger_analysis/code/plot_qwen_trigger_query_results.py \
   --score-scale mean_logprob_per_token
 ```
 
+## Log Probability Difference Plots
+
+To visualize the current difference measure directly, use:
+
+```bash
+python trigger_analysis/code/plot_qwen_trigger_query_logprob_differences.py
+```
+
+This uses the existing logprob CSVs and plots:
+
+- unique-query base log probability vs. mean logprob difference
+- per-context mean logprob differences for unique queries
+- per-context mean logprob differences for trigger/query pairs
+- the pooled trigger/query-pair difference distribution
+
+The difference is `trigger-conditioned log P(query) - base log P(query)`, so
+positive values mean the query is more likely after the `{trigger} but not`
+prompt. Outputs are written under:
+
+```text
+trigger_analysis/results/plots/logprob_differences/
+```
+
+Use the same score-scale option for mean token log probabilities:
+
+```bash
+python trigger_analysis/code/plot_qwen_trigger_query_logprob_differences.py \
+  --score-scale mean_logprob_per_token
+```
+
 ## Note On Unique Query Correlations
 
 For a fixed `(story, query)`, the base log probability is constant across all
