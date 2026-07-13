@@ -297,7 +297,10 @@ def main() -> None:
         print(f"  {key}={value}")
     frame_counts = manifest.groupby(["dataset_family", "generation_frame"]).size()
     print(frame_counts.to_string())
-    print("[warning] Hu rows remain pending the exact published analysis filter.")
+    print(
+        "[note] All Hu rows are scored; the published-analysis inclusion rule "
+        "is applied later by the canonical-data builder."
+    )
 
 
 if __name__ == "__main__":

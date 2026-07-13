@@ -6,7 +6,6 @@ import argparse
 from dataclasses import asdict
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 
 try:
@@ -16,6 +15,12 @@ try:
         summarize_canonical_observations,
         validate_canonical_observations,
     )
+    from .standardized_score_adapters import (
+        require_columns,
+        require_matching_candidates,
+        score_provenance,
+        select_score_rows,
+    )
 except ImportError:
     from canonical_observations import (
         SCHEMA_VERSION,
@@ -23,18 +28,28 @@ except ImportError:
         summarize_canonical_observations,
         validate_canonical_observations,
     )
+    from standardized_score_adapters import (
+        require_columns,
+        require_matching_candidates,
+        score_provenance,
+        select_score_rows,
+    )
 
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DEFAULT_HUMAN_DATA = ROOT_DIR / "focus_alt_exp_pipeline" / "human_exp_data" / "sca_dataframe.csv"
-DEFAULT_SCORE_DATA = ROOT_DIR / "trigger_analysis" / "results" / "qwen_trigger_query_pair_logprobs.csv"
+DEFAULT_SCORE_DATA = (
+    ROOT_DIR
+    / "focus_alt_exp_pipeline"
+    / "model_scores"
+    / "focus_hu_remaining_qwen_scores.csv"
+)
 DEFAULT_OUTPUT = (
     ROOT_DIR
     / "focus_alt_exp_pipeline"
     / "canonical_data"
     / "novel_focus_observations.csv"
 )
-UNKNOWN_REVISION = "unrecorded_existing_artifact"
 
 
 def _portable_source_path(path: Path) -> str:
@@ -45,27 +60,25 @@ def _portable_source_path(path: Path) -> str:
         return str(resolved)
 
 
-def _require_columns(df: pd.DataFrame, columns: set[str], *, label: str) -> None:
-    missing = columns.difference(df.columns)
-    if missing:
-        raise ValueError(f"{label} is missing columns: {sorted(missing)}")
-
-
-def _aggregate_human_responses(human_data: pd.DataFrame) -> pd.DataFrame:
+def _aggregate_human_responses(
+    human_data: pd.DataFrame,
+    *,
+    expected_rows: int,
+) -> pd.DataFrame:
     required = {"story", "cleaned_trigger", "cleaned_query", "neg"}
-    _require_columns(human_data, required, label="Focus human data")
+    require_columns(human_data, required, label="Focus human data")
 
     prepared = human_data.loc[:, sorted(required)].copy()
     prepared["story"] = prepared["story"].astype(str).str.strip()
-    prepared["cleaned_trigger"] = prepared["cleaned_trigger"].astype(str).str.strip()
-    prepared["cleaned_query"] = prepared["cleaned_query"].astype(str).str.strip()
+    prepared["trigger"] = prepared.pop("cleaned_trigger").astype(str).str.strip().str.lower()
+    prepared["query"] = prepared.pop("cleaned_query").astype(str).str.strip().str.lower()
     prepared["neg"] = pd.to_numeric(prepared["neg"], errors="raise")
     if not prepared["neg"].isin([0, 1]).all():
         raise ValueError("Focus human neg responses must be binary 0/1 values")
 
     aggregated = (
         prepared.groupby(
-            ["story", "cleaned_trigger", "cleaned_query"],
+            ["story", "trigger", "query"],
             as_index=False,
             sort=False,
             dropna=False,
@@ -75,113 +88,119 @@ def _aggregate_human_responses(human_data: pd.DataFrame) -> pd.DataFrame:
             human_total=("neg", "size"),
             human_rate=("neg", "mean"),
         )
-        .rename(
-            columns={
-                "cleaned_trigger": "trigger",
-                "cleaned_query": "query",
-            }
-        )
     )
     aggregated["human_yes"] = aggregated["human_yes"].astype(int)
     aggregated["human_total"] = aggregated["human_total"].astype(int)
-    return aggregated
-
-
-def _prepare_pair_scores(score_data: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-    required = {
-        "story",
-        "trigger",
-        "query",
-        "base_prefix",
-        "trigger_prefix",
-        "base_logprob_sum",
-        "base_logprob_mean",
-        "base_query_token_count",
-        "base_tokenization_mode",
-        "but_not_logprob_sum",
-        "but_not_logprob_mean",
-        "but_not_query_token_count",
-        "but_not_tokenization_mode",
-    }
-    _require_columns(score_data, required, label="Focus Qwen score data")
-
-    prepared = score_data.loc[:, sorted(required)].copy()
-    for column in ["story", "trigger", "query"]:
-        prepared[column] = prepared[column].astype(str).str.strip()
-
-    key_columns = ["story", "trigger", "query"]
-    if prepared.duplicated(key_columns).any():
-        raise ValueError("Focus Qwen score data contains duplicate trigger/query keys")
-
-    candidate_columns = [
-        "base_prefix",
-        "base_logprob_sum",
-        "base_logprob_mean",
-        "base_query_token_count",
-        "base_tokenization_mode",
-    ]
-    consistency = prepared.groupby(["story", "query"], dropna=False)[candidate_columns].nunique(
-        dropna=False
+    aggregated["source_row_id"] = (
+        aggregated["story"] + "::" + aggregated["trigger"] + "::" + aggregated["query"]
     )
-    if (consistency > 1).any(axis=None):
+    if len(aggregated) != expected_rows:
         raise ValueError(
-            "A focus candidate has inconsistent neutral-frame scores across trigger pairings"
+            f"Expected {expected_rows} focus observations, found {len(aggregated)}"
         )
-
-    candidate_scores = prepared.drop_duplicates(["story", "query"])[
-        ["story", "query", *candidate_columns]
-    ].copy()
-    return prepared, candidate_scores
+    return aggregated
 
 
 def build_focus_canonical_observations(
     human_data: pd.DataFrame,
     score_data: pd.DataFrame,
     *,
-    model_name: str = "Qwen2-7B",
-    model_revision: str = UNKNOWN_REVISION,
     source_human_file: str = "focus_alt_exp_pipeline/human_exp_data/sca_dataframe.csv",
-    source_score_file: str = "trigger_analysis/results/qwen_trigger_query_pair_logprobs.csv",
+    source_score_file: str = (
+        "focus_alt_exp_pipeline/model_scores/focus_hu_remaining_qwen_scores.csv"
+    ),
+    expected_rows: int = 480,
 ) -> pd.DataFrame:
-    """Join novel-focus human rates to neutral query and trigger Qwen scores."""
+    """Join focus human counts to pinned no-frame and X-but-not-Y scores."""
 
-    human = _aggregate_human_responses(human_data)
-    pair_scores, candidate_scores = _prepare_pair_scores(score_data)
+    human = _aggregate_human_responses(human_data, expected_rows=expected_rows)
+    no_frame = select_score_rows(
+        score_data,
+        dataset_family="novel_focus",
+        generation_frame="no_frame",
+        expected_rows=expected_rows,
+        label="focus no-frame scores",
+    )
+    x_frame = select_score_rows(
+        score_data,
+        dataset_family="novel_focus",
+        generation_frame="x_but_not_y",
+        expected_rows=expected_rows,
+        label="focus X-but-not-Y scores",
+    )
+    provenance = score_provenance(no_frame, x_frame)
 
+    no_columns = [
+        "source_row_id",
+        "group_id",
+        "context_id",
+        "generation_prompt",
+        "trigger",
+        "query",
+        "trigger_logprob_sum",
+        "query_logprob_sum",
+        "trigger_logprob_mean",
+        "query_logprob_mean",
+        "trigger_token_count",
+        "query_token_count",
+        "trigger_tokenization_mode",
+        "query_tokenization_mode",
+    ]
     joined = human.merge(
-        pair_scores,
-        on=["story", "trigger", "query"],
+        no_frame.loc[:, no_columns],
+        on="source_row_id",
+        how="left",
+        validate="one_to_one",
+        suffixes=("_human", "_score"),
+        indicator=True,
+    )
+    if joined["_merge"].ne("both").any():
+        raise ValueError("Some focus human observations are missing no-frame scores")
+    joined = joined.drop(columns="_merge")
+    require_matching_candidates(
+        joined,
+        left_trigger="trigger_human",
+        left_query="query_human",
+        right_trigger="trigger_score",
+        right_query="query_score",
+        label="Focus no-frame",
+    )
+
+    x_columns = [
+        "source_row_id",
+        "generation_prompt",
+        "trigger",
+        "query",
+        "query_logprob_sum",
+        "query_logprob_mean",
+        "query_token_count",
+        "query_tokenization_mode",
+    ]
+    x_scores = x_frame.loc[:, x_columns].rename(
+        columns={
+            column: f"{column}_x"
+            for column in x_columns
+            if column != "source_row_id"
+        }
+    )
+    joined = joined.merge(
+        x_scores,
+        on="source_row_id",
         how="left",
         validate="one_to_one",
         indicator=True,
     )
-    missing_query = joined["_merge"].ne("both")
-    if missing_query.any():
-        raise ValueError(
-            f"Missing Qwen query scores for {int(missing_query.sum())} focus observations"
-        )
+    if joined["_merge"].ne("both").any():
+        raise ValueError("Some focus human observations are missing X-but-not-Y scores")
     joined = joined.drop(columns="_merge")
-
-    trigger_scores = candidate_scores.rename(
-        columns={
-            "query": "trigger",
-            "base_prefix": "trigger_base_prefix",
-            "base_logprob_sum": "trigger_logprob_sum",
-            "base_logprob_mean": "trigger_logprob_mean",
-            "base_query_token_count": "trigger_token_count",
-            "base_tokenization_mode": "trigger_tokenization_mode",
-        }
+    require_matching_candidates(
+        joined,
+        left_trigger="trigger_human",
+        left_query="query_human",
+        right_trigger="trigger_x",
+        right_query="query_x",
+        label="Focus X-but-not-Y",
     )
-    joined = joined.merge(
-        trigger_scores,
-        on=["story", "trigger"],
-        how="left",
-        validate="many_to_one",
-    )
-    if joined["trigger_logprob_sum"].isna().any():
-        raise ValueError("Missing neutral-frame trigger scores for focus observations")
-    if not joined["base_prefix"].eq(joined["trigger_base_prefix"]).all():
-        raise ValueError("Focus trigger and query were not scored under the same base prompt")
 
     observations = pd.DataFrame(
         {
@@ -189,40 +208,37 @@ def build_focus_canonical_observations(
             "dataset_family": "novel_focus",
             "dataset": "focus_alternative_study",
             "condition": "focus_only",
-            "item_id": (
-                joined["story"].astype(str)
-                + "::"
-                + joined["trigger"].astype(str)
-                + "::"
-                + joined["query"].astype(str)
-            ),
-            "group_id": joined["story"].astype(str),
-            "context_id": joined["story"].astype(str),
+            "item_id": joined["source_row_id"].astype(str),
+            "group_id": joined["group_id"].astype(str),
+            "context_id": joined["context_id"].astype(str),
             "generation_frame": "no_frame",
-            "generation_prompt": joined["base_prefix"].astype(str),
-            "trigger": joined["trigger"].astype(str),
-            "query": joined["query"].astype(str),
+            "generation_prompt": joined["generation_prompt"].astype(str),
+            "trigger": joined["trigger_human"].astype(str),
+            "query": joined["query_human"].astype(str),
             "human_outcome": "query_excluded",
             "human_yes": joined["human_yes"].astype(int),
             "human_total": joined["human_total"].astype(int),
             "human_rate": joined["human_rate"].astype(float),
+            "human_count_status": "exact",
             "trigger_logprob_sum": joined["trigger_logprob_sum"].astype(float),
-            "query_logprob_sum": joined["base_logprob_sum"].astype(float),
+            "query_logprob_sum": joined["query_logprob_sum"].astype(float),
             "trigger_logprob_mean": joined["trigger_logprob_mean"].astype(float),
-            "query_logprob_mean": joined["base_logprob_mean"].astype(float),
+            "query_logprob_mean": joined["query_logprob_mean"].astype(float),
             "trigger_token_count": joined["trigger_token_count"].astype(int),
-            "query_token_count": joined["base_query_token_count"].astype(int),
+            "query_token_count": joined["query_token_count"].astype(int),
             "trigger_tokenization_mode": joined["trigger_tokenization_mode"].astype(str),
-            "query_tokenization_mode": joined["base_tokenization_mode"].astype(str),
+            "query_tokenization_mode": joined["query_tokenization_mode"].astype(str),
             "x_but_not_y_applicable": True,
-            "x_but_not_y_prompt": joined["trigger_prefix"].astype(str),
-            "x_but_not_y_logprob_sum": joined["but_not_logprob_sum"].astype(float),
-            "x_but_not_y_logprob_mean": joined["but_not_logprob_mean"].astype(float),
-            "x_but_not_y_token_count": joined["but_not_query_token_count"].astype(int),
-            "x_but_not_y_tokenization_mode": joined["but_not_tokenization_mode"].astype(str),
-            "model_name": str(model_name),
-            "model_revision": str(model_revision),
-            "model_provenance_complete": str(model_revision) != UNKNOWN_REVISION,
+            "x_but_not_y_prompt": joined["generation_prompt_x"].astype(str),
+            "x_but_not_y_logprob_sum": joined["query_logprob_sum_x"].astype(float),
+            "x_but_not_y_logprob_mean": joined["query_logprob_mean_x"].astype(float),
+            "x_but_not_y_token_count": joined["query_token_count_x"].astype(int),
+            "x_but_not_y_tokenization_mode": joined[
+                "query_tokenization_mode_x"
+            ].astype(str),
+            "model_name": provenance.model_name,
+            "model_revision": provenance.model_revision,
+            "model_provenance_complete": True,
             "source_human_file": str(source_human_file),
             "source_score_file": str(source_score_file),
         }
@@ -232,7 +248,11 @@ def build_focus_canonical_observations(
         ignore_index=True,
     )
     observations = canonical_column_order(observations)
-    validate_canonical_observations(observations)
+    validate_canonical_observations(
+        observations,
+        require_complete_provenance=True,
+        require_human_counts=True,
+    )
     return observations
 
 
@@ -243,34 +263,22 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--human-data", type=Path, default=DEFAULT_HUMAN_DATA)
     parser.add_argument("--score-data", type=Path, default=DEFAULT_SCORE_DATA)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
-    parser.add_argument("--model-name", type=str, default="Qwen2-7B")
-    parser.add_argument("--model-revision", type=str, default=UNKNOWN_REVISION)
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    human_data = pd.read_csv(args.human_data)
-    score_data = pd.read_csv(args.score_data)
     observations = build_focus_canonical_observations(
-        human_data,
-        score_data,
-        model_name=args.model_name,
-        model_revision=args.model_revision,
+        pd.read_csv(args.human_data),
+        pd.read_csv(args.score_data),
         source_human_file=_portable_source_path(args.human_data),
         source_score_file=_portable_source_path(args.score_data),
     )
-
     args.output.parent.mkdir(parents=True, exist_ok=True)
     observations.to_csv(args.output, index=False)
-    summary = asdict(summarize_canonical_observations(observations))
     print(f"[complete] wrote {args.output}")
-    for key, value in summary.items():
+    for key, value in asdict(summarize_canonical_observations(observations)).items():
         print(f"  {key}={value}")
-    if summary["incomplete_provenance_rows"]:
-        print(
-            "[warning] Existing focus score artifact does not record its resolved model revision."
-        )
 
 
 if __name__ == "__main__":

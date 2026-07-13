@@ -83,7 +83,7 @@ QWEN_MODEL_PATH=/path/to/models--Qwen--Qwen2-7B \
 This wrapper can be called from the university's existing scheduler job. It
 does not encode cluster-specific account, partition, time, or memory settings.
 
-## Remaining focus/Hu scoring run
+## Focus/Hu scoring run
 
 After pulling the frame-aware manifest and scorer, validate the added batch:
 
@@ -102,15 +102,18 @@ QWEN_MODEL_PATH=/users/ljohnst7/data/ljohnst7/hf-cache/models--Qwen--Qwen2-7B \
   bash focus_alt_exp_pipeline/cluster/score_focus_hu_remaining_qwen.sh
 ```
 
-The in-progress checkpoint is
+During scoring, the checkpoint is
 `focus_alt_exp_pipeline/model_scores/focus_hu_remaining_qwen_scores.partial.csv`.
 The final `focus_hu_remaining_qwen_scores.csv` appears only after all 1,269
 manifest rows finish. Re-running the same command safely resumes an interrupted
 job.
 
-## Hu analysis-filter warning
+Both scoring batches are complete in the repository's `model_scores` directory.
+
+## Hu analysis-filter handling
 
 All 309 Hu rows are intentionally scored. Their
-`analysis_inclusion_status` values begin with `pending_hu_exact_filter_` because
-the exact published Hu analysis subset is not yet frozen. Apply that filter in
-the later canonical-data step, not by deleting scoring rows.
+manifest-level `analysis_inclusion_status` values begin with
+`pending_hu_exact_filter_` because scoring precedes analysis selection. The
+canonical-data builder now applies the frozen Hu source-notebook rule and keeps
+the excluded score rows with explicit provenance rather than deleting them.

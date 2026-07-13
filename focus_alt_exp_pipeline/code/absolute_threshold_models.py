@@ -24,13 +24,13 @@ contexts may imply differently sized alternative sets.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import TypeAlias
+from typing import Union
 
 import numpy as np
 from numpy.typing import ArrayLike, NDArray
 
 
-Probability: TypeAlias = float | NDArray[np.float64]
+Probability = Union[float, NDArray[np.float64]]
 
 
 @dataclass(frozen=True)

@@ -147,16 +147,31 @@ top-K results until the cross-dataset integration is complete.
 - `code/canonical_observations.py`
 
 Defines the shared cross-dataset observation schema and validates item keys,
-human counts and rates, neutral-frame score consistency, token-level score
-metadata, X-but-not-Y applicability, and model provenance.
+human rates, exact-count versus rate-only status, neutral-frame score
+consistency, token-level score metadata, X-but-not-Y applicability, and model
+provenance. It rejects fabricated counts for source datasets that publish only
+summary rates.
 
 - `code/build_focus_canonical_observations.py`
 
 Builds `canonical_data/novel_focus_observations.csv` from the focus human data
-and existing Qwen trigger/query score artifact. The current source score CSV did
-not record its resolved Qwen snapshot, so the generated rows explicitly carry
-`model_revision=unrecorded_existing_artifact` and
-`model_provenance_complete=False`.
+and the standardized pinned Qwen score artifact.
+
+- `code/build_cross_dataset_canonical_observations.py`
+
+Builds the focus, four-dataset Hu, five-condition Ronai-Xiang, and combined
+canonical tables. The Hu adapter preserves the distinction between 309 scored
+contexts and 223 human scale groups, recovers exact rx22 counts, and marks the
+remaining Hu sources as rate-only. It also reproduces Hu et al.'s literal
+published string-analysis subset: 57/50/67/39 scales for
+rx22/pvt21/g18/vt16, with the three van Tiel templates averaged per scale.
+
+- `code/build_big_results_table.py`
+
+Builds the ten-row development results table, grouped out-of-fold structure
+predictions, and both item-balanced and response-level log scores. See
+`results/big_table_development/README.md` for the current fitting rule and the
+remaining author decision before the values become paper-final.
 
 - `code/evaluate_absolute_threshold.py`
 
@@ -174,8 +189,8 @@ log scores are publication-ready.
 
 ### Cross-dataset Qwen scoring status
 
-The repository is **ready for the Hu/Ronai-Xiang no-frame Qwen cluster scoring
-run**. The committed `scoring_manifests/hu_rnx_no_frame_manifest.csv` contains:
+Both standardized Qwen cluster scoring runs are complete. The committed
+`scoring_manifests/hu_rnx_no_frame_manifest.csv` contains:
 
 - 309 Hu context rows (all candidate rows are scored before the exact published
   analysis filter is applied)
@@ -192,18 +207,21 @@ atomically for safe `--resume` use. It scores both trigger and query on
 no-frame rows. Its frame-aware mode scores only the query after X-but-not-Y, so
 that diagnostic never receives alternative-structure inputs.
 
-`scoring_manifests/focus_hu_remaining_qwen_manifest.csv` is ready for the
-remaining standardized cluster run. It contains 480 focus no-frame rows, 480
-focus X-but-not-Y rows, and 309 Hu X-but-not-Y rows. R&X is intentionally
-absent from the X-but-not-Y frame.
+`scoring_manifests/focus_hu_remaining_qwen_manifest.csv` contains 480 focus
+no-frame rows, 480 focus X-but-not-Y rows, and 309 Hu X-but-not-Y rows. R&X is
+intentionally absent from the X-but-not-Y frame. The corresponding complete
+score files are `model_scores/hu_rnx_no_frame_qwen_scores.csv` and
+`model_scores/focus_hu_remaining_qwen_scores.csv`.
 
-The one unresolved Hu issue is downstream rather than a scoring blocker: the
-exact published Hu inclusion filter still needs to be reconstructed. Every Hu
-row therefore carries an explicit `pending_hu_exact_filter_*` status so no
-unmarked subset can accidentally become the paper analysis.
+The exact Hu source-notebook inclusion rule is now applied in the canonical
+step. The scoring manifests retain all 309 Hu candidates by design.
 
-The novel focus canonical table is complete from existing scores, apart from
-the explicitly recorded historical model-revision provenance gap.
+All four canonical outputs now use the standardized Qwen revision
+`453ed1575b739b5b03ce3758b23befdb0967f40e` with complete provenance. The Hu
+source tables for g18, pvt21, and vt16 do not contain exact response counts, so
+those canonical rows are correlation-ready and support item-mean proper log
+scores, but not response-level binomial log likelihood without additional
+source data.
 
 ### Sampling next-word distributions
 

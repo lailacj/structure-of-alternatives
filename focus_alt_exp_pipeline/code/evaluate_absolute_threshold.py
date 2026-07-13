@@ -212,7 +212,7 @@ def fit_shared_threshold(
     from silently defining different alternative sets.
     """
 
-    validate_canonical_observations(observations)
+    validate_canonical_observations(observations, require_human_counts=True)
     if fit_target not in THRESHOLD_FIT_TARGETS:
         raise ValueError(
             f"fit_target must be one of {list(THRESHOLD_FIT_TARGETS)}, got {fit_target!r}"
@@ -281,7 +281,7 @@ def leave_one_group_out_predictions(
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Generate one out-of-fold prediction per canonical observation."""
 
-    validate_canonical_observations(observations)
+    validate_canonical_observations(observations, require_human_counts=True)
     prepared = observations.copy().reset_index(drop=True)
     prepared["_original_row"] = np.arange(len(prepared), dtype=int)
     prepared["_group_key"] = _group_key(prepared)

@@ -42,7 +42,8 @@ log score = -0.612. Scale 5 is not adopted as a final value. If the scale become
 a fitted parameter, it must be learned inside each training fold alongside the
 threshold and then tested on held-out groups.
 
-The current input scores also carry
-`model_revision=unrecorded_existing_artifact`. Final results require verified
-Qwen revision provenance and joint threshold/scale fitting after Hu and Ronai &
-Xiang canonical tables are available.
+The committed development outputs in this directory predate the standardized
+Qwen rescore and should not be cited as final results. The current canonical
+input now carries verified Qwen revision
+`453ed1575b739b5b03ce3758b23befdb0967f40e`; final results still require the
+cross-dataset evaluation rule and joint threshold/scale fitting to be frozen.

@@ -62,6 +62,7 @@ def _synthetic_observations() -> tuple[pd.DataFrame, float]:
                 "human_yes": int(yes),
                 "human_total": int(total),
                 "human_rate": float(yes / total),
+                "human_count_status": "exact",
                 "trigger_logprob_sum": float(trigger_score),
                 "query_logprob_sum": float(query_score),
                 "trigger_logprob_mean": float(trigger_score),

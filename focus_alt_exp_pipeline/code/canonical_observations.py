@@ -19,7 +19,7 @@ import numpy as np
 import pandas as pd
 
 
-SCHEMA_VERSION: Final[str] = "1.0"
+SCHEMA_VERSION: Final[str] = "1.1"
 
 CANONICAL_COLUMNS: Final[tuple[str, ...]] = (
     "schema_version",
@@ -37,6 +37,7 @@ CANONICAL_COLUMNS: Final[tuple[str, ...]] = (
     "human_yes",
     "human_total",
     "human_rate",
+    "human_count_status",
     "trigger_logprob_sum",
     "query_logprob_sum",
     "trigger_logprob_mean",
@@ -78,6 +79,7 @@ NONEMPTY_STRING_COLUMNS: Final[tuple[str, ...]] = (
     "trigger",
     "query",
     "human_outcome",
+    "human_count_status",
     "trigger_tokenization_mode",
     "query_tokenization_mode",
     "model_name",
@@ -96,6 +98,8 @@ class CanonicalObservationSummary:
     group_count: int
     incomplete_provenance_rows: int
     x_but_not_y_rows: int
+    exact_count_rows: int
+    rate_only_rows: int
 
 
 def _require_columns(df: pd.DataFrame) -> None:
@@ -167,6 +171,7 @@ def validate_canonical_observations(
     observations: pd.DataFrame,
     *,
     require_complete_provenance: bool = False,
+    require_human_counts: bool = False,
 ) -> None:
     """Raise ``ValueError`` if a canonical observation table is inconsistent."""
 
@@ -186,21 +191,51 @@ def validate_canonical_observations(
             f"Canonical observations contain {int(duplicate_keys.sum())} duplicate key rows"
         )
 
-    human_yes = _require_integer_values(df["human_yes"], column="human_yes", minimum=0)
-    human_total = _require_integer_values(
-        df["human_total"],
-        column="human_total",
-        minimum=1,
-    )
-    if (human_yes > human_total).any():
-        raise ValueError("Canonical human_yes cannot exceed human_total")
-
     human_rate = _require_finite(df["human_rate"], column="human_rate")
-    expected_rate = human_yes / human_total
-    if not np.allclose(human_rate, expected_rate, rtol=1e-10, atol=1e-10):
-        raise ValueError("Canonical human_rate does not equal human_yes / human_total")
     if ((human_rate < 0.0) | (human_rate > 1.0)).any():
         raise ValueError("Canonical human_rate must be between zero and one")
+
+    count_status = df["human_count_status"].astype(str)
+    allowed_count_statuses = {"exact", "rate_only"}
+    unexpected_statuses = sorted(set(count_status).difference(allowed_count_statuses))
+    if unexpected_statuses:
+        raise ValueError(
+            "Canonical human_count_status contains unsupported values: "
+            f"{unexpected_statuses}"
+        )
+
+    exact_counts = count_status.eq("exact")
+    if exact_counts.any():
+        human_yes = _require_integer_values(
+            df.loc[exact_counts, "human_yes"],
+            column="human_yes",
+            minimum=0,
+        )
+        human_total = _require_integer_values(
+            df.loc[exact_counts, "human_total"],
+            column="human_total",
+            minimum=1,
+        )
+        if (human_yes > human_total).any():
+            raise ValueError("Canonical human_yes cannot exceed human_total")
+        expected_rate = human_yes / human_total
+        if not np.allclose(
+            human_rate.loc[exact_counts],
+            expected_rate,
+            rtol=1e-10,
+            atol=1e-10,
+        ):
+            raise ValueError("Canonical human_rate does not equal human_yes / human_total")
+
+    rate_only = count_status.eq("rate_only")
+    if rate_only.any() and df.loc[rate_only, ["human_yes", "human_total"]].notna().any(
+        axis=None
+    ):
+        raise ValueError("Rate-only canonical rows must not contain fabricated human counts")
+    if require_human_counts and rate_only.any():
+        raise ValueError(
+            "Canonical observations contain rate-only rows without exact human counts"
+        )
 
     _validate_logprob_family(df, prefix="trigger")
     _validate_logprob_family(df, prefix="query")
@@ -253,6 +288,8 @@ def summarize_canonical_observations(
             (~observations["model_provenance_complete"].astype(bool)).sum()
         ),
         x_but_not_y_rows=int(observations["x_but_not_y_applicable"].astype(bool).sum()),
+        exact_count_rows=int(observations["human_count_status"].eq("exact").sum()),
+        rate_only_rows=int(observations["human_count_status"].eq("rate_only").sum()),
     )
 
 

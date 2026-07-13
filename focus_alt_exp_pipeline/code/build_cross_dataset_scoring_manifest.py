@@ -289,7 +289,10 @@ def main() -> None:
     print(f"[complete] wrote {args.output}")
     for key, value in summary.items():
         print(f"  {key}={value}")
-    print("[warning] All Hu rows are scored; the exact published inclusion filter remains pending.")
+    print(
+        "[note] All Hu rows are scored; the published-analysis inclusion rule "
+        "is applied later by the canonical-data builder."
+    )
 
 
 if __name__ == "__main__":
