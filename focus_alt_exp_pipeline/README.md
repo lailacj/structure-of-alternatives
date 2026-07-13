@@ -28,6 +28,18 @@ Current stable next-word sources in this pipeline:
 - `human_exp_data/`
   Human responses from the focus-alternative negation experiment.
 
+- `canonical_data/`
+  Validated item-condition tables that join aggregated human responses to
+  neutral-frame Qwen query and trigger scores. These tables are model inputs;
+  they do not contain fitted thresholds or structure predictions.
+
+- `scoring_manifests/`
+  Self-contained, validated rows for cross-dataset Qwen scoring. The committed
+  manifest does not require the local sibling data repository at scoring time.
+
+- `model_scores/`
+  Cross-dataset Qwen trigger/query score outputs and their provenance notes.
+
 - `results/`
   Raw trial-level outputs, summaries, diagnostics, and plots.
 
@@ -105,7 +117,8 @@ Result columns are:
 
 - `code/models.py`
 
-This file defines the current alternative-structure models:
+This file defines the legacy top-K alternative-structure models currently wired
+into the experiment runner:
 
 - `ordering`
 - `set`
@@ -119,6 +132,74 @@ The key helper is `probability_to_model_result`, which converts a model's negati
 - `log_likelihood`
 - `negation_probability`
 - `probability_query_observed`
+
+- `code/absolute_threshold_models.py`
+
+This file defines the new absolute-expectedness-threshold formulation of Set,
+Ordering, Conjunction, and Disjunction. It computes the four probabilities
+analytically from no-frame query and trigger log probabilities plus one shared
+threshold. It does not construct a fixed-size top-K set. The mathematical core
+and unit tests are complete. `evaluate_absolute_threshold.py` provides the
+leave-one-group-out development evaluator, but this path is not connected to
+the legacy sampling runner. Existing runner outputs therefore remain legacy
+top-K results until the cross-dataset integration is complete.
+
+- `code/canonical_observations.py`
+
+Defines the shared cross-dataset observation schema and validates item keys,
+human counts and rates, neutral-frame score consistency, token-level score
+metadata, X-but-not-Y applicability, and model provenance.
+
+- `code/build_focus_canonical_observations.py`
+
+Builds `canonical_data/novel_focus_observations.csv` from the focus human data
+and existing Qwen trigger/query score artifact. The current source score CSV did
+not record its resolved Qwen snapshot, so the generated rows explicitly carry
+`model_revision=unrecorded_existing_artifact` and
+`model_provenance_complete=False`.
+
+- `code/evaluate_absolute_threshold.py`
+
+Fits one shared absolute threshold on training groups and produces held-out Set,
+Ordering, Conjunction, and Disjunction probabilities. The current development
+run uses leave-one-context-out evaluation for the novel focus data, fits the
+threshold using the Set model, and reuses that threshold for the hybrid
+structures. It also reports item-level Pearson/Spearman correlations and
+response-level log scores relative to a training-fold intercept baseline.
+
+The current unit-Gumbel-scale results are integration diagnostics, not final
+paper results. They reveal substantial overconfidence in the raw log-probability
+scale. The noise scale must be given a cross-validated fitting rule before the
+log scores are publication-ready.
+
+### Cross-dataset Qwen scoring status
+
+The repository is **ready for the Hu/Ronai-Xiang no-frame Qwen cluster scoring
+run**. The committed `scoring_manifests/hu_rnx_no_frame_manifest.csv` contains:
+
+- 309 Hu context rows (all candidate rows are scored before the exact published
+  analysis filter is applied)
+- 60 R&X ESI rows
+- 60 R&X Eweak rows
+- 60 R&X Estrong rows
+- 60 R&X Eonly rows using the matched ESI prompt with `only` removed
+- 60 R&X Eonlystrong rows using the matched Estrong-QUD prompt with `only`
+  removed
+
+`code/score_qwen_scoring_manifest.py` scores weak/trigger and strong/query
+continuations, records token-level plus summed and mean log probabilities,
+requires an exact model snapshot revision, and checkpoints atomically for
+safe `--resume` use. The X-but-not-Y generation frame is intentionally absent
+from this manifest; it is a separate Hu/focus-only score family and currently
+has no alternative-structure variants.
+
+The one unresolved Hu issue is downstream rather than a scoring blocker: the
+exact published Hu inclusion filter still needs to be reconstructed. Every Hu
+row therefore carries an explicit `pending_hu_exact_filter_*` status so no
+unmarked subset can accidentally become the paper analysis.
+
+The novel focus canonical table is complete from existing scores, apart from
+the explicitly recorded historical model-revision provenance gap.
 
 ### Sampling next-word distributions
 
