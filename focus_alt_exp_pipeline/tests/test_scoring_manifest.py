@@ -15,7 +15,9 @@ CODE_DIR = PIPELINE_DIR / "code"
 sys.path.insert(0, str(CODE_DIR))
 
 from scoring_manifest import (  # noqa: E402
+    FRAME_AWARE_MANIFEST_VERSION,
     MANIFEST_COLUMNS,
+    SCORING_CONTROL_COLUMNS,
     summarize_scoring_manifest,
     validate_scoring_manifest,
 )
@@ -31,10 +33,15 @@ def _row(
     trigger: str = "warm",
     query: str = "hot",
 ) -> dict[str, object]:
+    datasets = {
+        "hu_2023_benchmark": "toy_hu",
+        "ronai_xiang_2024": "ronai_xiang_2024",
+        "novel_focus": "focus_alternative_study",
+    }
     return {
         "manifest_version": "1.0",
         "dataset_family": family,
-        "dataset": "toy_hu" if family == "hu_2023_benchmark" else "ronai_xiang_2024",
+        "dataset": datasets[family],
         "condition": condition,
         "item_id": item_id,
         "group_id": group_id,
@@ -147,6 +154,81 @@ class ScoringManifestTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "must end in whitespace"):
             validate_scoring_manifest(manifest)
 
+    def test_frame_aware_manifest_scores_query_only_after_x_but_not_y(self) -> None:
+        row = _row(
+            family="novel_focus",
+            condition="focus_only",
+            item_id="focus-1::x_but_not_y",
+            group_id="story-1",
+            prompt="It is warm but not ",
+        )
+        row.update(
+            {
+                "manifest_version": FRAME_AWARE_MANIFEST_VERSION,
+                "generation_frame": "x_but_not_y",
+                "score_trigger": False,
+                "score_query": True,
+            }
+        )
+        manifest = pd.DataFrame(
+            [row],
+            columns=[*MANIFEST_COLUMNS, *SCORING_CONTROL_COLUMNS],
+        )
+
+        validate_scoring_manifest(manifest)
+        summary = summarize_scoring_manifest(manifest)
+
+        self.assertEqual(summary.generation_frame_count, 1)
+        self.assertEqual(summary.unique_prompt_candidate_count, 1)
+
+    def test_x_but_not_y_cannot_score_trigger(self) -> None:
+        row = _row(
+            family="novel_focus",
+            condition="focus_only",
+            item_id="focus-1::x_but_not_y",
+            group_id="story-1",
+            prompt="It is warm but not ",
+        )
+        row.update(
+            {
+                "manifest_version": FRAME_AWARE_MANIFEST_VERSION,
+                "generation_frame": "x_but_not_y",
+                "score_trigger": True,
+                "score_query": True,
+            }
+        )
+        manifest = pd.DataFrame(
+            [row],
+            columns=[*MANIFEST_COLUMNS, *SCORING_CONTROL_COLUMNS],
+        )
+
+        with self.assertRaisesRegex(ValueError, "must score the query only"):
+            validate_scoring_manifest(manifest)
+
+    def test_rnx_cannot_use_x_but_not_y_frame(self) -> None:
+        row = _row(
+            family="ronai_xiang_2024",
+            condition="ESI",
+            item_id="ESI::01::x_but_not_y",
+            group_id="01",
+            prompt="It is warm but not ",
+        )
+        row.update(
+            {
+                "manifest_version": FRAME_AWARE_MANIFEST_VERSION,
+                "generation_frame": "x_but_not_y",
+                "score_trigger": False,
+                "score_query": True,
+            }
+        )
+        manifest = pd.DataFrame(
+            [row],
+            columns=[*MANIFEST_COLUMNS, *SCORING_CONTROL_COLUMNS],
+        )
+
+        with self.assertRaisesRegex(ValueError, "applies only to Hu and novel-focus"):
+            validate_scoring_manifest(manifest)
+
     def test_committed_manifest_has_expected_coverage(self) -> None:
         path = PIPELINE_DIR / "scoring_manifests" / "hu_rnx_no_frame_manifest.csv"
         manifest = pd.read_csv(path)
@@ -166,6 +248,25 @@ class ScoringManifestTests(unittest.TestCase):
             rnx_counts,
             {"ESI": 60, "Eonly": 60, "Eonlystrong": 60, "Estrong": 60, "Eweak": 60},
         )
+
+    def test_remaining_manifest_has_expected_frames_and_candidate_count(self) -> None:
+        path = PIPELINE_DIR / "scoring_manifests" / "focus_hu_remaining_qwen_manifest.csv"
+        manifest = pd.read_csv(path)
+
+        validate_scoring_manifest(manifest)
+        summary = summarize_scoring_manifest(manifest)
+        counts = manifest.groupby(["dataset_family", "generation_frame"]).size().to_dict()
+
+        self.assertEqual(len(manifest), 1269)
+        self.assertEqual(
+            counts,
+            {
+                ("hu_2023_benchmark", "x_but_not_y"): 309,
+                ("novel_focus", "no_frame"): 480,
+                ("novel_focus", "x_but_not_y"): 480,
+            },
+        )
+        self.assertEqual(summary.unique_prompt_candidate_count, 871)
 
 
 if __name__ == "__main__":

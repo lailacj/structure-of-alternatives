@@ -1,8 +1,12 @@
 # Cross-dataset Qwen scoring manifest
 
-`hu_rnx_no_frame_manifest.csv` is the self-contained input for the new Qwen
-scoring run. It has 609 item-condition rows and validates to 851 unique
-prompt-candidate pairs.
+This directory contains two self-contained Qwen scoring inputs:
+
+- `hu_rnx_no_frame_manifest.csv`: the completed Hu/R&X no-frame batch, with
+  609 item-condition rows and 851 unique prompt-candidate pairs.
+- `focus_hu_remaining_qwen_manifest.csv`: the remaining focus no-frame plus
+  focus/Hu X-but-not-Y batch, with 1,269 observation-frame rows and 871 unique
+  prompt-candidate pairs.
 
 ## What each condition means
 
@@ -16,8 +20,18 @@ prompt-candidate pairs.
 | Ronai & Xiang (2024) | `Eonlystrong` | 60 | Matched Estrong prompt, with `only` absent |
 
 The validator requires ESI/Eonly and Estrong/Eonlystrong prompts and candidate
-pairs to match exactly. It also rejects `only` in the R&X answer frame. The
-X-but-not-Y frame is outside this manifest.
+pairs to match exactly. It also rejects `only` in the R&X answer frame.
+
+For the remaining-frame manifest:
+
+| Dataset family | Frame | Rows | Candidates scored per row |
+| --- | --- | ---: | --- |
+| Novel focus | no-frame | 480 | Trigger and query |
+| Novel focus | X-but-not-Y | 480 | Query only |
+| Hu benchmark | X-but-not-Y | 309 | Query only |
+
+The X-but-not-Y rows never score a trigger continuation and never produce an
+alternative-structure contrast. R&X does not receive this frame.
 
 ## Rebuild versus score
 
@@ -26,6 +40,7 @@ local sibling `experiment_ronai&xiang` repository and is normally unnecessary:
 
 ```bash
 python focus_alt_exp_pipeline/code/build_cross_dataset_scoring_manifest.py
+python focus_alt_exp_pipeline/code/build_remaining_scoring_manifest.py
 ```
 
 After pulling this repository on the cluster, first validate the manifest and
@@ -67,6 +82,31 @@ QWEN_MODEL_PATH=/path/to/models--Qwen--Qwen2-7B \
 
 This wrapper can be called from the university's existing scheduler job. It
 does not encode cluster-specific account, partition, time, or memory settings.
+
+## Remaining focus/Hu scoring run
+
+After pulling the frame-aware manifest and scorer, validate the added batch:
+
+```bash
+python focus_alt_exp_pipeline/code/score_qwen_scoring_manifest.py \
+  --manifest focus_alt_exp_pipeline/scoring_manifests/focus_hu_remaining_qwen_manifest.csv \
+  --model-path /users/ljohnst7/data/ljohnst7/hf-cache/models--Qwen--Qwen2-7B \
+  --output focus_alt_exp_pipeline/model_scores/focus_hu_remaining_qwen_scores.csv \
+  --dry-run
+```
+
+Then run it on a GPU node:
+
+```bash
+QWEN_MODEL_PATH=/users/ljohnst7/data/ljohnst7/hf-cache/models--Qwen--Qwen2-7B \
+  bash focus_alt_exp_pipeline/cluster/score_focus_hu_remaining_qwen.sh
+```
+
+The in-progress checkpoint is
+`focus_alt_exp_pipeline/model_scores/focus_hu_remaining_qwen_scores.partial.csv`.
+The final `focus_hu_remaining_qwen_scores.csv` appears only after all 1,269
+manifest rows finish. Re-running the same command safely resumes an interrupted
+job.
 
 ## Hu analysis-filter warning
 

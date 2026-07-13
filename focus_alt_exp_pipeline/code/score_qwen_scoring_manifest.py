@@ -1,9 +1,10 @@
-"""Resumably score trigger and query continuations in a Qwen manifest.
+"""Resumably score candidate continuations in a Qwen manifest.
 
 The output contains one row per manifest row and records the token-level,
-summed, and mean continuation log probabilities for both candidates.  A
-checkpoint CSV is replaced atomically while scoring so interrupted cluster
-jobs can be resumed safely.
+summed, and mean continuation log probabilities. No-frame rows score both the
+trigger and query; X-but-not-Y rows score only the query. A checkpoint CSV is
+replaced atomically while scoring so interrupted cluster jobs can be resumed
+safely.
 """
 
 from __future__ import annotations
@@ -27,6 +28,7 @@ try:
     from .scoring_manifest import (
         MANIFEST_COLUMNS,
         MANIFEST_KEY_COLUMNS,
+        scoring_candidate_flags,
         summarize_scoring_manifest,
         validate_scoring_manifest,
     )
@@ -34,12 +36,13 @@ except ImportError:
     from scoring_manifest import (
         MANIFEST_COLUMNS,
         MANIFEST_KEY_COLUMNS,
+        scoring_candidate_flags,
         summarize_scoring_manifest,
         validate_scoring_manifest,
     )
 
 
-SCORER_VERSION: Final[str] = "1.0"
+SCORER_VERSION: Final[str] = "1.1"
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_MANIFEST = (
     REPO_ROOT
@@ -67,6 +70,7 @@ SCORE_SUFFIXES: Final[tuple[str, ...]] = (
 )
 METADATA_COLUMNS: Final[tuple[str, ...]] = (
     "scoring_row_key",
+    "scored_candidate_roles",
     "scorer_version",
     "manifest_sha256",
     "model_identifier",
@@ -429,6 +433,18 @@ def _score_fields(stem: str, score: ContinuationScore) -> dict[str, object]:
     }
 
 
+def _empty_score_fields(stem: str) -> dict[str, object]:
+    return {
+        f"{stem}_token_ids_json": "",
+        f"{stem}_tokens_json": "",
+        f"{stem}_token_logprobs_json": "",
+        f"{stem}_token_count": np.nan,
+        f"{stem}_logprob_sum": np.nan,
+        f"{stem}_logprob_mean": np.nan,
+        f"{stem}_tokenization_mode": "",
+    }
+
+
 def _read_partial(
     path: Path,
     *,
@@ -490,9 +506,12 @@ def _candidate_scores_for_prompt(
     model,
 ) -> dict[str, ContinuationScore]:
     prompt = str(rows.iloc[0]["generation_prompt"])
-    candidates = sorted(
-        set(rows["trigger"].astype(str)).union(rows["query"].astype(str))
-    )
+    candidates: set[str] = set()
+    if rows["_score_trigger"].astype(bool).any():
+        candidates.update(rows.loc[rows["_score_trigger"], "trigger"].astype(str))
+    if rows["_score_query"].astype(bool).any():
+        candidates.update(rows.loc[rows["_score_query"], "query"].astype(str))
+    ordered_candidates = sorted(candidates)
     split = {candidate: split_prompt_boundary(prompt, candidate) for candidate in candidates}
     prefixes = {prefix for prefix, _ in split.values()}
     if len(prefixes) != 1:
@@ -508,7 +527,9 @@ def _candidate_scores_for_prompt(
             prefix=prefix,
             continuation=continuation,
         )
-        for candidate, (_, continuation) in split.items()
+        for candidate, (_, continuation) in (
+            (candidate, split[candidate]) for candidate in ordered_candidates
+        )
     }
 
 
@@ -545,6 +566,9 @@ def score_manifest(args: argparse.Namespace) -> None:
         )
 
     manifest = manifest.copy()
+    flags = scoring_candidate_flags(manifest)
+    manifest["_score_trigger"] = flags["score_trigger"]
+    manifest["_score_query"] = flags["score_query"]
     manifest["scoring_row_key"] = manifest.apply(scoring_row_key, axis=1)
     valid_keys = set(manifest["scoring_row_key"])
     completed = (
@@ -584,21 +608,38 @@ def score_manifest(args: argparse.Namespace) -> None:
         )
         scored_at = datetime.now(timezone.utc).isoformat()
         for _, row in group.iterrows():
-            trigger_score = candidate_scores[str(row["trigger"])]
+            trigger_score = (
+                candidate_scores[str(row["trigger"])]
+                if bool(row["_score_trigger"])
+                else None
+            )
             query_score = candidate_scores[str(row["query"])]
             record = {column: row[column] for column in MANIFEST_COLUMNS}
-            record.update(_score_fields("trigger", trigger_score))
+            record.update(
+                _score_fields("trigger", trigger_score)
+                if trigger_score is not None
+                else _empty_score_fields("trigger")
+            )
             record.update(_score_fields("query", query_score))
             record.update(
                 {
                     "query_minus_trigger_logprob_sum": (
                         query_score.logprob_sum - trigger_score.logprob_sum
+                        if trigger_score is not None
+                        else np.nan
                     ),
                     "query_minus_trigger_logprob_mean": (
                         query_score.logprob_mean - trigger_score.logprob_mean
+                        if trigger_score is not None
+                        else np.nan
                     ),
                     **run_metadata,
                     "scoring_row_key": row["scoring_row_key"],
+                    "scored_candidate_roles": (
+                        "trigger_and_query"
+                        if trigger_score is not None
+                        else "query_only"
+                    ),
                     "scored_at_utc": scored_at,
                 }
             )

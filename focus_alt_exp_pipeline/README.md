@@ -186,12 +186,16 @@ run**. The committed `scoring_manifests/hu_rnx_no_frame_manifest.csv` contains:
 - 60 R&X Eonlystrong rows using the matched Estrong-QUD prompt with `only`
   removed
 
-`code/score_qwen_scoring_manifest.py` scores weak/trigger and strong/query
-continuations, records token-level plus summed and mean log probabilities,
-requires an exact model snapshot revision, and checkpoints atomically for
-safe `--resume` use. The X-but-not-Y generation frame is intentionally absent
-from this manifest; it is a separate Hu/focus-only score family and currently
-has no alternative-structure variants.
+`code/score_qwen_scoring_manifest.py` records token-level plus summed and mean
+log probabilities, requires an exact model snapshot revision, and checkpoints
+atomically for safe `--resume` use. It scores both trigger and query on
+no-frame rows. Its frame-aware mode scores only the query after X-but-not-Y, so
+that diagnostic never receives alternative-structure inputs.
+
+`scoring_manifests/focus_hu_remaining_qwen_manifest.csv` is ready for the
+remaining standardized cluster run. It contains 480 focus no-frame rows, 480
+focus X-but-not-Y rows, and 309 Hu X-but-not-Y rows. R&X is intentionally
+absent from the X-but-not-Y frame.
 
 The one unresolved Hu issue is downstream rather than a scoring blocker: the
 exact published Hu inclusion filter still needs to be reconstructed. Every Hu

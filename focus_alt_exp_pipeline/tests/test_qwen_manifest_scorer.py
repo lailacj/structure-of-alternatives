@@ -26,7 +26,7 @@ from score_qwen_scoring_manifest import (  # noqa: E402
     scoring_row_key,
     split_prompt_boundary,
 )
-from scoring_manifest import MANIFEST_COLUMNS  # noqa: E402
+from scoring_manifest import MANIFEST_COLUMNS, SCORING_CONTROL_COLUMNS  # noqa: E402
 
 
 class CharacterTokenizer:
@@ -114,7 +114,7 @@ class QwenManifestScorerTests(unittest.TestCase):
 
     def test_end_to_end_checkpoint_and_resume_without_model_load(self) -> None:
         manifest_row = {
-            "manifest_version": "1.0",
+            "manifest_version": "1.1",
             "dataset_family": "hu_2023_benchmark",
             "dataset": "toy_hu",
             "condition": "scalar_inference",
@@ -130,6 +130,17 @@ class QwenManifestScorerTests(unittest.TestCase):
             "source_prompt_file": "source.csv",
             "source_row_id": "hu-1",
             "prompt_provenance": "test_fixture",
+            "score_trigger": True,
+            "score_query": True,
+        }
+        x_frame_row = {
+            **manifest_row,
+            "item_id": "hu-1::x_but_not_y",
+            "context_id": "hu-1",
+            "generation_frame": "x_but_not_y",
+            "generation_prompt": "It is warm but not ",
+            "score_trigger": False,
+            "score_query": True,
         }
         fake_metadata = {
             "model_identifier": "fake-qwen",
@@ -163,7 +174,10 @@ class QwenManifestScorerTests(unittest.TestCase):
             directory = Path(temporary)
             manifest_path = directory / "manifest.csv"
             output_path = directory / "scores.csv"
-            pd.DataFrame([manifest_row], columns=MANIFEST_COLUMNS).to_csv(
+            pd.DataFrame(
+                [manifest_row, x_frame_row],
+                columns=[*MANIFEST_COLUMNS, *SCORING_CONTROL_COLUMNS],
+            ).to_csv(
                 manifest_path,
                 index=False,
             )
@@ -180,6 +194,12 @@ class QwenManifestScorerTests(unittest.TestCase):
                 dry_run=False,
             )
 
+            def fake_candidate_scores(rows, **kwargs):
+                del kwargs
+                if rows.iloc[0]["generation_frame"] == "x_but_not_y":
+                    return {"hot": query_score}
+                return {"warm": trigger_score, "hot": query_score}
+
             with mock.patch.object(
                 scorer,
                 "load_model",
@@ -187,15 +207,22 @@ class QwenManifestScorerTests(unittest.TestCase):
             ), mock.patch.object(
                 scorer,
                 "_candidate_scores_for_prompt",
-                return_value={"warm": trigger_score, "hot": query_score},
+                side_effect=fake_candidate_scores,
             ):
                 score_manifest(args)
 
             output = pd.read_csv(output_path)
             self.assertEqual(list(output.columns), list(OUTPUT_COLUMNS))
-            self.assertEqual(len(output), 1)
-            self.assertEqual(output.loc[0, "model_revision"], "abc123")
-            self.assertEqual(output.loc[0, "query_minus_trigger_logprob_sum"], 1.0)
+            self.assertEqual(len(output), 2)
+            self.assertTrue(output["model_revision"].eq("abc123").all())
+            no_frame = output.loc[output["generation_frame"].eq("no_frame")].iloc[0]
+            x_frame = output.loc[output["generation_frame"].eq("x_but_not_y")].iloc[0]
+            self.assertEqual(no_frame["query_minus_trigger_logprob_sum"], 1.0)
+            self.assertEqual(no_frame["scored_candidate_roles"], "trigger_and_query")
+            self.assertEqual(x_frame["scored_candidate_roles"], "query_only")
+            self.assertTrue(pd.isna(x_frame["trigger_logprob_sum"]))
+            self.assertEqual(x_frame["query_logprob_sum"], -1.0)
+            self.assertTrue(pd.isna(x_frame["query_minus_trigger_logprob_sum"]))
             checkpoint = partial_output_path(output_path)
             self.assertFalse(checkpoint.exists())
 
