@@ -1,0 +1,161 @@
+{
+  "all_committed_outputs_exact_match": true,
+  "all_committed_row_counts_match": true,
+  "all_committed_sha256_match": true,
+  "all_expected_row_counts_match": true,
+  "commands": [
+    [
+      "/Users/lailajohnston/opt/anaconda3/bin/python",
+      "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/code/build_cross_dataset_canonical_observations.py",
+      "--output-dir",
+      "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/reproducibility/day1_absolute_threshold_v1/canonical"
+    ],
+    [
+      "/Users/lailajohnston/opt/anaconda3/bin/python",
+      "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/code/build_big_results_table.py",
+      "--input",
+      "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/reproducibility/day1_absolute_threshold_v1/canonical/all_observations.csv",
+      "--output-dir",
+      "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/reproducibility/day1_absolute_threshold_v1/big_table",
+      "--fold-count",
+      "10"
+    ]
+  ],
+  "comparisons": [
+    {
+      "committed_path": "focus_alt_exp_pipeline/canonical_data/novel_focus_observations.csv",
+      "committed_rows": 480,
+      "committed_sha256": "6cc6370a630f8bff9e9357dd544b498669064fcf730812dbfd5e144f697d5110",
+      "exact_match": true,
+      "expected_rows": 480,
+      "generated_path": "focus_alt_exp_pipeline/results/reproducibility/day1_absolute_threshold_v1/canonical/novel_focus_observations.csv",
+      "generated_rows": 480,
+      "generated_sha256": "6cc6370a630f8bff9e9357dd544b498669064fcf730812dbfd5e144f697d5110",
+      "row_count_match": true,
+      "sha256_match": true
+    },
+    {
+      "committed_path": "focus_alt_exp_pipeline/canonical_data/hu_2023_observations.csv",
+      "committed_rows": 309,
+      "committed_sha256": "2c2f1f8f1588e8c6f51a6b7667e151a40d9d2b768f306d060e9692bab4a8c152",
+      "exact_match": true,
+      "expected_rows": 309,
+      "generated_path": "focus_alt_exp_pipeline/results/reproducibility/day1_absolute_threshold_v1/canonical/hu_2023_observations.csv",
+      "generated_rows": 309,
+      "generated_sha256": "2c2f1f8f1588e8c6f51a6b7667e151a40d9d2b768f306d060e9692bab4a8c152",
+      "row_count_match": true,
+      "sha256_match": true
+    },
+    {
+      "committed_path": "focus_alt_exp_pipeline/canonical_data/ronai_xiang_2024_observations.csv",
+      "committed_rows": 300,
+      "committed_sha256": "54df9f0f206b4c36a2d951fc30624528ac628e757db9aebe803fc28c3c8a3468",
+      "exact_match": true,
+      "expected_rows": 300,
+      "generated_path": "focus_alt_exp_pipeline/results/reproducibility/day1_absolute_threshold_v1/canonical/ronai_xiang_2024_observations.csv",
+      "generated_rows": 300,
+      "generated_sha256": "54df9f0f206b4c36a2d951fc30624528ac628e757db9aebe803fc28c3c8a3468",
+      "row_count_match": true,
+      "sha256_match": true
+    },
+    {
+      "committed_path": "focus_alt_exp_pipeline/canonical_data/all_observations.csv",
+      "committed_rows": 1089,
+      "committed_sha256": "f39631d56a615e06ffc95cfcd9e9acb2e47e7569df135eb2dc75fca200fa2750",
+      "exact_match": true,
+      "expected_rows": 1089,
+      "generated_path": "focus_alt_exp_pipeline/results/reproducibility/day1_absolute_threshold_v1/canonical/all_observations.csv",
+      "generated_rows": 1089,
+      "generated_sha256": "f39631d56a615e06ffc95cfcd9e9acb2e47e7569df135eb2dc75fca200fa2750",
+      "row_count_match": true,
+      "sha256_match": true
+    },
+    {
+      "committed_path": "focus_alt_exp_pipeline/results/big_table_development/analysis_units.csv",
+      "committed_rows": 993,
+      "committed_sha256": "ec66cd2a5a00f1a489110a3be7ff7f69fbc8f21bc9087d2921b69ca5465da029",
+      "exact_match": true,
+      "expected_rows": 993,
+      "generated_path": "focus_alt_exp_pipeline/results/reproducibility/day1_absolute_threshold_v1/big_table/analysis_units.csv",
+      "generated_rows": 993,
+      "generated_sha256": "ec66cd2a5a00f1a489110a3be7ff7f69fbc8f21bc9087d2921b69ca5465da029",
+      "row_count_match": true,
+      "sha256_match": true
+    },
+    {
+      "committed_path": "focus_alt_exp_pipeline/results/big_table_development/oof_predictions.csv",
+      "committed_rows": 993,
+      "committed_sha256": "6eef1821853225e89ebfe7ad5a1997725609b6d73ccda9308dd842c61949de16",
+      "exact_match": true,
+      "expected_rows": 993,
+      "generated_path": "focus_alt_exp_pipeline/results/reproducibility/day1_absolute_threshold_v1/big_table/oof_predictions.csv",
+      "generated_rows": 993,
+      "generated_sha256": "6eef1821853225e89ebfe7ad5a1997725609b6d73ccda9308dd842c61949de16",
+      "row_count_match": true,
+      "sha256_match": true
+    },
+    {
+      "committed_path": "focus_alt_exp_pipeline/results/big_table_development/fold_parameters.csv",
+      "committed_rows": 10,
+      "committed_sha256": "e738eaf6ae16dfe7814b53949dad20e04c2a521fa331e69dca343c9812f2854c",
+      "exact_match": true,
+      "expected_rows": 10,
+      "generated_path": "focus_alt_exp_pipeline/results/reproducibility/day1_absolute_threshold_v1/big_table/fold_parameters.csv",
+      "generated_rows": 10,
+      "generated_sha256": "e738eaf6ae16dfe7814b53949dad20e04c2a521fa331e69dca343c9812f2854c",
+      "row_count_match": true,
+      "sha256_match": true
+    },
+    {
+      "committed_path": "focus_alt_exp_pipeline/results/big_table_development/big_table_correlations.csv",
+      "committed_rows": 10,
+      "committed_sha256": "ab848053c3f6edbed3fe03d0d96d877e98d9b81749913ea718ab50cdbd061615",
+      "exact_match": true,
+      "expected_rows": 10,
+      "generated_path": "focus_alt_exp_pipeline/results/reproducibility/day1_absolute_threshold_v1/big_table/big_table_correlations.csv",
+      "generated_rows": 10,
+      "generated_sha256": "ab848053c3f6edbed3fe03d0d96d877e98d9b81749913ea718ab50cdbd061615",
+      "row_count_match": true,
+      "sha256_match": true
+    },
+    {
+      "committed_path": "focus_alt_exp_pipeline/results/big_table_development/big_table_log_scores.csv",
+      "committed_rows": 50,
+      "committed_sha256": "202de22f00bc86876427788dd6328fcef28164d9995e78e5f56848874d8a940b",
+      "exact_match": true,
+      "expected_rows": 50,
+      "generated_path": "focus_alt_exp_pipeline/results/reproducibility/day1_absolute_threshold_v1/big_table/big_table_log_scores.csv",
+      "generated_rows": 50,
+      "generated_sha256": "202de22f00bc86876427788dd6328fcef28164d9995e78e5f56848874d8a940b",
+      "row_count_match": true,
+      "sha256_match": true
+    },
+    {
+      "committed_path": "focus_alt_exp_pipeline/results/big_table_development/big_table_metrics.csv",
+      "committed_rows": 10,
+      "committed_sha256": "844e9c7f032473156d2b4049b7555e3ba1a9e4aa7ba64c9c6c3b6c0ef1f7b4bd",
+      "exact_match": true,
+      "expected_rows": 10,
+      "generated_path": "focus_alt_exp_pipeline/results/reproducibility/day1_absolute_threshold_v1/big_table/big_table_metrics.csv",
+      "generated_rows": 10,
+      "generated_sha256": "844e9c7f032473156d2b4049b7555e3ba1a9e4aa7ba64c9c6c3b6c0ef1f7b4bd",
+      "row_count_match": true,
+      "sha256_match": true
+    }
+  ],
+  "config_id": "day1_absolute_threshold_global_shared_v1",
+  "config_sha256": "274b02b2821ba694bc838b1dc66df47690460a71473ac8ac8798b20f3e059b29",
+  "config_version": "1.0.0",
+  "generated_at_utc": "2026-08-25T19:03:09.555009+00:00",
+  "manifest_schema_version": "focus-alternatives-rebuild-manifest/v1",
+  "model_revision": "453ed1575b739b5b03ce3758b23befdb0967f40e",
+  "output_root": "focus_alt_exp_pipeline/results/reproducibility/day1_absolute_threshold_v1",
+  "python": {
+    "executable": "/Users/lailajohnston/opt/anaconda3/bin/python",
+    "version": "3.9.13"
+  },
+  "repository": {
+    "commit": "1335ec2ae88692159fbf35118455237848dad554",
+    "status_short": "M .DS_Store\n?? focus_alt_exp_pipeline/analysis_configs/\n?? focus_alt_exp_pipeline/code/rebuild_day1_results.py\n?? focus_alt_exp_pipeline/results/reproducibility/"
+  }
+}

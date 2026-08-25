@@ -1,0 +1,88 @@
+{
+  "schema_version": "focus-alternatives-analysis-config/v1",
+  "config_id": "day1_absolute_threshold_global_shared_v1",
+  "config_version": "1.0.0",
+  "created_date": "2026-08-25",
+  "analysis_status": "provisional_primary_for_advisor_comparison",
+  "variant_policy": {
+    "absolute_threshold": "provisional primary because it matches the current paper definition and supports cross-dataset held-out evaluation",
+    "legacy_top_k": "parallel legacy variant for the advisor packet; final main-text versus appendix placement is not yet frozen",
+    "nucleus_sampling": "not implemented and not equivalent to the absolute-threshold model"
+  },
+  "model": {
+    "name": "Qwen/Qwen2-7B",
+    "revision": "453ed1575b739b5b03ce3758b23befdb0967f40e"
+  },
+  "expectedness_score": {
+    "primary": "summed_continuation_log_probability",
+    "trigger_column": "trigger_logprob_sum",
+    "query_column": "query_logprob_sum",
+    "length_normalized_diagnostic": "mean_continuation_log_probability"
+  },
+  "aggregation_grain": {
+    "hu_2023_benchmark": "Hu public-notebook string-analysis subset; one row per scale; van Tiel scores averaged over three templates",
+    "ronai_xiang_2024": "one row per item-condition; five conditions for each item remain in the same CV group",
+    "novel_focus": "one row per story-trigger-query trial type; all trial types from one story remain in the same CV group",
+    "expected_analysis_units": {
+      "hu_rx22": 57,
+      "hu_pvt21": 50,
+      "hu_g18": 67,
+      "hu_vt16": 39,
+      "rnx_esi": 60,
+      "rnx_eweak": 60,
+      "rnx_estrong": 60,
+      "rnx_eonly": 60,
+      "rnx_eonlystrong": 60,
+      "novel_focus": 480
+    }
+  },
+  "cross_validation": {
+    "fold_count": 10,
+    "assignment": "deterministic sorted-group round-robin within dataset strata",
+    "seed": null,
+    "seed_explanation": "No RNG is used by fold assignment or the fixed optimizer start grid.",
+    "grouping": {
+      "hu_2023_benchmark": "scale",
+      "ronai_xiang_2024": "item across all five conditions",
+      "novel_focus": "story"
+    }
+  },
+  "calibration": {
+    "fitted_structure": "set",
+    "threshold_rule": "one absolute expectedness threshold shared across all dataset rows within each training fold",
+    "scale_rule": "one Gumbel noise scale shared across all dataset rows within each training fold",
+    "parameter_reuse": "the fitted threshold and scale are reused unchanged for Set, Ordering, Conjunction, and Disjunction held-out predictions",
+    "training_objective": "mean Bernoulli item log score within each of ten result rows, then equal mean across result rows",
+    "scale_bounds": [
+      0.1,
+      20.0
+    ],
+    "optimizer": "L-BFGS-B with fixed 3x3 quantile-by-scale start grid"
+  },
+  "reporting": {
+    "correlation": "Pearson r over source-grain held-out item probabilities",
+    "primary_proper_score": "mean item Bernoulli log score",
+    "baseline": "training-fold mean human response rate for the corresponding result row",
+    "secondary_score": "response-level Bernoulli total log likelihood only where exact human counts exist"
+  },
+  "paths": {
+    "canonical_builder": "focus_alt_exp_pipeline/code/build_cross_dataset_canonical_observations.py",
+    "table_builder": "focus_alt_exp_pipeline/code/build_big_results_table.py",
+    "committed_canonical_dir": "focus_alt_exp_pipeline/canonical_data",
+    "committed_table_dir": "focus_alt_exp_pipeline/results/big_table_development",
+    "clean_output_root": "focus_alt_exp_pipeline/results/reproducibility/day1_absolute_threshold_v1"
+  },
+  "expected_row_counts": {
+    "canonical/novel_focus_observations.csv": 480,
+    "canonical/hu_2023_observations.csv": 309,
+    "canonical/ronai_xiang_2024_observations.csv": 300,
+    "canonical/all_observations.csv": 1089,
+    "big_table/analysis_units.csv": 993,
+    "big_table/oof_predictions.csv": 993,
+    "big_table/fold_parameters.csv": 10,
+    "big_table/big_table_correlations.csv": 10,
+    "big_table/big_table_log_scores.csv": 50,
+    "big_table/big_table_metrics.csv": 10
+  },
+  "rebuild_command": "python focus_alt_exp_pipeline/code/rebuild_day1_results.py --config focus_alt_exp_pipeline/analysis_configs/day1_absolute_threshold_v1.json"
+}

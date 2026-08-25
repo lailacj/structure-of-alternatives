@@ -133,16 +133,8 @@ The key helper is `probability_to_model_result`, which converts a model's negati
 - `negation_probability`
 - `probability_query_observed`
 
-- `code/absolute_threshold_models.py`
-
-This file defines the new absolute-expectedness-threshold formulation of Set,
-Ordering, Conjunction, and Disjunction. It computes the four probabilities
-analytically from no-frame query and trigger log probabilities plus one shared
-threshold. It does not construct a fixed-size top-K set. The mathematical core
-and unit tests are complete. `evaluate_absolute_threshold.py` provides the
-leave-one-group-out development evaluator, but this path is not connected to
-the legacy sampling runner. Existing runner outputs therefore remain legacy
-top-K results until the cross-dataset integration is complete.
+- The absolute-expectedness-threshold/Gumbel analysis is archived under
+  `archive/absolute-threshold-gumbel-august-2026/`. It is not an active model.
 
 - `code/canonical_observations.py`
 
@@ -166,26 +158,16 @@ remaining Hu sources as rate-only. It also reproduces Hu et al.'s literal
 published string-analysis subset: 57/50/67/39 scales for
 rx22/pvt21/g18/vt16, with the three van Tiel templates averaged per scale.
 
-- `code/build_big_results_table.py`
+- `code/build_set_variant_scoring_manifest.py`
 
-Builds the ten-row development results table, grouped out-of-fold structure
-predictions, and both item-balanced and response-level log scores. See
-`results/big_table_development/README.md` for the current fitting rule and the
-remaining author decision before the values become paper-final.
+Builds the neutral-frame prompt manifest and required-candidate list for the
+cluster Qwen distribution scoring run.
 
-- `code/evaluate_absolute_threshold.py`
+- `code/evaluate_set_variant_grid.py`
 
-Fits one shared absolute threshold on training groups and produces held-out Set,
-Ordering, Conjunction, and Disjunction probabilities. The current development
-run uses leave-one-context-out evaluation for the novel focus data, fits the
-threshold using the Set model, and reuses that threshold for the hybrid
-structures. It also reports item-level Pearson/Spearman correlations and
-response-level log scores relative to a training-fold intercept baseline.
-
-The current unit-Gumbel-scale results are integration diagnostics, not final
-paper results. They reveal substantial overconfidence in the raw log-probability
-scale. The noise scale must be given a cross-validated fitting rule before the
-log scores are publication-ready.
+Selects Top-K and Top-p separately in grouped training folds using balanced Set
+log likelihood. The selected boundary is reused unchanged for Conjunction and
+Disjunction in the held-out fold.
 
 ### Cross-dataset Qwen scoring status
 
@@ -373,6 +355,53 @@ For example:
 - `results/cloze_probability/plots/negation_probability_correlation__set__cloze.png`
 
 ## Typical Commands
+
+### Active cross-dataset sampled-prefix Set analysis
+
+The active cross-dataset comparison has two intentionally separate set variants:
+
+- Top-K: each sampled set is the first K words in a weighted sampled ordering.
+- Top-p: each sampled set is the shortest prefix of that same ordering whose
+  original normalized candidate probabilities sum to at least p.
+
+Build the cluster scoring inputs. `--bigram-vocab` must point to the global
+candidate bigram vocabulary that will be scored, and it must contain every
+bigram listed in the generated `required_candidates.txt` file.
+
+```bash
+python focus_alt_exp_pipeline/code/build_set_variant_scoring_manifest.py \
+  --bigram-vocab /cluster/ngrams/set_variant_bigrams.txt
+```
+
+On the cluster, score the generated prompt IDs with the existing resumable
+precompute script:
+
+```bash
+python focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py \
+  --prompts-csv focus_alt_exp_pipeline/scoring_manifests/set_variant_qwen/prompts.csv \
+  --prompt-context-col prompt_id \
+  --prompt-col generation_prompt \
+  --bigram-support-manifest focus_alt_exp_pipeline/scoring_manifests/set_variant_qwen/selection_manifest.json \
+  --output-dir /cluster/results/qwen_set_variant_log_probs \
+  --local-files-only --hf-offline
+```
+
+After those score arrays are available, build candidate predictions and select
+K/p separately in grouped training folds:
+
+```bash
+python focus_alt_exp_pipeline/code/build_set_variant_prediction_grid.py \
+  --log-probs-dir /cluster/results/qwen_set_variant_log_probs \
+  --output /cluster/results/set_variant/prediction_grid.csv
+
+python focus_alt_exp_pipeline/code/evaluate_set_variant_grid.py \
+  --prediction-grid /cluster/results/set_variant/prediction_grid.csv \
+  --output-dir /cluster/results/set_variant/cv_results
+```
+
+For each outer fold, `evaluate_set_variant_grid.py` selects one K and one p
+using only the other nine folds' balanced Set log likelihood. It reuses each
+selected boundary for Conjunction and Disjunction in the held-out fold.
 
 Run the cloze-based model:
 
