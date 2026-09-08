@@ -2,7 +2,7 @@
 
 This directory contains the active pipeline for testing whether next-word prediction can explain focus-alternative generation in the human negation task.
 
-At a high level, the pipeline does this:
+The original within-dataset runner does this:
 
 1. Start from human focus-alternative trials in `human_exp_data/sca_dataframe.csv`.
 2. Build a next-word distribution for each context, or use a shared global baseline.
@@ -16,6 +16,11 @@ Current stable next-word sources in this pipeline:
 - human cloze probabilities
 - a global Google Ngram frequency baseline shared across all contexts
 - Qwen next-word probabilities from the completed sparse precompute path
+
+The active cross-dataset analysis is a separate sampled-prefix path. It uses
+the canonical novel-focus, Hu, and Ronai-Xiang tables; samples shared weighted
+orderings without replacement; defines separate Top-K and Top-p prefix sets;
+and selects K and p separately in grouped 10-fold cross-validation.
 
 ## Directory Layout
 
@@ -42,6 +47,8 @@ Current stable next-word sources in this pipeline:
 
 - `results/`
   Raw trial-level outputs, summaries, diagnostics, and plots.
+  `results/set_variant_qwen/` is the current full-coverage cross-dataset result
+  bundle.
 
 ## Core Inputs
 
@@ -163,11 +170,39 @@ rx22/pvt21/g18/vt16, with the three van Tiel templates averaged per scale.
 Builds the neutral-frame prompt manifest and required-candidate list for the
 cluster Qwen distribution scoring run.
 
+- `code/build_set_variant_candidate_vocab.py`
+
+Augments the bounded global Qwen support with every required trigger/query
+candidate without scanning or copying the full raw 2-gram vocabulary.
+
+- `code/validate_set_variant_qwen_scores.py`
+
+Checks prompt completeness, array shapes, finite scores, and required-candidate
+coverage before any predictions are built.
+
+- `code/build_set_variant_prediction_grid.py`
+
+Samples one shared bank of weighted orderings per prompt and constructs Top-K
+and Top-p Set, Conjunction, Disjunction, and ordering probabilities.
+
 - `code/evaluate_set_variant_grid.py`
 
 Selects Top-K and Top-p separately in grouped training folds using balanced Set
 log likelihood. The selected boundary is reused unchanged for Conjunction and
 Disjunction in the held-out fold.
+
+- `code/build_linking_structure_tables.py`
+
+Aligns the direct no-linking and X-but-not-Y baselines with the sampled-prefix
+out-of-fold results.
+
+- `code/build_set_variant_advisor_summary.py`
+
+Builds aggregate score/correlation tables and heatmaps.
+
+- `code/plot_linking_structure_item_scores.py`
+
+Builds item-level model-versus-human plots and Novel Focus context panels.
 
 ### Cross-dataset Qwen scoring status
 
@@ -205,6 +240,13 @@ those canonical rows are correlation-ready and support item-mean proper log
 scores, but not response-level binomial log likelihood without additional
 source data.
 
+The separate sampled-prefix distribution-scoring run is also complete. Its
+committed `scoring_manifests/set_variant_qwen/` directory contains 360 prompts,
+1,089 source rows, and 360 required candidates. The bounded candidate support
+contains 98,509 unigrams and 22,792 bigrams (121,301 candidates total). All 360
+score arrays under sibling `ngrams/qwen_set_variant_log_probs/` passed strict
+completion, shape, finiteness, and required-candidate validation.
+
 ### Sampling next-word distributions
 
 - `code/samplers.py`
@@ -241,6 +283,17 @@ remain scoreable.
 - `code/split_half_neg_correlation.py`
   Computes split-half reliability over human negation responses.
 
+- `code/build_linking_structure_tables.py`
+  Writes the current cross-dataset correlation, proper-log-score, and coverage
+  tables.
+
+- `code/build_set_variant_advisor_summary.py`
+  Writes the aggregate balanced-score plot and correlation/log-score heatmaps.
+
+- `code/plot_linking_structure_item_scores.py`
+  Writes model-wide item scatterplots and one nine-model panel for each Novel
+  Focus context.
+
 ### Qwen preparation
 
 - `../building_vocab_from_ngrams/code/build_qwen_bigram_support.py`
@@ -264,7 +317,7 @@ This script now defaults to a context-balanced sparse precompute that is suffici
 
 The main runner consumes those precomputed files through `--dataset qwen`, using exact context-specific ordering probabilities plus cached sampled estimates for `set`, `conjunction`, and `disjunction`.
 
-### Qwen Status (April 9, 2026)
+### Original within-dataset Qwen status (April 9, 2026)
 
 The current Qwen implementation status is:
 
@@ -354,6 +407,13 @@ For example:
 - `results/cloze_probability/plots/log_likelihood_by_structure_with_context_dots__cloze.png`
 - `results/cloze_probability/plots/negation_probability_correlation__set__cloze.png`
 
+The active cross-dataset sampled-prefix outputs instead live under:
+
+- `results/set_variant_qwen/prediction_grid.csv`
+- `results/set_variant_qwen/cv_results/`
+- `results/set_variant_qwen/linking_structure_tables/`
+- `results/set_variant_qwen/advisor_summary/`
+
 ## Typical Commands
 
 ### Active cross-dataset sampled-prefix Set analysis
@@ -370,38 +430,72 @@ the scored unigram/bigram support.
 
 ```bash
 python focus_alt_exp_pipeline/code/build_set_variant_scoring_manifest.py \
-  --bigram-vocab /cluster/ngrams/set_variant_bigrams.txt
+  --bigram-vocab /users/ljohnst7/data/ljohnst7/ngrams/set_variant_qwen_support/vocab_2gram.txt
+
+python focus_alt_exp_pipeline/code/build_set_variant_candidate_vocab.py \
+  --base-unigram-vocab /users/ljohnst7/data/ljohnst7/ngrams/google_ngram_frequency_info/vocab_1gram.txt \
+  --base-bigram-vocab /users/ljohnst7/data/ljohnst7/ngrams/qwen_bigram_support/vocab_2gram.txt \
+  --output-dir /users/ljohnst7/data/ljohnst7/ngrams/set_variant_qwen_support
 ```
 
-On the cluster, score the generated prompt IDs with the existing resumable
-precompute script:
+On Oscar, score the 360 generated prompt IDs with the resumable array wrapper:
 
 ```bash
-python focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py \
-  --prompts-csv focus_alt_exp_pipeline/scoring_manifests/set_variant_qwen/prompts.csv \
-  --prompt-context-col prompt_id \
-  --prompt-col generation_prompt \
-  --bigram-support-manifest focus_alt_exp_pipeline/scoring_manifests/set_variant_qwen/selection_manifest.json \
-  --output-dir /cluster/results/qwen_set_variant_log_probs \
-  --local-files-only --hf-offline
+sbatch focus_alt_exp_pipeline/cluster/score_set_variant_qwen.sh
 ```
+
+The wrapper pins Qwen2-7B revision
+`453ed1575b739b5b03ce3758b23befdb0967f40e`, uses the augmented unigram
+vocabulary, writes resume-safe arrays to sibling
+`ngrams/qwen_set_variant_log_probs/`, and limits concurrency to two GPUs.
 
 After those score arrays are available, build candidate predictions and select
 K/p separately in grouped training folds:
 
 ```bash
-python focus_alt_exp_pipeline/code/build_set_variant_prediction_grid.py \
-  --log-probs-dir /cluster/results/qwen_set_variant_log_probs \
-  --output /cluster/results/set_variant/prediction_grid.csv
-
-python focus_alt_exp_pipeline/code/evaluate_set_variant_grid.py \
-  --prediction-grid /cluster/results/set_variant/prediction_grid.csv \
-  --output-dir /cluster/results/set_variant/cv_results
+sbatch focus_alt_exp_pipeline/cluster/run_set_variant_postprocessing.sh
 ```
+
+The postprocessing job first runs
+`code/validate_set_variant_qwen_scores.py`, and refuses to build predictions
+unless all 360 arrays are complete, have the expected 121,301-candidate shape,
+contain only finite scores, and include finite scores for every required
+trigger/query. It then samples 500 shared weighted orderings per prompt with a
+32,768-word retained prefix, writes `results/set_variant_qwen/prediction_grid.csv`,
+and writes fold selections and out-of-fold results under
+`results/set_variant_qwen/cv_results/`.
 
 For each outer fold, `evaluate_set_variant_grid.py` selects one K and one p
 using only the other nine folds' balanced Set log likelihood. It reuses each
 selected boundary for Conjunction and Disjunction in the held-out fold.
+
+The full run completed on September 8, 2026. It contains 16,881 grid rows and
+1,986 out-of-fold variant rows covering 993 unique analysis units in 10 dataset
+strata. Top-p selected `p=0.6` in all folds. Top-K selected `K=100` in all
+folds; because 100 is the maximum tested value, expand the K grid before the
+analysis is frozen.
+
+Build the aligned linking tables and aggregate plots with:
+
+```bash
+python focus_alt_exp_pipeline/code/build_linking_structure_tables.py \
+  --source-rows focus_alt_exp_pipeline/scoring_manifests/set_variant_qwen/source_rows.csv \
+  --results-dir focus_alt_exp_pipeline/results/set_variant_qwen \
+  --output-dir focus_alt_exp_pipeline/results/set_variant_qwen/linking_structure_tables
+
+python focus_alt_exp_pipeline/code/build_set_variant_advisor_summary.py \
+  --results-dir focus_alt_exp_pipeline/results/set_variant_qwen \
+  --output-dir focus_alt_exp_pipeline/results/set_variant_qwen/advisor_summary \
+  --snapshot-dir focus_alt_exp_pipeline/scoring_manifests/set_variant_qwen \
+  --linking-correlations focus_alt_exp_pipeline/results/set_variant_qwen/linking_structure_tables/correlations_by_dataset_and_linking_structure.csv \
+  --linking-log-scores focus_alt_exp_pipeline/results/set_variant_qwen/linking_structure_tables/log_scores_by_dataset_and_linking_structure.csv \
+  --analysis-label Full
+
+python focus_alt_exp_pipeline/code/plot_linking_structure_item_scores.py \
+  --source-rows focus_alt_exp_pipeline/scoring_manifests/set_variant_qwen/source_rows.csv \
+  --results-dir focus_alt_exp_pipeline/results/set_variant_qwen \
+  --output-dir focus_alt_exp_pipeline/results/set_variant_qwen/advisor_summary/item_level_scatterplots
+```
 
 Run the cloze-based model:
 
@@ -530,6 +624,10 @@ Implemented now:
 - Qwen next-word modeling from sparse precomputed continuation probabilities
 - Trial-level model-vs-human negation-probability correlation plots
 - Split-half analysis of human negation responses
+- Full-coverage cross-dataset sampled-prefix Qwen scoring
+- Separate Top-K and Top-p grouped-CV selection
+- Out-of-fold linking-structure correlations and proper log scores
+- Cross-dataset tables, aggregate heatmaps, and item-level plots
 
 Not implemented yet in this pipeline:
 

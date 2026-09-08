@@ -25,3 +25,10 @@ The summed log probability is the probability of the complete candidate
 surface and is the natural primary expectedness score. The mean per-token score
 is retained as a length-normalized diagnostic so the choice can be assessed
 before the paper analysis is frozen.
+
+These CSVs contain direct trigger/query continuation scores. The separate
+sampled-prefix analysis requires a full bounded candidate distribution for each
+of 360 prompts; those large arrays live outside the Git repository under the
+cluster sibling directory `ngrams/qwen_set_variant_log_probs/`. Their validated
+derived results are committed under
+`focus_alt_exp_pipeline/results/set_variant_qwen/`.

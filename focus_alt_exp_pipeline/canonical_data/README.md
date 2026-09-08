@@ -28,6 +28,12 @@ All score rows use Qwen2-7B revision
 `453ed1575b739b5b03ce3758b23befdb0967f40e` and have complete model
 provenance.
 
+The active sampled-prefix manifest is derived from these tables and lives at
+`../scoring_manifests/set_variant_qwen/source_rows.csv`. After applying the Hu
+published-analysis filter and averaging van Tiel templates to scale level, the
+current grouped-CV evaluation contains 993 analysis units across 10 dataset
+strata.
+
 ## Human-response grain and counts
 
 `human_count_status=exact` means `human_yes` and `human_total` are observed

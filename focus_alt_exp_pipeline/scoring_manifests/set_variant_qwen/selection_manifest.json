@@ -1,0 +1,1114 @@
+{
+  "schema_version": "focus-alternatives-set-variant-support/v1",
+  "outputs": {
+    "global_vocab_path": "/users/ljohnst7/data/ljohnst7/ngrams/set_variant_qwen_support/vocab_2gram.txt"
+  },
+  "contexts": {
+    "prompt_00fcbca27c180dbc2d8e": {
+      "required_bigrams": []
+    },
+    "prompt_02664c8f3dbdcb0f53a2": {
+      "required_bigrams": []
+    },
+    "prompt_02c63b2172f6c288744a": {
+      "required_bigrams": []
+    },
+    "prompt_042e0868e1132ca3a628": {
+      "required_bigrams": []
+    },
+    "prompt_04d2384fea57da279882": {
+      "required_bigrams": []
+    },
+    "prompt_053662257d9948468d43": {
+      "required_bigrams": []
+    },
+    "prompt_06692c036c31ce17278e": {
+      "required_bigrams": []
+    },
+    "prompt_06e5454d12ae4fdc4a59": {
+      "required_bigrams": []
+    },
+    "prompt_0735d3ea2ba349250fe1": {
+      "required_bigrams": []
+    },
+    "prompt_07d816e1de5ce39e7e94": {
+      "required_bigrams": []
+    },
+    "prompt_0a3370f683f7d2e1ec45": {
+      "required_bigrams": []
+    },
+    "prompt_0aa8db3e6ebab8794771": {
+      "required_bigrams": []
+    },
+    "prompt_0b3df724239c8875748e": {
+      "required_bigrams": []
+    },
+    "prompt_0b753bd8fdc518f6a507": {
+      "required_bigrams": []
+    },
+    "prompt_0b93613ae6c4e681296c": {
+      "required_bigrams": []
+    },
+    "prompt_0bbe81e1df686546a756": {
+      "required_bigrams": []
+    },
+    "prompt_0cb5262612a78b4cdc39": {
+      "required_bigrams": []
+    },
+    "prompt_0cce8bf6b8ac187413a7": {
+      "required_bigrams": []
+    },
+    "prompt_0d93bb0c063facbc35e3": {
+      "required_bigrams": []
+    },
+    "prompt_0db43f7d800b9b92f666": {
+      "required_bigrams": []
+    },
+    "prompt_0dd418b630c0593430bc": {
+      "required_bigrams": []
+    },
+    "prompt_0e09cc2e8888b48393b2": {
+      "required_bigrams": []
+    },
+    "prompt_0f186d46d95f1a800470": {
+      "required_bigrams": []
+    },
+    "prompt_0f2d6d33c2d58294fdef": {
+      "required_bigrams": []
+    },
+    "prompt_10513091a7c3e569afbd": {
+      "required_bigrams": []
+    },
+    "prompt_10ff26381aea290f9893": {
+      "required_bigrams": []
+    },
+    "prompt_12264f37f4a88235f85c": {
+      "required_bigrams": []
+    },
+    "prompt_1289bd93b82b3a1f5223": {
+      "required_bigrams": []
+    },
+    "prompt_13240e3a8bb3ecd078af": {
+      "required_bigrams": []
+    },
+    "prompt_13e0a61ad9e1e7a1a68d": {
+      "required_bigrams": []
+    },
+    "prompt_140aab184958ef7b4c06": {
+      "required_bigrams": []
+    },
+    "prompt_166d78d2a7994d7f4fca": {
+      "required_bigrams": []
+    },
+    "prompt_1726c74183f5605e9380": {
+      "required_bigrams": []
+    },
+    "prompt_174d6ce179ddd97c9696": {
+      "required_bigrams": []
+    },
+    "prompt_17f792bd12bd5ac5e580": {
+      "required_bigrams": []
+    },
+    "prompt_1a12b9d966441e5f0036": {
+      "required_bigrams": []
+    },
+    "prompt_1a1740d8ce2ee1c5c023": {
+      "required_bigrams": []
+    },
+    "prompt_1ab25cbf80246cac5881": {
+      "required_bigrams": []
+    },
+    "prompt_1adc9408a04759114c3c": {
+      "required_bigrams": []
+    },
+    "prompt_1b978122a2020f120028": {
+      "required_bigrams": []
+    },
+    "prompt_1bae3728ee33e79bd9d0": {
+      "required_bigrams": []
+    },
+    "prompt_1be9e092c61e1b72438e": {
+      "required_bigrams": []
+    },
+    "prompt_1cdfe9cb425f2858c3a7": {
+      "required_bigrams": []
+    },
+    "prompt_1eaf69a2762f15937455": {
+      "required_bigrams": []
+    },
+    "prompt_1fc81b41052f866cdb7e": {
+      "required_bigrams": []
+    },
+    "prompt_20686c4bc477920b48f1": {
+      "required_bigrams": []
+    },
+    "prompt_209a223912a6f1283004": {
+      "required_bigrams": []
+    },
+    "prompt_20cce8f1b2f71226fa3e": {
+      "required_bigrams": []
+    },
+    "prompt_2283f8f6e027870a69f3": {
+      "required_bigrams": []
+    },
+    "prompt_22aaf212f7471342e37a": {
+      "required_bigrams": []
+    },
+    "prompt_23692ec0a817e0142608": {
+      "required_bigrams": []
+    },
+    "prompt_23cd377ebb3b02fb98c9": {
+      "required_bigrams": []
+    },
+    "prompt_23d333a041daa75094e7": {
+      "required_bigrams": []
+    },
+    "prompt_2448a7424ef71d42a869": {
+      "required_bigrams": []
+    },
+    "prompt_24d25b858ddf612defad": {
+      "required_bigrams": []
+    },
+    "prompt_24f17fdaf7a9a606dc4d": {
+      "required_bigrams": []
+    },
+    "prompt_254e6a34399f82c3d892": {
+      "required_bigrams": []
+    },
+    "prompt_278bce34e943a238094a": {
+      "required_bigrams": []
+    },
+    "prompt_28cd3106cd87a4a16d3a": {
+      "required_bigrams": []
+    },
+    "prompt_2b894edfe9ee13f51831": {
+      "required_bigrams": []
+    },
+    "prompt_2c0dc59f6606aff02f49": {
+      "required_bigrams": []
+    },
+    "prompt_2d114ad70f618a11c111": {
+      "required_bigrams": []
+    },
+    "prompt_2d43afc9f37c35619745": {
+      "required_bigrams": []
+    },
+    "prompt_2f38c14b59ad3710382f": {
+      "required_bigrams": []
+    },
+    "prompt_2f3caef135aa9a848bf4": {
+      "required_bigrams": []
+    },
+    "prompt_2fdaae5939867fc902f6": {
+      "required_bigrams": [
+        "has to"
+      ]
+    },
+    "prompt_305b2035d30cdfd739c6": {
+      "required_bigrams": []
+    },
+    "prompt_30cf93c1195d5b9ed158": {
+      "required_bigrams": []
+    },
+    "prompt_3194e0da7154e8bdba3e": {
+      "required_bigrams": []
+    },
+    "prompt_320612dfb661a9cd2f3b": {
+      "required_bigrams": []
+    },
+    "prompt_324a682db5923cbe3676": {
+      "required_bigrams": []
+    },
+    "prompt_32ce4da167dc3c2174a7": {
+      "required_bigrams": []
+    },
+    "prompt_3425a40526978196a350": {
+      "required_bigrams": []
+    },
+    "prompt_344efcc7e201469e692a": {
+      "required_bigrams": []
+    },
+    "prompt_3549ede9573c552fb149": {
+      "required_bigrams": []
+    },
+    "prompt_3622b2dc937ddcfab3b3": {
+      "required_bigrams": [
+        "burger joint",
+        "coffee shop",
+        "electronics store",
+        "gift shop",
+        "grocery store",
+        "pretzel stand"
+      ]
+    },
+    "prompt_37266f2f0cd8daf92dd4": {
+      "required_bigrams": []
+    },
+    "prompt_388888845d0888eb59cc": {
+      "required_bigrams": []
+    },
+    "prompt_38daba43804ff922ba32": {
+      "required_bigrams": []
+    },
+    "prompt_38ec4d24956b54433acd": {
+      "required_bigrams": []
+    },
+    "prompt_38fc1c18c8f8cfadb26a": {
+      "required_bigrams": []
+    },
+    "prompt_398aa6ce6e5fbd1a847b": {
+      "required_bigrams": []
+    },
+    "prompt_39b3fb324282c6dc50a2": {
+      "required_bigrams": []
+    },
+    "prompt_3aba34f9f5cd8bad2888": {
+      "required_bigrams": []
+    },
+    "prompt_3bfc37193b201d696558": {
+      "required_bigrams": []
+    },
+    "prompt_3c636ba7364549b3c927": {
+      "required_bigrams": []
+    },
+    "prompt_3e86e8ff5ab294e66f88": {
+      "required_bigrams": []
+    },
+    "prompt_3f4165674fc70d33f862": {
+      "required_bigrams": []
+    },
+    "prompt_3f77c43e49906f041db0": {
+      "required_bigrams": []
+    },
+    "prompt_41806a639329bd2f1ba1": {
+      "required_bigrams": []
+    },
+    "prompt_41ad60173d9be01fa4db": {
+      "required_bigrams": []
+    },
+    "prompt_4238bcfdbf02089653bf": {
+      "required_bigrams": []
+    },
+    "prompt_43f7962a774c6981785e": {
+      "required_bigrams": []
+    },
+    "prompt_44613bb7e811db7749db": {
+      "required_bigrams": []
+    },
+    "prompt_45589ec464e7c1a4bd55": {
+      "required_bigrams": []
+    },
+    "prompt_4653ed50b98f0ec3ea7c": {
+      "required_bigrams": []
+    },
+    "prompt_4707e633f2ec46c31d01": {
+      "required_bigrams": []
+    },
+    "prompt_4813211589e4a412af7d": {
+      "required_bigrams": []
+    },
+    "prompt_4893e801b71745885798": {
+      "required_bigrams": []
+    },
+    "prompt_4b013d60a251cd341cf8": {
+      "required_bigrams": []
+    },
+    "prompt_4bc3eb6fdbcda8fe1412": {
+      "required_bigrams": []
+    },
+    "prompt_4cc656298c8e6a68289e": {
+      "required_bigrams": []
+    },
+    "prompt_4d1e043e6e4822d516c8": {
+      "required_bigrams": []
+    },
+    "prompt_4e46ce3dcda426b5f96b": {
+      "required_bigrams": []
+    },
+    "prompt_501eb5cf496b8e6de236": {
+      "required_bigrams": []
+    },
+    "prompt_502dd2ff5a37ca2e0cd3": {
+      "required_bigrams": []
+    },
+    "prompt_51e155f5fcfa2891ea62": {
+      "required_bigrams": []
+    },
+    "prompt_524153de25e6ceff3d6e": {
+      "required_bigrams": []
+    },
+    "prompt_530c673f2b0bcbfc970d": {
+      "required_bigrams": []
+    },
+    "prompt_545e99a94cd3277336ba": {
+      "required_bigrams": []
+    },
+    "prompt_56343fbf5be47438db59": {
+      "required_bigrams": []
+    },
+    "prompt_56c129d04dd821012306": {
+      "required_bigrams": []
+    },
+    "prompt_56efa73860459df46fb5": {
+      "required_bigrams": []
+    },
+    "prompt_580930ed2328c7e847c9": {
+      "required_bigrams": []
+    },
+    "prompt_58798cae89123fd97c37": {
+      "required_bigrams": []
+    },
+    "prompt_589d7f57d71a4c2efd9b": {
+      "required_bigrams": []
+    },
+    "prompt_592733e01f7163b01f24": {
+      "required_bigrams": []
+    },
+    "prompt_599c4799a2f4855b6272": {
+      "required_bigrams": []
+    },
+    "prompt_59c09b6af0267c5fa0f3": {
+      "required_bigrams": []
+    },
+    "prompt_5a66e35a03647ad63fc9": {
+      "required_bigrams": [
+        "has to"
+      ]
+    },
+    "prompt_5ab8f22986c662e19baa": {
+      "required_bigrams": []
+    },
+    "prompt_5b05526d5984ccdada2b": {
+      "required_bigrams": []
+    },
+    "prompt_5b4bafe52d36709c7347": {
+      "required_bigrams": []
+    },
+    "prompt_5c30cda77a6fe9b79a64": {
+      "required_bigrams": []
+    },
+    "prompt_5c57e481bdb11271e9ca": {
+      "required_bigrams": []
+    },
+    "prompt_5c935bd5be540239ede7": {
+      "required_bigrams": []
+    },
+    "prompt_5d3a9f03ba6ac59eb6f5": {
+      "required_bigrams": []
+    },
+    "prompt_5dd80f11d6da80aeed3c": {
+      "required_bigrams": []
+    },
+    "prompt_5e7843f716d2765770a6": {
+      "required_bigrams": []
+    },
+    "prompt_5ebb482fbc5e05dcf343": {
+      "required_bigrams": []
+    },
+    "prompt_609ebcb01c16884d0a9b": {
+      "required_bigrams": []
+    },
+    "prompt_61d855467faef22dda02": {
+      "required_bigrams": []
+    },
+    "prompt_6221a2fa0be7cf08f388": {
+      "required_bigrams": []
+    },
+    "prompt_637f3ba213712824d624": {
+      "required_bigrams": []
+    },
+    "prompt_640423a416c4e3cdc50d": {
+      "required_bigrams": []
+    },
+    "prompt_64d2dffa827be493405d": {
+      "required_bigrams": []
+    },
+    "prompt_657c1e9c064cbc82fbce": {
+      "required_bigrams": []
+    },
+    "prompt_659af1eabd50b2180293": {
+      "required_bigrams": []
+    },
+    "prompt_66323c06c37a8e00ed7c": {
+      "required_bigrams": []
+    },
+    "prompt_6687c41c215fb4c9bc18": {
+      "required_bigrams": []
+    },
+    "prompt_688f85d2ee80be65d6ff": {
+      "required_bigrams": []
+    },
+    "prompt_698b8be3e62e148e260c": {
+      "required_bigrams": []
+    },
+    "prompt_6aa492960e929d0d9716": {
+      "required_bigrams": []
+    },
+    "prompt_6b595c448108d920e068": {
+      "required_bigrams": []
+    },
+    "prompt_6b640e6c5a51f055c739": {
+      "required_bigrams": [
+        "terminally ill"
+      ]
+    },
+    "prompt_6c1b3593d11d68cadaaa": {
+      "required_bigrams": []
+    },
+    "prompt_6cc85ab73d4e7fbd17d7": {
+      "required_bigrams": []
+    },
+    "prompt_6d032f07512360bb0a1c": {
+      "required_bigrams": []
+    },
+    "prompt_6d389c2043c750266834": {
+      "required_bigrams": []
+    },
+    "prompt_6d80c184c3718ce325c0": {
+      "required_bigrams": []
+    },
+    "prompt_6e261efd81dca8051d26": {
+      "required_bigrams": []
+    },
+    "prompt_6f5992006e03157c0366": {
+      "required_bigrams": []
+    },
+    "prompt_6fd514252c44029619a3": {
+      "required_bigrams": []
+    },
+    "prompt_705d5e3c1a579842d626": {
+      "required_bigrams": []
+    },
+    "prompt_709ab170815ec17190c7": {
+      "required_bigrams": []
+    },
+    "prompt_71317a193e7f4b2fe5d3": {
+      "required_bigrams": []
+    },
+    "prompt_71d6afaafee59b5ad4a9": {
+      "required_bigrams": []
+    },
+    "prompt_721dd38f6e1cd385aeb9": {
+      "required_bigrams": []
+    },
+    "prompt_738a4371eb54b48233b0": {
+      "required_bigrams": []
+    },
+    "prompt_739729bf2f10e6d80322": {
+      "required_bigrams": []
+    },
+    "prompt_747fcc8e2f89ae3b0473": {
+      "required_bigrams": []
+    },
+    "prompt_752aae9e70bae7652559": {
+      "required_bigrams": []
+    },
+    "prompt_756a22f2d4f21f4a218b": {
+      "required_bigrams": []
+    },
+    "prompt_77568553322e24e8190f": {
+      "required_bigrams": []
+    },
+    "prompt_777a61df356187f82fac": {
+      "required_bigrams": []
+    },
+    "prompt_77b713410523f573f451": {
+      "required_bigrams": []
+    },
+    "prompt_78eebe9cb8187c270621": {
+      "required_bigrams": []
+    },
+    "prompt_7a508071659adb7b52a6": {
+      "required_bigrams": []
+    },
+    "prompt_7abd9e6d247ba9384d6d": {
+      "required_bigrams": []
+    },
+    "prompt_7ade7d887172c3ffdfc0": {
+      "required_bigrams": []
+    },
+    "prompt_7afd8befa5c668f87434": {
+      "required_bigrams": []
+    },
+    "prompt_7b606437eb9b0fd82b1e": {
+      "required_bigrams": []
+    },
+    "prompt_7be07c75e713df8bc1f0": {
+      "required_bigrams": []
+    },
+    "prompt_7bea3739964bf9d3157d": {
+      "required_bigrams": []
+    },
+    "prompt_7c0787e202ddc7367361": {
+      "required_bigrams": []
+    },
+    "prompt_7c964a821ce9486cb678": {
+      "required_bigrams": []
+    },
+    "prompt_7cdb0a04810e9e08cb10": {
+      "required_bigrams": []
+    },
+    "prompt_7e0fdf0d18a78b2f26f0": {
+      "required_bigrams": []
+    },
+    "prompt_7e7fe96035ca9e08eac0": {
+      "required_bigrams": []
+    },
+    "prompt_7ebf909e4b947d98da36": {
+      "required_bigrams": []
+    },
+    "prompt_7ef0d076d98598730e9a": {
+      "required_bigrams": []
+    },
+    "prompt_80a135acf3ebf3aa5eaa": {
+      "required_bigrams": []
+    },
+    "prompt_81510cf385785220acb5": {
+      "required_bigrams": []
+    },
+    "prompt_82862027dcfc21ddd7a2": {
+      "required_bigrams": []
+    },
+    "prompt_83f277ddd353396d08b1": {
+      "required_bigrams": []
+    },
+    "prompt_840ea27e6884b799f03d": {
+      "required_bigrams": []
+    },
+    "prompt_8487b91d8b711b635de9": {
+      "required_bigrams": []
+    },
+    "prompt_8739e15a78acc9c748f2": {
+      "required_bigrams": []
+    },
+    "prompt_880556e472c188a19236": {
+      "required_bigrams": [
+        "beach ball"
+      ]
+    },
+    "prompt_889d327ca8706844c390": {
+      "required_bigrams": []
+    },
+    "prompt_8a7d96bf9736b1016bf4": {
+      "required_bigrams": [
+        "roller blades"
+      ]
+    },
+    "prompt_8be1725bcbc2c7cafd21": {
+      "required_bigrams": []
+    },
+    "prompt_8ca19e07495588590515": {
+      "required_bigrams": []
+    },
+    "prompt_8db9c4024d83de073548": {
+      "required_bigrams": []
+    },
+    "prompt_8e5f09d888c394847072": {
+      "required_bigrams": []
+    },
+    "prompt_8fcbba79ae1df9a8ba2f": {
+      "required_bigrams": []
+    },
+    "prompt_8feddd2073fb246aa980": {
+      "required_bigrams": []
+    },
+    "prompt_90e8b2aad92e2cc22986": {
+      "required_bigrams": []
+    },
+    "prompt_90eaf9efa854c51aeab5": {
+      "required_bigrams": []
+    },
+    "prompt_917833c98fdb2bb36886": {
+      "required_bigrams": []
+    },
+    "prompt_930e8cc6f3119e5bd81c": {
+      "required_bigrams": []
+    },
+    "prompt_931d0dd20892e44d05d5": {
+      "required_bigrams": []
+    },
+    "prompt_939287c6e92ad6058c57": {
+      "required_bigrams": []
+    },
+    "prompt_9464e3d9e8a4e8a05eff": {
+      "required_bigrams": []
+    },
+    "prompt_95401d256c36dfade26e": {
+      "required_bigrams": []
+    },
+    "prompt_955d2464207ced42dea9": {
+      "required_bigrams": []
+    },
+    "prompt_957600c3996350b84f6f": {
+      "required_bigrams": []
+    },
+    "prompt_95c315c9ed427791791b": {
+      "required_bigrams": []
+    },
+    "prompt_96127195d571b60ef5ed": {
+      "required_bigrams": []
+    },
+    "prompt_96b9fd88dd95d8e198a6": {
+      "required_bigrams": []
+    },
+    "prompt_97105f92135d8fd5e77f": {
+      "required_bigrams": []
+    },
+    "prompt_980237e32fcb800eaba5": {
+      "required_bigrams": []
+    },
+    "prompt_9811d6a2af36e00293d3": {
+      "required_bigrams": []
+    },
+    "prompt_986769da57d78cb7ce52": {
+      "required_bigrams": []
+    },
+    "prompt_99d6c7fa02cf58a58879": {
+      "required_bigrams": []
+    },
+    "prompt_9ab8d73f1cfc0cad14e4": {
+      "required_bigrams": []
+    },
+    "prompt_9ae221f995afa06cc4d0": {
+      "required_bigrams": []
+    },
+    "prompt_9beef84d602e83233184": {
+      "required_bigrams": []
+    },
+    "prompt_9bf486d348995ffb3c18": {
+      "required_bigrams": []
+    },
+    "prompt_9d10b4bf28050baa10fa": {
+      "required_bigrams": []
+    },
+    "prompt_9e9d73e33e446f793598": {
+      "required_bigrams": []
+    },
+    "prompt_9fb9edca3350bd8eb9ef": {
+      "required_bigrams": []
+    },
+    "prompt_a00c8affba73ae324926": {
+      "required_bigrams": []
+    },
+    "prompt_a0659a0313d2c4e6f7e9": {
+      "required_bigrams": []
+    },
+    "prompt_a09ae2916bf457412251": {
+      "required_bigrams": []
+    },
+    "prompt_a1ae54b0763a217f7d6a": {
+      "required_bigrams": []
+    },
+    "prompt_a1c3d53b82409c3a0909": {
+      "required_bigrams": []
+    },
+    "prompt_a21e371598a2b50ec832": {
+      "required_bigrams": []
+    },
+    "prompt_a24e95517a05e37fcb1a": {
+      "required_bigrams": []
+    },
+    "prompt_a276e86b98781155d95f": {
+      "required_bigrams": []
+    },
+    "prompt_a334c89b411df90df76b": {
+      "required_bigrams": []
+    },
+    "prompt_a34a467ede5a114e7f4e": {
+      "required_bigrams": []
+    },
+    "prompt_a366eaab2c5fdbd6a23c": {
+      "required_bigrams": []
+    },
+    "prompt_a37e810a2613681c714c": {
+      "required_bigrams": []
+    },
+    "prompt_a3afc32e2955323c1f0a": {
+      "required_bigrams": []
+    },
+    "prompt_a3f9a2b596f078fa95bf": {
+      "required_bigrams": []
+    },
+    "prompt_a4142fc44ef982483908": {
+      "required_bigrams": []
+    },
+    "prompt_a46876bb5719277b3e45": {
+      "required_bigrams": []
+    },
+    "prompt_a53e97793a855559c06d": {
+      "required_bigrams": []
+    },
+    "prompt_a553c55c4cf8ddfc9832": {
+      "required_bigrams": []
+    },
+    "prompt_a5f165d5738b6f45b905": {
+      "required_bigrams": []
+    },
+    "prompt_a7e5a055b1e502a56fda": {
+      "required_bigrams": []
+    },
+    "prompt_a9ba41eb1bf65a23642f": {
+      "required_bigrams": []
+    },
+    "prompt_a9fecc303fff8855bd8a": {
+      "required_bigrams": []
+    },
+    "prompt_ac486d4c1ab5dfb3688f": {
+      "required_bigrams": []
+    },
+    "prompt_ac92eb3ea65506e3a9af": {
+      "required_bigrams": []
+    },
+    "prompt_ad186ae540b8c58ffeaf": {
+      "required_bigrams": []
+    },
+    "prompt_ad4bd6c387f8a95f6d37": {
+      "required_bigrams": []
+    },
+    "prompt_adf94592398cfe046af8": {
+      "required_bigrams": [
+        "crystal clear"
+      ]
+    },
+    "prompt_afaed6bdbdebf46d03e3": {
+      "required_bigrams": []
+    },
+    "prompt_aff743bcb72e5318327a": {
+      "required_bigrams": []
+    },
+    "prompt_b03dd7d4b08353849f01": {
+      "required_bigrams": []
+    },
+    "prompt_b051d56fd48e430d8851": {
+      "required_bigrams": []
+    },
+    "prompt_b1289cb8a28a6b86171f": {
+      "required_bigrams": []
+    },
+    "prompt_b18d3965f328ede4b57f": {
+      "required_bigrams": []
+    },
+    "prompt_b3dd1592c51c5a571d1b": {
+      "required_bigrams": []
+    },
+    "prompt_b47e271b641a5847820e": {
+      "required_bigrams": []
+    },
+    "prompt_b4d6fb0c53a16899b941": {
+      "required_bigrams": []
+    },
+    "prompt_b4e6b0b901bff60ff734": {
+      "required_bigrams": []
+    },
+    "prompt_b55b7bf43f7d75d0476a": {
+      "required_bigrams": []
+    },
+    "prompt_b62ebf8247465c98ff0f": {
+      "required_bigrams": []
+    },
+    "prompt_b63f760c82504d79ed42": {
+      "required_bigrams": []
+    },
+    "prompt_b68ecef2a83cb4432762": {
+      "required_bigrams": []
+    },
+    "prompt_b6c0bce68d458956b199": {
+      "required_bigrams": []
+    },
+    "prompt_b83734ea461bfb665969": {
+      "required_bigrams": []
+    },
+    "prompt_b8a6334bbfe291ccb0b9": {
+      "required_bigrams": []
+    },
+    "prompt_ba449c7bed5a4591f194": {
+      "required_bigrams": []
+    },
+    "prompt_bc73462875e5b0142b35": {
+      "required_bigrams": []
+    },
+    "prompt_bce9bc6cff3595014145": {
+      "required_bigrams": []
+    },
+    "prompt_bd5c96f9fd4fdbd03e8a": {
+      "required_bigrams": []
+    },
+    "prompt_bda2f68b11b1f8e34829": {
+      "required_bigrams": []
+    },
+    "prompt_bdd5addecb667c63fda0": {
+      "required_bigrams": []
+    },
+    "prompt_be0b6cfcc2b0f422511a": {
+      "required_bigrams": []
+    },
+    "prompt_bef1dc5815fd91e1a13e": {
+      "required_bigrams": []
+    },
+    "prompt_bfa46bdfac1c6516a56d": {
+      "required_bigrams": []
+    },
+    "prompt_c0993b2d9dcd32f39c7a": {
+      "required_bigrams": []
+    },
+    "prompt_c250877ca3335c171095": {
+      "required_bigrams": []
+    },
+    "prompt_c2ab947fae285508eec8": {
+      "required_bigrams": []
+    },
+    "prompt_c45d58b9ff1d6a82bf90": {
+      "required_bigrams": []
+    },
+    "prompt_c49323f06cdff5ffad8b": {
+      "required_bigrams": []
+    },
+    "prompt_c59b935a8b7c294921c9": {
+      "required_bigrams": []
+    },
+    "prompt_c5c3062ac27f7a19a928": {
+      "required_bigrams": []
+    },
+    "prompt_c63d460dc7adcff43405": {
+      "required_bigrams": []
+    },
+    "prompt_c6a031faed11dfb9f249": {
+      "required_bigrams": []
+    },
+    "prompt_c6ff41e372f5153a7715": {
+      "required_bigrams": []
+    },
+    "prompt_c7846a1a1c061226a93f": {
+      "required_bigrams": []
+    },
+    "prompt_c825997d8ae15e605a54": {
+      "required_bigrams": []
+    },
+    "prompt_c8e3fc550e50fdf8751b": {
+      "required_bigrams": []
+    },
+    "prompt_c909d94ac64271ad3703": {
+      "required_bigrams": []
+    },
+    "prompt_c9b623067e4fecf29cd5": {
+      "required_bigrams": []
+    },
+    "prompt_caa49df0444325d783dd": {
+      "required_bigrams": [
+        "has to"
+      ]
+    },
+    "prompt_cbbe437abe3a30539e9b": {
+      "required_bigrams": []
+    },
+    "prompt_cc0ae0907862926149b7": {
+      "required_bigrams": []
+    },
+    "prompt_cc1ea24d726ed3f268c1": {
+      "required_bigrams": []
+    },
+    "prompt_cc5a8ca63a23424c77af": {
+      "required_bigrams": []
+    },
+    "prompt_ce09a56a2cbabd118965": {
+      "required_bigrams": []
+    },
+    "prompt_cec1ec315d732e19ae01": {
+      "required_bigrams": []
+    },
+    "prompt_d02ee8347834f80037ee": {
+      "required_bigrams": []
+    },
+    "prompt_d31c8772343c8c5cc032": {
+      "required_bigrams": []
+    },
+    "prompt_d530dbfe54ae7ec1dc77": {
+      "required_bigrams": []
+    },
+    "prompt_d5e51b3e9c6edaa814d6": {
+      "required_bigrams": []
+    },
+    "prompt_d63a3adc3e18671fdf36": {
+      "required_bigrams": []
+    },
+    "prompt_d76ad01164d96b032efb": {
+      "required_bigrams": []
+    },
+    "prompt_d83b47dbc21f5c5def29": {
+      "required_bigrams": []
+    },
+    "prompt_d8a639d649d5b62e57ed": {
+      "required_bigrams": []
+    },
+    "prompt_d8f00a6fd1996aff71f7": {
+      "required_bigrams": []
+    },
+    "prompt_da485e918a3352d4492c": {
+      "required_bigrams": []
+    },
+    "prompt_da54171f5ca1be9e9d1a": {
+      "required_bigrams": []
+    },
+    "prompt_daa0f09c7f0b66a852b9": {
+      "required_bigrams": []
+    },
+    "prompt_dae5a23e82f8085cc86d": {
+      "required_bigrams": [
+        "nail clippers",
+        "thumb tacks"
+      ]
+    },
+    "prompt_db0ade4afdd83de5c193": {
+      "required_bigrams": []
+    },
+    "prompt_dbc53c191f8c58a5e8e4": {
+      "required_bigrams": []
+    },
+    "prompt_dbec2de12c4fb61ba1da": {
+      "required_bigrams": []
+    },
+    "prompt_ddab5e8daf5ed525b085": {
+      "required_bigrams": []
+    },
+    "prompt_dee88e579e9935bbf58e": {
+      "required_bigrams": []
+    },
+    "prompt_deed30743e2abe75ca62": {
+      "required_bigrams": []
+    },
+    "prompt_df3636797cb1da59471f": {
+      "required_bigrams": []
+    },
+    "prompt_df555b00a711d9ccdc1c": {
+      "required_bigrams": []
+    },
+    "prompt_dfd6051c4e202c7686eb": {
+      "required_bigrams": []
+    },
+    "prompt_e00e156f3257be31b90b": {
+      "required_bigrams": []
+    },
+    "prompt_e2cddd7f4dfaa714c703": {
+      "required_bigrams": []
+    },
+    "prompt_e35ee33c7bb0e64c4f20": {
+      "required_bigrams": []
+    },
+    "prompt_e3b745ce25bd1b15dcfc": {
+      "required_bigrams": []
+    },
+    "prompt_e4a4f360dfb01f6485fd": {
+      "required_bigrams": []
+    },
+    "prompt_e4ac5d9373f6e6d83dc3": {
+      "required_bigrams": []
+    },
+    "prompt_e4f8f7ea12b62967b360": {
+      "required_bigrams": []
+    },
+    "prompt_e5b13e89443f16745c5d": {
+      "required_bigrams": []
+    },
+    "prompt_e5bf08482327a5df1d60": {
+      "required_bigrams": []
+    },
+    "prompt_e82bab647a73f8a446d7": {
+      "required_bigrams": []
+    },
+    "prompt_e9d12a32dc73461554ff": {
+      "required_bigrams": []
+    },
+    "prompt_ea689bc65a2f99810ab6": {
+      "required_bigrams": []
+    },
+    "prompt_eb885216a39e07a2bd21": {
+      "required_bigrams": []
+    },
+    "prompt_ebfd4fb99e6b0af76dad": {
+      "required_bigrams": []
+    },
+    "prompt_ec5d2f072ea58f209e14": {
+      "required_bigrams": []
+    },
+    "prompt_ec9c5dc1b73984c0dc7f": {
+      "required_bigrams": []
+    },
+    "prompt_ecebd994c18af83dac06": {
+      "required_bigrams": []
+    },
+    "prompt_ecec0eee8c393ba4f627": {
+      "required_bigrams": []
+    },
+    "prompt_ecf7f493b8f2be7288b0": {
+      "required_bigrams": []
+    },
+    "prompt_ee1fa76eedf1bd204a38": {
+      "required_bigrams": []
+    },
+    "prompt_ee84046823af22d8778a": {
+      "required_bigrams": []
+    },
+    "prompt_ef7471913f47082a0d86": {
+      "required_bigrams": []
+    },
+    "prompt_f01e75d510904b865a65": {
+      "required_bigrams": []
+    },
+    "prompt_f11fed7e5be6607d66ca": {
+      "required_bigrams": []
+    },
+    "prompt_f1e7fab7f4ad16b061cb": {
+      "required_bigrams": []
+    },
+    "prompt_f3167ee58945b83f84c1": {
+      "required_bigrams": []
+    },
+    "prompt_f4191d98bae5b4aa3cf1": {
+      "required_bigrams": []
+    },
+    "prompt_f4e2bc5ac7ff83f72aea": {
+      "required_bigrams": []
+    },
+    "prompt_f693c977edffb2c086d6": {
+      "required_bigrams": []
+    },
+    "prompt_f6954c5b0310622a4671": {
+      "required_bigrams": []
+    },
+    "prompt_f7d1da402b3ced7db6af": {
+      "required_bigrams": []
+    },
+    "prompt_f8c5e9a77cd07765a0f3": {
+      "required_bigrams": []
+    },
+    "prompt_f96a2b49de247f143458": {
+      "required_bigrams": []
+    },
+    "prompt_f9d30c22929d9a400159": {
+      "required_bigrams": []
+    },
+    "prompt_fa0e91fae2dca17f6ad8": {
+      "required_bigrams": []
+    },
+    "prompt_fa68475339cd0a68e956": {
+      "required_bigrams": []
+    },
+    "prompt_fb6989d279e85933a99e": {
+      "required_bigrams": []
+    },
+    "prompt_fb894dac29811930d695": {
+      "required_bigrams": []
+    },
+    "prompt_fc397a1a3f6733ca216c": {
+      "required_bigrams": [
+        "ice cream"
+      ]
+    },
+    "prompt_fdd6892e3f4ea647aa41": {
+      "required_bigrams": []
+    },
+    "prompt_ff684c9dbaca2eb6a8fa": {
+      "required_bigrams": []
+    }
+  }
+}

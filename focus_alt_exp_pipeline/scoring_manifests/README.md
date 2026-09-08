@@ -1,6 +1,6 @@
 # Cross-dataset Qwen scoring manifest
 
-This directory contains two self-contained Qwen scoring inputs:
+This directory contains two self-contained direct-candidate Qwen scoring inputs:
 
 - `hu_rnx_no_frame_manifest.csv`: the completed Hu/R&X no-frame batch, with
   609 item-condition rows and 851 unique prompt-candidate pairs.
@@ -109,6 +109,36 @@ manifest rows finish. Re-running the same command safely resumes an interrupted
 job.
 
 Both scoring batches are complete in the repository's `model_scores` directory.
+
+## Sampled-prefix distribution-scoring manifest
+
+`set_variant_qwen/` is the active cross-dataset sampled-prefix input. It
+contains:
+
+- `prompts.csv`: 360 unique neutral-frame prompts;
+- `source_rows.csv`: 1,089 canonical no-frame rows mapped to those prompts;
+- `required_candidates.txt`: 360 unique trigger/query candidates;
+- `selection_manifest.json`: per-prompt required bigrams and the augmented
+  bounded-support path.
+
+The candidate-vocabulary builder starts from 98,502 base unigrams and the
+22,789-bigram bounded global Qwen support. It force-includes seven missing
+unigrams and three missing bigrams, producing 98,509 unigrams plus 22,792
+bigrams (121,301 candidates total). It never scores the full raw 2-gram file.
+
+All 360 prompt arrays are complete under the cluster sibling directory
+`ngrams/qwen_set_variant_log_probs/`. The validator reports zero missing,
+partial, non-finite, or uncovered required candidates. The committed analysis
+outputs are under `focus_alt_exp_pipeline/results/set_variant_qwen/`.
+
+Re-run validation and CPU postprocessing with:
+
+```bash
+python focus_alt_exp_pipeline/code/validate_set_variant_qwen_scores.py \
+  --log-probs-dir /users/ljohnst7/data/ljohnst7/ngrams/qwen_set_variant_log_probs
+
+sbatch focus_alt_exp_pipeline/cluster/run_set_variant_postprocessing.sh
+```
 
 ## Hu analysis-filter handling
 
