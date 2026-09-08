@@ -1,0 +1,81 @@
+variant,analysis_dataset_id,dataset,structure,N,mean_oof_log_score
+top_k,hu_g18,Hu: Gotzner et al. (2018),set,67,-3.8795382684711512
+top_k,hu_g18,Hu: Gotzner et al. (2018),ordering,67,-2.747908007506675
+top_k,hu_g18,Hu: Gotzner et al. (2018),conjunction,67,-3.893100895622487
+top_k,hu_g18,Hu: Gotzner et al. (2018),disjunction,67,-2.745424078894152
+top_k,hu_pvt21,Hu: Pankratz & van Tiel (2021),set,50,-2.701954615622763
+top_k,hu_pvt21,Hu: Pankratz & van Tiel (2021),ordering,50,-1.385927602800532
+top_k,hu_pvt21,Hu: Pankratz & van Tiel (2021),conjunction,50,-2.3732102713927357
+top_k,hu_pvt21,Hu: Pankratz & van Tiel (2021),disjunction,50,-1.7623485933274283
+top_k,hu_rx22,Hu: Ronai & Xiang (2022),set,57,-2.209247844443354
+top_k,hu_rx22,Hu: Ronai & Xiang (2022),ordering,57,-1.067748034407149
+top_k,hu_rx22,Hu: Ronai & Xiang (2022),conjunction,57,-2.266107915041426
+top_k,hu_rx22,Hu: Ronai & Xiang (2022),disjunction,57,-1.288285361192361
+top_k,hu_vt16,Hu: van Tiel et al. (2016),set,39,-1.575424151144239
+top_k,hu_vt16,Hu: van Tiel et al. (2016),ordering,39,-1.4898498125146538
+top_k,hu_vt16,Hu: van Tiel et al. (2016),conjunction,39,-1.6484438779590642
+top_k,hu_vt16,Hu: van Tiel et al. (2016),disjunction,39,-1.4784921080274067
+top_k,novel_focus,Novel focus alternatives,set,480,-1.568945946365799
+top_k,novel_focus,Novel focus alternatives,ordering,480,-1.5641454693604688
+top_k,novel_focus,Novel focus alternatives,conjunction,480,-1.7445142836955716
+top_k,novel_focus,Novel focus alternatives,disjunction,480,-1.5277538852234593
+top_k,rnx_eonly,Ronai & Xiang (2024): Eonly,set,60,-4.363586707676469
+top_k,rnx_eonly,Ronai & Xiang (2024): Eonly,ordering,60,-1.6961295597193577
+top_k,rnx_eonly,Ronai & Xiang (2024): Eonly,conjunction,60,-4.663359045098906
+top_k,rnx_eonly,Ronai & Xiang (2024): Eonly,disjunction,60,-1.6569467914906921
+top_k,rnx_eonlystrong,Ronai & Xiang (2024): Eonlystrong,set,60,-2.351968395442868
+top_k,rnx_eonlystrong,Ronai & Xiang (2024): Eonlystrong,ordering,60,-0.7617216595834134
+top_k,rnx_eonlystrong,Ronai & Xiang (2024): Eonlystrong,conjunction,60,-0.8358344139553873
+top_k,rnx_eonlystrong,Ronai & Xiang (2024): Eonlystrong,disjunction,60,-2.283420290068305
+top_k,rnx_esi,Ronai & Xiang (2024): ESI,set,60,-2.409096222110664
+top_k,rnx_esi,Ronai & Xiang (2024): ESI,ordering,60,-1.3237688009812478
+top_k,rnx_esi,Ronai & Xiang (2024): ESI,conjunction,60,-2.4684762586856945
+top_k,rnx_esi,Ronai & Xiang (2024): ESI,disjunction,60,-1.5289031442062002
+top_k,rnx_estrong,Ronai & Xiang (2024): Estrong,set,60,-7.618212120559055
+top_k,rnx_estrong,Ronai & Xiang (2024): Estrong,ordering,60,-1.9768338846167375
+top_k,rnx_estrong,Ronai & Xiang (2024): Estrong,conjunction,60,-2.0063127894270965
+top_k,rnx_estrong,Ronai & Xiang (2024): Estrong,disjunction,60,-7.596433765401903
+top_k,rnx_eweak,Ronai & Xiang (2024): Eweak,set,60,-4.548538798343986
+top_k,rnx_eweak,Ronai & Xiang (2024): Eweak,ordering,60,-2.2059695896792784
+top_k,rnx_eweak,Ronai & Xiang (2024): Eweak,conjunction,60,-2.2244267511662925
+top_k,rnx_eweak,Ronai & Xiang (2024): Eweak,disjunction,60,-4.5318918647497
+top_p,hu_g18,Hu: Gotzner et al. (2018),set,67,-3.791827009158622
+top_p,hu_g18,Hu: Gotzner et al. (2018),ordering,67,-2.747908007506675
+top_p,hu_g18,Hu: Gotzner et al. (2018),conjunction,67,-3.8178212739377497
+top_p,hu_g18,Hu: Gotzner et al. (2018),disjunction,67,-2.7344957843865054
+top_p,hu_pvt21,Hu: Pankratz & van Tiel (2021),set,50,-2.9291341417969807
+top_p,hu_pvt21,Hu: Pankratz & van Tiel (2021),ordering,50,-1.385927602800532
+top_p,hu_pvt21,Hu: Pankratz & van Tiel (2021),conjunction,50,-2.1017655320459423
+top_p,hu_pvt21,Hu: Pankratz & van Tiel (2021),disjunction,50,-2.4183469724286666
+top_p,hu_rx22,Hu: Ronai & Xiang (2022),set,57,-2.4871248331661873
+top_p,hu_rx22,Hu: Ronai & Xiang (2022),ordering,57,-1.067748034407149
+top_p,hu_rx22,Hu: Ronai & Xiang (2022),conjunction,57,-2.2410326584102087
+top_p,hu_rx22,Hu: Ronai & Xiang (2022),disjunction,57,-1.3563142576016647
+top_p,hu_vt16,Hu: van Tiel et al. (2016),set,39,-1.35699063427913
+top_p,hu_vt16,Hu: van Tiel et al. (2016),ordering,39,-1.4898498125146538
+top_p,hu_vt16,Hu: van Tiel et al. (2016),conjunction,39,-1.4593487875580797
+top_p,hu_vt16,Hu: van Tiel et al. (2016),disjunction,39,-1.4706194909041364
+top_p,novel_focus,Novel focus alternatives,set,480,-2.3297693784756643
+top_p,novel_focus,Novel focus alternatives,ordering,480,-1.5641454693604688
+top_p,novel_focus,Novel focus alternatives,conjunction,480,-2.4346130678389595
+top_p,novel_focus,Novel focus alternatives,disjunction,480,-1.4771448031598575
+top_p,rnx_eonly,Ronai & Xiang (2024): Eonly,set,60,-3.916406102745725
+top_p,rnx_eonly,Ronai & Xiang (2024): Eonly,ordering,60,-1.6961295597193577
+top_p,rnx_eonly,Ronai & Xiang (2024): Eonly,conjunction,60,-3.9644278046823964
+top_p,rnx_eonly,Ronai & Xiang (2024): Eonly,disjunction,60,-1.6880433399291772
+top_p,rnx_eonlystrong,Ronai & Xiang (2024): Eonlystrong,set,60,-2.226442253047993
+top_p,rnx_eonlystrong,Ronai & Xiang (2024): Eonlystrong,ordering,60,-0.7617216595834134
+top_p,rnx_eonlystrong,Ronai & Xiang (2024): Eonlystrong,conjunction,60,-0.8796795525325787
+top_p,rnx_eonlystrong,Ronai & Xiang (2024): Eonlystrong,disjunction,60,-2.1933930522853733
+top_p,rnx_esi,Ronai & Xiang (2024): ESI,set,60,-2.6940124575732143
+top_p,rnx_esi,Ronai & Xiang (2024): ESI,ordering,60,-1.3237688009812478
+top_p,rnx_esi,Ronai & Xiang (2024): ESI,conjunction,60,-2.4623214225967724
+top_p,rnx_esi,Ronai & Xiang (2024): ESI,disjunction,60,-1.597218399826508
+top_p,rnx_estrong,Ronai & Xiang (2024): Estrong,set,60,-7.0774695861483155
+top_p,rnx_estrong,Ronai & Xiang (2024): Estrong,ordering,60,-1.9768338846167375
+top_p,rnx_estrong,Ronai & Xiang (2024): Estrong,conjunction,60,-1.9448144941671042
+top_p,rnx_estrong,Ronai & Xiang (2024): Estrong,disjunction,60,-7.449360247546332
+top_p,rnx_eweak,Ronai & Xiang (2024): Eweak,set,60,-2.740930221424109
+top_p,rnx_eweak,Ronai & Xiang (2024): Eweak,ordering,60,-2.2059695896792784
+top_p,rnx_eweak,Ronai & Xiang (2024): Eweak,conjunction,60,-2.4601925439085983
+top_p,rnx_eweak,Ronai & Xiang (2024): Eweak,disjunction,60,-2.4896685078607534
