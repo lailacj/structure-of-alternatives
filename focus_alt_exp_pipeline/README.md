@@ -364,9 +364,9 @@ The active cross-dataset comparison has two intentionally separate set variants:
 - Top-p: each sampled set is the shortest prefix of that same ordering whose
   original normalized candidate probabilities sum to at least p.
 
-Build the cluster scoring inputs. `--bigram-vocab` must point to the global
-candidate bigram vocabulary that will be scored, and it must contain every
-bigram listed in the generated `required_candidates.txt` file.
+Build the cluster scoring inputs, then use
+`build_set_variant_candidate_vocab.py` to force every table trigger/query into
+the scored unigram/bigram support.
 
 ```bash
 python focus_alt_exp_pipeline/code/build_set_variant_scoring_manifest.py \
