@@ -13,7 +13,9 @@ Core idea:
 3. Turn those samples into negation probabilities for alternative-structure models.
 4. Compare those predictions against human negation responses.
 
-The main active evaluation is trial-level log likelihood. Correlation analyses between model and human negation probabilities also exist and are part of the active direction of the project.
+The original runner evaluates trial-level log likelihood. The active
+cross-dataset sampled-prefix analysis uses grouped 10-fold boundary selection,
+item-level proper log scores, and correlations.
 
 ## Where To Start
 
@@ -25,6 +27,8 @@ If you need to understand or modify the active pipeline, start here in this orde
 4. `focus_alt_exp_pipeline/code/runner.py`
 5. `focus_alt_exp_pipeline/code/models.py`
 6. `focus_alt_exp_pipeline/code/samplers.py`
+7. `focus_alt_exp_pipeline/code/build_set_variant_prediction_grid.py`
+8. `focus_alt_exp_pipeline/code/evaluate_set_variant_grid.py`
 
 Those files define the current workflow, main abstractions, and output format.
 
@@ -72,6 +76,12 @@ Main scripts:
   Per-context summaries.
 - `focus_alt_exp_pipeline/code/precompute_qwen_vocab_log_probs.py`
   Sparse Qwen precompute for focus-alternative contexts.
+- `focus_alt_exp_pipeline/code/build_set_variant_prediction_grid.py`
+  Active cross-dataset Top-K/Top-p prediction grid.
+- `focus_alt_exp_pipeline/code/evaluate_set_variant_grid.py`
+  Grouped fold selector and out-of-fold evaluator.
+- `focus_alt_exp_pipeline/code/build_linking_structure_tables.py`
+  Full cross-dataset reporting tables.
 
 ## Current Model Status
 
@@ -88,16 +98,20 @@ Implemented in the active pipeline:
 - Trial-level log-likelihood evaluation
 - Trial-level model-vs-human negation-probability correlation plots
 - Plotting and context summaries
+- Cross-dataset sampled-prefix Top-K and Top-p analysis
+- Grouped 10-fold boundary selection and out-of-fold evaluation
+- Cross-dataset linking-structure tables and plots
 
 Planned or future-facing:
 
 - Uniform next-word baseline
-- Combined across-model comparison plots
+- Expand the active Top-K grid beyond its current maximum of 100
 
-## Qwen Handoff Status
+## Qwen Status
 
-As of April 9, 2026, the active Qwen path is the completed context-balanced sparse
-support pipeline, not the older global 2-gram threshold workflow.
+As of April 9, 2026, the original within-dataset Qwen path is the completed
+context-balanced sparse-support pipeline, not the older global 2-gram threshold
+workflow.
 
 Finished:
 
@@ -141,6 +155,21 @@ Useful current rerun path:
    `sbatch oscar_jobs/focus_alt_exp.sh`.
 4. Rebuild Qwen plots with
    `python focus_alt_exp_pipeline/code/plot_results.py --results-dir focus_alt_exp_pipeline/results/qwen --model qwen`.
+
+### Active cross-dataset sampled-prefix run (September 8, 2026)
+
+- `focus_alt_exp_pipeline/scoring_manifests/set_variant_qwen/` contains 360
+  prompts and 1,089 source rows.
+- The cluster score arrays under sibling
+  `ngrams/qwen_set_variant_log_probs/` passed strict validation: 360/360
+  prompts, 121,301 candidates per prompt, and no missing or non-finite required
+  candidates.
+- `focus_alt_exp_pipeline/results/set_variant_qwen/` contains the full current
+  prediction grid, grouped-CV outputs, linking tables, and plots.
+- Top-p selected `p=0.6` in every fold.
+- Top-K selected the tested ceiling `K=100` in every fold, so the K grid should
+  be expanded before the analysis is frozen.
+- The archived absolute-threshold/Gumbel model is not part of this run.
 
 ## Result Conventions
 
@@ -214,6 +243,13 @@ python focus_alt_exp_pipeline/code/plot_results.py \
   --model qwen
 ```
 
+Rebuild the active cross-dataset CPU postprocessing outputs from completed Qwen
+arrays:
+
+```bash
+sbatch focus_alt_exp_pipeline/cluster/run_set_variant_postprocessing.sh
+```
+
 ## Data Assumptions
 
 Useful columns in `sca_dataframe.csv` include:
@@ -240,7 +276,10 @@ When changing data loading or preprocessing logic, prefer keeping compatibility 
 - Preserve existing result filenames and directory layout where possible.
 - Be careful with long-running scripts or large generated outputs; this repo contains many result artifacts already.
 - If adding documentation, keep it aligned with the current active workflow rather than archival code.
-- If asked to work on Qwen, inspect `precompute_qwen_vocab_log_probs.py`, `samplers.py`, `run_experiment.py`, and `runner.py` together before making assumptions.
+- For the original runner, inspect `precompute_qwen_vocab_log_probs.py`,
+  `samplers.py`, `run_experiment.py`, and `runner.py` together.
+- For the active cross-dataset run, inspect the set-variant manifest, validator,
+  prediction-grid, evaluation, table, and plotting scripts together.
 - Treat cloze, frequency, and Qwen as implemented active model paths in the main pipeline.
 
 ## Safe Default Mental Model
