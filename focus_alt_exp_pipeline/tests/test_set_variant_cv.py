@@ -13,8 +13,8 @@ import numpy as np
 CODE_DIR = Path(__file__).resolve().parents[1] / "code"
 sys.path.insert(0, str(CODE_DIR))
 
-from evaluate_set_variant_grid import out_of_fold_predictions, select_boundaries  # noqa: E402
-from build_set_variant_prediction_grid import _probability_records  # noqa: E402
+from evaluate_set_variant_grid import out_of_fold_predictions, select_boundaries, summarize_log_scores  # noqa: E402
+from build_set_variant_prediction_grid import _probability_records, _target_positions  # noqa: E402
 
 
 class SetVariantCvTests(unittest.TestCase):
@@ -56,18 +56,43 @@ class SetVariantCvTests(unittest.TestCase):
         self.assertEqual(len(out), 4)
         self.assertTrue(out.groupby(["variant", "analysis_unit_id"]).size().eq(1).all())
 
+    def test_log_score_summary_balances_dataset_means(self) -> None:
+        out = out_of_fold_predictions(self._grid(), select_boundaries(self._grid()))
+        by_dataset, balanced = summarize_log_scores(out)
+        self.assertEqual(len(by_dataset), 8)
+        self.assertEqual(len(balanced), 8)
+        self.assertTrue(balanced["dataset_count"].eq(1).all())
+        self.assertTrue(np.isfinite(balanced["balanced_mean_oof_log_score"]).all())
+
     def test_top_p_uses_sampled_prefix_mass(self) -> None:
         records = _probability_records(
             np.array([[2, 0, 1, 3], [0, 1, 2, 3]]),
             np.array([0.4, 0.3, 0.2, 0.1]),
-            query_index=2,
-            trigger_index=1,
+            query_position=np.array([0, 2]),
+            trigger_position=np.array([2, 1]),
             k_values=[1],
             p_values=[0.5],
         )
         top_p = next(record for record in records if record["variant"] == "top_p")
         self.assertAlmostEqual(top_p["set_probability"], 0.5)
         self.assertAlmostEqual(top_p["conjunction_probability"], 0.5)
+        self.assertAlmostEqual(top_p["disjunction_probability"], 0.5)
+
+    def test_target_positions_extend_one_shared_ordering(self) -> None:
+        sampled = np.array([[0, 1], [1, 2]])
+        positions = _target_positions(
+            sampled,
+            np.array([0.4, 0.3, 0.2, 0.1]),
+            target_indices=[0, 1, 2, 3],
+            rng=np.random.default_rng(11),
+        )
+        self.assertEqual(positions.shape, (2, 4))
+        self.assertEqual(positions[0, 0], 0)
+        self.assertEqual(positions[0, 1], 1)
+        self.assertEqual(positions[1, 1], 0)
+        self.assertEqual(positions[1, 2], 1)
+        self.assertEqual(len(set(positions[0])), 4)
+        self.assertEqual(len(set(positions[1])), 4)
 
 
 if __name__ == "__main__":

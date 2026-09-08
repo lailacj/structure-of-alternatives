@@ -6,6 +6,7 @@ import argparse
 import copy
 import gc
 import json
+import os
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Iterator, List
@@ -156,10 +157,6 @@ def _load_or_create_vocab_manifest(
     vocab_2gram: Path,
 ) -> dict:
     manifest_path = output_dir / "vocab_manifest.json"
-    if manifest_path.exists():
-        with manifest_path.open("r", encoding="utf-8") as handle:
-            return json.load(handle)
-
     count_1gram = _count_lines(vocab_1gram)
     count_2gram = _count_lines(vocab_2gram)
     manifest = {
@@ -180,8 +177,23 @@ def _load_or_create_vocab_manifest(
         ],
         "total_count": count_1gram + count_2gram,
     }
-    with manifest_path.open("w", encoding="utf-8") as handle:
+
+    if manifest_path.exists():
+        with manifest_path.open("r", encoding="utf-8") as handle:
+            existing = json.load(handle)
+        if existing != manifest:
+            raise ValueError(
+                f"Existing vocabulary manifest does not match requested support: {manifest_path}. "
+                "Use a fresh output directory."
+            )
+        return existing
+
+    # Slurm array tasks may start together. Write complete identical manifests
+    # under task-local names, then publish atomically.
+    temporary_path = manifest_path.with_name(f".{manifest_path.name}.{os.getpid()}.tmp")
+    with temporary_path.open("w", encoding="utf-8") as handle:
         json.dump(manifest, handle, indent=2)
+    temporary_path.replace(manifest_path)
     return manifest
 
 
@@ -589,8 +601,6 @@ def main() -> None:
         raise ValueError("--target-vocab-size must be > 0")
 
     if args.hf_offline:
-        import os
-
         os.environ["HF_HUB_OFFLINE"] = "1"
         os.environ["TRANSFORMERS_OFFLINE"] = "1"
 

@@ -72,31 +72,62 @@ def _sample_prefixes(probabilities: np.ndarray, *, num_reps: int, prefix_size: i
     return np.vstack([rng.choice(len(probabilities), size=prefix_size, replace=False, p=probabilities) for _ in range(num_reps)])
 
 
+def _target_positions(
+    sampled: np.ndarray,
+    probabilities: np.ndarray,
+    *,
+    target_indices: list[int],
+    rng: np.random.Generator,
+) -> np.ndarray:
+    """Locate targets in one consistent extension of each sampled ordering.
+
+    Targets already in the retained prefix use their exact positions. For the
+    remaining targets, exponential race clocks sample their joint relative
+    order conditional on the prefix. This is an exact continuation of weighted
+    sampling without replacement; omitted non-target suffix words need not be
+    materialized because they cannot change a target pair's ordering relation.
+    """
+    num_reps, prefix_size = sampled.shape
+    targets = np.asarray(target_indices, dtype=np.int64)
+    if len(targets) != len(set(target_indices)):
+        raise ValueError("target_indices must be unique")
+    if np.any(probabilities[targets] <= 0):
+        raise ValueError("Every required target must have positive normalized probability")
+    target_column = {int(index): column for column, index in enumerate(targets)}
+    positions = np.full((num_reps, len(targets)), -1, dtype=np.int32)
+    for rep, prefix in enumerate(sampled):
+        for position, index in enumerate(prefix):
+            column = target_column.get(int(index))
+            if column is not None:
+                positions[rep, column] = position
+        missing_columns = np.flatnonzero(positions[rep] < 0)
+        if len(missing_columns):
+            missing_targets = targets[missing_columns]
+            clocks = rng.exponential(size=len(missing_columns)) / probabilities[missing_targets]
+            suffix_order = np.argsort(clocks, kind="stable")
+            positions[rep, missing_columns[suffix_order]] = prefix_size + np.arange(len(missing_columns))
+    return positions
+
+
 def _probability_records(
     sampled: np.ndarray,
     probabilities: np.ndarray,
     *,
-    query_index: int,
-    trigger_index: int,
+    query_position: np.ndarray,
+    trigger_position: np.ndarray,
     k_values: list[int],
     p_values: list[float],
 ) -> list[dict[str, float]]:
     num_reps, prefix_size = sampled.shape
-    position = np.full((num_reps, 2), prefix_size, dtype=np.int32)
-    for row_index, row in enumerate(sampled):
-        query_positions = np.flatnonzero(row == query_index)
-        trigger_positions = np.flatnonzero(row == trigger_index)
-        if len(query_positions):
-            position[row_index, 0] = query_positions[0]
-        if len(trigger_positions):
-            position[row_index, 1] = trigger_positions[0]
-    query_position, trigger_position = position[:, 0], position[:, 1]
-    ordering_probability = float(probabilities[query_index] / (probabilities[query_index] + probabilities[trigger_index]))
+    if query_position.shape != (num_reps,) or trigger_position.shape != (num_reps,):
+        raise ValueError("Target position arrays must contain one position per sampled ordering")
+    ordering = query_position < trigger_position
+    ordering_probability = float(ordering.mean())
     prefix_mass = probabilities[sampled].cumsum(axis=1)
     records: list[dict[str, float]] = []
     for value in k_values:
         in_set = query_position < value
-        conjunction = in_set & (query_position < trigger_position)
+        conjunction = in_set & ordering
         set_probability = float(in_set.mean())
         conjunction_probability = float(conjunction.mean())
         records.append({
@@ -104,14 +135,14 @@ def _probability_records(
             "set_probability": set_probability,
             "ordering_probability": ordering_probability,
             "conjunction_probability": conjunction_probability,
-            "disjunction_probability": min(1.0, set_probability + ordering_probability - conjunction_probability),
+            "disjunction_probability": float((in_set | ordering).mean()),
         })
     for value in p_values:
         cutoff = np.argmax(prefix_mass >= value, axis=1)
         if not np.all(prefix_mass[np.arange(num_reps), cutoff] >= value):
             raise ValueError("Sampled prefix was too short to reach a requested p value")
         in_set = query_position <= cutoff
-        conjunction = in_set & (query_position < trigger_position)
+        conjunction = in_set & ordering
         set_probability = float(in_set.mean())
         conjunction_probability = float(conjunction.mean())
         records.append({
@@ -119,7 +150,7 @@ def _probability_records(
             "set_probability": set_probability,
             "ordering_probability": ordering_probability,
             "conjunction_probability": conjunction_probability,
-            "disjunction_probability": min(1.0, set_probability + ordering_probability - conjunction_probability),
+            "disjunction_probability": float((in_set | ordering).mean()),
         })
     return records
 
@@ -135,7 +166,25 @@ def _assign_folds(units: pd.DataFrame, fold_count: int) -> pd.Series:
     return units.cv_group_id.map(assignments).astype(int)
 
 
-def _aggregate_to_units(raw: pd.DataFrame, fold_count: int) -> pd.DataFrame:
+def _analysis_unit_keys(raw: pd.DataFrame) -> pd.DataFrame:
+    non_hu = raw.loc[~raw.dataset_family.eq("hu_2023_benchmark")].copy()
+    non_hu["analysis_dataset_id"] = non_hu.apply(_dataset_id, axis=1)
+    non_hu["analysis_unit_id"] = non_hu.item_id.astype(str)
+    non_hu["cv_group_id"] = non_hu.dataset_family.astype(str) + "::" + non_hu.dataset.astype(str) + "::" + non_hu.group_id.astype(str)
+    hu = raw.loc[raw.dataset_family.eq("hu_2023_benchmark") & raw.hu_original_analysis_included.astype(bool)].copy()
+    hu["analysis_dataset_id"] = hu.apply(_dataset_id, axis=1)
+    hu["analysis_unit_id"] = hu.dataset.astype(str) + "::" + hu.scale_id.astype(str)
+    hu["cv_group_id"] = hu.dataset_family.astype(str) + "::" + hu.dataset.astype(str) + "::" + hu.scale_id.astype(str)
+    columns = ["analysis_dataset_id", "analysis_unit_id", "dataset_family", "dataset", "cv_group_id"]
+    return pd.concat([non_hu[columns], hu[columns]], ignore_index=True).drop_duplicates()
+
+
+def _aggregate_to_units(
+    raw: pd.DataFrame,
+    fold_count: int,
+    *,
+    fold_reference: pd.DataFrame | None = None,
+) -> pd.DataFrame:
     non_hu = raw.loc[~raw.dataset_family.eq("hu_2023_benchmark")].copy()
     non_hu["analysis_dataset_id"] = non_hu.apply(_dataset_id, axis=1)
     non_hu["analysis_unit_id"] = non_hu.item_id.astype(str)
@@ -152,17 +201,22 @@ def _aggregate_to_units(raw: pd.DataFrame, fold_count: int) -> pd.DataFrame:
     units["analysis_label"] = units.analysis_dataset_id.map(ROW_LABELS)
     if units.analysis_label.isna().any():
         raise ValueError("Unknown analysis dataset ID")
-    unit_keys = units[["analysis_dataset_id", "analysis_unit_id", "dataset_family", "dataset", "cv_group_id"]].drop_duplicates()
-    unit_keys["cv_fold"] = _assign_folds(unit_keys, fold_count)
-    return units.merge(
-        unit_keys[["analysis_dataset_id", "analysis_unit_id", "cv_fold"]],
+    reference_keys = _analysis_unit_keys(raw if fold_reference is None else fold_reference)
+    reference_keys["cv_fold"] = _assign_folds(reference_keys, fold_count)
+    assignments = reference_keys[["analysis_dataset_id", "analysis_unit_id", "cv_fold"]]
+    out = units.merge(
+        assignments,
         on=["analysis_dataset_id", "analysis_unit_id"],
         how="left",
         validate="many_to_one",
     )
+    if out["cv_fold"].isna().any():
+        raise ValueError("Fold reference does not cover every scored analysis unit")
+    out["cv_fold"] = out["cv_fold"].astype(int)
+    return out
 
 
-def build_prediction_grid(source_rows: pd.DataFrame, *, log_probs_dir: Path, k_values: list[int], p_values: list[float], num_reps: int, prefix_size: int, seed: int, fold_count: int) -> pd.DataFrame:
+def build_prediction_grid(source_rows: pd.DataFrame, *, log_probs_dir: Path, k_values: list[int], p_values: list[float], num_reps: int, prefix_size: int, seed: int, fold_count: int, fold_reference: pd.DataFrame | None = None) -> pd.DataFrame:
     _, token_lookup = _load_vocab(log_probs_dir / "vocab_manifest.json")
     rng = np.random.default_rng(seed)
     raw_records = []
@@ -178,29 +232,56 @@ def build_prediction_grid(source_rows: pd.DataFrame, *, log_probs_dir: Path, k_v
         support_indices = np.flatnonzero(finite)
         global_to_support = np.full(len(log_probs), -1, dtype=np.int64)
         global_to_support[support_indices] = np.arange(len(support_indices))
-        sampled = _sample_prefixes(support_probs, num_reps=num_reps, prefix_size=min(prefix_size, len(support_probs)), rng=rng)
+        indexed_rows = []
+        target_indices: set[int] = set()
         for _, row in rows.iterrows():
-            query = str(row.query).strip().lower()
-            trigger = str(row.trigger).strip().lower()
+            query = str(row["query"]).strip().lower()
+            trigger = str(row["trigger"]).strip().lower()
             if query not in token_lookup or trigger not in token_lookup:
                 raise ValueError(f"Candidate is absent from scored vocabulary: {trigger!r}, {query!r}")
-            query_index, trigger_index = global_to_support[token_lookup[query]], global_to_support[token_lookup[trigger]]
+            query_index = int(global_to_support[token_lookup[query]])
+            trigger_index = int(global_to_support[token_lookup[trigger]])
             if query_index < 0 or trigger_index < 0:
                 raise ValueError(f"Candidate received a non-finite Qwen score: {trigger!r}, {query!r}")
-            for prediction in _probability_records(sampled, support_probs, query_index=int(query_index), trigger_index=int(trigger_index), k_values=k_values, p_values=p_values):
+            indexed_rows.append((row, query_index, trigger_index))
+            target_indices.update((query_index, trigger_index))
+        sampled = _sample_prefixes(support_probs, num_reps=num_reps, prefix_size=min(prefix_size, len(support_probs)), rng=rng)
+        ordered_targets = sorted(target_indices)
+        target_columns = {index: column for column, index in enumerate(ordered_targets)}
+        target_positions = _target_positions(
+            sampled, support_probs, target_indices=ordered_targets, rng=rng
+        )
+        for row, query_index, trigger_index in indexed_rows:
+            for prediction in _probability_records(
+                sampled,
+                support_probs,
+                query_position=target_positions[:, target_columns[query_index]],
+                trigger_position=target_positions[:, target_columns[trigger_index]],
+                k_values=k_values,
+                p_values=p_values,
+            ):
                 raw_records.append({**row.to_dict(), **prediction})
-    return _aggregate_to_units(pd.DataFrame.from_records(raw_records), fold_count)
+    return _aggregate_to_units(
+        pd.DataFrame.from_records(raw_records),
+        fold_count,
+        fold_reference=fold_reference,
+    )
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source-rows", type=Path, default=DEFAULT_SOURCE_ROWS)
+    parser.add_argument(
+        "--fold-reference-source-rows",
+        type=Path,
+        help="Optional full source table used only to freeze grouped fold assignments.",
+    )
     parser.add_argument("--log-probs-dir", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--top-k-values", default="1,2,3,5,10,20,30,50,75,100")
     parser.add_argument("--top-p-values", default="0.25,0.5,0.6,0.7,0.8,0.9,0.95")
     parser.add_argument("--num-reps", type=int, default=500)
-    parser.add_argument("--max-prefix-size", type=int, default=4096)
+    parser.add_argument("--max-prefix-size", type=int, default=32768)
     parser.add_argument("--seed", type=int, default=7)
     parser.add_argument("--fold-count", type=int, default=10)
     return parser.parse_args()
@@ -214,7 +295,12 @@ def main() -> None:
         raise ValueError("K values must be positive and p values must be strictly between 0 and 1")
     if args.num_reps <= 0 or args.max_prefix_size <= 0:
         raise ValueError("num-reps and max-prefix-size must be positive")
-    grid = build_prediction_grid(pd.read_csv(args.source_rows), log_probs_dir=args.log_probs_dir, k_values=k_values, p_values=p_values, num_reps=args.num_reps, prefix_size=max(args.max_prefix_size, max(k_values)), seed=args.seed, fold_count=args.fold_count)
+    fold_reference = (
+        pd.read_csv(args.fold_reference_source_rows)
+        if args.fold_reference_source_rows is not None
+        else None
+    )
+    grid = build_prediction_grid(pd.read_csv(args.source_rows), log_probs_dir=args.log_probs_dir, k_values=k_values, p_values=p_values, num_reps=args.num_reps, prefix_size=max(args.max_prefix_size, max(k_values)), seed=args.seed, fold_count=args.fold_count, fold_reference=fold_reference)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     grid.to_csv(args.output, index=False)
     print(f"[complete] rows={len(grid)} output={args.output}")

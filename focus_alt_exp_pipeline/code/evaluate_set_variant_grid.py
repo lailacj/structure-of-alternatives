@@ -104,6 +104,35 @@ def summarize_correlations(predictions: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame.from_records(records)
 
 
+def summarize_log_scores(predictions: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    records = []
+    for (variant, row_id, label), rows in predictions.groupby(
+        ["variant", "analysis_dataset_id", "analysis_label"], sort=True
+    ):
+        for structure in STRUCTURES:
+            scores = item_log_score(rows["human_rate"], rows[f"{structure}_probability"])
+            records.append({
+                "variant": variant,
+                "analysis_dataset_id": row_id,
+                "dataset": label,
+                "structure": structure,
+                "N": len(rows),
+                "mean_oof_log_score": float(scores.mean()),
+            })
+    by_dataset = pd.DataFrame.from_records(records)
+    balanced = (
+        by_dataset.groupby(["variant", "structure"], as_index=False)
+        .agg(
+            balanced_mean_oof_log_score=("mean_oof_log_score", "mean"),
+            dataset_count=("analysis_dataset_id", "nunique"),
+            total_unit_count=("N", "sum"),
+        )
+        .sort_values(["variant", "balanced_mean_oof_log_score"], ascending=[True, False])
+        .reset_index(drop=True)
+    )
+    return by_dataset, balanced
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--prediction-grid", type=Path, required=True)
@@ -117,11 +146,21 @@ def main() -> None:
     selections = select_boundaries(grid)
     predictions = out_of_fold_predictions(grid, selections)
     correlations = summarize_correlations(predictions)
+    log_scores_by_dataset, balanced_log_scores = summarize_log_scores(predictions)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     selections.to_csv(args.output_dir / "fold_selections.csv", index=False)
     predictions.to_csv(args.output_dir / "oof_predictions.csv", index=False)
     correlations.to_csv(args.output_dir / "correlations.csv", index=False)
-    print(f"[complete] wrote fold selections, OOF predictions, and correlations to {args.output_dir}")
+    log_scores_by_dataset.to_csv(
+        args.output_dir / "oof_log_scores_by_dataset_and_structure.csv", index=False
+    )
+    balanced_log_scores.to_csv(
+        args.output_dir / "oof_balanced_log_scores_by_structure.csv", index=False
+    )
+    print(
+        "[complete] wrote fold selections, OOF predictions, correlations, and "
+        f"OOF log-score summaries to {args.output_dir}"
+    )
 
 
 if __name__ == "__main__":
