@@ -1,0 +1,54 @@
+{
+  "ready": true,
+  "errors": [],
+  "prompt_id": "prompt_7ebf909e4b947d98da36",
+  "prompt": "You and your friend Carly go grocery shopping together. As you're about to enter the supermarket, you reach into your pocket and realize, 'I forgot to bring my mask!' Carly looks through her bag and responds, 'Sure, I have my ",
+  "array_shape": [
+    121301
+  ],
+  "dtype": "float32",
+  "finite_count": 121301,
+  "unique_normalized_candidates": 121301,
+  "source_rows": 30,
+  "candidate_sources": [
+    {
+      "name": "1gram",
+      "path": "/users/ljohnst7/data/ljohnst7/ngrams/set_variant_qwen_support/vocab_1gram.txt",
+      "count": 98509,
+      "offset": 0,
+      "actual_count": 98509,
+      "progress": {
+        "last_line": 98509,
+        "done": true
+      }
+    },
+    {
+      "name": "2gram",
+      "path": "/users/ljohnst7/data/ljohnst7/ngrams/set_variant_qwen_support/vocab_2gram.txt",
+      "count": 22792,
+      "offset": 98509,
+      "actual_count": 22792,
+      "progress": {
+        "last_line": 22792,
+        "done": true,
+        "selection_mode": "context_balanced_support_global_union",
+        "target_bigram_count": 22792,
+        "target_vocab_size": 121301,
+        "required_total": 0,
+        "global_bigram_vocab_path": "/users/ljohnst7/data/ljohnst7/ngrams/set_variant_qwen_support/vocab_2gram.txt",
+        "selection_manifest_path": "/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/scoring_manifests/set_variant_qwen/selection_manifest.json",
+        "scored_candidates": 22792,
+        "required_scored": [],
+        "required_scored_count": 0
+      }
+    }
+  ],
+  "target_indices_zero_based": {
+    "bandana": 82753,
+    "handkerchief": 12192,
+    "napkins": 33223,
+    "gloves": 9948,
+    "wallet": 19646,
+    "candy": 10717
+  }
+}

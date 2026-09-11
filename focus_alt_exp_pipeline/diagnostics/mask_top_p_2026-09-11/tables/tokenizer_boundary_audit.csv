@@ -1,0 +1,8 @@
+candidate,continuation_token_count,continuation_ids,continuation_tokens,separate_encoding_decoded_tail,ordinary_single_space_decoded_tail,same_as_single_space_encoding
+mask,1,[6911],"[""\u0120mask""]"," her bag and responds, 'Sure, I have my  mask","h her bag and responds, 'Sure, I have my mask",False
+bandana,2,"[7055, 3362]","[""\u0120band"", ""ana""]","r bag and responds, 'Sure, I have my  bandana","er bag and responds, 'Sure, I have my bandana",False
+handkerchief,3,"[1424, 7052, 61526]","[""\u0120hand"", ""ker"", ""chief""]"," and responds, 'Sure, I have my  handkerchief","g and responds, 'Sure, I have my handkerchief",False
+napkins,2,"[25859, 11704]","[""\u0120nap"", ""kins""]","r bag and responds, 'Sure, I have my  napkins","er bag and responds, 'Sure, I have my napkins",False
+gloves,1,[35416],"[""\u0120gloves""]","er bag and responds, 'Sure, I have my  gloves","her bag and responds, 'Sure, I have my gloves",False
+wallet,1,[15085],"[""\u0120wallet""]","er bag and responds, 'Sure, I have my  wallet","her bag and responds, 'Sure, I have my wallet",False
+candy,1,[31556],"[""\u0120candy""]","her bag and responds, 'Sure, I have my  candy"," her bag and responds, 'Sure, I have my candy",False

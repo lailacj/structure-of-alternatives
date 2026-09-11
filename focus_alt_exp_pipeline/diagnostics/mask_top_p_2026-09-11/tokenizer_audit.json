@@ -1,0 +1,20 @@
+{
+  "status": "inspected_local_tokenizer_only",
+  "model_inference_performed": false,
+  "prepared_prompt_tail_repr": "\"bag and responds, 'Sure, I have my \"",
+  "prepared_prompt_last_token_ids": [
+    11,
+    358,
+    614,
+    847,
+    220
+  ],
+  "prepared_prompt_last_tokens": [
+    ",",
+    "ĠI",
+    "Ġhave",
+    "Ġmy",
+    "Ġ"
+  ],
+  "qualification": "Verifies current scorer's token construction, not historical execution or score changes under another construction."
+}

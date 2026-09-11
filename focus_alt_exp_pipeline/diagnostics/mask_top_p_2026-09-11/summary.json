@@ -1,0 +1,45 @@
+{
+  "replication": "diagnostic, not exact reproduction of shared-RNG saved grid",
+  "seed": 7,
+  "num_orderings": 500,
+  "retained_prefix_size": 32768,
+  "bit_generator": "PCG64",
+  "python": "3.9.21",
+  "numpy": "1.26.4",
+  "pandas": "2.2.2",
+  "matplotlib": "3.9.2",
+  "raw_exp_log_score_sum": 0.018808832044440317,
+  "shifted_weight_sum": 1.5331702382573504,
+  "max_log_score": -4.400766372680664,
+  "minimum_normalized_probability": 7.696616111205524e-23,
+  "normalization_sum": 0.9999999999999999,
+  "target_mass": 0.0006046212732344998,
+  "mask_normalized_probability": 0.6522432897840695,
+  "mask_raw_continuation_probability": 0.012267934489661783,
+  "theoretical_any_target_in_p06": 0.0009261288318366525,
+  "probability_no_target_in_any_of_500_p06": 0.629217070894446,
+  "diagnostic_p06_orderings_with_any_target": 1,
+  "minimum_retained_prefix_mass": 0.9995142295963872,
+  "representative_ordering_indices": [
+    0,
+    7,
+    16,
+    90,
+    482
+  ],
+  "mask_cv_fold": [
+    9
+  ],
+  "all_ten_saved_top_p_fold_selections": 0.6,
+  "checks": [
+    "offset/count/unique vocabulary",
+    "metadata/prompt hash/source prompt identity",
+    "all scores finite and positive after normalization",
+    "prefix without replacement",
+    "all 500 reach every boundary",
+    "shortest-prefix boundary checks",
+    "every p06 prefix ends at mask",
+    "direct imported implementation agrees with diagnostic Set events",
+    "saved grid has 30 p06 mask zeros and conjunction/disjunction identities"
+  ]
+}
