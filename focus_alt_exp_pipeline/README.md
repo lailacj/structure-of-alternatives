@@ -24,6 +24,24 @@ and selects K and p separately in grouped 10-fold cross-validation.
 
 ## Directory Layout
 
+### Offline results viewer
+
+Open `results_viewer/index.html` for interactive descriptive and visual results
+across all ten datasets, nine linking structures, sixteen focus contexts, and
+the exact prompts and next-word scores. Rebuild with:
+
+```bash
+python3 focus_alt_exp_pipeline/code/build_results_viewer.py
+```
+
+Run this command from the repository root. On Oscar, add
+`--log-probs-dir /users/ljohnst7/data/ljohnst7/ngrams/qwen_set_variant_log_probs`
+to populate the top-50 vocabulary distributions. The resulting HTML works
+offline. See [the viewer guide](results_viewer/README.md) for export options,
+metric definitions, and verification commands.
+
+### Pipeline directories
+
 - `code/`
   Main scripts for sampling, model scoring, experiment running, and plotting.
 

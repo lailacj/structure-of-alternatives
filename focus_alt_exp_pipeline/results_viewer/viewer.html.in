@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Qwen focus-alternative results: datasets, linking structures, contexts, and next-word scores.">
+  <title>Focus Alternatives · Results Explorer</title>
+  <style>/* VIEWER_CSS */</style>
+</head>
+<body>
+  <header><div class="brand"><span class="mark" aria-hidden="true">∴</span><div><strong>Focus Alternatives</strong><span>RESULTS EXPLORER</span></div></div><div class="run-label">Qwen2-7B <span class="pill">Sampled-prefix analysis</span></div></header>
+  <nav aria-label="Results views" id="navigation">
+    <button data-view="overview" aria-current="page">Overview</button>
+    <button data-view="datasets">Datasets</button>
+    <button data-view="structures">Linking structures</button>
+    <button data-view="contexts">Focus contexts</button>
+    <button data-view="prompts">Next words & prompts</button>
+    <button data-view="methods">Methods & sources</button>
+  </nav>
+  <main id="main" tabindex="-1">__VIEWER_FALLBACK__</main>
+  <footer id="footer"></footer>
+  <noscript>This interactive viewer needs JavaScript enabled. It works offline and makes no network requests.</noscript>
+  <script id="results-data" type="application/json">__VIEWER_DATA__</script>
+  <script>
+    window.addEventListener('error', function(event) {
+      var status = document.getElementById('viewer-status');
+      if (status) status.textContent = 'The interactive viewer could not start: ' + event.message + '. The saved tables below remain available.';
+    });
+  </script>
+  <script>/* VIEWER_JS */</script>
+</body>
+</html>
