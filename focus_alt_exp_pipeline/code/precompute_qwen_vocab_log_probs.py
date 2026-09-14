@@ -14,6 +14,13 @@ from typing import Iterable, Iterator, List
 import numpy as np
 import pandas as pd
 
+try:
+    from .score_qwen_scoring_manifest import continuation_token_ids
+except ImportError:
+    from score_qwen_scoring_manifest import continuation_token_ids
+
+SCORING_BOUNDARY_VERSION = "single-space-exact-concat-v1"
+
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DEFAULT_PROMPTS_CSV = ROOT_DIR / "prompts" / "prompt_files" / "prompts_llm_next_word.csv"
@@ -30,6 +37,7 @@ class PromptState:
     past_key_values: object
     next_log_probs: object
     device: object
+    prefix: str
 
 
 def _parse_csv_list(raw: str) -> List[str]:
@@ -280,11 +288,41 @@ def _load_model(model_path: str, *, dtype: str, device_map: str, local_files_onl
     return torch, tokenizer, model, resolved_model_path
 
 
+def _prompt_prefix(prompt: str) -> str:
+    prefix = str(prompt).rstrip()
+    if not prefix:
+        raise ValueError("Cannot score an empty prompt")
+    return prefix
+
+
+def _vocab_continuation_ids(tokenizer, prefix: str, continuation: str) -> list[int]:
+    candidate = str(continuation).strip()
+    if not candidate:
+        raise ValueError("Cannot score an empty continuation")
+    token_ids, _ = continuation_token_ids(
+        tokenizer, prefix=prefix, continuation=" " + candidate,
+    )
+    return token_ids
+
+
+def _check_scoring_boundary(output_path: Path, progress_path: Path, meta_path: Path) -> None:
+    """Reject legacy checkpoints before opening or mutating their score arrays."""
+    if not any(path.exists() for path in (output_path, progress_path, meta_path)):
+        return
+    metadata = json.loads(meta_path.read_text()) if meta_path.exists() else {}
+    if metadata.get("scoring_boundary_version") != SCORING_BOUNDARY_VERSION:
+        raise ValueError(
+            f"Incompatible scoring boundary for {output_path}. Existing scores may use "
+            "the legacy double-space boundary. Use a new --output-dir (recommended) "
+            "or --overwrite to recompute all candidates; legacy scores cannot be resumed."
+        )
+
+
 def _prepare_prompt_state(torch_module, tokenizer, model, prompt: str) -> PromptState:
     import torch.nn.functional as F
 
     device = next(model.parameters()).device
-    prompt_text = str(prompt).rstrip() + " "
+    prompt_text = _prompt_prefix(prompt)
     encoded = tokenizer(prompt_text, add_special_tokens=False, return_tensors="pt").to(device)
     with torch_module.no_grad():
         output = model(**encoded, use_cache=True)
@@ -293,6 +331,7 @@ def _prepare_prompt_state(torch_module, tokenizer, model, prompt: str) -> Prompt
         past_key_values=output.past_key_values,
         next_log_probs=next_log_probs,
         device=device,
+        prefix=prompt_text,
     )
 
 
@@ -334,9 +373,7 @@ def _score_continuation_log_prob(
 ) -> float:
     import torch.nn.functional as F
 
-    token_ids = tokenizer(" " + str(continuation), add_special_tokens=False).input_ids
-    if not token_ids:
-        return float("nan")
+    token_ids = _vocab_continuation_ids(tokenizer, prompt_state.prefix, continuation)
 
     total_log_prob = 0.0
     next_log_probs = prompt_state.next_log_probs
@@ -661,6 +698,8 @@ def main() -> None:
                 if path.exists():
                     path.unlink()
 
+        _check_scoring_boundary(output_path, progress_path, meta_path)
+
         print(f"[context] {context}")
         output_array = _init_output_array(output_path, int(vocab_manifest["total_count"]), overwrite=False)
         progress = _load_progress(progress_path, [source["name"] for source in vocab_manifest["sources"]])
@@ -677,6 +716,9 @@ def main() -> None:
             {
                 "context": context,
                 "prompt": prompt,
+                "scoring_boundary_version": SCORING_BOUNDARY_VERSION,
+                "scoring_prefix": _prompt_prefix(prompt),
+                "continuation_prefix": " ",
                 "model_path": resolved_model_path,
                 "manifest_path": str(args.output_dir / "vocab_manifest.json"),
                 "output_path": str(output_path),

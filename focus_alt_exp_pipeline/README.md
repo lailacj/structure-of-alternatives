@@ -560,6 +560,16 @@ python building_vocab_from_ngrams/code/build_qwen_bigram_support.py \
   --shared-background-pool-size 500
 ```
 
+The vocabulary scorer strips trailing prompt whitespace and scores one leading
+space plus the stripped candidate using exact full-text tokenization. This applies
+to every unigram and bigram in every context. Summed token log probabilities are
+unchanged as the scoring definition. Metadata records
+`scoring_boundary_version: single-space-exact-concat-v1`.
+Legacy score arrays cannot be resumed with this correction: use a new
+`--output-dir` to preserve the original run, or explicitly use `--overwrite` to
+recompute it. Existing saved results are not corrected until scores and downstream
+analyses are regenerated.
+
 Build the sparse Qwen precompute for one context:
 
 ```bash
