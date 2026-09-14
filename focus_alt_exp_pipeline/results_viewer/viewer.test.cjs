@@ -94,3 +94,55 @@ test("both HTML entry points lead to results and retain a script-free fallback",
   assert.match(fallback,/-3\.219/);
   assert.ok(!html.includes("__VIEWER_FALLBACK__"));
 });
+
+test("histogram boundaries, matched coverage, and exact endpoints",()=>{
+  const d=math.distribution([0,.049,.05,.5,.95,1].map(y=>({y,p:[y]})),0);
+  assert.equal(d.n,6);assert.equal(d.human.counts[0],2);assert.equal(d.model.counts[1],1);
+  assert.equal(d.model.counts[19],2);assert.equal(d.model.zeros,1);assert.equal(d.model.ones,1);
+  assert.equal(d.model.median,.275);
+  const missing=math.distribution([{y:1,p:[null]},{y:0,p:[.5]}],0);
+  assert.equal(missing.n,1);assert.equal(missing.human.mean,0);
+  for(const dataset of data.datasets)for(let m=0;m<9;m++){
+    const actual=math.distribution(data.items.filter(r=>r.dataset===dataset.id),m);
+    assert.equal(actual.n,data.datasetSummaries[dataset.id][m].n);
+    for(const source of [actual.human,actual.model])assert.equal(source.counts.reduce((a,b)=>a+b,0),actual.n);
+  }
+});
+
+test("distribution gallery renders every available model and dataset",()=>{
+  const app=harness();app.click({view:"distributions"});
+  for(const dataset of data.datasets){
+    app.change("dataset",dataset.id);
+    assert.equal((app.html().match(/class="chart distribution-chart"/g)||[]).length,dataset.id.startsWith("rnx_")?8:9);
+    assert.ok(!/\bNaN\b|>undefined</.test(app.html()));
+  }
+  app.change("distributionModel","1");assert.match(app.html(),/X but not Y/);
+  app.change("dataset","rnx_esi");assert.match(app.html(),/Not applicable/);
+  app.change("dataset","novel_focus");app.change("distributionModel","4");
+  assert.equal((app.html().match(/class="chart distribution-chart"/g)||[]).length,1);
+  assert.match(app.html(),/Model mean 50.0%/);assert.match(app.html(),/480 matched units/);
+});
+
+test("focus distributions cover all 16 contexts by all nine models",()=>{
+  const app=harness();app.click({view:"distributions"});
+  assert.match(app.html(),/All contexts pooled/);
+  for(const context of data.contexts){
+    app.change("distributionContext",context);
+    assert.equal((app.html().match(/30 matched units/g)||[]).length,9);
+    const items=data.items.filter(r=>r.dataset==="novel_focus"&&r.context===context);
+    for(let m=0;m<9;m++){
+      const dist=math.distribution(items,m);
+      assert.equal(dist.n,30);
+      assert.equal(dist.model.counts.reduce((a,b)=>a+b,0),30);
+      app.change("distributionModel",String(m));
+      assert.match(app.html(),new RegExp(` · ${context}</h2>`));
+      assert.ok(app.html().includes(`Model mean ${(dist.model.mean*100).toFixed(1)}%`));
+    }
+    app.change("distributionModel","all");
+  }
+  app.change("dataset","hu_vt16");
+  assert.ok(!app.html().includes('id="distributionContext"'));
+  assert.equal((app.html().match(/39 matched units/g)||[]).length,9);
+  app.change("dataset","novel_focus");app.change("distributionContext","all");
+  assert.equal((app.html().match(/480 matched units/g)||[]).length,9);
+});

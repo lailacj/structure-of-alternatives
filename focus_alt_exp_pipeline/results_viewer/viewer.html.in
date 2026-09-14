@@ -12,6 +12,7 @@
   <nav aria-label="Results views" id="navigation">
     <button data-view="overview" aria-current="page">Overview</button>
     <button data-view="datasets">Datasets</button>
+    <button data-view="distributions">Distributions</button>
     <button data-view="structures">Linking structures</button>
     <button data-view="contexts">Focus contexts</button>
     <button data-view="prompts">Next words & prompts</button>

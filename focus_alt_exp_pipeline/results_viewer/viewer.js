@@ -20,13 +20,26 @@ const ResultsMath = (() => {
     return {...stats,datasets:ids.length,definedR:groups.filter(g=>g.r!==null).length};
   }
   const escape = value => String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-  return {mean,pearson,summary,aggregate,escape};
+  function distribution(items,model) {
+    const rows=items.filter(r=>r.p[model]!==null);
+    function stats(values) {
+      const sorted=[...values].sort((a,b)=>a-b),n=values.length,counts=Array(20).fill(0);
+      for(const value of values){
+        if(!Number.isFinite(value)||value<0||value>1)throw new Error("Distribution values must be in [0, 1]");
+        counts[Math.min(19,Math.floor(value*20))]++;
+      }
+      return {counts,mean:mean(values),median:n?(sorted[Math.floor((n-1)/2)]+sorted[Math.floor(n/2)])/2:null,
+        zeros:values.filter(v=>v===0).length,ones:values.filter(v=>v===1).length};
+    }
+    return {n:rows.length,human:stats(rows.map(r=>r.y)),model:stats(rows.map(r=>r.p[model]))};
+  }
+  return {mean,pearson,summary,aggregate,escape,distribution};
 })();
 if(typeof module!=="undefined")module.exports=ResultsMath;
 if(typeof document!=="undefined") (()=>{
 const D=JSON.parse(document.getElementById("results-data").textContent);
 const {mean,summary,aggregate,escape:esc}=ResultsMath;
-const state={view:"overview",metric:"log",dataset:"novel_focus",model:2,context:"bag",balanced:true,coverage:"all",promptDataset:"novel_focus",promptContext:"all",frame:"Neutral",promptId:"",candidateSource:"distribution",wordScale:"logp",wordSearch:"",itemSearch:"",page:0,item:null};
+const state={view:"overview",distributionModel:"all",distributionContext:"all",metric:"log",dataset:"novel_focus",model:2,context:"bag",balanced:true,coverage:"all",promptDataset:"novel_focus",promptContext:"all",frame:"Neutral",promptId:"",candidateSource:"distribution",wordScale:"logp",wordSearch:"",itemSearch:"",page:0,item:null};
 const main=document.getElementById("main");
 const labels=Object.fromEntries(D.datasets.map(d=>[d.id,d.label]));
 const short=["No linking","X but not Y","Set Top-K","Set Top-p","Ordering","Conj. Top-K","Conj. Top-p","Disj. Top-K","Disj. Top-p"];
@@ -76,6 +89,39 @@ function scatter(rows,model){
   if(!valid.length)return `<div class="empty">X-but-not-Y is not applicable to this dataset.</div>`;
   const x=p=>62+p*468,y=p=>350-p*316;
   return `<svg class="chart" viewBox="0 0 560 410" role="img" aria-label="Model exclusion probability on the horizontal axis and human exclusion rate on the vertical axis, with ${valid.length} items. Exact values are in the item table below.">${[0,.25,.5,.75,1].map(v=>`<line class="chart-grid" x1="62" x2="530" y1="${y(v)}" y2="${y(v)}"/><line class="chart-grid" x1="${x(v)}" x2="${x(v)}" y1="34" y2="350"/><text x="${x(v)}" y="374" text-anchor="middle">${v}</text><text x="48" y="${y(v)+4}" text-anchor="end">${v}</text>`).join("")}<line class="reference" x1="62" x2="530" y1="350" y2="34"/>${valid.map(r=>`<circle data-item="${esc(r.dataset+"|"+r.id)}" cx="${x(r.p[model])}" cy="${y(r.y)}" r="4.3"><title>${esc(r.context?r.context+": ":"")}${esc(r.trigger)} → ${esc(r.query)}\nModel: ${fmt(r.p[model],6)} · Human: ${fmt(r.y,6)}\nLog score: ${fmt(r.scores[model],6)}</title></circle>`).join("")}<text x="300" y="403" text-anchor="middle">Model exclusion probability</text><text transform="translate(16 195) rotate(-90)" text-anchor="middle">Human exclusion rate</text></svg><div class="scatter-meta"><span><strong>${fmt(s.r)}</strong>Pearson r</span><span><strong>${fmt(s.log)}</strong>Mean log score</span><span><strong>${s.n}</strong>Analysis units</span></div><p class="caption">Dashed line: p = human rate. Hover for values or select a point for its prompts. Items at the same coordinates overlap; every item is listed below.</p>`;
+}
+function distributionPlot(d,model,ymax){
+  if(!d.n)return `<div class="empty">Not applicable: X-but-not-Y predictions are unavailable for this dataset.</div>`;
+  const color=colors[model],pct=v=>`${(v*100).toFixed(1)}%`;
+  const x=i=>62+i*23.4,y=v=>320-v/ymax*260;
+  let path=`M ${x(0)} 320 L ${x(0)} ${y(d.model.counts[0]/d.n)}`;
+  d.model.counts.forEach((n,i)=>{path+=` L ${x(i+1)} ${y(n/d.n)}`;if(i<19)path+=` L ${x(i+1)} ${y(d.model.counts[i+1]/d.n)}`;});
+  path+=` L ${x(20)} 320`;
+  return `<p class="caption">Model mean ${pct(d.model.mean)} · median ${pct(d.model.median)}<br>Human mean ${pct(d.human.mean)} · median ${pct(d.human.median)} · ${d.n} matched units</p>
+  <svg class="chart distribution-chart" viewBox="0 0 560 390" role="img" aria-label="${esc(D.models[model])}: human and model distributions across ${d.n} matched analysis units, with 5 percentage point bins.">
+  ${Array.from({length:6},(_,i)=>{const v=i*ymax/5;return `<line class="chart-grid" x1="62" x2="530" y1="${y(v)}" y2="${y(v)}"/><text x="52" y="${y(v)+4}" text-anchor="end">${Math.round(v*100)}%</text>`;}).join("")}
+  ${d.human.counts.map((n,i)=>`<rect x="${x(i)}" y="${y(n/d.n)}" width="23.4" height="${320-y(n/d.n)}" fill="#c8cdd3" stroke="white" stroke-width=".6"/>`).join("")}
+  <path d="${path}" fill="none" stroke="${color}" stroke-width="3"/>
+  ${d.human.counts.map((n,i)=>`<rect x="${x(i)}" y="60" width="23.4" height="260" fill="transparent"><title>${i*5}%–${(i+1)*5}%${i===19?" (includes 100%)":" (upper bound excluded)"}: Human ${n} (${pct(n/d.n)}); Model ${d.model.counts[i]} (${pct(d.model.counts[i]/d.n)})</title></rect>`).join("")}
+  ${[0,4,8,12,16,20].map(i=>`<text x="${x(i)}" y="344" text-anchor="middle">${i*5}%</text>`).join("")}
+  <rect x="62" y="15" width="20" height="10" fill="#c8cdd3"/><text x="90" y="25">Human rates</text><rect x="250" y="15" width="20" height="10" fill="none" stroke="${color}" stroke-width="3"/><text x="278" y="25">Model predictions</text>
+  <text x="296" y="380" text-anchor="middle">Exclusion probability / human exclusion rate</text><text transform="translate(16 190) rotate(-90)" text-anchor="middle">Share of analysis units</text></svg>
+  <p class="caption">Model exactly 0: ${d.model.zeros} · exactly 1: ${d.model.ones}</p>`;
+}
+function distributionRows(){
+  return D.items.filter(r=>r.dataset===state.dataset&&(state.dataset!=="novel_focus"||state.distributionContext==="all"||r.context===state.distributionContext));
+}
+function distributions(){
+  const context=state.dataset==="novel_focus"?state.distributionContext:"all";
+  const rows=distributionRows(),all=D.models.map((_,m)=>ResultsMath.distribution(rows,m));
+  // Keep the scale fixed across all models in this dataset, even when filtering.
+  const peak=Math.max(...all.filter(d=>d.n).flatMap(d=>[...d.human.counts,...d.model.counts].map(n=>n/d.n)));
+  const ymax=Math.min(1,Math.max(.1,Math.ceil((peak+0.001)*10)/10));
+  return title("Model and human distributions","Where do the probabilities concentrate?","Compare each model’s predictions with human exclusion rates on the same analysis units.",downloadButton("distributions","Download histogram data"))+
+    `<div class="controls">${datasetControl()}${state.dataset==="novel_focus"?select("distributionContext","Focus context",[["all","All contexts pooled"],...D.contexts.map(c=>[c,c])],state.distributionContext):""}${select("distributionModel","Model",[["all","All nine models"],...D.models.map((m,i)=>[i,m])],state.distributionModel)}</div>
+    <p class="dataset-description">${context==="all"?datasetDescription(state.dataset):`Context: <strong>${esc(context)}</strong> · ${rows.length} ordered trigger–query pairs. Human and model distributions use only this context, with equal weight per pair.`}</p>
+    <p class="caption">Gray bars: human rates. Colored outlines: model predictions. Bins are 5 percentage points wide: [0%, 5%), …, [95%, 100%]. Each matched analysis unit has equal weight. All models in the selected dataset/context share identical axes, including when filtering by model. Hover over a bin for counts. Human values are item or scale rates, not individual binary responses.</p>
+    <div class="grid-two">${all.map((d,m)=>state.distributionModel!=="all"&&Number(state.distributionModel)!==m?"":`<section class="panel"><h2 style="color:${colors[m]}">${esc(D.models[m])}${context!=="all"?` · ${esc(context)}`:""}</h2>${distributionPlot(d,m,ymax)}</section>`).join("")}</div>`;
 }
 function overview(){
   const rows=scopeItems(),stats=D.models.map((_,m)=>aggregate(rows,m,state.balanced));
@@ -165,7 +211,7 @@ function methods(){
 function render(){
   const active=document.activeElement,id=active&&active.id,pos=active&&active.selectionStart;
   document.querySelectorAll("#navigation button").forEach(b=>{if(b.dataset.view===state.view)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current");});
-  main.innerHTML=({overview,datasets,structures,contexts,prompts,methods})[state.view]();
+  main.innerHTML=({overview,datasets,distributions,structures,contexts,prompts,methods})[state.view]();
   const el=id&&document.getElementById(id);if(el){el.focus();if(typeof pos==="number"&&el.setSelectionRange)el.setSelectionRange(pos,pos);}
   document.getElementById("footer").innerHTML=`<span>Local snapshot · ${esc(D.modelName)} · ${D.verifiedCells} metric cells verified</span><span>Built ${esc(D.generated.slice(0,10))} · No network connection required</span>`;
 }
@@ -177,6 +223,11 @@ function csvDownload(kind){
   if(kind==="contexts")rows=D.contexts.flatMap(c=>D.models.map((m,i)=>({context:c,model:m,...D.contextSummaries[c][i]})));
   if(kind==="items")rows=itemRowsForView().filter(r=>(r.id+" "+r.context+" "+r.trigger+" "+r.query).toLowerCase().includes(state.itemSearch.toLowerCase())).flatMap(r=>D.models.map((m,i)=>({dataset:labels[r.dataset],item:r.id,context:r.context,trigger:r.trigger,query:r.query,fold:r.fold,model:m,human_rate:r.y,probability:r.p[i],log_score:r.scores[i]})));
   if(kind==="words"){const p=chosenPrompt();rows=promptCandidates(p).map(c=>({prompt_id:p.id,prompt:p.text,source:state.candidateSource,candidate:c.word,log_probability:c.logp,raw_probability:Math.exp(c.logp),normalized_sampling_probability:c.normalized??null,rank:c.rank??null,token_count:c.tokens??null}));}
+  if(kind==="distributions")rows=D.models.flatMap((model,m)=>{
+    if(state.distributionModel!=="all"&&Number(state.distributionModel)!==m)return [];
+    const d=ResultsMath.distribution(distributionRows(),m);
+    return d.n?d.human.counts.map((n,i)=>({dataset:labels[state.dataset],context:state.dataset==="novel_focus"?state.distributionContext:"all",model,n:d.n,bin_lower:i/20,bin_upper:(i+1)/20,upper_inclusive:i===19,human_count:n,model_count:d.model.counts[i],human_share:n/d.n,model_share:d.model.counts[i]/d.n})):[];
+  });
   if(kind==="provenance")rows=D.provenance;
   if(!rows.length)return;
   const columns=[...new Set(rows.flatMap(r=>Object.keys(r)))],quote=v=>'"'+String(v??"").replace(/"/g,'""')+'"';
