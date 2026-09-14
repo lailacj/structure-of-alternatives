@@ -199,3 +199,11 @@ page shows six-word ranking agreement, 30-pair negation agreement, average ranks
 for ties, and equal-context means with valid/total counts. Inputs are validated
 against `human_exp_data/sca_dataframe.csv`; its hash is included in provenance.
 Both measures are focus-only and are not pooled across contexts.
+
+The Spearman page includes side-by-side rank plots and a **Show the fridge example**
+button (six-word rho 1.000 versus Set Top-K negation rho 0.784). Change context or
+negation model to explore the same distinction elsewhere. Rank plots use separate
+0–5 and 0–29 axes; tied pair coordinates are aggregated into circles whose area
+reflects their multiplicity. Hover text and expandable tables retain pair identities.
+The page explains average ranks, participant aggregation, equal pair weighting,
+repeated Set predictions, undefined correlations, and averaging across contexts.

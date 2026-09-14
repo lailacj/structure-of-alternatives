@@ -39,7 +39,7 @@ if(typeof module!=="undefined")module.exports=ResultsMath;
 if(typeof document!=="undefined") (()=>{
 const D=JSON.parse(document.getElementById("results-data").textContent);
 const {mean,summary,aggregate,escape:esc}=ResultsMath;
-const state={view:"overview",distributionModel:"all",distributionContext:"all",metric:"log",dataset:"novel_focus",model:2,context:"bag",balanced:true,coverage:"all",promptDataset:"novel_focus",promptContext:"all",frame:"Neutral",promptId:"",candidateSource:"distribution",wordScale:"logp",wordSearch:"",itemSearch:"",page:0,item:null};
+const state={view:"overview",spearmanModel:"set|top_k",distributionModel:"all",distributionContext:"all",metric:"log",dataset:"novel_focus",model:2,context:"bag",balanced:true,coverage:"all",promptDataset:"novel_focus",promptContext:"all",frame:"Neutral",promptId:"",candidateSource:"distribution",wordScale:"logp",wordSearch:"",itemSearch:"",page:0,item:null};
 const main=document.getElementById("main");
 const labels=Object.fromEntries(D.datasets.map(d=>[d.id,d.label]));
 const short=["No linking","X but not Y","Set Top-K","Set Top-p","Ordering","Conj. Top-K","Conj. Top-p","Disj. Top-K","Disj. Top-p"];
@@ -170,14 +170,52 @@ function contexts(){
   return title("Novel focus alternative study","Sixteen experimental contexts","Compare contexts, then inspect the 30 trigger–query pairs within each context.",downloadButton("contexts"))+
   `<div class="controls">${contextControl()}${modelControl()}${metricControl()}</div><section class="panel"><h2>Contexts × linking structures</h2>${heatmap(D.contexts.map(c=>({id:c,label:c,stats:D.contextSummaries[c]})),"context")}</section><div class="grid-two"><section class="panel"><div class="eyebrow">${esc(state.context)}</div><h2>${esc(D.models[state.model])}</h2>${scatter(rows,state.model)}</section><section class="panel"><h2>All structures in ${esc(state.context)}</h2>${metricTable(stats)}<p class="caption">Context correlations are computed within this context’s items; context log scores average its item scores. These summaries use the saved held-out predictions.</p><button data-context-prompts="${esc(state.context)}">Read this context’s prompts & next words</button></section></div>${itemTable(rows)}`;
 }
+function rankScatter(rows,kind){
+  const max=rows.length-1, left=64,top=24,size=278;
+  const x=r=>left+r/max*size,y=r=>top+size-r/max*size;
+  const groups=new Map();
+  for(const row of rows){const key=`${row.human_rank}|${row.model_rank}`;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(row);}
+  const ticks=kind==="words"?[0,1,2,3,4,5]:[0,5,10,15,20,25,29];
+  const label=kind==="words"?"Six word ranks":"Thirty trigger–query pair ranks";
+  return `<svg class="chart spearman-chart" viewBox="0 0 400 370" role="img" aria-label="${label}: human rank horizontally, model rank vertically; zero is best">
+    <title>${label}</title>
+    ${ticks.map(t=>`<line class="chart-grid" x1="${x(t)}" y1="${top}" x2="${x(t)}" y2="${top+size}"/><line class="chart-grid" x1="${left}" y1="${y(t)}" x2="${left+size}" y2="${y(t)}"/><text x="${x(t)}" y="${top+size+22}" text-anchor="middle">${t}</text><text x="${left-12}" y="${y(t)+4}" text-anchor="end">${t}</text>`).join("")}
+    <line class="reference" x1="${x(0)}" y1="${y(0)}" x2="${x(max)}" y2="${y(max)}"/>
+    ${[...groups.values()].map(group=>{const r=group[0],n=group.length;
+      const details=group.map(v=>kind==="words"?`${v.word}: human rank ${v.human_rank}, model rank ${v.model_rank}`:`${v.trigger} → ${v.query}: human rate ${fmt(v.human_rate)}, prediction ${fmt(v.model_value)}; human rank ${v.human_rank}, model rank ${v.model_rank}`).join("; ");
+      return `<g class="rank-point" tabindex="0" role="img" aria-label="${esc(details)}" data-rank-count="${n}"><title>${esc(details)}</title><circle cx="${x(r.human_rank)}" cy="${y(r.model_rank)}" r="${5*Math.sqrt(n)}" style="r:${5*Math.sqrt(n)}px"/>${kind==="words"?`<text class="word-rank-label" x="${x(r.human_rank)+(r.human_rank>3?-10:10)}" y="${y(r.model_rank)-10}" text-anchor="${r.human_rank>3?"end":"start"}">${esc(r.word)}</text>`:n>1?`<text class="rank-count" x="${x(r.human_rank)}" y="${y(r.model_rank)+4}" text-anchor="middle">${n}</text>`:""}</g>`;
+    }).join("")}
+    <text x="${left+size/2}" y="350" text-anchor="middle">Human rank (0 = highest)</text>
+    <text transform="translate(17 163) rotate(-90)" text-anchor="middle">Model rank (0 = highest)</text>
+  </svg>`;
+}
 function spearman(){
   if(!D.spearman)return title("Focus alternatives","Within-context Spearman","Rebuild the viewer to calculate these results.");
   const table=(rows,columns)=>`<div class="table-wrap"><table><thead><tr>${columns.map(([key,label])=>`<th>${esc(label)}</th>`).join("")}</tr></thead><tbody>${rows.map(row=>`<tr>${columns.map(([key])=>`<td>${typeof row[key]==="number"?fmt(row[key],Number.isInteger(row[key])?0:3):esc(row[key]??"—")}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
   const S=D.spearman,c=state.context;
-  return title("Novel focus alternative study","Within-context Spearman","Word rankings use six tested alternatives. Negation rankings use all 30 trigger–query pairs within each context.")+
-    `<section class="panel"><h2>Mean within-context Spearman</h2><p class="caption">Equal weight per valid context. Constant predictions give undefined correlations and are excluded from the mean; valid and total context counts remain visible. These are separate from dataset-level Pearson and log score.</p>${table(S.mean_within_context_spearman,[["measure","Measure"],["structure","Structure"],["variant","Variant"],["mean_within_context_spearman","Mean ρ"],["valid_contexts","Valid contexts"],["total_contexts","Total contexts"]])}</section><div class="controls">${contextControl()}</div>
-    <section class="panel"><h2>Word-ranking Spearman · ${esc(c)}</h2>${table(S.word_spearman_by_context.filter(r=>r.context===c),[["model","Model"],["n","Words"],["spearman_rho","ρ"],["status","Status"]])}<p class="caption">Human trigger_relevance: 0 best, 5 worst. Model scores are summed whole-alternative log probabilities under the neutral context prompt. Model rank 0 is best; ties receive average ranks.</p>${table(S.word_paired_ranks.filter(r=>r.context===c),[["word","Word"],["human_rank","Human rank"],["model_value","Model log probability"],["model_rank","Model rank"]])}</section>
-    <section class="panel"><h2>Negation Spearman · ${esc(c)}</h2>${table(S.negation_spearman_by_context.filter(r=>r.context===c),[["structure","Structure"],["variant","Variant"],["n","Pairs"],["spearman_rho","ρ"],["status","Status"]])}<p class="caption">Sampled models use held-out predictions; boundary selection still uses training log score.</p><details><summary>Inspect all paired values and ranks</summary>${table(S.negation_paired_ranks.filter(r=>r.context===c),[["structure","Structure"],["variant","Variant"],["trigger","Trigger"],["query","Query"],["human_rate","Human rate"],["model_value","Prediction"],["human_rank","Human rank"],["model_rank","Model rank"]])}</details></section>`;
+  const names={set:"Set",ordering:"Ordering",conjunction:"Conjunction",disjunction:"Disjunction"};
+  const modelLabel=r=>`${names[r.structure]||r.structure}${r.variant==="direct"?"":r.variant==="top_k"?" · Top-K":" · Top-p"}`;
+  const negResults=S.negation_spearman_by_context.filter(r=>r.context===c);
+  const selected=negResults.find(r=>`${r.structure}|${r.variant}`===state.spearmanModel)||negResults[0];
+  const words=S.word_paired_ranks.filter(r=>r.context===c);
+  const neg=S.negation_paired_ranks.filter(r=>r.context===c&&r.structure===selected.structure&&r.variant===selected.variant);
+  const wordResult=S.word_spearman_by_context.find(r=>r.context===c);
+  const fridgeWord=S.word_spearman_by_context.find(r=>r.context==="fridge");
+  const fridgeNeg=S.negation_spearman_by_context.find(r=>r.context==="fridge"&&r.structure==="set"&&r.variant==="top_k");
+  return title("Novel focus alternative study","Within-context Spearman","Two questions about the same context: how well are words ranked, and how well are human negation responses ranked?")+
+    `<section class="panel spearman-explainer"><h2>Knowing the word order does not determine the negation responses</h2><p>In fridge, the model ranks all six words in the human order: word-ranking Spearman is <strong>${fmt(fridgeWord.spearman_rho)}</strong>. For Set Top-K, negation Spearman is <strong>${fmt(fridgeNeg.spearman_rho)}</strong>. That second comparison ranks 30 trigger–query pairs by their human negation rates and model predictions. Perfect agreement with the six <code>trigger_relevance</code> ranks does not imply perfect agreement with these 30 rates.</p><button data-spearman-example="fridge">Show the fridge example</button></section>
+    <div class="controls">${contextControl()}${select("spearmanModel","Negation model",negResults.map(r=>[`${r.structure}|${r.variant}`,modelLabel(r)]),state.spearmanModel)}</div>
+    <div class="grid-two spearman-comparison">
+      <section class="panel"><div class="eyebrow">${esc(c)} · six words</div><h2>Word-ranking Spearman · ${esc(c)}</h2><div class="spearman-coefficient">ρ = ${fmt(wordResult.spearman_rho)}</div><p>Does the model put the six alternatives in the human relevance order?</p>${rankScatter(words,"words")}<p class="caption">Each dot is one word. Human rank comes from trigger_relevance; model rank comes from the neutral whole-alternative log probability. This comparison stays the same when you change the negation model.</p></section>
+      <section class="panel"><div class="eyebrow">${esc(c)} · 30 trigger–query pairs</div><h2>Negation Spearman · ${esc(c)}</h2><div class="spearman-coefficient">ρ = ${fmt(selected.spearman_rho)}</div><p>${esc(modelLabel(selected))}: does the model put pairs in the same order as the human negation rates?</p>${rankScatter(neg,"pairs")}<p class="caption">Each circle represents one or more pairs at exactly the same rank coordinates. Numbers inside circles count overlapping pairs; circle area reflects that count. Hover for pair details, or inspect the table below.</p>${selected.status!=="defined"?`<div class="note amber">Undefined correlation: human rates or model predictions are constant within this context, so their ranks have no variation.</div>`:""}</section>
+    </div>
+    <p class="caption">Each plot uses its own rank range: 0–5 for six words and 0–29 for 30 pairs. The dashed line marks equal human and model ranks. Spearman is the correlation of the two rank columns; ties receive average ranks.</p>
+    <section class="panel"><h2>How the negation ranks are calculated</h2><p>For each trigger–query pair, the human rate is the fraction of participants with <code>neg = 1</code>. We match it to that pair’s model prediction, then rank all 30 human rates and all 30 model probabilities separately within the context. The six trigger_relevance ranks are used only for the word-ranking measure.</p><p>Higher rates receive lower ranks, starting at 0. Ties share their average position: in fridge, eleven pairs have human rate 1.000, occupying positions 0–10, so each gets rank 5. A rank of 5 here can mean “tied for highest.” Each pair contributes once, regardless of its participant count.</p><p>Set predictions depend on query membership, so the same query can have the same prediction across different triggers even when the human rates differ. Ordering, Conjunction, and Disjunction can depend on both words. Sampled models use held-out predictions; boundaries are still selected using training log score.</p>
+      <details><summary>Inspect the six word ranks in ${esc(c)}</summary>${table(words,[["word","Word"],["human_rank","Human rank"],["model_value","Model log probability"],["model_rank","Model rank"]])}</details>
+      <details><summary>Inspect all 30 paired values and ranks · ${esc(modelLabel(selected))}</summary>${table(neg,[["trigger","Trigger"],["query","Query"],["human_total","Participants"],["human_rate","Human rate"],["model_value","Prediction"],["human_rank","Human rank"],["model_rank","Model rank"]])}</details>
+    </section>
+    <section class="panel"><h2>All negation models · ${esc(c)}</h2>${table(negResults,[["structure","Structure"],["variant","Variant"],["n","Pairs"],["spearman_rho","ρ"],["status","Status"]])}</section>
+    <section class="panel"><h2>Mean within-context Spearman</h2><p class="caption">These are averages of separately calculated context correlations, rather than the selected context’s score or one pooled correlation. Each valid context has equal weight. Constant predictions give undefined correlations and are excluded from the mean; valid and total context counts remain visible. These are separate from dataset-level Pearson and log score.</p>${table(S.mean_within_context_spearman,[["measure","Measure"],["structure","Structure"],["variant","Variant"],["mean_within_context_spearman","Mean ρ"],["valid_contexts","Valid contexts"],["total_contexts","Total contexts"]])}</section>`;
 }
 function filteredPrompts(){return D.prompts.filter(p=>(state.promptDataset==="all"||p.datasets.includes(state.promptDataset))&&(state.promptContext==="all"||p.contexts.includes(state.promptContext))&&p.frame===state.frame);}
 function chosenPrompt(){const prompts=filteredPrompts();return prompts.find(p=>p.id===state.promptId)||prompts[0];}
@@ -258,11 +296,12 @@ document.addEventListener("change",e=>{
 });
 document.addEventListener("input",e=>{if(["itemSearch","wordSearch"].includes(e.target.id)){state[e.target.id]=e.target.value;state.page=0;render();}});
 document.addEventListener("click",e=>{
-  const target=e.target.closest("[data-view],[data-model],[data-dataset],[data-context],[data-cell],[data-item],[data-page],[data-prompt],[data-close-item],[data-context-prompts],[data-prompt-step],[data-download]");
+  const target=e.target.closest("[data-view],[data-model],[data-dataset],[data-context],[data-cell],[data-item],[data-page],[data-prompt],[data-close-item],[data-context-prompts],[data-prompt-step],[data-download],[data-spearman-example]");
   if(!target||target.disabled)return;
   const d=target.dataset;
   if(d.download){csvDownload(d.download);return;}
   let navigate=false;
+  if(d.spearmanExample){state.view="spearman";state.context=d.spearmanExample;state.spearmanModel="set|top_k";navigate=true;}
   if(d.view){state.view=d.view;state.page=0;state.item=null;navigate=true;}
   if(d.cell){const [kind,id,m]=d.cell.split("|");state.model=Number(m);if(kind==="dataset"){state.dataset=id;state.view="datasets";}else{state.context=id;state.view="contexts";}state.item=null;state.page=0;state.itemSearch="";navigate=true;}
   if(d.dataset){state.dataset=d.dataset;state.view="datasets";state.item=null;state.page=0;state.itemSearch="";navigate=true;}

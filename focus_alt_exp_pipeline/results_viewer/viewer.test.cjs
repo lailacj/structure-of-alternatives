@@ -170,3 +170,20 @@ test("Spearman page exposes both measures and context ranks",()=>{
   assert.match(app.html(),/water/);
   assert.match(app.html(),/Human rank/);
 });
+
+test("rank plots preserve every observation across context and model changes",()=>{
+  const app=harness();app.click({view:"spearman"});app.click({spearmanExample:"fridge"});
+  assert.match(app.html(),/ρ = 1.000/);assert.match(app.html(),/ρ = 0.784/);
+  for(const context of data.contexts){
+    app.change("context",context);
+    for(const model of data.spearman.negation_spearman_by_context.filter(r=>r.context===context)){
+      app.change("spearmanModel",`${model.structure}|${model.variant}`);
+      const plots=[...app.html().matchAll(/<svg class="chart spearman-chart"[\s\S]*?<\/svg>/g)].map(m=>m[0]);
+      assert.equal(plots.length,2);
+      const counts=plots.map(plot=>[...plot.matchAll(/data-rank-count="(\d+)"/g)].reduce((s,m)=>s+Number(m[1]),0));
+      assert.deepEqual(counts,[6,30]);
+      assert.ok(!plots.some(plot=>/NaN|undefined/.test(plot)));
+      if(model.status!=="defined")assert.match(app.html(),/Undefined correlation:/);
+    }
+  }
+});
