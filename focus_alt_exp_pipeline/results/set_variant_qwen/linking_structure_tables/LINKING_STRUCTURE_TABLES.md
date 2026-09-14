@@ -2,6 +2,8 @@
 
 All columns use the same analysis units within each dataset. Higher is better for both Pearson correlation and mean proper log score.
 
+Focus-context word-ranking and negation Spearman results, paired ranks, and equal-context means are in `../spearman/SPEARMAN.md`.
+
 ## Pearson correlations
 
 | Dataset | No linking structure | X but not Y | Set Top-K | Set Top-p | Ordering | Conjunction Top-K | Conjunction Top-p | Disjunction Top-K | Disjunction Top-p |

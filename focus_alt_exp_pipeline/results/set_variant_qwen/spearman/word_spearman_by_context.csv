@@ -1,0 +1,17 @@
+context,model,n,spearman_rho,status
+bag,Qwen2-7B,6,0.942857142857143,defined
+bakery,Qwen2-7B,6,1.0,defined
+beach,Qwen2-7B,6,0.942857142857143,defined
+cold,Qwen2-7B,6,-0.028571428571428574,defined
+cut,Qwen2-7B,6,0.7142857142857143,defined
+fridge,Qwen2-7B,6,1.0,defined
+gym,Qwen2-7B,6,0.942857142857143,defined
+hot,Qwen2-7B,6,0.3714285714285715,defined
+mall,Qwen2-7B,6,0.5428571428571429,defined
+mask,Qwen2-7B,6,0.3142857142857143,defined
+meat,Qwen2-7B,6,0.2571428571428572,defined
+restaurant,Qwen2-7B,6,0.8285714285714287,defined
+salad,Qwen2-7B,6,0.942857142857143,defined
+science,Qwen2-7B,6,0.942857142857143,defined
+throw,Qwen2-7B,6,0.7142857142857143,defined
+transport,Qwen2-7B,6,0.8857142857142858,defined

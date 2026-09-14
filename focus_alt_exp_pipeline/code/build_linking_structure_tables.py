@@ -15,6 +15,7 @@ import numpy as np
 import pandas as pd
 
 from evaluate_set_variant_grid import item_log_score
+from evaluate_focus_spearman import HUMAN_FILE, evaluate as evaluate_spearman, write_results
 
 
 DATASETS = [
@@ -217,6 +218,9 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     cv = args.results_dir / "cv_results"
+    spearman = evaluate_spearman(pd.read_csv(HUMAN_FILE), pd.read_csv(args.source_rows),
+                                 pd.read_csv(cv / "oof_predictions.csv"))
+    write_results(spearman, args.results_dir / "spearman")
     corr, scores, coverage = build_tables(
         pd.read_csv(args.source_rows),
         pd.read_csv(cv / "oof_predictions.csv"),
@@ -231,6 +235,7 @@ def main() -> None:
         "# Cross-dataset linking-structure results\n\n"
         "All columns use the same analysis units within each dataset. Higher is better "
         "for both Pearson correlation and mean proper log score.\n\n"
+        "Focus-context word-ranking and negation Spearman results, paired ranks, and equal-context means are in `../spearman/SPEARMAN.md`.\n\n"
         "## Pearson correlations\n\n"
         + _markdown_table(corr)
         + "\n\n## Mean proper log scores\n\n"

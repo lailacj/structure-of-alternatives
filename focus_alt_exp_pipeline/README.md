@@ -676,3 +676,41 @@ If you are extending the Qwen path further, the natural integration points are:
 - `code/samplers.py` for Qwen-specific sampling and approximation logic
 - `code/run_experiment.py` for CLI options and defaults
 - `code/plot_results.py` for model-specific result visualization
+
+## Within-context Spearman (focus alternatives)
+
+The active Qwen analysis additionally reports two distinct Spearman measures,
+computed separately in each of the 16 focus contexts:
+
+- **Word-ranking Spearman:** the six cleaned trigger words' `trigger_relevance`
+  ranks (0 best, 5 worst) versus descending ranks of saved neutral whole-alternative
+  summed token log probabilities. Repeated participant rows do not duplicate words.
+- **Negation Spearman:** human `neg` means versus final model probabilities across
+  the 30 ordered trigger–query pairs per context, separately by structure and variant.
+  Sampled structures use existing out-of-fold predictions. Direct continuation
+  baselines use the same probability interpretation as the existing linking tables.
+
+Ties receive average ranks. Constant vectors produce an undefined coefficient,
+not zero. Summary means weight valid contexts equally and include valid/total
+context counts. These are not pooled dataset correlations. Training log score
+continues to select boundaries. Ordering is retained for both variants in the
+exports for traceability; its predictions are boundary-independent.
+
+Regenerate without rerunning Qwen:
+
+```bash
+python focus_alt_exp_pipeline/code/evaluate_focus_spearman.py
+```
+
+Optional `--human-data`, `--source-rows`, and `--results-dir` select inputs.
+The source table must contain complete neutral scores for the same model/revision
+and all tested words; missing, extra, inconsistent, or non-finite observations
+fail validation. Human pair rates are checked against saved source and OOF rates.
+Outputs in `results/set_variant_qwen/spearman/` include context coefficients,
+paired values/ranks, equal-context means, and `SPEARMAN.md`. The cluster
+postprocessing wrapper and linking-table builder also regenerate these outputs.
+The advisor summary includes the generated Spearman report when available.
+
+The viewer's **Within-context Spearman** page recalculates from the scientific
+inputs on build (requires pandas and NumPy) and exposes context scores and ranks.
+It leaves dataset-level Pearson/log-score displays intact.

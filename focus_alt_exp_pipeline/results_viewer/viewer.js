@@ -170,6 +170,15 @@ function contexts(){
   return title("Novel focus alternative study","Sixteen experimental contexts","Compare contexts, then inspect the 30 trigger–query pairs within each context.",downloadButton("contexts"))+
   `<div class="controls">${contextControl()}${modelControl()}${metricControl()}</div><section class="panel"><h2>Contexts × linking structures</h2>${heatmap(D.contexts.map(c=>({id:c,label:c,stats:D.contextSummaries[c]})),"context")}</section><div class="grid-two"><section class="panel"><div class="eyebrow">${esc(state.context)}</div><h2>${esc(D.models[state.model])}</h2>${scatter(rows,state.model)}</section><section class="panel"><h2>All structures in ${esc(state.context)}</h2>${metricTable(stats)}<p class="caption">Context correlations are computed within this context’s items; context log scores average its item scores. These summaries use the saved held-out predictions.</p><button data-context-prompts="${esc(state.context)}">Read this context’s prompts & next words</button></section></div>${itemTable(rows)}`;
 }
+function spearman(){
+  if(!D.spearman)return title("Focus alternatives","Within-context Spearman","Rebuild the viewer to calculate these results.");
+  const table=(rows,columns)=>`<div class="table-wrap"><table><thead><tr>${columns.map(([key,label])=>`<th>${esc(label)}</th>`).join("")}</tr></thead><tbody>${rows.map(row=>`<tr>${columns.map(([key])=>`<td>${typeof row[key]==="number"?fmt(row[key],Number.isInteger(row[key])?0:3):esc(row[key]??"—")}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  const S=D.spearman,c=state.context;
+  return title("Novel focus alternative study","Within-context Spearman","Word rankings use six tested alternatives. Negation rankings use all 30 trigger–query pairs within each context.")+
+    `<section class="panel"><h2>Mean within-context Spearman</h2><p class="caption">Equal weight per valid context. Constant predictions give undefined correlations and are excluded from the mean; valid and total context counts remain visible. These are separate from dataset-level Pearson and log score.</p>${table(S.mean_within_context_spearman,[["measure","Measure"],["structure","Structure"],["variant","Variant"],["mean_within_context_spearman","Mean ρ"],["valid_contexts","Valid contexts"],["total_contexts","Total contexts"]])}</section><div class="controls">${contextControl()}</div>
+    <section class="panel"><h2>Word-ranking Spearman · ${esc(c)}</h2>${table(S.word_spearman_by_context.filter(r=>r.context===c),[["model","Model"],["n","Words"],["spearman_rho","ρ"],["status","Status"]])}<p class="caption">Human trigger_relevance: 0 best, 5 worst. Model scores are summed whole-alternative log probabilities under the neutral context prompt. Model rank 0 is best; ties receive average ranks.</p>${table(S.word_paired_ranks.filter(r=>r.context===c),[["word","Word"],["human_rank","Human rank"],["model_value","Model log probability"],["model_rank","Model rank"]])}</section>
+    <section class="panel"><h2>Negation Spearman · ${esc(c)}</h2>${table(S.negation_spearman_by_context.filter(r=>r.context===c),[["structure","Structure"],["variant","Variant"],["n","Pairs"],["spearman_rho","ρ"],["status","Status"]])}<p class="caption">Sampled models use held-out predictions; boundary selection still uses training log score.</p><details><summary>Inspect all paired values and ranks</summary>${table(S.negation_paired_ranks.filter(r=>r.context===c),[["structure","Structure"],["variant","Variant"],["trigger","Trigger"],["query","Query"],["human_rate","Human rate"],["model_value","Prediction"],["human_rank","Human rank"],["model_rank","Model rank"]])}</details></section>`;
+}
 function filteredPrompts(){return D.prompts.filter(p=>(state.promptDataset==="all"||p.datasets.includes(state.promptDataset))&&(state.promptContext==="all"||p.contexts.includes(state.promptContext))&&p.frame===state.frame);}
 function chosenPrompt(){const prompts=filteredPrompts();return prompts.find(p=>p.id===state.promptId)||prompts[0];}
 function promptCandidates(p){
@@ -211,7 +220,7 @@ function methods(){
 function render(){
   const active=document.activeElement,id=active&&active.id,pos=active&&active.selectionStart;
   document.querySelectorAll("#navigation button").forEach(b=>{if(b.dataset.view===state.view)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current");});
-  main.innerHTML=({overview,datasets,distributions,structures,contexts,prompts,methods})[state.view]();
+  main.innerHTML=({overview,datasets,distributions,structures,contexts,spearman,prompts,methods})[state.view]();
   const el=id&&document.getElementById(id);if(el){el.focus();if(typeof pos==="number"&&el.setSelectionRange)el.setSelectionRange(pos,pos);}
   document.getElementById("footer").innerHTML=`<span>Local snapshot · ${esc(D.modelName)} · ${D.verifiedCells} metric cells verified</span><span>Built ${esc(D.generated.slice(0,10))} · No network connection required</span>`;
 }

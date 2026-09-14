@@ -159,3 +159,14 @@ test("focus distributions cover all 16 contexts by all nine models",()=>{
   app.change("dataset","novel_focus");app.change("distributionContext","all");
   assert.equal((app.html().match(/480 matched units/g)||[]).length,9);
 });
+
+test("Spearman page exposes both measures and context ranks",()=>{
+  const app=harness();app.click({view:"spearman"});
+  assert.match(app.html(),/Mean within-context Spearman/);
+  assert.match(app.html(),/Valid contexts/);
+  app.change("context","fridge");
+  assert.match(app.html(),/Word-ranking Spearman · fridge/);
+  assert.match(app.html(),/Negation Spearman · fridge/);
+  assert.match(app.html(),/water/);
+  assert.match(app.html(),/Human rank/);
+});

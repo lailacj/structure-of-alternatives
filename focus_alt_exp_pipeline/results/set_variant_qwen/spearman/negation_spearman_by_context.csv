@@ -1,0 +1,161 @@
+context,model,structure,variant,n,spearman_rho,status
+bag,Qwen2-7B,No linking structure,direct,30,0.8744241090305217,defined
+bag,Qwen2-7B,X but not Y,direct,30,0.7464248230249991,defined
+bag,Qwen2-7B,conjunction,top_k,30,0.8867380817968508,defined
+bag,Qwen2-7B,conjunction,top_p,30,0.8727404522189435,defined
+bag,Qwen2-7B,disjunction,top_k,30,0.8071163973430084,defined
+bag,Qwen2-7B,disjunction,top_p,30,0.7412298976310787,defined
+bag,Qwen2-7B,ordering,top_k,30,0.7411113786657259,defined
+bag,Qwen2-7B,ordering,top_p,30,0.7411113786657259,defined
+bag,Qwen2-7B,set,top_k,30,0.8604519528276371,defined
+bag,Qwen2-7B,set,top_p,30,0.8552937845899925,defined
+bakery,Qwen2-7B,No linking structure,direct,30,0.9230067218992806,defined
+bakery,Qwen2-7B,X but not Y,direct,30,0.7417807550026326,defined
+bakery,Qwen2-7B,conjunction,top_k,30,0.7700284564604594,defined
+bakery,Qwen2-7B,conjunction,top_p,30,0.7725917346259785,defined
+bakery,Qwen2-7B,disjunction,top_k,30,0.70121797884315,defined
+bakery,Qwen2-7B,disjunction,top_p,30,0.6997524107201659,defined
+bakery,Qwen2-7B,ordering,top_k,30,0.641621951528608,defined
+bakery,Qwen2-7B,ordering,top_p,30,0.641621951528608,defined
+bakery,Qwen2-7B,set,top_k,30,0.8750286497213476,defined
+bakery,Qwen2-7B,set,top_p,30,0.8750286497213476,defined
+beach,Qwen2-7B,No linking structure,direct,30,0.5079179812745017,defined
+beach,Qwen2-7B,X but not Y,direct,30,0.3536858079357211,defined
+beach,Qwen2-7B,conjunction,top_k,30,0.33372417891181577,defined
+beach,Qwen2-7B,conjunction,top_p,30,0.32136402413730414,defined
+beach,Qwen2-7B,disjunction,top_k,30,0.32136990683707034,defined
+beach,Qwen2-7B,disjunction,top_p,30,0.3292889341264009,defined
+beach,Qwen2-7B,ordering,top_k,30,0.302969867157255,defined
+beach,Qwen2-7B,ordering,top_p,30,0.302969867157255,defined
+beach,Qwen2-7B,set,top_k,30,0.30976163880418034,defined
+beach,Qwen2-7B,set,top_p,30,0.30976163880418034,defined
+cold,Qwen2-7B,No linking structure,direct,30,0.24968933431379264,defined
+cold,Qwen2-7B,X but not Y,direct,30,0.7614782308447812,defined
+cold,Qwen2-7B,conjunction,top_k,30,0.2728205422082673,defined
+cold,Qwen2-7B,conjunction,top_p,30,0.3062048608840238,defined
+cold,Qwen2-7B,disjunction,top_k,30,0.2250899602656909,defined
+cold,Qwen2-7B,disjunction,top_p,30,0.23120914092893427,defined
+cold,Qwen2-7B,ordering,top_k,30,0.25121344627632247,defined
+cold,Qwen2-7B,ordering,top_p,30,0.25121344627632247,defined
+cold,Qwen2-7B,set,top_k,30,0.18525337707152356,defined
+cold,Qwen2-7B,set,top_p,30,0.24224394047495304,defined
+cut,Qwen2-7B,No linking structure,direct,30,0.727189367224505,defined
+cut,Qwen2-7B,X but not Y,direct,30,0.630118261471176,defined
+cut,Qwen2-7B,conjunction,top_k,30,0.691133103855228,defined
+cut,Qwen2-7B,conjunction,top_p,30,0.691133103855228,defined
+cut,Qwen2-7B,disjunction,top_k,30,0.5433240298867802,defined
+cut,Qwen2-7B,disjunction,top_p,30,0.5433240298867802,defined
+cut,Qwen2-7B,ordering,top_k,30,0.4775134949432705,defined
+cut,Qwen2-7B,ordering,top_p,30,0.4775134949432705,defined
+cut,Qwen2-7B,set,top_k,30,0.7237859848505993,defined
+cut,Qwen2-7B,set,top_p,30,0.7237859848505993,defined
+fridge,Qwen2-7B,No linking structure,direct,30,0.8595116716322172,defined
+fridge,Qwen2-7B,X but not Y,direct,30,0.8161626143600129,defined
+fridge,Qwen2-7B,conjunction,top_k,30,0.8307766926462367,defined
+fridge,Qwen2-7B,conjunction,top_p,30,0.8340869421038248,defined
+fridge,Qwen2-7B,disjunction,top_k,30,0.7850395335776925,defined
+fridge,Qwen2-7B,disjunction,top_p,30,0.7491531989586132,defined
+fridge,Qwen2-7B,ordering,top_k,30,0.7447535046160999,defined
+fridge,Qwen2-7B,ordering,top_p,30,0.7447535046160999,defined
+fridge,Qwen2-7B,set,top_k,30,0.7836037115016545,defined
+fridge,Qwen2-7B,set,top_p,30,0.8062999954842837,defined
+gym,Qwen2-7B,No linking structure,direct,30,0.5335272118462119,defined
+gym,Qwen2-7B,X but not Y,direct,30,0.6155205605240404,defined
+gym,Qwen2-7B,conjunction,top_k,30,0.4151449856774072,defined
+gym,Qwen2-7B,conjunction,top_p,30,0.4036979341847497,defined
+gym,Qwen2-7B,disjunction,top_k,30,0.40383950620594555,defined
+gym,Qwen2-7B,disjunction,top_p,30,0.4886648243106101,defined
+gym,Qwen2-7B,ordering,top_k,30,0.4079951403800653,defined
+gym,Qwen2-7B,ordering,top_p,30,0.4079951403800653,defined
+gym,Qwen2-7B,set,top_k,30,0.32548978339769585,defined
+gym,Qwen2-7B,set,top_p,30,0.34035356617775586,defined
+hot,Qwen2-7B,No linking structure,direct,30,0.4210789510212988,defined
+hot,Qwen2-7B,X but not Y,direct,30,0.5486770031007856,defined
+hot,Qwen2-7B,conjunction,top_k,30,0.25274372916160043,defined
+hot,Qwen2-7B,conjunction,top_p,30,0.2683502984443058,defined
+hot,Qwen2-7B,disjunction,top_k,30,0.287412652115373,defined
+hot,Qwen2-7B,disjunction,top_p,30,0.22311440173821634,defined
+hot,Qwen2-7B,ordering,top_k,30,0.22311440173821634,defined
+hot,Qwen2-7B,ordering,top_p,30,0.22311440173821634,defined
+hot,Qwen2-7B,set,top_k,30,0.3335971744933281,defined
+hot,Qwen2-7B,set,top_p,30,0.27574447230289534,defined
+mall,Qwen2-7B,No linking structure,direct,30,0.5247027884058713,defined
+mall,Qwen2-7B,X but not Y,direct,30,0.3323749909167843,defined
+mall,Qwen2-7B,conjunction,top_k,30,0.4322748834121963,defined
+mall,Qwen2-7B,conjunction,top_p,30,0.44394277093945633,defined
+mall,Qwen2-7B,disjunction,top_k,30,0.4143015884266516,defined
+mall,Qwen2-7B,disjunction,top_p,30,0.4133860048058192,defined
+mall,Qwen2-7B,ordering,top_k,30,0.4133860048058192,defined
+mall,Qwen2-7B,ordering,top_p,30,0.4133860048058192,defined
+mall,Qwen2-7B,set,top_k,30,0.39155725771934946,defined
+mall,Qwen2-7B,set,top_p,30,0.4196576040799194,defined
+mask,Qwen2-7B,No linking structure,direct,30,0.27150327367541377,defined
+mask,Qwen2-7B,X but not Y,direct,30,0.005380106857919045,defined
+mask,Qwen2-7B,conjunction,top_k,30,0.5308230691805049,defined
+mask,Qwen2-7B,conjunction,top_p,30,,constant_human_or_model
+mask,Qwen2-7B,disjunction,top_k,30,0.3162702629213732,defined
+mask,Qwen2-7B,disjunction,top_p,30,0.3162702629213732,defined
+mask,Qwen2-7B,ordering,top_k,30,0.3162702629213732,defined
+mask,Qwen2-7B,ordering,top_p,30,0.3162702629213732,defined
+mask,Qwen2-7B,set,top_k,30,0.5236945990140827,defined
+mask,Qwen2-7B,set,top_p,30,,constant_human_or_model
+meat,Qwen2-7B,No linking structure,direct,30,0.17171326408119086,defined
+meat,Qwen2-7B,X but not Y,direct,30,0.3752107375403125,defined
+meat,Qwen2-7B,conjunction,top_k,30,0.33147437168467586,defined
+meat,Qwen2-7B,conjunction,top_p,30,0.3104827698414854,defined
+meat,Qwen2-7B,disjunction,top_k,30,0.3030062372622908,defined
+meat,Qwen2-7B,disjunction,top_p,30,0.2927624057437088,defined
+meat,Qwen2-7B,ordering,top_k,30,0.3308725896087573,defined
+meat,Qwen2-7B,ordering,top_p,30,0.3308725896087573,defined
+meat,Qwen2-7B,set,top_k,30,0.24944832282064888,defined
+meat,Qwen2-7B,set,top_p,30,0.24944832282064888,defined
+restaurant,Qwen2-7B,No linking structure,direct,30,0.7692450532868874,defined
+restaurant,Qwen2-7B,X but not Y,direct,30,0.480074274260549,defined
+restaurant,Qwen2-7B,conjunction,top_k,30,0.5792093853284799,defined
+restaurant,Qwen2-7B,conjunction,top_p,30,0.6519159948440878,defined
+restaurant,Qwen2-7B,disjunction,top_k,30,0.6774583095189032,defined
+restaurant,Qwen2-7B,disjunction,top_p,30,0.67526464454617,defined
+restaurant,Qwen2-7B,ordering,top_k,30,0.673147623691422,defined
+restaurant,Qwen2-7B,ordering,top_p,30,0.673147623691422,defined
+restaurant,Qwen2-7B,set,top_k,30,0.543875800007022,defined
+restaurant,Qwen2-7B,set,top_p,30,0.5611234469417057,defined
+salad,Qwen2-7B,No linking structure,direct,30,0.6396176961495091,defined
+salad,Qwen2-7B,X but not Y,direct,30,0.7352878973058599,defined
+salad,Qwen2-7B,conjunction,top_k,30,0.5676739446087821,defined
+salad,Qwen2-7B,conjunction,top_p,30,0.5676739446087821,defined
+salad,Qwen2-7B,disjunction,top_k,30,0.6048436583551542,defined
+salad,Qwen2-7B,disjunction,top_p,30,0.6048436583551542,defined
+salad,Qwen2-7B,ordering,top_k,30,0.5990389584835822,defined
+salad,Qwen2-7B,ordering,top_p,30,0.5990389584835822,defined
+salad,Qwen2-7B,set,top_k,30,0.5696953315166775,defined
+salad,Qwen2-7B,set,top_p,30,0.5696953315166775,defined
+science,Qwen2-7B,No linking structure,direct,30,0.4944379110721885,defined
+science,Qwen2-7B,X but not Y,direct,30,0.23997193861080884,defined
+science,Qwen2-7B,conjunction,top_k,30,0.6019234967863257,defined
+science,Qwen2-7B,conjunction,top_p,30,0.5998932298623324,defined
+science,Qwen2-7B,disjunction,top_k,30,0.5967735083256482,defined
+science,Qwen2-7B,disjunction,top_p,30,0.6024601623078296,defined
+science,Qwen2-7B,ordering,top_k,30,0.6133862169164133,defined
+science,Qwen2-7B,ordering,top_p,30,0.6133862169164133,defined
+science,Qwen2-7B,set,top_k,30,0.4944379110721885,defined
+science,Qwen2-7B,set,top_p,30,0.5376301883612533,defined
+throw,Qwen2-7B,No linking structure,direct,30,0.6834005028786232,defined
+throw,Qwen2-7B,X but not Y,direct,30,0.3232139963714457,defined
+throw,Qwen2-7B,conjunction,top_k,30,0.7518319636343389,defined
+throw,Qwen2-7B,conjunction,top_p,30,0.7337692057166442,defined
+throw,Qwen2-7B,disjunction,top_k,30,0.8084079310212774,defined
+throw,Qwen2-7B,disjunction,top_p,30,0.726921078765718,defined
+throw,Qwen2-7B,ordering,top_k,30,0.7061270862575931,defined
+throw,Qwen2-7B,ordering,top_p,30,0.7061270862575931,defined
+throw,Qwen2-7B,set,top_k,30,0.815001275392412,defined
+throw,Qwen2-7B,set,top_p,30,0.768003426279482,defined
+transport,Qwen2-7B,No linking structure,direct,30,0.7099179427716618,defined
+transport,Qwen2-7B,X but not Y,direct,30,0.6351585633715887,defined
+transport,Qwen2-7B,conjunction,top_k,30,0.6554804937965476,defined
+transport,Qwen2-7B,conjunction,top_p,30,0.656136736889693,defined
+transport,Qwen2-7B,disjunction,top_k,30,0.6825567924845402,defined
+transport,Qwen2-7B,disjunction,top_p,30,0.6609139116247169,defined
+transport,Qwen2-7B,ordering,top_k,30,0.5856058951859181,defined
+transport,Qwen2-7B,ordering,top_p,30,0.5856058951859181,defined
+transport,Qwen2-7B,set,top_k,30,0.7099179427716618,defined
+transport,Qwen2-7B,set,top_p,30,0.7099179427716618,defined

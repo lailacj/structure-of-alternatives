@@ -1,0 +1,97 @@
+context,word,human_rank,model_value,model_rank,model
+bag,cash,4,-13.521199226379396,5.0,Qwen2-7B
+bag,chalk,2,-10.427449226379396,2.0,Qwen2-7B
+bag,crayons,1,-8.56049167830497,1.0,Qwen2-7B
+bag,headphones,5,-12.989949226379396,4.0,Qwen2-7B
+bag,makeup,3,-10.802449226379396,3.0,Qwen2-7B
+bag,pen,0,-3.864948749542236,0.0,Qwen2-7B
+bakery,cakes,0,-3.573113441467285,0.0,Qwen2-7B
+bakery,ice cream,1,-3.7841689996421337,1.0,Qwen2-7B
+bakery,muffins,2,-5.70041938778013,2.0,Qwen2-7B
+bakery,pretzels,3,-7.723241895946558,3.0,Qwen2-7B
+bakery,sandwiches,4,-9.229363441467283,4.0,Qwen2-7B
+bakery,water,5,-9.573113441467283,5.0,Qwen2-7B
+beach,bikini,0,-2.94836974143982,0.0,Qwen2-7B
+beach,coat,5,-8.604619979858398,5.0,Qwen2-7B
+beach,jacket,4,-7.760869979858398,4.0,Qwen2-7B
+beach,jeans,3,-5.573369979858398,2.0,Qwen2-7B
+beach,shorts,1,-3.6983697414398193,1.0,Qwen2-7B
+beach,sunglasses,2,-6.573369979858398,3.0,Qwen2-7B
+cold,blankets,1,-11.791768074035645,4.0,Qwen2-7B
+cold,fridge,5,-7.0730180740356445,1.0,Qwen2-7B
+cold,heater,0,-1.6980178356170654,0.0,Qwen2-7B
+cold,microwave,3,-7.8855180740356445,2.0,Qwen2-7B
+cold,sink,4,-9.229268074035645,3.0,Qwen2-7B
+cold,tea,2,-12.151143074035645,5.0,Qwen2-7B
+cut,batteries,5,-10.274754524230955,4.0,Qwen2-7B
+cut,keys,2,-7.649754524230957,3.0,Qwen2-7B
+cut,nail clippers,1,-5.54164442961337,1.0,Qwen2-7B
+cut,scissors,0,-1.243504285812378,0.0,Qwen2-7B
+cut,stapler,4,-6.256981228478253,2.0,Qwen2-7B
+cut,thumb tacks,3,-13.499249899759889,5.0,Qwen2-7B
+fridge,juice,1,-4.549657344818115,1.0,Qwen2-7B
+fridge,ketchup,4,-12.45335054397583,4.0,Qwen2-7B
+fridge,meat,5,-13.690282821655272,5.0,Qwen2-7B
+fridge,milk,2,-6.112157344818115,2.0,Qwen2-7B
+fridge,water,0,-2.8621573448181152,0.0,Qwen2-7B
+fridge,yogurt,3,-10.924657821655272,3.0,Qwen2-7B
+gym,basketball,0,-1.992067217826844,0.0,Qwen2-7B
+gym,lacrosse,2,-6.743963945307769,3.0,Qwen2-7B
+gym,meditation,5,-10.304567337036133,5.0,Qwen2-7B
+gym,softball,1,-4.429567337036133,1.0,Qwen2-7B
+gym,swimming,3,-5.242067337036133,2.0,Qwen2-7B
+gym,weightlifting,4,-8.236650735139847,4.0,Qwen2-7B
+hot,blankets,4,-10.317879676818848,4.0,Qwen2-7B
+hot,couch,3,-11.536629676818848,5.0,Qwen2-7B
+hot,fan,0,-5.317880153656006,0.0,Qwen2-7B
+hot,heater,5,-5.442880153656006,1.0,Qwen2-7B
+hot,pool,1,-9.255379676818848,2.0,Qwen2-7B
+hot,shower,2,-9.942879676818848,3.0,Qwen2-7B
+mall,burger joint,0,-7.668480098247528,2.0,Qwen2-7B
+mall,coffee shop,2,-7.462247684597969,0.0,Qwen2-7B
+mall,electronics store,5,-16.099086448550224,5.0,Qwen2-7B
+mall,gift shop,4,-12.50095871090889,4.0,Qwen2-7B
+mall,grocery store,3,-7.62296705879271,1.0,Qwen2-7B
+mall,pretzel stand,1,-12.26747426390648,3.0,Qwen2-7B
+mask,bandana,0,-8.328800529241562,0.0,Qwen2-7B
+mask,candy,5,-12.559345245361328,4.0,Qwen2-7B
+mask,gloves,3,-9.199970245361328,2.0,Qwen2-7B
+mask,handkerchief,1,-10.21382188750431,3.0,Qwen2-7B
+mask,napkins,2,-15.28598165512085,5.0,Qwen2-7B
+mask,wallet,4,-8.512470245361328,1.0,Qwen2-7B
+meat,chicken,0,-2.5063347816467285,0.0,Qwen2-7B
+meat,crab,2,-7.787584781646728,5.0,Qwen2-7B
+meat,mushrooms,4,-6.4438347816467285,4.0,Qwen2-7B
+meat,rice,5,-5.3813347816467285,2.0,Qwen2-7B
+meat,tofu,3,-4.5688347816467285,1.0,Qwen2-7B
+meat,turkey,1,-6.2563347816467285,3.0,Qwen2-7B
+restaurant,cake,4,-8.378418922424316,3.0,Qwen2-7B
+restaurant,cocktails,0,-5.253418922424316,0.0,Qwen2-7B
+restaurant,salad,5,-11.253418922424316,4.0,Qwen2-7B
+restaurant,soda,2,-6.565918922424316,2.0,Qwen2-7B
+restaurant,soup,3,-11.269043922424316,5.0,Qwen2-7B
+restaurant,vodka,1,-5.690918922424316,1.0,Qwen2-7B
+salad,chips,4,-9.411117553710938,3.0,Qwen2-7B
+salad,cigarettes,5,-12.504867553710938,5.0,Qwen2-7B
+salad,dressing,1,-7.379867076873779,1.0,Qwen2-7B
+salad,lettuce,0,-1.5673671960830688,0.0,Qwen2-7B
+salad,meat,3,-10.973617553710938,4.0,Qwen2-7B
+salad,tuna,2,-8.536117553710938,2.0,Qwen2-7B
+science,art,5,-9.0914945602417,5.0,Qwen2-7B
+science,geology,1,-4.475210018455982,1.0,Qwen2-7B
+science,math,3,-5.247744560241699,2.0,Qwen2-7B
+science,philosophy,4,-8.0914945602417,4.0,Qwen2-7B
+science,physics,0,-1.2477444410324097,0.0,Qwen2-7B
+science,zoology,2,-6.131330125965178,3.0,Qwen2-7B
+throw,beach ball,1,-6.410635888576508,1.0,Qwen2-7B
+throw,boomerang,2,-9.67720792623004,3.0,Qwen2-7B
+throw,football,0,-2.657796859741211,0.0,Qwen2-7B
+throw,lawnmower,5,-10.915743698831648,4.0,Qwen2-7B
+throw,shovel,4,-9.095296859741213,2.0,Qwen2-7B
+throw,tires,3,-13.532796859741213,5.0,Qwen2-7B
+transport,car,0,-2.0201668739318848,0.0,Qwen2-7B
+transport,chairs,4,-14.453760147094728,5.0,Qwen2-7B
+transport,hammer,5,-11.207666397094728,4.0,Qwen2-7B
+transport,lawnmower,3,-8.117003332881723,2.0,Qwen2-7B
+transport,motorcycle,1,-3.0826668739318848,1.0,Qwen2-7B
+transport,roller blades,2,-8.54499340057373,3.0,Qwen2-7B

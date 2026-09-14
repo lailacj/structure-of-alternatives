@@ -303,6 +303,12 @@ def add_full_distributions(prompts, directory, top_n, vocab_directory=None, fram
 def build_payload(results, manifest, log_probs_dir=None, top_n=50, vocab_dir=None):
     source_path, oof_path = manifest / "source_rows.csv", results / "cv_results/oof_predictions.csv"
     source, oof = read_csv(source_path), read_csv(oof_path)
+    from evaluate_focus_spearman import HUMAN_FILE, evaluate as evaluate_spearman
+    import pandas as pd
+    spearman_tables = evaluate_spearman(pd.read_csv(HUMAN_FILE), pd.read_csv(source_path),
+                                       pd.read_csv(oof_path))
+    spearman = {name: json.loads(table.to_json(orient="records"))
+                for name, table in spearman_tables.items()}
     items = build_items(source, oof)
     dataset_summaries = {key: summarize([r for r in items if r["dataset"] == key]) for key, _ in DATASETS}
     verified = verify_tables(results, dataset_summaries)
@@ -310,7 +316,7 @@ def build_payload(results, manifest, log_probs_dir=None, top_n=50, vocab_dir=Non
     if len(contexts) != 16 or {r["dataset"] for r in items} != {key for key, _ in DATASETS}:
         raise ValueError("Expected ten datasets and sixteen novel-focus contexts")
     prompts, sources = build_prompts(source)
-    provenance = [source_path, oof_path, results / "cv_results/fold_selections.csv"]
+    provenance = [HUMAN_FILE, source_path, oof_path, results / "cv_results/fold_selections.csv"]
     if manifest.resolve() == (PIPELINE / "scoring_manifests/set_variant_qwen").resolve():
         provenance.extend(add_diagnostic(prompts, PIPELINE))
     if log_probs_dir:
@@ -325,7 +331,7 @@ def build_payload(results, manifest, log_probs_dir=None, top_n=50, vocab_dir=Non
     bounds = {variant: sorted({number(row["boundary"]) for row in grid if row["variant"] == variant}) for variant in ["top_k", "top_p"]}
     provenance.append(results / "prediction_grid.csv")
     return {"generated": datetime.now(timezone.utc).isoformat(), "datasets": [{"id": key, "label": label} for key, label in DATASETS],
-        "models": MODELS, "contexts": contexts, "items": items, "sources": sources, "prompts": list(prompts.values()),
+        "spearman": spearman, "models": MODELS, "contexts": contexts, "items": items, "sources": sources, "prompts": list(prompts.values()),
         "datasetSummaries": dataset_summaries, "contextSummaries": {c: summarize([r for r in items if r["context"] == c]) for c in contexts},
         "baselines": baselines, "folds": read_csv(results / "cv_results/fold_selections.csv"), "boundaries": bounds,
         "sourceRows": len(source), "verifiedCells": verified, "modelName": source[0]["model_name"], "revision": source[0]["model_revision"],

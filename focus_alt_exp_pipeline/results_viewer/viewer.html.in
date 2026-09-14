@@ -15,6 +15,7 @@
     <button data-view="distributions">Distributions</button>
     <button data-view="structures">Linking structures</button>
     <button data-view="contexts">Focus contexts</button>
+    <button data-view="spearman">Within-context Spearman</button>
     <button data-view="prompts">Next words & prompts</button>
     <button data-view="methods">Methods & sources</button>
   </nav>

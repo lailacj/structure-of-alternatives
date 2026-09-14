@@ -31,3 +31,6 @@ mkdir -p "${RESULTS_DIR}"
 "${PYTHON_BIN}" focus_alt_exp_pipeline/code/evaluate_set_variant_grid.py \
   --prediction-grid "${RESULTS_DIR}/prediction_grid.csv" \
   --output-dir "${RESULTS_DIR}/cv_results"
+
+"${PYTHON_BIN}" focus_alt_exp_pipeline/code/evaluate_focus_spearman.py \
+  --results-dir "${RESULTS_DIR}"

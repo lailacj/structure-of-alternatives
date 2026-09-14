@@ -191,3 +191,11 @@ clipping, and verify safe HTML embedding. Full-array tests also check ranking,
 target retention, normalization, and invalid inputs; they skip when NumPy is
 unavailable. JavaScript checks exercise summary math and render all views with
 the actual data in a lightweight document harness (not browser layout tests).
+
+### Within-context Spearman
+
+Building now requires pandas and NumPy. The dedicated Within-context Spearman
+page shows six-word ranking agreement, 30-pair negation agreement, average ranks
+for ties, and equal-context means with valid/total counts. Inputs are validated
+against `human_exp_data/sca_dataframe.csv`; its hash is included in provenance.
+Both measures are focus-only and are not pooled across contexts.

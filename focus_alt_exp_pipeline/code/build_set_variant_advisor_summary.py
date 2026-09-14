@@ -365,6 +365,9 @@ Top-K search range require discussion before the final analysis is frozen.
 {chr(10).join(coverage_notes)}
 {completion_note}
 """
+    spearman_report = args.results_dir / "spearman/SPEARMAN.md"
+    if spearman_report.exists():
+        markdown += "\n\n" + spearman_report.read_text(encoding="utf-8").replace("# Within-context Spearman", "## Within-context Spearman", 1)
     (args.output_dir / "ADVISOR_SUMMARY.md").write_text(markdown, encoding="utf-8")
     print(f"[complete] wrote advisor summary to {args.output_dir}")
 
