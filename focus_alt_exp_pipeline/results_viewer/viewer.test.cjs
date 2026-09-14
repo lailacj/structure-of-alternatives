@@ -90,7 +90,7 @@ test("candidate-only export still explains missing full vocabulary coverage",()=
   assert.match(app.html(),/not the vocabulary’s top 50/);
   const framed=subset.prompts.find(p=>p.frame==="X but not Y");
   app.click({prompt:framed.id});
-  assert.match(app.html(),/framed-log-probs-dir/);
+  assert.match(app.html(),/direct-prediction baseline/);
   assert.ok(!app.html().includes("Run the build script on the cluster"));
 });
 
