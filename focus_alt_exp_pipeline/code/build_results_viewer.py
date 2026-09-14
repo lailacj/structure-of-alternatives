@@ -13,6 +13,7 @@ import hashlib
 from html import escape
 import json
 import math
+import re
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -315,6 +316,52 @@ def build_payload(results, manifest, log_probs_dir=None, top_n=50, vocab_dir=Non
         "provenance": [{"path": str(path.resolve()), "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "bytes": path.stat().st_size} for path in provenance]}
 
 
+def preserve_distributions(payload, previous_html):
+    """Reuse exported arrays for the same analysis when rebuilding the UI locally.
+
+    Reject changed scientific inputs rather than silently attach stale scores.
+    The source HTML need not have access to its original cluster input paths.
+    """
+    text = previous_html.read_text(encoding="utf-8")
+    match = re.search(r'<script id="results-data" type="application/json">(.*?)</script>', text, re.S)
+    if not match:
+        raise ValueError("Cannot read existing viewer data: " + str(previous_html))
+    old = json.loads(match.group(1))
+    available = [p for p in old["prompts"] if p.get("distribution")]
+    if not available:
+        return 0
+    for field in ("modelName", "revision"):
+        if old.get(field) != payload.get(field):
+            raise ValueError("Model changed; rebuild with --log-probs-dir or explicitly --discard-distributions")
+    for filename in ("source_rows.csv", "oof_predictions.csv", "prediction_grid.csv"):
+        old_hashes = {p["sha256"] for p in old["provenance"] if Path(p["path"]).name == filename}
+        new_hashes = {p["sha256"] for p in payload["provenance"] if Path(p["path"]).name == filename}
+        if not old_hashes or old_hashes != new_hashes:
+            raise ValueError("{} changed; rebuild with --log-probs-dir or explicitly --discard-distributions".format(filename))
+    current = {p["id"]: p for p in payload["prompts"]}
+    for prompt in available:
+        target = current.get(prompt["id"])
+        if target is None or target["text"] != prompt["text"] or target["frame"] != prompt["frame"]:
+            raise ValueError("Cannot reuse scores for changed prompt: " + prompt["id"])
+    for prompt in available:
+        for field in ("distribution", "distributionCoverage", "supportSize"):
+            if field in prompt:
+                current[prompt["id"]][field] = prompt[field]
+    # Retain the source-array hashes from the cluster, even when unavailable locally.
+    seen = {(p["path"], p["sha256"]) for p in payload["provenance"]}
+    for record in old["provenance"]:
+        key = record["path"], record["sha256"]
+        if key not in seen:
+            payload["provenance"].append(record)
+            seen.add(key)
+    payload["distributionReuse"] = old.get("distributionReuse") or {
+        "exportGenerated": old["generated"],
+        "sourceHtmlSha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+        "promptCount": len(available),
+    }
+    return len(available)
+
+
 def render_fallback(payload):
     """Keep saved results readable when an HTML preview does not execute scripts."""
     output = ['<section class="panel"><h1>Focus Alternatives results</h1>',
@@ -345,16 +392,26 @@ def main():
     parser.add_argument("--results-dir", type=Path, default=PIPELINE / "results/set_variant_qwen")
     parser.add_argument("--manifest-dir", type=Path, default=PIPELINE / "scoring_manifests/set_variant_qwen")
     parser.add_argument("--output", type=Path, default=PIPELINE / "results_viewer/index.html")
-    parser.add_argument("--log-probs-dir", type=Path, help="Optional full neutral-prompt array directory; requires NumPy")
+    distributions = parser.add_mutually_exclusive_group()
+    distributions.add_argument("--log-probs-dir", type=Path, help="Optional full neutral-prompt array directory; requires NumPy")
+    distributions.add_argument("--reuse-distributions-from", type=Path, help="Reuse a previous HTML export with matching scientific inputs")
+    distributions.add_argument("--discard-distributions", action="store_true", help="Explicitly allow replacing embedded distributions with the local candidate subset")
     parser.add_argument("--vocab-dir", type=Path, help="Local directory for vocabulary files relocated from Oscar")
     parser.add_argument("--top-candidates", type=int, default=50, help="Full-array export: top N plus targets; 0 exports all (large)")
     args = parser.parse_args()
     if args.top_candidates < 0:
         parser.error("--top-candidates must be nonnegative")
     payload = build_payload(args.results_dir, args.manifest_dir, args.log_probs_dir, args.top_candidates, args.vocab_dir)
+    if not args.log_probs_dir and not args.discard_distributions:
+        previous = args.reuse_distributions_from or args.output
+        if args.reuse_distributions_from or previous.exists():
+            count = preserve_distributions(payload, previous)
+            print("Preserved distributions for {} prompts from {}".format(count, previous))
     html = render_html(payload, PIPELINE / "results_viewer")
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(html, encoding="utf-8")
+    neutral = [p for p in payload["prompts"] if p["frame"] == "Neutral"]
+    print("Neutral-prompt distribution coverage: {}/{}".format(sum(bool(p["distribution"]) for p in neutral), len(neutral)))
     print("Built {} ({:,} bytes); {} units, {} datasets, {} contexts; verified {} saved metric cells.".format(
         args.output, len(html.encode()), len(payload["items"]), len(payload["datasets"]), len(payload["contexts"]), payload["verifiedCells"]))
 
