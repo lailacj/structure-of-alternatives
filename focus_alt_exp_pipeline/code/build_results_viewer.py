@@ -234,7 +234,7 @@ def add_diagnostic(prompts, pipeline):
     return [top, directory / "tables/experimental_alternatives.csv", directory / "input_provenance.json"]
 
 
-def add_full_distributions(prompts, directory, top_n, vocab_directory=None):
+def add_full_distributions(prompts, directory, top_n, vocab_directory=None, frame="Neutral"):
     """Read each array once; retain top N plus experimental targets (0 = all)."""
     import numpy as np
     manifest_path = directory / "vocab_manifest.json"
@@ -252,14 +252,29 @@ def add_full_distributions(prompts, directory, top_n, vocab_directory=None):
     lookup = {word.strip().lower(): i for i, word in enumerate(words)}
     if len(lookup) != len(words) or len(words) != int(manifest["total_count"]):
         raise ValueError("Duplicate vocabulary or total count mismatch")
+    framed_metadata = {}
+    if frame == "X but not Y":
+        # Existing cluster jobs may use different IDs. Match the actual prompt,
+        # not a guessed filename, preserving all non-trailing whitespace.
+        for metadata_path in sorted(directory.glob("*.meta.json")):
+            metadata = json.loads(metadata_path.read_text())
+            prompt_text = metadata.get("prompt", "").rstrip()
+            framed_metadata.setdefault(prompt_text, []).append(metadata_path)
     for prompt in prompts.values():
-        if prompt["frame"] != "Neutral":
+        if prompt["frame"] != frame:
             continue
-        path = directory / (prompt["id"] + ".log_probs.npy")
-        metadata_path = directory / (prompt["id"] + ".meta.json")
-        progress_path = directory / (prompt["id"] + ".progress.json")
+        if frame == "Neutral":
+            metadata_path = directory / (prompt["id"] + ".meta.json")
+        else:
+            matches = framed_metadata.get(prompt["text"].rstrip(), [])
+            if len(matches) != 1:
+                raise ValueError("Expected one framed score file for {}; found {} exact prompt matches".format(prompt["id"], len(matches)))
+            metadata_path = matches[0]
+        stem = metadata_path.name[:-len(".meta.json")]
+        path = directory / (stem + ".log_probs.npy")
+        progress_path = directory / (stem + ".progress.json")
         metadata = json.loads(metadata_path.read_text())
-        if metadata.get("context") != prompt["id"] or int(metadata.get("target_vocab_size", -1)) != len(words):
+        if (frame == "Neutral" and metadata.get("context") != prompt["id"]) or int(metadata.get("target_vocab_size", -1)) != len(words):
             raise ValueError("Array metadata mismatch: " + str(path))
         if metadata.get("prompt", "").rstrip() != prompt["text"].rstrip():
             raise ValueError("Array prompt text mismatch: " + str(path))
@@ -279,6 +294,7 @@ def add_full_distributions(prompts, directory, top_n, vocab_directory=None):
         prompt["distribution"] = [{"word": words[i], "logp": float(scores[i]), "normalized": float(probabilities[i]), "rank": int(ranks[i])}
                                   for i in sorted(selected, key=lambda i: ranks[i])]
         prompt["supportSize"] = len(words)
+        prompt["distributionScoringBoundary"] = metadata.get("scoring_boundary_version", "legacy / not recorded")
         prompt["distributionCoverage"] = "Full support exported" if not top_n else "Top {} + experimental alternatives from full support".format(top_n)
         paths.extend([path, metadata_path, progress_path])
     return paths
@@ -344,7 +360,7 @@ def preserve_distributions(payload, previous_html):
         if target is None or target["text"] != prompt["text"] or target["frame"] != prompt["frame"]:
             raise ValueError("Cannot reuse scores for changed prompt: " + prompt["id"])
     for prompt in available:
-        for field in ("distribution", "distributionCoverage", "supportSize"):
+        for field in ("distribution", "distributionCoverage", "supportSize", "distributionScoringBoundary"):
             if field in prompt:
                 current[prompt["id"]][field] = prompt[field]
     # Retain the source-array hashes from the cluster, even when unavailable locally.
@@ -397,6 +413,8 @@ def main():
     distributions.add_argument("--reuse-distributions-from", type=Path, help="Reuse a previous HTML export with matching scientific inputs")
     distributions.add_argument("--discard-distributions", action="store_true", help="Explicitly allow replacing embedded distributions with the local candidate subset")
     parser.add_argument("--vocab-dir", type=Path, help="Local directory for vocabulary files relocated from Oscar")
+    parser.add_argument("--framed-log-probs-dir", type=Path, help="Full X-but-not-Y arrays, matched by metadata prompt text")
+    parser.add_argument("--framed-vocab-dir", type=Path, help="Relocated vocabulary files for the framed score directory")
     parser.add_argument("--top-candidates", type=int, default=50, help="Full-array export: top N plus targets; 0 exports all (large)")
     args = parser.parse_args()
     if args.top_candidates < 0:
@@ -407,11 +425,18 @@ def main():
         if args.reuse_distributions_from or previous.exists():
             count = preserve_distributions(payload, previous)
             print("Preserved distributions for {} prompts from {}".format(count, previous))
+    if args.framed_log_probs_dir:
+        paths = add_full_distributions({p["id"]: p for p in payload["prompts"]}, args.framed_log_probs_dir,
+                                       args.top_candidates, args.framed_vocab_dir, frame="X but not Y")
+        payload["provenance"].extend({"path": str(path.resolve()), "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                                      "bytes": path.stat().st_size} for path in paths)
     html = render_html(payload, PIPELINE / "results_viewer")
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(html, encoding="utf-8")
     neutral = [p for p in payload["prompts"] if p["frame"] == "Neutral"]
     print("Neutral-prompt distribution coverage: {}/{}".format(sum(bool(p["distribution"]) for p in neutral), len(neutral)))
+    framed = [p for p in payload["prompts"] if p["frame"] == "X but not Y"]
+    print("X-but-not-Y distribution coverage: {}/{}".format(sum(bool(p["distribution"]) for p in framed), len(framed)))
     print("Built {} ({:,} bytes); {} units, {} datasets, {} contexts; verified {} saved metric cells.".format(
         args.output, len(html.encode()), len(payload["items"]), len(payload["datasets"]), len(payload["contexts"]), payload["verifiedCells"]))
 

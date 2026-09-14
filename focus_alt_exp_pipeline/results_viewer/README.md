@@ -28,6 +28,22 @@ updating result artifacts. The script can run from any working directory.
 Existing analysis outputs are read, never modified. Use `--output` to choose a
 different HTML destination.
 
+Local rebuilds now preserve distributions embedded in the existing output HTML
+when the model, source manifest, out-of-fold predictions, prediction grid, and
+prompt text still match. This lets you update plots without the cluster arrays
+and without losing the top-50 export. Source-array provenance is retained.
+If scientific inputs change, the build stops and asks for fresh arrays rather
+than silently attaching old scores. `--log-probs-dir` supplies a fresh export.
+`--reuse-distributions-from /path/to/previous/index.html` explicitly recovers
+distributions from another export. `--discard-distributions` explicitly permits
+a candidate-subset-only rebuild. The build prints neutral-prompt coverage.
+
+The September 14 full export was restored from commit `8e9e907` after the local
+rebuild in `3cc2bb4` omitted its vocabulary distributions. This recovery preserves
+the original scores; it does not apply the subsequent whitespace-boundary
+scoring correction. That correction requires regenerating scores and downstream
+results on the cluster, as described in the pipeline README.
+
 `viewer.html` is a compatibility link that opens `index.html`; the unfilled
 template now uses the `.html.in` extension so it cannot be mistaken for the
 finished viewer. If an embedded file preview does not execute JavaScript, open
@@ -79,6 +95,19 @@ that diagnostic view. The active vocabulary arrays are neutral-prompt arrays;
 X-but-not-Y prompts show their saved query scores.
 
 ## Views and interpretation
+
+### Optional X-but-not-Y vocabulary scores
+
+See [the cluster audit instructions](CLUSTER_FRAMED_SCORES.md) to locate existing
+framed vocabulary scores. Import a complete compatible run with
+`--framed-log-probs-dir /path/to/framed_scores`, optionally using
+`--framed-vocab-dir /path/to/vocabulary` for relocated vocabulary files. Framed
+arrays are matched by metadata prompt text rather than viewer-generated IDs.
+The build rejects missing or ambiguous matches, and prints separate neutral
+and framed coverage counts. A framed-only import preserves the existing neutral
+distributions. Query-only CSVs cannot provide vocabulary-wide top-50 rankings.
+
+### Viewer sections
 
 - **Overview:** aggregate comparisons and a dataset × structure heatmap.
 - **Datasets:** both metrics, a model-versus-human scatterplot, and item details.

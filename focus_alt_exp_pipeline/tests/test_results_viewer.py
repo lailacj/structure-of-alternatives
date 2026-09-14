@@ -52,6 +52,29 @@ class ResultsViewerTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             viewer.log_score(.5, 1.1)
 
+    def test_rebuild_preserves_distributions_but_rejects_changed_inputs(self):
+        old = copy.deepcopy(self.payload)
+        prompt = next(p for p in old["prompts"] if p["frame"] == "Neutral" and "bag" in p["contexts"])
+        prompt["distribution"] = [{"word": "test", "logp": -2., "rank": 1, "normalized": .1}]
+        prompt["distributionCoverage"] = "Top 50 + experimental alternatives from full support"
+        prompt["supportSize"] = 100
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "previous.html"
+            path.write_text(viewer.render_html(old, PIPELINE / "results_viewer"), encoding="utf-8")
+            rebuilt = copy.deepcopy(self.payload)
+            self.assertEqual(viewer.preserve_distributions(rebuilt, path), 2)
+            recovered = next(p for p in rebuilt["prompts"] if p["id"] == prompt["id"])
+            self.assertEqual(recovered["distribution"], prompt["distribution"])
+            self.assertEqual(rebuilt["items"], self.payload["items"])
+            changed = copy.deepcopy(self.payload)
+            next(p for p in changed["provenance"] if p["path"].endswith("source_rows.csv"))["sha256"] = "changed"
+            with self.assertRaisesRegex(ValueError, "source_rows.csv changed"):
+                viewer.preserve_distributions(changed, path)
+            changed = copy.deepcopy(self.payload)
+            next(p for p in changed["prompts"] if p["id"] == prompt["id"])["text"] = "different prompt"
+            with self.assertRaisesRegex(ValueError, "changed prompt"):
+                viewer.preserve_distributions(changed, path)
+
     def test_missing_variant_is_rejected(self):
         source = viewer.read_csv(PIPELINE / "scoring_manifests/set_variant_qwen/source_rows.csv")
         oof = viewer.read_csv(PIPELINE / "results/set_variant_qwen/cv_results/oof_predictions.csv")
@@ -112,6 +135,25 @@ class FullDistributionTests(unittest.TestCase):
         self.assertEqual([r["rank"] for r in rows], [1, 2, 4])
         self.assertAlmostEqual(rows[0]["normalized"], .4/.71, places=7)
         self.assertLess(sum(r["normalized"] for r in rows), 1)
+
+    def test_framed_scores_match_prompt_text_despite_different_job_id(self):
+        prompt = self.prompts.pop("prompt_test")
+        prompt.update(id="framed_viewer_id", frame="X but not Y")
+        self.prompts[prompt["id"]] = prompt
+        viewer.add_full_distributions(self.prompts, self.directory, 2, self.directory, frame="X but not Y")
+        self.assertEqual([r["word"] for r in prompt["distribution"]], ["alpha", "beta", "target"])
+        self.assertAlmostEqual(prompt["distribution"][0]["normalized"], .4/.71, places=7)
+
+    def test_framed_missing_or_ambiguous_prompt_is_rejected(self):
+        prompt = self.prompts["prompt_test"]
+        prompt["frame"] = "X but not Y"
+        prompt["text"] = "not the scored prompt"
+        with self.assertRaisesRegex(ValueError, "0 exact prompt matches"):
+            viewer.add_full_distributions(self.prompts, self.directory, 2, self.directory, frame="X but not Y")
+        prompt["text"] = self.metadata["prompt"]
+        (self.directory / "duplicate.meta.json").write_text(json.dumps(self.metadata))
+        with self.assertRaisesRegex(ValueError, "2 exact prompt matches"):
+            viewer.add_full_distributions(self.prompts, self.directory, 2, self.directory, frame="X but not Y")
 
     def test_all_export_and_bad_prompt(self):
         viewer.add_full_distributions(self.prompts, self.directory, 0, self.directory)

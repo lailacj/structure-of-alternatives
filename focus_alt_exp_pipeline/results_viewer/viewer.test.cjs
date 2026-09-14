@@ -37,10 +37,10 @@ test("JavaScript metrics agree with every Python-generated dataset and context s
   }
 });
 
-function harness(){
+function harness(payload=data){
   const listeners={},elements={};
   const element=id=>elements[id]||(elements[id]={id,innerHTML:"",textContent:"",focus(){},setAttribute(){},removeAttribute(){},scrollIntoView(){}});
-  element("results-data").textContent=JSON.stringify(data);
+  element("results-data").textContent=JSON.stringify(payload);
   const document={activeElement:null,getElementById:element,querySelectorAll:()=>[],addEventListener:(name,fn)=>{listeners[name]=fn;},createElement:()=>({click(){}})};
   const sandbox={document,window:{scrollTo(){},addEventListener(){}},console,Blob,URL,setTimeout};
   vm.createContext(sandbox);
@@ -70,7 +70,8 @@ test("item drill-down, prompt navigation, source coverage, and search",()=>{
   const app=harness();
   app.click({dataset:"novel_focus"});app.click({item:"novel_focus|bag::cash::chalk"});assert.match(app.html(),/Source rows &amp; prompts|Source rows & prompts/);
   const bag=data.prompts.find(p=>p.frame==="Neutral"&&p.contexts.includes("bag"));
-  app.click({prompt:bag.id});assert.match(app.html(),/not the vocabulary’s top 50/);
+  app.click({prompt:bag.id});
+  assert.match(app.html(),bag.distribution.length?/Top 50 from the vocabulary/:/not the vocabulary’s top 50/);
   app.input("wordSearch","no-such-candidate-123");assert.match(app.html(),/No matching candidates/);
   const mask=data.prompts.find(p=>p.frame==="Neutral"&&p.contexts.includes("mask"));
   app.click({prompt:mask.id});assert.match(app.html(),/Top 50 from the vocabulary/);
@@ -79,6 +80,18 @@ test("item drill-down, prompt navigation, source coverage, and search",()=>{
   app.change("promptDataset","rnx_esi");app.change("frame","X but not Y");assert.match(app.html(),/No prompts match/);
   app.change("frame","Neutral");assert.match(app.html(),/ESI/);assert.match(app.html(),/Eonly/);
   app.click({view:"datasets"});app.input("itemSearch","<script>bad</script>");assert.match(app.html(),/&lt;script&gt;/);assert.ok(!app.html().includes("<script>bad"));
+});
+
+test("candidate-only export still explains missing full vocabulary coverage",()=>{
+  const subset=JSON.parse(JSON.stringify(data));
+  const bag=subset.prompts.find(p=>p.frame==="Neutral"&&p.contexts.includes("bag"));
+  bag.distribution=[];bag.distributionCoverage="unavailable";
+  const app=harness(subset);app.click({prompt:bag.id});
+  assert.match(app.html(),/not the vocabulary’s top 50/);
+  const framed=subset.prompts.find(p=>p.frame==="X but not Y");
+  app.click({prompt:framed.id});
+  assert.match(app.html(),/framed-log-probs-dir/);
+  assert.ok(!app.html().includes("Run the build script on the cluster"));
 });
 
 test("both HTML entry points lead to results and retain a script-free fallback",()=>{
