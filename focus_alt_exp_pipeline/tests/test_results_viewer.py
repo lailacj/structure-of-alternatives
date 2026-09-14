@@ -18,7 +18,7 @@ class ResultsViewerTests(unittest.TestCase):
         cls.payload = viewer.build_payload(PIPELINE / "results/set_variant_qwen", PIPELINE / "scoring_manifests/set_variant_qwen")
 
     def test_all_saved_metric_cells_and_item_scores_match(self):
-        self.assertEqual(self.payload["verifiedCells"], 180)
+        self.assertEqual(self.payload["verifiedCells"], 261)
         self.assertEqual(len(self.payload["items"]), 993)
         saved = viewer.read_csv(PIPELINE / "results/set_variant_qwen/advisor_summary/item_level_scatterplots/item_level_predictions_and_log_scores.csv")
         lookup = {(r["dataset"], r["id"]): r for r in self.payload["items"]}

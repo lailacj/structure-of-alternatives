@@ -19,6 +19,22 @@ Focus-context word-ranking and negation Spearman results, paired ranks, and equa
 | R&X Eonlystrong | -0.211 | NA | -0.067 | -0.160 | -0.066 | -0.082 | -0.181 | -0.068 | -0.001 |
 | Novel Focus Alternative Study | 0.363 | 0.263 | 0.594 | 0.499 | 0.462 | 0.560 | 0.498 | 0.524 | 0.487 |
 
+## Spearman correlations: Hu datasets and R&X conditions
+
+Hu ranks scales within each dataset, after averaging van Tiel template probabilities. R&X ranks the 60 items separately within each condition. These use the same units as Pearson. Average ranks handle ties; constant predictions are undefined. Focus uses the separate within-context analysis above.
+
+| Dataset | No linking structure | X but not Y | Set Top-K | Set Top-p | Ordering | Conjunction Top-K | Conjunction Top-p | Disjunction Top-K | Disjunction Top-p |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| van Tiel et al. (2016) | 0.100 | 0.139 | 0.206 | 0.153 | -0.059 | 0.176 | 0.107 | -0.006 | 0.015 |
+| Gotzner et al. (2018) | 0.080 | 0.043 | 0.137 | 0.162 | 0.067 | 0.130 | 0.141 | 0.074 | 0.087 |
+| Pankratz & van Tiel (2021) | 0.001 | 0.216 | -0.092 | -0.116 | -0.238 | -0.103 | -0.123 | -0.226 | -0.231 |
+| Ronai & Xiang (2022) | 0.140 | 0.371 | 0.298 | 0.143 | 0.143 | 0.287 | 0.127 | 0.184 | 0.182 |
+| R&X ESI | 0.166 | NA | 0.324 | 0.162 | 0.163 | 0.314 | 0.153 | 0.203 | 0.195 |
+| R&X Eweak | -0.130 | NA | 0.018 | -0.077 | 0.071 | 0.091 | 0.040 | -0.001 | -0.060 |
+| R&X Estrong | -0.261 | NA | -0.008 | -0.197 | 0.094 | 0.070 | 0.037 | -0.003 | -0.222 |
+| R&X Eonly | 0.120 | NA | 0.307 | 0.111 | 0.109 | 0.253 | 0.100 | 0.191 | 0.142 |
+| R&X Eonlystrong | -0.224 | NA | -0.037 | -0.195 | -0.042 | -0.048 | -0.146 | -0.040 | -0.146 |
+
 ## Mean proper log scores
 
 | Dataset | No linking structure | X but not Y | Set Top-K | Set Top-p | Ordering | Conjunction Top-K | Conjunction Top-p | Disjunction Top-K | Disjunction Top-p |

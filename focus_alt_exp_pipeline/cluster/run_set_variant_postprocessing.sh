@@ -32,5 +32,7 @@ mkdir -p "${RESULTS_DIR}"
   --prediction-grid "${RESULTS_DIR}/prediction_grid.csv" \
   --output-dir "${RESULTS_DIR}/cv_results"
 
-"${PYTHON_BIN}" focus_alt_exp_pipeline/code/evaluate_focus_spearman.py \
-  --results-dir "${RESULTS_DIR}"
+"${PYTHON_BIN}" focus_alt_exp_pipeline/code/build_linking_structure_tables.py \
+  --source-rows focus_alt_exp_pipeline/scoring_manifests/set_variant_qwen/source_rows.csv \
+  --results-dir "${RESULTS_DIR}" \
+  --output-dir "${RESULTS_DIR}/linking_structure_tables"

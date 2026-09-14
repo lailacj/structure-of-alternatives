@@ -27,6 +27,22 @@ Top-K search range require discussion before the final analysis is frozen.
 - All planned Qwen prompts are included.
 
 
+## Spearman: Hu datasets and R&X conditions
+
+Hu ranks scales within each dataset after template aggregation. R&X ranks 60 items within each condition. The units match Pearson; ties receive average ranks.
+
+| Dataset | No linking structure | X but not Y | Set Top-K | Set Top-p | Ordering | Conjunction Top-K | Conjunction Top-p | Disjunction Top-K | Disjunction Top-p |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| van Tiel et al. (2016) | 0.100 | 0.139 | 0.206 | 0.153 | -0.059 | 0.176 | 0.107 | -0.006 | 0.015 |
+| Gotzner et al. (2018) | 0.080 | 0.043 | 0.137 | 0.162 | 0.067 | 0.130 | 0.141 | 0.074 | 0.087 |
+| Pankratz & van Tiel (2021) | 0.001 | 0.216 | -0.092 | -0.116 | -0.238 | -0.103 | -0.123 | -0.226 | -0.231 |
+| Ronai & Xiang (2022) | 0.140 | 0.371 | 0.298 | 0.143 | 0.143 | 0.287 | 0.127 | 0.184 | 0.182 |
+| R&X ESI | 0.166 | NA | 0.324 | 0.162 | 0.163 | 0.314 | 0.153 | 0.203 | 0.195 |
+| R&X Eweak | -0.130 | NA | 0.018 | -0.077 | 0.071 | 0.091 | 0.040 | -0.001 | -0.060 |
+| R&X Estrong | -0.261 | NA | -0.008 | -0.197 | 0.094 | 0.070 | 0.037 | -0.003 | -0.222 |
+| R&X Eonly | 0.120 | NA | 0.307 | 0.111 | 0.109 | 0.253 | 0.100 | 0.191 | 0.142 |
+| R&X Eonlystrong | -0.224 | NA | -0.037 | -0.195 | -0.042 | -0.048 | -0.146 | -0.040 | -0.146 |
+
 ## Within-context Spearman
 
 Word rankings use six tested alternatives and summed neutral continuation log probabilities. Negation rankings use all 30 ordered trigger–query pairs. Ties receive average ranks; constant vectors are undefined. Means weight valid contexts equally; valid/total counts are reported. Boundary selection still uses training log score.

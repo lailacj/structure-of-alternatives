@@ -365,6 +365,12 @@ Top-K search range require discussion before the final analysis is frozen.
 {chr(10).join(coverage_notes)}
 {completion_note}
 """
+    dataset_spearman_path = args.results_dir / "linking_structure_tables/spearman_by_dataset_and_linking_structure.csv"
+    if dataset_spearman_path.exists():
+        from build_linking_structure_tables import _markdown_table
+        markdown += "\n\n## Spearman: Hu datasets and R&X conditions\n\n"
+        markdown += "Hu ranks scales within each dataset after template aggregation. R&X ranks 60 items within each condition. The units match Pearson; ties receive average ranks.\n\n"
+        markdown += _markdown_table(pd.read_csv(dataset_spearman_path))
     spearman_report = args.results_dir / "spearman/SPEARMAN.md"
     if spearman_report.exists():
         markdown += "\n\n" + spearman_report.read_text(encoding="utf-8").replace("# Within-context Spearman", "## Within-context Spearman", 1)

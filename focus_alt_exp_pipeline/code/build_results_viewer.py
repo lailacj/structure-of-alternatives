@@ -99,10 +99,16 @@ def included(row):
 
 
 def summarize(items):
+    from evaluate_focus_spearman import rank_correlation
+    group_ids = {row["dataset"] for row in items}
+    eligible = len(group_ids) == 1 and next(iter(group_ids)).startswith(("hu_", "rnx_"))
     records = []
     for model in range(len(MODELS)):
         rows = [row for row in items if row["p"][model] is not None]
-        records.append({"n": len(rows), "r": pearson([r["p"][model] for r in rows], [r["y"] for r in rows]),
+        rho = rank_correlation([r["y"] for r in rows], [r["p"][model] for r in rows])[0] if eligible else None
+        if rho is not None and not math.isfinite(rho):
+            rho = None
+        records.append({"rho": rho, "n": len(rows), "r": pearson([r["p"][model] for r in rows], [r["y"] for r in rows]),
                         "log": mean(r["scores"][model] for r in rows),
                         "human": mean(r["y"] for r in rows), "prediction": mean(r["p"][model] for r in rows)})
     return records
@@ -154,10 +160,12 @@ def build_items(source, oof):
 
 def verify_tables(results, summaries):
     checked = 0
-    for metric, filename in [("r", "correlations"), ("log", "log_scores")]:
+    for metric, filename in [("r", "correlations"), ("log", "log_scores"), ("rho", "spearman")]:
         path = results / "linking_structure_tables" / (filename + "_by_dataset_and_linking_structure.csv")
         table = {row["Dataset"]: row for row in read_csv(path)}
         for dataset, label in DATASETS:
+            if metric == "rho" and dataset == "novel_focus":
+                continue
             for index, model in enumerate(MODELS):
                 expected, actual = number(table[label][model]), summaries[dataset][index][metric]
                 if (expected is None) != (actual is None) or (expected is not None and abs(expected - actual) > 1e-8):
@@ -325,7 +333,7 @@ def build_payload(results, manifest, log_probs_dir=None, top_n=50, vocab_dir=Non
     baselines = {row["analysis_dataset_id"]: number(row["mean_oof_log_score"]) for row in read_csv(baseline_path)} if baseline_path.exists() else {}
     if baseline_path.exists():
         provenance.append(baseline_path)
-    for metric in ["correlations", "log_scores"]:
+    for metric in ["correlations", "log_scores", "spearman"]:
         provenance.append(results / "linking_structure_tables" / (metric + "_by_dataset_and_linking_structure.csv"))
     grid = read_csv(results / "prediction_grid.csv")
     bounds = {variant: sorted({number(row["boundary"]) for row in grid if row["variant"] == variant}) for variant in ["top_k", "top_p"]}
@@ -389,18 +397,20 @@ def render_fallback(payload):
     output = ['<section class="panel"><h1>Focus Alternatives results</h1>',
               '<p id="viewer-status" role="status">Starting the interactive viewer. If this message remains, open index.html directly in a web browser; this preview may not run JavaScript.</p>',
               '<details><summary>Read saved dataset results without interactive charts</summary>']
-    for metric, label in [("r", "Pearson correlation"), ("log", "Mean proper log score")]:
+    for metric, label in [("r", "Pearson correlation"), ("log", "Mean proper log score"), ("rho", "Spearman: within Hu dataset / R&X condition")]:
         output.append('<h2>{}</h2><div class="table-wrap"><table><thead><tr><th>Dataset</th>'.format(label))
         output.extend('<th>{}</th>'.format(escape(model)) for model in payload.get("models", []))
         output.append('</tr></thead><tbody>')
         for dataset in payload.get("datasets", []):
+            if metric == "rho" and dataset["id"] == "novel_focus":
+                continue
             output.append('<tr><th>{}</th>'.format(escape(dataset["label"])))
             for stats in payload["datasetSummaries"][dataset["id"]]:
                 value = stats[metric]
                 output.append('<td>{}</td>'.format('—' if not stats["n"] else 'N/A' if value is None else '{:.3f}'.format(value)))
             output.append('</tr>')
         output.append('</tbody></table></div>')
-    output.append('<p>Higher is better for both measures. — indicates a structurally unavailable model; N/A indicates an undefined correlation.</p></details></section>')
+    output.append('<p>Higher is better for all three measures. Focus Spearman is reported separately within each context. — indicates a structurally unavailable model; N/A indicates an undefined correlation.</p></details></section>')
     return ''.join(output)
 
 

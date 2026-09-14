@@ -207,3 +207,12 @@ negation model to explore the same distinction elsewhere. Rank plots use separat
 reflects their multiplicity. Hover text and expandable tables retain pair identities.
 The page explains average ranks, participant aggregation, equal pair weighting,
 repeated Set predictions, undefined correlations, and averaging across contexts.
+
+### Hu dataset and R&X condition Spearman
+
+Hu and R&X dataset detail pages now display Spearman alongside Pearson and log
+score. Selecting **Spearman correlation** switches to ranks of the same matched
+items, with a rank table and model comparison bars. The grouping is within each
+Hu dataset or R&X condition, with van Tiel templates averaged before ranking.
+Focus retains its separate within-context page. The linking-table builder must
+run before rebuilding this viewer; 261 saved metric cells are checked for parity.

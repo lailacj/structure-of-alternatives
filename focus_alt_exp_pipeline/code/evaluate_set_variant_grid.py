@@ -14,6 +14,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from evaluate_focus_spearman import rank_correlation
+
 
 EPSILON = 1e-10
 VARIANTS = ("top_k", "top_p")
@@ -100,6 +102,12 @@ def summarize_correlations(predictions: pd.DataFrame) -> pd.DataFrame:
             x = rows[f"{structure}_probability"]
             y = rows["human_rate"]
             record[f"{structure}_pearson_r"] = float(x.corr(y)) if x.nunique() > 1 and y.nunique() > 1 else float("nan")
+            if row_id.startswith(("hu_", "rnx_")):
+                rho, status = rank_correlation(y, x)
+                record[f"{structure}_spearman_rho"] = rho
+                record[f"{structure}_spearman_status"] = status
+        record["spearman_grouping"] = ("within_dataset" if row_id.startswith("hu_") else
+                                        "within_condition" if row_id.startswith("rnx_") else "not_evaluated")
         records.append(record)
     return pd.DataFrame.from_records(records)
 

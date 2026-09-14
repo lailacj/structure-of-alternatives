@@ -20,7 +20,7 @@ test("JavaScript metrics agree with every Python-generated dataset and context s
     for(let model=0;model<9;model++){
       const actual=math.summary(data.items.filter(r=>r.dataset===id),model);
       assert.equal(actual.n,stats[model].n);
-      for(const metric of ["r","log"]){
+      for(const metric of ["r","log","rho"]){
         if(stats[model][metric]===null)assert.equal(actual[metric],null);
         else assert.ok(Math.abs(actual[metric]-stats[model][metric])<1e-10,`${id} / ${model} / ${metric}`);
       }
@@ -29,7 +29,7 @@ test("JavaScript metrics agree with every Python-generated dataset and context s
   for(const [context,stats] of Object.entries(data.contextSummaries)){
     for(let model=0;model<9;model++){
       const actual=math.summary(data.items.filter(r=>r.context===context),model);
-      for(const metric of ["r","log"]){
+      for(const metric of ["r","log","rho"]){
         if(stats[model][metric]===null)assert.equal(actual[metric],null);
         else assert.ok(Math.abs(actual[metric]-stats[model][metric])<1e-10);
       }
@@ -186,4 +186,27 @@ test("rank plots preserve every observation across context and model changes",()
       if(model.status!=="defined")assert.match(app.html(),/Undefined correlation:/);
     }
   }
+});
+
+test("non-focus Spearman uses the same saved items and is available alongside Pearson",()=>{
+  const app=harness();app.click({view:"datasets"});
+  for(const dataset of data.datasets.filter(d=>d.id!=="novel_focus")){
+    app.change("dataset",dataset.id);app.change("metric","rho");
+    assert.match(app.html(),/Three fit measures/);
+    assert.match(app.html(),/Spearman ρ/);
+    for(let m=0;m<9;m++){
+      app.change("model",String(m));
+      const rows=data.items.filter(r=>r.dataset===dataset.id&&r.p[m]!==null),s=data.datasetSummaries[dataset.id][m];
+      if(!rows.length){assert.match(app.html(),/not applicable/);continue;}
+      const counts=[...app.html().matchAll(/data-rank-count="(\d+)"/g)].reduce((s,m)=>s+Number(m[1]),0);
+      assert.equal(counts,rows.length);
+      assert.ok(Math.abs(math.spearman(rows.map(r=>r.y),rows.map(r=>r.p[m]))-s.rho)<1e-10);
+    }
+  }
+  app.change("dataset","novel_focus");
+  assert.ok(!app.html().includes('<option value="rho"'));
+  assert.equal(data.datasetSummaries.novel_focus[0].rho,null);
+  app.click({view:"structures"});app.change("metric","rho");
+  assert.match(app.html(),/Explore focus within-context Spearman/);
+  app.click({view:"contexts"});assert.ok(!app.html().includes('<option value="rho"'));
 });

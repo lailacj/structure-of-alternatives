@@ -714,3 +714,36 @@ The advisor summary includes the generated Spearman report when available.
 The viewer's **Within-context Spearman** page recalculates from the scientific
 inputs on build (requires pandas and NumPy) and exposes context scores and ranks.
 It leaves dataset-level Pearson/log-score displays intact.
+
+## Spearman for Hu and Ronai–Xiang
+
+Alongside existing Pearson results, the evaluator reports final-prediction Spearman
+for Hu **within each dataset** (39 van Tiel, 67 Gotzner, 50 Pankratz–van Tiel, and
+57 Ronai–Xiang 2022 scales), and Ronai–Xiang 2024 **within each condition** (60
+items in each of ESI, Eweak, Estrong, Eonly, Eonlystrong). The same published-analysis
+filter and analysis units are used as for Pearson. van Tiel template probabilities
+are averaged before ranking, not ranked or correlated separately.
+
+The new coefficients use final model probabilities versus human exclusion rates,
+with average ranks for ties and explicit undefined status for constant vectors.
+No new word-relevance analysis or across-condition item correlation is introduced.
+Focus remains in its separate within-context analysis; it has no pooled Spearman
+value in these tables. X-but-not-Y remains unavailable for R&X 2024.
+
+`evaluate_set_variant_grid.py` adds sampled `*_spearman_rho`, `*_spearman_status`,
+and `spearman_grouping` fields to `cv_results/correlations.csv`. The linking-table
+builder, now included in cluster postprocessing, writes:
+
+- `linking_structure_tables/spearman_by_dataset_and_linking_structure.csv`
+- `linking_structure_tables/spearman_coverage.csv` (N, grouping, status)
+- `linking_structure_tables/spearman_paired_ranks.csv` (one row per matched item/model)
+
+Regenerate with the existing linking-table command; it uses saved OOF predictions
+and direct scores without fitting or rescoring Qwen. Boundary selection continues
+to use training log score. The advisor report includes the new table when present.
+
+In the viewer, choose a Hu dataset or R&X condition under **Datasets**, then choose
+**Spearman correlation**. The view shows a rank plot, paired rank table, and model
+comparison bars. All three fit measures appear together. **Linking structures**
+also includes Spearman by dataset/condition; focus links to its context page.
+The viewer verifies all 261 saved metric cells (180 existing plus 81 Spearman).

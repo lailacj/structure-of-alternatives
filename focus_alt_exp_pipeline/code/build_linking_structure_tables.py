@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 
 from evaluate_set_variant_grid import item_log_score
-from evaluate_focus_spearman import HUMAN_FILE, evaluate as evaluate_spearman, write_results
+from evaluate_focus_spearman import HUMAN_FILE, evaluate as evaluate_spearman, write_results, rank_correlation
 
 
 DATASETS = [
@@ -188,6 +188,66 @@ def build_tables(
     return corr.reset_index(), scores.reset_index(), coverage.reset_index()
 
 
+def build_dataset_spearman(source_rows: pd.DataFrame, oof: pd.DataFrame):
+    """Rank scales within each Hu dataset and items within each R&X condition.
+
+    Use the exact analysis units and probability aggregation used for Pearson.
+    Novel focus remains exclusively in the separate within-context analysis.
+    """
+    ids = [key for key, _ in DATASETS if key != "novel_focus"]
+    predictions = oof.loc[oof.analysis_dataset_id.isin(ids)].copy()
+    direct = direct_analysis_units(source_rows)
+    summaries, paired = [], []
+    keys = ["analysis_dataset_id", "analysis_unit_id"]
+    for dataset_id in ids:
+        rows = predictions.loc[predictions.analysis_dataset_id.eq(dataset_id)]
+        if set(rows.variant) != {"top_k", "top_p"}:
+            raise ValueError(f"Missing held-out variants for {dataset_id}")
+        k = rows.loc[rows.variant.eq("top_k")].copy()
+        top_p = rows.loc[rows.variant.eq("top_p")]
+        joined = k.merge(top_p, on=keys, how="outer", validate="one_to_one", suffixes=("", "_top_p"), indicator=True)
+        if not joined._merge.eq("both").all() or not np.allclose(joined.human_rate, joined.human_rate_top_p):
+            raise ValueError(f"Held-out units or rates disagree for {dataset_id}")
+        if not np.allclose(joined.ordering_probability, joined.ordering_probability_top_p):
+            raise ValueError("Ordering must be boundary-independent")
+        joined = joined.drop(columns="_merge").merge(
+            direct.loc[direct.analysis_dataset_id.eq(dataset_id)], on=keys,
+            how="outer", validate="one_to_one", suffixes=("", "_direct"), indicator=True)
+        if not joined._merge.eq("both").all() or not np.allclose(joined.human_rate, joined.human_rate_direct):
+            raise ValueError(f"Direct and held-out units or rates disagree for {dataset_id}")
+        group_type = "within_dataset" if dataset_id.startswith("hu_") else "within_condition"
+        for model in COLUMNS:
+            if model in SAMPLED_COLUMNS:
+                variant, structure = SAMPLED_COLUMNS[model]
+                column = structure + "_probability" + ("_top_p" if variant == "top_p" else "")
+            else:
+                variant, structure, column = "direct", model, model
+            values = joined[column]
+            unavailable = dataset_id.startswith("rnx_") and model == "X but not Y"
+            if unavailable:
+                if values.notna().any():
+                    raise ValueError("Unexpected X-but-not-Y scores for R&X")
+                rho, status = np.nan, "not_applicable"
+            else:
+                if not values.between(0, 1).all() or not joined.human_rate.between(0, 1).all():
+                    raise ValueError(f"Missing or invalid probabilities for {dataset_id}/{model}")
+                rho, status = rank_correlation(joined.human_rate, values)
+                frame = joined[keys + ["human_rate", "cv_fold"]].copy()
+                frame["model_probability"] = values
+                frame["human_rank"] = joined.human_rate.rank(method="average", ascending=False) - 1
+                frame["model_rank"] = values.rank(method="average", ascending=False) - 1
+                frame["model"], frame["group_type"] = model, group_type
+                paired.append(frame)
+            summaries.append(dict(analysis_dataset_id=dataset_id, dataset=dict(DATASETS)[dataset_id],
+                                  group_type=group_type, model=model, n=0 if unavailable else len(joined),
+                                  spearman_rho=rho, status=status))
+    summary = pd.DataFrame(summaries)
+    wide = summary.pivot(index="dataset", columns="model", values="spearman_rho").reindex(
+        index=[label for key, label in DATASETS if key in ids], columns=COLUMNS)
+    wide.index.name = "Dataset"
+    return wide.reset_index(), summary, pd.concat(paired, ignore_index=True)
+
+
 def _markdown_table(table: pd.DataFrame, digits: int = 3) -> str:
     formatted = table.copy()
     for column in COLUMNS:
@@ -227,7 +287,12 @@ def main() -> None:
         pd.read_csv(cv / "correlations.csv"),
         pd.read_csv(cv / "oof_log_scores_by_dataset_and_structure.csv"),
     )
+    dataset_spearman, spearman_coverage, paired_ranks = build_dataset_spearman(
+        pd.read_csv(args.source_rows), pd.read_csv(cv / "oof_predictions.csv"))
     args.output_dir.mkdir(parents=True, exist_ok=True)
+    dataset_spearman.to_csv(args.output_dir / "spearman_by_dataset_and_linking_structure.csv", index=False)
+    spearman_coverage.to_csv(args.output_dir / "spearman_coverage.csv", index=False)
+    paired_ranks.to_csv(args.output_dir / "spearman_paired_ranks.csv", index=False)
     corr.to_csv(args.output_dir / "correlations_by_dataset_and_linking_structure.csv", index=False)
     scores.to_csv(args.output_dir / "log_scores_by_dataset_and_linking_structure.csv", index=False)
     coverage.to_csv(args.output_dir / "coverage_by_dataset_and_linking_structure.csv", index=False)
@@ -238,6 +303,12 @@ def main() -> None:
         "Focus-context word-ranking and negation Spearman results, paired ranks, and equal-context means are in `../spearman/SPEARMAN.md`.\n\n"
         "## Pearson correlations\n\n"
         + _markdown_table(corr)
+        + "\n\n## Spearman correlations: Hu datasets and R&X conditions\n\n"
+        + "Hu ranks scales within each dataset, after averaging van Tiel template probabilities. "
+        + "R&X ranks the 60 items separately within each condition. These use the same units "
+        + "as Pearson. Average ranks handle ties; constant predictions are undefined. "
+        + "Focus uses the separate within-context analysis above.\n\n"
+        + _markdown_table(dataset_spearman)
         + "\n\n## Mean proper log scores\n\n"
         + _markdown_table(scores)
         + "\n\n## Coverage\n\n"

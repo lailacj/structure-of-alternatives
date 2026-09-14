@@ -28,7 +28,9 @@ The repository now contains two related evaluation paths:
   four Hu benchmark datasets, and five Ronai-Xiang conditions.
 
 The active cross-dataset analysis uses grouped 10-fold selection and evaluates
-item-level proper log score and Pearson correlation. The original runner uses
+item-level proper log score, Pearson correlation, and Spearman correlation.
+Spearman uses within-context groups for focus alternatives, within-dataset scales
+for the Hu benchmarks, and within-condition items for Ronai–Xiang (2024). The original runner uses
 trial-level log likelihood and also includes correlation plots between:
 
 - the model's negation probability for a given `(context, trigger, query)` trial, and

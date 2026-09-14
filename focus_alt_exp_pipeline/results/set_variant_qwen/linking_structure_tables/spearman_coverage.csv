@@ -1,0 +1,82 @@
+analysis_dataset_id,dataset,group_type,model,n,spearman_rho,status
+hu_vt16,van Tiel et al. (2016),within_dataset,No linking structure,39,0.09986834260810008,defined
+hu_vt16,van Tiel et al. (2016),within_dataset,X but not Y,39,0.138903177028525,defined
+hu_vt16,van Tiel et al. (2016),within_dataset,Set Top-K,39,0.20646128101726613,defined
+hu_vt16,van Tiel et al. (2016),within_dataset,Set Top-p,39,0.1525554633984698,defined
+hu_vt16,van Tiel et al. (2016),within_dataset,Ordering,39,-0.059211281302670504,defined
+hu_vt16,van Tiel et al. (2016),within_dataset,Conjunction Top-K,39,0.17556687688545855,defined
+hu_vt16,van Tiel et al. (2016),within_dataset,Conjunction Top-p,39,0.10684594948866614,defined
+hu_vt16,van Tiel et al. (2016),within_dataset,Disjunction Top-K,39,-0.005576404917203557,defined
+hu_vt16,van Tiel et al. (2016),within_dataset,Disjunction Top-p,39,0.015361238227658355,defined
+hu_g18,Gotzner et al. (2018),within_dataset,No linking structure,67,0.08021321721466348,defined
+hu_g18,Gotzner et al. (2018),within_dataset,X but not Y,67,0.042800395783717436,defined
+hu_g18,Gotzner et al. (2018),within_dataset,Set Top-K,67,0.13694522383184443,defined
+hu_g18,Gotzner et al. (2018),within_dataset,Set Top-p,67,0.1620582863189677,defined
+hu_g18,Gotzner et al. (2018),within_dataset,Ordering,67,0.06674788792799057,defined
+hu_g18,Gotzner et al. (2018),within_dataset,Conjunction Top-K,67,0.1303115639761049,defined
+hu_g18,Gotzner et al. (2018),within_dataset,Conjunction Top-p,67,0.14085637448797272,defined
+hu_g18,Gotzner et al. (2018),within_dataset,Disjunction Top-K,67,0.07407851247120417,defined
+hu_g18,Gotzner et al. (2018),within_dataset,Disjunction Top-p,67,0.0870932951410691,defined
+hu_pvt21,Pankratz & van Tiel (2021),within_dataset,No linking structure,50,0.0014889529728119076,defined
+hu_pvt21,Pankratz & van Tiel (2021),within_dataset,X but not Y,50,0.2162824269861942,defined
+hu_pvt21,Pankratz & van Tiel (2021),within_dataset,Set Top-K,50,-0.09188441105746083,defined
+hu_pvt21,Pankratz & van Tiel (2021),within_dataset,Set Top-p,50,-0.1157859740311035,defined
+hu_pvt21,Pankratz & van Tiel (2021),within_dataset,Ordering,50,-0.23762400080907323,defined
+hu_pvt21,Pankratz & van Tiel (2021),within_dataset,Conjunction Top-K,50,-0.10329172502611479,defined
+hu_pvt21,Pankratz & van Tiel (2021),within_dataset,Conjunction Top-p,50,-0.12334615015629496,defined
+hu_pvt21,Pankratz & van Tiel (2021),within_dataset,Disjunction Top-K,50,-0.22589710437157792,defined
+hu_pvt21,Pankratz & van Tiel (2021),within_dataset,Disjunction Top-p,50,-0.2314252084551542,defined
+hu_rx22,Ronai & Xiang (2022),within_dataset,No linking structure,57,0.13970509558897937,defined
+hu_rx22,Ronai & Xiang (2022),within_dataset,X but not Y,57,0.37079330112388803,defined
+hu_rx22,Ronai & Xiang (2022),within_dataset,Set Top-K,57,0.2983972976638278,defined
+hu_rx22,Ronai & Xiang (2022),within_dataset,Set Top-p,57,0.14285484165946827,defined
+hu_rx22,Ronai & Xiang (2022),within_dataset,Ordering,57,0.14275066688683144,defined
+hu_rx22,Ronai & Xiang (2022),within_dataset,Conjunction Top-K,57,0.2869752352363128,defined
+hu_rx22,Ronai & Xiang (2022),within_dataset,Conjunction Top-p,57,0.1269541748734104,defined
+hu_rx22,Ronai & Xiang (2022),within_dataset,Disjunction Top-K,57,0.18393992847622695,defined
+hu_rx22,Ronai & Xiang (2022),within_dataset,Disjunction Top-p,57,0.18190265088900548,defined
+rnx_esi,R&X ESI,within_condition,No linking structure,60,0.16622621376251345,defined
+rnx_esi,R&X ESI,within_condition,X but not Y,0,,not_applicable
+rnx_esi,R&X ESI,within_condition,Set Top-K,60,0.3240853599765565,defined
+rnx_esi,R&X ESI,within_condition,Set Top-p,60,0.16228646508069045,defined
+rnx_esi,R&X ESI,within_condition,Ordering,60,0.16278798925330779,defined
+rnx_esi,R&X ESI,within_condition,Conjunction Top-K,60,0.314067576092408,defined
+rnx_esi,R&X ESI,within_condition,Conjunction Top-p,60,0.15296151339415215,defined
+rnx_esi,R&X ESI,within_condition,Disjunction Top-K,60,0.20340756215451333,defined
+rnx_esi,R&X ESI,within_condition,Disjunction Top-p,60,0.19509232571718899,defined
+rnx_eweak,R&X Eweak,within_condition,No linking structure,60,-0.13000447271731946,defined
+rnx_eweak,R&X Eweak,within_condition,X but not Y,0,,not_applicable
+rnx_eweak,R&X Eweak,within_condition,Set Top-K,60,0.01804651694813035,defined
+rnx_eweak,R&X Eweak,within_condition,Set Top-p,60,-0.07656999798028533,defined
+rnx_eweak,R&X Eweak,within_condition,Ordering,60,0.07071233671128631,defined
+rnx_eweak,R&X Eweak,within_condition,Conjunction Top-K,60,0.09129661275026221,defined
+rnx_eweak,R&X Eweak,within_condition,Conjunction Top-p,60,0.04045718474267042,defined
+rnx_eweak,R&X Eweak,within_condition,Disjunction Top-K,60,-0.0014571721759359909,defined
+rnx_eweak,R&X Eweak,within_condition,Disjunction Top-p,60,-0.05954185760983091,defined
+rnx_estrong,R&X Estrong,within_condition,No linking structure,60,-0.26146065752944486,defined
+rnx_estrong,R&X Estrong,within_condition,X but not Y,0,,not_applicable
+rnx_estrong,R&X Estrong,within_condition,Set Top-K,60,-0.008137122724414254,defined
+rnx_estrong,R&X Estrong,within_condition,Set Top-p,60,-0.19657068158114124,defined
+rnx_estrong,R&X Estrong,within_condition,Ordering,60,0.09363348698678017,defined
+rnx_estrong,R&X Estrong,within_condition,Conjunction Top-K,60,0.0699389283730781,defined
+rnx_estrong,R&X Estrong,within_condition,Conjunction Top-p,60,0.036509040390294886,defined
+rnx_estrong,R&X Estrong,within_condition,Disjunction Top-K,60,-0.0029122333961061546,defined
+rnx_estrong,R&X Estrong,within_condition,Disjunction Top-p,60,-0.22247102201390512,defined
+rnx_eonly,R&X Eonly,within_condition,No linking structure,60,0.12017223813715006,defined
+rnx_eonly,R&X Eonly,within_condition,X but not Y,0,,not_applicable
+rnx_eonly,R&X Eonly,within_condition,Set Top-K,60,0.30729841621842485,defined
+rnx_eonly,R&X Eonly,within_condition,Set Top-p,60,0.11055677367435712,defined
+rnx_eonly,R&X Eonly,within_condition,Ordering,60,0.10866584636784825,defined
+rnx_eonly,R&X Eonly,within_condition,Conjunction Top-K,60,0.2526615387581967,defined
+rnx_eonly,R&X Eonly,within_condition,Conjunction Top-p,60,0.09962359093510757,defined
+rnx_eonly,R&X Eonly,within_condition,Disjunction Top-K,60,0.19069058224139732,defined
+rnx_eonly,R&X Eonly,within_condition,Disjunction Top-p,60,0.14214342009095998,defined
+rnx_eonlystrong,R&X Eonlystrong,within_condition,No linking structure,60,-0.2237879581809142,defined
+rnx_eonlystrong,R&X Eonlystrong,within_condition,X but not Y,0,,not_applicable
+rnx_eonlystrong,R&X Eonlystrong,within_condition,Set Top-K,60,-0.03672064726809771,defined
+rnx_eonlystrong,R&X Eonlystrong,within_condition,Set Top-p,60,-0.19450750757056817,defined
+rnx_eonlystrong,R&X Eonlystrong,within_condition,Ordering,60,-0.041751995782380556,defined
+rnx_eonlystrong,R&X Eonlystrong,within_condition,Conjunction Top-K,60,-0.04813593684305767,defined
+rnx_eonlystrong,R&X Eonlystrong,within_condition,Conjunction Top-p,60,-0.1463771259420675,defined
+rnx_eonlystrong,R&X Eonlystrong,within_condition,Disjunction Top-K,60,-0.03969450250459858,defined
+rnx_eonlystrong,R&X Eonlystrong,within_condition,Disjunction Top-p,60,-0.14592141929823957,defined
