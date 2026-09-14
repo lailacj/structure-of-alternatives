@@ -118,7 +118,35 @@ strings can overlap, so raw probabilities need not sum to one.
 Prompt browsing retains all scored source rows, including Hu rows excluded from
 the analysis subset. Only retained analysis units contribute to fit summaries.
 
-## Verification
+## Publish automatically with GitHub Pages
+
+The repository workflow `.github/workflows/deploy-results-viewer.yml` publishes
+only the generated `index.html`. It does not rebuild on GitHub, so the full
+vocabulary distribution export produced on Oscar remains intact.
+
+One-time setup:
+
+1. In the `lailacj/structure-of-alternatives` repository on GitHub, open
+   **Settings → Pages → Build and deployment** and set **Source** to
+   **GitHub Actions**. Leave the personal website repository's Pages settings
+   unchanged.
+2. Commit and push the workflow to `main`.
+3. Under **Actions**, open **Publish results viewer** and wait for its deployment
+   to finish. If no run starts, select **Run workflow → main → Run workflow**.
+4. Open `https://lailacj.github.io/structure-of-alternatives/`.
+5. Add a permanent link to that URL in the personal website's Markdown page:
+
+   ```markdown
+   [Explore the Focus Alternatives results](/structure-of-alternatives/)
+   ```
+
+For future updates, rebuild the viewer with full arrays on Oscar and commit/push
+the generated `focus_alt_exp_pipeline/results_viewer/index.html` to `main`.
+The workflow publishes it automatically. Changes only to CSVs, Python, CSS, or
+JavaScript source will not update the published viewer until the HTML is rebuilt
+and pushed. No copy in the personal website repository needs updating.
+
+## Verification commands
 
 ```bash
 python3 -m unittest discover -s focus_alt_exp_pipeline/tests -p test_results_viewer.py

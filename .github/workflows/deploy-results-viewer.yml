@@ -1,0 +1,52 @@
+name: Publish results viewer
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - focus_alt_exp_pipeline/results_viewer/index.html
+      - .github/workflows/deploy-results-viewer.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+      contents: read
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      # The HTML already contains its data, scripts, and styles. Publish only
+      # this file, preserving the full distribution export produced on Oscar.
+      - name: Prepare viewer
+        shell: bash
+        run: |
+          test -s focus_alt_exp_pipeline/results_viewer/index.html
+          mkdir -p "${RUNNER_TEMP}/results-viewer-site"
+          cp focus_alt_exp_pipeline/results_viewer/index.html "${RUNNER_TEMP}/results-viewer-site/index.html"
+
+      - name: Upload viewer
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ runner.temp }}/results-viewer-site
+
+      - name: Deploy viewer
+        id: deployment
+        uses: actions/deploy-pages@v4
