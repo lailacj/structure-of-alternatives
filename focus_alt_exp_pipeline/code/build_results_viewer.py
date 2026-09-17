@@ -1,7 +1,7 @@
 """Build an offline, self-contained viewer from the active sampled-prefix results.
 
-The default build uses only Python's standard library. Optional full vocabulary
-exports require NumPy and the original score arrays and vocabulary manifest.
+The build uses NumPy and pandas for ranks and exploratory association tests.
+Optional full vocabulary exports require the original arrays and manifest.
 No model inference, fitting, or result-file changes are performed.
 """
 
@@ -196,6 +196,13 @@ def build_prompts(source):
         pid = row["prompt_id"]
         add(pid, row["generation_prompt"], "Neutral", row, row["trigger"], "trigger", "trigger_")
         add(pid, row["generation_prompt"], "Neutral", row, row["query"], "query", "query_")
+        if row.get("neutral_score_array_sha256"):
+            prompt = prompts[pid]
+            digest = row["neutral_score_array_sha256"]
+            if prompt.get("expectedArraySha256", digest) != digest:
+                raise ValueError("Conflicting source-array hashes: " + pid)
+            prompt["expectedArraySha256"] = digest
+            prompt["expectedScoringBoundary"] = row["neutral_scoring_boundary_version"]
         framed_id = None
         if number(row["x_but_not_y_logprob_sum"]) is not None:
             text = row["x_but_not_y_prompt"]
@@ -282,6 +289,11 @@ def add_full_distributions(prompts, directory, top_n, vocab_directory=None, fram
         path = directory / (stem + ".log_probs.npy")
         progress_path = directory / (stem + ".progress.json")
         metadata = json.loads(metadata_path.read_text())
+        if prompt.get("expectedArraySha256"):
+            if hashlib.sha256(path.read_bytes()).hexdigest() != prompt["expectedArraySha256"]:
+                raise ValueError("Array hash disagrees with prediction source: " + str(path))
+            if metadata.get("scoring_boundary_version") != prompt["expectedScoringBoundary"]:
+                raise ValueError("Array scoring boundary disagrees with prediction source")
         if (frame == "Neutral" and metadata.get("context") != prompt["id"]) or int(metadata.get("target_vocab_size", -1)) != len(words):
             raise ValueError("Array metadata mismatch: " + str(path))
         if metadata.get("prompt", "").rstrip() != prompt["text"].rstrip():
@@ -311,6 +323,14 @@ def add_full_distributions(prompts, directory, top_n, vocab_directory=None, fram
 def build_payload(results, manifest, log_probs_dir=None, top_n=50, vocab_dir=None):
     source_path, oof_path = manifest / "source_rows.csv", results / "cv_results/oof_predictions.csv"
     source, oof = read_csv(source_path), read_csv(oof_path)
+    corrected = bool(source[0].get("neutral_score_array_sha256"))
+    if corrected or "source_rows_sha256" in oof[0]:
+        digest = hashlib.sha256(source_path.read_bytes()).hexdigest()
+        if any(row.get("source_rows_sha256") != digest for row in oof):
+            raise ValueError("Source-row hash does not match held-out predictions")
+    if corrected and any(not row.get("neutral_score_array_sha256") or
+                         row.get("neutral_scoring_boundary_version") != "single-space-exact-concat-v1" for row in source):
+        raise ValueError("Incomplete corrected-score provenance")
     from evaluate_focus_spearman import HUMAN_FILE, evaluate as evaluate_spearman
     import pandas as pd
     spearman_tables = evaluate_spearman(pd.read_csv(HUMAN_FILE), pd.read_csv(source_path),
@@ -325,6 +345,9 @@ def build_payload(results, manifest, log_probs_dir=None, top_n=50, vocab_dir=Non
         raise ValueError("Expected ten datasets and sixteen novel-focus contexts")
     prompts, sources = build_prompts(source)
     provenance = [HUMAN_FILE, source_path, oof_path, results / "cv_results/fold_selections.csv"]
+    for name in ("score_artifact_provenance.json", "framed_scoring_audit.json"):
+        if (manifest / name).exists():
+            provenance.append(manifest / name)
     if manifest.resolve() == (PIPELINE / "scoring_manifests/set_variant_qwen").resolve():
         provenance.extend(add_diagnostic(prompts, PIPELINE))
     if log_probs_dir:
@@ -336,9 +359,13 @@ def build_payload(results, manifest, log_probs_dir=None, top_n=50, vocab_dir=Non
     for metric in ["correlations", "log_scores", "spearman"]:
         provenance.append(results / "linking_structure_tables" / (metric + "_by_dataset_and_linking_structure.csv"))
     grid = read_csv(results / "prediction_grid.csv")
+    if corrected and any(row.get("source_rows_sha256") != digest for row in grid):
+        raise ValueError("Source-row hash does not match prediction grid")
     bounds = {variant: sorted({number(row["boundary"]) for row in grid if row["variant"] == variant}) for variant in ["top_k", "top_p"]}
     provenance.append(results / "prediction_grid.csv")
     return {"generated": datetime.now(timezone.utc).isoformat(), "datasets": [{"id": key, "label": label} for key, label in DATASETS],
+        "run": {"id": results.name, "path": str(results.resolve()), "corrected": corrected,
+                "label": "Corrected single-space run" if corrected else "Historical sampled-prefix run · uncorrected scores"},
         "spearman": spearman, "models": MODELS, "contexts": contexts, "items": items, "sources": sources, "prompts": list(prompts.values()),
         "datasetSummaries": dataset_summaries, "contextSummaries": {c: summarize([r for r in items if r["context"] == c]) for c in contexts},
         "baselines": baselines, "folds": read_csv(results / "cv_results/fold_selections.csv"), "boundaries": bounds,
@@ -373,6 +400,11 @@ def preserve_distributions(payload, previous_html):
         target = current.get(prompt["id"])
         if target is None or target["text"] != prompt["text"] or target["frame"] != prompt["frame"]:
             raise ValueError("Cannot reuse scores for changed prompt: " + prompt["id"])
+        if target.get("expectedArraySha256"):
+            hashes = {r["sha256"] for r in old["provenance"]
+                      if Path(r["path"]).name == target["id"] + ".log_probs.npy"}
+            if hashes != {target["expectedArraySha256"]}:
+                raise ValueError("Cannot reuse scores with mismatched array hash: " + target["id"])
     for prompt in available:
         for field in ("distribution", "distributionCoverage", "supportSize", "distributionScoringBoundary"):
             if field in prompt:
@@ -395,6 +427,7 @@ def preserve_distributions(payload, previous_html):
 def render_fallback(payload):
     """Keep saved results readable when an HTML preview does not execute scripts."""
     output = ['<section class="panel"><h1>Focus Alternatives results</h1>',
+              '<p>{}</p>'.format(escape(payload.get("run", {}).get("label", ""))),
               '<p id="viewer-status" role="status">Starting the interactive viewer. If this message remains, open index.html directly in a web browser; this preview may not run JavaScript.</p>',
               '<details><summary>Read saved dataset results without interactive charts</summary>']
     for metric, label in [("r", "Pearson correlation"), ("log", "Mean proper log score"), ("rho", "Spearman: within Hu dataset / R&X condition")]:
@@ -446,6 +479,8 @@ def main():
                                        args.top_candidates, args.framed_vocab_dir, frame="X but not Y")
         payload["provenance"].extend({"path": str(path.resolve()), "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
                                       "bytes": path.stat().st_size} for path in paths)
+    from viewer_rank_association import add_rank_analysis
+    add_rank_analysis(payload)
     html = render_html(payload, PIPELINE / "results_viewer")
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(html, encoding="utf-8")

@@ -1,0 +1,145 @@
+context,model,structure,variant,n,spearman_rho,status,predictor,viewer_word_rho,sampling_word_rho
+bag,Qwen2-7B,No linking structure,direct,30,0.874424109031,defined,No linking,0.942857142857,1.0
+bakery,Qwen2-7B,No linking structure,direct,30,0.923006721899,defined,No linking,1.0,0.942857142857
+beach,Qwen2-7B,No linking structure,direct,30,0.507917981275,defined,No linking,0.942857142857,0.714285714286
+cold,Qwen2-7B,No linking structure,direct,30,0.249689334314,defined,No linking,-0.028571428571,0.028571428571
+cut,Qwen2-7B,No linking structure,direct,30,0.727189367225,defined,No linking,0.714285714286,0.828571428571
+fridge,Qwen2-7B,No linking structure,direct,30,0.859511671632,defined,No linking,1.0,0.885714285714
+gym,Qwen2-7B,No linking structure,direct,30,0.533527211846,defined,No linking,0.942857142857,0.771428571429
+hot,Qwen2-7B,No linking structure,direct,30,0.421078951021,defined,No linking,0.371428571429,0.428571428571
+mall,Qwen2-7B,No linking structure,direct,30,0.524702788406,defined,No linking,0.542857142857,0.542857142857
+mask,Qwen2-7B,No linking structure,direct,30,0.271503273675,defined,No linking,0.314285714286,0.657142857143
+meat,Qwen2-7B,No linking structure,direct,30,0.171713264081,defined,No linking,0.257142857143,0.257142857143
+restaurant,Qwen2-7B,No linking structure,direct,30,0.769245053287,defined,No linking,0.828571428571,0.714285714286
+salad,Qwen2-7B,No linking structure,direct,30,0.63961769615,defined,No linking,0.942857142857,0.485714285714
+science,Qwen2-7B,No linking structure,direct,30,0.494437911072,defined,No linking,0.942857142857,0.942857142857
+throw,Qwen2-7B,No linking structure,direct,30,0.683400502879,defined,No linking,0.714285714286,0.771428571429
+transport,Qwen2-7B,No linking structure,direct,30,0.709917942772,defined,No linking,0.885714285714,0.885714285714
+bag,Qwen2-7B,X but not Y,direct,30,0.746424823025,defined,X but not Y,0.942857142857,1.0
+bakery,Qwen2-7B,X but not Y,direct,30,0.741780755003,defined,X but not Y,1.0,0.942857142857
+beach,Qwen2-7B,X but not Y,direct,30,0.353685807936,defined,X but not Y,0.942857142857,0.714285714286
+cold,Qwen2-7B,X but not Y,direct,30,0.761478230845,defined,X but not Y,-0.028571428571,0.028571428571
+cut,Qwen2-7B,X but not Y,direct,30,0.630118261471,defined,X but not Y,0.714285714286,0.828571428571
+fridge,Qwen2-7B,X but not Y,direct,30,0.81616261436,defined,X but not Y,1.0,0.885714285714
+gym,Qwen2-7B,X but not Y,direct,30,0.615520560524,defined,X but not Y,0.942857142857,0.771428571429
+hot,Qwen2-7B,X but not Y,direct,30,0.548677003101,defined,X but not Y,0.371428571429,0.428571428571
+mall,Qwen2-7B,X but not Y,direct,30,0.332374990917,defined,X but not Y,0.542857142857,0.542857142857
+mask,Qwen2-7B,X but not Y,direct,30,0.005380106858,defined,X but not Y,0.314285714286,0.657142857143
+meat,Qwen2-7B,X but not Y,direct,30,0.37521073754,defined,X but not Y,0.257142857143,0.257142857143
+restaurant,Qwen2-7B,X but not Y,direct,30,0.480074274261,defined,X but not Y,0.828571428571,0.714285714286
+salad,Qwen2-7B,X but not Y,direct,30,0.735287897306,defined,X but not Y,0.942857142857,0.485714285714
+science,Qwen2-7B,X but not Y,direct,30,0.239971938611,defined,X but not Y,0.942857142857,0.942857142857
+throw,Qwen2-7B,X but not Y,direct,30,0.323213996371,defined,X but not Y,0.714285714286,0.771428571429
+transport,Qwen2-7B,X but not Y,direct,30,0.635158563372,defined,X but not Y,0.885714285714,0.885714285714
+bag,Qwen2-7B,ordering,top_k,30,0.741111378666,defined,Ordering,0.942857142857,1.0
+bakery,Qwen2-7B,ordering,top_k,30,0.641621951529,defined,Ordering,1.0,0.942857142857
+beach,Qwen2-7B,ordering,top_k,30,0.302969867157,defined,Ordering,0.942857142857,0.714285714286
+cold,Qwen2-7B,ordering,top_k,30,0.251213446276,defined,Ordering,-0.028571428571,0.028571428571
+cut,Qwen2-7B,ordering,top_k,30,0.477513494943,defined,Ordering,0.714285714286,0.828571428571
+fridge,Qwen2-7B,ordering,top_k,30,0.744753504616,defined,Ordering,1.0,0.885714285714
+gym,Qwen2-7B,ordering,top_k,30,0.40799514038,defined,Ordering,0.942857142857,0.771428571429
+hot,Qwen2-7B,ordering,top_k,30,0.223114401738,defined,Ordering,0.371428571429,0.428571428571
+mall,Qwen2-7B,ordering,top_k,30,0.413386004806,defined,Ordering,0.542857142857,0.542857142857
+mask,Qwen2-7B,ordering,top_k,30,0.316270262921,defined,Ordering,0.314285714286,0.657142857143
+meat,Qwen2-7B,ordering,top_k,30,0.330872589609,defined,Ordering,0.257142857143,0.257142857143
+restaurant,Qwen2-7B,ordering,top_k,30,0.673147623691,defined,Ordering,0.828571428571,0.714285714286
+salad,Qwen2-7B,ordering,top_k,30,0.599038958484,defined,Ordering,0.942857142857,0.485714285714
+science,Qwen2-7B,ordering,top_k,30,0.613386216916,defined,Ordering,0.942857142857,0.942857142857
+throw,Qwen2-7B,ordering,top_k,30,0.706127086258,defined,Ordering,0.714285714286,0.771428571429
+transport,Qwen2-7B,ordering,top_k,30,0.585605895186,defined,Ordering,0.885714285714,0.885714285714
+bag,Qwen2-7B,set,top_k,30,0.860451952828,defined,Set Top-K,0.942857142857,1.0
+bakery,Qwen2-7B,set,top_k,30,0.875028649721,defined,Set Top-K,1.0,0.942857142857
+beach,Qwen2-7B,set,top_k,30,0.309761638804,defined,Set Top-K,0.942857142857,0.714285714286
+cold,Qwen2-7B,set,top_k,30,0.185253377072,defined,Set Top-K,-0.028571428571,0.028571428571
+cut,Qwen2-7B,set,top_k,30,0.723785984851,defined,Set Top-K,0.714285714286,0.828571428571
+fridge,Qwen2-7B,set,top_k,30,0.783603711502,defined,Set Top-K,1.0,0.885714285714
+gym,Qwen2-7B,set,top_k,30,0.325489783398,defined,Set Top-K,0.942857142857,0.771428571429
+hot,Qwen2-7B,set,top_k,30,0.333597174493,defined,Set Top-K,0.371428571429,0.428571428571
+mall,Qwen2-7B,set,top_k,30,0.391557257719,defined,Set Top-K,0.542857142857,0.542857142857
+mask,Qwen2-7B,set,top_k,30,0.523694599014,defined,Set Top-K,0.314285714286,0.657142857143
+meat,Qwen2-7B,set,top_k,30,0.249448322821,defined,Set Top-K,0.257142857143,0.257142857143
+restaurant,Qwen2-7B,set,top_k,30,0.543875800007,defined,Set Top-K,0.828571428571,0.714285714286
+salad,Qwen2-7B,set,top_k,30,0.569695331517,defined,Set Top-K,0.942857142857,0.485714285714
+science,Qwen2-7B,set,top_k,30,0.494437911072,defined,Set Top-K,0.942857142857,0.942857142857
+throw,Qwen2-7B,set,top_k,30,0.815001275392,defined,Set Top-K,0.714285714286,0.771428571429
+transport,Qwen2-7B,set,top_k,30,0.709917942772,defined,Set Top-K,0.885714285714,0.885714285714
+bag,Qwen2-7B,conjunction,top_k,30,0.886738081797,defined,Conjunction Top-K,0.942857142857,1.0
+bakery,Qwen2-7B,conjunction,top_k,30,0.77002845646,defined,Conjunction Top-K,1.0,0.942857142857
+beach,Qwen2-7B,conjunction,top_k,30,0.333724178912,defined,Conjunction Top-K,0.942857142857,0.714285714286
+cold,Qwen2-7B,conjunction,top_k,30,0.272820542208,defined,Conjunction Top-K,-0.028571428571,0.028571428571
+cut,Qwen2-7B,conjunction,top_k,30,0.691133103855,defined,Conjunction Top-K,0.714285714286,0.828571428571
+fridge,Qwen2-7B,conjunction,top_k,30,0.830776692646,defined,Conjunction Top-K,1.0,0.885714285714
+gym,Qwen2-7B,conjunction,top_k,30,0.415144985677,defined,Conjunction Top-K,0.942857142857,0.771428571429
+hot,Qwen2-7B,conjunction,top_k,30,0.252743729162,defined,Conjunction Top-K,0.371428571429,0.428571428571
+mall,Qwen2-7B,conjunction,top_k,30,0.432274883412,defined,Conjunction Top-K,0.542857142857,0.542857142857
+mask,Qwen2-7B,conjunction,top_k,30,0.530823069181,defined,Conjunction Top-K,0.314285714286,0.657142857143
+meat,Qwen2-7B,conjunction,top_k,30,0.331474371685,defined,Conjunction Top-K,0.257142857143,0.257142857143
+restaurant,Qwen2-7B,conjunction,top_k,30,0.579209385328,defined,Conjunction Top-K,0.828571428571,0.714285714286
+salad,Qwen2-7B,conjunction,top_k,30,0.567673944609,defined,Conjunction Top-K,0.942857142857,0.485714285714
+science,Qwen2-7B,conjunction,top_k,30,0.601923496786,defined,Conjunction Top-K,0.942857142857,0.942857142857
+throw,Qwen2-7B,conjunction,top_k,30,0.751831963634,defined,Conjunction Top-K,0.714285714286,0.771428571429
+transport,Qwen2-7B,conjunction,top_k,30,0.655480493797,defined,Conjunction Top-K,0.885714285714,0.885714285714
+bag,Qwen2-7B,disjunction,top_k,30,0.807116397343,defined,Disjunction Top-K,0.942857142857,1.0
+bakery,Qwen2-7B,disjunction,top_k,30,0.701217978843,defined,Disjunction Top-K,1.0,0.942857142857
+beach,Qwen2-7B,disjunction,top_k,30,0.321369906837,defined,Disjunction Top-K,0.942857142857,0.714285714286
+cold,Qwen2-7B,disjunction,top_k,30,0.225089960266,defined,Disjunction Top-K,-0.028571428571,0.028571428571
+cut,Qwen2-7B,disjunction,top_k,30,0.543324029887,defined,Disjunction Top-K,0.714285714286,0.828571428571
+fridge,Qwen2-7B,disjunction,top_k,30,0.785039533578,defined,Disjunction Top-K,1.0,0.885714285714
+gym,Qwen2-7B,disjunction,top_k,30,0.403839506206,defined,Disjunction Top-K,0.942857142857,0.771428571429
+hot,Qwen2-7B,disjunction,top_k,30,0.287412652115,defined,Disjunction Top-K,0.371428571429,0.428571428571
+mall,Qwen2-7B,disjunction,top_k,30,0.414301588427,defined,Disjunction Top-K,0.542857142857,0.542857142857
+mask,Qwen2-7B,disjunction,top_k,30,0.316270262921,defined,Disjunction Top-K,0.314285714286,0.657142857143
+meat,Qwen2-7B,disjunction,top_k,30,0.303006237262,defined,Disjunction Top-K,0.257142857143,0.257142857143
+restaurant,Qwen2-7B,disjunction,top_k,30,0.677458309519,defined,Disjunction Top-K,0.828571428571,0.714285714286
+salad,Qwen2-7B,disjunction,top_k,30,0.604843658355,defined,Disjunction Top-K,0.942857142857,0.485714285714
+science,Qwen2-7B,disjunction,top_k,30,0.596773508326,defined,Disjunction Top-K,0.942857142857,0.942857142857
+throw,Qwen2-7B,disjunction,top_k,30,0.808407931021,defined,Disjunction Top-K,0.714285714286,0.771428571429
+transport,Qwen2-7B,disjunction,top_k,30,0.682556792485,defined,Disjunction Top-K,0.885714285714,0.885714285714
+bag,Qwen2-7B,set,top_p,30,0.85529378459,defined,Set Top-p,0.942857142857,1.0
+bakery,Qwen2-7B,set,top_p,30,0.875028649721,defined,Set Top-p,1.0,0.942857142857
+beach,Qwen2-7B,set,top_p,30,0.309761638804,defined,Set Top-p,0.942857142857,0.714285714286
+cold,Qwen2-7B,set,top_p,30,0.242243940475,defined,Set Top-p,-0.028571428571,0.028571428571
+cut,Qwen2-7B,set,top_p,30,0.723785984851,defined,Set Top-p,0.714285714286,0.828571428571
+fridge,Qwen2-7B,set,top_p,30,0.806299995484,defined,Set Top-p,1.0,0.885714285714
+gym,Qwen2-7B,set,top_p,30,0.340353566178,defined,Set Top-p,0.942857142857,0.771428571429
+hot,Qwen2-7B,set,top_p,30,0.275744472303,defined,Set Top-p,0.371428571429,0.428571428571
+mall,Qwen2-7B,set,top_p,30,0.41965760408,defined,Set Top-p,0.542857142857,0.542857142857
+mask,Qwen2-7B,set,top_p,30,,constant_human_or_model,Set Top-p,0.314285714286,0.657142857143
+meat,Qwen2-7B,set,top_p,30,0.249448322821,defined,Set Top-p,0.257142857143,0.257142857143
+restaurant,Qwen2-7B,set,top_p,30,0.561123446942,defined,Set Top-p,0.828571428571,0.714285714286
+salad,Qwen2-7B,set,top_p,30,0.569695331517,defined,Set Top-p,0.942857142857,0.485714285714
+science,Qwen2-7B,set,top_p,30,0.537630188361,defined,Set Top-p,0.942857142857,0.942857142857
+throw,Qwen2-7B,set,top_p,30,0.768003426279,defined,Set Top-p,0.714285714286,0.771428571429
+transport,Qwen2-7B,set,top_p,30,0.709917942772,defined,Set Top-p,0.885714285714,0.885714285714
+bag,Qwen2-7B,conjunction,top_p,30,0.872740452219,defined,Conjunction Top-p,0.942857142857,1.0
+bakery,Qwen2-7B,conjunction,top_p,30,0.772591734626,defined,Conjunction Top-p,1.0,0.942857142857
+beach,Qwen2-7B,conjunction,top_p,30,0.321364024137,defined,Conjunction Top-p,0.942857142857,0.714285714286
+cold,Qwen2-7B,conjunction,top_p,30,0.306204860884,defined,Conjunction Top-p,-0.028571428571,0.028571428571
+cut,Qwen2-7B,conjunction,top_p,30,0.691133103855,defined,Conjunction Top-p,0.714285714286,0.828571428571
+fridge,Qwen2-7B,conjunction,top_p,30,0.834086942104,defined,Conjunction Top-p,1.0,0.885714285714
+gym,Qwen2-7B,conjunction,top_p,30,0.403697934185,defined,Conjunction Top-p,0.942857142857,0.771428571429
+hot,Qwen2-7B,conjunction,top_p,30,0.268350298444,defined,Conjunction Top-p,0.371428571429,0.428571428571
+mall,Qwen2-7B,conjunction,top_p,30,0.443942770939,defined,Conjunction Top-p,0.542857142857,0.542857142857
+mask,Qwen2-7B,conjunction,top_p,30,,constant_human_or_model,Conjunction Top-p,0.314285714286,0.657142857143
+meat,Qwen2-7B,conjunction,top_p,30,0.310482769841,defined,Conjunction Top-p,0.257142857143,0.257142857143
+restaurant,Qwen2-7B,conjunction,top_p,30,0.651915994844,defined,Conjunction Top-p,0.828571428571,0.714285714286
+salad,Qwen2-7B,conjunction,top_p,30,0.567673944609,defined,Conjunction Top-p,0.942857142857,0.485714285714
+science,Qwen2-7B,conjunction,top_p,30,0.599893229862,defined,Conjunction Top-p,0.942857142857,0.942857142857
+throw,Qwen2-7B,conjunction,top_p,30,0.733769205717,defined,Conjunction Top-p,0.714285714286,0.771428571429
+transport,Qwen2-7B,conjunction,top_p,30,0.65613673689,defined,Conjunction Top-p,0.885714285714,0.885714285714
+bag,Qwen2-7B,disjunction,top_p,30,0.741229897631,defined,Disjunction Top-p,0.942857142857,1.0
+bakery,Qwen2-7B,disjunction,top_p,30,0.69975241072,defined,Disjunction Top-p,1.0,0.942857142857
+beach,Qwen2-7B,disjunction,top_p,30,0.329288934126,defined,Disjunction Top-p,0.942857142857,0.714285714286
+cold,Qwen2-7B,disjunction,top_p,30,0.231209140929,defined,Disjunction Top-p,-0.028571428571,0.028571428571
+cut,Qwen2-7B,disjunction,top_p,30,0.543324029887,defined,Disjunction Top-p,0.714285714286,0.828571428571
+fridge,Qwen2-7B,disjunction,top_p,30,0.749153198959,defined,Disjunction Top-p,1.0,0.885714285714
+gym,Qwen2-7B,disjunction,top_p,30,0.488664824311,defined,Disjunction Top-p,0.942857142857,0.771428571429
+hot,Qwen2-7B,disjunction,top_p,30,0.223114401738,defined,Disjunction Top-p,0.371428571429,0.428571428571
+mall,Qwen2-7B,disjunction,top_p,30,0.413386004806,defined,Disjunction Top-p,0.542857142857,0.542857142857
+mask,Qwen2-7B,disjunction,top_p,30,0.316270262921,defined,Disjunction Top-p,0.314285714286,0.657142857143
+meat,Qwen2-7B,disjunction,top_p,30,0.292762405744,defined,Disjunction Top-p,0.257142857143,0.257142857143
+restaurant,Qwen2-7B,disjunction,top_p,30,0.675264644546,defined,Disjunction Top-p,0.828571428571,0.714285714286
+salad,Qwen2-7B,disjunction,top_p,30,0.604843658355,defined,Disjunction Top-p,0.942857142857,0.485714285714
+science,Qwen2-7B,disjunction,top_p,30,0.602460162308,defined,Disjunction Top-p,0.942857142857,0.942857142857
+throw,Qwen2-7B,disjunction,top_p,30,0.726921078766,defined,Disjunction Top-p,0.714285714286,0.771428571429
+transport,Qwen2-7B,disjunction,top_p,30,0.660913911625,defined,Disjunction Top-p,0.885714285714,0.885714285714

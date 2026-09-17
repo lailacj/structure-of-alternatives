@@ -1,0 +1,32 @@
+{
+  "status": "historical exploratory fixed-prediction analysis",
+  "seed": 20260917,
+  "permutations": 199999,
+  "bootstrap_samples": 20000,
+  "input_sha256": {
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/human_exp_data/sca_dataframe.csv": "985db789fb1aa16d68121a2b7434e500052536e7420b509a25a1800501fd7f22",
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/scoring_manifests/set_variant_qwen/source_rows.csv": "d6979e01d7c917f596244559a176b81a74339e3c0a7562c852296a37bea6a2d7",
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen/cv_results/oof_predictions.csv": "803064d540b9ec305471a445c673d1ffba4031954dd5173473f94734825c9ad2",
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results_viewer/index.html": "7cdeccf87a14535637b6ddc15d305567e4a4faea9c1d1684902d406c79958277",
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen/prediction_grid.csv": "33bf1f3157ca1b8be60a97a9feb526d32a55fb5375334014b45726d536853929",
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen/spearman/mean_within_context_spearman.csv": "89759128d7030e6e653dac6671467f932992f3f5aa3a47991cd521dd06e964a7",
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen/spearman/word_paired_ranks.csv": "8d3d9e8a874be00a28e38fec3e5bb1fdbafc64bbc90e0f38193b40d60c2533d2",
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen/spearman/negation_paired_ranks.csv": "948f8be648bce11655fde80aaf3a14fec84158015fb70b96cfb44cedc2f2c65b",
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen/spearman/word_spearman_by_context.csv": "8454632a6c48f8d574879c1495f5dc3fc5451ecc6e05c81850730428f23a2950",
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen/spearman/negation_spearman_by_context.csv": "2abdb559a3be6da336a1a9f0760d56014c885ec8cadf1774f828ab6ac4c4ef8f"
+  },
+  "analysis_script_sha256": "b2873dbfc5104d80daa85063ea1da4e478487578a1292d3092a942e213372e20",
+  "checks": {
+    "self_tests_passed": true,
+    "saved_story_correlations_reproduced": true,
+    "sampling_viewer_source_oof_grid_hashes_match": true,
+    "all_inputs_unchanged": true
+  },
+  "participants": 213,
+  "participant_resampling": false,
+  "software": {
+    "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3"
+  }
+}

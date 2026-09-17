@@ -1,0 +1,14 @@
+[
+  {
+    "context_id":"beach",
+    "generation_prompt":"You and your friend Jess are packing to go on vacation. You tell Jess, 'There's a nice beach near our hotel, make sure you bring something to wear.' Jess looks in the closet and responds, 'Sure, I have my "
+  },
+  {
+    "context_id":"cold",
+    "generation_prompt":"You and your friend Kennedy rent a small cabin in the mountains for a weekend. When you arrive, you shiver and say 'I'm freezing!' Kennedy looks around the cabin and responds, 'Sure, they have a "
+  },
+  {
+    "context_id":"fridge",
+    "generation_prompt":"You and your friend Sam go for a long walk together. After the walk, you go back to Sam's house. You say to Sam, 'I'm thirsty.' Sam opens the fridge and responds, 'Sure, I have "
+  }
+]

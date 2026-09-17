@@ -1,0 +1,285 @@
+word_definition,predictor,omitted_context,spearman
+viewer_word_rho,No linking,bag,0.6949866091237398
+viewer_word_rho,No linking,bakery,0.6406993263787293
+viewer_word_rho,No linking,beach,0.7653878500479627
+viewer_word_rho,No linking,cold,0.6412944954122017
+viewer_word_rho,No linking,cut,0.7426287646662544
+viewer_word_rho,No linking,fridge,0.6516203376238212
+viewer_word_rho,No linking,gym,0.7419207697398884
+viewer_word_rho,No linking,hot,0.6376507766882688
+viewer_word_rho,No linking,mall,0.6886628388233303
+viewer_word_rho,No linking,mask,0.6376507766882688
+viewer_word_rho,No linking,meat,0.6412944954122017
+viewer_word_rho,No linking,restaurant,0.7396749009583918
+viewer_word_rho,No linking,salad,0.7419207697398884
+viewer_word_rho,No linking,science,0.7653878500479627
+viewer_word_rho,No linking,throw,0.7353480905028598
+viewer_word_rho,No linking,transport,0.7451404790442913
+viewer_word_rho,X but not Y,bag,0.3195133241945505
+viewer_word_rho,X but not Y,bakery,0.28212612383154273
+viewer_word_rho,X but not Y,beach,0.40977132537945177
+viewer_word_rho,X but not Y,cold,0.5993917300869727
+viewer_word_rho,X but not Y,cut,0.36221353962888386
+viewer_word_rho,X but not Y,fridge,0.2202403934426882
+viewer_word_rho,X but not Y,gym,0.33575976440783273
+viewer_word_rho,X but not Y,hot,0.36619373175526293
+viewer_word_rho,X but not Y,mall,0.3370439819637992
+viewer_word_rho,X but not Y,mask,0.2842100604667712
+viewer_word_rho,X but not Y,meat,0.3698374504791959
+viewer_word_rho,X but not Y,restaurant,0.3479751381355981
+viewer_word_rho,X but not Y,salad,0.3086823640523623
+viewer_word_rho,X but not Y,science,0.45129000592450635
+viewer_word_rho,X but not Y,throw,0.34765219130209457
+viewer_word_rho,X but not Y,transport,0.3388658413257657
+viewer_word_rho,Ordering,bag,0.6047286079388384
+viewer_word_rho,Ordering,bakery,0.6170371353476967
+viewer_word_rho,Ordering,beach,0.7401156097161904
+viewer_word_rho,Ordering,cold,0.5538452460378106
+viewer_word_rho,Ordering,cut,0.6115766297251507
+viewer_word_rho,Ordering,fridge,0.5496908993362961
+viewer_word_rho,Ordering,gym,0.6751298488630615
+viewer_word_rho,Ordering,hot,0.5720638396574754
+viewer_word_rho,Ordering,mall,0.6012135894489392
+viewer_word_rho,Ordering,mask,0.5939261520010732
+viewer_word_rho,Ordering,meat,0.5939261520010732
+viewer_word_rho,Ordering,restaurant,0.6813754013754644
+viewer_word_rho,Ordering,salad,0.6245853681995167
+viewer_word_rho,Ordering,science,0.6245853681995167
+viewer_word_rho,Ordering,throw,0.6898438769816432
+viewer_word_rho,Ordering,transport,0.6358289173263023
+viewer_word_rho,Set Top-K,bag,0.5090551266828431
+viewer_word_rho,Set Top-K,bakery,0.4441211239670737
+viewer_word_rho,Set Top-K,beach,0.6372214883654029
+viewer_word_rho,Set Top-K,cold,0.43906810623392223
+viewer_word_rho,Set Top-K,cut,0.5733530903673287
+viewer_word_rho,Set Top-K,fridge,0.4859850004065929
+viewer_word_rho,Set Top-K,gym,0.6372214883654029
+viewer_word_rho,Set Top-K,hot,0.5155861994365145
+viewer_word_rho,Set Top-K,mall,0.5155861994365145
+viewer_word_rho,Set Top-K,mask,0.5483796679519112
+viewer_word_rho,Set Top-K,meat,0.43906810623392223
+viewer_word_rho,Set Top-K,restaurant,0.55931082412371
+viewer_word_rho,Set Top-K,salad,0.5433531671331057
+viewer_word_rho,Set Top-K,science,0.5866770077018583
+viewer_word_rho,Set Top-K,throw,0.6042959555617561
+viewer_word_rho,Set Top-K,transport,0.570241980295509
+viewer_word_rho,Conjunction Top-K,bag,0.6047286079388384
+viewer_word_rho,Conjunction Top-K,bakery,0.5478707307954475
+viewer_word_rho,Conjunction Top-K,beach,0.6949866091237398
+viewer_word_rho,Conjunction Top-K,cold,0.5429140898660118
+viewer_word_rho,Conjunction Top-K,cut,0.65344050616467
+viewer_word_rho,Conjunction Top-K,fridge,0.5478707307954475
+viewer_word_rho,Conjunction Top-K,gym,0.6949866091237398
+viewer_word_rho,Conjunction Top-K,hot,0.5647764022096096
+viewer_word_rho,Conjunction Top-K,mall,0.5975698707250062
+viewer_word_rho,Conjunction Top-K,mask,0.615788464344671
+viewer_word_rho,Conjunction Top-K,meat,0.5429140898660118
+viewer_word_rho,Conjunction Top-K,restaurant,0.6376507766882688
+viewer_word_rho,Conjunction Top-K,salad,0.640831808412799
+viewer_word_rho,Conjunction Top-K,science,0.6281956882469129
+viewer_word_rho,Conjunction Top-K,throw,0.65344050616467
+viewer_word_rho,Conjunction Top-K,transport,0.6485819328600677
+viewer_word_rho,Disjunction Top-K,bag,0.6642988887208733
+viewer_word_rho,Disjunction Top-K,bakery,0.620677472429394
+viewer_word_rho,Disjunction Top-K,beach,0.7058175692659279
+viewer_word_rho,Disjunction Top-K,cold,0.570241980295509
+viewer_word_rho,Disjunction Top-K,cut,0.6352388207561833
+viewer_word_rho,Disjunction Top-K,fridge,0.620677472429394
+viewer_word_rho,Disjunction Top-K,gym,0.7058175692659279
+viewer_word_rho,Disjunction Top-K,hot,0.5811731364673078
+viewer_word_rho,Disjunction Top-K,mall,0.6212540424305705
+viewer_word_rho,Disjunction Top-K,mask,0.5775294177433749
+viewer_word_rho,Disjunction Top-K,meat,0.5775294177433749
+viewer_word_rho,Disjunction Top-K,restaurant,0.6777316826515314
+viewer_word_rho,Disjunction Top-K,salad,0.6642988887208733
+viewer_word_rho,Disjunction Top-K,science,0.6642988887208733
+viewer_word_rho,Disjunction Top-K,throw,0.7626506186155897
+viewer_word_rho,Disjunction Top-K,transport,0.6777316826515314
+viewer_word_rho,Set Top-p,bag,0.6236637042865747
+viewer_word_rho,Set Top-p,bakery,0.55808598674651
+viewer_word_rho,Set Top-p,beach,0.7105311488122048
+viewer_word_rho,Set Top-p,cold,0.5542241686397147
+viewer_word_rho,Set Top-p,cut,0.6953571367123854
+viewer_word_rho,Set Top-p,fridge,0.5715880670710224
+viewer_word_rho,Set Top-p,gym,0.7105311488122048
+viewer_word_rho,Set Top-p,hot,0.5542241686397147
+viewer_word_rho,Set Top-p,mall,0.617306594338544
+viewer_word_rho,Set Top-p,meat,0.5542241686397147
+viewer_word_rho,Set Top-p,restaurant,0.6758831324874569
+viewer_word_rho,Set Top-p,salad,0.6659837413631637
+viewer_word_rho,Set Top-p,science,0.6815753339703281
+viewer_word_rho,Set Top-p,throw,0.6953571367123854
+viewer_word_rho,Set Top-p,transport,0.6894007951372061
+viewer_word_rho,Conjunction Top-p,bag,0.5947078894446981
+viewer_word_rho,Conjunction Top-p,bakery,0.5265811326559813
+viewer_word_rho,Conjunction Top-p,beach,0.6682111117356158
+viewer_word_rho,Conjunction Top-p,cold,0.5159241244654255
+viewer_word_rho,Conjunction Top-p,cut,0.6480998555765922
+viewer_word_rho,Conjunction Top-p,fridge,0.5265811326559813
+viewer_word_rho,Conjunction Top-p,gym,0.6682111117356158
+viewer_word_rho,Conjunction Top-p,hot,0.5204300120153418
+viewer_word_rho,Conjunction Top-p,mall,0.569994775064422
+viewer_word_rho,Conjunction Top-p,meat,0.5159241244654255
+viewer_word_rho,Conjunction Top-p,restaurant,0.6465948634130004
+viewer_word_rho,Conjunction Top-p,salad,0.6392552968937391
+viewer_word_rho,Conjunction Top-p,science,0.6392552968937391
+viewer_word_rho,Conjunction Top-p,throw,0.6480998555765922
+viewer_word_rho,Conjunction Top-p,transport,0.6465948634130004
+viewer_word_rho,Disjunction Top-p,bag,0.7022072492185318
+viewer_word_rho,Disjunction Top-p,bakery,0.6934842140633405
+viewer_word_rho,Disjunction Top-p,beach,0.7726084901427548
+viewer_word_rho,Disjunction Top-p,cold,0.6576912296699001
+viewer_word_rho,Disjunction Top-p,cut,0.7044052253084325
+viewer_word_rho,Disjunction Top-p,fridge,0.6516203376238212
+viewer_word_rho,Disjunction Top-p,gym,0.7491414098346805
+viewer_word_rho,Disjunction Top-p,hot,0.668622385841699
+viewer_word_rho,Disjunction Top-p,mall,0.672266104565632
+viewer_word_rho,Disjunction Top-p,mask,0.6576912296699001
+viewer_word_rho,Disjunction Top-p,meat,0.6576912296699001
+viewer_word_rho,Disjunction Top-p,restaurant,0.7469623384062577
+viewer_word_rho,Disjunction Top-p,salad,0.7310898095977002
+viewer_word_rho,Disjunction Top-p,science,0.7310898095977002
+viewer_word_rho,Disjunction Top-p,throw,0.782672472564925
+viewer_word_rho,Disjunction Top-p,transport,0.7469623384062577
+sampling_word_rho,No linking,bag,0.691760715837011
+sampling_word_rho,No linking,bakery,0.709044634285153
+sampling_word_rho,No linking,beach,0.7538075531162863
+sampling_word_rho,No linking,cold,0.6899685896301795
+sampling_word_rho,No linking,cut,0.7419402496282969
+sampling_word_rho,No linking,fridge,0.7251592850643609
+sampling_word_rho,No linking,gym,0.757388586622777
+sampling_word_rho,No linking,hot,0.6971370944575059
+sampling_word_rho,No linking,mall,0.7544851330761183
+sampling_word_rho,No linking,mask,0.7258111137668122
+sampling_word_rho,No linking,meat,0.6899685896301795
+sampling_word_rho,No linking,restaurant,0.773503237401985
+sampling_word_rho,No linking,salad,0.770614268937603
+sampling_word_rho,No linking,science,0.8737721755837238
+sampling_word_rho,No linking,throw,0.7394834190903237
+sampling_word_rho,No linking,transport,0.7448549693500597
+sampling_word_rho,X but not Y,bag,0.07347717448009704
+sampling_word_rho,X but not Y,bakery,0.09310687116875746
+sampling_word_rho,X but not Y,beach,0.18621374233751492
+sampling_word_rho,X but not Y,cold,0.39605989170979133
+sampling_word_rho,X but not Y,cut,0.1272409606850461
+sampling_word_rho,X but not Y,fridge,0.08415428740253078
+sampling_word_rho,X but not Y,gym,0.13786978999989086
+sampling_word_rho,X but not Y,hot,0.1899653779241533
+sampling_word_rho,X but not Y,mall,0.19354963033781658
+sampling_word_rho,X but not Y,mask,0.15053860137385733
+sampling_word_rho,X but not Y,meat,0.1738362420626686
+sampling_word_rho,X but not Y,restaurant,0.16830857480506156
+sampling_word_rho,X but not Y,salad,0.26523467861108196
+sampling_word_rho,X but not Y,science,0.33840766636336844
+sampling_word_rho,X but not Y,throw,0.20949046012970426
+sampling_word_rho,X but not Y,transport,0.1360792732466455
+sampling_word_rho,Ordering,bag,0.6648788227345366
+sampling_word_rho,Ordering,bakery,0.7126256677916436
+sampling_word_rho,Ordering,beach,0.7233687683111156
+sampling_word_rho,Ordering,cold,0.6595024441140417
+sampling_word_rho,Ordering,cut,0.7204347351463173
+sampling_word_rho,Ordering,fridge,0.7000920505189262
+sampling_word_rho,Ordering,gym,0.7251592850643609
+sampling_word_rho,Ordering,hot,0.6702552013550315
+sampling_word_rho,Ordering,mall,0.7096819779053274
+sampling_word_rho,Ordering,mask,0.7078898516984958
+sampling_word_rho,Ordering,meat,0.6935528420438427
+sampling_word_rho,Ordering,restaurant,0.762760136882513
+sampling_word_rho,Ordering,salad,0.7580693854897815
+sampling_word_rho,Ordering,science,0.7126256677916436
+sampling_word_rho,Ordering,throw,0.7323213520773423
+sampling_word_rho,Ordering,transport,0.7323213520773423
+sampling_word_rho,Set Top-K,bag,0.6810079585960213
+sampling_word_rho,Set Top-K,bakery,0.6947205002591902
+sampling_word_rho,Set Top-K,beach,0.746645486103305
+sampling_word_rho,Set Top-K,cold,0.6756315799755264
+sampling_word_rho,Set Top-K,cut,0.7204347351463173
+sampling_word_rho,Set Top-K,fridge,0.7179972180513796
+sampling_word_rho,Set Top-K,gym,0.773503237401985
+sampling_word_rho,Set Top-K,hot,0.7150583565258223
+sampling_word_rho,Set Top-K,mall,0.7293953661804754
+sampling_word_rho,Set Top-K,mask,0.7598615116966132
+sampling_word_rho,Set Top-K,meat,0.6756315799755264
+sampling_word_rho,Set Top-K,restaurant,0.7502265196097956
+sampling_word_rho,Set Top-K,salad,0.7759906475580979
+sampling_word_rho,Set Top-K,science,0.816475639479873
+sampling_word_rho,Set Top-K,throw,0.7412739358435689
+sampling_word_rho,Set Top-K,transport,0.7215782515578703
+sampling_word_rho,Conjunction Top-K,bag,0.8190016765220571
+sampling_word_rho,Conjunction Top-K,bakery,0.8343808070123264
+sampling_word_rho,Conjunction Top-K,beach,0.8594480415577611
+sampling_word_rho,Conjunction Top-K,cold,0.8261701813493837
+sampling_word_rho,Conjunction Top-K,cut,0.8494678220381949
+sampling_word_rho,Conjunction Top-K,fridge,0.8469144242850437
+sampling_word_rho,Conjunction Top-K,gym,0.8809342425967052
+sampling_word_rho,Conjunction Top-K,hot,0.8297544337630469
+sampling_word_rho,Conjunction Top-K,mall,0.8584284530723532
+sampling_word_rho,Conjunction Top-K,mask,0.8584284530723532
+sampling_word_rho,Conjunction Top-K,meat,0.8261701813493837
+sampling_word_rho,Conjunction Top-K,restaurant,0.8433333907785531
+sampling_word_rho,Conjunction Top-K,salad,0.8620127054860164
+sampling_word_rho,Conjunction Top-K,science,0.8666101085707425
+sampling_word_rho,Conjunction Top-K,throw,0.8612385583110065
+sampling_word_rho,Conjunction Top-K,transport,0.8540764912980251
+sampling_word_rho,Disjunction Top-K,bag,0.7293953661804754
+sampling_word_rho,Disjunction Top-K,bakery,0.7448549693500597
+sampling_word_rho,Disjunction Top-K,beach,0.7484360028565503
+sampling_word_rho,Disjunction Top-K,cold,0.7060977254916642
+sampling_word_rho,Disjunction Top-K,cut,0.7741985213512663
+sampling_word_rho,Disjunction Top-K,fridge,0.7538075531162863
+sampling_word_rho,Disjunction Top-K,gym,0.7752937541552304
+sampling_word_rho,Disjunction Top-K,hot,0.7096819779053274
+sampling_word_rho,Disjunction Top-K,mall,0.75627725928295
+sampling_word_rho,Disjunction Top-K,mask,0.7383559972146336
+sampling_word_rho,Disjunction Top-K,meat,0.7096819779053274
+sampling_word_rho,Disjunction Top-K,restaurant,0.7699222038954944
+sampling_word_rho,Disjunction Top-K,salad,0.8118331716947306
+sampling_word_rho,Disjunction Top-K,science,0.8093135724668917
+sampling_word_rho,Disjunction Top-K,throw,0.8128946059733824
+sampling_word_rho,Disjunction Top-K,transport,0.7484360028565503
+sampling_word_rho,Set Top-p,bag,0.7638043536889298
+sampling_word_rho,Set Top-p,bakery,0.7783945556185939
+sampling_word_rho,Set Top-p,beach,0.7960352254343128
+sampling_word_rho,Set Top-p,cold,0.7571817725875808
+sampling_word_rho,Set Top-p,cut,0.8035398402970245
+sampling_word_rho,Set Top-p,fridge,0.7916250579803831
+sampling_word_rho,Set Top-p,gym,0.8180860627039613
+sampling_word_rho,Set Top-p,hot,0.7571817725875808
+sampling_word_rho,Set Top-p,mall,0.8013323132632415
+sampling_word_rho,Set Top-p,meat,0.7571817725875808
+sampling_word_rho,Set Top-p,restaurant,0.8269063976118207
+sampling_word_rho,Set Top-p,salad,0.8454828539389022
+sampling_word_rho,Set Top-p,science,0.8886487419668367
+sampling_word_rho,Set Top-p,throw,0.8158809789769965
+sampling_word_rho,Set Top-p,transport,0.807060644069137
+sampling_word_rho,Conjunction Top-p,bag,0.7947097321618923
+sampling_word_rho,Conjunction Top-p,bakery,0.8158809789769965
+sampling_word_rho,Conjunction Top-p,beach,0.8269063976118207
+sampling_word_rho,Conjunction Top-p,cold,0.8035398402970245
+sampling_word_rho,Conjunction Top-p,cut,0.83665274580377
+sampling_word_rho,Conjunction Top-p,fridge,0.8335216487927153
+sampling_word_rho,Conjunction Top-p,gym,0.8511623186084342
+sampling_word_rho,Conjunction Top-p,hot,0.8079548943645906
+sampling_word_rho,Conjunction Top-p,mall,0.830030164702421
+sampling_word_rho,Conjunction Top-p,meat,0.8035398402970245
+sampling_word_rho,Conjunction Top-p,restaurant,0.8489572348814693
+sampling_word_rho,Conjunction Top-p,salad,0.830030164702421
+sampling_word_rho,Conjunction Top-p,science,0.884238574512907
+sampling_word_rho,Conjunction Top-p,throw,0.8489572348814693
+sampling_word_rho,Conjunction Top-p,transport,0.8423419837005748
+sampling_word_rho,Disjunction Top-p,bag,0.7311874923873071
+sampling_word_rho,Disjunction Top-p,bakery,0.757388586622777
+sampling_word_rho,Disjunction Top-p,beach,0.7591791033760223
+sampling_word_rho,Disjunction Top-p,cold,0.7258111137668122
+sampling_word_rho,Disjunction Top-p,cut,0.7831591523854244
+sampling_word_rho,Disjunction Top-p,fridge,0.7663411703890036
+sampling_word_rho,Disjunction Top-p,gym,0.7717127206487396
+sampling_word_rho,Disjunction Top-p,hot,0.7293953661804754
+sampling_word_rho,Disjunction Top-p,mall,0.7526930068692866
+sampling_word_rho,Disjunction Top-p,mask,0.7473166282487917
+sampling_word_rho,Disjunction Top-p,meat,0.7258111137668122
+sampling_word_rho,Disjunction Top-p,restaurant,0.7967799551941743
+sampling_word_rho,Disjunction Top-p,salad,0.824378055142552
+sampling_word_rho,Disjunction Top-p,science,0.821847189739609
+sampling_word_rho,Disjunction Top-p,throw,0.7931989216876837
+sampling_word_rho,Disjunction Top-p,transport,0.7752937541552304

@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="845" viewBox="0 0 1440 845">
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#24323e}</style>
+<rect width="1440" height="845" fill="white"/>
+<text x="45.00" y="42.00" font-size="27" text-anchor="start" font-weight="bold" style="fill:#24323e" >Three contexts: alternative ranks and exclusion predictions</text>
+<text x="45.00" y="74.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#596b78" >Historical scores · words ordered by human norming rank within each context</text>
+<text x="45.00" y="105.00" font-size="17" text-anchor="start" font-weight="normal" style="fill:#596b78" >Exclusion rates average the five trigger-specific items for each query; these are not the 30-pair correlations.</text>
+<text x="45.00" y="151.00" font-size="23" text-anchor="start" font-weight="bold" style="fill:#147d72" >Fridge</text>
+<text x="45.00" y="181.00" font-size="16" text-anchor="start" font-weight="bold" style="fill:#24323e" >Word</text>
+<text x="225.00" y="181.00" font-size="16" text-anchor="start" font-weight="bold" style="fill:#24323e" >Norm</text>
+<text x="295.00" y="181.00" font-size="16" text-anchor="start" font-weight="bold" style="fill:#24323e" >Viewer</text>
+<text x="373.00" y="181.00" font-size="16" text-anchor="start" font-weight="bold" style="fill:#24323e" >Sample</text>
+<text x="45.00" y="211.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >water</text>
+<text x="240.00" y="211.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="318.00" y="211.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="398.00" y="211.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="45.00" y="240.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >juice</text>
+<text x="240.00" y="240.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >2</text>
+<text x="318.00" y="240.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >2</text>
+<text x="398.00" y="240.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >3</text>
+<text x="45.00" y="269.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >milk</text>
+<text x="240.00" y="269.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >3</text>
+<text x="318.00" y="269.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >3</text>
+<text x="398.00" y="269.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >2</text>
+<text x="45.00" y="298.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >yogurt</text>
+<text x="240.00" y="298.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >4</text>
+<text x="318.00" y="298.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >4</text>
+<text x="398.00" y="298.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >4</text>
+<text x="45.00" y="327.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >ketchup</text>
+<text x="240.00" y="327.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >5</text>
+<text x="318.00" y="327.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >5</text>
+<text x="398.00" y="327.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >6</text>
+<text x="45.00" y="356.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >meat</text>
+<text x="240.00" y="356.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >6</text>
+<text x="318.00" y="356.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >6</text>
+<text x="398.00" y="356.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >5</text>
+<text x="45.00" y="399.00" font-size="14" text-anchor="start" font-weight="normal" style="fill:#596b78" >Ranks among the six tested words (1 = highest)</text>
+<line x1="88" y1="695" x2="432" y2="695" stroke="#dfe5ea" stroke-width="1"/>
+<text x="79.00" y="700.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" >0</text>
+<line x1="88" y1="635.0" x2="432" y2="635.0" stroke="#dfe5ea" stroke-width="1"/>
+<text x="79.00" y="640.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.25</text>
+<line x1="88" y1="575.0" x2="432" y2="575.0" stroke="#dfe5ea" stroke-width="1"/>
+<text x="79.00" y="580.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.5</text>
+<line x1="88" y1="515.0" x2="432" y2="515.0" stroke="#dfe5ea" stroke-width="1"/>
+<text x="79.00" y="520.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.75</text>
+<line x1="88" y1="455" x2="432" y2="455" stroke="#dfe5ea" stroke-width="1"/>
+<text x="79.00" y="460.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" >1</text>
+<circle cx="101.5" cy="463.0" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="108.5" cy="455.0" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="115.5" cy="457.784" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="122.5" cy="613.9064727922531" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="115.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 115 718)">water</text>
+<circle cx="160.5" cy="455.0" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="167.5" cy="520.76" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="174.5" cy="534.5840000000001" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="181.5" cy="674.8306803330895" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="174.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 174 718)">juice</text>
+<circle cx="219.5" cy="485.6666666666667" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="226.5" cy="475.15999999999997" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="233.5" cy="519.8" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="240.5" cy="661.136711134842" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="233.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 233 718)">milk</text>
+<circle cx="278.5" cy="644.7333333333333" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="285.5" cy="685.88" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="292.5" cy="618.008" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="299.5" cy="694.9568621781744" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="292.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 292 718)">yogurt</text>
+<circle cx="337.5" cy="661.4" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="344.5" cy="693.56" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="351.5" cy="675.32" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="358.5" cy="694.9841660199288" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="351.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 351 718)">ketchup</text>
+<circle cx="396.5" cy="675.8" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="403.5" cy="692.6" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="410.5" cy="644.504" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="417.5" cy="694.9973202335316" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="410.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 410 718)">meat</text>
+<text x="513.00" y="151.00" font-size="23" text-anchor="start" font-weight="bold" style="fill:#7657a6" >Beach</text>
+<text x="513.00" y="181.00" font-size="16" text-anchor="start" font-weight="bold" style="fill:#24323e" >Word</text>
+<text x="693.00" y="181.00" font-size="16" text-anchor="start" font-weight="bold" style="fill:#24323e" >Norm</text>
+<text x="763.00" y="181.00" font-size="16" text-anchor="start" font-weight="bold" style="fill:#24323e" >Viewer</text>
+<text x="841.00" y="181.00" font-size="16" text-anchor="start" font-weight="bold" style="fill:#24323e" >Sample</text>
+<text x="513.00" y="211.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >bikini</text>
+<text x="708.00" y="211.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="786.00" y="211.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="866.00" y="211.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >3</text>
+<text x="513.00" y="240.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >shorts</text>
+<text x="708.00" y="240.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >2</text>
+<text x="786.00" y="240.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >2</text>
+<text x="866.00" y="240.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="513.00" y="269.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >sunglasses</text>
+<text x="708.00" y="269.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >3</text>
+<text x="786.00" y="269.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >4</text>
+<text x="866.00" y="269.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >4</text>
+<text x="513.00" y="298.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >jeans</text>
+<text x="708.00" y="298.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >4</text>
+<text x="786.00" y="298.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >3</text>
+<text x="866.00" y="298.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >2</text>
+<text x="513.00" y="327.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >jacket</text>
+<text x="708.00" y="327.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >5</text>
+<text x="786.00" y="327.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >5</text>
+<text x="866.00" y="327.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >5</text>
+<text x="513.00" y="356.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >coat</text>
+<text x="708.00" y="356.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >6</text>
+<text x="786.00" y="356.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >6</text>
+<text x="866.00" y="356.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >6</text>
+<text x="513.00" y="399.00" font-size="14" text-anchor="start" font-weight="normal" style="fill:#596b78" >Ranks among the six tested words (1 = highest)</text>
+<line x1="556" y1="695" x2="900" y2="695" stroke="#dfe5ea" stroke-width="1"/>
+<text x="547.00" y="700.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" >0</text>
+<line x1="556" y1="635.0" x2="900" y2="635.0" stroke="#dfe5ea" stroke-width="1"/>
+<text x="547.00" y="640.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.25</text>
+<line x1="556" y1="575.0" x2="900" y2="575.0" stroke="#dfe5ea" stroke-width="1"/>
+<text x="547.00" y="580.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.5</text>
+<line x1="556" y1="515.0" x2="900" y2="515.0" stroke="#dfe5ea" stroke-width="1"/>
+<text x="547.00" y="520.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.75</text>
+<line x1="556" y1="455" x2="900" y2="455" stroke="#dfe5ea" stroke-width="1"/>
+<text x="547.00" y="460.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" >1</text>
+<circle cx="569.5" cy="467.0" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="576.5" cy="547.16" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="583.5" cy="553.88" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="590.5" cy="694.8588701186038" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="583.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 583 718)">bikini</text>
+<circle cx="628.5" cy="512.6" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="635.5" cy="455.0" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="642.5" cy="468.34400000000005" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="649.5" cy="689.1896160764232" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="642.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 642 718)">shorts</text>
+<circle cx="687.5" cy="643.8" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="694.5" cy="591.3199999999999" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="701.5" cy="578.84" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="708.5" cy="694.932247413654" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="701.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 701 718)">sunglasses</text>
+<circle cx="746.5" cy="572.6" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="753.5" cy="529.88" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="760.5" cy="546.488" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="767.5" cy="694.8759300989536" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="760.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 760 718)">jeans</text>
+<circle cx="805.5" cy="606.4181818181818" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="812.5" cy="651.32" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="819.5" cy="630.776" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="826.5" cy="694.987765296266" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="819.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 819 718)">jacket</text>
+<circle cx="864.5" cy="566.2" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="871.5" cy="678.2" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="878.5" cy="671.672" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="885.5" cy="694.9984967676887" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="878.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 878 718)">coat</text>
+<text x="981.00" y="151.00" font-size="23" text-anchor="start" font-weight="bold" style="fill:#bd5b21" >Cold</text>
+<text x="981.00" y="181.00" font-size="16" text-anchor="start" font-weight="bold" style="fill:#24323e" >Word</text>
+<text x="1161.00" y="181.00" font-size="16" text-anchor="start" font-weight="bold" style="fill:#24323e" >Norm</text>
+<text x="1231.00" y="181.00" font-size="16" text-anchor="start" font-weight="bold" style="fill:#24323e" >Viewer</text>
+<text x="1309.00" y="181.00" font-size="16" text-anchor="start" font-weight="bold" style="fill:#24323e" >Sample</text>
+<text x="981.00" y="211.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >heater</text>
+<text x="1176.00" y="211.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="1254.00" y="211.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="1334.00" y="211.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="981.00" y="240.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >blankets</text>
+<text x="1176.00" y="240.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >2</text>
+<text x="1254.00" y="240.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >5</text>
+<text x="1334.00" y="240.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >6</text>
+<text x="981.00" y="269.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >tea</text>
+<text x="1176.00" y="269.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >3</text>
+<text x="1254.00" y="269.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >6</text>
+<text x="1334.00" y="269.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >5</text>
+<text x="981.00" y="298.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >microwave</text>
+<text x="1176.00" y="298.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >4</text>
+<text x="1254.00" y="298.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >3</text>
+<text x="1334.00" y="298.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >2</text>
+<text x="981.00" y="327.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >sink</text>
+<text x="1176.00" y="327.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >5</text>
+<text x="1254.00" y="327.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >4</text>
+<text x="1334.00" y="327.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >4</text>
+<text x="981.00" y="356.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#24323e" >fridge</text>
+<text x="1176.00" y="356.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >6</text>
+<text x="1254.00" y="356.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >2</text>
+<text x="1334.00" y="356.00" font-size="18" text-anchor="middle" font-weight="normal" style="fill:#24323e" >3</text>
+<text x="981.00" y="399.00" font-size="14" text-anchor="start" font-weight="normal" style="fill:#596b78" >Ranks among the six tested words (1 = highest)</text>
+<line x1="1024" y1="695" x2="1368" y2="695" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1015.00" y="700.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" >0</text>
+<line x1="1024" y1="635.0" x2="1368" y2="635.0" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1015.00" y="640.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.25</text>
+<line x1="1024" y1="575.0" x2="1368" y2="575.0" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1015.00" y="580.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.5</text>
+<line x1="1024" y1="515.0" x2="1368" y2="515.0" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1015.00" y="520.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.75</text>
+<line x1="1024" y1="455" x2="1368" y2="455" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1015.00" y="460.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" >1</text>
+<circle cx="1037.5" cy="488.6" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="1044.5" cy="455.96" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="1051.5" cy="455.864" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="1058.5" cy="694.8358181639904" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="1051.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 1051 718)">heater</text>
+<circle cx="1096.5" cy="565.4" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="1103.5" cy="694.52" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="1110.5" cy="666.008" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="1117.5" cy="694.906990978802" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="1110.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 1110 718)">blankets</text>
+<circle cx="1155.5" cy="645.8" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="1162.5" cy="694.04" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="1169.5" cy="651.512" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="1176.5" cy="694.9970622683138" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="1169.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 1169 718)">tea</text>
+<circle cx="1214.5" cy="626.7574660633484" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="1221.5" cy="660.92" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="1228.5" cy="513.1759999999999" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="1235.5" cy="694.9885105317885" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="1228.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 1228 718)">microwave</text>
+<circle cx="1273.5" cy="683.5714285714286" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="1280.5" cy="693.0799999999999" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="1287.5" cy="594.6800000000001" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="1294.5" cy="694.9995237009553" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="1287.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 1287 718)">sink</text>
+<circle cx="1332.5" cy="659.0" r="5" fill="#172e40" stroke="white" stroke-width="1"/>
+<circle cx="1339.5" cy="690.6800000000001" r="5" fill="#237f83" stroke="white" stroke-width="1"/>
+<circle cx="1346.5" cy="568.76" r="5" fill="#66789e" stroke="white" stroke-width="1"/>
+<circle cx="1353.5" cy="694.9823828745892" r="5" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="1346.00" y="718.00" font-size="14" text-anchor="end" font-weight="normal" style="fill:#24323e" transform="rotate(-38 1346 718)">fridge</text>
+<circle cx="70" cy="803" r="6" fill="#172e40" stroke="white" stroke-width="1"/>
+<text x="85.00" y="809.00" font-size="17" text-anchor="start" font-weight="normal" style="fill:#24323e" >Human</text>
+<circle cx="270" cy="803" r="6" fill="#237f83" stroke="white" stroke-width="1"/>
+<text x="285.00" y="809.00" font-size="17" text-anchor="start" font-weight="normal" style="fill:#24323e" >Set K</text>
+<circle cx="470" cy="803" r="6" fill="#66789e" stroke="white" stroke-width="1"/>
+<text x="485.00" y="809.00" font-size="17" text-anchor="start" font-weight="normal" style="fill:#24323e" >Ordering</text>
+<circle cx="670" cy="803" r="6" fill="#bc672c" stroke="white" stroke-width="1"/>
+<text x="685.00" y="809.00" font-size="17" text-anchor="start" font-weight="normal" style="fill:#24323e" >But not</text>
+<text x="950.00" y="809.00" font-size="16" text-anchor="start" font-weight="normal" style="fill:#596b78" >Vertical scale: exclusion rate / prediction</text>
+</svg>

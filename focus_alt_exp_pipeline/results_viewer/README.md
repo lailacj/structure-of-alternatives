@@ -3,11 +3,54 @@
 Open **index.html** in any modern browser. It is a self-contained, offline HTML
 file: no server, package installation, CDN, or network connection is needed.
 
-The viewer covers the current Qwen sampled-prefix results in
+The viewer currently covers the **historical, uncorrected** Qwen sampled-prefix results in
 `focus_alt_exp_pipeline/results/set_variant_qwen`: all ten datasets, nine
 linking structures, sixteen novel-focus contexts, both fit measures, item
 predictions, and exact prompt/candidate scores. It does not mix in the older
 absolute-threshold, human-cloze, or frequency analyses.
+
+### September 17: actual sampling scores and across-context association
+
+The new **Across-context association** page shows nine scatterplots. Each point
+is one focus context: word-ranking Spearman (six alternatives) on the horizontal
+axis, exclusion Spearman (30 ordered pairs) on the vertical axis. Select a point
+to inspect the same coefficients and underlying ranks on the within-context
+page. CSV downloads contain the plotted points and test results.
+
+Both rank pages now default to scores exported from the **actual candidate
+arrays used by the saved sampled structures**. In particular, fridge word
+Spearman is .886, beach .714, and cold .029. The previous direct-target scores
+remain available through an explicitly labeled comparison selector; they are
+not silently substituted when sampling scores are missing. The prompt browser
+also offers experimental candidates from the sampling arrays, separately
+from the saved direct-baseline candidates.
+
+All nine association tests are recalculated during the build, after validating
+and importing the array export. The analysis uses 199,999 two-sided absolute-R
+pairing permutations (+1 correction), Holm adjustment across nine predictors
+and across both definitions (18 tests), and 20,000 paired context bootstrap
+draws with ranks recalculated in every draw. Seed: 20260917. Constant or missing
+context coefficients are omitted explicitly, not set to zero. These exploratory
+tests condition on the existing estimates; they do not propagate participant,
+norming, sampling, or CV-refit uncertainty. Significant versus nonsignificant
+associations are not a test of differences between predictors.
+
+The historical direct No-linking baseline is **unchanged** and still comes from
+its separate direct-target artifact. X but not Y keeps its saved framed scores.
+The run banner and Methods page make this limitation explicit. The update does
+not relabel historical scores as corrected scores, refit boundaries, or modify
+historical result tables.
+
+Read-only Oscar check on September 17: GPU array `6368525` was still running;
+downstream job `6405567` was pending on its dependency. Complete corrected OOF
+predictions and correlation tables did not yet exist. Switching the viewer must
+wait for a complete corrected bundle. Once available, use the corrected results
+directory with `--results-dir`, its `inputs/` directory with `--manifest-dir`,
+and matching corrected arrays with `--log-probs-dir`. Old distribution exports
+are rejected when source/grid/OOF hashes change. Corrected builds additionally
+check source-row hashes against grid/OOF predictions, array hashes and boundary
+metadata, and equality of all direct-target and exported sampling scores.
+The association tests will then be recalculated, not copied from this run.
 
 ## Rebuild locally
 
@@ -17,9 +60,9 @@ From the `structure-of-alternatives` repository root:
 python3 focus_alt_exp_pipeline/code/build_results_viewer.py
 ```
 
-The default build requires only Python 3.8+ and its standard library. It reads
+The build requires Python with NumPy and pandas. It reads
 the source manifest and out-of-fold predictions, rebuilds direct and sampled
-item predictions, and verifies all 180 dataset-level correlation/log-score
+item predictions, and verifies all 261 applicable dataset-level Pearson/log-score/Spearman
 cells against the saved linking tables before writing the HTML.
 
 Editable source files are `viewer.html.in`, `viewer.css`, and `viewer.js` in this
@@ -113,6 +156,10 @@ distributions. Query-only CSVs cannot provide vocabulary-wide top-50 rankings.
 - **Datasets:** both metrics, a model-versus-human scatterplot, and item details.
 - **Linking structures:** one structure across all datasets and focus contexts.
 - **Focus contexts:** all sixteen contexts × nine structures, then item details.
+- **Within-context Spearman:** six word ranks and 30 pair ranks, using the actual
+  sampling-score word measure by default.
+- **Across-context association:** nine context-level scatterplots, permutation
+  tests, bootstrap intervals, leave-one-context-out ranges, and exact values.
 - **Next words & prompts:** exact neutral/framed prompts, top-50 vocabulary
   distributions when supplied, saved experimental candidates, log probabilities,
   raw continuation probabilities, and full-support sampling probabilities.

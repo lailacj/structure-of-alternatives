@@ -14,3 +14,20 @@
 .spearman-chart circle{fill-opacity:.85;stroke-width:1}
 .spearman-chart circle:hover{fill:var(--teal)}
 .spearman-chart .rank-point:focus circle{stroke:var(--ink);stroke-width:2;fill:var(--teal)}
+
+.association-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 22px;margin:26px 0}
+.association-panel{min-width:0}
+.association-panel h2,.association-panel p{margin-left:8px}
+.association-chart{max-height:none}
+.association-chart text{font-size:12px}
+.association-chart circle{fill:#758794;fill-opacity:.85}
+.association-chart .fridge circle{fill:#147d72}
+.association-chart .beach circle{fill:#7657a6}
+.association-chart .cold circle{fill:#bd5b21}
+.association-point{cursor:pointer}
+.association-point:focus circle{stroke:var(--ink);stroke-width:3}
+.association-legend{display:flex;flex-wrap:wrap;gap:22px;color:var(--muted);font-size:.875rem}
+.association-legend .fridge{color:#147d72}.association-legend .beach{color:#7657a6}.association-legend .cold{color:#bd5b21}
+.run-status{margin-top:0;max-width:none}
+@media(max-width:1150px){.association-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:750px){.association-grid{grid-template-columns:minmax(0,1fr);gap:24px}.association-legend{gap:14px}}

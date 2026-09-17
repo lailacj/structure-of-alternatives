@@ -1,0 +1,405 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1290" viewBox="0 0 1440 1290">
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#24323e}</style>
+<rect width="1440" height="1290" fill="white"/>
+<text x="55.00" y="40.00" font-size="27" text-anchor="start" font-weight="bold" style="fill:#24323e" >Word-rank agreement and exclusion agreement across contexts</text>
+<text x="55.00" y="71.00" font-size="18" text-anchor="start" font-weight="normal" style="fill:#596b78" >Sensitivity: word ranks from the actual historical sampling scores · exploratory; fixed predictions</text>
+<circle cx="70" cy="105" r="7" fill="#147d72" stroke="white" stroke-width="1"/>
+<text x="85.00" y="111.00" font-size="17" text-anchor="start" font-weight="normal" style="fill:#24323e" >fridge</text>
+<circle cx="240" cy="105" r="7" fill="#7657a6" stroke="white" stroke-width="1"/>
+<text x="255.00" y="111.00" font-size="17" text-anchor="start" font-weight="normal" style="fill:#24323e" >beach</text>
+<circle cx="410" cy="105" r="7" fill="#bd5b21" stroke="white" stroke-width="1"/>
+<text x="425.00" y="111.00" font-size="17" text-anchor="start" font-weight="normal" style="fill:#24323e" >cold</text>
+<circle cx="610" cy="105" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<text x="625.00" y="111.00" font-size="17" text-anchor="start" font-weight="normal" style="fill:#24323e" >other contexts</text>
+<text x="930.00" y="111.00" font-size="17" text-anchor="start" font-weight="normal" style="fill:#596b78" >Each point is one context</text>
+<text x="90.00" y="150.00" font-size="21" text-anchor="start" font-weight="bold" style="fill:#24323e" >No linking</text>
+<text x="90.00" y="175.00" font-size="16" text-anchor="start" font-weight="normal" style="fill:#596b78" >R = 0.742   p(Holm) = 0.005   n = 16</text>
+<line x1="119.3913043478261" y1="191" x2="119.3913043478261" y2="426" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="90" y1="415.3181818181818" x2="428" y2="415.3181818181818" stroke="#dfe5ea" stroke-width="1"/>
+<text x="119.39" y="450.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0</text>
+<text x="78.00" y="420.32" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0</text>
+<line x1="192.8695652173913" y1="191" x2="192.8695652173913" y2="426" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="90" y1="361.90909090909093" x2="428" y2="361.90909090909093" stroke="#dfe5ea" stroke-width="1"/>
+<text x="192.87" y="450.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.25</text>
+<text x="78.00" y="366.91" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.25</text>
+<line x1="266.3478260869565" y1="191" x2="266.3478260869565" y2="426" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="90" y1="308.5" x2="428" y2="308.5" stroke="#dfe5ea" stroke-width="1"/>
+<text x="266.35" y="450.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.5</text>
+<text x="78.00" y="313.50" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.5</text>
+<line x1="339.82608695652175" y1="191" x2="339.82608695652175" y2="426" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="90" y1="255.0909090909091" x2="428" y2="255.0909090909091" stroke="#dfe5ea" stroke-width="1"/>
+<text x="339.83" y="450.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.75</text>
+<text x="78.00" y="260.09" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.75</text>
+<line x1="413.304347826087" y1="191" x2="413.304347826087" y2="426" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="90" y1="201.6818181818182" x2="428" y2="201.6818181818182" stroke="#dfe5ea" stroke-width="1"/>
+<text x="413.30" y="450.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="78.00" y="206.68" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >1</text>
+<line x1="90" y1="426" x2="428" y2="426" stroke="#84929d" stroke-width="1"/>
+<line x1="90" y1="191" x2="90" y2="426" stroke="#84929d" stroke-width="1"/>
+<circle cx="413.304347826087" cy="228.50939488883185" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="396.5093167701444" cy="218.1303821397591" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="362.91925465825915" cy="259.96408972920455" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="346.1242236026104" cy="301.33736837835454" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="245.3540372669548" cy="325.36040591824093" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="278.94409937884" cy="303.2225861132636" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="312.53416149072524" cy="357.31520971488635" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="194.96894409942087" cy="378.63398449178635" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="329.32919254666785" cy="250.97946588868635" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="262.1490683228974" cy="278.6725830952273" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="396.5093167701444" cy="309.6882644528" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="346.1242236026104" cy="269.31898347585" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="379.71428571420176" cy="263.6538940441636" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="329.32919254666785" cy="306.8084312730682" r="7" fill="#7657a6" stroke="white" stroke-width="1"/>
+<circle cx="127.78881987565043" cy="361.9754603965545" r="7" fill="#bd5b21" stroke="white" stroke-width="1"/>
+<circle cx="379.71428571420176" cy="231.69523378770907" r="7" fill="#147d72" stroke="white" stroke-width="1"/>
+<text x="339.33" y="296.81" font-size="14" text-anchor="start" font-weight="normal" style="fill:#7657a6" >beach</text>
+<text x="137.79" y="351.98" font-size="14" text-anchor="start" font-weight="normal" style="fill:#bd5b21" >cold</text>
+<text x="369.71" y="221.70" font-size="14" text-anchor="end" font-weight="normal" style="fill:#147d72" >fridge</text>
+<text x="555.00" y="150.00" font-size="21" text-anchor="start" font-weight="bold" style="fill:#24323e" >X but not Y</text>
+<text x="555.00" y="175.00" font-size="16" text-anchor="start" font-weight="normal" style="fill:#596b78" >R = 0.183   p(Holm) = 0.494   n = 16</text>
+<line x1="584.3913043478261" y1="191" x2="584.3913043478261" y2="426" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="555" y1="415.3181818181818" x2="893" y2="415.3181818181818" stroke="#dfe5ea" stroke-width="1"/>
+<text x="584.39" y="450.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0</text>
+<text x="543.00" y="420.32" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0</text>
+<line x1="657.8695652173913" y1="191" x2="657.8695652173913" y2="426" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="555" y1="361.90909090909093" x2="893" y2="361.90909090909093" stroke="#dfe5ea" stroke-width="1"/>
+<text x="657.87" y="450.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.25</text>
+<text x="543.00" y="366.91" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.25</text>
+<line x1="731.3478260869565" y1="191" x2="731.3478260869565" y2="426" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="555" y1="308.5" x2="893" y2="308.5" stroke="#dfe5ea" stroke-width="1"/>
+<text x="731.35" y="450.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.5</text>
+<text x="543.00" y="313.50" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.5</text>
+<line x1="804.8260869565217" y1="191" x2="804.8260869565217" y2="426" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="555" y1="255.0909090909091" x2="893" y2="255.0909090909091" stroke="#dfe5ea" stroke-width="1"/>
+<text x="804.83" y="450.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.75</text>
+<text x="543.00" y="260.09" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.75</text>
+<line x1="878.304347826087" y1="191" x2="878.304347826087" y2="426" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="555" y1="201.6818181818182" x2="893" y2="201.6818181818182" stroke="#dfe5ea" stroke-width="1"/>
+<text x="878.30" y="450.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="543.00" y="206.68" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >1</text>
+<line x1="555" y1="426" x2="893" y2="426" stroke="#84929d" stroke-width="1"/>
+<line x1="555" y1="191" x2="555" y2="426" stroke="#84929d" stroke-width="1"/>
+<circle cx="878.304347826087" cy="255.85469689920455" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="861.5093167701443" cy="256.84683870390455" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="827.9192546582592" cy="280.70200777665" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="811.1242236026104" cy="283.82060752441816" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="710.3540372669548" cy="298.10082206478637" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="743.9440993788401" cy="344.31079739500456" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="777.5341614907252" cy="414.1687953530636" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="659.9689440994209" cy="335.1595242528182" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="794.3291925466679" cy="312.75685958969547" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="727.1490683228974" cy="258.23394921190004" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="861.5093167701443" cy="364.0514494785591" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="811.1242236026104" cy="346.26791895710454" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="844.7142857142018" cy="279.6252160068909" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="794.3291925466679" cy="339.75803194094544" r="7" fill="#7657a6" stroke="white" stroke-width="1"/>
+<circle cx="592.7888198756505" cy="252.63874159220455" r="7" fill="#bd5b21" stroke="white" stroke-width="1"/>
+<circle cx="844.7142857142018" cy="240.95616875036364" r="7" fill="#147d72" stroke="white" stroke-width="1"/>
+<text x="804.33" y="329.76" font-size="14" text-anchor="start" font-weight="normal" style="fill:#7657a6" >beach</text>
+<text x="602.79" y="242.64" font-size="14" text-anchor="start" font-weight="normal" style="fill:#bd5b21" >cold</text>
+<text x="834.71" y="230.96" font-size="14" text-anchor="end" font-weight="normal" style="fill:#147d72" >fridge</text>
+<text x="1020.00" y="150.00" font-size="21" text-anchor="start" font-weight="bold" style="fill:#24323e" >Ordering</text>
+<text x="1020.00" y="175.00" font-size="16" text-anchor="start" font-weight="normal" style="fill:#596b78" >R = 0.714   p(Holm) = 0.005   n = 16</text>
+<line x1="1049.391304347826" y1="191" x2="1049.391304347826" y2="426" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="1020" y1="415.3181818181818" x2="1358" y2="415.3181818181818" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1049.39" y="450.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0</text>
+<text x="1008.00" y="420.32" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0</text>
+<line x1="1122.8695652173913" y1="191" x2="1122.8695652173913" y2="426" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="1020" y1="361.90909090909093" x2="1358" y2="361.90909090909093" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1122.87" y="450.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.25</text>
+<text x="1008.00" y="366.91" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.25</text>
+<line x1="1196.3478260869565" y1="191" x2="1196.3478260869565" y2="426" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="1020" y1="308.5" x2="1358" y2="308.5" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1196.35" y="450.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.5</text>
+<text x="1008.00" y="313.50" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.5</text>
+<line x1="1269.8260869565217" y1="191" x2="1269.8260869565217" y2="426" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="1020" y1="255.0909090909091" x2="1358" y2="255.0909090909091" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1269.83" y="450.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.75</text>
+<text x="1008.00" y="260.09" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.75</text>
+<line x1="1343.304347826087" y1="191" x2="1343.304347826087" y2="426" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="1020" y1="201.6818181818182" x2="1358" y2="201.6818181818182" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1343.30" y="450.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="1008.00" y="206.68" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >1</text>
+<line x1="1020" y1="426" x2="1358" y2="426" stroke="#84929d" stroke-width="1"/>
+<line x1="1020" y1="191" x2="1020" y2="426" stroke="#84929d" stroke-width="1"/>
+<circle cx="1343.304347826087" cy="256.98984183044547" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1326.5093167701443" cy="278.24440126425907" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1292.9192546582592" cy="313.30393517126817" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1276.1242236026105" cy="328.1555836460909" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1175.3540372669547" cy="367.65283235597275" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1208.94409937884" cy="327.00389897326363" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1242.5341614907252" cy="347.7513529214227" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1124.968944099421" cy="344.6317649471682" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1259.3291925466679" cy="271.5093713023773" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1192.1490683228974" cy="287.34167705114544" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1326.5093167701443" cy="284.2765809315818" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1276.1242236026105" cy="264.4637588448818" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1309.7142857142017" cy="290.2114678466273" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1259.3291925466679" cy="350.5928011073682" r="7" fill="#7657a6" stroke="white" stroke-width="1"/>
+<circle cx="1057.7888198756505" cy="361.6498546592182" r="7" fill="#bd5b21" stroke="white" stroke-width="1"/>
+<circle cx="1309.7142857142017" cy="256.21175128658183" r="7" fill="#147d72" stroke="white" stroke-width="1"/>
+<text x="1269.33" y="340.59" font-size="14" text-anchor="start" font-weight="normal" style="fill:#7657a6" >beach</text>
+<text x="1067.79" y="351.65" font-size="14" text-anchor="start" font-weight="normal" style="fill:#bd5b21" >cold</text>
+<text x="1299.71" y="246.21" font-size="14" text-anchor="end" font-weight="normal" style="fill:#147d72" >fridge</text>
+<text x="90.00" y="493.00" font-size="21" text-anchor="start" font-weight="bold" style="fill:#24323e" >Set Top-K</text>
+<text x="90.00" y="518.00" font-size="16" text-anchor="start" font-weight="normal" style="fill:#596b78" >R = 0.733   p(Holm) = 0.005   n = 16</text>
+<line x1="119.3913043478261" y1="534" x2="119.3913043478261" y2="769" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="90" y1="758.3181818181819" x2="428" y2="758.3181818181819" stroke="#dfe5ea" stroke-width="1"/>
+<text x="119.39" y="793.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0</text>
+<text x="78.00" y="763.32" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0</text>
+<line x1="192.8695652173913" y1="534" x2="192.8695652173913" y2="769" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="90" y1="704.9090909090909" x2="428" y2="704.9090909090909" stroke="#dfe5ea" stroke-width="1"/>
+<text x="192.87" y="793.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.25</text>
+<text x="78.00" y="709.91" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.25</text>
+<line x1="266.3478260869565" y1="534" x2="266.3478260869565" y2="769" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="90" y1="651.5" x2="428" y2="651.5" stroke="#dfe5ea" stroke-width="1"/>
+<text x="266.35" y="793.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.5</text>
+<text x="78.00" y="656.50" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.5</text>
+<line x1="339.82608695652175" y1="534" x2="339.82608695652175" y2="769" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="90" y1="598.0909090909091" x2="428" y2="598.0909090909091" stroke="#dfe5ea" stroke-width="1"/>
+<text x="339.83" y="793.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.75</text>
+<text x="78.00" y="603.09" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.75</text>
+<line x1="413.304347826087" y1="534" x2="413.304347826087" y2="769" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="90" y1="544.6818181818182" x2="428" y2="544.6818181818182" stroke="#dfe5ea" stroke-width="1"/>
+<text x="413.30" y="793.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="78.00" y="549.68" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >1</text>
+<line x1="90" y1="769" x2="428" y2="769" stroke="#84929d" stroke-width="1"/>
+<line x1="90" y1="534" x2="90" y2="769" stroke="#84929d" stroke-width="1"/>
+<circle cx="413.304347826087" cy="574.4943555322" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="396.5093167701444" cy="571.38024301415" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="362.91925465825915" cy="603.69117596365" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="346.1242236026104" cy="688.7817280922454" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="245.3540372669548" cy="687.0496945401318" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="278.94409937884" cy="674.6673131236682" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="312.53416149072524" cy="646.4379720288273" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="194.96894409942087" cy="705.0269492155137" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="329.32919254666785" cy="642.1265336348682" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="262.1490683228974" cy="636.6105428122772" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="396.5093167701444" cy="652.6882644528" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="346.1242236026104" cy="584.2042729844363" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="379.71428571420176" cy="606.6538940441636" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="329.32919254666785" cy="692.1418317100546" r="7" fill="#7657a6" stroke="white" stroke-width="1"/>
+<circle cx="127.78881987565043" cy="718.7413239891637" r="7" fill="#bd5b21" stroke="white" stroke-width="1"/>
+<circle cx="379.71428571420176" cy="590.9119343609364" r="7" fill="#147d72" stroke="white" stroke-width="1"/>
+<text x="339.33" y="682.14" font-size="14" text-anchor="start" font-weight="normal" style="fill:#7657a6" >beach</text>
+<text x="137.79" y="708.74" font-size="14" text-anchor="start" font-weight="normal" style="fill:#bd5b21" >cold</text>
+<text x="369.71" y="580.91" font-size="14" text-anchor="end" font-weight="normal" style="fill:#147d72" >fridge</text>
+<text x="555.00" y="493.00" font-size="21" text-anchor="start" font-weight="bold" style="fill:#24323e" >Conjunction Top-K</text>
+<text x="555.00" y="518.00" font-size="16" text-anchor="start" font-weight="normal" style="fill:#596b78" >R = 0.851   p(Holm) &lt; .001   n = 16</text>
+<line x1="584.3913043478261" y1="534" x2="584.3913043478261" y2="769" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="555" y1="758.3181818181819" x2="893" y2="758.3181818181819" stroke="#dfe5ea" stroke-width="1"/>
+<text x="584.39" y="793.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0</text>
+<text x="543.00" y="763.32" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0</text>
+<line x1="657.8695652173913" y1="534" x2="657.8695652173913" y2="769" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="555" y1="704.9090909090909" x2="893" y2="704.9090909090909" stroke="#dfe5ea" stroke-width="1"/>
+<text x="657.87" y="793.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.25</text>
+<text x="543.00" y="709.91" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.25</text>
+<line x1="731.3478260869565" y1="534" x2="731.3478260869565" y2="769" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="555" y1="651.5" x2="893" y2="651.5" stroke="#dfe5ea" stroke-width="1"/>
+<text x="731.35" y="793.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.5</text>
+<text x="543.00" y="656.50" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.5</text>
+<line x1="804.8260869565217" y1="534" x2="804.8260869565217" y2="769" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="555" y1="598.0909090909091" x2="893" y2="598.0909090909091" stroke="#dfe5ea" stroke-width="1"/>
+<text x="804.83" y="793.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.75</text>
+<text x="543.00" y="603.09" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.75</text>
+<line x1="878.304347826087" y1="534" x2="878.304347826087" y2="769" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="555" y1="544.6818181818182" x2="893" y2="544.6818181818182" stroke="#dfe5ea" stroke-width="1"/>
+<text x="878.30" y="793.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="543.00" y="549.68" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >1</text>
+<line x1="555" y1="769" x2="893" y2="769" stroke="#84929d" stroke-width="1"/>
+<line x1="555" y1="534" x2="555" y2="769" stroke="#84929d" stroke-width="1"/>
+<circle cx="878.304347826087" cy="568.8786825251864" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="861.5093167701443" cy="593.8121024835455" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="827.9192546582592" cy="610.6670187218863" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="811.1242236026104" cy="669.6281166962773" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="710.3540372669548" cy="704.3229305881182" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="743.9440993788401" cy="665.9685476347091" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="777.5341614907252" cy="644.9150715840591" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="659.9689440994209" cy="687.50320241275" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="794.3291925466679" cy="634.5779949526545" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="727.1490683228974" cy="637.0423845608045" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="861.5093167701443" cy="629.7254347775364" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="811.1242236026104" cy="597.6995350418273" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="844.7142857142018" cy="618.2837126888228" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="794.3291925466679" cy="687.0225617778909" r="7" fill="#7657a6" stroke="white" stroke-width="1"/>
+<circle cx="592.7888198756505" cy="700.0337932555636" r="7" fill="#bd5b21" stroke="white" stroke-width="1"/>
+<circle cx="844.7142857142018" cy="580.8340702074455" r="7" fill="#147d72" stroke="white" stroke-width="1"/>
+<text x="804.33" y="677.02" font-size="14" text-anchor="start" font-weight="normal" style="fill:#7657a6" >beach</text>
+<text x="602.79" y="690.03" font-size="14" text-anchor="start" font-weight="normal" style="fill:#bd5b21" >cold</text>
+<text x="834.71" y="570.83" font-size="14" text-anchor="end" font-weight="normal" style="fill:#147d72" >fridge</text>
+<text x="1020.00" y="493.00" font-size="21" text-anchor="start" font-weight="bold" style="fill:#24323e" >Disjunction Top-K</text>
+<text x="1020.00" y="518.00" font-size="16" text-anchor="start" font-weight="normal" style="fill:#596b78" >R = 0.758   p(Holm) = 0.005   n = 16</text>
+<line x1="1049.391304347826" y1="534" x2="1049.391304347826" y2="769" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="1020" y1="758.3181818181819" x2="1358" y2="758.3181818181819" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1049.39" y="793.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0</text>
+<text x="1008.00" y="763.32" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0</text>
+<line x1="1122.8695652173913" y1="534" x2="1122.8695652173913" y2="769" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="1020" y1="704.9090909090909" x2="1358" y2="704.9090909090909" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1122.87" y="793.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.25</text>
+<text x="1008.00" y="709.91" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.25</text>
+<line x1="1196.3478260869565" y1="534" x2="1196.3478260869565" y2="769" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="1020" y1="651.5" x2="1358" y2="651.5" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1196.35" y="793.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.5</text>
+<text x="1008.00" y="656.50" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.5</text>
+<line x1="1269.8260869565217" y1="534" x2="1269.8260869565217" y2="769" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="1020" y1="598.0909090909091" x2="1358" y2="598.0909090909091" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1269.83" y="793.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.75</text>
+<text x="1008.00" y="603.09" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.75</text>
+<line x1="1343.304347826087" y1="534" x2="1343.304347826087" y2="769" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="1020" y1="544.6818181818182" x2="1358" y2="544.6818181818182" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1343.30" y="793.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="1008.00" y="549.68" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >1</text>
+<line x1="1020" y1="769" x2="1358" y2="769" stroke="#84929d" stroke-width="1"/>
+<line x1="1020" y1="534" x2="1020" y2="769" stroke="#84929d" stroke-width="1"/>
+<circle cx="1343.304347826087" cy="585.8887696585409" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1326.5093167701443" cy="608.5125227017227" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1292.9192546582592" cy="642.2444117968682" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1276.1242236026105" cy="672.0433782196272" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1175.3540372669547" cy="696.91638795725" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1208.94409937884" cy="669.8082970178682" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1242.5341614907252" cy="690.7513529214227" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1124.968944099421" cy="693.5850311303909" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1259.3291925466679" cy="613.5884520573045" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1192.1490683228974" cy="629.1015820787045" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1326.5093167701443" cy="630.8256595849" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1276.1242236026105" cy="585.6128511000591" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1309.7142857142017" cy="612.4992306963863" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1259.3291925466679" cy="689.6618835393682" r="7" fill="#7657a6" stroke="white" stroke-width="1"/>
+<circle cx="1057.7888198756505" cy="710.2307812159" r="7" fill="#bd5b21" stroke="white" stroke-width="1"/>
+<circle cx="1309.7142857142017" cy="590.6051905537909" r="7" fill="#147d72" stroke="white" stroke-width="1"/>
+<text x="1269.33" y="679.66" font-size="14" text-anchor="start" font-weight="normal" style="fill:#7657a6" >beach</text>
+<text x="1067.79" y="700.23" font-size="14" text-anchor="start" font-weight="normal" style="fill:#bd5b21" >cold</text>
+<text x="1299.71" y="580.61" font-size="14" text-anchor="end" font-weight="normal" style="fill:#147d72" >fridge</text>
+<text x="90.00" y="836.00" font-size="21" text-anchor="start" font-weight="bold" style="fill:#24323e" >Set Top-p</text>
+<text x="90.00" y="861.00" font-size="16" text-anchor="start" font-weight="normal" style="fill:#596b78" >R = 0.803   p(Holm) = 0.004   n = 15</text>
+<line x1="119.3913043478261" y1="877" x2="119.3913043478261" y2="1112" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="90" y1="1101.3181818181818" x2="428" y2="1101.3181818181818" stroke="#dfe5ea" stroke-width="1"/>
+<text x="119.39" y="1136.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0</text>
+<text x="78.00" y="1106.32" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0</text>
+<line x1="192.8695652173913" y1="877" x2="192.8695652173913" y2="1112" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="90" y1="1047.909090909091" x2="428" y2="1047.909090909091" stroke="#dfe5ea" stroke-width="1"/>
+<text x="192.87" y="1136.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.25</text>
+<text x="78.00" y="1052.91" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.25</text>
+<line x1="266.3478260869565" y1="877" x2="266.3478260869565" y2="1112" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="90" y1="994.5" x2="428" y2="994.5" stroke="#dfe5ea" stroke-width="1"/>
+<text x="266.35" y="1136.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.5</text>
+<text x="78.00" y="999.50" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.5</text>
+<line x1="339.82608695652175" y1="877" x2="339.82608695652175" y2="1112" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="90" y1="941.0909090909091" x2="428" y2="941.0909090909091" stroke="#dfe5ea" stroke-width="1"/>
+<text x="339.83" y="1136.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.75</text>
+<text x="78.00" y="946.09" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.75</text>
+<line x1="413.304347826087" y1="877" x2="413.304347826087" y2="1112" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="90" y1="887.6818181818182" x2="428" y2="887.6818181818182" stroke="#dfe5ea" stroke-width="1"/>
+<text x="413.30" y="1136.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="78.00" y="892.68" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >1</text>
+<line x1="90" y1="1112" x2="428" y2="1112" stroke="#84929d" stroke-width="1"/>
+<line x1="90" y1="877" x2="90" y2="1112" stroke="#84929d" stroke-width="1"/>
+<circle cx="413.304347826087" cy="918.5963278375909" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="396.5093167701444" cy="914.38024301415" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="362.91925465825915" cy="946.69117596365" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="346.1242236026104" cy="1028.6062835892455" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="245.3540372669548" cy="1042.409135462541" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="278.94409937884" cy="1011.6640573101818" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="194.96894409942087" cy="1048.0269492155137" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="329.32919254666785" cy="981.4418090623909" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="262.1490683228974" cy="979.6105428122772" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="396.5093167701444" cy="986.4608233956046" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="346.1242236026104" cy="937.2447225676682" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="379.71428571420176" cy="949.6538940441636" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="329.32919254666785" cy="1035.1418317100545" r="7" fill="#7657a6" stroke="white" stroke-width="1"/>
+<circle cx="127.78881987565043" cy="1049.566067262159" r="7" fill="#bd5b21" stroke="white" stroke-width="1"/>
+<circle cx="379.71428571420176" cy="929.0631827829636" r="7" fill="#147d72" stroke="white" stroke-width="1"/>
+<text x="339.33" y="1025.14" font-size="14" text-anchor="start" font-weight="normal" style="fill:#7657a6" >beach</text>
+<text x="137.79" y="1039.57" font-size="14" text-anchor="start" font-weight="normal" style="fill:#bd5b21" >cold</text>
+<text x="369.71" y="919.06" font-size="14" text-anchor="end" font-weight="normal" style="fill:#147d72" >fridge</text>
+<text x="90.00" y="1159.00" font-size="13" text-anchor="start" font-weight="normal" style="fill:#596b78" >mask omitted: constant exclusion predictions</text>
+<text x="555.00" y="836.00" font-size="21" text-anchor="start" font-weight="bold" style="fill:#24323e" >Conjunction Top-p</text>
+<text x="555.00" y="861.00" font-size="16" text-anchor="start" font-weight="normal" style="fill:#596b78" >R = 0.833   p(Holm) = 0.002   n = 15</text>
+<line x1="584.3913043478261" y1="877" x2="584.3913043478261" y2="1112" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="555" y1="1101.3181818181818" x2="893" y2="1101.3181818181818" stroke="#dfe5ea" stroke-width="1"/>
+<text x="584.39" y="1136.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0</text>
+<text x="543.00" y="1106.32" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0</text>
+<line x1="657.8695652173913" y1="877" x2="657.8695652173913" y2="1112" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="555" y1="1047.909090909091" x2="893" y2="1047.909090909091" stroke="#dfe5ea" stroke-width="1"/>
+<text x="657.87" y="1136.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.25</text>
+<text x="543.00" y="1052.91" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.25</text>
+<line x1="731.3478260869565" y1="877" x2="731.3478260869565" y2="1112" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="555" y1="994.5" x2="893" y2="994.5" stroke="#dfe5ea" stroke-width="1"/>
+<text x="731.35" y="1136.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.5</text>
+<text x="543.00" y="999.50" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.5</text>
+<line x1="804.8260869565217" y1="877" x2="804.8260869565217" y2="1112" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="555" y1="941.0909090909091" x2="893" y2="941.0909090909091" stroke="#dfe5ea" stroke-width="1"/>
+<text x="804.83" y="1136.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.75</text>
+<text x="543.00" y="946.09" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.75</text>
+<line x1="878.304347826087" y1="877" x2="878.304347826087" y2="1112" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="555" y1="887.6818181818182" x2="893" y2="887.6818181818182" stroke="#dfe5ea" stroke-width="1"/>
+<text x="878.30" y="1136.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="543.00" y="892.68" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >1</text>
+<line x1="555" y1="1112" x2="893" y2="1112" stroke="#84929d" stroke-width="1"/>
+<line x1="555" y1="877" x2="555" y2="1112" stroke="#84929d" stroke-width="1"/>
+<circle cx="878.304347826087" cy="914.8690852077591" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="861.5093167701443" cy="936.2644930571728" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="827.9192546582592" cy="953.6670187218863" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="811.1242236026104" cy="1015.0736231513864" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="710.3540372669548" cy="1043.9887998778727" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="743.9440993788401" cy="1006.4758625721228" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="659.9689440994209" cy="1034.9877718976045" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="794.3291925466679" cy="962.0452192833272" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="727.1490683228974" cy="980.0423845608045" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="861.5093167701443" cy="973.1591736203909" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="811.1242236026104" cy="944.558396960459" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="844.7142857142018" cy="961.1435153007727" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="794.3291925466679" cy="1032.6631402980045" r="7" fill="#7657a6" stroke="white" stroke-width="1"/>
+<circle cx="592.7888198756505" cy="1035.9016888111455" r="7" fill="#bd5b21" stroke="white" stroke-width="1"/>
+<circle cx="844.7142857142018" cy="923.1268805505091" r="7" fill="#147d72" stroke="white" stroke-width="1"/>
+<text x="804.33" y="1022.66" font-size="14" text-anchor="start" font-weight="normal" style="fill:#7657a6" >beach</text>
+<text x="602.79" y="1025.90" font-size="14" text-anchor="start" font-weight="normal" style="fill:#bd5b21" >cold</text>
+<text x="834.71" y="913.13" font-size="14" text-anchor="end" font-weight="normal" style="fill:#147d72" >fridge</text>
+<text x="555.00" y="1159.00" font-size="13" text-anchor="start" font-weight="normal" style="fill:#596b78" >mask omitted: constant exclusion predictions</text>
+<text x="1020.00" y="836.00" font-size="21" text-anchor="start" font-weight="bold" style="fill:#24323e" >Disjunction Top-p</text>
+<text x="1020.00" y="861.00" font-size="16" text-anchor="start" font-weight="normal" style="fill:#596b78" >R = 0.768   p(Holm) = 0.004   n = 16</text>
+<line x1="1049.391304347826" y1="877" x2="1049.391304347826" y2="1112" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="1020" y1="1101.3181818181818" x2="1358" y2="1101.3181818181818" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1049.39" y="1136.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0</text>
+<text x="1008.00" y="1106.32" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0</text>
+<line x1="1122.8695652173913" y1="877" x2="1122.8695652173913" y2="1112" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="1020" y1="1047.909090909091" x2="1358" y2="1047.909090909091" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1122.87" y="1136.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.25</text>
+<text x="1008.00" y="1052.91" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.25</text>
+<line x1="1196.3478260869565" y1="877" x2="1196.3478260869565" y2="1112" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="1020" y1="994.5" x2="1358" y2="994.5" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1196.35" y="1136.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.5</text>
+<text x="1008.00" y="999.50" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.5</text>
+<line x1="1269.8260869565217" y1="877" x2="1269.8260869565217" y2="1112" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="1020" y1="941.0909090909091" x2="1358" y2="941.0909090909091" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1269.83" y="1136.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >0.75</text>
+<text x="1008.00" y="946.09" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >0.75</text>
+<line x1="1343.304347826087" y1="877" x2="1343.304347826087" y2="1112" stroke="#dfe5ea" stroke-width="1"/>
+<line x1="1020" y1="887.6818181818182" x2="1358" y2="887.6818181818182" stroke="#dfe5ea" stroke-width="1"/>
+<text x="1343.30" y="1136.00" font-size="15" text-anchor="middle" font-weight="normal" style="fill:#24323e" >1</text>
+<text x="1008.00" y="892.68" font-size="15" text-anchor="end" font-weight="normal" style="fill:#24323e" >1</text>
+<line x1="1020" y1="1112" x2="1358" y2="1112" stroke="#84929d" stroke-width="1"/>
+<line x1="1020" y1="877" x2="1020" y2="1112" stroke="#84929d" stroke-width="1"/>
+<circle cx="1343.304347826087" cy="942.9645218697409" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1326.5093167701443" cy="951.8256213461818" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1292.9192546582592" cy="985.2444117968682" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1276.1242236026105" cy="996.9216057153773" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1175.3540372669547" cy="1053.6528323559728" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1208.94409937884" cy="1013.0038989732636" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1242.5341614907252" cy="1033.7513529214227" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1124.968944099421" cy="1038.7734860456" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1259.3291925466679" cy="957.0570986651727" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1192.1490683228974" cy="972.1015820787045" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1326.5093167701443" cy="972.6107835069273" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1276.1242236026105" cy="946.0214058999909" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1309.7142857142017" cy="960.1229370619318" r="5" fill="#708493" stroke="white" stroke-width="1"/>
+<circle cx="1259.3291925466679" cy="1030.9700913458091" r="7" fill="#7657a6" stroke="white" stroke-width="1"/>
+<circle cx="1057.7888198756505" cy="1051.9235017106228" r="7" fill="#bd5b21" stroke="white" stroke-width="1"/>
+<circle cx="1309.7142857142017" cy="941.2718165860318" r="7" fill="#147d72" stroke="white" stroke-width="1"/>
+<text x="1269.33" y="1020.97" font-size="14" text-anchor="start" font-weight="normal" style="fill:#7657a6" >beach</text>
+<text x="1067.79" y="1041.92" font-size="14" text-anchor="start" font-weight="normal" style="fill:#bd5b21" >cold</text>
+<text x="1299.71" y="931.27" font-size="14" text-anchor="end" font-weight="normal" style="fill:#147d72" >fridge</text>
+<text x="744.00" y="1220.00" font-size="21" text-anchor="middle" font-weight="normal" style="fill:#24323e" >Word-rank Spearman within context (six alternatives)</text>
+<text x="24.00" y="690.00" font-size="21" text-anchor="middle" font-weight="normal" style="fill:#24323e" transform="rotate(-90 24 690)">Exclusion Spearman within context (30 trigger–query pairs)</text>
+<text x="55.00" y="1260.00" font-size="16" text-anchor="start" font-weight="normal" style="fill:#596b78" >R correlates the two context-level measures. Two-sided permutation tests; Holm adjustment across nine predictors.</text>
+</svg>

@@ -38,15 +38,16 @@ test("JavaScript metrics agree with every Python-generated dataset and context s
 });
 
 function harness(payload=data){
-  const listeners={},elements={};
+  const listeners={},elements={},downloads=[];
   const element=id=>elements[id]||(elements[id]={id,innerHTML:"",textContent:"",focus(){},setAttribute(){},removeAttribute(){},scrollIntoView(){}});
   element("results-data").textContent=JSON.stringify(payload);
   const document={activeElement:null,getElementById:element,querySelectorAll:()=>[],addEventListener:(name,fn)=>{listeners[name]=fn;},createElement:()=>({click(){}})};
-  const sandbox={document,window:{scrollTo(){},addEventListener(){}},console,Blob,URL,setTimeout};
+  const sandbox={document,window:{scrollTo(){},addEventListener(){}},console,Blob,
+    URL:{createObjectURL(blob){downloads.push(blob);return "blob:test";},revokeObjectURL(){}},setTimeout:fn=>fn()};
   vm.createContext(sandbox);
   // Exercise the scripts actually shipped in the HTML, not only the JS source.
   for(const script of html.matchAll(/<script>([\s\S]*?)<\/script>/g))vm.runInContext(script[1],sandbox);
-  return {html:()=>element("main").innerHTML,
+  return {html:()=>element("main").innerHTML,downloads:()=>Promise.all(downloads.map(blob=>blob.text())),
     click:dataset=>listeners.click({target:{closest:()=>({dataset})}}),
     change:(id,value)=>listeners.change({target:{id,value}}),
     input:(id,value)=>listeners.input({target:{id,value}})};
@@ -173,7 +174,7 @@ test("Spearman page exposes both measures and context ranks",()=>{
 
 test("rank plots preserve every observation across context and model changes",()=>{
   const app=harness();app.click({view:"spearman"});app.click({spearmanExample:"fridge"});
-  assert.match(app.html(),/ρ = 1.000/);assert.match(app.html(),/ρ = 0.784/);
+  assert.match(app.html(),/ρ = 0.886/);assert.match(app.html(),/ρ = 0.784/);
   for(const context of data.contexts){
     app.change("context",context);
     for(const model of data.spearman.negation_spearman_by_context.filter(r=>r.context===context)){
@@ -186,6 +187,61 @@ test("rank plots preserve every observation across context and model changes",()
       if(model.status!=="defined")assert.match(app.html(),/Undefined correlation:/);
     }
   }
+});
+
+test("across-context plots use the actual sampled inputs and link to the same rank details",()=>{
+  const app=harness();app.click({view:"association"});
+  assert.match(app.html(),/Historical sampled-prefix run/);
+  assert.equal((app.html().match(/class="chart association-chart"/g)||[]).length,9);
+  const tests=data.rankAssociation.tests.filter(r=>r.definition==="sampling");
+  assert.equal(tests.length,9);
+  assert.equal((app.html().match(/class="association-point /g)||[]).length,142);
+  for(const t of tests){
+    const rows=data.rankAssociation.points.filter(r=>r.model===t.model&&r.sampling!==null&&r.negation!==null);
+    assert.equal(rows.length,t.n);
+    assert.ok(Math.abs(math.spearman(rows.map(r=>r.sampling),rows.map(r=>r.negation))-t.R)<1e-12);
+    if([3,6].includes(t.model))assert.deepEqual(t.omitted,["mask"]);
+  }
+  assert.match(app.html(),/R = 0.851/);assert.match(app.html(),/p\(Holm\) &lt; .001/);
+  app.click({rankContext:"beach",rankModel:"4"});
+  assert.match(app.html(),/Word-ranking Spearman · beach/);
+  assert.match(app.html(),/ρ = 0.714/);assert.match(app.html(),/ρ = 0.303/);
+  app.change("wordSource","target");assert.match(app.html(),/ρ = 0.943/);
+  app.click({view:"association"});assert.match(app.html(),/Separate direct-target scores \(comparison\)/);
+  assert.match(app.html(),/R = 0.356/);
+  app.change("wordSource","sampling");assert.match(app.html(),/R = 0.183/);
+  assert.ok(!/\bNaN\b|>undefined</.test(app.html()));
+});
+
+test("word ranks agree with exported sampling candidates, without changing exclusion predictions",()=>{
+  for(const r of data.spearman.word_paired_ranks){
+    const prompt=data.prompts.find(p=>p.id===r.prompt_id);
+    const candidate=prompt.distribution.find(c=>c.word===r.word);
+    assert.equal(candidate.logp,r.model_value);
+    assert.equal(candidate.rank,r.vocabulary_rank);
+  }
+  assert.deepEqual(data.spearman.negation_paired_ranks,data.targetScoreSpearman.negation_paired_ranks);
+  assert.equal(data.scoreAlignment.matched,false);
+  const app=harness();app.click({view:"spearman"});app.change("context","fridge");
+  assert.ok(!app.html().includes("model ranks all six words in the human order"));
+  app.change("wordSource","target");assert.match(app.html(),/ρ = 1.000/);
+});
+
+test("sampling-target browser and CSV exports reflect the selected score source",async()=>{
+  const app=harness();
+  const fridge=data.prompts.find(p=>p.frame==="Neutral"&&p.contexts.includes("fridge"));
+  app.click({prompt:fridge.id});app.change("candidateSource","samplingTargets");
+  assert.match(app.html(),/<h2>Experimental candidates · sampling-array scores<\/h2>/);
+  assert.match(app.html(),/6 shown/);
+  app.click({download:"words"});
+  app.click({view:"association"});app.click({download:"association"});app.click({download:"association-tests"});
+  const [words,points,tests]=await app.downloads();
+  assert.equal(words.split("\r\n").length,7);
+  assert.match(words,/samplingTargets/);
+  assert.equal(points.split("\r\n").length,145);
+  assert.equal(tests.split("\r\n").length,10);
+  assert.match(points,/word_score_source/);assert.match(points,/"sampling"/);
+  assert.match(tests,/holm18/);assert.match(tests,/199999/);
 });
 
 test("non-focus Spearman uses the same saved items and is available alongside Pearson",()=>{

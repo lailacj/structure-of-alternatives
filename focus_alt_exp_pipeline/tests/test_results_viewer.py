@@ -10,6 +10,7 @@ from pathlib import Path
 PIPELINE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PIPELINE / "code"))
 import build_results_viewer as viewer
+import viewer_rank_association as association
 
 
 class ResultsViewerTests(unittest.TestCase):
@@ -167,6 +168,67 @@ class FullDistributionTests(unittest.TestCase):
         self.np.save(self.directory / "prompt_test.log_probs.npy", self.np.array([0, -1, -2, self.np.nan]))
         with self.assertRaisesRegex(ValueError, "Invalid score array"):
             viewer.add_full_distributions(self.prompts, self.directory, 2, self.directory)
+
+    def test_corrected_array_hash_is_checked_before_export(self):
+        self.prompts["prompt_test"]["expectedArraySha256"] = "wrong"
+        with self.assertRaisesRegex(ValueError, "Array hash disagrees"):
+            viewer.add_full_distributions(self.prompts, self.directory, 2, self.directory)
+
+
+class RankAssociationTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.payload = viewer.build_payload(PIPELINE / "results/set_variant_qwen", PIPELINE / "scoring_manifests/set_variant_qwen")
+        viewer.preserve_distributions(cls.payload, PIPELINE / "results_viewer/index.html")
+        cls.original = copy.deepcopy(cls.payload)
+        association.add_rank_analysis(cls.payload)
+
+    def test_recomputed_tests_reproduce_independent_exploratory_analysis(self):
+        expected = viewer.read_csv(PIPELINE / "diagnostics/context_rank_association_2026-09-17/association_tests.csv")
+        self.assertEqual(len(self.payload["rankAssociation"]["tests"]), 18)
+        for row in self.payload["rankAssociation"]["tests"]:
+            model = self.payload["models"][row["model"]]
+            label = "No linking" if model == "No linking structure" else model
+            definition = "sampling_word_rho" if row["definition"] == "sampling" else "viewer_word_rho"
+            old = next(r for r in expected if r["word_definition"] == definition and r["predictor"] == label)
+            for key, column in (("R", "spearman"), ("p", "permutation_p_two_sided"),
+                                ("holm9", "holm_p_within_definition_9"),
+                                ("holm18", "holm_p_all_18_sensitivity"),
+                                ("ciLow", "bootstrap_95_low"), ("ciHigh", "bootstrap_95_high")):
+                self.assertAlmostEqual(row[key], float(old[column]), places=10)
+
+    def test_all_scores_and_predictions_have_matching_provenance(self):
+        self.assertEqual(len(self.payload["spearman"]["word_paired_ranks"]), 96)
+        for row in self.payload["spearman"]["word_paired_ranks"]:
+            prompt = next(p for p in self.payload["prompts"] if p["id"] == row["prompt_id"])
+            candidate = next(c for c in prompt["distribution"] if c["word"] == row["word"])
+            self.assertEqual(candidate["logp"], row["model_value"])
+        for key in ("items", "datasetSummaries", "contextSummaries", "prompts"):
+            self.assertEqual(self.payload[key], self.original[key])
+        self.assertEqual(self.payload["spearman"]["negation_paired_ranks"], self.original["spearman"]["negation_paired_ranks"])
+
+    def test_missing_sampling_scores_are_not_replaced_with_direct_scores(self):
+        payload = copy.deepcopy(self.original)
+        prompt = next(p for p in payload["prompts"] if "fridge" in p["contexts"] and p["frame"] == "Neutral")
+        prompt["distribution"] = []
+        association.add_rank_analysis(payload, permutations=99, bootstraps=99)
+        row = next(r for r in payload["spearman"]["word_spearman_by_context"] if r["context"] == "fridge")
+        self.assertIsNone(row["spearman_rho"])
+        self.assertEqual(row["status"], "missing_sampling_scores")
+        for test in payload["rankAssociation"]["tests"]:
+            if test["definition"] == "sampling":
+                self.assertIn("fridge", test["omitted"])
+
+    def test_corrected_run_refuses_mixed_target_and_sampling_artifacts(self):
+        payload = copy.deepcopy(self.original)
+        payload["run"]["corrected"] = True
+        with self.assertRaisesRegex(ValueError, "requires matching direct-target"):
+            association.add_rank_analysis(payload, permutations=9, bootstraps=9)
+
+    def test_rank_ties_and_undefined_associations(self):
+        self.assertAlmostEqual(association.rho([1, 1, 3, 4], [4, 3, 2, 1]), -.9486832980505138)
+        self.assertIsNone(association.rho([1, 1, 1], [1, 2, 3]))
+        self.assertEqual(association.holm([.01, .04, .03]), [.03, .06, .06])
 
 
 if __name__ == "__main__":
