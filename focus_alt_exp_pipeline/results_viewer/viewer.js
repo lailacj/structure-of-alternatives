@@ -69,7 +69,7 @@ const integer=v=>Number(v).toLocaleString("en-US");
 const title=(eyebrow,heading,sub,action="")=>`<div class="topline"><div><div class="eyebrow">${eyebrow}</div><h1>${heading}</h1><p class="muted">${sub}</p></div>${action}</div>`;
 const stat=(value,label,small=false)=>`<div class="stat"><div class="value ${small?"small-value":""}">${value}</div><div class="label">${label}</div></div>`;
 const select=(id,label,options,value)=>`<label for="${id}">${label}<select id="${id}">${options.map(([v,l])=>`<option value="${esc(v)}" ${String(value)===String(v)?"selected":""}>${esc(l)}</option>`).join("")}</select></label>`;
-const supportsDatasetSpearman=()=>state.view==="structures"||(state.view==="datasets"&&state.dataset!=="novel_focus");
+const supportsDatasetSpearman=()=>["overview","structures"].includes(state.view)||(state.view==="datasets"&&state.dataset!=="novel_focus");
 const metricControl=()=>select("metric","Fit measure",[["log","Mean proper log score"],["r","Pearson correlation"],...(supportsDatasetSpearman()?[["rho","Spearman correlation"]]:[])],state.metric);
 const modelControl=()=>select("model","Linking structure",D.models.map((m,i)=>[i,m]),state.model);
 const datasetControl=()=>select("dataset","Dataset",D.datasets.map(d=>[d.id,d.label]),state.dataset);
@@ -143,7 +143,27 @@ function distributions(){
     <p class="caption">Gray bars: human rates. Colored outlines: model predictions. Bins are 5 percentage points wide: [0%, 5%), …, [95%, 100%]. Each matched analysis unit has equal weight. All models in the selected dataset/context share identical axes, including when filtering by model. Hover over a bin for counts. Human values are item or scale rates, not individual binary responses.</p>
     <div class="grid-two">${all.map((d,m)=>state.distributionModel!=="all"&&Number(state.distributionModel)!==m?"":`<section class="panel"><h2 style="color:${colors[m]}">${esc(D.models[m])}${context!=="all"?` · ${esc(context)}`:""}</h2>${distributionPlot(d,m,ymax)}</section>`).join("")}</div>`;
 }
+const focusSpearmanModels=[["No linking structure","direct"],["X but not Y","direct"],["set","top_k"],["set","top_p"],["ordering","top_k"],["conjunction","top_k"],["conjunction","top_p"],["disjunction","top_k"],["disjunction","top_p"]];
+function overviewSpearmanRows(){
+  return D.datasets.filter(d=>state.coverage!=="shared"||!d.id.startsWith("rnx_")).map(d=>({
+    id:d.id,label:d.label+(d.id==="novel_focus"?" · mean within-context":""),
+    stats:D.datasetSummaries[d.id].map((s,m)=>{
+      if(d.id!=="novel_focus")return s;
+      const [structure,variant]=focusSpearmanModels[m];
+      const result=D.spearman.mean_within_context_spearman.find(r=>r.measure==="negation"&&r.structure===structure&&r.variant===variant);
+      return {...s,rho:result?.mean_within_context_spearman??null,validContexts:result?.valid_contexts??0,totalContexts:result?.total_contexts??D.contexts.length};
+    })
+  }));
+}
+function overviewSpearman(){
+  const rows=overviewSpearmanRows(),focus=rows.find(r=>r.id==="novel_focus");
+  return title("Cross-dataset comparison","How do the linking structures fit?","Compare Spearman rank correlations, then select a cell to inspect its results.",downloadButton("overview","Download Spearman matrix"))+
+    `<div class="controls">${metricControl()}${select("coverage","Comparison coverage",[["all","All 10 datasets"],["shared","5 datasets with all 9 structures"]],state.coverage)}</div>`+
+    `<section class="panel"><h2>Datasets × linking structures</h2><p class="caption">Spearman ρ · higher is better. Hu and R&X use the saved dataset-level correlations. The novel focus row uses mean within-context exclusion correlations.</p>${heatmap(rows,"dataset")}<p class="caption">Ranks use the same matched analysis items as Pearson, with average ranks for ties. Hu ranks scales within each dataset (averaging van Tiel template probabilities first); R&X ranks the 60 items within each condition.</p></section>`+
+    `<section class="panel"><h2>Focus study: mean within-context Spearman</h2><p>Each of the 16 contexts ranks its 30 trigger–query pairs separately. The matrix averages defined context correlations with equal weight; it does not pool pairs across contexts. Constant predictions produce undefined correlations and are excluded from the mean.</p><p class="caption">Valid contexts: ${focus.stats.map((s,m)=>`${esc(short[m])}: ${s.validContexts}/${s.totalContexts}`).join(" · ")}.</p><button data-view="spearman">Explore focus within-context Spearman</button></section>`;
+}
 function overview(){
+  if(state.metric==="rho")return overviewSpearman();
   const rows=scopeItems(),stats=D.models.map((_,m)=>aggregate(rows,m,state.balanced));
   const comparable=stats.map((s,m)=>({...s,m})).filter(s=>s.datasets===new Set(rows.map(r=>r.dataset)).size&&s[state.metric]!==null).sort((a,b)=>b[state.metric]-a[state.metric]);
   const winner=comparable[0],novel=D.datasetSummaries.novel_focus;
@@ -334,6 +354,7 @@ function render(){
 function csvDownload(kind){
   let rows=[];
   if(kind==="overview")rows=D.models.map((m,i)=>{const s=aggregate(scopeItems(),i,state.balanced);return {model:m,aggregation:state.balanced?"equal_dataset_means":"pooled_units",coverage:state.coverage,n:s.n,datasets:s.datasets,correlation:s.r,mean_log_score:s.log};});
+  if(kind==="overview"&&state.metric==="rho")rows=overviewSpearmanRows().flatMap(d=>d.stats.map((s,m)=>({dataset:labels[d.id],model:D.models[m],spearman_rho:s.rho,n:s.n,aggregation:d.id==="novel_focus"?"mean_within_context":"within_dataset",valid_contexts:s.validContexts??"",total_contexts:s.totalContexts??""})));
   if(kind==="dataset")rows=D.models.map((m,i)=>({dataset:labels[state.dataset],model:m,...D.datasetSummaries[state.dataset][i]}));
   if(kind==="structure")rows=D.datasets.map(d=>({dataset:d.label,model:D.models[state.model],...D.datasetSummaries[d.id][state.model]}));
   if(kind==="contexts")rows=D.contexts.flatMap(c=>D.models.map((m,i)=>({context:c,model:m,...D.contextSummaries[c][i]})));
@@ -377,6 +398,9 @@ document.addEventListener("click",e=>{
   if(d.view){state.view=d.view;state.page=0;state.item=null;navigate=true;}
   if(d.cell){const [kind,id,m]=d.cell.split("|");state.model=Number(m);if(kind==="dataset"){state.dataset=id;state.view="datasets";}else{state.context=id;state.view="contexts";}state.item=null;state.page=0;state.itemSearch="";navigate=true;}
   if(d.dataset){state.dataset=d.dataset;state.view="datasets";state.item=null;state.page=0;state.itemSearch="";navigate=true;}
+  if(state.metric==="rho"&&state.view==="datasets"&&state.dataset==="novel_focus"){
+    state.view="spearman";state.spearmanModel=focusSpearmanModels[state.model].join("|");
+  }
   if(d.context){state.context=d.context;state.view="contexts";state.item=null;state.page=0;state.itemSearch="";navigate=true;}
   if(d.model!==undefined){state.model=Number(d.model);if(state.view==="overview"){state.view="structures";navigate=true;}}
   if(d.item)state.item=d.item;

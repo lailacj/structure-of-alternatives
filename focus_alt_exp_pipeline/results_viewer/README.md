@@ -152,7 +152,12 @@ distributions. Query-only CSVs cannot provide vocabulary-wide top-50 rankings.
 
 ### Viewer sections
 
-- **Overview:** aggregate comparisons and a dataset × structure heatmap.
+- **Overview:** aggregate comparisons and a dataset × structure heatmap. Choose
+  **Spearman correlation** in **Fit measure** for the Spearman matrix and its
+  CSV download. Hu and R&X show within-dataset correlations; focus shows the
+  equal-weight mean of defined within-context exclusion correlations, with
+  valid context counts below the matrix. Focus cells open the within-context
+  results. Spearman retains both coverage options and does not pool datasets.
 - **Datasets:** both metrics, a model-versus-human scatterplot, and item details.
 - **Linking structures:** one structure across all datasets and focus contexts.
 - **Focus contexts:** all sixteen contexts × nine structures, then item details.

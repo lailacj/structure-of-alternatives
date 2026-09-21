@@ -244,6 +244,40 @@ test("sampling-target browser and CSV exports reflect the selected score source"
   assert.match(tests,/holm18/);assert.match(tests,/199999/);
 });
 
+test("Overview Spearman matrix preserves saved values, coverage, exports, and drill-down",async()=>{
+  const app=harness();
+  assert.match(app.html(),/<option value="rho"/);
+  app.change("aggregation","pooled");app.change("metric","rho");
+  assert.match(app.html(),/Datasets × linking structures/);
+  assert.match(app.html(),/Spearman ρ by dataset and linking structure/);
+  assert.ok(!app.html().includes('id="aggregation"'));
+  assert.ok(!/\bNaN\b|>undefined</.test(app.html()));
+  assert.equal([...app.html().matchAll(/data-cell="dataset\|/g)].length,90);
+  for(const d of data.datasets){
+    for(let m=0;m<9;m++){
+      const cell=app.html().match(new RegExp(`data-cell="dataset\\|${d.id}\\|${m}"[^>]*>([^<]*)</button>`));
+      const model=data.rankAssociation.tests.find(r=>r.definition==="sampling"&&r.model===m);
+      const focus=data.spearman.mean_within_context_spearman.find(r=>r.measure==="negation"&&r.structure===model.structure&&r.variant===model.variant);
+      const s=data.datasetSummaries[d.id][m],rho=d.id==="novel_focus"?focus.mean_within_context_spearman:s.rho;
+      assert.equal(cell[1],!s.n?"—":rho===null?"N/A":rho.toFixed(2));
+    }
+  }
+  assert.match(app.html(),/Set Top-p: 15\/16/);
+  app.click({download:"overview"});
+  const [csv]=await app.downloads();
+  assert.match(csv,/spearman_rho/);assert.match(csv,/mean_within_context/);
+  assert.equal(csv.split("\r\n").length,91);
+  app.change("coverage","shared");
+  assert.equal([...app.html().matchAll(/data-cell="dataset\|/g)].length,45);
+  assert.ok(!app.html().includes('data-cell="dataset|rnx_'));
+  app.click({cell:"dataset|hu_vt16|2"});assert.match(app.html(),/Inspect the 39 item ranks/);
+  app.click({view:"overview"});assert.match(app.html(),/Download Spearman matrix/);
+  app.click({cell:"dataset|novel_focus|3"});
+  assert.match(app.html(),/Negation Spearman/);assert.match(app.html(),/value="set\|top_p" selected/);
+  app.click({view:"overview"});app.change("metric","r");assert.match(app.html(),/Pooled Pearson r/);
+  app.change("metric","log");assert.match(app.html(),/Pooled item log score/);
+});
+
 test("non-focus Spearman uses the same saved items and is available alongside Pearson",()=>{
   const app=harness();app.click({view:"datasets"});
   for(const dataset of data.datasets.filter(d=>d.id!=="novel_focus")){
