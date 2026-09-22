@@ -9,6 +9,24 @@ linking structures, sixteen novel-focus contexts, both fit measures, item
 predictions, and exact prompt/candidate scores. It does not mix in the older
 absolute-threshold, human-cloze, or frequency analyses.
 
+### September 22: paired probability and rank plots
+
+**Focus contexts** now shows side-by-side Pearson and Spearman plots for all
+16 contexts and all nine predictors. Select a trigger–query pair from the
+dropdown, either plot, or the contribution table to highlight it in both plots.
+Selecting an item in the existing item table also updates the highlighted pair.
+The selection shows the model prediction, human rate and response counts,
+average ranks for ties, and the pair's signed contribution to each coefficient.
+
+Both measures use the same 30 equally weighted pairs. The probability axes
+zoom to the selected context/model; ranks start at **1** in this comparison
+(the existing rank pages start at 0, which gives the same coefficients).
+Contributions sum to their coefficient with the full-data means and denominator
+held fixed; they are not leave-one-out changes. Constant vectors display N/A
+for correlations and contributions. The expandable table lists all 30 pairs,
+including observations that overlap in the plots. Charts stack on small screens.
+The viewer remains self-contained and offline, using the existing saved run.
+
 ### September 17: actual sampling scores and across-context association
 
 The new **Across-context association** page shows nine scatterplots. Each point

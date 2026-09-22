@@ -15,6 +15,21 @@ const ResultsMath = (() => {
     return out;
   }
   const spearman=(xs,ys)=>pearson(ranks(xs),ranks(ys));
+  function pairCorrelations(items,model) {
+    const rows=items.filter(r=>Number.isFinite(r.p[model])&&Number.isFinite(r.y));
+    const x=rows.map(r=>r.p[model]),y=rows.map(r=>r.y);
+    const rx=ranks(x).map(v=>v+1),ry=ranks(y).map(v=>v+1);
+    function contributions(a,b){
+      const ma=mean(a),mb=mean(b),da=a.map(v=>v-ma),db=b.map(v=>v-mb);
+      const denominator=Math.sqrt(da.reduce((s,v)=>s+v*v,0)*db.reduce((s,v)=>s+v*v,0));
+      if(a.length<2||a.every(v=>v===a[0])||b.every(v=>v===b[0])||!denominator)return a.map(()=>null);
+      return da.map((v,i)=>v*db[i]/denominator);
+    }
+    const cp=contributions(x,y),cs=contributions(rx,ry);
+    return {n:rows.length,r:cp.length&&cp[0]!==null?cp.reduce((a,b)=>a+b,0):null,
+      rho:cs.length&&cs[0]!==null?cs.reduce((a,b)=>a+b,0):null,
+      rows:rows.map((r,i)=>({...r,prediction:x[i],modelRank:rx[i],humanRank:ry[i],pearsonContribution:cp[i],spearmanContribution:cs[i]}))};
+  }
   function summary(items,model) {
     const rows=items.filter(r=>r.p[model]!==null);
     const ids=[...new Set(items.map(r=>r.dataset))],eligible=ids.length===1&&/^(hu_|rnx_)/.test(ids[0]);
@@ -41,7 +56,7 @@ const ResultsMath = (() => {
     }
     return {n:rows.length,human:stats(rows.map(r=>r.y)),model:stats(rows.map(r=>r.p[model]))};
   }
-  return {mean,pearson,ranks,spearman,summary,aggregate,escape,distribution};
+  return {mean,pearson,ranks,spearman,summary,aggregate,escape,distribution,pairCorrelations};
 })();
 if(typeof module!=="undefined")module.exports=ResultsMath;
 if(typeof document!=="undefined") (()=>{
@@ -49,6 +64,7 @@ const D=JSON.parse(document.getElementById("results-data").textContent);
 const {mean,summary,aggregate,escape:esc}=ResultsMath;
 const state={view:"overview",wordSource:"sampling",spearmanModel:"set|top_k",distributionModel:"all",distributionContext:"all",metric:"log",dataset:"novel_focus",model:2,context:"bag",balanced:true,coverage:"all",promptDataset:"novel_focus",promptContext:"all",frame:"Neutral",promptId:"",candidateSource:"distribution",wordScale:"logp",wordSearch:"",itemSearch:"",page:0,item:null};
 const main=document.getElementById("main");
+state.comparisonPair="";
 const labels=Object.fromEntries(D.datasets.map(d=>[d.id,d.label]));
 const short=["No linking","X but not Y","Set Top-K","Set Top-p","Ordering","Conj. Top-K","Conj. Top-p","Disj. Top-K","Disj. Top-p"];
 const colors=["#155bcc","#087f87","#946721","#8646a7","#3d6897","#c15b53","#5c7993","#7d674a","#666bae","#008389"];
@@ -208,7 +224,46 @@ function structures(){
 function contexts(){
   const rows=itemRowsForView(),stats=D.contextSummaries[state.context];
   return title("Novel focus alternative study","Sixteen experimental contexts","Compare contexts, then inspect the 30 trigger–query pairs within each context.",downloadButton("contexts"))+
-  `<div class="controls">${contextControl()}${modelControl()}${metricControl()}</div><section class="panel"><h2>Contexts × linking structures</h2>${heatmap(D.contexts.map(c=>({id:c,label:c,stats:D.contextSummaries[c]})),"context")}</section><div class="grid-two"><section class="panel"><div class="eyebrow">${esc(state.context)}</div><h2>${esc(D.models[state.model])}</h2>${scatter(rows,state.model)}</section><section class="panel"><h2>All structures in ${esc(state.context)}</h2>${metricTable(stats)}<p class="caption">Context correlations are computed within this context’s items; context log scores average its item scores. These summaries use the saved held-out predictions.</p><button data-context-prompts="${esc(state.context)}">Read this context’s prompts & next words</button></section></div>${itemTable(rows)}`;
+  `<div class="controls">${contextControl()}${modelControl()}${metricControl()}</div>${pairComparison(rows,state.model)}<section class="panel"><h2>Contexts × linking structures</h2>${heatmap(D.contexts.map(c=>({id:c,label:c,stats:D.contextSummaries[c]})),"context")}</section><section class="panel"><h2>All structures in ${esc(state.context)}</h2>${metricTable(stats)}<p class="caption">Context correlations are computed within this context’s items; context log scores average its item scores. These summaries use the saved held-out predictions.</p><button data-context-prompts="${esc(state.context)}">Read this context’s prompts & next words</button></section>${itemTable(rows)}`;
+}
+function pairComparison(rows,model){
+  const comparison=ResultsMath.pairCorrelations(rows,model);
+  if(!comparison.n)return `<section class="panel empty">No matched predictions for this context and model.</section>`;
+  const selected=comparison.rows.find(r=>r.id===state.comparisonPair)||comparison.rows[0];
+  state.comparisonPair=selected.id;
+  const source=D.sources[selected.sources[0]],signed=v=>v===null?"N/A":`${v>=0?"+":""}${fmt(v,6)}`;
+  return `<section class="panel pair-comparison"><div class="eyebrow">${esc(state.context)} · ${esc(D.models[model])}</div><h2>One pair, two correlation measures</h2>
+    <p class="caption">${descriptions[model]} Both plots use the same ${comparison.n} pairs, with equal weight per pair.</p>
+    <div class="controls">${select("comparisonPair","Trigger → query",comparison.rows.map(r=>[r.id,`${r.trigger} → ${r.query}`]),selected.id)}</div>
+    <div class="pair-selection" aria-live="polite"><strong>${esc(selected.trigger)} → ${esc(selected.query)}</strong> · Model ${prob(selected.prediction)} · Human ${prob(selected.y)}${source?.countStatus==="exact"?` (${source.yes}/${source.total} responses)`:""} · Model rank ${fmt(selected.modelRank,1)} · Human rank ${fmt(selected.humanRank,1)}<br>Pearson contribution <strong>${signed(selected.pearsonContribution)}</strong> · Spearman contribution <strong>${signed(selected.spearmanContribution)}</strong></div>
+    <div class="pair-plot-grid"><div data-pair-plot="probability">${pairComparisonChart(comparison,false,500)}</div><div data-pair-plot="rank">${pairComparisonChart(comparison,true,500)}</div></div>
+    <p class="caption">Select a pair above or a point in either plot; the outlined point highlights the same pair in both. Some pairs overlap exactly; the selector and table include every pair. The probability axes zoom to this context’s values. Rank 1 is highest; ties share their average position. The other rank views use rank 0 for highest, which gives the same correlation.</p>
+    ${comparison.r===null||comparison.rho===null?`<div class="note amber">Undefined correlation (N/A): model predictions or human rates have no variation. Individual contributions are also undefined.</div>`:""}
+    <details id="pair-contribution-details"><summary>All ${comparison.n} pairs and their contributions</summary><p class="caption">Each contribution is its centered model value × centered human value, divided by the shared correlation denominator. Spearman applies the same calculation to ranks. Contributions sum to the coefficient; they are not the change from deleting a pair. Neither correlation measures calibration.</p><div class="table-wrap"><table><thead><tr><th>Trigger → query</th><th>Model p</th><th>Human rate</th><th>Model rank</th><th>Human rank</th><th>Pearson contribution</th><th>Spearman contribution</th></tr></thead><tbody>${comparison.rows.map(r=>`<tr${r.id===selected.id?' class="selected-row"':""}><th><button class="item-link" data-comparison-pair="${esc(r.id)}">${esc(r.trigger)} → ${esc(r.query)}</button></th><td>${prob(r.prediction)}</td><td>${fmt(r.y,6)}</td><td>${fmt(r.modelRank,1)}</td><td>${fmt(r.humanRank,1)}</td><td>${signed(r.pearsonContribution)}</td><td>${signed(r.spearmanContribution)}</td></tr>`).join("")}</tbody><tfoot><tr><th>Sum</th><td colspan="4"></td><td>${fmt(comparison.r,6)}</td><td>${fmt(comparison.rho,6)}</td></tr></tfoot></table></div></details></section>`;
+}
+function pairComparisonChart(comparison,ranked,width){
+  const height=325,left=88,right=24,top=38,bottom=62;
+  const xv=r=>ranked?r.modelRank:r.prediction,yv=r=>ranked?r.humanRank:r.y;
+  function domain(values){let lo=Math.min(...values),hi=Math.max(...values);const pad=(hi-lo)*.04||.04;return [Math.max(0,lo-pad),Math.min(1,hi+pad)];}
+  const xd=ranked?[1,comparison.n]:domain(comparison.rows.map(xv)),yd=ranked?[1,comparison.n]:domain(comparison.rows.map(yv));
+  const x=v=>left+8+(v-xd[0])/(xd[1]-xd[0]||1)*(width-left-right-16),y=v=>height-bottom-8-(v-yd[0])/(yd[1]-yd[0]||1)*(height-top-bottom-16);
+  const tickCount=width<400?3:4;
+  const ticks=d=>Array.from({length:tickCount},(_,i)=>d[0]+i*(d[1]-d[0])/(tickCount-1));
+  const tick=v=>ranked?String(Math.round(v)):v!==0&&Math.abs(v)<.001?v.toExponential(1):Number(v.toPrecision(3)).toString();
+  const xt=ranked?[1,10,20,comparison.n]:ticks(xd),yt=ranked?xt:ticks(yd),selected=comparison.rows.find(r=>r.id===state.comparisonPair);
+  const marks=comparison.rows.map(r=>`<g class="pair-point" id="pair-${ranked?'rank':'raw'}-${esc(r.id)}" aria-pressed="${r.id===state.comparisonPair}" data-comparison-pair="${esc(r.id)}" tabindex="0" role="button" aria-label="${esc(r.trigger)} to ${esc(r.query)}; model ${ranked?fmt(r.modelRank,1):prob(r.prediction)}, human ${ranked?fmt(r.humanRank,1):prob(r.y)}"><title>${esc(r.trigger)} → ${esc(r.query)}</title><circle class="pair-hit" cx="${x(xv(r))}" cy="${y(yv(r))}" r="16"/><circle class="pair-dot" cx="${x(xv(r))}" cy="${y(yv(r))}" r="4.5"/></g>`).join("");
+  return `<svg class="chart pair-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="${ranked?"Spearman ranks":"Pearson probabilities"}: ${comparison.n} trigger-query pairs in ${esc(state.context)}"><title>${ranked?"Spearman ranks":"Pearson probabilities"}</title><text class="pair-chart-title" x="${left}" y="20">${ranked?"Spearman ρ":"Pearson r"} = ${fmt(ranked?comparison.rho:comparison.r)}</text><rect class="pair-frame" x="${left}" y="${top}" width="${width-left-right}" height="${height-top-bottom}"/>
+    ${xt.map(v=>`<text x="${x(v)}" y="${height-bottom+24}" text-anchor="middle">${tick(v)}</text>`).join("")}${yt.map(v=>`<line class="chart-grid" x1="${left}" x2="${width-right}" y1="${y(v)}" y2="${y(v)}"/><text x="${left-10}" y="${y(v)+4}" text-anchor="end">${tick(v)}</text>`).join("")}${marks}${selected?`<circle class="pair-selected" data-selected-pair="${esc(selected.id)}" cx="${x(xv(selected))}" cy="${y(yv(selected))}" r="8"/>`:""}<text x="${(left+width-right)/2}" y="${height-12}" text-anchor="middle">${ranked?"Model rank (1 = highest)":"Model exclusion probability"}</text><text transform="translate(16 ${(top+height-bottom)/2}) rotate(-90)" text-anchor="middle">${ranked?"Human rank (1 = highest)":"Human exclusion rate"}</text></svg>`;
+}
+let pairObserver;
+function resizePairCharts(){
+  if(pairObserver)pairObserver.disconnect();
+  if(state.view!=="contexts"||!main.querySelectorAll)return;
+  const comparison=ResultsMath.pairCorrelations(itemRowsForView(),state.model);
+  const plots=main.querySelectorAll("[data-pair-plot]");
+  const draw=el=>{const width=Math.max(260,Math.floor(el.getBoundingClientRect().width));if(el.dataset.plotWidth!==String(width)){el.dataset.plotWidth=String(width);el.innerHTML=pairComparisonChart(comparison,el.dataset.pairPlot==="rank",width);}};
+  plots.forEach(draw);
+  if(typeof ResizeObserver!=="undefined"){pairObserver=new ResizeObserver(entries=>entries.forEach(e=>draw(e.target)));plots.forEach(el=>pairObserver.observe(el));}
 }
 function rankScatter(rows,kind){
   const max=rows.length-1, left=64,top=24,size=278;
@@ -344,10 +399,13 @@ function methods(){
 function render(){
   if(state.metric==="rho"&&!supportsDatasetSpearman())state.metric="log";
   const active=document.activeElement,id=active&&active.id,pos=active&&active.selectionStart;
+  const pairDetailsOpen=document.getElementById("pair-contribution-details")?.open;
   document.querySelectorAll("#navigation button").forEach(b=>{if(b.dataset.view===state.view)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current");});
   const runNote=D.run?`<div class="note ${D.run.corrected?"":"amber"} run-status"><strong>${esc(D.run.label)}</strong> · ${esc(D.run.id)}.${D.run.corrected?" Direct neutral scores and sampled structures are verified against the same candidate-score artifact.":" This is not the corrected single-space rerun. Word-rank analyses default to the actual scores behind these saved linking predictions. The historical No-linking baseline retains its separate direct-target scores; X but not Y retains its framed scores."}</div>`:"";
   main.innerHTML=runNote+({overview,datasets,distributions,structures,contexts,spearman,association,prompts,methods})[state.view]();
   resizeAssociationCharts();
+  resizePairCharts();
+  if(pairDetailsOpen&&state.view==="contexts")document.getElementById("pair-contribution-details").open=true;
   const el=id&&document.getElementById(id);if(el){el.focus();if(typeof pos==="number"&&el.setSelectionRange)el.setSelectionRange(pos,pos);}
   document.getElementById("footer").innerHTML=`<span>${esc(D.run?.id||"Local snapshot")} · ${esc(D.modelName)} · ${D.verifiedCells} metric cells verified</span><span>Built ${esc(D.generated.slice(0,10))} · No network connection required</span>`;
 }
@@ -388,11 +446,12 @@ document.addEventListener("change",e=>{
 });
 document.addEventListener("input",e=>{if(["itemSearch","wordSearch"].includes(e.target.id)){state[e.target.id]=e.target.value;state.page=0;render();}});
 document.addEventListener("click",e=>{
-  const target=e.target.closest("[data-view],[data-model],[data-dataset],[data-context],[data-cell],[data-item],[data-page],[data-prompt],[data-close-item],[data-context-prompts],[data-prompt-step],[data-download],[data-spearman-example],[data-rank-context]");
+  const target=e.target.closest("[data-view],[data-model],[data-dataset],[data-context],[data-cell],[data-item],[data-page],[data-prompt],[data-close-item],[data-context-prompts],[data-prompt-step],[data-download],[data-spearman-example],[data-rank-context],[data-comparison-pair]");
   if(!target||target.disabled)return;
   const d=target.dataset;
   if(d.download){csvDownload(d.download);return;}
   let navigate=false;
+  if(d.comparisonPair)state.comparisonPair=d.comparisonPair;
   if(d.rankContext){const test=D.rankAssociation.tests.find(r=>r.model===Number(d.rankModel));state.view="spearman";state.context=d.rankContext;state.spearmanModel=`${test.structure}|${test.variant}`;navigate=true;}
   if(d.spearmanExample){state.view="spearman";state.context=d.spearmanExample;state.spearmanModel="set|top_k";navigate=true;}
   if(d.view){state.view=d.view;state.page=0;state.item=null;navigate=true;}
@@ -403,7 +462,7 @@ document.addEventListener("click",e=>{
   }
   if(d.context){state.context=d.context;state.view="contexts";state.item=null;state.page=0;state.itemSearch="";navigate=true;}
   if(d.model!==undefined){state.model=Number(d.model);if(state.view==="overview"){state.view="structures";navigate=true;}}
-  if(d.item)state.item=d.item;
+  if(d.item){state.item=d.item;if(state.view==="contexts")state.comparisonPair=d.item.slice(d.item.indexOf("|")+1);}
   if(d.closeItem)state.item=null;
   if(d.page)state.page+=Number(d.page);
   if(d.contextPrompts){state.promptDataset="novel_focus";state.promptContext=d.contextPrompts;state.frame="Neutral";state.promptId="";state.view="prompts";state.candidateSource="distribution";state.wordScale="logp";state.wordSearch="";navigate=true;}
@@ -415,7 +474,7 @@ document.addEventListener("click",e=>{
 });
 document.addEventListener("keydown",e=>{
   if(e.key!=="Enter"&&e.key!==" ")return;
-  const target=e.target.closest("g[data-rank-context]");
+  const target=e.target.closest("g[data-rank-context],g[data-comparison-pair]");
   if(target){e.preventDefault();target.dispatchEvent(new MouseEvent("click",{bubbles:true}));}
 });
 render();

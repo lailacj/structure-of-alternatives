@@ -6,6 +6,19 @@
 @media print{header{background:white;color:var(--ink)}nav,.controls,button,footer{display:none}main{padding:0}.panel{break-inside:avoid}.table-wrap{overflow:visible}.heatmap{min-width:0;font-size:9px}.heatmap td button,.heatmap th button{display:block!important}.grid-two{grid-template-columns:1fr}.stats{grid-template-columns:repeat(4,1fr)}body{background:white}}
 
 .spearman-explainer{border-top:3px solid var(--teal)}
+.pair-plot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:20px 0}
+.pair-plot-grid>div{min-width:0}
+.pair-selection{font-variant-numeric:tabular-nums;line-height:1.8;overflow-wrap:anywhere}
+.pair-chart{max-height:none}
+.pair-chart text{font-size:12px}
+.pair-chart .pair-chart-title{fill:var(--ink);font-weight:600;font-size:14px}
+.pair-frame{fill:none;stroke:var(--line);stroke-width:1}
+.pair-chart .pair-hit,.pair-chart .pair-hit:hover{fill:transparent;stroke:none;r:16px}
+.pair-chart .pair-dot,.pair-chart .pair-dot:hover{pointer-events:none;r:4.5px}
+.pair-chart .pair-selected,.pair-chart .pair-selected:hover{fill:var(--teal);fill-opacity:1;stroke:var(--ink);stroke-width:2;pointer-events:none;r:8px}
+.pair-point:focus .pair-dot{stroke:var(--ink);stroke-width:3;fill-opacity:1}
+.pair-comparison tfoot th,.pair-comparison tfoot td{border-top:2px solid var(--line);font-weight:600}
+@media(max-width:780px){.pair-plot-grid{grid-template-columns:minmax(0,1fr)}}
 .spearman-explainer p{max-width:1000px}
 .spearman-coefficient{font-size:2rem;font-weight:650;color:var(--blue);font-variant-numeric:tabular-nums}
 .spearman-chart{max-height:400px;margin-top:18px}

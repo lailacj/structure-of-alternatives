@@ -53,6 +53,59 @@ function harness(payload=data){
     input:(id,value)=>listeners.input({target:{id,value}})};
 }
 
+test("pair contributions match saved context coefficients and tied ranks for all models",()=>{
+  for(const context of data.contexts)for(let model=0;model<data.models.length;model++){
+    const rows=data.items.filter(r=>r.context===context),actual=math.pairCorrelations(rows,model);
+    assert.equal(actual.n,30);
+    const expected=data.contextSummaries[context][model].r;
+    if(expected===null)assert.equal(actual.r,null);else assert.ok(Math.abs(actual.r-expected)<1e-10);
+    const rho=math.spearman(rows.map(r=>r.p[model]),rows.map(r=>r.y));
+    if(rho===null)assert.equal(actual.rho,null);else assert.ok(Math.abs(actual.rho-rho)<1e-10);
+    for(const [field,coefficient] of [["pearsonContribution","r"],["spearmanContribution","rho"]]){
+      if(actual[coefficient]===null)assert.ok(actual.rows.every(r=>r[field]===null));
+      else assert.ok(Math.abs(actual.rows.reduce((s,r)=>s+r[field],0)-actual[coefficient])<1e-12);
+    }
+  }
+  const cold=math.pairCorrelations(data.items.filter(r=>r.context==="cold"),2);
+  const blanket=cold.rows.find(r=>r.trigger==="heater"&&r.query==="blankets");
+  assert.equal(blanket.modelRank,28);assert.equal(blanket.humanRank,4);
+  assert.ok(Math.abs(blanket.pearsonContribution+.02561608674889418)<1e-12);
+  const bag=math.pairCorrelations(data.items.filter(r=>r.context==="bag"),0);
+  const chalk=bag.rows.find(r=>r.trigger==="cash"&&r.query==="chalk");
+  assert.equal(chalk.modelRank,13);assert.equal(chalk.humanRank,6);
+  assert.ok(chalk.pearsonContribution<0&&chalk.spearmanContribution>0);
+  assert.equal(math.pairCorrelations([{id:"a",y:0,p:[null]}],0).r,null);
+  assert.equal(math.pairCorrelations([{id:"a",y:0,p:[.2]},{id:"b",y:1,p:[.2]}],0).rho,null);
+});
+
+test("paired plots select the same item across contexts, models, and both interaction routes",()=>{
+  const app=harness();app.click({view:"contexts"});
+  for(const context of data.contexts){
+    app.change("context",context);
+    for(let model=0;model<data.models.length;model++){
+      app.change("model",String(model));
+      assert.equal((app.html().match(/class="chart pair-chart"/g)||[]).length,2);
+      assert.match(app.html(),/All 30 pairs and their contributions/);
+      assert.ok(!/\bNaN\b|\bInfinity\b/.test(app.html()));
+    }
+    for(const row of data.items.filter(r=>r.context===context)){
+      app.change("comparisonPair",row.id);
+      assert.equal(app.html().split(`data-selected-pair="${row.id}"`).length-1,2);
+    }
+  }
+  app.change("context","bag");app.change("model","0");
+  app.click({comparisonPair:"bag::cash::chalk"});
+  assert.equal(app.html().split('data-selected-pair="bag::cash::chalk"').length-1,2);
+  assert.match(app.html(),/-0\.016563/);assert.match(app.html(),/\+0\.011061/);
+  app.click({item:"novel_focus|bag::cash::pen"});
+  assert.equal(app.html().split('data-selected-pair="bag::cash::pen"').length-1,2);
+  app.change("model","2");
+  assert.equal(app.html().split('data-selected-pair="bag::cash::pen"').length-1,2);
+  app.change("context","mask");app.change("model","3");
+  assert.match(app.html(),/Undefined correlation \(N\/A\)/);
+  assert.match(app.html(),/Pearson r = N\/A/);assert.match(app.html(),/Spearman ρ = N\/A/);
+});
+
 test("every dataset, structure, context, and fit measure renders with actual data",()=>{
   const app=harness();
   assert.match(app.html(),/How do the linking structures fit/);
