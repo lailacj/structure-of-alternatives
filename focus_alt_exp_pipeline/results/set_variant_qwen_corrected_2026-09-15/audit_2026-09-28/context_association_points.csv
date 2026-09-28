@@ -1,0 +1,145 @@
+context,model,structure,variant,sampling,target,negation,wordStatus,negationStatus
+bag,0,No linking structure,direct,0.942857142857,0.9428571429,0.874424109,defined,defined
+bakery,0,No linking structure,direct,1.0,1.0,0.9230067219,defined,defined
+beach,0,No linking structure,direct,0.942857142857,0.9428571429,0.5079179813,defined,defined
+cold,0,No linking structure,direct,-0.028571428571,-0.0285714286,0.2496893343,defined,defined
+cut,0,No linking structure,direct,0.714285714286,0.7142857143,0.7271893672,defined,defined
+fridge,0,No linking structure,direct,1.0,1.0,0.8595116716,defined,defined
+gym,0,No linking structure,direct,0.942857142857,0.9428571429,0.5335272118,defined,defined
+hot,0,No linking structure,direct,0.231908414261,0.2319084143,0.4000070027,defined,defined
+mall,0,No linking structure,direct,0.542857142857,0.5428571429,0.5247027884,defined,defined
+mask,0,No linking structure,direct,0.314285714286,0.3142857143,0.2715032737,defined,defined
+meat,0,No linking structure,direct,0.257142857143,0.2571428571,0.1717132641,defined,defined
+restaurant,0,No linking structure,direct,0.828571428571,0.8285714286,0.7692450533,defined,defined
+salad,0,No linking structure,direct,0.942857142857,0.9428571429,0.6396176961,defined,defined
+science,0,No linking structure,direct,0.942857142857,0.9428571429,0.4944379111,defined,defined
+throw,0,No linking structure,direct,0.714285714286,0.7142857143,0.6834005029,defined,defined
+transport,0,No linking structure,direct,0.885714285714,0.8857142857,0.7099179428,defined,defined
+bag,1,X but not Y,direct,0.942857142857,0.9428571429,0.746424823,defined,defined
+bakery,1,X but not Y,direct,1.0,1.0,0.741780755,defined,defined
+beach,1,X but not Y,direct,0.942857142857,0.9428571429,0.3536858079,defined,defined
+cold,1,X but not Y,direct,-0.028571428571,-0.0285714286,0.7614782308,defined,defined
+cut,1,X but not Y,direct,0.714285714286,0.7142857143,0.6301182615,defined,defined
+fridge,1,X but not Y,direct,1.0,1.0,0.8161626144,defined,defined
+gym,1,X but not Y,direct,0.942857142857,0.9428571429,0.6155205605,defined,defined
+hot,1,X but not Y,direct,0.231908414261,0.2319084143,0.5486770031,defined,defined
+mall,1,X but not Y,direct,0.542857142857,0.5428571429,0.3323749909,defined,defined
+mask,1,X but not Y,direct,0.314285714286,0.3142857143,0.0053801069,defined,defined
+meat,1,X but not Y,direct,0.257142857143,0.2571428571,0.3752107375,defined,defined
+restaurant,1,X but not Y,direct,0.828571428571,0.8285714286,0.4800742743,defined,defined
+salad,1,X but not Y,direct,0.942857142857,0.9428571429,0.7352878973,defined,defined
+science,1,X but not Y,direct,0.942857142857,0.9428571429,0.2399719386,defined,defined
+throw,1,X but not Y,direct,0.714285714286,0.7142857143,0.3232139964,defined,defined
+transport,1,X but not Y,direct,0.885714285714,0.8857142857,0.6351585634,defined,defined
+bag,4,ordering,top_k,0.942857142857,0.9428571429,0.7052400243,defined,defined
+bakery,4,ordering,top_k,1.0,1.0,0.7211397903,defined,defined
+beach,4,ordering,top_k,0.942857142857,0.9428571429,0.4981711793,defined,defined
+cold,4,ordering,top_k,-0.028571428571,-0.0285714286,0.1599333427,defined,defined
+cut,4,ordering,top_k,0.714285714286,0.7142857143,0.5286696171,defined,defined
+fridge,4,ordering,top_k,1.0,1.0,0.7689549513,defined,defined
+gym,4,ordering,top_k,0.942857142857,0.9428571429,0.545885014,defined,defined
+hot,4,ordering,top_k,0.231908414261,0.2319084143,0.2388335043,defined,defined
+mall,4,ordering,top_k,0.542857142857,0.5428571429,0.5553708478,defined,defined
+mask,4,ordering,top_k,0.314285714286,0.3142857143,0.1157109257,defined,defined
+meat,4,ordering,top_k,0.257142857143,0.2571428571,0.1851283659,defined,defined
+restaurant,4,ordering,top_k,0.828571428571,0.8285714286,0.767870687,defined,defined
+salad,4,ordering,top_k,0.942857142857,0.9428571429,0.4964241389,defined,defined
+science,4,ordering,top_k,0.942857142857,0.9428571429,0.6161024338,defined,defined
+throw,4,ordering,top_k,0.714285714286,0.7142857143,0.7199413753,defined,defined
+transport,4,ordering,top_k,0.885714285714,0.8857142857,0.5856810393,defined,defined
+bag,2,set,top_k,0.942857142857,0.9428571429,0.8604519528,defined,defined
+bakery,2,set,top_k,1.0,1.0,0.9121427259,defined,defined
+beach,2,set,top_k,0.942857142857,0.9428571429,0.5079179813,defined,defined
+cold,2,set,top_k,-0.028571428571,-0.0285714286,0.1990486354,defined,defined
+cut,2,set,top_k,0.714285714286,0.7142857143,0.7271893672,defined,defined
+fridge,2,set,top_k,1.0,1.0,0.8595116716,defined,defined
+gym,2,set,top_k,0.942857142857,0.9428571429,0.5378164521,defined,defined
+hot,2,set,top_k,0.231908414261,0.2319084143,0.324265785,defined,defined
+mall,2,set,top_k,0.542857142857,0.5428571429,0.3507224933,defined,defined
+mask,2,set,top_k,0.314285714286,0.3142857143,0.3227228859,defined,defined
+meat,2,set,top_k,0.257142857143,0.2571428571,-0.0313260684,defined,defined
+restaurant,2,set,top_k,0.828571428571,0.8285714286,0.7798921871,defined,defined
+salad,2,set,top_k,0.942857142857,0.9428571429,0.6456750122,defined,defined
+science,2,set,top_k,0.942857142857,0.9428571429,0.4944379111,defined,defined
+throw,2,set,top_k,0.714285714286,0.7142857143,0.854947685,defined,defined
+transport,2,set,top_k,0.885714285714,0.8857142857,0.7197060308,defined,defined
+bag,5,conjunction,top_k,0.942857142857,0.9428571429,0.8589464709,defined,defined
+bakery,5,conjunction,top_k,1.0,1.0,0.8811547109,defined,defined
+beach,5,conjunction,top_k,0.942857142857,0.9428571429,0.5318232308,defined,defined
+cold,5,conjunction,top_k,-0.028571428571,-0.0285714286,0.2124837433,defined,defined
+cut,5,conjunction,top_k,0.714285714286,0.7142857143,0.7109344004,defined,defined
+fridge,5,conjunction,top_k,1.0,1.0,0.8717856657,defined,defined
+gym,5,conjunction,top_k,0.942857142857,0.9428571429,0.5550748371,defined,defined
+hot,5,conjunction,top_k,0.231908414261,0.2319084143,0.2927036567,defined,defined
+mall,5,conjunction,top_k,0.542857142857,0.5428571429,0.3471304631,defined,defined
+mask,5,conjunction,top_k,0.314285714286,0.3142857143,0.3192645939,defined,defined
+meat,5,conjunction,top_k,0.257142857143,0.2571428571,-0.00916829,defined,defined
+restaurant,5,conjunction,top_k,0.828571428571,0.8285714286,0.7884563819,defined,defined
+salad,5,conjunction,top_k,0.942857142857,0.9428571429,0.617734496,defined,defined
+science,5,conjunction,top_k,0.942857142857,0.9428571429,0.5505210572,defined,defined
+throw,5,conjunction,top_k,0.714285714286,0.7142857143,0.8507849257,defined,defined
+transport,5,conjunction,top_k,0.885714285714,0.8857142857,0.7258703577,defined,defined
+bag,7,disjunction,top_k,0.942857142857,0.9428571429,0.7265283811,defined,defined
+bakery,7,disjunction,top_k,1.0,1.0,0.7419001979,defined,defined
+beach,7,disjunction,top_k,0.942857142857,0.9428571429,0.5213738014,defined,defined
+cold,7,disjunction,top_k,-0.028571428571,-0.0285714286,0.164586892,defined,defined
+cut,7,disjunction,top_k,0.714285714286,0.7142857143,0.5874001603,defined,defined
+fridge,7,disjunction,top_k,1.0,1.0,0.8072735125,defined,defined
+gym,7,disjunction,top_k,0.942857142857,0.9428571429,0.5514980974,defined,defined
+hot,7,disjunction,top_k,0.231908414261,0.2319084143,0.2326180782,defined,defined
+mall,7,disjunction,top_k,0.542857142857,0.5428571429,0.5553708478,defined,defined
+mask,7,disjunction,top_k,0.314285714286,0.3142857143,0.1157109257,defined,defined
+meat,7,disjunction,top_k,0.257142857143,0.2571428571,0.1657428761,defined,defined
+restaurant,7,disjunction,top_k,0.828571428571,0.8285714286,0.7720147451,defined,defined
+salad,7,disjunction,top_k,0.942857142857,0.9428571429,0.4996501611,defined,defined
+science,7,disjunction,top_k,0.942857142857,0.9428571429,0.5949753207,defined,defined
+throw,7,disjunction,top_k,0.714285714286,0.7142857143,0.7551504393,defined,defined
+transport,7,disjunction,top_k,0.885714285714,0.8857142857,0.6640273571,defined,defined
+bag,3,set,top_p,0.942857142857,0.9428571429,0.5068920021,defined,defined
+bakery,3,set,top_p,1.0,1.0,0.8750286497,defined,defined
+beach,3,set,top_p,0.942857142857,0.9428571429,0.5079179813,defined,defined
+cold,3,set,top_p,-0.028571428571,-0.0285714286,0.1990486354,defined,defined
+cut,3,set,top_p,0.714285714286,0.7142857143,0.7271893672,defined,defined
+fridge,3,set,top_p,1.0,1.0,0.8772968161,defined,defined
+gym,3,set,top_p,0.942857142857,0.9428571429,0.5335272118,defined,defined
+hot,3,set,top_p,0.231908414261,0.2319084143,0.2243303741,defined,defined
+mall,3,set,top_p,0.542857142857,0.5428571429,0.3737008636,defined,defined
+mask,3,set,top_p,0.314285714286,0.3142857143,,defined,constant_human_or_model
+meat,3,set,top_p,0.257142857143,0.2571428571,-0.0313260684,defined,defined
+restaurant,3,set,top_p,0.828571428571,0.8285714286,0.7798921871,defined,defined
+salad,3,set,top_p,0.942857142857,0.9428571429,0.6589261029,defined,defined
+science,3,set,top_p,0.942857142857,0.9428571429,0.4944379111,defined,defined
+throw,3,set,top_p,0.714285714286,0.7142857143,0.854947685,defined,defined
+transport,3,set,top_p,0.885714285714,0.8857142857,0.7197060308,defined,defined
+bag,6,conjunction,top_p,0.942857142857,0.9428571429,0.5068920021,defined,defined
+bakery,6,conjunction,top_p,1.0,1.0,0.8672520548,defined,defined
+beach,6,conjunction,top_p,0.942857142857,0.9428571429,0.5401022095,defined,defined
+cold,6,conjunction,top_p,-0.028571428571,-0.0285714286,0.2124837433,defined,defined
+cut,6,conjunction,top_p,0.714285714286,0.7142857143,0.7082592766,defined,defined
+fridge,6,conjunction,top_p,1.0,1.0,0.8739204207,defined,defined
+gym,6,conjunction,top_p,0.942857142857,0.9428571429,0.5589473026,defined,defined
+hot,6,conjunction,top_p,0.231908414261,0.2319084143,0.2252792728,defined,defined
+mall,6,conjunction,top_p,0.542857142857,0.5428571429,0.3737008636,defined,defined
+mask,6,conjunction,top_p,0.314285714286,0.3142857143,,defined,constant_human_or_model
+meat,6,conjunction,top_p,0.257142857143,0.2571428571,0.0389348536,defined,defined
+restaurant,6,conjunction,top_p,0.828571428571,0.8285714286,0.7902386742,defined,defined
+salad,6,conjunction,top_p,0.942857142857,0.9428571429,0.6257992742,defined,defined
+science,6,conjunction,top_p,0.942857142857,0.9428571429,0.5564411857,defined,defined
+throw,6,conjunction,top_p,0.714285714286,0.7142857143,0.8524558104,defined,defined
+transport,6,conjunction,top_p,0.885714285714,0.8857142857,0.7388558531,defined,defined
+bag,8,disjunction,top_p,0.942857142857,0.9428571429,0.7052400243,defined,defined
+bakery,8,disjunction,top_p,1.0,1.0,0.7529638072,defined,defined
+beach,8,disjunction,top_p,0.942857142857,0.9428571429,0.5756135467,defined,defined
+cold,8,disjunction,top_p,-0.028571428571,-0.0285714286,0.1793301296,defined,defined
+cut,8,disjunction,top_p,0.714285714286,0.7142857143,0.5881890707,defined,defined
+fridge,8,disjunction,top_p,1.0,1.0,0.7689549513,defined,defined
+gym,8,disjunction,top_p,0.942857142857,0.9428571429,0.5803504144,defined,defined
+hot,8,disjunction,top_p,0.231908414261,0.2319084143,0.2388335043,defined,defined
+mall,8,disjunction,top_p,0.542857142857,0.5428571429,0.5553708478,defined,defined
+mask,8,disjunction,top_p,0.314285714286,0.3142857143,0.1157109257,defined,defined
+meat,8,disjunction,top_p,0.257142857143,0.2571428571,0.1642773374,defined,defined
+restaurant,8,disjunction,top_p,0.828571428571,0.8285714286,0.7693182182,defined,defined
+salad,8,disjunction,top_p,0.942857142857,0.9428571429,0.504866663,defined,defined
+science,8,disjunction,top_p,0.942857142857,0.9428571429,0.5927275862,defined,defined
+throw,8,disjunction,top_p,0.714285714286,0.7142857143,0.7267102075,defined,defined
+transport,8,disjunction,top_p,0.885714285714,0.8857142857,0.6713212997,defined,defined

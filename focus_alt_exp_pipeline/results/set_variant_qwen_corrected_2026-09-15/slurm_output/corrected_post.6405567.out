@@ -1,0 +1,13 @@
+## SLURM PROLOG ###############################################################
+##    Job ID : 6405567
+##  Job Name : corrected_set_post
+##  Nodelist : node1818
+##      CPUs : 
+##  Mem/Node : 65536 MB
+## Directory : /oscar/home/ljohnst7
+##   Job Started : Thu Sep 24 03:15:42 AM EDT 2026
+###############################################################################
+[complete] corrected source rows=1089, prompt/candidate pairs=947, arrays=360
+[complete] rows=16881 output=/users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/prediction_grid.csv
+[complete] wrote fold selections, OOF predictions, correlations, and OOF log-score summaries to /users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/cv_results
+[complete] wrote linking-structure tables to /users/ljohnst7/data/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/linking_structure_tables

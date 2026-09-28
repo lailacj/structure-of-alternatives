@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "framed_score_rows": 789,
+  "source_rows": 789,
+  "unique_prompt_candidate_pairs": 775,
+  "model_revision": "453ed1575b739b5b03ce3758b23befdb0967f40e",
+  "equivalent_boundary": "single-space-exact-concat-v1",
+  "action": "reuse verified existing framed scores unchanged",
+  "scope": "exact tokenization, prompt boundary, model revision, recorded sums/means and source mapping; no model-forward rerun",
+  "framed_scores": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/run_snapshot/focus_alt_exp_pipeline/model_scores/focus_hu_remaining_qwen_scores.csv",
+  "framed_scores_sha256": "a4ed514f02f47e38bfac94c8e7c6b0a72d7214cf4a9e848f7c2e7869c53c594e",
+  "source_rows_sha256": "d6979e01d7c917f596244559a176b81a74339e3c0a7562c852296a37bea6a2d7"
+}

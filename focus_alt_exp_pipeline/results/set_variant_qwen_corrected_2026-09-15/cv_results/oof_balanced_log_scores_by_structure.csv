@@ -1,0 +1,9 @@
+variant,structure,balanced_mean_oof_log_score,dataset_count,total_unit_count
+top_k,ordering,-1.4606894244550657,10,993
+top_k,disjunction,-2.0745968903308585,10,993
+top_k,conjunction,-2.783957065192122,10,993
+top_k,set,-3.2626498006223903,10,993
+top_p,ordering,-1.4606894244550657,10,993
+top_p,disjunction,-2.480371062018773,10,993
+top_p,conjunction,-2.9511298622195516,10,993
+top_p,set,-3.8981502329831614,10,993

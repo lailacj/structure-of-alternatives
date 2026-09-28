@@ -1,0 +1,4 @@
+variant,selected_boundary,fold_count
+top_k,20.0,10
+top_p,0.6,7
+top_p,0.7,3

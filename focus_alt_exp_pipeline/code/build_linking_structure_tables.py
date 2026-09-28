@@ -9,6 +9,7 @@ models from undefined statistics.
 from __future__ import annotations
 
 import argparse
+import hashlib
 from pathlib import Path
 
 import numpy as np
@@ -278,6 +279,12 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     cv = args.results_dir / "cv_results"
+    source = pd.read_csv(args.source_rows)
+    oof = pd.read_csv(cv / "oof_predictions.csv")
+    if "neutral_score_array_sha256" in source or "source_rows_sha256" in oof:
+        digest = hashlib.sha256(args.source_rows.read_bytes()).hexdigest()
+        if "source_rows_sha256" not in oof or not oof.source_rows_sha256.eq(digest).all():
+            raise ValueError("Direct baselines and held-out linking predictions must use the same corrected source artifact")
     spearman = evaluate_spearman(pd.read_csv(HUMAN_FILE), pd.read_csv(args.source_rows),
                                  pd.read_csv(cv / "oof_predictions.csv"))
     write_results(spearman, args.results_dir / "spearman")

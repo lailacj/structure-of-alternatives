@@ -3,11 +3,20 @@
 Open **index.html** in any modern browser. It is a self-contained, offline HTML
 file: no server, package installation, CDN, or network connection is needed.
 
-The viewer currently covers the **historical, uncorrected** Qwen sampled-prefix results in
-`focus_alt_exp_pipeline/results/set_variant_qwen`: all ten datasets, nine
-linking structures, sixteen novel-focus contexts, both fit measures, item
-predictions, and exact prompt/candidate scores. It does not mix in the older
-absolute-threshold, human-cloze, or frequency analyses.
+The viewer now covers the **completed corrected single-space run** in
+`focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15`: ten
+datasets, nine linking structures, sixteen focus contexts and all 360 neutral
+vocabulary distributions (top 50 plus experimental targets). The September 28
+build verified 261 saved metric cells and exact agreement for all 947 direct
+neutral/sampling candidate scores. K=20 in every fold; p=0.6 in seven and p=0.7
+in three. Framed X-but-not-Y scores retain their verified original values.
+Vocabulary-wide framed distributions were not produced by these jobs.
+
+The default build now selects the corrected run and its `inputs/` manifest.
+Rebuilding locally preserves the matching distributions embedded in `index.html`.
+Across-context association tests are recalculated from the corrected inputs.
+The previous viewer is archived at `../results/set_variant_qwen/results_viewer.html`;
+the dated September 17 notes below describe that historical export.
 
 ### September 22: paired probability and rank plots
 
@@ -27,7 +36,7 @@ for correlations and contributions. The expandable table lists all 30 pairs,
 including observations that overlap in the plots. Charts stack on small screens.
 The viewer remains self-contained and offline, using the existing saved run.
 
-### September 17: actual sampling scores and across-context association
+### Historical September 17 export: sampling scores and association
 
 The new **Across-context association** page shows nine scatterplots. Each point
 is one focus context: word-ranking Spearman (six alternatives) on the horizontal
@@ -59,16 +68,11 @@ The run banner and Methods page make this limitation explicit. The update does
 not relabel historical scores as corrected scores, refit boundaries, or modify
 historical result tables.
 
-Read-only Oscar check on September 17: GPU array `6368525` was still running;
-downstream job `6405567` was pending on its dependency. Complete corrected OOF
-predictions and correlation tables did not yet exist. Switching the viewer must
-wait for a complete corrected bundle. Once available, use the corrected results
-directory with `--results-dir`, its `inputs/` directory with `--manifest-dir`,
-and matching corrected arrays with `--log-probs-dir`. Old distribution exports
-are rejected when source/grid/OOF hashes change. Corrected builds additionally
-check source-row hashes against grid/OOF predictions, array hashes and boundary
-metadata, and equality of all direct-target and exported sampling scores.
-The association tests will then be recalculated, not copied from this run.
+The September 28 check confirmed all jobs and corrected outputs complete. The
+viewer has switched to the corrected bundle. Corrected builds check source hashes
+against grid/OOF predictions, array hashes and boundary metadata, and equality
+of direct-target and exported sampling scores. Old distribution exports are
+rejected when source/grid/OOF hashes change.
 
 ## Rebuild locally
 
@@ -119,7 +123,7 @@ then run from the repository root:
 
 ```bash
 python focus_alt_exp_pipeline/code/build_results_viewer.py \
-  --log-probs-dir /users/ljohnst7/data/ljohnst7/ngrams/qwen_set_variant_log_probs
+  --log-probs-dir /users/ljohnst7/data/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space
 ```
 
 This reads the original `vocab_manifest.json`, vocabulary files, and each neutral
@@ -210,8 +214,8 @@ distinct. The base-rate reference comes from the saved fold-safe analysis.
 Candidate log scores sum token log probabilities for the complete continuation.
 Raw `exp(log p)` and the probability normalized over the entire candidate
 support are separate quantities. The experimental subset and the displayed
-top 50 are never independently normalized. The full-support and saved target
-scores are separate scoring artifacts and are displayed separately. Candidate
+top 50 are never independently normalized. The corrected neutral target scores are extracted from the same full-support
+arrays used for sampling; both displays are verified to agree. Candidate
 strings can overlap, so raw probabilities need not sum to one.
 
 Prompt browsing retains all scored source rows, including Hu rows excluded from
@@ -271,7 +275,7 @@ against `human_exp_data/sca_dataframe.csv`; its hash is included in provenance.
 Both measures are focus-only and are not pooled across contexts.
 
 The Spearman page includes side-by-side rank plots and a **Show the fridge example**
-button (six-word rho 1.000 versus Set Top-K negation rho 0.784). Change context or
+button (corrected six-word rho 1.000 versus Set Top-K negation rho 0.860). Change context or
 negation model to explore the same distinction elsewhere. Rank plots use separate
 0–5 and 0–29 axes; tied pair coordinates are aggregated into circles whose area
 reflects their multiplicity. Hover text and expandable tables retain pair identities.

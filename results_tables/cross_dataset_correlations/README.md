@@ -33,9 +33,9 @@ The active analysis does not use that threshold/Gumbel definition. It samples
 weighted orderings without replacement and evaluates separate Top-K and Top-p
 prefix sets. Current full-coverage outputs are under:
 
-- `focus_alt_exp_pipeline/results/set_variant_qwen/cv_results/`
-- `focus_alt_exp_pipeline/results/set_variant_qwen/linking_structure_tables/`
-- `focus_alt_exp_pipeline/results/set_variant_qwen/advisor_summary/`
+- `focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/cv_results/`
+- `focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/linking_structure_tables/`
+- `focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/advisor_summary/`
 
-Use `focus_alt_exp_pipeline/results/set_variant_qwen/linking_structure_tables/LINKING_STRUCTURE_TABLES.md`
+Use `focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/linking_structure_tables/LINKING_STRUCTURE_TABLES.md`
 for the current cross-dataset correlation and proper-log-score table.

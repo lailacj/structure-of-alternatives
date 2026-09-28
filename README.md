@@ -171,7 +171,7 @@ For each of 360 distinct prompts, Qwen scores a shared candidate support of
    dataset strata.
 
 The full-coverage current run is under
-`focus_alt_exp_pipeline/results/set_variant_qwen/`.
+`focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/`.
 
 ## Quick Start
 
@@ -224,12 +224,11 @@ python focus_alt_exp_pipeline/code/plot_results.py \
   --model qwen
 ```
 
-Rebuild the cross-dataset prediction grid and grouped-CV results from completed
-cluster score arrays:
-
-```bash
-sbatch focus_alt_exp_pipeline/cluster/run_set_variant_postprocessing.sh
-```
+The completed corrected cross-dataset grid and grouped-CV results are already
+local. See the [corrected run guide](focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/README.md)
+for locations and the [pipeline guide](focus_alt_exp_pipeline/README.md) for
+rebuilding summaries. The corrected cluster wrapper requires explicit snapshot,
+array and fresh result paths.
 
 The current run used 500 repetitions, seed 7, and candidate grids
 `K = 1,2,3,5,10,20,30,50,75,100` and
@@ -281,26 +280,21 @@ Key Qwen implementation details that remain true:
 - the current Oscar wrapper for the Qwen experiment run is `oscar_jobs/focus_alt_exp.sh`
 - the Qwen plotting command is `focus_alt_exp_pipeline/code/plot_results.py --results-dir focus_alt_exp_pipeline/results/qwen --model qwen`
 
-### Cross-dataset sampled-prefix status (September 8, 2026)
+### Cross-dataset sampled-prefix status (September 28, 2026)
 
-The full planned scoring coverage and current postprocessing run are complete:
+The corrected single-space scoring run completed September 24 and was checked
+and synced from Oscar September 28. All 360 GPU tasks and postprocessing job
+6405567 succeeded. Validation covers 121,301 finite scores per prompt, all
+required candidates, 16,881 grid rows, and 993 analysis units in ten datasets.
 
-- 360/360 prompt score arrays passed strict validation;
-- each prompt contains 121,301 finite candidate scores;
-- all 360 required trigger/query candidates are present;
-- the prediction grid contains 16,881 rows;
-- the out-of-fold results cover 993 analysis units across 10 dataset strata;
-- Top-p selected `p=0.6` in all 10 folds;
-- Top-K selected `K=100` in all 10 folds.
+- Top-K selects K=20 in every fold, below the tested maximum of 100.
+- Top-p selects p=0.6 in seven folds and p=0.7 in three.
+- The corrected result bundle, advisor figures and offline viewer are current.
+- Historical September 8 results remain under `results/set_variant_qwen/`.
 
-Because 100 is the largest tested K, the full-coverage run is complete but the
-Top-K search is not yet frozen. Expand the K grid before treating K=100 as an
-interior optimum or calling the analysis final.
-
-Planned next:
-
-- Uniform next-word baseline
-- Expand the Top-K grid beyond 100 and rerun CPU-only postprocessing
+See [the completed run](focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/README.md)
+for provenance, numerical checks and result links. The uniform baseline remains
+planned. Expanding K above 100 is now an optional sensitivity analysis.
 
 ## Notes For Future Contributors And AI Agents
 
@@ -308,7 +302,7 @@ Planned next:
 - The active evaluation target is the human negation task, not just next-word agreement.
 - The repo still contains older BERT-era work and exploratory scripts; do not assume all top-level directories reflect the current main workflow.
 - The active directory is `focus_alt_exp_pipeline`.
-- Treat `results/set_variant_qwen/` as the active cross-dataset result bundle.
+- Treat `results/set_variant_qwen_corrected_2026-09-15/` as the active cross-dataset result bundle; `results/set_variant_qwen/` is historical.
 - Treat `results/qwen/` as the completed original within-dataset Qwen result bundle.
 - Do not use `archive/absolute-threshold-gumbel-august-2026/` for the active
   sampled-prefix analysis.

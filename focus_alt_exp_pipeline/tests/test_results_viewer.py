@@ -179,7 +179,7 @@ class RankAssociationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.payload = viewer.build_payload(PIPELINE / "results/set_variant_qwen", PIPELINE / "scoring_manifests/set_variant_qwen")
-        viewer.preserve_distributions(cls.payload, PIPELINE / "results_viewer/index.html")
+        viewer.preserve_distributions(cls.payload, PIPELINE / "results/set_variant_qwen/results_viewer.html")
         cls.original = copy.deepcopy(cls.payload)
         association.add_rank_analysis(cls.payload)
 

@@ -62,6 +62,22 @@ class QwenManifestScorerTests(unittest.TestCase):
         self.assertEqual(token_ids, [ord(character) for character in " warm"])
         self.assertEqual(mode, "exact_concat")
 
+    def test_shared_boundary_normalizes_neutral_and_framed_prompts(self) -> None:
+        for prefix in ["It is", "It is warm but not"]:
+            for whitespace in ["", " ", "  ", "\t\n"]:
+                self.assertEqual(split_prompt_boundary(prefix + whitespace, " hot "),
+                                 (prefix, " hot"))
+
+    def test_changed_boundary_checkpoint_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "partial.csv"
+            row = {column: "" for column in OUTPUT_COLUMNS}
+            row.update(manifest_sha256="abc", scorer_version=scorer.SCORER_VERSION,
+                       scoring_boundary_version="legacy", scoring_row_key="key")
+            pd.DataFrame([row]).to_csv(path, index=False)
+            with self.assertRaisesRegex(ValueError, "different scoring boundary"):
+                scorer._read_partial(path, manifest_hash="abc", valid_keys={"key"})
+
     def test_boundary_merging_is_rejected_instead_of_silently_approximated(self) -> None:
         with self.assertRaisesRegex(ValueError, "merged across"):
             continuation_token_ids(

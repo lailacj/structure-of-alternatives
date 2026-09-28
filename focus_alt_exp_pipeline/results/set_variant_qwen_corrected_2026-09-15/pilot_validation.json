@@ -1,0 +1,18 @@
+{
+  "pilot_passed": true,
+  "completed_prompts_at_pilot": 34,
+  "expected_prompts": 360,
+  "pilot_prompts": [
+    "prompt_00fcbca27c180dbc2d8e",
+    "prompt_02664c8f3dbdcb0f53a2",
+    "prompt_02c63b2172f6c288744a"
+  ],
+  "source_rows": 3,
+  "targets": 6,
+  "max_corrected_vs_historical_target_logp_difference": 0.03947162628173828,
+  "scope": "export and exact direct/sampling artifact identity, not final model evaluation",
+  "existing_scoring_array_job": "6368525",
+  "dependent_postprocessing_job": "6405567",
+  "dependency": "afterok:6368525",
+  "snapshot_archive_sha256": "04105a238ba92f9a3d558d3c54572eec62e5e6718d8a596003d75cf196cdb214"
+}

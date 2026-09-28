@@ -454,8 +454,8 @@ def render_html(payload, template_dir):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--results-dir", type=Path, default=PIPELINE / "results/set_variant_qwen")
-    parser.add_argument("--manifest-dir", type=Path, default=PIPELINE / "scoring_manifests/set_variant_qwen")
+    parser.add_argument("--results-dir", type=Path, default=PIPELINE / "results/set_variant_qwen_corrected_2026-09-15")
+    parser.add_argument("--manifest-dir", type=Path, help="Source manifest; defaults to the selected corrected run's inputs, or the historical scoring manifest")
     parser.add_argument("--output", type=Path, default=PIPELINE / "results_viewer/index.html")
     distributions = parser.add_mutually_exclusive_group()
     distributions.add_argument("--log-probs-dir", type=Path, help="Optional full neutral-prompt array directory; requires NumPy")
@@ -466,6 +466,9 @@ def main():
     parser.add_argument("--framed-vocab-dir", type=Path, help="Relocated vocabulary files for the framed score directory")
     parser.add_argument("--top-candidates", type=int, default=50, help="Full-array export: top N plus targets; 0 exports all (large)")
     args = parser.parse_args()
+    if args.manifest_dir is None:
+        args.manifest_dir = (args.results_dir / "inputs" if (args.results_dir / "inputs/source_rows.csv").exists()
+                             else PIPELINE / "scoring_manifests/set_variant_qwen")
     if args.top_candidates < 0:
         parser.error("--top-candidates must be nonnegative")
     payload = build_payload(args.results_dir, args.manifest_dir, args.log_probs_dir, args.top_candidates, args.vocab_dir)

@@ -68,8 +68,8 @@ test("pair contributions match saved context coefficients and tied ranks for all
   }
   const cold=math.pairCorrelations(data.items.filter(r=>r.context==="cold"),2);
   const blanket=cold.rows.find(r=>r.trigger==="heater"&&r.query==="blankets");
-  assert.equal(blanket.modelRank,28);assert.equal(blanket.humanRank,4);
-  assert.ok(Math.abs(blanket.pearsonContribution+.02561608674889418)<1e-12);
+  assert.equal(blanket.modelRank,25.5);assert.equal(blanket.humanRank,4);
+  assert.ok(Math.abs(blanket.pearsonContribution+.023058796586561767)<1e-12);
   const bag=math.pairCorrelations(data.items.filter(r=>r.context==="bag"),0);
   const chalk=bag.rows.find(r=>r.trigger==="cash"&&r.query==="chalk");
   assert.equal(chalk.modelRank,13);assert.equal(chalk.humanRank,6);
@@ -96,7 +96,7 @@ test("paired plots select the same item across contexts, models, and both intera
   app.change("context","bag");app.change("model","0");
   app.click({comparisonPair:"bag::cash::chalk"});
   assert.equal(app.html().split('data-selected-pair="bag::cash::chalk"').length-1,2);
-  assert.match(app.html(),/-0\.016563/);assert.match(app.html(),/\+0\.011061/);
+  assert.match(app.html(),/-0\.016575/);assert.match(app.html(),/\+0\.011061/);
   app.click({item:"novel_focus|bag::cash::pen"});
   assert.equal(app.html().split('data-selected-pair="bag::cash::pen"').length-1,2);
   app.change("model","2");
@@ -129,7 +129,7 @@ test("item drill-down, prompt navigation, source coverage, and search",()=>{
   app.input("wordSearch","no-such-candidate-123");assert.match(app.html(),/No matching candidates/);
   const mask=data.prompts.find(p=>p.frame==="Neutral"&&p.contexts.includes("mask"));
   app.click({prompt:mask.id});assert.match(app.html(),/Top 50 from the vocabulary/);
-  app.change("wordScale","normalized");assert.match(app.html(),/0\.6522/);
+  app.change("wordScale","normalized");assert.match(app.html(),/0\.7922/);
   app.change("candidateSource","targets");assert.match(app.html(),/Saved experimental candidates/);
   app.change("promptDataset","rnx_esi");app.change("frame","X but not Y");assert.match(app.html(),/No prompts match/);
   app.change("frame","Neutral");assert.match(app.html(),/ESI/);assert.match(app.html(),/Eonly/);
@@ -158,7 +158,7 @@ test("both HTML entry points lead to results and retain a script-free fallback",
   assert.match(fallback,/Pearson correlation/);
   assert.match(fallback,/Mean proper log score/);
   assert.match(fallback,/van Tiel et al/);
-  assert.match(fallback,/-3\.219/);
+  assert.match(fallback,/-3\.217/);
   assert.ok(!html.includes("__VIEWER_FALLBACK__"));
 });
 
@@ -227,7 +227,7 @@ test("Spearman page exposes both measures and context ranks",()=>{
 
 test("rank plots preserve every observation across context and model changes",()=>{
   const app=harness();app.click({view:"spearman"});app.click({spearmanExample:"fridge"});
-  assert.match(app.html(),/ρ = 0.886/);assert.match(app.html(),/ρ = 0.784/);
+  assert.match(app.html(),/ρ = 1.000/);assert.match(app.html(),/ρ = 0.860/);
   for(const context of data.contexts){
     app.change("context",context);
     for(const model of data.spearman.negation_spearman_by_context.filter(r=>r.context===context)){
@@ -244,7 +244,7 @@ test("rank plots preserve every observation across context and model changes",()
 
 test("across-context plots use the actual sampled inputs and link to the same rank details",()=>{
   const app=harness();app.click({view:"association"});
-  assert.match(app.html(),/Historical sampled-prefix run/);
+  assert.match(app.html(),/Corrected single-space run/);
   assert.equal((app.html().match(/class="chart association-chart"/g)||[]).length,9);
   const tests=data.rankAssociation.tests.filter(r=>r.definition==="sampling");
   assert.equal(tests.length,9);
@@ -255,14 +255,14 @@ test("across-context plots use the actual sampled inputs and link to the same ra
     assert.ok(Math.abs(math.spearman(rows.map(r=>r.sampling),rows.map(r=>r.negation))-t.R)<1e-12);
     if([3,6].includes(t.model))assert.deepEqual(t.omitted,["mask"]);
   }
-  assert.match(app.html(),/R = 0.851/);assert.match(app.html(),/p\(Holm\) &lt; .001/);
+  assert.match(app.html(),/R = 0.744/);assert.match(app.html(),/p\(Holm\) = 0.012/);
   app.click({rankContext:"beach",rankModel:"4"});
   assert.match(app.html(),/Word-ranking Spearman · beach/);
-  assert.match(app.html(),/ρ = 0.714/);assert.match(app.html(),/ρ = 0.303/);
+  assert.match(app.html(),/ρ = 0.943/);assert.match(app.html(),/ρ = 0.498/);
   app.change("wordSource","target");assert.match(app.html(),/ρ = 0.943/);
   app.click({view:"association"});assert.match(app.html(),/Separate direct-target scores \(comparison\)/);
-  assert.match(app.html(),/R = 0.356/);
-  app.change("wordSource","sampling");assert.match(app.html(),/R = 0.183/);
+  assert.match(app.html(),/R = 0.661/);
+  app.change("wordSource","sampling");assert.match(app.html(),/R = 0.661/);
   assert.ok(!/\bNaN\b|>undefined</.test(app.html()));
 });
 
@@ -274,9 +274,10 @@ test("word ranks agree with exported sampling candidates, without changing exclu
     assert.equal(candidate.rank,r.vocabulary_rank);
   }
   assert.deepEqual(data.spearman.negation_paired_ranks,data.targetScoreSpearman.negation_paired_ranks);
-  assert.equal(data.scoreAlignment.matched,false);
+  assert.equal(data.run.corrected,true);
+  assert.deepEqual(data.scoreAlignment,{compared:947,mismatched:0,missing:0,matched:true});
   const app=harness();app.click({view:"spearman"});app.change("context","fridge");
-  assert.ok(!app.html().includes("model ranks all six words in the human order"));
+  assert.match(app.html(),/ρ = 1.000/);
   app.change("wordSource","target");assert.match(app.html(),/ρ = 1.000/);
 });
 

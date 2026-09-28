@@ -15,7 +15,6 @@ import hashlib
 import inspect
 import json
 import os
-import re
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -42,7 +41,8 @@ except ImportError:
     )
 
 
-SCORER_VERSION: Final[str] = "1.1"
+SCORER_VERSION: Final[str] = "1.2"
+SCORING_BOUNDARY_VERSION: Final[str] = "single-space-exact-concat-v1"
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_MANIFEST = (
     REPO_ROOT
@@ -72,6 +72,7 @@ METADATA_COLUMNS: Final[tuple[str, ...]] = (
     "scoring_row_key",
     "scored_candidate_roles",
     "scorer_version",
+    "scoring_boundary_version",
     "manifest_sha256",
     "model_identifier",
     "model_revision",
@@ -198,18 +199,21 @@ def resolve_model_location(model_path: str | Path) -> ModelLocation:
 
 
 def split_prompt_boundary(prompt: str, candidate: str) -> tuple[str, str]:
-    prompt_text = str(prompt)
+    """Use the same single-space boundary for neutral and framed scoring.
+
+    Keep internal prompt whitespace, strip trailing whitespace, and score one
+    leading space plus the stripped candidate using full-text tokenization.
+    Version 1.1 preserved arbitrary trailing whitespace; its existing manifests
+    happen to use exactly one space, but new checkpoints explicitly pin this
+    convention and cannot silently resume an older scorer version.
+    """
+    prefix = str(prompt).rstrip()
     candidate_text = str(candidate).strip()
     if not candidate_text:
         raise ValueError("Cannot score an empty continuation")
-    match = re.search(r"\s+$", prompt_text)
-    if match is None:
-        raise ValueError("The scoring prompt must end in whitespace")
-    prefix = prompt_text[: match.start()]
-    boundary = prompt_text[match.start() :]
     if not prefix:
         raise ValueError("The scoring prompt cannot contain only whitespace")
-    return prefix, boundary + candidate_text
+    return prefix, " " + candidate_text
 
 
 def continuation_token_ids(
@@ -461,6 +465,8 @@ def _read_partial(
         raise ValueError("Partial score file was created from a different manifest")
     if not partial["scorer_version"].astype(str).eq(SCORER_VERSION).all():
         raise ValueError("Partial score file uses a different scorer version")
+    if not partial["scoring_boundary_version"].eq(SCORING_BOUNDARY_VERSION).all():
+        raise ValueError("Partial score file uses a different scoring boundary")
     keys = partial["scoring_row_key"].astype(str)
     if keys.duplicated().any():
         raise ValueError("Partial score file contains duplicate scoring row keys")
@@ -587,6 +593,7 @@ def score_manifest(args: argparse.Namespace) -> None:
     )
     run_metadata = {
         "scorer_version": SCORER_VERSION,
+        "scoring_boundary_version": SCORING_BOUNDARY_VERSION,
         "manifest_sha256": manifest_hash,
         **model_metadata,
     }

@@ -1,0 +1,14 @@
+{
+  "expected_prompts": 360,
+  "complete_prompts": 360,
+  "partial_prompts": 0,
+  "missing_prompts": 0,
+  "candidate_count": 121301,
+  "required_candidate_count": 360,
+  "absent_required_candidates": [],
+  "problem_count": 0,
+  "partial_prompt_ids": [],
+  "missing_prompt_ids": [],
+  "problems": [],
+  "ready": true
+}

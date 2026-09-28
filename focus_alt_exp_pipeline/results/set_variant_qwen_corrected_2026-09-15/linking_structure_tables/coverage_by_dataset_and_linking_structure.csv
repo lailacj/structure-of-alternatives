@@ -1,0 +1,11 @@
+Dataset,No linking structure,X but not Y,Set Top-K,Set Top-p,Ordering,Conjunction Top-K,Conjunction Top-p,Disjunction Top-K,Disjunction Top-p
+van Tiel et al. (2016),available (N=39),available (N=39),available (N=39),available (N=39),available (N=39),available (N=39),available (N=39),available (N=39),available (N=39)
+Gotzner et al. (2018),available (N=67),available (N=67),available (N=67),available (N=67),available (N=67),available (N=67),available (N=67),available (N=67),available (N=67)
+Pankratz & van Tiel (2021),available (N=50),available (N=50),available (N=50),available (N=50),available (N=50),available (N=50),available (N=50),available (N=50),available (N=50)
+Ronai & Xiang (2022),available (N=57),available (N=57),available (N=57),available (N=57),available (N=57),available (N=57),available (N=57),available (N=57),available (N=57)
+R&X ESI,available (N=60),not applicable,available (N=60),available (N=60),available (N=60),available (N=60),available (N=60),available (N=60),available (N=60)
+R&X Eweak,available (N=60),not applicable,available (N=60),available (N=60),available (N=60),available (N=60),available (N=60),available (N=60),available (N=60)
+R&X Estrong,available (N=60),not applicable,available (N=60),available (N=60),available (N=60),available (N=60),available (N=60),available (N=60),available (N=60)
+R&X Eonly,available (N=60),not applicable,available (N=60),available (N=60),available (N=60),available (N=60),available (N=60),available (N=60),available (N=60)
+R&X Eonlystrong,available (N=60),not applicable,available (N=60),available (N=60),available (N=60),available (N=60),available (N=60),available (N=60),available (N=60)
+Novel Focus Alternative Study,available (N=480),available (N=480),available (N=480),available (N=480),available (N=480),available (N=480),available (N=480),available (N=480),available (N=480)

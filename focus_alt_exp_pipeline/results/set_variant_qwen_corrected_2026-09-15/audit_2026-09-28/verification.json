@@ -1,0 +1,82 @@
+{
+  "verified_date": "2026-09-28",
+  "cluster": "Oscar",
+  "gpu_array": 6368525,
+  "gpu_tasks_completed": 360,
+  "postprocessing_job": 6405567,
+  "all_exit_codes": "0:0",
+  "queue_empty": true,
+  "fatal_log_scan_files": 720,
+  "fatal_log_matches": 0,
+  "score_validation": {
+    "expected_prompts": 360,
+    "complete_prompts": 360,
+    "partial_prompts": 0,
+    "missing_prompts": 0,
+    "candidate_count": 121301,
+    "required_candidate_count": 360,
+    "absent_required_candidates": [],
+    "problem_count": 0,
+    "partial_prompt_ids": [],
+    "missing_prompt_ids": [],
+    "problems": [],
+    "ready": true
+  },
+  "array_hash_sets_verified": 360,
+  "changed_original_source_columns": [
+    "trigger_logprob_sum",
+    "query_logprob_sum",
+    "trigger_logprob_mean",
+    "query_logprob_mean",
+    "source_score_file"
+  ],
+  "human_inputs_folds_grids_unchanged": true,
+  "grid_rows": 16881,
+  "oof_variant_rows": 1986,
+  "unique_units": 993,
+  "reproduced_csv_files": [
+    "cv_results/correlations.csv",
+    "cv_results/fold_selections.csv",
+    "cv_results/oof_balanced_log_scores_by_structure.csv",
+    "cv_results/oof_log_scores_by_dataset_and_structure.csv",
+    "cv_results/oof_predictions.csv",
+    "linking_structure_tables/correlations_by_dataset_and_linking_structure.csv",
+    "linking_structure_tables/coverage_by_dataset_and_linking_structure.csv",
+    "linking_structure_tables/log_scores_by_dataset_and_linking_structure.csv",
+    "linking_structure_tables/spearman_by_dataset_and_linking_structure.csv",
+    "linking_structure_tables/spearman_coverage.csv",
+    "linking_structure_tables/spearman_paired_ranks.csv",
+    "spearman/mean_within_context_spearman.csv",
+    "spearman/negation_paired_ranks.csv",
+    "spearman/negation_spearman_by_context.csv",
+    "spearman/word_paired_ranks.csv",
+    "spearman/word_spearman_by_context.csv"
+  ],
+  "comparison_tolerance": {
+    "relative": 1e-12,
+    "absolute": 1e-12
+  },
+  "sampling_rerun": false,
+  "viewer_metric_cells_verified": 261,
+  "neutral_distribution_coverage": 360,
+  "score_alignment": {
+    "compared": 947,
+    "mismatched": 0,
+    "missing": 0,
+    "matched": true
+  },
+  "tests": {
+    "python_viewer": 19,
+    "python_cv_spearman_validator": 18,
+    "javascript_viewer": 18,
+    "failures": 0
+  },
+  "visual_review": [
+    "offline viewer overview",
+    "corrected correlation heatmap"
+  ],
+  "source_sha256": "0ab0b70aef1f40bf6f733e880862b0585575ded5fea97f7d7dcae39082b7a9ba",
+  "snapshot_sha256": "04105a238ba92f9a3d558d3c54572eec62e5e6718d8a596003d75cf196cdb214",
+  "viewer_sha256": "6a3d7ac24a920cba1245664be844d0debb003d29b938ba1ab363350885f3968e",
+  "historical_viewer_sha256": "3fdf373e20fdd349af09e7b13b0e93d9bd2386acd8e91702a37af96e0ae906a5"
+}

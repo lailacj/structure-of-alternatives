@@ -9,6 +9,7 @@ by ``evaluate_set_variant_grid.py``.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 
@@ -31,6 +32,19 @@ ROW_LABELS = {
     "rnx_eonlystrong": "Ronai & Xiang (2024): Eonlystrong",
     "novel_focus": "Novel focus alternatives",
 }
+
+
+def validate_corrected_array_identity(rows: pd.DataFrame, path: Path, log_probs: np.ndarray, lookup: dict) -> None:
+    """Corrected exports must use the very same score bytes for every model."""
+    if "neutral_score_array_sha256" not in rows:
+        return  # Historical runs remain reproducible through their old inputs.
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    if not rows.neutral_score_array_sha256.eq(digest).all():
+        raise ValueError("Corrected source rows and sampled score array have different hashes")
+    for role in ("trigger", "query"):
+        actual = np.array([log_probs[lookup[str(w).strip().lower()]] for w in rows[role]])
+        if not np.allclose(actual, rows[f"{role}_logprob_sum"], rtol=0, atol=1e-12):
+            raise ValueError(f"Corrected direct {role} scores do not match the sampling array")
 
 
 def _parse_values(raw: str, *, kind: str) -> list[float]:
@@ -225,6 +239,7 @@ def build_prediction_grid(source_rows: pd.DataFrame, *, log_probs_dir: Path, k_v
         if not path.exists():
             raise FileNotFoundError(f"Missing Qwen scores for prompt {prompt_id}: {path}")
         log_probs = np.asarray(np.load(path, mmap_mode="r"), dtype=np.float64)
+        validate_corrected_array_identity(rows, path, log_probs, token_lookup)
         finite = np.isfinite(log_probs)
         shifted = log_probs[finite] - log_probs[finite].max()
         support_probs = np.exp(shifted)
@@ -300,7 +315,10 @@ def main() -> None:
         if args.fold_reference_source_rows is not None
         else None
     )
-    grid = build_prediction_grid(pd.read_csv(args.source_rows), log_probs_dir=args.log_probs_dir, k_values=k_values, p_values=p_values, num_reps=args.num_reps, prefix_size=max(args.max_prefix_size, max(k_values)), seed=args.seed, fold_count=args.fold_count, fold_reference=fold_reference)
+    source = pd.read_csv(args.source_rows)
+    grid = build_prediction_grid(source, log_probs_dir=args.log_probs_dir, k_values=k_values, p_values=p_values, num_reps=args.num_reps, prefix_size=max(args.max_prefix_size, max(k_values)), seed=args.seed, fold_count=args.fold_count, fold_reference=fold_reference)
+    if "neutral_score_array_sha256" in source:
+        grid["source_rows_sha256"] = hashlib.sha256(args.source_rows.read_bytes()).hexdigest()
     args.output.parent.mkdir(parents=True, exist_ok=True)
     grid.to_csv(args.output, index=False)
     print(f"[complete] rows={len(grid)} output={args.output}")

@@ -35,7 +35,7 @@ python3 focus_alt_exp_pipeline/code/build_results_viewer.py
 ```
 
 Run this command from the repository root. On Oscar, add
-`--log-probs-dir /users/ljohnst7/data/ljohnst7/ngrams/qwen_set_variant_log_probs`
+`--log-probs-dir /users/ljohnst7/data/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space`
 to populate the top-50 vocabulary distributions. The resulting HTML works
 offline. See [the viewer guide](results_viewer/README.md) for export options,
 metric definitions, and verification commands.
@@ -65,7 +65,7 @@ metric definitions, and verification commands.
 
 - `results/`
   Raw trial-level outputs, summaries, diagnostics, and plots.
-  `results/set_variant_qwen/` is the current full-coverage cross-dataset result
+  `results/set_variant_qwen_corrected_2026-09-15/` is the current full-coverage cross-dataset result
   bundle.
 
 ## Core Inputs
@@ -427,10 +427,10 @@ For example:
 
 The active cross-dataset sampled-prefix outputs instead live under:
 
-- `results/set_variant_qwen/prediction_grid.csv`
-- `results/set_variant_qwen/cv_results/`
-- `results/set_variant_qwen/linking_structure_tables/`
-- `results/set_variant_qwen/advisor_summary/`
+- `results/set_variant_qwen_corrected_2026-09-15/prediction_grid.csv`
+- `results/set_variant_qwen_corrected_2026-09-15/cv_results/`
+- `results/set_variant_qwen_corrected_2026-09-15/linking_structure_tables/`
+- `results/set_variant_qwen_corrected_2026-09-15/advisor_summary/`
 
 ## Typical Commands
 
@@ -487,32 +487,33 @@ For each outer fold, `evaluate_set_variant_grid.py` selects one K and one p
 using only the other nine folds' balanced Set log likelihood. It reuses each
 selected boundary for Conjunction and Disjunction in the held-out fold.
 
-The full run completed on September 8, 2026. It contains 16,881 grid rows and
-1,986 out-of-fold variant rows covering 993 unique analysis units in 10 dataset
-strata. Top-p selected `p=0.6` in all folds. Top-K selected `K=100` in all
-folds; because 100 is the maximum tested value, expand the K grid before the
-analysis is frozen.
+The corrected run completed September 24, 2026 and was synced September 28.
+It contains 16,881 grid rows and 1,986 out-of-fold variant rows covering 993
+unique analysis units in ten datasets. Top-K selects K=20 in all folds;
+Top-p selects p=0.6 in seven and p=0.7 in three. The September 8 run is retained
+as historical output. The earlier scoring and postprocessing commands above
+use historical destinations; the corrected wrapper below requires explicit paths.
 
 Build the aligned linking tables and aggregate plots with:
 
 ```bash
 python focus_alt_exp_pipeline/code/build_linking_structure_tables.py \
-  --source-rows focus_alt_exp_pipeline/scoring_manifests/set_variant_qwen/source_rows.csv \
-  --results-dir focus_alt_exp_pipeline/results/set_variant_qwen \
-  --output-dir focus_alt_exp_pipeline/results/set_variant_qwen/linking_structure_tables
+  --source-rows focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/inputs/source_rows.csv \
+  --results-dir focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15 \
+  --output-dir focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/linking_structure_tables
 
 python focus_alt_exp_pipeline/code/build_set_variant_advisor_summary.py \
-  --results-dir focus_alt_exp_pipeline/results/set_variant_qwen \
-  --output-dir focus_alt_exp_pipeline/results/set_variant_qwen/advisor_summary \
-  --snapshot-dir focus_alt_exp_pipeline/scoring_manifests/set_variant_qwen \
-  --linking-correlations focus_alt_exp_pipeline/results/set_variant_qwen/linking_structure_tables/correlations_by_dataset_and_linking_structure.csv \
-  --linking-log-scores focus_alt_exp_pipeline/results/set_variant_qwen/linking_structure_tables/log_scores_by_dataset_and_linking_structure.csv \
-  --analysis-label Full
+  --results-dir focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15 \
+  --output-dir focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/advisor_summary \
+  --snapshot-dir focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/inputs \
+  --linking-correlations focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/linking_structure_tables/correlations_by_dataset_and_linking_structure.csv \
+  --linking-log-scores focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/linking_structure_tables/log_scores_by_dataset_and_linking_structure.csv \
+  --analysis-label "Corrected single-space"
 
 python focus_alt_exp_pipeline/code/plot_linking_structure_item_scores.py \
-  --source-rows focus_alt_exp_pipeline/scoring_manifests/set_variant_qwen/source_rows.csv \
-  --results-dir focus_alt_exp_pipeline/results/set_variant_qwen \
-  --output-dir focus_alt_exp_pipeline/results/set_variant_qwen/advisor_summary/item_level_scatterplots
+  --source-rows focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/inputs/source_rows.csv \
+  --results-dir focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15 \
+  --output-dir focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/advisor_summary/item_level_scatterplots
 ```
 
 Run the cloze-based model:
@@ -569,6 +570,45 @@ Legacy score arrays cannot be resumed with this correction: use a new
 `--output-dir` to preserve the original run, or explicitly use `--overwrite` to
 recompute it. Existing saved results are not corrected until scores and downstream
 analyses are regenerated.
+
+### Matched-artifact corrected run (September 15, 2026)
+
+Oscar array `6368525` and downstream job `6405567` completed successfully on
+September 24. All 360 corrected arrays in
+`ngrams/qwen_set_variant_log_probs_single_space/` pass validation. The current
+results are in `results/set_variant_qwen_corrected_2026-09-15/` and were synced
+September 28. Its completion audit records job states, hashes and numerical
+reproduction checks. The original arrays and September 8 results are preserved.
+The frozen downstream snapshot remains on Oscar and is retained locally as
+`run_snapshot.tar.gz` in the corrected result directory.
+
+`code/export_corrected_set_variant_sources.py` extracts neutral trigger/query
+scores directly from those full-vocabulary arrays. The resulting
+`inputs/source_rows.csv` feeds both the direct neutral baseline and all linking
+structures. The exporter checks completeness, prompt identity, the single-space
+boundary, exact model revision, vocabulary offsets, and finite scores. It
+preserves human data, inclusion flags, and framed scores, and records array
+hashes plus full-support-normalized candidate probabilities. The direct baseline
+still uses raw `exp(query_logprob_sum)`; sampling uses the full-support normalized
+distribution. They share one underlying score artifact, not necessarily one
+probability scale.
+
+The same exporter audits the existing X-but-not-Y scores against the pinned
+tokenizer. All 789 framed rows (775 unique prompt/candidate pairs) passed: their
+prompts already use exactly one trailing space, and their token IDs, token
+strings, recorded sums/means, source mapping, and model revision agree. Those
+verified scores are reused unchanged. This is a convention/provenance audit,
+not an independent model-forward rescore. The manifest and vocabulary scorers
+now share the same boundary helper; newly produced manifest checkpoints record
+scorer version 1.2 and `single-space-exact-concat-v1` explicitly.
+
+`cluster/run_corrected_set_variant_postprocessing.sh` requires explicit snapshot,
+array, and result paths. It exports the matched scores before sampling, then
+runs grouped CV and the aligned tables. Corrected prediction grids check source
+scores against array hashes, and the table builder checks that its direct
+baseline source hash matches the OOF predictions. This scoring-only rerun keeps
+the previous K/p grids, 500 draws, seed, and fold assignments; expanding K above
+100 remains an optional sensitivity analysis: the corrected folds select K=20.
 
 Build the sparse Qwen precompute for one context:
 
@@ -699,14 +739,16 @@ exports for traceability; its predictions are boundary-independent.
 Regenerate without rerunning Qwen:
 
 ```bash
-python focus_alt_exp_pipeline/code/evaluate_focus_spearman.py
+python focus_alt_exp_pipeline/code/evaluate_focus_spearman.py \
+  --source-rows focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/inputs/source_rows.csv \
+  --results-dir focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15
 ```
 
 Optional `--human-data`, `--source-rows`, and `--results-dir` select inputs.
 The source table must contain complete neutral scores for the same model/revision
 and all tested words; missing, extra, inconsistent, or non-finite observations
 fail validation. Human pair rates are checked against saved source and OOF rates.
-Outputs in `results/set_variant_qwen/spearman/` include context coefficients,
+Outputs in `results/set_variant_qwen_corrected_2026-09-15/spearman/` include context coefficients,
 paired values/ranks, equal-context means, and `SPEARMAN.md`. The cluster
 postprocessing wrapper and linking-table builder also regenerate these outputs.
 The advisor summary includes the generated Spearman report when available.

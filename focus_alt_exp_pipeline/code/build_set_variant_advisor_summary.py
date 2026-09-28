@@ -294,6 +294,11 @@ def main() -> None:
         f"p={row.selected_boundary:g} in {int(row.fold_count)} fold(s)"
         for row in p_counts.itertuples()
     )
+    grid = pd.read_csv(args.results_dir / "prediction_grid.csv", usecols=["variant", "boundary"])
+    k_max = float(grid.loc[grid["variant"].eq("top_k"), "boundary"].max())
+    ceiling_folds = int(k_counts.loc[k_counts["selected_boundary"].eq(k_max), "fold_count"].sum())
+    k_note = (f"The largest tested K={k_max:g} was selected in {ceiling_folds} fold(s); expand the grid before freezing that choice."
+              if ceiling_folds else f"All selected values are below the tested maximum K={k_max:g}.")
     novel = correlations.loc[correlations["analysis_dataset_id"].eq("novel_focus")]
     novel_values = novel[[
         f"{structure}_pearson_r" for structure in STRUCTURES
@@ -347,18 +352,19 @@ def main() -> None:
 - Best proposed structure: **{best['structure']}** with balanced OOF mean log score **{best['balanced_mean_oof_log_score']:.3f}**.
 - Fold-safe dataset base-rate score: **{base_score:.3f}**.
 - Difference between the best proposed structure and base rate: **{best['balanced_mean_oof_log_score'] - base_score:.3f}** (negative is worse).
-- Top-K selected **{k_text}**; selections at K=100 are at the maximum tested value.
+- Top-K selected **{k_text}**. {k_note}
 - Top-p selected **{p_text}**.
 - Novel-focus correlations range from approximately **{novel_min:.2f} to {novel_max:.2f}** across structures, while most scalar-dataset correlations are weak or inconsistent.
 - Matched R&X prompts produce identical model predictions even though mean human exclusion increases in {" and ".join(matched_deltas)}.
 
 ## Interpretation
 
-Ordering is the strongest of the proposed structures, but none beats a simple
-fold-safe condition-specific base-rate predictor in proper log score. Extreme
+The strongest proposed structure is **{best['structure']}**. Its difference from
+the fold-safe condition-specific base rate is **{best['balanced_mean_oof_log_score'] - base_score:.3f}**.
+Extreme
 0/1 Monte Carlo probabilities produce large penalties when the model disagrees
-with non-extreme human rates. This suggests that calibration/noise and the
-Top-K search range require discussion before the final analysis is frozen.
+with non-extreme human rates. Calibration/noise requires discussion before
+the final analysis is frozen. {k_note}
 
 ## {coverage_heading}
 

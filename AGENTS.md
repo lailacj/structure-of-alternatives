@@ -105,7 +105,7 @@ Implemented in the active pipeline:
 Planned or future-facing:
 
 - Uniform next-word baseline
-- Expand the active Top-K grid beyond its current maximum of 100
+- Optional sensitivity analysis extending the Top-K grid beyond 100
 
 ## Qwen Status
 
@@ -156,20 +156,24 @@ Useful current rerun path:
 4. Rebuild Qwen plots with
    `python focus_alt_exp_pipeline/code/plot_results.py --results-dir focus_alt_exp_pipeline/results/qwen --model qwen`.
 
-### Active cross-dataset sampled-prefix run (September 8, 2026)
+### Active corrected cross-dataset run (verified September 28, 2026)
 
-- `focus_alt_exp_pipeline/scoring_manifests/set_variant_qwen/` contains 360
-  prompts and 1,089 source rows.
-- The cluster score arrays under sibling
-  `ngrams/qwen_set_variant_log_probs/` passed strict validation: 360/360
-  prompts, 121,301 candidates per prompt, and no missing or non-finite required
-  candidates.
-- `focus_alt_exp_pipeline/results/set_variant_qwen/` contains the full current
-  prediction grid, grouped-CV outputs, linking tables, and plots.
-- Top-p selected `p=0.6` in every fold.
-- Top-K selected the tested ceiling `K=100` in every fold, so the K grid should
-  be expanded before the analysis is frozen.
-- The archived absolute-threshold/Gumbel model is not part of this run.
+- GPU array `6368525` and downstream job `6405567` completed successfully on
+  September 24; all 360 prompts pass strict validation with 121,301 finite
+  candidates each.
+- Active results: `focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/`.
+- Use that directory's `inputs/source_rows.csv` for corrected direct and linking
+  analyses. Historical scoring manifests retain their original scores.
+- Corrected arrays on Oscar: sibling `ngrams/qwen_set_variant_log_probs_single_space/`.
+- K=20 in all ten folds; p=0.6 in seven and p=0.7 in three. The K ceiling warning
+  applied to the historical run and is no longer a limitation of this selection.
+- The viewer defaults to the corrected bundle and preserves its matching full
+  distributions on local rebuild. The historical viewer is retained at
+  `results/set_variant_qwen/results_viewer.html`.
+- Completion audit, job accounting, source hashes and regeneration comparisons
+  are in the corrected run's `audit_2026-09-28/` directory.
+- Do not rerun historical defaults to refresh current results. Use explicit
+  corrected result/source paths; retain the frozen cluster snapshot archive.
 
 ## Result Conventions
 
@@ -243,12 +247,15 @@ python focus_alt_exp_pipeline/code/plot_results.py \
   --model qwen
 ```
 
-Rebuild the active cross-dataset CPU postprocessing outputs from completed Qwen
-arrays:
+Refresh the current offline viewer without rescoring or sampling:
 
 ```bash
-sbatch focus_alt_exp_pipeline/cluster/run_set_variant_postprocessing.sh
+python focus_alt_exp_pipeline/code/build_results_viewer.py
 ```
+
+For tables and plots, use the explicit corrected source/result paths documented
+in `focus_alt_exp_pipeline/README.md`. The old postprocessing wrapper targets
+the historical run.
 
 ## Data Assumptions
 

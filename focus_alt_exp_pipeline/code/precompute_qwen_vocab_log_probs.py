@@ -15,11 +15,9 @@ import numpy as np
 import pandas as pd
 
 try:
-    from .score_qwen_scoring_manifest import continuation_token_ids
+    from .score_qwen_scoring_manifest import continuation_token_ids, split_prompt_boundary, SCORING_BOUNDARY_VERSION
 except ImportError:
-    from score_qwen_scoring_manifest import continuation_token_ids
-
-SCORING_BOUNDARY_VERSION = "single-space-exact-concat-v1"
+    from score_qwen_scoring_manifest import continuation_token_ids, split_prompt_boundary, SCORING_BOUNDARY_VERSION
 
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
@@ -296,11 +294,9 @@ def _prompt_prefix(prompt: str) -> str:
 
 
 def _vocab_continuation_ids(tokenizer, prefix: str, continuation: str) -> list[int]:
-    candidate = str(continuation).strip()
-    if not candidate:
-        raise ValueError("Cannot score an empty continuation")
+    prefix, candidate = split_prompt_boundary(prefix, continuation)
     token_ids, _ = continuation_token_ids(
-        tokenizer, prefix=prefix, continuation=" " + candidate,
+        tokenizer, prefix=prefix, continuation=candidate,
     )
     return token_ids
 
