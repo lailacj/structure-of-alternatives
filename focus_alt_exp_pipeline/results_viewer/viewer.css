@@ -44,3 +44,11 @@
 .run-status{margin-top:0;max-width:none}
 @media(max-width:1150px){.association-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:750px){.association-grid{grid-template-columns:minmax(0,1fr);gap:24px}.association-legend{gap:14px}}
+
+/* Native buttons provide keyboard sorting and aria-sort announces direction. */
+thead th .table-sort{display:flex;align-items:center;justify-content:flex-end;gap:7px;width:100%;border:0;border-radius:3px;padding:0;background:transparent;color:inherit;font:inherit;text-align:inherit}
+thead th:first-child .table-sort{justify-content:flex-start}
+thead th .table-sort:hover{color:var(--blue);background:transparent;text-decoration:underline}
+.sort-arrow{font-size:.75em;color:var(--muted);flex-shrink:0}
+thead th[aria-sort=ascending] .sort-arrow,thead th[aria-sort=descending] .sort-arrow{color:var(--blue)}
+@media print{thead th .table-sort{display:flex!important;color:inherit}.sort-arrow{display:none}}

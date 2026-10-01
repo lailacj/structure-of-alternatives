@@ -41,14 +41,14 @@ function harness(payload=data){
   const listeners={},elements={},downloads=[];
   const element=id=>elements[id]||(elements[id]={id,innerHTML:"",textContent:"",focus(){},setAttribute(){},removeAttribute(){},scrollIntoView(){}});
   element("results-data").textContent=JSON.stringify(payload);
-  const document={activeElement:null,getElementById:element,querySelectorAll:()=>[],addEventListener:(name,fn)=>{listeners[name]=fn;},createElement:()=>({click(){}})};
+  const document={activeElement:null,getElementById:element,querySelector:()=>null,querySelectorAll:()=>[],addEventListener:(name,fn)=>{listeners[name]=fn;},createElement:()=>({click(){}})};
   const sandbox={document,window:{scrollTo(){},addEventListener(){}},console,Blob,
     URL:{createObjectURL(blob){downloads.push(blob);return "blob:test";},revokeObjectURL(){}},setTimeout:fn=>fn()};
   vm.createContext(sandbox);
   // Exercise the scripts actually shipped in the HTML, not only the JS source.
   for(const script of html.matchAll(/<script>([\s\S]*?)<\/script>/g))vm.runInContext(script[1],sandbox);
   return {html:()=>element("main").innerHTML,downloads:()=>Promise.all(downloads.map(blob=>blob.text())),
-    click:dataset=>listeners.click({target:{closest:()=>({dataset})}}),
+    click:(dataset,table)=>listeners.click({target:{closest:()=>({dataset,closest:()=>table})}}),
     change:(id,value)=>listeners.change({target:{id,value}}),
     input:(id,value)=>listeners.input({target:{id,value}})};
 }
@@ -353,4 +353,51 @@ test("non-focus Spearman uses the same saved items and is available alongside Pe
   app.click({view:"structures"});app.change("metric","rho");
   assert.match(app.html(),/Explore focus within-context Spearman/);
   app.click({view:"contexts"});assert.ok(!app.html().includes('<option value="rho"'));
+});
+
+// Exercise the shipped click handler with DOM-shaped rows and real fridge data.
+function sortableTable(values){
+  const headers=["Trigger","Query","Prediction"].map(label=>{
+    const arrow={textContent:""},button={dataset:{label},setAttribute(){},querySelector(){return arrow;}};
+    return {attributes:{},setAttribute(k,v){this.attributes[k]=v;},querySelector(){return button;}};
+  });
+  const body={rows:values.map(row=>({cells:row.map(value=>({dataset:{sortValue:value===null?"":String(value)},textContent:"0.000"}))})),
+    append(...rows){this.rows=rows;}};
+  return {dataset:{sortKey:"spearman:paired"},tHead:{rows:[{cells:headers}]},tBodies:[body]};
+}
+test("paired table sorts Query in both directions and preserves every fridge pair",()=>{
+  const app=harness(),rows=data.items.filter(r=>r.context==="fridge"&&r.dataset==="novel_focus");
+  const table=sortableTable(rows.map(r=>[r.trigger,r.query,r.p[0]]));
+  app.click({sortColumn:"1"},table);
+  const queries=()=>table.tBodies[0].rows.map(r=>r.cells[1].dataset.sortValue);
+  assert.deepEqual(queries(),rows.map(r=>r.query).sort());
+  assert.equal(table.tHead.rows[0].cells[1].attributes["aria-sort"],"ascending");
+  app.click({sortColumn:"1"},table);
+  assert.deepEqual(queries(),rows.map(r=>r.query).sort().reverse());
+  assert.equal(table.tHead.rows[0].cells[1].attributes["aria-sort"],"descending");
+  assert.equal(table.tBodies[0].rows.length,30);
+  // Raw values, not rounded display strings, control probability sorting.
+  app.click({sortColumn:"2"},table);
+  const values=table.tBodies[0].rows.map(r=>Number(r.cells[2].dataset.sortValue));
+  assert.deepEqual(values,rows.map(r=>r.p[0]).sort((a,b)=>a-b));
+  assert.equal(table.tHead.rows[0].cells[1].attributes["aria-sort"],"none");
+});
+test("numeric sorting handles scientific notation and keeps missing values last both ways",()=>{
+  const app=harness(),table=sortableTable([["a","a",null],["b","b",10],["c","c",2],["d","d",1e-7],["e","e",-0.4]]);
+  const values=()=>table.tBodies[0].rows.map(r=>r.cells[2].dataset.sortValue);
+  app.click({sortColumn:"2"},table);
+  assert.deepEqual(values(),["-0.4","1e-7","2","10",""]);
+  app.click({sortColumn:"2"},table);
+  assert.deepEqual(values(),["10","2","1e-7","-0.4",""]);
+});
+test("item sorting applies before pagination and remains active on the next page",()=>{
+  const app=harness();app.click({view:"contexts"});app.change("context","fridge");
+  app.click({sortColumn:"2"},{dataset:{sortKey:"contexts:items",sortId:"items"}});
+  const ids=()=>[...app.html().match(/<table data-sort-id="items">([\s\S]*?)<\/table>/)[1].matchAll(/data-item="novel_focus\|([^"]+)"/g)].map(m=>m[1]);
+  const expected=data.items.filter(r=>r.context==="fridge"&&r.dataset==="novel_focus").sort((a,b)=>a.y-b.y).map(r=>r.id);
+  assert.deepEqual(ids(),expected.slice(0,20));
+  app.click({page:"1"});
+  assert.deepEqual(ids(),expected.slice(20));
+  app.click({sortColumn:"2"},{dataset:{sortKey:"contexts:items",sortId:"items"}});
+  assert.match(app.html(),/page 1 of 2/);
 });

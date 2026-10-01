@@ -18,6 +18,15 @@ Across-context association tests are recalculated from the corrected inputs.
 The previous viewer is archived at `../results/set_variant_qwen/results_viewer.html`;
 the dated September 17 notes below describe that historical export.
 
+### Sortable tables
+
+Click any table column heading to sort ascending; click again to reverse it.
+An arrow marks the active column and direction. Headers also work with keyboard
+Tab and Enter or Space. Numeric columns sort numerically, with unavailable
+values last. Sorting the Individual items table applies to all filtered items
+before pagination. Other tables sort their displayed rows. Sorting changes only
+the row order; saved predictions, ranks, plots, and downloads are unchanged.
+
 ### September 22: paired probability and rank plots
 
 **Focus contexts** now shows side-by-side Pearson and Spearman plots for all
