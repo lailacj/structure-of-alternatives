@@ -18,6 +18,35 @@ Across-context association tests are recalculated from the corrected inputs.
 The previous viewer is archived at `../results/set_variant_qwen/results_viewer.html`;
 the dated September 17 notes below describe that historical export.
 
+### Wasserstein distances for the novel focus study
+
+The **Distributions** page reports exact Wasserstein-1 (earth mover's) distances
+for all nine models. For each of 16 contexts, it compares the 30 model exclusion
+probabilities with (1) that context's 30 human item rates and (2) the pooled
+empirical distribution of all 480 human item rates across contexts. The pooled
+view also compares each model's 480 predictions with those 480 human rates.
+Expand the context table to see all contexts together, or use the context/model
+filters. All tables are sortable.
+
+Each item pair has equal weight. The pooled reference retains all 480 rates;
+it is not a single mean, a distribution of context means, or binary responses.
+Distances integrate the absolute difference between empirical CDFs using exact
+values, independently of histogram bins. Smaller is closer; values are on the
+0–1 probability scale (0.10 corresponds to 10 percentage points). Marginal
+distribution agreement does not establish itemwise accuracy. These descriptive
+distances have no attached significance tests.
+
+**Download all focus distances** exports 153 rows: 144 context/model comparisons
+plus nine pooled-model comparisons, with both distances, sample sizes and run ID,
+regardless of active display filters. Regenerate a standalone CSV from the same
+saved viewer data without Python dependencies:
+
+```bash
+node focus_alt_exp_pipeline/results_viewer/export_wasserstein.cjs > focus_alt_exp_pipeline/results_viewer/focus_wasserstein.csv
+```
+
+The definition follows [SciPy's Wasserstein-1 documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wasserstein_distance.html).
+
 ### Sortable tables
 
 Click any table column heading to sort ascending; click again to reverse it.

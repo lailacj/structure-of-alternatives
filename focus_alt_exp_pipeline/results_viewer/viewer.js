@@ -56,11 +56,40 @@ const ResultsMath = (() => {
     }
     return {n:rows.length,human:stats(rows.map(r=>r.y)),model:stats(rows.map(r=>r.p[model]))};
   }
-  return {mean,pearson,ranks,spearman,summary,aggregate,escape,distribution,pairCorrelations};
+  // Exact integral of |F(x) - G(x)| for equally weighted empirical samples.
+  // Samples may have different sizes; histogram bins never enter this calculation.
+  function wasserstein(xs,ys) {
+    if([...xs,...ys].some(v=>!Number.isFinite(v)))throw new Error("Wasserstein samples must be finite");
+    if(!xs.length||!ys.length)return null;
+    const a=[...xs].sort((x,y)=>x-y),b=[...ys].sort((x,y)=>x-y);
+    let i=0,j=0,previous=Math.min(a[0],b[0]),distance=0;
+    for(const value of [...a,...b].sort((x,y)=>x-y)){
+      distance+=Math.abs(i/a.length-j/b.length)*(value-previous);
+      while(i<a.length&&a[i]<=value)i++;
+      while(j<b.length&&b[j]<=value)j++;
+      previous=value;
+    }
+    return distance;
+  }
+  function focusWasserstein(items,modelCount) {
+    const focus=items.filter(r=>r.dataset==="novel_focus"),pooled=focus.map(r=>r.y);
+    const contexts=[...new Set(focus.map(r=>r.context))].sort();
+    return [null,...contexts].flatMap(context=>{
+      const scope=context===null?focus:focus.filter(r=>r.context===context);
+      return Array.from({length:modelCount},(_,model)=>{
+        const rows=scope.filter(r=>r.p[model]!==null),predictions=rows.map(r=>r.p[model]);
+        return {context:context===null?"all":context,model,n:rows.length,human_n:rows.length,
+          pooled_human_n:pooled.length,w1_context:wasserstein(predictions,rows.map(r=>r.y)),
+          w1_pooled:wasserstein(predictions,pooled)};
+      });
+    });
+  }
+  return {mean,pearson,ranks,spearman,summary,aggregate,escape,distribution,pairCorrelations,wasserstein,focusWasserstein};
 })();
 if(typeof module!=="undefined")module.exports=ResultsMath;
 if(typeof document!=="undefined") (()=>{
 const D=JSON.parse(document.getElementById("results-data").textContent);
+const focusDistances=ResultsMath.focusWasserstein(D.items,D.models.length);
 const {mean,summary,aggregate,escape:esc}=ResultsMath;
 const state={view:"overview",wordSource:"sampling",spearmanModel:"set|top_k",distributionModel:"all",distributionContext:"all",metric:"log",dataset:"novel_focus",model:2,context:"bag",balanced:true,coverage:"all",promptDataset:"novel_focus",promptContext:"all",frame:"Neutral",promptId:"",candidateSource:"distribution",wordScale:"logp",wordSearch:"",itemSearch:"",page:0,item:null};
 const main=document.getElementById("main");
@@ -192,6 +221,18 @@ function distributionPlot(d,model,ymax){
 function distributionRows(){
   return D.items.filter(r=>r.dataset===state.dataset&&(state.dataset!=="novel_focus"||state.distributionContext==="all"||r.context===state.distributionContext));
 }
+function wassersteinTable(rows){
+  return `<div class="table-wrap"><table><thead><tr><th>Model scope</th><th>Linking structure</th><th>Model N</th><th>Human N · matching scope</th><th>W₁ · matching human scope</th><th>W₁ · pooled humans</th></tr></thead><tbody>${rows.map(r=>`<tr><th>${r.context==="all"?"All contexts pooled":esc(r.context)}</th><td>${esc(D.models[r.model])}</td><td>${r.n}</td><td>${r.human_n}</td><td data-sort-value="${r.w1_context??""}">${fmt(r.w1_context,6)}</td><td data-sort-value="${r.w1_pooled??""}">${fmt(r.w1_pooled,6)}</td></tr>`).join("")}</tbody></table></div>`;
+}
+function wassersteinPanel(context){
+  const rows=focusDistances.filter(r=>state.distributionModel==="all"||r.model===Number(state.distributionModel));
+  return `<section class="panel"><div class="panel-heading"><h2>Wasserstein distance · focus study</h2>${downloadButton("wasserstein","Download all focus distances")}</div>
+    <p>Wasserstein-1 (earth mover’s distance) compares the exact distributions of exclusion probabilities and rates. Lower is closer; 0 means identical distributions. Values use the 0–1 probability scale: 0.10 represents 10 percentage points of average transport distance.</p>
+    <p class="caption">Matching scope: model and human values from the selected context (30 pairs), or all contexts pooled (480 pairs). Pooled humans: the full empirical distribution of ${focusDistances[0].pooled_human_n} item rates across all 16 contexts, compared with the model values in that row’s scope. Each pair has equal weight; participant counts and histogram bins do not weight the distance. This measures marginal distribution agreement and ignores item correspondence.</p>
+    ${wassersteinTable(rows.filter(r=>r.context===context))}
+    ${context==="all"?`<details><summary>Compare all 16 contexts with local and pooled human distributions</summary>${wassersteinTable(rows.filter(r=>r.context!=="all"))}</details>`:""}
+    <p class="caption">The CSV includes all contexts and all nine models plus pooled-model comparisons, regardless of the display filters. These are descriptive distances, with no significance test.</p></section>`;
+}
 function distributions(){
   const context=state.dataset==="novel_focus"?state.distributionContext:"all";
   const rows=distributionRows(),all=D.models.map((_,m)=>ResultsMath.distribution(rows,m));
@@ -202,6 +243,7 @@ function distributions(){
     `<div class="controls">${datasetControl()}${state.dataset==="novel_focus"?select("distributionContext","Focus context",[["all","All contexts pooled"],...D.contexts.map(c=>[c,c])],state.distributionContext):""}${select("distributionModel","Model",[["all","All nine models"],...D.models.map((m,i)=>[i,m])],state.distributionModel)}</div>
     <p class="dataset-description">${context==="all"?datasetDescription(state.dataset):`Context: <strong>${esc(context)}</strong> · ${rows.length} ordered trigger–query pairs. Human and model distributions use only this context, with equal weight per pair.`}</p>
     <p class="caption">Gray bars: human rates. Colored outlines: model predictions. Bins are 5 percentage points wide: [0%, 5%), …, [95%, 100%]. Each matched analysis unit has equal weight. All models in the selected dataset/context share identical axes, including when filtering by model. Hover over a bin for counts. Human values are item or scale rates, not individual binary responses.</p>
+    ${state.dataset==="novel_focus"?wassersteinPanel(context):""}
     <div class="grid-two">${all.map((d,m)=>state.distributionModel!=="all"&&Number(state.distributionModel)!==m?"":`<section class="panel"><h2 style="color:${colors[m]}">${esc(D.models[m])}${context!=="all"?` · ${esc(context)}`:""}</h2>${distributionPlot(d,m,ymax)}</section>`).join("")}</div>`;
 }
 const focusSpearmanModels=[["No linking structure","direct"],["X but not Y","direct"],["set","top_k"],["set","top_p"],["ordering","top_k"],["conjunction","top_k"],["conjunction","top_p"],["disjunction","top_k"],["disjunction","top_p"]];
@@ -462,6 +504,7 @@ function render(){
 }
 function csvDownload(kind){
   let rows=[];
+  if(kind==="wasserstein")rows=focusDistances.map(r=>({...r,run:D.run.id,dataset:labels.novel_focus,model:D.models[r.model]}));
   if(kind==="overview")rows=D.models.map((m,i)=>{const s=aggregate(scopeItems(),i,state.balanced);return {model:m,aggregation:state.balanced?"equal_dataset_means":"pooled_units",coverage:state.coverage,n:s.n,datasets:s.datasets,correlation:s.r,mean_log_score:s.log};});
   if(kind==="overview"&&state.metric==="rho")rows=overviewSpearmanRows().flatMap(d=>d.stats.map((s,m)=>({dataset:labels[d.id],model:D.models[m],spearman_rho:s.rho,n:s.n,aggregation:d.id==="novel_focus"?"mean_within_context":"within_dataset",valid_contexts:s.validContexts??"",total_contexts:s.totalContexts??""})));
   if(kind==="dataset")rows=D.models.map((m,i)=>({dataset:labels[state.dataset],model:m,...D.datasetSummaries[state.dataset][i]}));

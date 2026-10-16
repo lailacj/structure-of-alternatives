@@ -176,6 +176,60 @@ test("histogram boundaries, matched coverage, and exact endpoints",()=>{
   }
 });
 
+test("exact Wasserstein handles unequal sample sizes, ties, and constant distributions",()=>{
+  assert.equal(math.wasserstein([0,1],[1,0]),0);
+  assert.equal(math.wasserstein([0,0],[1,1,1]),1);
+  assert.equal(math.wasserstein([0,1],[.5]),.5);
+  assert.ok(Math.abs(math.wasserstein([0,.5,1],[0,0,1])-1/6)<1e-14);
+  // Identical histogram bins must still yield a nonzero exact distance.
+  assert.ok(Math.abs(math.wasserstein([.001],[.049])-.048)<1e-14);
+  assert.equal(math.wasserstein([],[1]),null);
+  assert.throws(()=>math.wasserstein([NaN],[1]),/finite/);
+  assert.throws(()=>math.wasserstein([1],[Infinity]),/finite/);
+});
+
+test("all 153 focus distances agree with independent quantile transport",()=>{
+  const focus=data.items.filter(r=>r.dataset==="novel_focus"),pooled=focus.map(r=>r.y);
+  const distances=math.focusWasserstein(data.items,data.models.length);
+  assert.equal(distances.length,153);
+  // Independent oracle: split each empirical quantile into a common number
+  // of equal-mass pieces (480 is divisible by both 30 and 480).
+  const quantiles=values=>[...values].sort((a,b)=>a-b).flatMap(v=>Array(480/values.length).fill(v));
+  const expected=(a,b)=>{
+    const x=quantiles(a),y=quantiles(b);
+    return x.reduce((s,v,i)=>s+Math.abs(v-y[i]),0)/480;
+  };
+  for(const row of distances){
+    const scope=focus.filter(r=>row.context==="all"||r.context===row.context);
+    const x=scope.map(r=>r.p[row.model]),y=scope.map(r=>r.y);
+    assert.equal(row.n,row.context==="all"?480:30);
+    assert.equal(row.pooled_human_n,480);
+    assert.ok(Math.abs(row.w1_context-expected(x,y))<1e-12);
+    assert.ok(Math.abs(row.w1_pooled-expected(x,pooled))<1e-12);
+    assert.ok(row.w1_context>=0&&row.w1_context<=1);
+  }
+  const missing=math.focusWasserstein([{dataset:"novel_focus",context:"test",y:.5,p:[null]}],1);
+  assert.equal(missing[1].w1_context,null);assert.equal(missing[1].w1_pooled,null);
+});
+
+test("Wasserstein tables and CSV keep pooled human reference fixed across filters",async()=>{
+  const app=harness();app.click({view:"distributions"});
+  assert.match(app.html(),/Wasserstein distance · focus study/);
+  assert.match(app.html(),/Compare all 16 contexts/);
+  app.change("distributionContext","cold");app.change("distributionModel","2");
+  const row=math.focusWasserstein(data.items,9).find(r=>r.context==="cold"&&r.model===2);
+  assert.ok(app.html().includes(row.w1_context.toFixed(6)));
+  assert.ok(app.html().includes(row.w1_pooled.toFixed(6)));
+  assert.ok(!app.html().includes("Compare all 16 contexts"));
+  app.click({download:"wasserstein"});
+  const [csv]=await app.downloads();
+  assert.equal(csv.split("\r\n").length,154);
+  assert.match(csv,/w1_context/);assert.match(csv,/w1_pooled/);assert.match(csv,/"480"/);
+  assert.match(csv,/"bag"/);assert.match(csv,/"all"/);
+  app.change("dataset","hu_vt16");
+  assert.ok(!app.html().includes("Wasserstein distance · focus study"));
+});
+
 test("distribution gallery renders every available model and dataset",()=>{
   const app=harness();app.click({view:"distributions"});
   for(const dataset of data.datasets){
