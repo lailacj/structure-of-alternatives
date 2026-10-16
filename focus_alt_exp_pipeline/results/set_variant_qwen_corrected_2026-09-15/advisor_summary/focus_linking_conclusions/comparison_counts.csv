@@ -1,0 +1,10 @@
+metric,model,better,tied,worse
+log_score,X but not Y,4,0,12
+log_score,Ordering,13,0,3
+log_score,Set Top-K,13,0,3
+pearson_r,X but not Y,4,0,12
+pearson_r,Ordering,8,0,8
+pearson_r,Set Top-K,12,0,4
+spearman_rho,X but not Y,5,0,11
+spearman_rho,Ordering,5,0,11
+spearman_rho,Set Top-K,6,4,6

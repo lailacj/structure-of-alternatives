@@ -1,0 +1,29 @@
+{
+  "scope": "Three selected structures; full evaluated family reported separately",
+  "tolerance": 1e-12,
+  "dataset_values_reproduced_from_items": 105,
+  "strong_condition_predictions_identical": true,
+  "inference": "Descriptive point estimates; no significance or noninferiority tests",
+  "sources": [
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/mean_within_context_spearman.csv",
+      "sha256": "b9859a826d68a7580955f3a9c1536b9bcbb265aac13117fa072940378b73ecf1"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/linking_structure_tables/log_scores_by_dataset_and_linking_structure.csv",
+      "sha256": "847beb8d0afd9e3dc031635af75e01f53dddb9be2aec916a0cb8bf17ec51c199"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/linking_structure_tables/correlations_by_dataset_and_linking_structure.csv",
+      "sha256": "79f309ce625ea2d08cc0b526c5ed2c1c1757f16b57ab5f9cca403ee57a7ecfad"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/linking_structure_tables/spearman_by_dataset_and_linking_structure.csv",
+      "sha256": "d4be0ba390df8f40074e543c27684deaaeecc30a9fa9d2be7a824269164e70a2"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/advisor_summary/item_level_scatterplots/item_level_predictions_and_log_scores.csv",
+      "sha256": "9a149e89c360bc172663e49ed667f9523f51b4f51d5ec6d752fe25fd2f6e56c7"
+    }
+  ]
+}

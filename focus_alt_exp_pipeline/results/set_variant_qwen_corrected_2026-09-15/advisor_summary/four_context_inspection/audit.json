@@ -1,0 +1,67 @@
+{
+  "contexts": [
+    {
+      "context": "fridge",
+      "exact_prompt": "You and your friend Sam go for a long walk together. After the walk, you go back to Sam's house. You say to Sam, 'I'm thirsty.' Sam opens the fridge and responds, 'Sure, I have ",
+      "support_size": 121301,
+      "baseline_set_identical_rank_vector": true,
+      "baseline_unique_predictions": 6,
+      "set_unique_predictions": 6,
+      "set_zero_queries": [
+        "meat"
+      ]
+    },
+    {
+      "context": "throw",
+      "exact_prompt": "You and your friend Jo are relaxing at Jo's house.You tell Jo, 'It's sunny outside, let's play catch.' Jo looks through the garage and responds, 'Sure, we have a ",
+      "support_size": 121301,
+      "baseline_set_identical_rank_vector": false,
+      "baseline_unique_predictions": 6,
+      "set_unique_predictions": 4,
+      "set_zero_queries": [
+        "tires",
+        "shovel",
+        "lawnmower"
+      ]
+    },
+    {
+      "context": "bag",
+      "exact_prompt": "You and your friend Taylor are sitting in a park. You pull out a piece of paper and tell Taylor, 'I just had an idea that I want to remember, but don't have anything to write with.' Taylor looks through her handbag and responds, 'Sure, I have ",
+      "support_size": 121301,
+      "baseline_set_identical_rank_vector": false,
+      "baseline_unique_predictions": 6,
+      "set_unique_predictions": 6,
+      "set_zero_queries": [
+        "headphones"
+      ]
+    },
+    {
+      "context": "meat",
+      "exact_prompt": "Your friend MJ is calling a ramen restaurant to order takeout. You tell MJ, 'I'd like meat in mine, please.' MJ gives your order over the phone, and then responds, 'Sure, they have ",
+      "support_size": 121301,
+      "baseline_set_identical_rank_vector": false,
+      "baseline_unique_predictions": 6,
+      "set_unique_predictions": 6,
+      "set_zero_queries": []
+    }
+  ],
+  "sources": [
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/negation_paired_ranks.csv",
+      "sha256": "f00ca0c8705302b704436c365f447fd68a6fe1de293d9ae3088332ac25bbea35"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/word_paired_ranks.csv",
+      "sha256": "fad1957438114aa4b10c6417aba9dd6fc8105736b56816e59ecbab7913844c13"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/inputs/source_rows.csv",
+      "sha256": "0ab0b70aef1f40bf6f733e880862b0585575ded5fea97f7d7dcae39082b7a9ba"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results_viewer/index.html",
+      "sha256": "6a3d7ac24a920cba1245664be844d0debb003d29b938ba1ab363350885f3968e"
+    }
+  ],
+  "method": "30 equally weighted pairs per context; Spearman average ranks for ties; log scores clipped at 1e-10; no resampling or refitting"
+}

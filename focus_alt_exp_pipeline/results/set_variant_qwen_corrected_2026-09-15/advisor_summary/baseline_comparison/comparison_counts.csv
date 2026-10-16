@@ -1,0 +1,10 @@
+metric,model,better,unavailable,worse
+log_score,Ordering,9,0,1
+log_score,Set Top-K,6,0,4
+log_score,X but not Y,4,5,1
+pearson_r,Ordering,8,0,2
+pearson_r,Set Top-K,8,0,2
+pearson_r,X but not Y,3,5,2
+spearman_rho,Ordering,6,0,4
+spearman_rho,Set Top-K,8,0,2
+spearman_rho,X but not Y,3,5,2

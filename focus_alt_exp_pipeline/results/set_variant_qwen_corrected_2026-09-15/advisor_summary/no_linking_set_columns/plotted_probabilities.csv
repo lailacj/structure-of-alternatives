@@ -1,0 +1,642 @@
+context,model,display_row,word,vocabulary_position,log_probability,probability,experimental,rank_min,rank_average,tied
+bag,No linking,1,a,1.0,-0.3297973573207855,0.7190694328253789,False,,,
+bag,No linking,2,some,2.0,-2.2047972679138184,0.11027287888930071,False,,,
+bag,No linking,3,something,3.0,-3.0797972679138184,0.04596857500955745,False,,,
+bag,No linking,4,an,4.0,-3.7047972679138184,0.024605205126598074,False,,,
+bag,No linking,5,this,5.0,-3.9547972679138184,0.019162553020227124,False,,,
+bag,No linking,6,pen,6.0,-3.9547972679138184,0.019162553020227124,True,,,
+bag,No linking,7,pen and,7.0,-4.147491931915283,0.015804004338478478,False,,,
+bag,No linking,8,one,8.0,-4.829797267913818,0.00798814055420838,False,,,
+bag,No linking,9,my,9.0,-4.829797267913818,0.00798814055420838,False,,,
+bag,No linking,10,two,10.0,-5.204797267913818,0.005490163360382795,False,,,
+bag,No linking,11,crayons,39.0,-8.586970329284668,0.00018652032766733675,True,,,
+bag,No linking,12,pen with,40.0,-8.647491455078125,0.00017556671320323645,False,,,
+bag,No linking,13,nothing,41.0,-8.704797744750977,0.00016578848899051303,False,,,
+bag,No linking,14,scissors,42.0,-8.704797744750977,0.00016578848899051303,False,,,
+bag,No linking,15,pen on,43.0,-8.709991455078125,0.00016492966377834744,False,,,
+bag,No linking,16,chalk,111.0,-10.517297744750977,2.706422684422374e-05,True,,,
+bag,No linking,17,sharpen,112.0,-10.517297744750977,2.706422684422374e-05,False,,,
+bag,No linking,18,use,113.0,-10.579797744750977,2.5424488232410913e-05,False,,,
+bag,No linking,19,color,114.0,-10.579797744750977,2.5424488232410913e-05,False,,,
+bag,No linking,20,gel,115.0,-10.579797744750977,2.5424488232410913e-05,False,,,
+bag,No linking,21,makeup,139.0,-10.892297744750977,1.8600952948801803e-05,True,,,
+bag,No linking,22,sty,140.0,-10.892297744750977,1.8600952948801803e-05,False,,,
+bag,No linking,23,napkins in,141.0,-10.908507347106934,1.8301869458964298e-05,False,,,
+bag,No linking,24,somethin,142.0,-10.936630249023438,1.779433785998982e-05,False,,,
+bag,No linking,25,scissors in,143.0,-10.948997497558594,1.7575626080261098e-05,False,,,
+bag,No linking,26,headphones,481.0,-13.017297744750977,2.2215670232649904e-06,True,,,
+bag,No linking,27,barret,482.0,-13.020430564880371,2.214618143853705e-06,False,,,
+bag,No linking,28,pen under,483.0,-13.022491455078125,2.210058758838955e-06,False,,,
+bag,No linking,29,ice cream,484.0,-13.066047668457031,2.115863259000134e-06,False,,,
+bag,No linking,30,scissors with,485.0,-13.073997497558594,2.0991091919115535e-06,False,,,
+bag,No linking,31,cash,709.0,-13.611047744750977,1.2268658317994586e-06,True,,,
+bag,Set Top-K,1,pen,,,0.99,True,1.0,1.0,False
+bag,Set Top-K,2,crayons,,,0.068,True,2.0,2.0,False
+bag,Set Top-K,3,chalk,,,0.014,True,3.0,3.0,False
+bag,Set Top-K,4,makeup,,,0.008,True,4.0,4.0,False
+bag,Set Top-K,5,cash,,,0.002,True,5.0,5.0,False
+bag,Set Top-K,6,headphones,,,0.0,True,6.0,6.0,False
+bag,Human exclusion,1,pen,,,1.0,True,1.0,1.0,False
+bag,Human exclusion,2,crayons,,,0.9764705882352942,True,2.0,2.0,False
+bag,Human exclusion,3,chalk,,,0.8292063492063491,True,3.0,3.0,False
+bag,Human exclusion,4,makeup,,,0.13649122807017539,True,4.0,4.0,False
+bag,Human exclusion,5,headphones,,,0.09,True,5.0,5.0,False
+bag,Human exclusion,6,cash,,,0.06857142857142856,True,6.0,6.0,False
+bakery,No linking,1,some,1.0,-2.0526206493377686,0.1283979762250334,False,,,
+bakery,No linking,2,a,2.0,-2.2401206493377686,0.10644566100598744,False,,,
+bakery,No linking,3,cupcakes,3.0,-2.6151206493377686,0.07315896158323343,False,,,
+bakery,No linking,4,cookies,4.0,-3.0526206493377686,0.04723497574120943,False,,,
+bakery,No linking,5,apple,5.0,-3.1151206493377686,0.04437315323296978,False,,,
+bakery,No linking,6,cakes,6.0,-3.6151206493377686,0.02691367790392293,True,,,
+bakery,No linking,7,chocolate,7.0,-3.6776206493377686,0.025283060591299606,False,,,
+bakery,No linking,8,cake,8.0,-3.7401206493377686,0.023751237387371452,False,,,
+bakery,No linking,9,ice,9.0,-3.8026206493377686,0.022312222659680556,False,,,
+bakery,No linking,10,ice cream,10.0,-3.8262972831726074,0.021790149193437646,True,,,
+bakery,No linking,11,don,11.0,-3.9276206493377686,0.01969046738694591,False,,,
+bakery,No linking,12,donuts,12.0,-3.9389915466308594,0.01946783725559944,False,,,
+bakery,No linking,13,all,13.0,-3.9901206493377686,0.018497482276199715,False,,,
+bakery,No linking,14,brown,14.0,-3.9901206493377686,0.018497482276199715,False,,,
+bakery,No linking,15,muffins,48.0,-5.679935932159424,0.0034137771497195243,True,,,
+bakery,No linking,16,blueberry,49.0,-5.69062614440918,0.0033774775184916227,False,,,
+bakery,No linking,17,lemon,50.0,-5.740120887756348,0.0032143796726720147,False,,,
+bakery,No linking,18,banana,51.0,-5.740120887756348,0.0032143796726720147,False,,,
+bakery,No linking,19,this,52.0,-5.802620887756348,0.003019630253350195,False,,,
+bakery,No linking,20,pretzels,141.0,-7.671544075012207,0.00046589788674264107,True,,,
+bakery,No linking,21,ginger,142.0,-7.677620887756348,0.0004630752973864621,False,,,
+bakery,No linking,22,raspberry,143.0,-7.677620887756348,0.0004630752973864621,False,,,
+bakery,No linking,23,bagels,144.0,-7.705897331237793,0.00045016456986810786,False,,,
+bakery,No linking,24,any,145.0,-7.708870887756348,0.0004488279682919756,False,,,
+bakery,No linking,25,sandwiches,315.0,-9.177620887756348,0.00010332606526662306,True,,,
+bakery,No linking,26,sou,316.0,-9.177620887756348,0.00010332606526662306,False,,,
+bakery,No linking,27,cre,317.0,-9.177620887756348,0.00010332606526662306,False,,,
+bakery,No linking,28,sheet,318.0,-9.208870887756348,0.0001001470564440829,False,,,
+bakery,No linking,29,options,319.0,-9.208870887756348,0.0001001470564440829,False,,,
+bakery,No linking,30,water,384.0,-9.583870887756348,6.882999819649252e-05,True,,,
+bakery,Set Top-K,1,cakes,,,0.584,True,1.0,1.0,False
+bakery,Set Top-K,2,ice cream,,,0.464,True,2.0,2.0,False
+bakery,Set Top-K,3,muffins,,,0.104,True,3.0,3.0,False
+bakery,Set Top-K,4,pretzels,,,0.006,True,4.0,4.0,False
+bakery,Set Top-K,5,sandwiches,,,0.002,True,5.0,5.5,True
+bakery,Set Top-K,6,water,,,0.002,True,5.0,5.5,True
+bakery,Human exclusion,1,cakes,,,0.9333333333333333,True,1.0,1.0,False
+bakery,Human exclusion,2,ice cream,,,0.9017543859649123,True,2.0,2.0,False
+bakery,Human exclusion,3,muffins,,,0.7287581699346405,True,3.0,3.0,False
+bakery,Human exclusion,4,pretzels,,,0.4976923076923077,True,4.0,4.0,False
+bakery,Human exclusion,5,sandwiches,,,0.2957142857142857,True,5.0,5.0,False
+bakery,Human exclusion,6,water,,,0.03333333333333332,True,6.0,6.0,False
+beach,No linking,1,bathing,1.0,-2.0275001525878906,0.13166425062672954,False,,,
+beach,No linking,2,swims,2.0,-2.0275001525878906,0.13166425062672954,False,,,
+beach,No linking,3,swimsuit,3.0,-2.0633537769317627,0.12702723369971702,False,,,
+beach,No linking,4,bikini,4.0,-2.9650001525878906,0.05156046137761155,True,,,
+beach,No linking,5,swim,5.0,-3.2150001525878906,0.0401553276964068,False,,,
+beach,No linking,6,beach,6.0,-3.2775001525878906,0.0377224393795603,False,,,
+beach,No linking,7,favorite,7.0,-3.6525001525878906,0.02592622815541417,False,,,
+beach,No linking,8,shorts,8.0,-3.6525001525878906,0.02592622815541417,True,,,
+beach,No linking,9,old,9.0,-3.8400001525878906,0.02149359806542688,False,,,
+beach,No linking,10,blue,10.0,-3.9025001525878906,0.020191366789524462,False,,,
+beach,No linking,11,swimming,11.0,-4.152500152587891,0.015725052266963607,False,,,
+beach,No linking,12,white,12.0,-4.277500152587891,0.013877309918576254,False,,,
+beach,No linking,13,jeans,35.0,-5.590000152587891,0.0037350272947680872,True,,,
+beach,No linking,14,green,36.0,-5.652500152587891,0.0035087334306700196,False,,,
+beach,No linking,15,se,37.0,-5.652500152587891,0.0035087334306700196,False,,,
+beach,No linking,16,swimming suit,38.0,-5.667599678039551,0.003456151203310234,False,,,
+beach,No linking,17,rain,39.0,-5.715000152587891,0.0032961500187017575,False,,,
+beach,No linking,18,sunglasses,74.0,-6.527500152587891,0.001462657704422606,True,,,
+beach,No linking,19,bikini from,75.0,-6.534710884094238,0.0014521488063852438,False,,,
+beach,No linking,20,little,76.0,-6.590000152587891,0.0013740397539593679,False,,,
+beach,No linking,21,friend,77.0,-6.590000152587891,0.0013740397539593679,False,,,
+beach,No linking,22,pol,78.0,-6.590000152587891,0.0013740397539593679,False,,,
+beach,No linking,23,jacket,187.0,-7.746250152587891,0.00043236079157768357,True,,,
+beach,No linking,24,very,188.0,-7.777500152587891,0.0004190584484815907,False,,,
+beach,No linking,25,special,189.0,-7.777500152587891,0.0004190584484815907,False,,,
+beach,No linking,26,grey,190.0,-7.777500152587891,0.0004190584484815907,False,,,
+beach,No linking,27,designer,191.0,-7.777500152587891,0.0004190584484815907,False,,,
+beach,No linking,28,coat,371.0,-8.55875015258789,0.00019185893824712349,True,,,
+beach,Set Top-K,1,bikini,,,0.712,True,1.0,1.0,False
+beach,Set Top-K,2,shorts,,,0.504,True,2.0,2.0,False
+beach,Set Top-K,3,jeans,,,0.09,True,3.0,3.0,False
+beach,Set Top-K,4,sunglasses,,,0.024,True,4.0,4.0,False
+beach,Set Top-K,5,jacket,,,0.004,True,5.0,5.0,False
+beach,Set Top-K,6,coat,,,0.002,True,6.0,6.0,False
+beach,Human exclusion,1,bikini,,,0.95,True,1.0,1.0,False
+beach,Human exclusion,2,shorts,,,0.76,True,2.0,2.0,False
+beach,Human exclusion,3,coat,,,0.5366666666666666,True,3.0,3.0,False
+beach,Human exclusion,4,jeans,,,0.51,True,4.0,4.0,False
+beach,Human exclusion,5,jacket,,,0.3690909090909091,True,5.0,5.0,False
+beach,Human exclusion,6,sunglasses,,,0.21333333333333332,True,6.0,6.0,False
+cold,No linking,1,fireplace,1.0,-1.041991949081421,0.3527513189939049,False,,,
+cold,No linking,2,heater,2.0,-1.729491949081421,0.17737450236103597,True,,,
+cold,No linking,3,fire,3.0,-2.354491949081421,0.09494172951661312,False,,,
+cold,No linking,4,wood,4.0,-2.541991949081421,0.07870945829967985,False,,,
+cold,No linking,5,heater in,5.0,-3.297405242919922,0.036978994531287036,False,,,
+cold,No linking,6,small,6.0,-3.729491949081421,0.024005028515984028,False,,,
+cold,No linking,7,fridge,60.0,-7.1044921875,0.0008214067099962143,True,,,
+cold,No linking,8,full,61.0,-7.1669921875,0.0007716401932530842,False,,,
+cold,No linking,9,heater there,62.0,-7.172405242919922,0.0007674745467320262,False,,,
+cold,No linking,10,bunch,63.0,-7.2294921875,0.0007248888773338622,False,,,
+cold,No linking,11,hear,64.0,-7.2919921875,0.0006809700804556254,False,,,
+cold,No linking,12,microwave,101.0,-7.9169921875,0.0003644970180433698,True,,,
+cold,No linking,13,natural,102.0,-7.9482421875,0.00035328262375515767,False,,,
+cold,No linking,14,perfectly,103.0,-7.9482421875,0.00035328262375515767,False,,,
+cold,No linking,15,heated,104.0,-7.9482421875,0.00035328262375515767,False,,,
+cold,No linking,16,poor,105.0,-7.9794921875,0.0003424132601065007,False,,,
+cold,No linking,17,sink,256.0,-9.2919921875,9.2159278714121e-05,True,,,
+cold,No linking,18,basket,257.0,-9.2919921875,9.2159278714121e-05,False,,,
+cold,No linking,19,balcony,258.0,-9.2919921875,9.2159278714121e-05,False,,,
+cold,No linking,20,burner,259.0,-9.2919921875,9.2159278714121e-05,False,,,
+cold,No linking,21,barbecue,260.0,-9.2919921875,9.2159278714121e-05,False,,,
+cold,No linking,22,blankets,1349.0,-11.8544921875,7.106560492685349e-06,True,,,
+cold,No linking,23,pac,1350.0,-11.8544921875,7.106560492685349e-06,False,,,
+cold,No linking,24,ke,1351.0,-11.8544921875,7.106560492685349e-06,False,,,
+cold,No linking,25,pumpkin,1352.0,-11.8544921875,7.106560492685349e-06,False,,,
+cold,No linking,26,snug,1353.0,-11.8544921875,7.106560492685349e-06,False,,,
+cold,No linking,27,tea,1712.0,-12.2294921875,4.884262835702129e-06,True,,,
+cold,Set Top-K,1,heater,,,1.0,True,1.0,1.0,False
+cold,Set Top-K,2,fridge,,,0.044,True,2.0,2.0,False
+cold,Set Top-K,3,microwave,,,0.016,True,3.0,3.0,False
+cold,Set Top-K,4,sink,,,0.002,True,4.0,4.0,False
+cold,Set Top-K,5,blankets,,,0.0,True,5.0,5.5,True
+cold,Set Top-K,6,tea,,,0.0,True,5.0,5.5,True
+cold,Human exclusion,1,heater,,,0.86,True,1.0,1.0,False
+cold,Human exclusion,2,blankets,,,0.54,True,2.0,2.0,False
+cold,Human exclusion,3,microwave,,,0.2843438914027149,True,3.0,3.0,False
+cold,Human exclusion,4,tea,,,0.205,True,4.0,4.0,False
+cold,Human exclusion,5,fridge,,,0.15,True,5.0,5.0,False
+cold,Human exclusion,6,sink,,,0.0476190476190476,True,6.0,6.0,False
+cut,No linking,1,scissors,1.0,-1.2658025026321411,0.28201288922070217,True,,,
+cut,No linking,2,sewing,2.0,-1.5158025026321411,0.21963185896131218,False,,,
+cut,No linking,3,scissors here,3.0,-2.8662004470825195,0.05691476694052071,False,,,
+cut,No linking,4,scissors in,4.0,-2.9912004470825195,0.05022710553633365,False,,,
+cut,No linking,5,tag,5.0,-3.0783023834228516,0.046037344107533684,False,,,
+cut,No linking,6,nail clippers,27.0,-5.449795246124268,0.004297184465854707,True,,,
+cut,No linking,7,scissors on,28.0,-5.4912004470825195,0.004122891888832367,False,,,
+cut,No linking,8,seamstress,29.0,-5.603631973266602,0.0036844575345054025,False,,,
+cut,No linking,9,knife,30.0,-5.640802383422852,0.0035500187869051724,False,,,
+cut,No linking,10,pl,31.0,-5.640802383422852,0.0035500187869051724,False,,,
+cut,No linking,11,stapler,47.0,-6.216211795806885,0.0019967951757016464,True,,,
+cut,No linking,12,s,48.0,-6.265802383422852,0.0019001881271481155,False,,,
+cut,No linking,13,hair,49.0,-6.265802383422852,0.0019001881271481155,False,,,
+cut,No linking,14,best,50.0,-6.328302383422852,0.0017850615484460135,False,,,
+cut,No linking,15,utility,51.0,-6.328302383422852,0.0017850615484460135,False,,,
+cut,No linking,16,keys,142.0,-7.578302383422852,0.0005114286963204614,True,,,
+cut,No linking,17,pr,143.0,-7.578302383422852,0.0005114286963204614,False,,,
+cut,No linking,18,cl,144.0,-7.578302383422852,0.0005114286963204614,False,,,
+cut,No linking,19,clippers,145.0,-7.579198837280273,0.000510970429531054,False,,,
+cut,No linking,20,fingernail,146.0,-7.600542068481445,0.0005001802280046487,False,,,
+cut,No linking,21,batteries,950.0,-10.297052383422852,3.373237890791685e-05,True,,,
+cut,No linking,22,cousins,951.0,-10.297052383422852,3.373237890791685e-05,False,,,
+cut,No linking,23,candy,952.0,-10.297052383422852,3.373237890791685e-05,False,,,
+cut,No linking,24,scratch,953.0,-10.297052383422852,3.373237890791685e-05,False,,,
+cut,No linking,25,butterfly,954.0,-10.297052383422852,3.373237890791685e-05,False,,,
+cut,No linking,26,thumb tacks,6441.0,-13.355141639709473,1.5846584866145317e-06,True,,,
+cut,Set Top-K,1,scissors,,,1.0,True,1.0,1.0,False
+cut,Set Top-K,2,nail clippers,,,0.124,True,2.0,2.0,False
+cut,Set Top-K,3,stapler,,,0.048,True,3.0,3.0,False
+cut,Set Top-K,4,keys,,,0.014,True,4.0,4.0,False
+cut,Set Top-K,5,batteries,,,0.002,True,5.0,5.0,False
+cut,Set Top-K,6,thumb tacks,,,0.0,True,6.0,6.0,False
+cut,Human exclusion,1,scissors,,,0.9199999999999999,True,1.0,1.0,False
+cut,Human exclusion,2,nail clippers,,,0.7006060606060606,True,2.0,2.0,False
+cut,Human exclusion,3,thumb tacks,,,0.2730532212885154,True,3.0,3.0,False
+cut,Human exclusion,4,stapler,,,0.2622222222222222,True,4.0,4.0,False
+cut,Human exclusion,5,keys,,,0.23249999999999998,True,5.0,5.0,False
+cut,Human exclusion,6,batteries,,,0.05,True,6.0,6.0,False
+fridge,No linking,1,some,1.0,-0.5726814270019531,0.5640110547802577,False,,,
+fridge,No linking,2,a,2.0,-1.4476814270019531,0.23511478741670405,False,,,
+fridge,No linking,3,water,3.0,-2.885181427001953,0.05584465688867006,True,,,
+fridge,No linking,4,plenty,4.0,-4.010181427001953,0.018130105647687196,False,,,
+fridge,No linking,5,an,5.0,-4.572681427001953,0.010330222808609272,False,,,
+fridge,No linking,6,juice,6.0,-4.572681427001953,0.010330222808609272,True,,,
+fridge,No linking,7,orange,7.0,-4.697681427001953,0.00911638963160642,False,,,
+fridge,No linking,8,water in,8.0,-4.801141738891602,0.008220356188721469,False,,,
+fridge,No linking,9,two,9.0,-4.822681427001953,0.008045185612646989,False,,,
+fridge,No linking,10,lots,10.0,-4.822681427001953,0.008045185612646989,False,,,
+fridge,No linking,11,milk,19.0,-6.135181427001953,0.002165332332492499,True,,,
+fridge,No linking,12,water here,20.0,-6.176141738891602,0.0020784315361273824,False,,,
+fridge,No linking,13,juice in,21.0,-6.207886219024658,0.0020134890438677716,False,,,
+fridge,No linking,14,ice tea,22.0,-6.322452068328857,0.0017955353285504013,False,,,
+fridge,No linking,15,ice water,23.0,-6.384952068328857,0.001686749342383333,False,,,
+fridge,No linking,16,yogurt,244.0,-10.885181427001953,1.873379535418737e-05,True,,,
+fridge,No linking,17,have,245.0,-10.916431427001953,1.8157417065156932e-05,False,,,
+fridge,No linking,18,there,246.0,-10.916431427001953,1.8157417065156932e-05,False,,,
+fridge,No linking,19,full,247.0,-10.916431427001953,1.8157417065156932e-05,False,,,
+fridge,No linking,20,plastic,248.0,-10.916431427001953,1.8157417065156932e-05,False,,,
+fridge,No linking,21,ketchup,532.0,-12.411938667297363,4.069710597524149e-06,True,,,
+fridge,No linking,22,we,533.0,-12.416431427001953,4.051467377630298e-06,False,,,
+fridge,No linking,23,filter,534.0,-12.416431427001953,4.051467377630298e-06,False,,,
+fridge,No linking,24,liquor,535.0,-12.416431427001953,4.051467377630298e-06,False,,,
+fridge,No linking,25,ham,536.0,-12.416431427001953,4.051467377630298e-06,False,,,
+fridge,No linking,26,meat,1040.0,-13.650806427001953,1.1790442244203663e-06,True,,,
+fridge,Set Top-K,1,water,,,1.0,True,1.0,1.0,False
+fridge,Set Top-K,2,juice,,,0.762,True,2.0,2.0,False
+fridge,Set Top-K,3,milk,,,0.26,True,3.0,3.0,False
+fridge,Set Top-K,4,yogurt,,,0.006,True,4.0,4.0,False
+fridge,Set Top-K,5,ketchup,,,0.002,True,5.0,5.0,False
+fridge,Set Top-K,6,meat,,,0.0,True,6.0,6.0,False
+fridge,Human exclusion,1,juice,,,1.0,True,1.0,1.0,False
+fridge,Human exclusion,2,water,,,0.9666666666666668,True,2.0,2.0,False
+fridge,Human exclusion,3,milk,,,0.8722222222222221,True,3.0,3.0,False
+fridge,Human exclusion,4,yogurt,,,0.20944444444444446,True,4.0,4.0,False
+fridge,Human exclusion,5,ketchup,,,0.13999999999999999,True,5.0,5.0,False
+fridge,Human exclusion,6,meat,,,0.08,True,6.0,6.0,False
+gym,No linking,1,basketball,1.0,-1.9824550151824951,0.13773069097529367,True,,,
+gym,No linking,2,soccer,2.0,-2.419955015182495,0.08892561767209374,False,,,
+gym,No linking,3,a,3.0,-2.482455015182495,0.08353788685992172,False,,,
+gym,No linking,4,volleyball,4.0,-2.482455015182495,0.08353788685992172,False,,,
+gym,No linking,5,tennis,5.0,-2.544955015182495,0.07847658215604467,False,,,
+gym,No linking,6,softball,19.0,-4.419955253601074,0.012034770785330244,True,,,
+gym,No linking,7,football,20.0,-4.482455253601074,0.011305620883705224,False,,,
+gym,No linking,8,martial,21.0,-4.482455253601074,0.011305620883705224,False,,,
+gym,No linking,9,kar,22.0,-4.482455253601074,0.011305620883705224,False,,,
+gym,No linking,10,karate,23.0,-4.484465599060059,0.011282915510569516,False,,,
+gym,No linking,11,swimming,36.0,-5.232455253601074,0.00534039716343266,True,,,
+gym,No linking,12,rock,37.0,-5.294955253601074,0.005016838855940673,False,,,
+gym,No linking,13,ultimate,38.0,-5.294955253601074,0.005016838855940673,False,,,
+gym,No linking,14,two,39.0,-5.357455253601074,0.004712883955300882,False,,,
+gym,No linking,15,dodge,40.0,-5.419955253601074,0.0044273447511336906,False,,,
+gym,No linking,16,lacrosse,83.0,-6.796718597412109,0.0011174358954057402,True,,,
+gym,No linking,17,ice hockey,84.0,-6.853559494018555,0.001055691270400082,False,,,
+gym,No linking,18,horse,85.0,-6.857455253601074,0.0010515865517072513,False,,,
+gym,No linking,19,competitive,86.0,-6.857455253601074,0.0010515865517072513,False,,,
+gym,No linking,20,fitness,87.0,-6.857455253601074,0.0010515865517072513,False,,,
+gym,No linking,21,weightlifting,169.0,-8.195878982543945,0.00027578775752658225,True,,,
+gym,No linking,22,hot,170.0,-8.201205253601074,0.00027432274217363095,False,,,
+gym,No linking,23,tai,171.0,-8.201205253601074,0.00027432274217363095,False,,,
+gym,No linking,24,surfing,172.0,-8.201205253601074,0.00027432274217363095,False,,,
+gym,No linking,25,just,173.0,-8.263705253601074,0.0002577023674247221,False,,,
+gym,No linking,26,meditation,503.0,-10.263705253601074,3.487622288617039e-05,True,,,
+gym,Set Top-K,1,basketball,,,0.972,True,1.0,1.0,False
+gym,Set Top-K,2,softball,,,0.292,True,2.0,2.0,False
+gym,Set Top-K,3,swimming,,,0.144,True,3.0,3.0,False
+gym,Set Top-K,4,lacrosse,,,0.036,True,4.0,4.0,False
+gym,Set Top-K,5,weightlifting,,,0.004,True,5.0,5.5,True
+gym,Set Top-K,6,meditation,,,0.004,True,5.0,5.5,True
+gym,Human exclusion,1,lacrosse,,,0.9761403508771929,True,1.0,1.0,False
+gym,Human exclusion,2,basketball,,,0.95,True,2.0,2.0,False
+gym,Human exclusion,3,softball,,,0.8966666666666667,True,3.0,3.0,False
+gym,Human exclusion,4,swimming,,,0.634561403508772,True,4.0,4.0,False
+gym,Human exclusion,5,weightlifting,,,0.55,True,5.0,5.0,False
+gym,Human exclusion,6,meditation,,,0.32,True,6.0,6.0,False
+hot,No linking,1,air,1.0,-0.8817135095596313,0.41407278577475914,False,,,
+hot,No linking,2,windows,2.0,-2.319213390350342,0.09835091896670142,False,,,
+hot,No linking,3,own,3.0,-2.756713390350342,0.0635001259036798,False,,,
+hot,No linking,4,central,4.0,-3.069213390350342,0.04645768455121164,False,,,
+hot,No linking,5,window,5.0,-3.319213390350342,0.03618128110816793,False,,,
+hot,No linking,6,fan,13.0,-5.381713390350342,0.004599933692106942,True,,,
+hot,No linking,7,heater,14.0,-5.381713390350342,0.004599933692106942,True,,,
+hot,No linking,8,heat,15.0,-5.444213390350342,0.004321237798441083,False,,,
+hot,No linking,9,a,16.0,-5.569213390350342,0.0038134789724557317,False,,,
+hot,No linking,10,doors,17.0,-5.631713390350342,0.003582431961489425,False,,,
+hot,No linking,11,heater on,18.0,-5.636826515197754,0.0035641612895321085,False,,,
+hot,No linking,12,pool,163.0,-9.2567138671875,9.5468532519648e-05,True,,,
+hot,No linking,13,solar,164.0,-9.2567138671875,9.5468532519648e-05,False,,,
+hot,No linking,14,car running,165.0,-9.257488250732422,9.539463187642098e-05,False,,,
+hot,No linking,15,temperatures,166.0,-9.2879638671875,9.253127456472847e-05,False,,,
+hot,No linking,16,elderly,167.0,-9.2879638671875,9.253127456472847e-05,False,,,
+hot,No linking,17,shower,252.0,-9.9754638671875,4.652764680104481e-05,True,,,
+hot,No linking,18,lives,253.0,-10.0067138671875,4.509614160154959e-05,False,,,
+hot,No linking,19,version,254.0,-10.0067138671875,4.509614160154959e-05,False,,,
+hot,No linking,20,keys,255.0,-10.0067138671875,4.509614160154959e-05,False,,,
+hot,No linking,21,utilities,256.0,-10.0067138671875,4.509614160154959e-05,False,,,
+hot,No linking,22,blankets,330.0,-10.3504638671875,3.197795281373117e-05,True,,,
+hot,No linking,23,fan set,331.0,-10.35323715209961,3.188939169903539e-05,False,,,
+hot,No linking,24,microwave oven,332.0,-10.353692054748535,3.1874888429316877e-05,False,,,
+hot,No linking,25,wint,333.0,-10.374356269836426,3.1222977688319694e-05,False,,,
+hot,No linking,26,time,334.0,-10.3817138671875,3.0994094637584575e-05,False,,,
+hot,No linking,27,couch,777.0,-11.5692138671875,9.45266479626314e-06,True,,,
+hot,Set Top-K,1,heater,,,0.34,True,1.0,1.0,False
+hot,Set Top-K,2,fan,,,0.336,True,2.0,2.0,False
+hot,Set Top-K,3,shower,,,0.014,True,3.0,3.0,False
+hot,Set Top-K,4,pool,,,0.004,True,4.0,4.0,False
+hot,Set Top-K,5,blankets,,,0.002,True,5.0,5.0,False
+hot,Set Top-K,6,couch,,,0.0,True,6.0,6.0,False
+hot,Human exclusion,1,pool,,,0.45999999999999996,True,1.0,1.0,False
+hot,Human exclusion,2,fan,,,0.45,True,2.0,2.0,False
+hot,Human exclusion,3,shower,,,0.3026315789473684,True,3.0,3.0,False
+hot,Human exclusion,4,heater,,,0.25,True,4.0,4.0,False
+hot,Human exclusion,5,blankets,,,0.16615384615384615,True,5.0,5.0,False
+hot,Human exclusion,6,couch,,,0.0,True,6.0,6.0,False
+mall,No linking,1,lot,1.0,-1.1231284141540527,0.3252606512777866,False,,,
+mall,No linking,2,food,2.0,-1.9981284141540527,0.13558881201360512,False,,,
+mall,No linking,3,great,3.0,-2.8106284141540527,0.060167170608126486,False,,,
+mall,No linking,4,huge,4.0,-2.9981284141540527,0.049880336392664794,False,,,
+mall,No linking,5,ton,5.0,-3.0606284141540527,0.04685823958479972,False,,,
+mall,No linking,6,coffee shop,54.0,-7.4585089683532715,0.0005765151332670614,True,,,
+mall,No linking,7,fancy,55.0,-7.529378414154053,0.0005370719892997785,False,,,
+mall,No linking,8,sandwich,56.0,-7.529378414154053,0.0005370719892997785,False,,,
+mall,No linking,9,three,57.0,-7.560628414154053,0.0005205480213356687,False,,,
+mall,No linking,10,place,58.0,-7.560628414154053,0.0005205480213356687,False,,,
+mall,No linking,11,grocery store,61.0,-7.5857367515563965,0.000507640645447367,True,,,
+mall,No linking,12,popular,62.0,-7.623128414154053,0.000489009611064435,False,,,
+mall,No linking,13,floor,63.0,-7.623128414154053,0.000489009611064435,False,,,
+mall,No linking,14,certain,64.0,-7.654378414154053,0.00047396436702200145,False,,,
+mall,No linking,15,p,65.0,-7.654378414154053,0.00047396436702200145,False,,,
+mall,No linking,16,burger joint,67.0,-7.662522315979004,0.0004701201225699924,True,,,
+mall,No linking,17,little,68.0,-7.685628414154053,0.0004593820164752675,False,,,
+mall,No linking,18,selection,69.0,-7.685628414154053,0.0004593820164752675,False,,,
+mall,No linking,19,famous,70.0,-7.685628414154053,0.0004593820164752675,False,,,
+mall,No linking,20,buffet,71.0,-7.685628414154053,0.0004593820164752675,False,,,
+mall,No linking,21,pretzel stand,1286.0,-12.28936767578125,4.600398279205681e-06,True,,,
+mall,No linking,22,government,1287.0,-12.295003890991211,4.574542377612289e-06,False,,,
+mall,No linking,23,development,1288.0,-12.295003890991211,4.574542377612289e-06,False,,,
+mall,No linking,24,door,1289.0,-12.295003890991211,4.574542377612289e-06,False,,,
+mall,No linking,25,dress,1290.0,-12.295003890991211,4.574542377612289e-06,False,,,
+mall,No linking,26,gift shop,1443.0,-12.462306022644043,3.869806614269901e-06,True,,,
+mall,No linking,27,pho,1444.0,-12.462782859802246,3.867961786557315e-06,False,,,
+mall,No linking,28,copious,1445.0,-12.465502738952637,3.857455692070005e-06,False,,,
+mall,No linking,29,sneaker,1446.0,-12.465776443481445,3.85640003345327e-06,False,,,
+mall,No linking,30,pretentious,1447.0,-12.466370582580566,3.854109475933815e-06,False,,,
+mall,No linking,31,electronics store,9108.0,-16.061710357666016,1.0580052475408694e-07,True,,,
+mall,Set Top-K,1,coffee shop,,,0.038,True,1.0,1.0,False
+mall,Set Top-K,2,grocery store,,,0.03,True,2.0,2.0,False
+mall,Set Top-K,3,burger joint,,,0.028,True,3.0,3.0,False
+mall,Set Top-K,4,pretzel stand,,,0.0,True,4.0,5.0,True
+mall,Set Top-K,5,gift shop,,,0.0,True,4.0,5.0,True
+mall,Set Top-K,6,electronics store,,,0.0,True,4.0,5.0,True
+mall,Human exclusion,1,burger joint,,,0.9,True,1.0,1.0,False
+mall,Human exclusion,2,pretzel stand,,,0.8617543859649123,True,2.0,2.0,False
+mall,Human exclusion,3,grocery store,,,0.7417543859649123,True,3.0,3.0,False
+mall,Human exclusion,4,coffee shop,,,0.7050000000000001,True,4.0,4.0,False
+mall,Human exclusion,5,gift shop,,,0.1933333333333333,True,5.0,5.0,False
+mall,Human exclusion,6,electronics store,,,0.18,True,6.0,6.0,False
+mask,No linking,1,mask,1.0,-0.24303385615348816,0.784244961804286,False,,,
+mask,No linking,2,own,2.0,-2.9305338859558105,0.05336853782508677,False,,,
+mask,No linking,3,extra,3.0,-3.1805338859558105,0.04156345904955347,False,,,
+mask,No linking,4,spare,4.0,-3.5555338859558105,0.02856611979422571,False,,,
+mask,No linking,5,reusable,5.0,-4.6180338859558105,0.009872186837890472,False,,,
+mask,No linking,6,bandana,57.0,-8.309240341186523,0.0002462310238998569,True,,,
+mask,No linking,7,white,58.0,-8.336783409118652,0.00023954161242731946,False,,,
+mask,No linking,8,usual,59.0,-8.336783409118652,0.00023954161242731946,False,,,
+mask,No linking,9,masking,60.0,-8.368033409118652,0.00023217169180460965,False,,,
+mask,No linking,10,wallet,61.0,-8.399283409118652,0.0002250285198016267,True,,,
+mask,No linking,11,water bottle,62.0,-8.421194076538086,0.00022015161793770253,False,,,
+mask,No linking,12,trust,63.0,-8.430533409118652,0.0002181051200967547,False,,,
+mask,No linking,13,trusty,64.0,-8.431553840637207,0.0002178826722735374,False,,,
+mask,No linking,14,purple,65.0,-8.461783409118652,0.00021139473100722904,False,,,
+mask,No linking,15,gloves,101.0,-9.180533409118652,0.00010302556371526903,True,,,
+mask,No linking,16,ski,102.0,-9.180533409118652,0.00010302556371526903,False,,,
+mask,No linking,17,special,103.0,-9.211783409118652,9.985580035349887e-05,False,,,
+mask,No linking,18,anti,104.0,-9.211783409118652,9.985580035349887e-05,False,,,
+mask,No linking,19,only,105.0,-9.243033409118652,9.678356035784578e-05,False,,,
+mask,No linking,20,handkerchief,188.0,-10.05507755279541,4.296702689606244e-05,True,,,
+mask,No linking,21,normal,189.0,-10.055533409118652,4.29474445688639e-05,False,,,
+mask,No linking,22,beloved,190.0,-10.055533409118652,4.29474445688639e-05,False,,,
+mask,No linking,23,cute,191.0,-10.055533409118652,4.29474445688639e-05,False,,,
+mask,No linking,24,name,192.0,-10.086783409118652,4.1626090611973455e-05,False,,,
+mask,No linking,25,candy,1117.0,-12.493033409118652,3.7527058840091236e-06,True,,,
+mask,No linking,26,mug,1118.0,-12.493033409118652,3.7527058840091236e-06,False,,,
+mask,No linking,27,jogging,1119.0,-12.493033409118652,3.7527058840091236e-06,False,,,
+mask,No linking,28,crum,1120.0,-12.495710372924805,3.7426734603910946e-06,False,,,
+mask,No linking,29,headscarf,1121.0,-12.497628211975098,3.7355024936542445e-06,False,,,
+mask,No linking,30,napkins,5941.0,-15.144350051879883,2.6478436693525797e-07,True,,,
+mask,Set Top-K,1,bandana,,,0.084,True,1.0,1.0,False
+mask,Set Top-K,2,wallet,,,0.042,True,2.0,2.0,False
+mask,Set Top-K,3,gloves,,,0.028,True,3.0,3.0,False
+mask,Set Top-K,4,handkerchief,,,0.006,True,4.0,4.0,False
+mask,Set Top-K,5,candy,,,0.0,True,5.0,5.5,True
+mask,Set Top-K,6,napkins,,,0.0,True,5.0,5.5,True
+mask,Human exclusion,1,bandana,,,0.82,True,1.0,1.0,False
+mask,Human exclusion,2,handkerchief,,,0.5764102564102564,True,2.0,2.0,False
+mask,Human exclusion,3,napkins,,,0.3933333333333333,True,3.0,3.0,False
+mask,Human exclusion,4,gloves,,,0.3588157894736842,True,4.0,4.0,False
+mask,Human exclusion,5,candy,,,0.12000000000000002,True,5.0,5.5,True
+mask,Human exclusion,6,wallet,,,0.12000000000000002,True,5.0,5.5,True
+meat,No linking,1,meat,1.0,-1.3725547790527344,0.2534586009744854,False,,,
+meat,No linking,2,meat in,2.0,-2.385810613632202,0.09201436124446428,False,,,
+meat,No linking,3,chicken,3.0,-2.4975547790527344,0.08228596017956212,True,,,
+meat,No linking,4,a,4.0,-2.6225547790527344,0.07261710498466292,False,,,
+meat,No linking,5,beef,5.0,-3.2475547790527344,0.038869135349004165,False,,,
+meat,No linking,6,that,6.0,-3.4975547790527344,0.03027131304711287,False,,,
+meat,No linking,7,it,7.0,-3.6850547790527344,0.02509579996161083,False,,,
+meat,No linking,8,tofu,20.0,-4.560054779052734,0.010461485857444924,True,,,
+meat,No linking,9,everything,21.0,-4.622554779052734,0.009827656470922196,False,,,
+meat,No linking,10,meat too,22.0,-4.760810852050781,0.008558666770653901,False,,,
+meat,No linking,11,some,23.0,-4.810054779052734,0.008147413377868534,False,,,
+meat,No linking,12,two,24.0,-4.810054779052734,0.008147413377868534,False,,,
+meat,No linking,13,rice,36.0,-5.372554779052734,0.004642256208692444,True,,,
+meat,No linking,14,chicken in,37.0,-5.417326927185059,0.004438996563971985,False,,,
+meat,No linking,15,those,38.0,-5.497554779052734,0.004096776725175189,False,,,
+meat,No linking,16,five,39.0,-5.497554779052734,0.004096776725175189,False,,,
+meat,No linking,17,vegetables,40.0,-5.560054779052734,0.0038485655710597862,False,,,
+meat,No linking,18,turkey,62.0,-6.247554779052734,0.0019351802990206278,True,,,
+meat,No linking,19,vegetable,63.0,-6.247554779052734,0.0019351802990206278,False,,,
+meat,No linking,20,soup,64.0,-6.247554779052734,0.0019351802990206278,False,,,
+meat,No linking,21,spicy,65.0,-6.247554779052734,0.0019351802990206278,False,,,
+meat,No linking,22,chicken too,66.0,-6.292326927185059,0.0018504490730033207,False,,,
+meat,No linking,23,mushrooms,76.0,-6.435054779052734,0.0016043208168171543,True,,,
+meat,No linking,24,seaweed,77.0,-6.436030387878418,0.001602756390527174,False,,,
+meat,No linking,25,tofu and,78.0,-6.485692977905273,0.0015251035373162573,False,,,
+meat,No linking,26,salmon,79.0,-6.497554779052734,0.00150711993226162,False,,,
+meat,No linking,27,delicious,80.0,-6.497554779052734,0.00150711993226162,False,,,
+meat,No linking,28,crab,184.0,-7.747554779052734,0.000431797090036559,True,,,
+meat,Set Top-K,1,chicken,,,0.896,True,1.0,1.0,False
+meat,Set Top-K,2,tofu,,,0.254,True,2.0,2.0,False
+meat,Set Top-K,3,rice,,,0.138,True,3.0,3.0,False
+meat,Set Top-K,4,mushrooms,,,0.058,True,4.0,4.0,False
+meat,Set Top-K,5,turkey,,,0.036,True,5.0,5.0,False
+meat,Set Top-K,6,crab,,,0.006,True,6.0,6.0,False
+meat,Human exclusion,1,chicken,,,1.0,True,1.0,1.0,False
+meat,Human exclusion,2,turkey,,,0.9904761904761905,True,2.0,2.0,False
+meat,Human exclusion,3,crab,,,0.7667873303167421,True,3.0,3.0,False
+meat,Human exclusion,4,tofu,,,0.34970760233918124,True,4.0,4.0,False
+meat,Human exclusion,5,rice,,,0.1,True,5.0,5.0,False
+meat,Human exclusion,6,mushrooms,,,0.08705882352941177,True,6.0,6.0,False
+restaurant,No linking,1,a,1.0,-1.3716236352920532,0.25369471728142684,False,,,
+restaurant,No linking,2,some,2.0,-1.6841236352920532,0.18560702014429156,False,,,
+restaurant,No linking,3,beer,3.0,-3.1216235160827637,0.04408553670994453,False,,,
+restaurant,No linking,4,the,4.0,-3.9341235160827637,0.019562838328518583,False,,,
+restaurant,No linking,5,marg,5.0,-4.121623516082764,0.0162181626085975,False,,,
+restaurant,No linking,6,cocktails,20.0,-5.246623516082764,0.005265266506900108,True,,,
+restaurant,No linking,7,great,21.0,-5.309123516082764,0.004946260135776241,False,,,
+restaurant,No linking,8,water,22.0,-5.309123516082764,0.004946260135776241,False,,,
+restaurant,No linking,9,this,23.0,-5.371623516082764,0.004646581383621757,False,,,
+restaurant,No linking,10,both,24.0,-5.371623516082764,0.004646581383621757,False,,,
+restaurant,No linking,11,vodka,33.0,-5.684123516082764,0.003399511561430189,True,,,
+restaurant,No linking,12,something,34.0,-5.809123516082764,0.0030000584232626635,False,,,
+restaurant,No linking,13,strawberry,35.0,-5.809123516082764,0.0030000584232626635,False,,,
+restaurant,No linking,14,good,36.0,-5.934123516082764,0.0026475422661021253,False,,,
+restaurant,No linking,15,quite,37.0,-5.934123516082764,0.0026475422661021253,False,,,
+restaurant,No linking,16,soda,64.0,-6.559123516082764,0.0014171272554182285,True,,,
+restaurant,No linking,17,your,65.0,-6.621623516082764,0.0013312678554088925,False,,,
+restaurant,No linking,18,martin,66.0,-6.621623516082764,0.0013312678554088925,False,,,
+restaurant,No linking,19,martinis,67.0,-6.621877193450928,0.0013309301857144015,False,,,
+restaurant,No linking,20,frozen,68.0,-6.652873516082764,0.0012903090494523468,False,,,
+restaurant,No linking,21,cake,191.0,-8.277873992919922,0.000254076795305507,True,,,
+restaurant,No linking,22,vodka martinis,192.0,-8.303669929504395,0.0002476064593862557,False,,,
+restaurant,No linking,23,soft,193.0,-8.309123992919922,0.0002462596741193405,False,,,
+restaurant,No linking,24,cocktails on,194.0,-8.332944869995117,0.0002404628692874076,False,,,
+restaurant,No linking,25,cocktail,195.0,-8.340373992919922,0.00023868306046777887,False,,,
+restaurant,No linking,26,salad,904.0,-11.152873992919922,1.4334031928628163e-05,True,,,
+restaurant,No linking,27,cock,905.0,-11.152873992919922,1.4334031928628163e-05,False,,,
+restaurant,No linking,28,pudding,906.0,-11.152873992919922,1.4334031928628163e-05,False,,,
+restaurant,No linking,29,croissants,907.0,-11.158205032348633,1.4257819964232942e-05,False,,,
+restaurant,No linking,30,water that,908.0,-11.163154602050781,1.4187424248484406e-05,False,,,
+restaurant,No linking,31,soup,942.0,-11.215373992919922,1.3465576836538736e-05,True,,,
+restaurant,Set Top-K,1,cocktails,,,0.222,True,1.0,1.0,False
+restaurant,Set Top-K,2,vodka,,,0.14,True,2.0,2.0,False
+restaurant,Set Top-K,3,soda,,,0.072,True,3.0,3.0,False
+restaurant,Set Top-K,4,cake,,,0.008,True,4.0,4.0,False
+restaurant,Set Top-K,5,salad,,,0.0,True,5.0,5.5,True
+restaurant,Set Top-K,6,soup,,,0.0,True,5.0,5.5,True
+restaurant,Human exclusion,1,cocktails,,,0.95,True,1.0,1.0,False
+restaurant,Human exclusion,2,vodka,,,0.9,True,2.0,2.0,False
+restaurant,Human exclusion,3,soda,,,0.5940350877192982,True,3.0,3.0,False
+restaurant,Human exclusion,4,cake,,,0.29666666666666663,True,4.0,4.0,False
+restaurant,Human exclusion,5,salad,,,0.22000000000000003,True,5.0,5.0,False
+restaurant,Human exclusion,6,soup,,,0.21777777777777776,True,6.0,6.0,False
+salad,No linking,1,lettuce,1.0,-1.5233666896820068,0.21797679001505293,True,,,
+salad,No linking,2,all,2.0,-2.398366689682007,0.0908662449287131,False,,,
+salad,No linking,3,everything,3.0,-2.960866689682007,0.051774025708174055,False,,,
+salad,No linking,4,tomatoes,4.0,-2.960866689682007,0.051774025708174055,False,,,
+salad,No linking,5,a,5.0,-3.023366689682007,0.04863719606469942,False,,,
+salad,No linking,6,dressing,121.0,-7.398366928100586,0.0006122517963633667,True,,,
+salad,No linking,7,as,122.0,-7.460866928100586,0.0005751573352347628,False,,,
+salad,No linking,8,eggs,123.0,-7.460866928100586,0.0005751573352347628,False,,,
+salad,No linking,9,amazing,124.0,-7.460866928100586,0.0005751573352347628,False,,,
+salad,No linking,10,mustard,125.0,-7.460866928100586,0.0005751573352347628,False,,,
+salad,No linking,11,tuna,233.0,-8.523366928100586,0.00019876905633394888,True,,,
+salad,No linking,12,grapefruit,234.0,-8.545866966247559,0.00019434668333253273,False,,,
+salad,No linking,13,vinaigrette,235.0,-8.549192428588867,0.00019370146417656167,False,,,
+salad,No linking,14,small,236.0,-8.554616928100586,0.00019265357538436392,False,,,
+salad,No linking,15,dress,237.0,-8.554616928100586,0.00019265357538436392,False,,,
+salad,No linking,16,chips,366.0,-9.335866928100586,8.820323407554447e-05,True,,,
+salad,No linking,17,mango,367.0,-9.335866928100586,8.820323407554447e-05,False,,,
+salad,No linking,18,sun,368.0,-9.367116928100586,8.548950585431404e-05,False,,,
+salad,No linking,19,flour,369.0,-9.367116928100586,8.548950585431404e-05,False,,,
+salad,No linking,20,buns,370.0,-9.37086009979248,8.517010212049277e-05,False,,,
+salad,No linking,21,meat,837.0,-10.992116928100586,1.6833881810151733e-05,True,,,
+salad,No linking,22,farms,838.0,-10.992116928100586,1.6833881810151733e-05,False,,,
+salad,No linking,23,truck,839.0,-10.992116928100586,1.6833881810151733e-05,False,,,
+salad,No linking,24,beef,840.0,-10.992116928100586,1.6833881810151733e-05,False,,,
+salad,No linking,25,dresses,841.0,-10.992116928100586,1.6833881810151733e-05,False,,,
+salad,No linking,26,cigarettes,1924.0,-12.492116928100586,3.756146744218896e-06,True,,,
+salad,Set Top-K,1,lettuce,,,0.998,True,1.0,1.0,False
+salad,Set Top-K,2,dressing,,,0.006,True,2.0,2.5,True
+salad,Set Top-K,3,tuna,,,0.006,True,2.0,2.5,True
+salad,Set Top-K,4,chips,,,0.0,True,4.0,5.0,True
+salad,Set Top-K,5,meat,,,0.0,True,4.0,5.0,True
+salad,Set Top-K,6,cigarettes,,,0.0,True,4.0,5.0,True
+salad,Human exclusion,1,lettuce,,,0.95,True,1.0,1.0,False
+salad,Human exclusion,2,meat,,,0.5495989974937343,True,2.0,2.0,False
+salad,Human exclusion,3,dressing,,,0.5222222222222223,True,3.0,3.0,False
+salad,Human exclusion,4,tuna,,,0.3386111111111111,True,4.0,4.0,False
+salad,Human exclusion,5,chips,,,0.0875,True,5.0,5.0,False
+salad,Human exclusion,6,cigarettes,,,0.03333333333333332,True,6.0,6.0,False
+science,No linking,1,physics,1.0,-1.2208399772644043,0.2949822844184409,True,,,
+science,No linking,2,biology,2.0,-2.2208399772644043,0.1085179179473315,False,,,
+science,No linking,3,physics and,3.0,-2.774155616760254,0.062402145776114706,False,,,
+science,No linking,4,chemistry,4.0,-2.8458399772644043,0.05808545578039523,False,,,
+science,No linking,5,science,5.0,-2.9708399772644043,0.05126023481141327,False,,,
+science,No linking,6,geology,13.0,-4.5090556144714355,0.01100885186854319,True,,,
+science,No linking,7,genetics,14.0,-4.533339977264404,0.010744728924511329,False,,,
+science,No linking,8,bot,15.0,-4.595839977264404,0.010093738708075731,False,,,
+science,No linking,9,botany,16.0,-4.598956108093262,0.010062334253316029,False,,,
+science,No linking,10,it,17.0,-4.720839977264404,0.008907693145375067,False,,,
+science,No linking,11,math,23.0,-5.220839977264404,0.005402788999982043,True,,,
+science,No linking,12,ast,24.0,-5.220839977264404,0.005402788999982043,False,,,
+science,No linking,13,astrophysics,25.0,-5.22910737991333,0.005358306100280114,False,,,
+science,No linking,14,engineering,26.0,-5.533339977264404,0.00395276487228786,False,,,
+science,No linking,15,atoms,27.0,-5.533339977264404,0.00395276487228786,False,,,
+science,No linking,16,zoology,44.0,-6.167567253112793,0.002096329641643455,True,,,
+science,No linking,17,general,45.0,-6.220839977264404,0.0019875749980806097,False,,,
+science,No linking,18,how,46.0,-6.283339977264404,0.0018671539165183938,False,,,
+science,No linking,19,climate,47.0,-6.283339977264404,0.0018671539165183938,False,,,
+science,No linking,20,planets,48.0,-6.283339977264404,0.0018671539165183938,False,,,
+science,No linking,21,philosophy,156.0,-8.127090454101562,0.0002954265085436466,True,,,
+science,No linking,22,galaxies,157.0,-8.127090454101562,0.0002954265085436466,False,,,
+science,No linking,23,classical,158.0,-8.158340454101562,0.00028633719042581184,False,,,
+science,No linking,24,maths,159.0,-8.158340454101562,0.00028633719042581184,False,,,
+science,No linking,25,famous,160.0,-8.189590454101562,0.00027752752122727853,False,,,
+science,No linking,26,art,268.0,-9.127090454101562,0.00010868133887026704,True,,,
+science,Set Top-K,1,physics,,,1.0,True,1.0,1.0,False
+science,Set Top-K,2,geology,,,0.352,True,2.0,2.0,False
+science,Set Top-K,3,math,,,0.21,True,3.0,3.0,False
+science,Set Top-K,4,zoology,,,0.076,True,4.0,4.0,False
+science,Set Top-K,5,philosophy,,,0.014,True,5.0,5.0,False
+science,Set Top-K,6,art,,,0.002,True,6.0,6.0,False
+science,Human exclusion,1,physics,,,0.9,True,1.0,1.0,False
+science,Human exclusion,2,geology,,,0.8314285714285713,True,2.0,2.0,False
+science,Human exclusion,3,zoology,,,0.8166666666666668,True,3.0,3.0,False
+science,Human exclusion,4,art,,,0.6333333333333333,True,4.0,4.0,False
+science,Human exclusion,5,math,,,0.5908333333333333,True,5.0,5.0,False
+science,Human exclusion,6,philosophy,,,0.5355555555555556,True,6.0,6.0,False
+throw,No linking,1,baseball,1.0,-1.44624662399292,0.23545237294761104,False,,,
+throw,No linking,2,ball,2.0,-1.82124662399292,0.16182389159278662,False,,,
+throw,No linking,3,tennis,3.0,-1.88374662399292,0.15201947763757553,False,,,
+throw,No linking,4,basketball,4.0,-2.44624662399292,0.08661808738245717,False,,,
+throw,No linking,5,football,5.0,-2.69624662399292,0.06745823428160501,True,,,
+throw,No linking,6,soccer,6.0,-3.38374662399292,0.033920130390952874,False,,,
+throw,No linking,7,fr,7.0,-4.13374662399292,0.01602273506130014,False,,,
+throw,No linking,8,frisbee,8.0,-4.148972034454346,0.01578063009393626,False,,,
+throw,No linking,9,few,9.0,-4.32124662399292,0.013283313918707835,False,,,
+throw,No linking,10,beach ball,49.0,-6.3848876953125,0.001686857927021264,True,,,
+throw,No linking,11,football out,50.0,-6.509106636047363,0.001489810071342362,False,,,
+throw,No linking,12,perfect,51.0,-6.57124662399292,0.0014000509866436254,False,,,
+throw,No linking,13,little,52.0,-6.63374662399292,0.0013152261854579169,False,,,
+throw,No linking,14,racket,53.0,-6.63374662399292,0.0013152261854579169,False,,,
+throw,No linking,15,shovel,214.0,-9.039997100830078,0.0001185711802118399,True,,,
+throw,No linking,16,basketball hoop,215.0,-9.064823150634766,0.00011566376532625981,False,,,
+throw,No linking,17,softball that,216.0,-9.092046737670898,0.00011255745701549027,False,,,
+throw,No linking,18,way,217.0,-9.102497100830078,0.00011138731556421312,False,,,
+throw,No linking,19,table,218.0,-9.102497100830078,0.00011138731556421312,False,,,
+throw,No linking,20,boomerang,308.0,-9.687407493591309,6.20600872162518e-05,True,,,
+throw,No linking,21,basketball court,309.0,-9.689823150634766,6.191035225641908e-05,False,,,
+throw,No linking,22,short,310.0,-9.696247100830078,6.151391793741822e-05,False,,,
+throw,No linking,23,strong,311.0,-9.696247100830078,6.151391793741822e-05,False,,,
+throw,No linking,24,size,312.0,-9.696247100830078,6.151391793741822e-05,False,,,
+throw,No linking,25,lawnmower,655.0,-10.86084270477295,1.9195345987974895e-05,True,,,
+throw,No linking,26,basketball next,656.0,-10.877323150634766,1.8881590643039666e-05,False,,,
+throw,No linking,27,lost,657.0,-10.883747100830078,1.8760685006818704e-05,False,,,
+throw,No linking,28,wood,658.0,-10.883747100830078,1.8760685006818704e-05,False,,,
+throw,No linking,29,dust,659.0,-10.883747100830078,1.8760685006818704e-05,False,,,
+throw,No linking,30,tires,3200.0,-13.524372100830078,1.337949819823876e-06,True,,,
+throw,Set Top-K,1,football,,,0.972,True,1.0,1.0,False
+throw,Set Top-K,2,beach ball,,,0.082,True,2.0,2.0,False
+throw,Set Top-K,3,boomerang,,,0.004,True,3.0,3.0,False
+throw,Set Top-K,4,shovel,,,0.0,True,4.0,5.0,True
+throw,Set Top-K,5,lawnmower,,,0.0,True,4.0,5.0,True
+throw,Set Top-K,6,tires,,,0.0,True,4.0,5.0,True
+throw,Human exclusion,1,football,,,0.96,True,1.0,1.0,False
+throw,Human exclusion,2,beach ball,,,0.795,True,2.0,2.0,False
+throw,Human exclusion,3,boomerang,,,0.7301253132832081,True,3.0,3.0,False
+throw,Human exclusion,4,lawnmower,,,0.16,True,4.0,4.0,False
+throw,Human exclusion,5,shovel,,,0.13333333333333333,True,5.0,5.0,False
+throw,Human exclusion,6,tires,,,0.04038461538461538,True,6.0,6.0,False
+transport,No linking,1,bike,1.0,-1.3981276750564575,0.24705910609332812,False,,,
+transport,No linking,2,car,2.0,-2.085627555847168,0.12422913497826434,True,,,
+transport,No linking,3,old,3.0,-2.148127555847168,0.1167024721806,False,,,
+transport,No linking,4,bicycle,4.0,-2.585627555847168,0.07534877919389645,False,,,
+transport,No linking,5,truck,5.0,-3.023127555847168,0.04864882825467985,False,,,
+transport,No linking,6,motorcycle,6.0,-3.085627555847168,0.045701344753015564,True,,,
+transport,No linking,7,skateboard,7.0,-3.398127555847168,0.03343581808518478,False,,,
+transport,No linking,8,car here,8.0,-3.5870180130004883,0.02768075111341751,False,,,
+transport,No linking,9,motor,9.0,-3.773127555847168,0.0229800792975528,False,,,
+transport,No linking,10,scooter,10.0,-3.898127555847168,0.020279848801238728,False,,,
+transport,No linking,11,lawnmower,154.0,-8.088506698608398,0.0003070479300541097,True,,,
+transport,No linking,12,hot,155.0,-8.116877555847168,0.000298459128979721,False,,,
+transport,No linking,13,motorcycle over,156.0,-8.127849578857422,0.00029520232806871385,False,,,
+transport,No linking,14,motorcycle right,157.0,-8.127849578857422,0.00029520232806871385,False,,,
+transport,No linking,15,keys here,158.0,-8.146920204162598,0.0002896259763417517,False,,,
+transport,No linking,16,roller blades,183.0,-8.358731269836426,0.00023434146132251247,True,,,
+transport,No linking,17,work,184.0,-8.366877555847168,0.00023244020336421616,False,,,
+transport,No linking,18,r,185.0,-8.366877555847168,0.00023244020336421616,False,,,
+transport,No linking,19,baseball,186.0,-8.366877555847168,0.00023244020336421616,False,,,
+transport,No linking,20,hybrid,187.0,-8.366877555847168,0.00023244020336421616,False,,,
+transport,No linking,21,hammer,1066.0,-11.179377555847168,1.3959119218555842e-05,True,,,
+transport,No linking,22,penny,1067.0,-11.179377555847168,1.3959119218555842e-05,False,,,
+transport,No linking,23,ham,1068.0,-11.179377555847168,1.3959119218555842e-05,False,,,
+transport,No linking,24,sights,1069.0,-11.179377555847168,1.3959119218555842e-05,False,,,
+transport,No linking,25,sm,1070.0,-11.179377555847168,1.3959119218555842e-05,False,,,
+transport,No linking,26,chairs,7349.0,-14.441096305847168,5.349479920767685e-07,True,,,
+transport,Set Top-K,1,car,,,0.986,True,1.0,1.0,False
+transport,Set Top-K,2,motorcycle,,,0.83,True,2.0,2.0,False
+transport,Set Top-K,3,lawnmower,,,0.02,True,3.0,3.0,False
+transport,Set Top-K,4,roller blades,,,0.008,True,4.0,4.0,False
+transport,Set Top-K,5,hammer,,,0.0,True,5.0,5.5,True
+transport,Set Top-K,6,chairs,,,0.0,True,5.0,5.5,True
+transport,Human exclusion,1,car,,,0.8800000000000001,True,1.0,1.0,False
+transport,Human exclusion,2,motorcycle,,,0.800952380952381,True,2.0,2.0,False
+transport,Human exclusion,3,roller blades,,,0.613525641025641,True,3.0,3.0,False
+transport,Human exclusion,4,lawnmower,,,0.17929292929292928,True,4.0,4.0,False
+transport,Human exclusion,5,chairs,,,0.15333333333333332,True,5.0,5.0,False
+transport,Human exclusion,6,hammer,,,0.13,True,6.0,6.0,False

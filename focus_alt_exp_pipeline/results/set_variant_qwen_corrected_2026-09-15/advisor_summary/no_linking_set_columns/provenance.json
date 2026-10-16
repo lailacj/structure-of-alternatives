@@ -1,0 +1,86 @@
+{
+  "sources": [
+    {
+      "path": "results/set_variant_qwen_corrected_2026-09-15/spearman/word_paired_ranks.csv",
+      "sha256": "fad1957438114aa4b10c6417aba9dd6fc8105736b56816e59ecbab7913844c13"
+    },
+    {
+      "path": "results/set_variant_qwen_corrected_2026-09-15/spearman/negation_paired_ranks.csv",
+      "sha256": "f00ca0c8705302b704436c365f447fd68a6fe1de293d9ae3088332ac25bbea35"
+    },
+    {
+      "path": "results/set_variant_qwen_corrected_2026-09-15/inputs/source_rows.csv",
+      "sha256": "0ab0b70aef1f40bf6f733e880862b0585575ded5fea97f7d7dcae39082b7a9ba"
+    },
+    {
+      "path": "results/set_variant_qwen_corrected_2026-09-15/cv_results/oof_predictions.csv",
+      "sha256": "2285ebeecef7eddc79e088a629c822585be83dc9d34473986ba6b2be9de28bd7"
+    },
+    {
+      "path": "results_viewer/index.html",
+      "sha256": "d33b22d16a451d336e33827fa76fb14383626ae7810bf2f54733e9271741ed88"
+    },
+    {
+      "path": "results/set_variant_qwen_corrected_2026-09-15/advisor_summary/no_linking_set_columns/continuation_windows.json",
+      "sha256": "0f76c39a08694fe3bb890a6a1721f576078ce4fb7c10f19fcff1255046f1e383"
+    },
+    {
+      "path": "human_exp_data/sca_dataframe.csv",
+      "sha256": "985db789fb1aa16d68121a2b7434e500052536e7420b509a25a1800501fd7f22"
+    }
+  ],
+  "script_sha256": "3a9a49c5a39eb74414433523489c9bf6a0c8f73f1c9f0b67addc8a405f5990cd",
+  "contexts": [
+    "bag",
+    "bakery",
+    "beach",
+    "cold",
+    "cut",
+    "fridge",
+    "gym",
+    "hot",
+    "mall",
+    "mask",
+    "meat",
+    "restaurant",
+    "salad",
+    "science",
+    "throw",
+    "transport"
+  ],
+  "prompts": {
+    "bag": "You and your friend Taylor are sitting in a park. You pull out a piece of paper and tell Taylor, 'I just had an idea that I want to remember, but don't have anything to write with.' Taylor looks through her handbag and responds, 'Sure, I have ",
+    "bakery": "You and your friend Chris walk by a bakery. You say, 'I want some dessert.' Chris looks inside the bakery and responds, 'Sure, they have ",
+    "beach": "You and your friend Jess are packing to go on vacation. You tell Jess, 'There's a nice beach near our hotel, make sure you bring something to wear.' Jess looks in the closet and responds, 'Sure, I have my ",
+    "cold": "You and your friend Kennedy rent a small cabin in the mountains for a weekend. When you arrive, you shiver and say 'I'm freezing!' Kennedy looks around the cabin and responds, 'Sure, they have a ",
+    "cut": "You and your friend Blair come back from a long day shopping. You want to try on your new sweater, and you tell Blair, 'I want to remove this tag.' Blair looks through some drawers and responds, 'Sure, I have my ",
+    "fridge": "You and your friend Sam go for a long walk together. After the walk, you go back to Sam's house. You say to Sam, 'I'm thirsty.' Sam opens the fridge and responds, 'Sure, I have ",
+    "gym": "You and your friend Lee are registering for classes at a fitness center. You say to Lee, 'Let's sign up for some team sports.' Lee looks at the list of classes and responds, 'Sure, they have ",
+    "hot": "You and your friend Grayson visit his grandparents' lake house after hiking on a hot summer day. You tell Grayson, 'It's sweltering in here!' Grayson talks to his grandparents and responds, 'Sure, they have their ",
+    "mall": "You and your friend Alex are hanging out in a newly opened shopping mall. You say to Alex, 'Let's get lunch!' Alex looks at the map of the mall and responds, 'Sure, this mall has a ",
+    "mask": "You and your friend Carly go grocery shopping together. As you're about to enter the supermarket, you reach into your pocket and realize, 'I forgot to bring my mask!' Carly looks through her bag and responds, 'Sure, I have my ",
+    "meat": "Your friend MJ is calling a ramen restaurant to order takeout. You tell MJ, 'I'd like meat in mine, please.' MJ gives your order over the phone, and then responds, 'Sure, they have ",
+    "restaurant": "You and your friend Billie go to a new restaurant. While you're there, you find out that it's Billie's 21st birthday. You say to Billie, 'Let's order some drinks!' Billie looks at the menu and responds, 'Sure, they have ",
+    "salad": "You and your friend Ali are preparing dinner together. You tell Ali, 'I want to make a salad!' Ali runs to the corner store, and texts you, 'Sure, they have ",
+    "science": "You and your friend Drew are looking for books in a library. You say, 'I want to learn more about science.' Drew looks at the library catalogue and responds, 'Sure, they have books about ",
+    "throw": "You and your friend Jo are relaxing at Jo's house.You tell Jo, 'It's sunny outside, let's play catch.' Jo looks through the garage and responds, 'Sure, we have a ",
+    "transport": "You and your friend Dylan have been studying together at his uncle's house. Dylan suggests going into town to take a break. You say, 'Sure, but I don't want to walk.' Dylan looks in the garage and responds, 'Sure, he has his "
+  },
+  "models": [
+    "No linking",
+    "Set Top-K"
+  ],
+  "experimental_words_per_context": 6,
+  "K": 20,
+  "original_num_reps": 500,
+  "new_sampling": false,
+  "source_prediction_parity_atol": 1e-12,
+  "no_linking_selection": "Top 5 continuations plus all experimental words and first up to 4 intervening words per gap.",
+  "no_linking_positions": "Full 121301-candidate vocabulary sorted by descending score; ties retain original vocabulary order.",
+  "set_rank_scope": "Six experimental words only; ties share the minimum rank.",
+  "set_tie_display_order": "Descending raw continuation probability, then word.",
+  "human_column": "Equal-weight mean of the five distinct trigger-specific exclusion rates per query word.",
+  "human_rank_scope": "Six experimental words; probabilities rounded to 12 decimals only for assigning ties; alphabetical display within ties.",
+  "human_source_validation": "All 480 human pair rates/counts checked against 3408 binary participant responses.",
+  "plotted_values": 641
+}

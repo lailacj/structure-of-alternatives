@@ -1,0 +1,15 @@
+{
+  "contexts": 16,
+  "pdf_count": 16,
+  "png_count": 16,
+  "plotted_values": 641,
+  "experimental_model_values": 192,
+  "human_rates": 96,
+  "human_aggregation": "Unweighted mean of five trigger-specific rates, independently checked against raw binary responses.",
+  "all_pdfs_single_page": true,
+  "all_six_words_present_in_all_three_columns": true,
+  "all_pdfs_rendered_with_poppler": true,
+  "saved_model_source_parity_verified": true,
+  "new_sampling": false,
+  "visual_review": "All 16 rendered pages reviewed in contact sheet; full-size fridge checked. No clipping or overlap observed."
+}

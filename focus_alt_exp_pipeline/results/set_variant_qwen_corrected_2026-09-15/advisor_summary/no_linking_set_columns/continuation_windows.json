@@ -1,0 +1,4192 @@
+{
+  "source_rows_sha256": "0ab0b70aef1f40bf6f733e880862b0585575ded5fea97f7d7dcae39082b7a9ba",
+  "vocabulary_sources": [
+    {
+      "name": "vocab_1gram.txt",
+      "sha256": "2af07a005424263d2135d8c43a6a1ee660a66d0a4e96791fd5faf213afdb7256",
+      "count": 98509
+    },
+    {
+      "name": "vocab_2gram.txt",
+      "sha256": "e0bd9492e9f9223aa06a703af4d303bd5549b69346a5b86db74e8e5974fb6411",
+      "count": 22792
+    }
+  ],
+  "vocabulary_manifest_sha256": "f1d0f4f63998cd9da493d4853d9843ad79168c3b0b4ad0086f656d56a9c5cdee",
+  "selection": "Top 5; all 6 experimental words; first up to 4 words between each consecutive experimental pair.",
+  "ties": "Descending log probability, then original vocabulary order.",
+  "contexts": [
+    {
+      "context": "bag",
+      "prompt_id": "prompt_b1289cb8a28a6b86171f",
+      "score_array_sha256": "884d0928882e86e5d02e4fa9d6b2b79975343d27144e1b98af0d84e15ce711e7",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 6,
+          "before_position": 39,
+          "available_words": 32,
+          "shown_positions": [
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "after_position": 39,
+          "before_position": 111,
+          "available_words": 71,
+          "shown_positions": [
+            40,
+            41,
+            42,
+            43
+          ]
+        },
+        {
+          "after_position": 111,
+          "before_position": 139,
+          "available_words": 27,
+          "shown_positions": [
+            112,
+            113,
+            114,
+            115
+          ]
+        },
+        {
+          "after_position": 139,
+          "before_position": 481,
+          "available_words": 341,
+          "shown_positions": [
+            140,
+            141,
+            142,
+            143
+          ]
+        },
+        {
+          "after_position": 481,
+          "before_position": 709,
+          "available_words": 227,
+          "shown_positions": [
+            482,
+            483,
+            484,
+            485
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "a",
+          "vocabulary_position": 1,
+          "log_probability": -0.3297973573207855,
+          "probability": 0.7190694328253789,
+          "experimental": false
+        },
+        {
+          "word": "some",
+          "vocabulary_position": 2,
+          "log_probability": -2.2047972679138184,
+          "probability": 0.11027287888930071,
+          "experimental": false
+        },
+        {
+          "word": "something",
+          "vocabulary_position": 3,
+          "log_probability": -3.0797972679138184,
+          "probability": 0.04596857500955745,
+          "experimental": false
+        },
+        {
+          "word": "an",
+          "vocabulary_position": 4,
+          "log_probability": -3.7047972679138184,
+          "probability": 0.024605205126598074,
+          "experimental": false
+        },
+        {
+          "word": "this",
+          "vocabulary_position": 5,
+          "log_probability": -3.9547972679138184,
+          "probability": 0.019162553020227124,
+          "experimental": false
+        },
+        {
+          "word": "pen",
+          "vocabulary_position": 6,
+          "log_probability": -3.9547972679138184,
+          "probability": 0.019162553020227124,
+          "experimental": true
+        },
+        {
+          "word": "pen and",
+          "vocabulary_position": 7,
+          "log_probability": -4.147491931915283,
+          "probability": 0.015804004338478478,
+          "experimental": false
+        },
+        {
+          "word": "one",
+          "vocabulary_position": 8,
+          "log_probability": -4.829797267913818,
+          "probability": 0.00798814055420838,
+          "experimental": false
+        },
+        {
+          "word": "my",
+          "vocabulary_position": 9,
+          "log_probability": -4.829797267913818,
+          "probability": 0.00798814055420838,
+          "experimental": false
+        },
+        {
+          "word": "two",
+          "vocabulary_position": 10,
+          "log_probability": -5.204797267913818,
+          "probability": 0.005490163360382795,
+          "experimental": false
+        },
+        {
+          "word": "crayons",
+          "vocabulary_position": 39,
+          "log_probability": -8.586970329284668,
+          "probability": 0.00018652032766733675,
+          "experimental": true
+        },
+        {
+          "word": "pen with",
+          "vocabulary_position": 40,
+          "log_probability": -8.647491455078125,
+          "probability": 0.00017556671320323645,
+          "experimental": false
+        },
+        {
+          "word": "nothing",
+          "vocabulary_position": 41,
+          "log_probability": -8.704797744750977,
+          "probability": 0.00016578848899051303,
+          "experimental": false
+        },
+        {
+          "word": "scissors",
+          "vocabulary_position": 42,
+          "log_probability": -8.704797744750977,
+          "probability": 0.00016578848899051303,
+          "experimental": false
+        },
+        {
+          "word": "pen on",
+          "vocabulary_position": 43,
+          "log_probability": -8.709991455078125,
+          "probability": 0.00016492966377834744,
+          "experimental": false
+        },
+        {
+          "word": "chalk",
+          "vocabulary_position": 111,
+          "log_probability": -10.517297744750977,
+          "probability": 2.706422684422374e-05,
+          "experimental": true
+        },
+        {
+          "word": "sharpen",
+          "vocabulary_position": 112,
+          "log_probability": -10.517297744750977,
+          "probability": 2.706422684422374e-05,
+          "experimental": false
+        },
+        {
+          "word": "use",
+          "vocabulary_position": 113,
+          "log_probability": -10.579797744750977,
+          "probability": 2.5424488232410913e-05,
+          "experimental": false
+        },
+        {
+          "word": "color",
+          "vocabulary_position": 114,
+          "log_probability": -10.579797744750977,
+          "probability": 2.5424488232410913e-05,
+          "experimental": false
+        },
+        {
+          "word": "gel",
+          "vocabulary_position": 115,
+          "log_probability": -10.579797744750977,
+          "probability": 2.5424488232410913e-05,
+          "experimental": false
+        },
+        {
+          "word": "makeup",
+          "vocabulary_position": 139,
+          "log_probability": -10.892297744750977,
+          "probability": 1.8600952948801803e-05,
+          "experimental": true
+        },
+        {
+          "word": "sty",
+          "vocabulary_position": 140,
+          "log_probability": -10.892297744750977,
+          "probability": 1.8600952948801803e-05,
+          "experimental": false
+        },
+        {
+          "word": "napkins in",
+          "vocabulary_position": 141,
+          "log_probability": -10.908507347106934,
+          "probability": 1.8301869458964298e-05,
+          "experimental": false
+        },
+        {
+          "word": "somethin",
+          "vocabulary_position": 142,
+          "log_probability": -10.936630249023438,
+          "probability": 1.779433785998982e-05,
+          "experimental": false
+        },
+        {
+          "word": "scissors in",
+          "vocabulary_position": 143,
+          "log_probability": -10.948997497558594,
+          "probability": 1.7575626080261098e-05,
+          "experimental": false
+        },
+        {
+          "word": "headphones",
+          "vocabulary_position": 481,
+          "log_probability": -13.017297744750977,
+          "probability": 2.2215670232649904e-06,
+          "experimental": true
+        },
+        {
+          "word": "barret",
+          "vocabulary_position": 482,
+          "log_probability": -13.020430564880371,
+          "probability": 2.214618143853705e-06,
+          "experimental": false
+        },
+        {
+          "word": "pen under",
+          "vocabulary_position": 483,
+          "log_probability": -13.022491455078125,
+          "probability": 2.210058758838955e-06,
+          "experimental": false
+        },
+        {
+          "word": "ice cream",
+          "vocabulary_position": 484,
+          "log_probability": -13.066047668457031,
+          "probability": 2.115863259000134e-06,
+          "experimental": false
+        },
+        {
+          "word": "scissors with",
+          "vocabulary_position": 485,
+          "log_probability": -13.073997497558594,
+          "probability": 2.0991091919115535e-06,
+          "experimental": false
+        },
+        {
+          "word": "cash",
+          "vocabulary_position": 709,
+          "log_probability": -13.611047744750977,
+          "probability": 1.2268658317994586e-06,
+          "experimental": true
+        }
+      ]
+    },
+    {
+      "context": "bakery",
+      "prompt_id": "prompt_fc397a1a3f6733ca216c",
+      "score_array_sha256": "86ef5325c9c2f5fa815605f60ef9406b32df8656a99f0d050eb3b36452a68967",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 6,
+          "before_position": 10,
+          "available_words": 3,
+          "shown_positions": [
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "after_position": 10,
+          "before_position": 48,
+          "available_words": 37,
+          "shown_positions": [
+            11,
+            12,
+            13,
+            14
+          ]
+        },
+        {
+          "after_position": 48,
+          "before_position": 141,
+          "available_words": 92,
+          "shown_positions": [
+            49,
+            50,
+            51,
+            52
+          ]
+        },
+        {
+          "after_position": 141,
+          "before_position": 315,
+          "available_words": 173,
+          "shown_positions": [
+            142,
+            143,
+            144,
+            145
+          ]
+        },
+        {
+          "after_position": 315,
+          "before_position": 384,
+          "available_words": 68,
+          "shown_positions": [
+            316,
+            317,
+            318,
+            319
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "some",
+          "vocabulary_position": 1,
+          "log_probability": -2.0526206493377686,
+          "probability": 0.1283979762250334,
+          "experimental": false
+        },
+        {
+          "word": "a",
+          "vocabulary_position": 2,
+          "log_probability": -2.2401206493377686,
+          "probability": 0.10644566100598744,
+          "experimental": false
+        },
+        {
+          "word": "cupcakes",
+          "vocabulary_position": 3,
+          "log_probability": -2.6151206493377686,
+          "probability": 0.07315896158323343,
+          "experimental": false
+        },
+        {
+          "word": "cookies",
+          "vocabulary_position": 4,
+          "log_probability": -3.0526206493377686,
+          "probability": 0.04723497574120943,
+          "experimental": false
+        },
+        {
+          "word": "apple",
+          "vocabulary_position": 5,
+          "log_probability": -3.1151206493377686,
+          "probability": 0.04437315323296978,
+          "experimental": false
+        },
+        {
+          "word": "cakes",
+          "vocabulary_position": 6,
+          "log_probability": -3.6151206493377686,
+          "probability": 0.02691367790392293,
+          "experimental": true
+        },
+        {
+          "word": "chocolate",
+          "vocabulary_position": 7,
+          "log_probability": -3.6776206493377686,
+          "probability": 0.025283060591299606,
+          "experimental": false
+        },
+        {
+          "word": "cake",
+          "vocabulary_position": 8,
+          "log_probability": -3.7401206493377686,
+          "probability": 0.023751237387371452,
+          "experimental": false
+        },
+        {
+          "word": "ice",
+          "vocabulary_position": 9,
+          "log_probability": -3.8026206493377686,
+          "probability": 0.022312222659680556,
+          "experimental": false
+        },
+        {
+          "word": "ice cream",
+          "vocabulary_position": 10,
+          "log_probability": -3.8262972831726074,
+          "probability": 0.021790149193437646,
+          "experimental": true
+        },
+        {
+          "word": "don",
+          "vocabulary_position": 11,
+          "log_probability": -3.9276206493377686,
+          "probability": 0.01969046738694591,
+          "experimental": false
+        },
+        {
+          "word": "donuts",
+          "vocabulary_position": 12,
+          "log_probability": -3.9389915466308594,
+          "probability": 0.01946783725559944,
+          "experimental": false
+        },
+        {
+          "word": "all",
+          "vocabulary_position": 13,
+          "log_probability": -3.9901206493377686,
+          "probability": 0.018497482276199715,
+          "experimental": false
+        },
+        {
+          "word": "brown",
+          "vocabulary_position": 14,
+          "log_probability": -3.9901206493377686,
+          "probability": 0.018497482276199715,
+          "experimental": false
+        },
+        {
+          "word": "muffins",
+          "vocabulary_position": 48,
+          "log_probability": -5.679935932159424,
+          "probability": 0.0034137771497195243,
+          "experimental": true
+        },
+        {
+          "word": "blueberry",
+          "vocabulary_position": 49,
+          "log_probability": -5.69062614440918,
+          "probability": 0.0033774775184916227,
+          "experimental": false
+        },
+        {
+          "word": "lemon",
+          "vocabulary_position": 50,
+          "log_probability": -5.740120887756348,
+          "probability": 0.0032143796726720147,
+          "experimental": false
+        },
+        {
+          "word": "banana",
+          "vocabulary_position": 51,
+          "log_probability": -5.740120887756348,
+          "probability": 0.0032143796726720147,
+          "experimental": false
+        },
+        {
+          "word": "this",
+          "vocabulary_position": 52,
+          "log_probability": -5.802620887756348,
+          "probability": 0.003019630253350195,
+          "experimental": false
+        },
+        {
+          "word": "pretzels",
+          "vocabulary_position": 141,
+          "log_probability": -7.671544075012207,
+          "probability": 0.00046589788674264107,
+          "experimental": true
+        },
+        {
+          "word": "ginger",
+          "vocabulary_position": 142,
+          "log_probability": -7.677620887756348,
+          "probability": 0.0004630752973864621,
+          "experimental": false
+        },
+        {
+          "word": "raspberry",
+          "vocabulary_position": 143,
+          "log_probability": -7.677620887756348,
+          "probability": 0.0004630752973864621,
+          "experimental": false
+        },
+        {
+          "word": "bagels",
+          "vocabulary_position": 144,
+          "log_probability": -7.705897331237793,
+          "probability": 0.00045016456986810786,
+          "experimental": false
+        },
+        {
+          "word": "any",
+          "vocabulary_position": 145,
+          "log_probability": -7.708870887756348,
+          "probability": 0.0004488279682919756,
+          "experimental": false
+        },
+        {
+          "word": "sandwiches",
+          "vocabulary_position": 315,
+          "log_probability": -9.177620887756348,
+          "probability": 0.00010332606526662306,
+          "experimental": true
+        },
+        {
+          "word": "sou",
+          "vocabulary_position": 316,
+          "log_probability": -9.177620887756348,
+          "probability": 0.00010332606526662306,
+          "experimental": false
+        },
+        {
+          "word": "cre",
+          "vocabulary_position": 317,
+          "log_probability": -9.177620887756348,
+          "probability": 0.00010332606526662306,
+          "experimental": false
+        },
+        {
+          "word": "sheet",
+          "vocabulary_position": 318,
+          "log_probability": -9.208870887756348,
+          "probability": 0.0001001470564440829,
+          "experimental": false
+        },
+        {
+          "word": "options",
+          "vocabulary_position": 319,
+          "log_probability": -9.208870887756348,
+          "probability": 0.0001001470564440829,
+          "experimental": false
+        },
+        {
+          "word": "water",
+          "vocabulary_position": 384,
+          "log_probability": -9.583870887756348,
+          "probability": 6.882999819649252e-05,
+          "experimental": true
+        }
+      ]
+    },
+    {
+      "context": "beach",
+      "prompt_id": "prompt_d5e51b3e9c6edaa814d6",
+      "score_array_sha256": "f2a11856f9b5643fda7fbb58541801370b745388f13a8cf7c786dc404c8364e1",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 4,
+          "before_position": 8,
+          "available_words": 3,
+          "shown_positions": [
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "after_position": 8,
+          "before_position": 35,
+          "available_words": 26,
+          "shown_positions": [
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "after_position": 35,
+          "before_position": 74,
+          "available_words": 38,
+          "shown_positions": [
+            36,
+            37,
+            38,
+            39
+          ]
+        },
+        {
+          "after_position": 74,
+          "before_position": 187,
+          "available_words": 112,
+          "shown_positions": [
+            75,
+            76,
+            77,
+            78
+          ]
+        },
+        {
+          "after_position": 187,
+          "before_position": 371,
+          "available_words": 183,
+          "shown_positions": [
+            188,
+            189,
+            190,
+            191
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "bathing",
+          "vocabulary_position": 1,
+          "log_probability": -2.0275001525878906,
+          "probability": 0.13166425062672954,
+          "experimental": false
+        },
+        {
+          "word": "swims",
+          "vocabulary_position": 2,
+          "log_probability": -2.0275001525878906,
+          "probability": 0.13166425062672954,
+          "experimental": false
+        },
+        {
+          "word": "swimsuit",
+          "vocabulary_position": 3,
+          "log_probability": -2.0633537769317627,
+          "probability": 0.12702723369971702,
+          "experimental": false
+        },
+        {
+          "word": "bikini",
+          "vocabulary_position": 4,
+          "log_probability": -2.9650001525878906,
+          "probability": 0.05156046137761155,
+          "experimental": true
+        },
+        {
+          "word": "swim",
+          "vocabulary_position": 5,
+          "log_probability": -3.2150001525878906,
+          "probability": 0.0401553276964068,
+          "experimental": false
+        },
+        {
+          "word": "beach",
+          "vocabulary_position": 6,
+          "log_probability": -3.2775001525878906,
+          "probability": 0.0377224393795603,
+          "experimental": false
+        },
+        {
+          "word": "favorite",
+          "vocabulary_position": 7,
+          "log_probability": -3.6525001525878906,
+          "probability": 0.02592622815541417,
+          "experimental": false
+        },
+        {
+          "word": "shorts",
+          "vocabulary_position": 8,
+          "log_probability": -3.6525001525878906,
+          "probability": 0.02592622815541417,
+          "experimental": true
+        },
+        {
+          "word": "old",
+          "vocabulary_position": 9,
+          "log_probability": -3.8400001525878906,
+          "probability": 0.02149359806542688,
+          "experimental": false
+        },
+        {
+          "word": "blue",
+          "vocabulary_position": 10,
+          "log_probability": -3.9025001525878906,
+          "probability": 0.020191366789524462,
+          "experimental": false
+        },
+        {
+          "word": "swimming",
+          "vocabulary_position": 11,
+          "log_probability": -4.152500152587891,
+          "probability": 0.015725052266963607,
+          "experimental": false
+        },
+        {
+          "word": "white",
+          "vocabulary_position": 12,
+          "log_probability": -4.277500152587891,
+          "probability": 0.013877309918576254,
+          "experimental": false
+        },
+        {
+          "word": "jeans",
+          "vocabulary_position": 35,
+          "log_probability": -5.590000152587891,
+          "probability": 0.0037350272947680872,
+          "experimental": true
+        },
+        {
+          "word": "green",
+          "vocabulary_position": 36,
+          "log_probability": -5.652500152587891,
+          "probability": 0.0035087334306700196,
+          "experimental": false
+        },
+        {
+          "word": "se",
+          "vocabulary_position": 37,
+          "log_probability": -5.652500152587891,
+          "probability": 0.0035087334306700196,
+          "experimental": false
+        },
+        {
+          "word": "swimming suit",
+          "vocabulary_position": 38,
+          "log_probability": -5.667599678039551,
+          "probability": 0.003456151203310234,
+          "experimental": false
+        },
+        {
+          "word": "rain",
+          "vocabulary_position": 39,
+          "log_probability": -5.715000152587891,
+          "probability": 0.0032961500187017575,
+          "experimental": false
+        },
+        {
+          "word": "sunglasses",
+          "vocabulary_position": 74,
+          "log_probability": -6.527500152587891,
+          "probability": 0.001462657704422606,
+          "experimental": true
+        },
+        {
+          "word": "bikini from",
+          "vocabulary_position": 75,
+          "log_probability": -6.534710884094238,
+          "probability": 0.0014521488063852438,
+          "experimental": false
+        },
+        {
+          "word": "little",
+          "vocabulary_position": 76,
+          "log_probability": -6.590000152587891,
+          "probability": 0.0013740397539593679,
+          "experimental": false
+        },
+        {
+          "word": "friend",
+          "vocabulary_position": 77,
+          "log_probability": -6.590000152587891,
+          "probability": 0.0013740397539593679,
+          "experimental": false
+        },
+        {
+          "word": "pol",
+          "vocabulary_position": 78,
+          "log_probability": -6.590000152587891,
+          "probability": 0.0013740397539593679,
+          "experimental": false
+        },
+        {
+          "word": "jacket",
+          "vocabulary_position": 187,
+          "log_probability": -7.746250152587891,
+          "probability": 0.00043236079157768357,
+          "experimental": true
+        },
+        {
+          "word": "very",
+          "vocabulary_position": 188,
+          "log_probability": -7.777500152587891,
+          "probability": 0.0004190584484815907,
+          "experimental": false
+        },
+        {
+          "word": "special",
+          "vocabulary_position": 189,
+          "log_probability": -7.777500152587891,
+          "probability": 0.0004190584484815907,
+          "experimental": false
+        },
+        {
+          "word": "grey",
+          "vocabulary_position": 190,
+          "log_probability": -7.777500152587891,
+          "probability": 0.0004190584484815907,
+          "experimental": false
+        },
+        {
+          "word": "designer",
+          "vocabulary_position": 191,
+          "log_probability": -7.777500152587891,
+          "probability": 0.0004190584484815907,
+          "experimental": false
+        },
+        {
+          "word": "coat",
+          "vocabulary_position": 371,
+          "log_probability": -8.55875015258789,
+          "probability": 0.00019185893824712349,
+          "experimental": true
+        }
+      ]
+    },
+    {
+      "context": "cold",
+      "prompt_id": "prompt_e5b13e89443f16745c5d",
+      "score_array_sha256": "5d3a2daf135a533d18e5e358f5741586879c76a49eb57be1319f38ec878764b9",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 2,
+          "before_position": 60,
+          "available_words": 57,
+          "shown_positions": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "after_position": 60,
+          "before_position": 101,
+          "available_words": 40,
+          "shown_positions": [
+            61,
+            62,
+            63,
+            64
+          ]
+        },
+        {
+          "after_position": 101,
+          "before_position": 256,
+          "available_words": 154,
+          "shown_positions": [
+            102,
+            103,
+            104,
+            105
+          ]
+        },
+        {
+          "after_position": 256,
+          "before_position": 1349,
+          "available_words": 1092,
+          "shown_positions": [
+            257,
+            258,
+            259,
+            260
+          ]
+        },
+        {
+          "after_position": 1349,
+          "before_position": 1712,
+          "available_words": 362,
+          "shown_positions": [
+            1350,
+            1351,
+            1352,
+            1353
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "fireplace",
+          "vocabulary_position": 1,
+          "log_probability": -1.041991949081421,
+          "probability": 0.3527513189939049,
+          "experimental": false
+        },
+        {
+          "word": "heater",
+          "vocabulary_position": 2,
+          "log_probability": -1.729491949081421,
+          "probability": 0.17737450236103597,
+          "experimental": true
+        },
+        {
+          "word": "fire",
+          "vocabulary_position": 3,
+          "log_probability": -2.354491949081421,
+          "probability": 0.09494172951661312,
+          "experimental": false
+        },
+        {
+          "word": "wood",
+          "vocabulary_position": 4,
+          "log_probability": -2.541991949081421,
+          "probability": 0.07870945829967985,
+          "experimental": false
+        },
+        {
+          "word": "heater in",
+          "vocabulary_position": 5,
+          "log_probability": -3.297405242919922,
+          "probability": 0.036978994531287036,
+          "experimental": false
+        },
+        {
+          "word": "small",
+          "vocabulary_position": 6,
+          "log_probability": -3.729491949081421,
+          "probability": 0.024005028515984028,
+          "experimental": false
+        },
+        {
+          "word": "fridge",
+          "vocabulary_position": 60,
+          "log_probability": -7.1044921875,
+          "probability": 0.0008214067099962143,
+          "experimental": true
+        },
+        {
+          "word": "full",
+          "vocabulary_position": 61,
+          "log_probability": -7.1669921875,
+          "probability": 0.0007716401932530842,
+          "experimental": false
+        },
+        {
+          "word": "heater there",
+          "vocabulary_position": 62,
+          "log_probability": -7.172405242919922,
+          "probability": 0.0007674745467320262,
+          "experimental": false
+        },
+        {
+          "word": "bunch",
+          "vocabulary_position": 63,
+          "log_probability": -7.2294921875,
+          "probability": 0.0007248888773338622,
+          "experimental": false
+        },
+        {
+          "word": "hear",
+          "vocabulary_position": 64,
+          "log_probability": -7.2919921875,
+          "probability": 0.0006809700804556254,
+          "experimental": false
+        },
+        {
+          "word": "microwave",
+          "vocabulary_position": 101,
+          "log_probability": -7.9169921875,
+          "probability": 0.0003644970180433698,
+          "experimental": true
+        },
+        {
+          "word": "natural",
+          "vocabulary_position": 102,
+          "log_probability": -7.9482421875,
+          "probability": 0.00035328262375515767,
+          "experimental": false
+        },
+        {
+          "word": "perfectly",
+          "vocabulary_position": 103,
+          "log_probability": -7.9482421875,
+          "probability": 0.00035328262375515767,
+          "experimental": false
+        },
+        {
+          "word": "heated",
+          "vocabulary_position": 104,
+          "log_probability": -7.9482421875,
+          "probability": 0.00035328262375515767,
+          "experimental": false
+        },
+        {
+          "word": "poor",
+          "vocabulary_position": 105,
+          "log_probability": -7.9794921875,
+          "probability": 0.0003424132601065007,
+          "experimental": false
+        },
+        {
+          "word": "sink",
+          "vocabulary_position": 256,
+          "log_probability": -9.2919921875,
+          "probability": 9.2159278714121e-05,
+          "experimental": true
+        },
+        {
+          "word": "basket",
+          "vocabulary_position": 257,
+          "log_probability": -9.2919921875,
+          "probability": 9.2159278714121e-05,
+          "experimental": false
+        },
+        {
+          "word": "balcony",
+          "vocabulary_position": 258,
+          "log_probability": -9.2919921875,
+          "probability": 9.2159278714121e-05,
+          "experimental": false
+        },
+        {
+          "word": "burner",
+          "vocabulary_position": 259,
+          "log_probability": -9.2919921875,
+          "probability": 9.2159278714121e-05,
+          "experimental": false
+        },
+        {
+          "word": "barbecue",
+          "vocabulary_position": 260,
+          "log_probability": -9.2919921875,
+          "probability": 9.2159278714121e-05,
+          "experimental": false
+        },
+        {
+          "word": "blankets",
+          "vocabulary_position": 1349,
+          "log_probability": -11.8544921875,
+          "probability": 7.106560492685349e-06,
+          "experimental": true
+        },
+        {
+          "word": "pac",
+          "vocabulary_position": 1350,
+          "log_probability": -11.8544921875,
+          "probability": 7.106560492685349e-06,
+          "experimental": false
+        },
+        {
+          "word": "ke",
+          "vocabulary_position": 1351,
+          "log_probability": -11.8544921875,
+          "probability": 7.106560492685349e-06,
+          "experimental": false
+        },
+        {
+          "word": "pumpkin",
+          "vocabulary_position": 1352,
+          "log_probability": -11.8544921875,
+          "probability": 7.106560492685349e-06,
+          "experimental": false
+        },
+        {
+          "word": "snug",
+          "vocabulary_position": 1353,
+          "log_probability": -11.8544921875,
+          "probability": 7.106560492685349e-06,
+          "experimental": false
+        },
+        {
+          "word": "tea",
+          "vocabulary_position": 1712,
+          "log_probability": -12.2294921875,
+          "probability": 4.884262835702129e-06,
+          "experimental": true
+        }
+      ]
+    },
+    {
+      "context": "cut",
+      "prompt_id": "prompt_dae5a23e82f8085cc86d",
+      "score_array_sha256": "69f36633063a6e1d9626c89a0dd5adf8056991d1db364f9a08d4e971557c2842",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 1,
+          "before_position": 27,
+          "available_words": 25,
+          "shown_positions": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "after_position": 27,
+          "before_position": 47,
+          "available_words": 19,
+          "shown_positions": [
+            28,
+            29,
+            30,
+            31
+          ]
+        },
+        {
+          "after_position": 47,
+          "before_position": 142,
+          "available_words": 94,
+          "shown_positions": [
+            48,
+            49,
+            50,
+            51
+          ]
+        },
+        {
+          "after_position": 142,
+          "before_position": 950,
+          "available_words": 807,
+          "shown_positions": [
+            143,
+            144,
+            145,
+            146
+          ]
+        },
+        {
+          "after_position": 950,
+          "before_position": 6441,
+          "available_words": 5490,
+          "shown_positions": [
+            951,
+            952,
+            953,
+            954
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "scissors",
+          "vocabulary_position": 1,
+          "log_probability": -1.2658025026321411,
+          "probability": 0.28201288922070217,
+          "experimental": true
+        },
+        {
+          "word": "sewing",
+          "vocabulary_position": 2,
+          "log_probability": -1.5158025026321411,
+          "probability": 0.21963185896131218,
+          "experimental": false
+        },
+        {
+          "word": "scissors here",
+          "vocabulary_position": 3,
+          "log_probability": -2.8662004470825195,
+          "probability": 0.05691476694052071,
+          "experimental": false
+        },
+        {
+          "word": "scissors in",
+          "vocabulary_position": 4,
+          "log_probability": -2.9912004470825195,
+          "probability": 0.05022710553633365,
+          "experimental": false
+        },
+        {
+          "word": "tag",
+          "vocabulary_position": 5,
+          "log_probability": -3.0783023834228516,
+          "probability": 0.046037344107533684,
+          "experimental": false
+        },
+        {
+          "word": "nail clippers",
+          "vocabulary_position": 27,
+          "log_probability": -5.449795246124268,
+          "probability": 0.004297184465854707,
+          "experimental": true
+        },
+        {
+          "word": "scissors on",
+          "vocabulary_position": 28,
+          "log_probability": -5.4912004470825195,
+          "probability": 0.004122891888832367,
+          "experimental": false
+        },
+        {
+          "word": "seamstress",
+          "vocabulary_position": 29,
+          "log_probability": -5.603631973266602,
+          "probability": 0.0036844575345054025,
+          "experimental": false
+        },
+        {
+          "word": "knife",
+          "vocabulary_position": 30,
+          "log_probability": -5.640802383422852,
+          "probability": 0.0035500187869051724,
+          "experimental": false
+        },
+        {
+          "word": "pl",
+          "vocabulary_position": 31,
+          "log_probability": -5.640802383422852,
+          "probability": 0.0035500187869051724,
+          "experimental": false
+        },
+        {
+          "word": "stapler",
+          "vocabulary_position": 47,
+          "log_probability": -6.216211795806885,
+          "probability": 0.0019967951757016464,
+          "experimental": true
+        },
+        {
+          "word": "s",
+          "vocabulary_position": 48,
+          "log_probability": -6.265802383422852,
+          "probability": 0.0019001881271481155,
+          "experimental": false
+        },
+        {
+          "word": "hair",
+          "vocabulary_position": 49,
+          "log_probability": -6.265802383422852,
+          "probability": 0.0019001881271481155,
+          "experimental": false
+        },
+        {
+          "word": "best",
+          "vocabulary_position": 50,
+          "log_probability": -6.328302383422852,
+          "probability": 0.0017850615484460135,
+          "experimental": false
+        },
+        {
+          "word": "utility",
+          "vocabulary_position": 51,
+          "log_probability": -6.328302383422852,
+          "probability": 0.0017850615484460135,
+          "experimental": false
+        },
+        {
+          "word": "keys",
+          "vocabulary_position": 142,
+          "log_probability": -7.578302383422852,
+          "probability": 0.0005114286963204614,
+          "experimental": true
+        },
+        {
+          "word": "pr",
+          "vocabulary_position": 143,
+          "log_probability": -7.578302383422852,
+          "probability": 0.0005114286963204614,
+          "experimental": false
+        },
+        {
+          "word": "cl",
+          "vocabulary_position": 144,
+          "log_probability": -7.578302383422852,
+          "probability": 0.0005114286963204614,
+          "experimental": false
+        },
+        {
+          "word": "clippers",
+          "vocabulary_position": 145,
+          "log_probability": -7.579198837280273,
+          "probability": 0.000510970429531054,
+          "experimental": false
+        },
+        {
+          "word": "fingernail",
+          "vocabulary_position": 146,
+          "log_probability": -7.600542068481445,
+          "probability": 0.0005001802280046487,
+          "experimental": false
+        },
+        {
+          "word": "batteries",
+          "vocabulary_position": 950,
+          "log_probability": -10.297052383422852,
+          "probability": 3.373237890791685e-05,
+          "experimental": true
+        },
+        {
+          "word": "cousins",
+          "vocabulary_position": 951,
+          "log_probability": -10.297052383422852,
+          "probability": 3.373237890791685e-05,
+          "experimental": false
+        },
+        {
+          "word": "candy",
+          "vocabulary_position": 952,
+          "log_probability": -10.297052383422852,
+          "probability": 3.373237890791685e-05,
+          "experimental": false
+        },
+        {
+          "word": "scratch",
+          "vocabulary_position": 953,
+          "log_probability": -10.297052383422852,
+          "probability": 3.373237890791685e-05,
+          "experimental": false
+        },
+        {
+          "word": "butterfly",
+          "vocabulary_position": 954,
+          "log_probability": -10.297052383422852,
+          "probability": 3.373237890791685e-05,
+          "experimental": false
+        },
+        {
+          "word": "thumb tacks",
+          "vocabulary_position": 6441,
+          "log_probability": -13.355141639709473,
+          "probability": 1.5846584866145317e-06,
+          "experimental": true
+        }
+      ]
+    },
+    {
+      "context": "fridge",
+      "prompt_id": "prompt_ef7471913f47082a0d86",
+      "score_array_sha256": "1966cca78ab065fec1023da990ed29fc65b2d2a592cb125093fb01715c0c29b9",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 3,
+          "before_position": 6,
+          "available_words": 2,
+          "shown_positions": [
+            4,
+            5
+          ]
+        },
+        {
+          "after_position": 6,
+          "before_position": 19,
+          "available_words": 12,
+          "shown_positions": [
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "after_position": 19,
+          "before_position": 244,
+          "available_words": 224,
+          "shown_positions": [
+            20,
+            21,
+            22,
+            23
+          ]
+        },
+        {
+          "after_position": 244,
+          "before_position": 532,
+          "available_words": 287,
+          "shown_positions": [
+            245,
+            246,
+            247,
+            248
+          ]
+        },
+        {
+          "after_position": 532,
+          "before_position": 1040,
+          "available_words": 507,
+          "shown_positions": [
+            533,
+            534,
+            535,
+            536
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "some",
+          "vocabulary_position": 1,
+          "log_probability": -0.5726814270019531,
+          "probability": 0.5640110547802577,
+          "experimental": false
+        },
+        {
+          "word": "a",
+          "vocabulary_position": 2,
+          "log_probability": -1.4476814270019531,
+          "probability": 0.23511478741670405,
+          "experimental": false
+        },
+        {
+          "word": "water",
+          "vocabulary_position": 3,
+          "log_probability": -2.885181427001953,
+          "probability": 0.05584465688867006,
+          "experimental": true
+        },
+        {
+          "word": "plenty",
+          "vocabulary_position": 4,
+          "log_probability": -4.010181427001953,
+          "probability": 0.018130105647687196,
+          "experimental": false
+        },
+        {
+          "word": "an",
+          "vocabulary_position": 5,
+          "log_probability": -4.572681427001953,
+          "probability": 0.010330222808609272,
+          "experimental": false
+        },
+        {
+          "word": "juice",
+          "vocabulary_position": 6,
+          "log_probability": -4.572681427001953,
+          "probability": 0.010330222808609272,
+          "experimental": true
+        },
+        {
+          "word": "orange",
+          "vocabulary_position": 7,
+          "log_probability": -4.697681427001953,
+          "probability": 0.00911638963160642,
+          "experimental": false
+        },
+        {
+          "word": "water in",
+          "vocabulary_position": 8,
+          "log_probability": -4.801141738891602,
+          "probability": 0.008220356188721469,
+          "experimental": false
+        },
+        {
+          "word": "two",
+          "vocabulary_position": 9,
+          "log_probability": -4.822681427001953,
+          "probability": 0.008045185612646989,
+          "experimental": false
+        },
+        {
+          "word": "lots",
+          "vocabulary_position": 10,
+          "log_probability": -4.822681427001953,
+          "probability": 0.008045185612646989,
+          "experimental": false
+        },
+        {
+          "word": "milk",
+          "vocabulary_position": 19,
+          "log_probability": -6.135181427001953,
+          "probability": 0.002165332332492499,
+          "experimental": true
+        },
+        {
+          "word": "water here",
+          "vocabulary_position": 20,
+          "log_probability": -6.176141738891602,
+          "probability": 0.0020784315361273824,
+          "experimental": false
+        },
+        {
+          "word": "juice in",
+          "vocabulary_position": 21,
+          "log_probability": -6.207886219024658,
+          "probability": 0.0020134890438677716,
+          "experimental": false
+        },
+        {
+          "word": "ice tea",
+          "vocabulary_position": 22,
+          "log_probability": -6.322452068328857,
+          "probability": 0.0017955353285504013,
+          "experimental": false
+        },
+        {
+          "word": "ice water",
+          "vocabulary_position": 23,
+          "log_probability": -6.384952068328857,
+          "probability": 0.001686749342383333,
+          "experimental": false
+        },
+        {
+          "word": "yogurt",
+          "vocabulary_position": 244,
+          "log_probability": -10.885181427001953,
+          "probability": 1.873379535418737e-05,
+          "experimental": true
+        },
+        {
+          "word": "have",
+          "vocabulary_position": 245,
+          "log_probability": -10.916431427001953,
+          "probability": 1.8157417065156932e-05,
+          "experimental": false
+        },
+        {
+          "word": "there",
+          "vocabulary_position": 246,
+          "log_probability": -10.916431427001953,
+          "probability": 1.8157417065156932e-05,
+          "experimental": false
+        },
+        {
+          "word": "full",
+          "vocabulary_position": 247,
+          "log_probability": -10.916431427001953,
+          "probability": 1.8157417065156932e-05,
+          "experimental": false
+        },
+        {
+          "word": "plastic",
+          "vocabulary_position": 248,
+          "log_probability": -10.916431427001953,
+          "probability": 1.8157417065156932e-05,
+          "experimental": false
+        },
+        {
+          "word": "ketchup",
+          "vocabulary_position": 532,
+          "log_probability": -12.411938667297363,
+          "probability": 4.069710597524149e-06,
+          "experimental": true
+        },
+        {
+          "word": "we",
+          "vocabulary_position": 533,
+          "log_probability": -12.416431427001953,
+          "probability": 4.051467377630298e-06,
+          "experimental": false
+        },
+        {
+          "word": "filter",
+          "vocabulary_position": 534,
+          "log_probability": -12.416431427001953,
+          "probability": 4.051467377630298e-06,
+          "experimental": false
+        },
+        {
+          "word": "liquor",
+          "vocabulary_position": 535,
+          "log_probability": -12.416431427001953,
+          "probability": 4.051467377630298e-06,
+          "experimental": false
+        },
+        {
+          "word": "ham",
+          "vocabulary_position": 536,
+          "log_probability": -12.416431427001953,
+          "probability": 4.051467377630298e-06,
+          "experimental": false
+        },
+        {
+          "word": "meat",
+          "vocabulary_position": 1040,
+          "log_probability": -13.650806427001953,
+          "probability": 1.1790442244203663e-06,
+          "experimental": true
+        }
+      ]
+    },
+    {
+      "context": "gym",
+      "prompt_id": "prompt_0dd418b630c0593430bc",
+      "score_array_sha256": "c5350aebafcca05d2a03d1f738ba6086feadb4a1c43132b21f829d3a231092e6",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 1,
+          "before_position": 19,
+          "available_words": 17,
+          "shown_positions": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "after_position": 19,
+          "before_position": 36,
+          "available_words": 16,
+          "shown_positions": [
+            20,
+            21,
+            22,
+            23
+          ]
+        },
+        {
+          "after_position": 36,
+          "before_position": 83,
+          "available_words": 46,
+          "shown_positions": [
+            37,
+            38,
+            39,
+            40
+          ]
+        },
+        {
+          "after_position": 83,
+          "before_position": 169,
+          "available_words": 85,
+          "shown_positions": [
+            84,
+            85,
+            86,
+            87
+          ]
+        },
+        {
+          "after_position": 169,
+          "before_position": 503,
+          "available_words": 333,
+          "shown_positions": [
+            170,
+            171,
+            172,
+            173
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "basketball",
+          "vocabulary_position": 1,
+          "log_probability": -1.9824550151824951,
+          "probability": 0.13773069097529367,
+          "experimental": true
+        },
+        {
+          "word": "soccer",
+          "vocabulary_position": 2,
+          "log_probability": -2.419955015182495,
+          "probability": 0.08892561767209374,
+          "experimental": false
+        },
+        {
+          "word": "a",
+          "vocabulary_position": 3,
+          "log_probability": -2.482455015182495,
+          "probability": 0.08353788685992172,
+          "experimental": false
+        },
+        {
+          "word": "volleyball",
+          "vocabulary_position": 4,
+          "log_probability": -2.482455015182495,
+          "probability": 0.08353788685992172,
+          "experimental": false
+        },
+        {
+          "word": "tennis",
+          "vocabulary_position": 5,
+          "log_probability": -2.544955015182495,
+          "probability": 0.07847658215604467,
+          "experimental": false
+        },
+        {
+          "word": "softball",
+          "vocabulary_position": 19,
+          "log_probability": -4.419955253601074,
+          "probability": 0.012034770785330244,
+          "experimental": true
+        },
+        {
+          "word": "football",
+          "vocabulary_position": 20,
+          "log_probability": -4.482455253601074,
+          "probability": 0.011305620883705224,
+          "experimental": false
+        },
+        {
+          "word": "martial",
+          "vocabulary_position": 21,
+          "log_probability": -4.482455253601074,
+          "probability": 0.011305620883705224,
+          "experimental": false
+        },
+        {
+          "word": "kar",
+          "vocabulary_position": 22,
+          "log_probability": -4.482455253601074,
+          "probability": 0.011305620883705224,
+          "experimental": false
+        },
+        {
+          "word": "karate",
+          "vocabulary_position": 23,
+          "log_probability": -4.484465599060059,
+          "probability": 0.011282915510569516,
+          "experimental": false
+        },
+        {
+          "word": "swimming",
+          "vocabulary_position": 36,
+          "log_probability": -5.232455253601074,
+          "probability": 0.00534039716343266,
+          "experimental": true
+        },
+        {
+          "word": "rock",
+          "vocabulary_position": 37,
+          "log_probability": -5.294955253601074,
+          "probability": 0.005016838855940673,
+          "experimental": false
+        },
+        {
+          "word": "ultimate",
+          "vocabulary_position": 38,
+          "log_probability": -5.294955253601074,
+          "probability": 0.005016838855940673,
+          "experimental": false
+        },
+        {
+          "word": "two",
+          "vocabulary_position": 39,
+          "log_probability": -5.357455253601074,
+          "probability": 0.004712883955300882,
+          "experimental": false
+        },
+        {
+          "word": "dodge",
+          "vocabulary_position": 40,
+          "log_probability": -5.419955253601074,
+          "probability": 0.0044273447511336906,
+          "experimental": false
+        },
+        {
+          "word": "lacrosse",
+          "vocabulary_position": 83,
+          "log_probability": -6.796718597412109,
+          "probability": 0.0011174358954057402,
+          "experimental": true
+        },
+        {
+          "word": "ice hockey",
+          "vocabulary_position": 84,
+          "log_probability": -6.853559494018555,
+          "probability": 0.001055691270400082,
+          "experimental": false
+        },
+        {
+          "word": "horse",
+          "vocabulary_position": 85,
+          "log_probability": -6.857455253601074,
+          "probability": 0.0010515865517072513,
+          "experimental": false
+        },
+        {
+          "word": "competitive",
+          "vocabulary_position": 86,
+          "log_probability": -6.857455253601074,
+          "probability": 0.0010515865517072513,
+          "experimental": false
+        },
+        {
+          "word": "fitness",
+          "vocabulary_position": 87,
+          "log_probability": -6.857455253601074,
+          "probability": 0.0010515865517072513,
+          "experimental": false
+        },
+        {
+          "word": "weightlifting",
+          "vocabulary_position": 169,
+          "log_probability": -8.195878982543945,
+          "probability": 0.00027578775752658225,
+          "experimental": true
+        },
+        {
+          "word": "hot",
+          "vocabulary_position": 170,
+          "log_probability": -8.201205253601074,
+          "probability": 0.00027432274217363095,
+          "experimental": false
+        },
+        {
+          "word": "tai",
+          "vocabulary_position": 171,
+          "log_probability": -8.201205253601074,
+          "probability": 0.00027432274217363095,
+          "experimental": false
+        },
+        {
+          "word": "surfing",
+          "vocabulary_position": 172,
+          "log_probability": -8.201205253601074,
+          "probability": 0.00027432274217363095,
+          "experimental": false
+        },
+        {
+          "word": "just",
+          "vocabulary_position": 173,
+          "log_probability": -8.263705253601074,
+          "probability": 0.0002577023674247221,
+          "experimental": false
+        },
+        {
+          "word": "meditation",
+          "vocabulary_position": 503,
+          "log_probability": -10.263705253601074,
+          "probability": 3.487622288617039e-05,
+          "experimental": true
+        }
+      ]
+    },
+    {
+      "context": "hot",
+      "prompt_id": "prompt_6aa492960e929d0d9716",
+      "score_array_sha256": "3c45afd834b67673d0a5e5a2991e5c2ec8ba47ec096b9af33a73f6820eb59c2f",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 13,
+          "before_position": 14,
+          "available_words": 0,
+          "shown_positions": []
+        },
+        {
+          "after_position": 14,
+          "before_position": 163,
+          "available_words": 148,
+          "shown_positions": [
+            15,
+            16,
+            17,
+            18
+          ]
+        },
+        {
+          "after_position": 163,
+          "before_position": 252,
+          "available_words": 88,
+          "shown_positions": [
+            164,
+            165,
+            166,
+            167
+          ]
+        },
+        {
+          "after_position": 252,
+          "before_position": 330,
+          "available_words": 77,
+          "shown_positions": [
+            253,
+            254,
+            255,
+            256
+          ]
+        },
+        {
+          "after_position": 330,
+          "before_position": 777,
+          "available_words": 446,
+          "shown_positions": [
+            331,
+            332,
+            333,
+            334
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "air",
+          "vocabulary_position": 1,
+          "log_probability": -0.8817135095596313,
+          "probability": 0.41407278577475914,
+          "experimental": false
+        },
+        {
+          "word": "windows",
+          "vocabulary_position": 2,
+          "log_probability": -2.319213390350342,
+          "probability": 0.09835091896670142,
+          "experimental": false
+        },
+        {
+          "word": "own",
+          "vocabulary_position": 3,
+          "log_probability": -2.756713390350342,
+          "probability": 0.0635001259036798,
+          "experimental": false
+        },
+        {
+          "word": "central",
+          "vocabulary_position": 4,
+          "log_probability": -3.069213390350342,
+          "probability": 0.04645768455121164,
+          "experimental": false
+        },
+        {
+          "word": "window",
+          "vocabulary_position": 5,
+          "log_probability": -3.319213390350342,
+          "probability": 0.03618128110816793,
+          "experimental": false
+        },
+        {
+          "word": "fan",
+          "vocabulary_position": 13,
+          "log_probability": -5.381713390350342,
+          "probability": 0.004599933692106942,
+          "experimental": true
+        },
+        {
+          "word": "heater",
+          "vocabulary_position": 14,
+          "log_probability": -5.381713390350342,
+          "probability": 0.004599933692106942,
+          "experimental": true
+        },
+        {
+          "word": "heat",
+          "vocabulary_position": 15,
+          "log_probability": -5.444213390350342,
+          "probability": 0.004321237798441083,
+          "experimental": false
+        },
+        {
+          "word": "a",
+          "vocabulary_position": 16,
+          "log_probability": -5.569213390350342,
+          "probability": 0.0038134789724557317,
+          "experimental": false
+        },
+        {
+          "word": "doors",
+          "vocabulary_position": 17,
+          "log_probability": -5.631713390350342,
+          "probability": 0.003582431961489425,
+          "experimental": false
+        },
+        {
+          "word": "heater on",
+          "vocabulary_position": 18,
+          "log_probability": -5.636826515197754,
+          "probability": 0.0035641612895321085,
+          "experimental": false
+        },
+        {
+          "word": "pool",
+          "vocabulary_position": 163,
+          "log_probability": -9.2567138671875,
+          "probability": 9.5468532519648e-05,
+          "experimental": true
+        },
+        {
+          "word": "solar",
+          "vocabulary_position": 164,
+          "log_probability": -9.2567138671875,
+          "probability": 9.5468532519648e-05,
+          "experimental": false
+        },
+        {
+          "word": "car running",
+          "vocabulary_position": 165,
+          "log_probability": -9.257488250732422,
+          "probability": 9.539463187642098e-05,
+          "experimental": false
+        },
+        {
+          "word": "temperatures",
+          "vocabulary_position": 166,
+          "log_probability": -9.2879638671875,
+          "probability": 9.253127456472847e-05,
+          "experimental": false
+        },
+        {
+          "word": "elderly",
+          "vocabulary_position": 167,
+          "log_probability": -9.2879638671875,
+          "probability": 9.253127456472847e-05,
+          "experimental": false
+        },
+        {
+          "word": "shower",
+          "vocabulary_position": 252,
+          "log_probability": -9.9754638671875,
+          "probability": 4.652764680104481e-05,
+          "experimental": true
+        },
+        {
+          "word": "lives",
+          "vocabulary_position": 253,
+          "log_probability": -10.0067138671875,
+          "probability": 4.509614160154959e-05,
+          "experimental": false
+        },
+        {
+          "word": "version",
+          "vocabulary_position": 254,
+          "log_probability": -10.0067138671875,
+          "probability": 4.509614160154959e-05,
+          "experimental": false
+        },
+        {
+          "word": "keys",
+          "vocabulary_position": 255,
+          "log_probability": -10.0067138671875,
+          "probability": 4.509614160154959e-05,
+          "experimental": false
+        },
+        {
+          "word": "utilities",
+          "vocabulary_position": 256,
+          "log_probability": -10.0067138671875,
+          "probability": 4.509614160154959e-05,
+          "experimental": false
+        },
+        {
+          "word": "blankets",
+          "vocabulary_position": 330,
+          "log_probability": -10.3504638671875,
+          "probability": 3.197795281373117e-05,
+          "experimental": true
+        },
+        {
+          "word": "fan set",
+          "vocabulary_position": 331,
+          "log_probability": -10.35323715209961,
+          "probability": 3.188939169903539e-05,
+          "experimental": false
+        },
+        {
+          "word": "microwave oven",
+          "vocabulary_position": 332,
+          "log_probability": -10.353692054748535,
+          "probability": 3.1874888429316877e-05,
+          "experimental": false
+        },
+        {
+          "word": "wint",
+          "vocabulary_position": 333,
+          "log_probability": -10.374356269836426,
+          "probability": 3.1222977688319694e-05,
+          "experimental": false
+        },
+        {
+          "word": "time",
+          "vocabulary_position": 334,
+          "log_probability": -10.3817138671875,
+          "probability": 3.0994094637584575e-05,
+          "experimental": false
+        },
+        {
+          "word": "couch",
+          "vocabulary_position": 777,
+          "log_probability": -11.5692138671875,
+          "probability": 9.45266479626314e-06,
+          "experimental": true
+        }
+      ]
+    },
+    {
+      "context": "mall",
+      "prompt_id": "prompt_3622b2dc937ddcfab3b3",
+      "score_array_sha256": "b965522c9bc99138ad7078845c3a73197e972a263e9d71fd3396c8cc2aedb212",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 54,
+          "before_position": 61,
+          "available_words": 6,
+          "shown_positions": [
+            55,
+            56,
+            57,
+            58
+          ]
+        },
+        {
+          "after_position": 61,
+          "before_position": 67,
+          "available_words": 5,
+          "shown_positions": [
+            62,
+            63,
+            64,
+            65
+          ]
+        },
+        {
+          "after_position": 67,
+          "before_position": 1286,
+          "available_words": 1218,
+          "shown_positions": [
+            68,
+            69,
+            70,
+            71
+          ]
+        },
+        {
+          "after_position": 1286,
+          "before_position": 1443,
+          "available_words": 156,
+          "shown_positions": [
+            1287,
+            1288,
+            1289,
+            1290
+          ]
+        },
+        {
+          "after_position": 1443,
+          "before_position": 9108,
+          "available_words": 7664,
+          "shown_positions": [
+            1444,
+            1445,
+            1446,
+            1447
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "lot",
+          "vocabulary_position": 1,
+          "log_probability": -1.1231284141540527,
+          "probability": 0.3252606512777866,
+          "experimental": false
+        },
+        {
+          "word": "food",
+          "vocabulary_position": 2,
+          "log_probability": -1.9981284141540527,
+          "probability": 0.13558881201360512,
+          "experimental": false
+        },
+        {
+          "word": "great",
+          "vocabulary_position": 3,
+          "log_probability": -2.8106284141540527,
+          "probability": 0.060167170608126486,
+          "experimental": false
+        },
+        {
+          "word": "huge",
+          "vocabulary_position": 4,
+          "log_probability": -2.9981284141540527,
+          "probability": 0.049880336392664794,
+          "experimental": false
+        },
+        {
+          "word": "ton",
+          "vocabulary_position": 5,
+          "log_probability": -3.0606284141540527,
+          "probability": 0.04685823958479972,
+          "experimental": false
+        },
+        {
+          "word": "coffee shop",
+          "vocabulary_position": 54,
+          "log_probability": -7.4585089683532715,
+          "probability": 0.0005765151332670614,
+          "experimental": true
+        },
+        {
+          "word": "fancy",
+          "vocabulary_position": 55,
+          "log_probability": -7.529378414154053,
+          "probability": 0.0005370719892997785,
+          "experimental": false
+        },
+        {
+          "word": "sandwich",
+          "vocabulary_position": 56,
+          "log_probability": -7.529378414154053,
+          "probability": 0.0005370719892997785,
+          "experimental": false
+        },
+        {
+          "word": "three",
+          "vocabulary_position": 57,
+          "log_probability": -7.560628414154053,
+          "probability": 0.0005205480213356687,
+          "experimental": false
+        },
+        {
+          "word": "place",
+          "vocabulary_position": 58,
+          "log_probability": -7.560628414154053,
+          "probability": 0.0005205480213356687,
+          "experimental": false
+        },
+        {
+          "word": "grocery store",
+          "vocabulary_position": 61,
+          "log_probability": -7.5857367515563965,
+          "probability": 0.000507640645447367,
+          "experimental": true
+        },
+        {
+          "word": "popular",
+          "vocabulary_position": 62,
+          "log_probability": -7.623128414154053,
+          "probability": 0.000489009611064435,
+          "experimental": false
+        },
+        {
+          "word": "floor",
+          "vocabulary_position": 63,
+          "log_probability": -7.623128414154053,
+          "probability": 0.000489009611064435,
+          "experimental": false
+        },
+        {
+          "word": "certain",
+          "vocabulary_position": 64,
+          "log_probability": -7.654378414154053,
+          "probability": 0.00047396436702200145,
+          "experimental": false
+        },
+        {
+          "word": "p",
+          "vocabulary_position": 65,
+          "log_probability": -7.654378414154053,
+          "probability": 0.00047396436702200145,
+          "experimental": false
+        },
+        {
+          "word": "burger joint",
+          "vocabulary_position": 67,
+          "log_probability": -7.662522315979004,
+          "probability": 0.0004701201225699924,
+          "experimental": true
+        },
+        {
+          "word": "little",
+          "vocabulary_position": 68,
+          "log_probability": -7.685628414154053,
+          "probability": 0.0004593820164752675,
+          "experimental": false
+        },
+        {
+          "word": "selection",
+          "vocabulary_position": 69,
+          "log_probability": -7.685628414154053,
+          "probability": 0.0004593820164752675,
+          "experimental": false
+        },
+        {
+          "word": "famous",
+          "vocabulary_position": 70,
+          "log_probability": -7.685628414154053,
+          "probability": 0.0004593820164752675,
+          "experimental": false
+        },
+        {
+          "word": "buffet",
+          "vocabulary_position": 71,
+          "log_probability": -7.685628414154053,
+          "probability": 0.0004593820164752675,
+          "experimental": false
+        },
+        {
+          "word": "pretzel stand",
+          "vocabulary_position": 1286,
+          "log_probability": -12.28936767578125,
+          "probability": 4.600398279205681e-06,
+          "experimental": true
+        },
+        {
+          "word": "government",
+          "vocabulary_position": 1287,
+          "log_probability": -12.295003890991211,
+          "probability": 4.574542377612289e-06,
+          "experimental": false
+        },
+        {
+          "word": "development",
+          "vocabulary_position": 1288,
+          "log_probability": -12.295003890991211,
+          "probability": 4.574542377612289e-06,
+          "experimental": false
+        },
+        {
+          "word": "door",
+          "vocabulary_position": 1289,
+          "log_probability": -12.295003890991211,
+          "probability": 4.574542377612289e-06,
+          "experimental": false
+        },
+        {
+          "word": "dress",
+          "vocabulary_position": 1290,
+          "log_probability": -12.295003890991211,
+          "probability": 4.574542377612289e-06,
+          "experimental": false
+        },
+        {
+          "word": "gift shop",
+          "vocabulary_position": 1443,
+          "log_probability": -12.462306022644043,
+          "probability": 3.869806614269901e-06,
+          "experimental": true
+        },
+        {
+          "word": "pho",
+          "vocabulary_position": 1444,
+          "log_probability": -12.462782859802246,
+          "probability": 3.867961786557315e-06,
+          "experimental": false
+        },
+        {
+          "word": "copious",
+          "vocabulary_position": 1445,
+          "log_probability": -12.465502738952637,
+          "probability": 3.857455692070005e-06,
+          "experimental": false
+        },
+        {
+          "word": "sneaker",
+          "vocabulary_position": 1446,
+          "log_probability": -12.465776443481445,
+          "probability": 3.85640003345327e-06,
+          "experimental": false
+        },
+        {
+          "word": "pretentious",
+          "vocabulary_position": 1447,
+          "log_probability": -12.466370582580566,
+          "probability": 3.854109475933815e-06,
+          "experimental": false
+        },
+        {
+          "word": "electronics store",
+          "vocabulary_position": 9108,
+          "log_probability": -16.061710357666016,
+          "probability": 1.0580052475408694e-07,
+          "experimental": true
+        }
+      ]
+    },
+    {
+      "context": "mask",
+      "prompt_id": "prompt_7ebf909e4b947d98da36",
+      "score_array_sha256": "d50c884d152ce5b6f6aa2d10123504539573fc0e974844724fd29861791e0b23",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 57,
+          "before_position": 61,
+          "available_words": 3,
+          "shown_positions": [
+            58,
+            59,
+            60
+          ]
+        },
+        {
+          "after_position": 61,
+          "before_position": 101,
+          "available_words": 39,
+          "shown_positions": [
+            62,
+            63,
+            64,
+            65
+          ]
+        },
+        {
+          "after_position": 101,
+          "before_position": 188,
+          "available_words": 86,
+          "shown_positions": [
+            102,
+            103,
+            104,
+            105
+          ]
+        },
+        {
+          "after_position": 188,
+          "before_position": 1117,
+          "available_words": 928,
+          "shown_positions": [
+            189,
+            190,
+            191,
+            192
+          ]
+        },
+        {
+          "after_position": 1117,
+          "before_position": 5941,
+          "available_words": 4823,
+          "shown_positions": [
+            1118,
+            1119,
+            1120,
+            1121
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "mask",
+          "vocabulary_position": 1,
+          "log_probability": -0.24303385615348816,
+          "probability": 0.784244961804286,
+          "experimental": false
+        },
+        {
+          "word": "own",
+          "vocabulary_position": 2,
+          "log_probability": -2.9305338859558105,
+          "probability": 0.05336853782508677,
+          "experimental": false
+        },
+        {
+          "word": "extra",
+          "vocabulary_position": 3,
+          "log_probability": -3.1805338859558105,
+          "probability": 0.04156345904955347,
+          "experimental": false
+        },
+        {
+          "word": "spare",
+          "vocabulary_position": 4,
+          "log_probability": -3.5555338859558105,
+          "probability": 0.02856611979422571,
+          "experimental": false
+        },
+        {
+          "word": "reusable",
+          "vocabulary_position": 5,
+          "log_probability": -4.6180338859558105,
+          "probability": 0.009872186837890472,
+          "experimental": false
+        },
+        {
+          "word": "bandana",
+          "vocabulary_position": 57,
+          "log_probability": -8.309240341186523,
+          "probability": 0.0002462310238998569,
+          "experimental": true
+        },
+        {
+          "word": "white",
+          "vocabulary_position": 58,
+          "log_probability": -8.336783409118652,
+          "probability": 0.00023954161242731946,
+          "experimental": false
+        },
+        {
+          "word": "usual",
+          "vocabulary_position": 59,
+          "log_probability": -8.336783409118652,
+          "probability": 0.00023954161242731946,
+          "experimental": false
+        },
+        {
+          "word": "masking",
+          "vocabulary_position": 60,
+          "log_probability": -8.368033409118652,
+          "probability": 0.00023217169180460965,
+          "experimental": false
+        },
+        {
+          "word": "wallet",
+          "vocabulary_position": 61,
+          "log_probability": -8.399283409118652,
+          "probability": 0.0002250285198016267,
+          "experimental": true
+        },
+        {
+          "word": "water bottle",
+          "vocabulary_position": 62,
+          "log_probability": -8.421194076538086,
+          "probability": 0.00022015161793770253,
+          "experimental": false
+        },
+        {
+          "word": "trust",
+          "vocabulary_position": 63,
+          "log_probability": -8.430533409118652,
+          "probability": 0.0002181051200967547,
+          "experimental": false
+        },
+        {
+          "word": "trusty",
+          "vocabulary_position": 64,
+          "log_probability": -8.431553840637207,
+          "probability": 0.0002178826722735374,
+          "experimental": false
+        },
+        {
+          "word": "purple",
+          "vocabulary_position": 65,
+          "log_probability": -8.461783409118652,
+          "probability": 0.00021139473100722904,
+          "experimental": false
+        },
+        {
+          "word": "gloves",
+          "vocabulary_position": 101,
+          "log_probability": -9.180533409118652,
+          "probability": 0.00010302556371526903,
+          "experimental": true
+        },
+        {
+          "word": "ski",
+          "vocabulary_position": 102,
+          "log_probability": -9.180533409118652,
+          "probability": 0.00010302556371526903,
+          "experimental": false
+        },
+        {
+          "word": "special",
+          "vocabulary_position": 103,
+          "log_probability": -9.211783409118652,
+          "probability": 9.985580035349887e-05,
+          "experimental": false
+        },
+        {
+          "word": "anti",
+          "vocabulary_position": 104,
+          "log_probability": -9.211783409118652,
+          "probability": 9.985580035349887e-05,
+          "experimental": false
+        },
+        {
+          "word": "only",
+          "vocabulary_position": 105,
+          "log_probability": -9.243033409118652,
+          "probability": 9.678356035784578e-05,
+          "experimental": false
+        },
+        {
+          "word": "handkerchief",
+          "vocabulary_position": 188,
+          "log_probability": -10.05507755279541,
+          "probability": 4.296702689606244e-05,
+          "experimental": true
+        },
+        {
+          "word": "normal",
+          "vocabulary_position": 189,
+          "log_probability": -10.055533409118652,
+          "probability": 4.29474445688639e-05,
+          "experimental": false
+        },
+        {
+          "word": "beloved",
+          "vocabulary_position": 190,
+          "log_probability": -10.055533409118652,
+          "probability": 4.29474445688639e-05,
+          "experimental": false
+        },
+        {
+          "word": "cute",
+          "vocabulary_position": 191,
+          "log_probability": -10.055533409118652,
+          "probability": 4.29474445688639e-05,
+          "experimental": false
+        },
+        {
+          "word": "name",
+          "vocabulary_position": 192,
+          "log_probability": -10.086783409118652,
+          "probability": 4.1626090611973455e-05,
+          "experimental": false
+        },
+        {
+          "word": "candy",
+          "vocabulary_position": 1117,
+          "log_probability": -12.493033409118652,
+          "probability": 3.7527058840091236e-06,
+          "experimental": true
+        },
+        {
+          "word": "mug",
+          "vocabulary_position": 1118,
+          "log_probability": -12.493033409118652,
+          "probability": 3.7527058840091236e-06,
+          "experimental": false
+        },
+        {
+          "word": "jogging",
+          "vocabulary_position": 1119,
+          "log_probability": -12.493033409118652,
+          "probability": 3.7527058840091236e-06,
+          "experimental": false
+        },
+        {
+          "word": "crum",
+          "vocabulary_position": 1120,
+          "log_probability": -12.495710372924805,
+          "probability": 3.7426734603910946e-06,
+          "experimental": false
+        },
+        {
+          "word": "headscarf",
+          "vocabulary_position": 1121,
+          "log_probability": -12.497628211975098,
+          "probability": 3.7355024936542445e-06,
+          "experimental": false
+        },
+        {
+          "word": "napkins",
+          "vocabulary_position": 5941,
+          "log_probability": -15.144350051879883,
+          "probability": 2.6478436693525797e-07,
+          "experimental": true
+        }
+      ]
+    },
+    {
+      "context": "meat",
+      "prompt_id": "prompt_b4d6fb0c53a16899b941",
+      "score_array_sha256": "0355a84f208117fa8bf0f27497dfd4a62fc171a908bbf41f1644229fd2d26f74",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 3,
+          "before_position": 20,
+          "available_words": 16,
+          "shown_positions": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "after_position": 20,
+          "before_position": 36,
+          "available_words": 15,
+          "shown_positions": [
+            21,
+            22,
+            23,
+            24
+          ]
+        },
+        {
+          "after_position": 36,
+          "before_position": 62,
+          "available_words": 25,
+          "shown_positions": [
+            37,
+            38,
+            39,
+            40
+          ]
+        },
+        {
+          "after_position": 62,
+          "before_position": 76,
+          "available_words": 13,
+          "shown_positions": [
+            63,
+            64,
+            65,
+            66
+          ]
+        },
+        {
+          "after_position": 76,
+          "before_position": 184,
+          "available_words": 107,
+          "shown_positions": [
+            77,
+            78,
+            79,
+            80
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "meat",
+          "vocabulary_position": 1,
+          "log_probability": -1.3725547790527344,
+          "probability": 0.2534586009744854,
+          "experimental": false
+        },
+        {
+          "word": "meat in",
+          "vocabulary_position": 2,
+          "log_probability": -2.385810613632202,
+          "probability": 0.09201436124446428,
+          "experimental": false
+        },
+        {
+          "word": "chicken",
+          "vocabulary_position": 3,
+          "log_probability": -2.4975547790527344,
+          "probability": 0.08228596017956212,
+          "experimental": true
+        },
+        {
+          "word": "a",
+          "vocabulary_position": 4,
+          "log_probability": -2.6225547790527344,
+          "probability": 0.07261710498466292,
+          "experimental": false
+        },
+        {
+          "word": "beef",
+          "vocabulary_position": 5,
+          "log_probability": -3.2475547790527344,
+          "probability": 0.038869135349004165,
+          "experimental": false
+        },
+        {
+          "word": "that",
+          "vocabulary_position": 6,
+          "log_probability": -3.4975547790527344,
+          "probability": 0.03027131304711287,
+          "experimental": false
+        },
+        {
+          "word": "it",
+          "vocabulary_position": 7,
+          "log_probability": -3.6850547790527344,
+          "probability": 0.02509579996161083,
+          "experimental": false
+        },
+        {
+          "word": "tofu",
+          "vocabulary_position": 20,
+          "log_probability": -4.560054779052734,
+          "probability": 0.010461485857444924,
+          "experimental": true
+        },
+        {
+          "word": "everything",
+          "vocabulary_position": 21,
+          "log_probability": -4.622554779052734,
+          "probability": 0.009827656470922196,
+          "experimental": false
+        },
+        {
+          "word": "meat too",
+          "vocabulary_position": 22,
+          "log_probability": -4.760810852050781,
+          "probability": 0.008558666770653901,
+          "experimental": false
+        },
+        {
+          "word": "some",
+          "vocabulary_position": 23,
+          "log_probability": -4.810054779052734,
+          "probability": 0.008147413377868534,
+          "experimental": false
+        },
+        {
+          "word": "two",
+          "vocabulary_position": 24,
+          "log_probability": -4.810054779052734,
+          "probability": 0.008147413377868534,
+          "experimental": false
+        },
+        {
+          "word": "rice",
+          "vocabulary_position": 36,
+          "log_probability": -5.372554779052734,
+          "probability": 0.004642256208692444,
+          "experimental": true
+        },
+        {
+          "word": "chicken in",
+          "vocabulary_position": 37,
+          "log_probability": -5.417326927185059,
+          "probability": 0.004438996563971985,
+          "experimental": false
+        },
+        {
+          "word": "those",
+          "vocabulary_position": 38,
+          "log_probability": -5.497554779052734,
+          "probability": 0.004096776725175189,
+          "experimental": false
+        },
+        {
+          "word": "five",
+          "vocabulary_position": 39,
+          "log_probability": -5.497554779052734,
+          "probability": 0.004096776725175189,
+          "experimental": false
+        },
+        {
+          "word": "vegetables",
+          "vocabulary_position": 40,
+          "log_probability": -5.560054779052734,
+          "probability": 0.0038485655710597862,
+          "experimental": false
+        },
+        {
+          "word": "turkey",
+          "vocabulary_position": 62,
+          "log_probability": -6.247554779052734,
+          "probability": 0.0019351802990206278,
+          "experimental": true
+        },
+        {
+          "word": "vegetable",
+          "vocabulary_position": 63,
+          "log_probability": -6.247554779052734,
+          "probability": 0.0019351802990206278,
+          "experimental": false
+        },
+        {
+          "word": "soup",
+          "vocabulary_position": 64,
+          "log_probability": -6.247554779052734,
+          "probability": 0.0019351802990206278,
+          "experimental": false
+        },
+        {
+          "word": "spicy",
+          "vocabulary_position": 65,
+          "log_probability": -6.247554779052734,
+          "probability": 0.0019351802990206278,
+          "experimental": false
+        },
+        {
+          "word": "chicken too",
+          "vocabulary_position": 66,
+          "log_probability": -6.292326927185059,
+          "probability": 0.0018504490730033207,
+          "experimental": false
+        },
+        {
+          "word": "mushrooms",
+          "vocabulary_position": 76,
+          "log_probability": -6.435054779052734,
+          "probability": 0.0016043208168171543,
+          "experimental": true
+        },
+        {
+          "word": "seaweed",
+          "vocabulary_position": 77,
+          "log_probability": -6.436030387878418,
+          "probability": 0.001602756390527174,
+          "experimental": false
+        },
+        {
+          "word": "tofu and",
+          "vocabulary_position": 78,
+          "log_probability": -6.485692977905273,
+          "probability": 0.0015251035373162573,
+          "experimental": false
+        },
+        {
+          "word": "salmon",
+          "vocabulary_position": 79,
+          "log_probability": -6.497554779052734,
+          "probability": 0.00150711993226162,
+          "experimental": false
+        },
+        {
+          "word": "delicious",
+          "vocabulary_position": 80,
+          "log_probability": -6.497554779052734,
+          "probability": 0.00150711993226162,
+          "experimental": false
+        },
+        {
+          "word": "crab",
+          "vocabulary_position": 184,
+          "log_probability": -7.747554779052734,
+          "probability": 0.000431797090036559,
+          "experimental": true
+        }
+      ]
+    },
+    {
+      "context": "restaurant",
+      "prompt_id": "prompt_2283f8f6e027870a69f3",
+      "score_array_sha256": "e7cdb4e57bd80b0dabd2f5be3fa986d360996323b0384e89a5f2c60f3489a019",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 20,
+          "before_position": 33,
+          "available_words": 12,
+          "shown_positions": [
+            21,
+            22,
+            23,
+            24
+          ]
+        },
+        {
+          "after_position": 33,
+          "before_position": 64,
+          "available_words": 30,
+          "shown_positions": [
+            34,
+            35,
+            36,
+            37
+          ]
+        },
+        {
+          "after_position": 64,
+          "before_position": 191,
+          "available_words": 126,
+          "shown_positions": [
+            65,
+            66,
+            67,
+            68
+          ]
+        },
+        {
+          "after_position": 191,
+          "before_position": 904,
+          "available_words": 712,
+          "shown_positions": [
+            192,
+            193,
+            194,
+            195
+          ]
+        },
+        {
+          "after_position": 904,
+          "before_position": 942,
+          "available_words": 37,
+          "shown_positions": [
+            905,
+            906,
+            907,
+            908
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "a",
+          "vocabulary_position": 1,
+          "log_probability": -1.3716236352920532,
+          "probability": 0.25369471728142684,
+          "experimental": false
+        },
+        {
+          "word": "some",
+          "vocabulary_position": 2,
+          "log_probability": -1.6841236352920532,
+          "probability": 0.18560702014429156,
+          "experimental": false
+        },
+        {
+          "word": "beer",
+          "vocabulary_position": 3,
+          "log_probability": -3.1216235160827637,
+          "probability": 0.04408553670994453,
+          "experimental": false
+        },
+        {
+          "word": "the",
+          "vocabulary_position": 4,
+          "log_probability": -3.9341235160827637,
+          "probability": 0.019562838328518583,
+          "experimental": false
+        },
+        {
+          "word": "marg",
+          "vocabulary_position": 5,
+          "log_probability": -4.121623516082764,
+          "probability": 0.0162181626085975,
+          "experimental": false
+        },
+        {
+          "word": "cocktails",
+          "vocabulary_position": 20,
+          "log_probability": -5.246623516082764,
+          "probability": 0.005265266506900108,
+          "experimental": true
+        },
+        {
+          "word": "great",
+          "vocabulary_position": 21,
+          "log_probability": -5.309123516082764,
+          "probability": 0.004946260135776241,
+          "experimental": false
+        },
+        {
+          "word": "water",
+          "vocabulary_position": 22,
+          "log_probability": -5.309123516082764,
+          "probability": 0.004946260135776241,
+          "experimental": false
+        },
+        {
+          "word": "this",
+          "vocabulary_position": 23,
+          "log_probability": -5.371623516082764,
+          "probability": 0.004646581383621757,
+          "experimental": false
+        },
+        {
+          "word": "both",
+          "vocabulary_position": 24,
+          "log_probability": -5.371623516082764,
+          "probability": 0.004646581383621757,
+          "experimental": false
+        },
+        {
+          "word": "vodka",
+          "vocabulary_position": 33,
+          "log_probability": -5.684123516082764,
+          "probability": 0.003399511561430189,
+          "experimental": true
+        },
+        {
+          "word": "something",
+          "vocabulary_position": 34,
+          "log_probability": -5.809123516082764,
+          "probability": 0.0030000584232626635,
+          "experimental": false
+        },
+        {
+          "word": "strawberry",
+          "vocabulary_position": 35,
+          "log_probability": -5.809123516082764,
+          "probability": 0.0030000584232626635,
+          "experimental": false
+        },
+        {
+          "word": "good",
+          "vocabulary_position": 36,
+          "log_probability": -5.934123516082764,
+          "probability": 0.0026475422661021253,
+          "experimental": false
+        },
+        {
+          "word": "quite",
+          "vocabulary_position": 37,
+          "log_probability": -5.934123516082764,
+          "probability": 0.0026475422661021253,
+          "experimental": false
+        },
+        {
+          "word": "soda",
+          "vocabulary_position": 64,
+          "log_probability": -6.559123516082764,
+          "probability": 0.0014171272554182285,
+          "experimental": true
+        },
+        {
+          "word": "your",
+          "vocabulary_position": 65,
+          "log_probability": -6.621623516082764,
+          "probability": 0.0013312678554088925,
+          "experimental": false
+        },
+        {
+          "word": "martin",
+          "vocabulary_position": 66,
+          "log_probability": -6.621623516082764,
+          "probability": 0.0013312678554088925,
+          "experimental": false
+        },
+        {
+          "word": "martinis",
+          "vocabulary_position": 67,
+          "log_probability": -6.621877193450928,
+          "probability": 0.0013309301857144015,
+          "experimental": false
+        },
+        {
+          "word": "frozen",
+          "vocabulary_position": 68,
+          "log_probability": -6.652873516082764,
+          "probability": 0.0012903090494523468,
+          "experimental": false
+        },
+        {
+          "word": "cake",
+          "vocabulary_position": 191,
+          "log_probability": -8.277873992919922,
+          "probability": 0.000254076795305507,
+          "experimental": true
+        },
+        {
+          "word": "vodka martinis",
+          "vocabulary_position": 192,
+          "log_probability": -8.303669929504395,
+          "probability": 0.0002476064593862557,
+          "experimental": false
+        },
+        {
+          "word": "soft",
+          "vocabulary_position": 193,
+          "log_probability": -8.309123992919922,
+          "probability": 0.0002462596741193405,
+          "experimental": false
+        },
+        {
+          "word": "cocktails on",
+          "vocabulary_position": 194,
+          "log_probability": -8.332944869995117,
+          "probability": 0.0002404628692874076,
+          "experimental": false
+        },
+        {
+          "word": "cocktail",
+          "vocabulary_position": 195,
+          "log_probability": -8.340373992919922,
+          "probability": 0.00023868306046777887,
+          "experimental": false
+        },
+        {
+          "word": "salad",
+          "vocabulary_position": 904,
+          "log_probability": -11.152873992919922,
+          "probability": 1.4334031928628163e-05,
+          "experimental": true
+        },
+        {
+          "word": "cock",
+          "vocabulary_position": 905,
+          "log_probability": -11.152873992919922,
+          "probability": 1.4334031928628163e-05,
+          "experimental": false
+        },
+        {
+          "word": "pudding",
+          "vocabulary_position": 906,
+          "log_probability": -11.152873992919922,
+          "probability": 1.4334031928628163e-05,
+          "experimental": false
+        },
+        {
+          "word": "croissants",
+          "vocabulary_position": 907,
+          "log_probability": -11.158205032348633,
+          "probability": 1.4257819964232942e-05,
+          "experimental": false
+        },
+        {
+          "word": "water that",
+          "vocabulary_position": 908,
+          "log_probability": -11.163154602050781,
+          "probability": 1.4187424248484406e-05,
+          "experimental": false
+        },
+        {
+          "word": "soup",
+          "vocabulary_position": 942,
+          "log_probability": -11.215373992919922,
+          "probability": 1.3465576836538736e-05,
+          "experimental": true
+        }
+      ]
+    },
+    {
+      "context": "salad",
+      "prompt_id": "prompt_e00e156f3257be31b90b",
+      "score_array_sha256": "c132ce7f94384be83928e8179c88b2954b9fb636317961282fe7fe90ff81a20c",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 1,
+          "before_position": 121,
+          "available_words": 119,
+          "shown_positions": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "after_position": 121,
+          "before_position": 233,
+          "available_words": 111,
+          "shown_positions": [
+            122,
+            123,
+            124,
+            125
+          ]
+        },
+        {
+          "after_position": 233,
+          "before_position": 366,
+          "available_words": 132,
+          "shown_positions": [
+            234,
+            235,
+            236,
+            237
+          ]
+        },
+        {
+          "after_position": 366,
+          "before_position": 837,
+          "available_words": 470,
+          "shown_positions": [
+            367,
+            368,
+            369,
+            370
+          ]
+        },
+        {
+          "after_position": 837,
+          "before_position": 1924,
+          "available_words": 1086,
+          "shown_positions": [
+            838,
+            839,
+            840,
+            841
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "lettuce",
+          "vocabulary_position": 1,
+          "log_probability": -1.5233666896820068,
+          "probability": 0.21797679001505293,
+          "experimental": true
+        },
+        {
+          "word": "all",
+          "vocabulary_position": 2,
+          "log_probability": -2.398366689682007,
+          "probability": 0.0908662449287131,
+          "experimental": false
+        },
+        {
+          "word": "everything",
+          "vocabulary_position": 3,
+          "log_probability": -2.960866689682007,
+          "probability": 0.051774025708174055,
+          "experimental": false
+        },
+        {
+          "word": "tomatoes",
+          "vocabulary_position": 4,
+          "log_probability": -2.960866689682007,
+          "probability": 0.051774025708174055,
+          "experimental": false
+        },
+        {
+          "word": "a",
+          "vocabulary_position": 5,
+          "log_probability": -3.023366689682007,
+          "probability": 0.04863719606469942,
+          "experimental": false
+        },
+        {
+          "word": "dressing",
+          "vocabulary_position": 121,
+          "log_probability": -7.398366928100586,
+          "probability": 0.0006122517963633667,
+          "experimental": true
+        },
+        {
+          "word": "as",
+          "vocabulary_position": 122,
+          "log_probability": -7.460866928100586,
+          "probability": 0.0005751573352347628,
+          "experimental": false
+        },
+        {
+          "word": "eggs",
+          "vocabulary_position": 123,
+          "log_probability": -7.460866928100586,
+          "probability": 0.0005751573352347628,
+          "experimental": false
+        },
+        {
+          "word": "amazing",
+          "vocabulary_position": 124,
+          "log_probability": -7.460866928100586,
+          "probability": 0.0005751573352347628,
+          "experimental": false
+        },
+        {
+          "word": "mustard",
+          "vocabulary_position": 125,
+          "log_probability": -7.460866928100586,
+          "probability": 0.0005751573352347628,
+          "experimental": false
+        },
+        {
+          "word": "tuna",
+          "vocabulary_position": 233,
+          "log_probability": -8.523366928100586,
+          "probability": 0.00019876905633394888,
+          "experimental": true
+        },
+        {
+          "word": "grapefruit",
+          "vocabulary_position": 234,
+          "log_probability": -8.545866966247559,
+          "probability": 0.00019434668333253273,
+          "experimental": false
+        },
+        {
+          "word": "vinaigrette",
+          "vocabulary_position": 235,
+          "log_probability": -8.549192428588867,
+          "probability": 0.00019370146417656167,
+          "experimental": false
+        },
+        {
+          "word": "small",
+          "vocabulary_position": 236,
+          "log_probability": -8.554616928100586,
+          "probability": 0.00019265357538436392,
+          "experimental": false
+        },
+        {
+          "word": "dress",
+          "vocabulary_position": 237,
+          "log_probability": -8.554616928100586,
+          "probability": 0.00019265357538436392,
+          "experimental": false
+        },
+        {
+          "word": "chips",
+          "vocabulary_position": 366,
+          "log_probability": -9.335866928100586,
+          "probability": 8.820323407554447e-05,
+          "experimental": true
+        },
+        {
+          "word": "mango",
+          "vocabulary_position": 367,
+          "log_probability": -9.335866928100586,
+          "probability": 8.820323407554447e-05,
+          "experimental": false
+        },
+        {
+          "word": "sun",
+          "vocabulary_position": 368,
+          "log_probability": -9.367116928100586,
+          "probability": 8.548950585431404e-05,
+          "experimental": false
+        },
+        {
+          "word": "flour",
+          "vocabulary_position": 369,
+          "log_probability": -9.367116928100586,
+          "probability": 8.548950585431404e-05,
+          "experimental": false
+        },
+        {
+          "word": "buns",
+          "vocabulary_position": 370,
+          "log_probability": -9.37086009979248,
+          "probability": 8.517010212049277e-05,
+          "experimental": false
+        },
+        {
+          "word": "meat",
+          "vocabulary_position": 837,
+          "log_probability": -10.992116928100586,
+          "probability": 1.6833881810151733e-05,
+          "experimental": true
+        },
+        {
+          "word": "farms",
+          "vocabulary_position": 838,
+          "log_probability": -10.992116928100586,
+          "probability": 1.6833881810151733e-05,
+          "experimental": false
+        },
+        {
+          "word": "truck",
+          "vocabulary_position": 839,
+          "log_probability": -10.992116928100586,
+          "probability": 1.6833881810151733e-05,
+          "experimental": false
+        },
+        {
+          "word": "beef",
+          "vocabulary_position": 840,
+          "log_probability": -10.992116928100586,
+          "probability": 1.6833881810151733e-05,
+          "experimental": false
+        },
+        {
+          "word": "dresses",
+          "vocabulary_position": 841,
+          "log_probability": -10.992116928100586,
+          "probability": 1.6833881810151733e-05,
+          "experimental": false
+        },
+        {
+          "word": "cigarettes",
+          "vocabulary_position": 1924,
+          "log_probability": -12.492116928100586,
+          "probability": 3.756146744218896e-06,
+          "experimental": true
+        }
+      ]
+    },
+    {
+      "context": "science",
+      "prompt_id": "prompt_c59b935a8b7c294921c9",
+      "score_array_sha256": "e3b5f2ecb223103d389a8044e4877242dc56800bde860cad291d38b2b477826a",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 1,
+          "before_position": 13,
+          "available_words": 11,
+          "shown_positions": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "after_position": 13,
+          "before_position": 23,
+          "available_words": 9,
+          "shown_positions": [
+            14,
+            15,
+            16,
+            17
+          ]
+        },
+        {
+          "after_position": 23,
+          "before_position": 44,
+          "available_words": 20,
+          "shown_positions": [
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "after_position": 44,
+          "before_position": 156,
+          "available_words": 111,
+          "shown_positions": [
+            45,
+            46,
+            47,
+            48
+          ]
+        },
+        {
+          "after_position": 156,
+          "before_position": 268,
+          "available_words": 111,
+          "shown_positions": [
+            157,
+            158,
+            159,
+            160
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "physics",
+          "vocabulary_position": 1,
+          "log_probability": -1.2208399772644043,
+          "probability": 0.2949822844184409,
+          "experimental": true
+        },
+        {
+          "word": "biology",
+          "vocabulary_position": 2,
+          "log_probability": -2.2208399772644043,
+          "probability": 0.1085179179473315,
+          "experimental": false
+        },
+        {
+          "word": "physics and",
+          "vocabulary_position": 3,
+          "log_probability": -2.774155616760254,
+          "probability": 0.062402145776114706,
+          "experimental": false
+        },
+        {
+          "word": "chemistry",
+          "vocabulary_position": 4,
+          "log_probability": -2.8458399772644043,
+          "probability": 0.05808545578039523,
+          "experimental": false
+        },
+        {
+          "word": "science",
+          "vocabulary_position": 5,
+          "log_probability": -2.9708399772644043,
+          "probability": 0.05126023481141327,
+          "experimental": false
+        },
+        {
+          "word": "geology",
+          "vocabulary_position": 13,
+          "log_probability": -4.5090556144714355,
+          "probability": 0.01100885186854319,
+          "experimental": true
+        },
+        {
+          "word": "genetics",
+          "vocabulary_position": 14,
+          "log_probability": -4.533339977264404,
+          "probability": 0.010744728924511329,
+          "experimental": false
+        },
+        {
+          "word": "bot",
+          "vocabulary_position": 15,
+          "log_probability": -4.595839977264404,
+          "probability": 0.010093738708075731,
+          "experimental": false
+        },
+        {
+          "word": "botany",
+          "vocabulary_position": 16,
+          "log_probability": -4.598956108093262,
+          "probability": 0.010062334253316029,
+          "experimental": false
+        },
+        {
+          "word": "it",
+          "vocabulary_position": 17,
+          "log_probability": -4.720839977264404,
+          "probability": 0.008907693145375067,
+          "experimental": false
+        },
+        {
+          "word": "math",
+          "vocabulary_position": 23,
+          "log_probability": -5.220839977264404,
+          "probability": 0.005402788999982043,
+          "experimental": true
+        },
+        {
+          "word": "ast",
+          "vocabulary_position": 24,
+          "log_probability": -5.220839977264404,
+          "probability": 0.005402788999982043,
+          "experimental": false
+        },
+        {
+          "word": "astrophysics",
+          "vocabulary_position": 25,
+          "log_probability": -5.22910737991333,
+          "probability": 0.005358306100280114,
+          "experimental": false
+        },
+        {
+          "word": "engineering",
+          "vocabulary_position": 26,
+          "log_probability": -5.533339977264404,
+          "probability": 0.00395276487228786,
+          "experimental": false
+        },
+        {
+          "word": "atoms",
+          "vocabulary_position": 27,
+          "log_probability": -5.533339977264404,
+          "probability": 0.00395276487228786,
+          "experimental": false
+        },
+        {
+          "word": "zoology",
+          "vocabulary_position": 44,
+          "log_probability": -6.167567253112793,
+          "probability": 0.002096329641643455,
+          "experimental": true
+        },
+        {
+          "word": "general",
+          "vocabulary_position": 45,
+          "log_probability": -6.220839977264404,
+          "probability": 0.0019875749980806097,
+          "experimental": false
+        },
+        {
+          "word": "how",
+          "vocabulary_position": 46,
+          "log_probability": -6.283339977264404,
+          "probability": 0.0018671539165183938,
+          "experimental": false
+        },
+        {
+          "word": "climate",
+          "vocabulary_position": 47,
+          "log_probability": -6.283339977264404,
+          "probability": 0.0018671539165183938,
+          "experimental": false
+        },
+        {
+          "word": "planets",
+          "vocabulary_position": 48,
+          "log_probability": -6.283339977264404,
+          "probability": 0.0018671539165183938,
+          "experimental": false
+        },
+        {
+          "word": "philosophy",
+          "vocabulary_position": 156,
+          "log_probability": -8.127090454101562,
+          "probability": 0.0002954265085436466,
+          "experimental": true
+        },
+        {
+          "word": "galaxies",
+          "vocabulary_position": 157,
+          "log_probability": -8.127090454101562,
+          "probability": 0.0002954265085436466,
+          "experimental": false
+        },
+        {
+          "word": "classical",
+          "vocabulary_position": 158,
+          "log_probability": -8.158340454101562,
+          "probability": 0.00028633719042581184,
+          "experimental": false
+        },
+        {
+          "word": "maths",
+          "vocabulary_position": 159,
+          "log_probability": -8.158340454101562,
+          "probability": 0.00028633719042581184,
+          "experimental": false
+        },
+        {
+          "word": "famous",
+          "vocabulary_position": 160,
+          "log_probability": -8.189590454101562,
+          "probability": 0.00027752752122727853,
+          "experimental": false
+        },
+        {
+          "word": "art",
+          "vocabulary_position": 268,
+          "log_probability": -9.127090454101562,
+          "probability": 0.00010868133887026704,
+          "experimental": true
+        }
+      ]
+    },
+    {
+      "context": "throw",
+      "prompt_id": "prompt_880556e472c188a19236",
+      "score_array_sha256": "24b69d2290986c759860e778d034e1cc41da1cf464223658481ea737c153f6dc",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 5,
+          "before_position": 49,
+          "available_words": 43,
+          "shown_positions": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "after_position": 49,
+          "before_position": 214,
+          "available_words": 164,
+          "shown_positions": [
+            50,
+            51,
+            52,
+            53
+          ]
+        },
+        {
+          "after_position": 214,
+          "before_position": 308,
+          "available_words": 93,
+          "shown_positions": [
+            215,
+            216,
+            217,
+            218
+          ]
+        },
+        {
+          "after_position": 308,
+          "before_position": 655,
+          "available_words": 346,
+          "shown_positions": [
+            309,
+            310,
+            311,
+            312
+          ]
+        },
+        {
+          "after_position": 655,
+          "before_position": 3200,
+          "available_words": 2544,
+          "shown_positions": [
+            656,
+            657,
+            658,
+            659
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "baseball",
+          "vocabulary_position": 1,
+          "log_probability": -1.44624662399292,
+          "probability": 0.23545237294761104,
+          "experimental": false
+        },
+        {
+          "word": "ball",
+          "vocabulary_position": 2,
+          "log_probability": -1.82124662399292,
+          "probability": 0.16182389159278662,
+          "experimental": false
+        },
+        {
+          "word": "tennis",
+          "vocabulary_position": 3,
+          "log_probability": -1.88374662399292,
+          "probability": 0.15201947763757553,
+          "experimental": false
+        },
+        {
+          "word": "basketball",
+          "vocabulary_position": 4,
+          "log_probability": -2.44624662399292,
+          "probability": 0.08661808738245717,
+          "experimental": false
+        },
+        {
+          "word": "football",
+          "vocabulary_position": 5,
+          "log_probability": -2.69624662399292,
+          "probability": 0.06745823428160501,
+          "experimental": true
+        },
+        {
+          "word": "soccer",
+          "vocabulary_position": 6,
+          "log_probability": -3.38374662399292,
+          "probability": 0.033920130390952874,
+          "experimental": false
+        },
+        {
+          "word": "fr",
+          "vocabulary_position": 7,
+          "log_probability": -4.13374662399292,
+          "probability": 0.01602273506130014,
+          "experimental": false
+        },
+        {
+          "word": "frisbee",
+          "vocabulary_position": 8,
+          "log_probability": -4.148972034454346,
+          "probability": 0.01578063009393626,
+          "experimental": false
+        },
+        {
+          "word": "few",
+          "vocabulary_position": 9,
+          "log_probability": -4.32124662399292,
+          "probability": 0.013283313918707835,
+          "experimental": false
+        },
+        {
+          "word": "beach ball",
+          "vocabulary_position": 49,
+          "log_probability": -6.3848876953125,
+          "probability": 0.001686857927021264,
+          "experimental": true
+        },
+        {
+          "word": "football out",
+          "vocabulary_position": 50,
+          "log_probability": -6.509106636047363,
+          "probability": 0.001489810071342362,
+          "experimental": false
+        },
+        {
+          "word": "perfect",
+          "vocabulary_position": 51,
+          "log_probability": -6.57124662399292,
+          "probability": 0.0014000509866436254,
+          "experimental": false
+        },
+        {
+          "word": "little",
+          "vocabulary_position": 52,
+          "log_probability": -6.63374662399292,
+          "probability": 0.0013152261854579169,
+          "experimental": false
+        },
+        {
+          "word": "racket",
+          "vocabulary_position": 53,
+          "log_probability": -6.63374662399292,
+          "probability": 0.0013152261854579169,
+          "experimental": false
+        },
+        {
+          "word": "shovel",
+          "vocabulary_position": 214,
+          "log_probability": -9.039997100830078,
+          "probability": 0.0001185711802118399,
+          "experimental": true
+        },
+        {
+          "word": "basketball hoop",
+          "vocabulary_position": 215,
+          "log_probability": -9.064823150634766,
+          "probability": 0.00011566376532625981,
+          "experimental": false
+        },
+        {
+          "word": "softball that",
+          "vocabulary_position": 216,
+          "log_probability": -9.092046737670898,
+          "probability": 0.00011255745701549027,
+          "experimental": false
+        },
+        {
+          "word": "way",
+          "vocabulary_position": 217,
+          "log_probability": -9.102497100830078,
+          "probability": 0.00011138731556421312,
+          "experimental": false
+        },
+        {
+          "word": "table",
+          "vocabulary_position": 218,
+          "log_probability": -9.102497100830078,
+          "probability": 0.00011138731556421312,
+          "experimental": false
+        },
+        {
+          "word": "boomerang",
+          "vocabulary_position": 308,
+          "log_probability": -9.687407493591309,
+          "probability": 6.20600872162518e-05,
+          "experimental": true
+        },
+        {
+          "word": "basketball court",
+          "vocabulary_position": 309,
+          "log_probability": -9.689823150634766,
+          "probability": 6.191035225641908e-05,
+          "experimental": false
+        },
+        {
+          "word": "short",
+          "vocabulary_position": 310,
+          "log_probability": -9.696247100830078,
+          "probability": 6.151391793741822e-05,
+          "experimental": false
+        },
+        {
+          "word": "strong",
+          "vocabulary_position": 311,
+          "log_probability": -9.696247100830078,
+          "probability": 6.151391793741822e-05,
+          "experimental": false
+        },
+        {
+          "word": "size",
+          "vocabulary_position": 312,
+          "log_probability": -9.696247100830078,
+          "probability": 6.151391793741822e-05,
+          "experimental": false
+        },
+        {
+          "word": "lawnmower",
+          "vocabulary_position": 655,
+          "log_probability": -10.86084270477295,
+          "probability": 1.9195345987974895e-05,
+          "experimental": true
+        },
+        {
+          "word": "basketball next",
+          "vocabulary_position": 656,
+          "log_probability": -10.877323150634766,
+          "probability": 1.8881590643039666e-05,
+          "experimental": false
+        },
+        {
+          "word": "lost",
+          "vocabulary_position": 657,
+          "log_probability": -10.883747100830078,
+          "probability": 1.8760685006818704e-05,
+          "experimental": false
+        },
+        {
+          "word": "wood",
+          "vocabulary_position": 658,
+          "log_probability": -10.883747100830078,
+          "probability": 1.8760685006818704e-05,
+          "experimental": false
+        },
+        {
+          "word": "dust",
+          "vocabulary_position": 659,
+          "log_probability": -10.883747100830078,
+          "probability": 1.8760685006818704e-05,
+          "experimental": false
+        },
+        {
+          "word": "tires",
+          "vocabulary_position": 3200,
+          "log_probability": -13.524372100830078,
+          "probability": 1.337949819823876e-06,
+          "experimental": true
+        }
+      ]
+    },
+    {
+      "context": "transport",
+      "prompt_id": "prompt_8a7d96bf9736b1016bf4",
+      "score_array_sha256": "830797e85c1ca5521dfa01fdb70015e0da53272bf3205cd58edd0a46762ef380",
+      "support_size": 121301,
+      "gaps": [
+        {
+          "after_position": 2,
+          "before_position": 6,
+          "available_words": 3,
+          "shown_positions": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "after_position": 6,
+          "before_position": 154,
+          "available_words": 147,
+          "shown_positions": [
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "after_position": 154,
+          "before_position": 183,
+          "available_words": 28,
+          "shown_positions": [
+            155,
+            156,
+            157,
+            158
+          ]
+        },
+        {
+          "after_position": 183,
+          "before_position": 1066,
+          "available_words": 882,
+          "shown_positions": [
+            184,
+            185,
+            186,
+            187
+          ]
+        },
+        {
+          "after_position": 1066,
+          "before_position": 7349,
+          "available_words": 6282,
+          "shown_positions": [
+            1067,
+            1068,
+            1069,
+            1070
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "word": "bike",
+          "vocabulary_position": 1,
+          "log_probability": -1.3981276750564575,
+          "probability": 0.24705910609332812,
+          "experimental": false
+        },
+        {
+          "word": "car",
+          "vocabulary_position": 2,
+          "log_probability": -2.085627555847168,
+          "probability": 0.12422913497826434,
+          "experimental": true
+        },
+        {
+          "word": "old",
+          "vocabulary_position": 3,
+          "log_probability": -2.148127555847168,
+          "probability": 0.1167024721806,
+          "experimental": false
+        },
+        {
+          "word": "bicycle",
+          "vocabulary_position": 4,
+          "log_probability": -2.585627555847168,
+          "probability": 0.07534877919389645,
+          "experimental": false
+        },
+        {
+          "word": "truck",
+          "vocabulary_position": 5,
+          "log_probability": -3.023127555847168,
+          "probability": 0.04864882825467985,
+          "experimental": false
+        },
+        {
+          "word": "motorcycle",
+          "vocabulary_position": 6,
+          "log_probability": -3.085627555847168,
+          "probability": 0.045701344753015564,
+          "experimental": true
+        },
+        {
+          "word": "skateboard",
+          "vocabulary_position": 7,
+          "log_probability": -3.398127555847168,
+          "probability": 0.03343581808518478,
+          "experimental": false
+        },
+        {
+          "word": "car here",
+          "vocabulary_position": 8,
+          "log_probability": -3.5870180130004883,
+          "probability": 0.02768075111341751,
+          "experimental": false
+        },
+        {
+          "word": "motor",
+          "vocabulary_position": 9,
+          "log_probability": -3.773127555847168,
+          "probability": 0.0229800792975528,
+          "experimental": false
+        },
+        {
+          "word": "scooter",
+          "vocabulary_position": 10,
+          "log_probability": -3.898127555847168,
+          "probability": 0.020279848801238728,
+          "experimental": false
+        },
+        {
+          "word": "lawnmower",
+          "vocabulary_position": 154,
+          "log_probability": -8.088506698608398,
+          "probability": 0.0003070479300541097,
+          "experimental": true
+        },
+        {
+          "word": "hot",
+          "vocabulary_position": 155,
+          "log_probability": -8.116877555847168,
+          "probability": 0.000298459128979721,
+          "experimental": false
+        },
+        {
+          "word": "motorcycle over",
+          "vocabulary_position": 156,
+          "log_probability": -8.127849578857422,
+          "probability": 0.00029520232806871385,
+          "experimental": false
+        },
+        {
+          "word": "motorcycle right",
+          "vocabulary_position": 157,
+          "log_probability": -8.127849578857422,
+          "probability": 0.00029520232806871385,
+          "experimental": false
+        },
+        {
+          "word": "keys here",
+          "vocabulary_position": 158,
+          "log_probability": -8.146920204162598,
+          "probability": 0.0002896259763417517,
+          "experimental": false
+        },
+        {
+          "word": "roller blades",
+          "vocabulary_position": 183,
+          "log_probability": -8.358731269836426,
+          "probability": 0.00023434146132251247,
+          "experimental": true
+        },
+        {
+          "word": "work",
+          "vocabulary_position": 184,
+          "log_probability": -8.366877555847168,
+          "probability": 0.00023244020336421616,
+          "experimental": false
+        },
+        {
+          "word": "r",
+          "vocabulary_position": 185,
+          "log_probability": -8.366877555847168,
+          "probability": 0.00023244020336421616,
+          "experimental": false
+        },
+        {
+          "word": "baseball",
+          "vocabulary_position": 186,
+          "log_probability": -8.366877555847168,
+          "probability": 0.00023244020336421616,
+          "experimental": false
+        },
+        {
+          "word": "hybrid",
+          "vocabulary_position": 187,
+          "log_probability": -8.366877555847168,
+          "probability": 0.00023244020336421616,
+          "experimental": false
+        },
+        {
+          "word": "hammer",
+          "vocabulary_position": 1066,
+          "log_probability": -11.179377555847168,
+          "probability": 1.3959119218555842e-05,
+          "experimental": true
+        },
+        {
+          "word": "penny",
+          "vocabulary_position": 1067,
+          "log_probability": -11.179377555847168,
+          "probability": 1.3959119218555842e-05,
+          "experimental": false
+        },
+        {
+          "word": "ham",
+          "vocabulary_position": 1068,
+          "log_probability": -11.179377555847168,
+          "probability": 1.3959119218555842e-05,
+          "experimental": false
+        },
+        {
+          "word": "sights",
+          "vocabulary_position": 1069,
+          "log_probability": -11.179377555847168,
+          "probability": 1.3959119218555842e-05,
+          "experimental": false
+        },
+        {
+          "word": "sm",
+          "vocabulary_position": 1070,
+          "log_probability": -11.179377555847168,
+          "probability": 1.3959119218555842e-05,
+          "experimental": false
+        },
+        {
+          "word": "chairs",
+          "vocabulary_position": 7349,
+          "log_probability": -14.441096305847168,
+          "probability": 5.349479920767685e-07,
+          "experimental": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+word,probability,raw_probability,rank_min,rank_average,tied,display_row,model,context,reference_word_rank
+pen,0.0191625530202271,0.01916255302022714,1,1.0,False,1,No linking,bag,1
+crayons,0.0001865203276673,0.00018652032766733675,2,2.0,False,2,No linking,bag,2
+chalk,2.706422684422374e-05,2.706422684422374e-05,3,3.0,False,3,No linking,bag,3
+makeup,1.8600952948801803e-05,1.8600952948801803e-05,4,4.0,False,4,No linking,bag,4
+headphones,2.2215670232649904e-06,2.2215670232649904e-06,5,5.0,False,5,No linking,bag,6
+cash,1.2268658317994586e-06,1.2268658317994588e-06,6,6.0,False,6,No linking,bag,5
+pen,0.99,0.01916255302022714,1,1.0,False,1,Set Top-K,bag,1
+crayons,0.068,0.00018652032766733675,2,2.0,False,2,Set Top-K,bag,2
+chalk,0.014,2.706422684422374e-05,3,3.0,False,3,Set Top-K,bag,3
+makeup,0.008,1.8600952948801803e-05,4,4.0,False,4,Set Top-K,bag,4
+cash,0.002,1.2268658317994588e-06,5,5.0,False,5,Set Top-K,bag,5
+headphones,0.0,2.2215670232649904e-06,6,6.0,False,6,Set Top-K,bag,6
+cakes,0.0269136779039229,0.02691367790392292,1,1.0,False,1,No linking,bakery,1
+ice cream,0.0217901491934376,0.021790149193437636,2,2.0,False,2,No linking,bakery,2
+muffins,0.0034137771497195,0.0034137771497195248,3,3.0,False,3,No linking,bakery,3
+pretzels,0.0004658978867426,0.00046589788674264107,4,4.0,False,4,No linking,bakery,4
+sandwiches,0.0001033260652666,0.00010332606526662306,5,5.0,False,5,No linking,bakery,5
+water,6.882999819649252e-05,6.882999819649252e-05,6,6.0,False,6,No linking,bakery,6
+cakes,0.584,0.02691367790392292,1,1.0,False,1,Set Top-K,bakery,1
+ice cream,0.464,0.021790149193437636,2,2.0,False,2,Set Top-K,bakery,2
+muffins,0.104,0.0034137771497195248,3,3.0,False,3,Set Top-K,bakery,3
+pretzels,0.006,0.00046589788674264107,4,4.0,False,4,Set Top-K,bakery,4
+sandwiches,0.002,0.00010332606526662306,5,5.5,True,5,Set Top-K,bakery,5
+water,0.002,6.882999819649252e-05,5,5.5,True,6,Set Top-K,bakery,6
+bikini,0.0515604613776115,0.051560461377611576,1,1.0,False,1,No linking,beach,1
+shorts,0.0259262281554141,0.025926228155414184,2,2.0,False,2,No linking,beach,2
+jeans,0.003735027294768,0.0037350272947680872,3,3.0,False,3,No linking,beach,4
+sunglasses,0.0014626577044226,0.001462657704422606,4,4.0,False,4,No linking,beach,3
+jacket,0.0004323607915776,0.00043236079157768357,5,5.0,False,5,No linking,beach,5
+coat,0.0001918589382471,0.00019185893824712349,6,6.0,False,6,No linking,beach,6
+bikini,0.712,0.051560461377611576,1,1.0,False,1,Set Top-K,beach,1
+shorts,0.504,0.025926228155414184,2,2.0,False,2,Set Top-K,beach,2
+jeans,0.09,0.0037350272947680872,3,3.0,False,3,Set Top-K,beach,4
+sunglasses,0.024,0.001462657704422606,4,4.0,False,4,Set Top-K,beach,3
+jacket,0.004,0.00043236079157768357,5,5.0,False,5,Set Top-K,beach,5
+coat,0.002,0.00019185893824712349,6,6.0,False,6,Set Top-K,beach,6
+heater,0.1773745023610359,0.17737450236103594,1,1.0,False,1,No linking,cold,1
+fridge,0.0008214067099962,0.0008214067099962143,2,2.0,False,2,No linking,cold,6
+microwave,0.0003644970180433,0.0003644970180433698,3,3.0,False,3,No linking,cold,4
+sink,9.2159278714121e-05,9.215927871412099e-05,4,4.0,False,4,No linking,cold,5
+blankets,7.106560492685349e-06,7.10656049268535e-06,5,5.0,False,5,No linking,cold,2
+tea,4.884262835702129e-06,4.88426283570213e-06,6,6.0,False,6,No linking,cold,3
+heater,1.0,0.17737450236103594,1,1.0,False,1,Set Top-K,cold,1
+fridge,0.044,0.0008214067099962143,2,2.0,False,2,Set Top-K,cold,6
+microwave,0.016,0.0003644970180433698,3,3.0,False,3,Set Top-K,cold,4
+sink,0.002,9.215927871412099e-05,4,4.0,False,4,Set Top-K,cold,5
+blankets,0.0,7.10656049268535e-06,5,5.5,True,5,Set Top-K,cold,2
+tea,0.0,4.88426283570213e-06,5,5.5,True,6,Set Top-K,cold,3
+scissors,0.2820128892207021,0.28201288922070217,1,1.0,False,1,No linking,cut,1
+nail clippers,0.0042971844658547,0.004297184465854707,2,2.0,False,2,No linking,cut,2
+stapler,0.0019967951757016,0.001996795175701646,3,3.0,False,3,No linking,cut,5
+keys,0.0005114286963204,0.0005114286963204614,4,4.0,False,4,No linking,cut,3
+batteries,3.373237890791685e-05,3.373237890791685e-05,5,5.0,False,5,No linking,cut,6
+thumb tacks,1.5846584866145315e-06,1.584658486614532e-06,6,6.0,False,6,No linking,cut,4
+scissors,1.0,0.28201288922070217,1,1.0,False,1,Set Top-K,cut,1
+nail clippers,0.124,0.004297184465854707,2,2.0,False,2,Set Top-K,cut,2
+stapler,0.048,0.001996795175701646,3,3.0,False,3,Set Top-K,cut,5
+keys,0.014,0.0005114286963204614,4,4.0,False,4,Set Top-K,cut,3
+batteries,0.002,3.373237890791685e-05,5,5.0,False,5,Set Top-K,cut,6
+thumb tacks,0.0,1.584658486614532e-06,6,6.0,False,6,Set Top-K,cut,4
+water,0.05584465688867,0.05584465688867006,1,1.0,False,1,No linking,fridge,1
+juice,0.0103302228086092,0.010330222808609272,2,2.0,False,2,No linking,fridge,2
+milk,0.0021653323324924,0.002165332332492499,3,3.0,False,3,No linking,fridge,3
+yogurt,1.8733795354187403e-05,1.8733795354187403e-05,4,4.0,False,4,No linking,fridge,4
+ketchup,4.069710597524149e-06,4.069710597524149e-06,5,5.0,False,5,No linking,fridge,5
+meat,1.1790442244203684e-06,1.1790442244203684e-06,6,6.0,False,6,No linking,fridge,6
+water,1.0,0.05584465688867006,1,1.0,False,1,Set Top-K,fridge,1
+juice,0.762,0.010330222808609272,2,2.0,False,2,Set Top-K,fridge,2
+milk,0.26,0.002165332332492499,3,3.0,False,3,Set Top-K,fridge,3
+yogurt,0.006,1.8733795354187403e-05,4,4.0,False,4,Set Top-K,fridge,4
+ketchup,0.002,4.069710597524149e-06,5,5.0,False,5,Set Top-K,fridge,5
+meat,0.0,1.1790442244203684e-06,6,6.0,False,6,Set Top-K,fridge,6
+basketball,0.1377306909752936,0.13773069097529367,1,1.0,False,1,No linking,gym,1
+softball,0.0120347707853302,0.012034770785330244,2,2.0,False,2,No linking,gym,2
+swimming,0.0053403971634326,0.005340397163432661,3,3.0,False,3,No linking,gym,4
+lacrosse,0.0011174358954057,0.0011174358954057402,4,4.0,False,4,No linking,gym,3
+weightlifting,0.0002757877575265,0.00027578775752658225,5,5.0,False,5,No linking,gym,5
+meditation,3.487622288617039e-05,3.48762228861704e-05,6,6.0,False,6,No linking,gym,6
+basketball,0.972,0.13773069097529367,1,1.0,False,1,Set Top-K,gym,1
+softball,0.292,0.012034770785330244,2,2.0,False,2,Set Top-K,gym,2
+swimming,0.144,0.005340397163432661,3,3.0,False,3,Set Top-K,gym,4
+lacrosse,0.036,0.0011174358954057402,4,4.0,False,4,Set Top-K,gym,3
+weightlifting,0.004,0.00027578775752658225,5,5.5,True,5,Set Top-K,gym,5
+meditation,0.004,3.48762228861704e-05,5,5.5,True,6,Set Top-K,gym,6
+fan,0.0045999336921069,0.004599933692106942,1,1.5,True,1,No linking,hot,1
+heater,0.0045999336921069,0.004599933692106942,1,1.5,True,2,No linking,hot,6
+pool,9.5468532519648e-05,9.5468532519648e-05,3,3.0,False,3,No linking,hot,2
+shower,4.652764680104481e-05,4.652764680104481e-05,4,4.0,False,4,No linking,hot,3
+blankets,3.197795281373117e-05,3.197795281373117e-05,5,5.0,False,5,No linking,hot,5
+couch,9.45266479626314e-06,9.45266479626314e-06,6,6.0,False,6,No linking,hot,4
+heater,0.34,0.004599933692106942,1,1.0,False,1,Set Top-K,hot,6
+fan,0.336,0.004599933692106942,2,2.0,False,2,Set Top-K,hot,1
+shower,0.014,4.652764680104481e-05,3,3.0,False,3,Set Top-K,hot,3
+pool,0.004,9.5468532519648e-05,4,4.0,False,4,Set Top-K,hot,2
+blankets,0.002,3.197795281373117e-05,5,5.0,False,5,Set Top-K,hot,5
+couch,0.0,9.45266479626314e-06,6,6.0,False,6,Set Top-K,hot,4
+coffee shop,0.000576515133267,0.000576515133267062,1,1.0,False,1,No linking,mall,3
+grocery store,0.0005076406454473,0.000507640645447367,2,2.0,False,2,No linking,mall,4
+burger joint,0.0004701201225699,0.0004701201225699924,3,3.0,False,3,No linking,mall,1
+pretzel stand,4.600398279205681e-06,4.600398279205681e-06,4,4.0,False,4,No linking,mall,2
+gift shop,3.869806614269895e-06,3.869806614269895e-06,5,5.0,False,5,No linking,mall,5
+electronics store,1.0580052475408695e-07,1.0580052475408694e-07,6,6.0,False,6,No linking,mall,6
+coffee shop,0.038,0.000576515133267062,1,1.0,False,1,Set Top-K,mall,3
+grocery store,0.03,0.000507640645447367,2,2.0,False,2,Set Top-K,mall,4
+burger joint,0.028,0.0004701201225699924,3,3.0,False,3,Set Top-K,mall,1
+pretzel stand,0.0,4.600398279205681e-06,4,5.0,True,4,Set Top-K,mall,2
+gift shop,0.0,3.869806614269895e-06,4,5.0,True,5,Set Top-K,mall,5
+electronics store,0.0,1.0580052475408694e-07,4,5.0,True,6,Set Top-K,mall,6
+bandana,0.0002462310238998,0.0002462310238998569,1,1.0,False,1,No linking,mask,1
+wallet,0.0002250285198016,0.0002250285198016267,2,2.0,False,2,No linking,mask,5
+gloves,0.0001030255637152,0.00010302556371526903,3,3.0,False,3,No linking,mask,4
+handkerchief,4.296702689606244e-05,4.296702689606244e-05,4,4.0,False,4,No linking,mask,2
+candy,3.7527058840091232e-06,3.7527058840091236e-06,5,5.0,False,5,No linking,mask,6
+napkins,2.647843669352575e-07,2.647843669352575e-07,6,6.0,False,6,No linking,mask,3
+bandana,0.084,0.0002462310238998569,1,1.0,False,1,Set Top-K,mask,1
+wallet,0.042,0.0002250285198016267,2,2.0,False,2,Set Top-K,mask,5
+gloves,0.028,0.00010302556371526903,3,3.0,False,3,Set Top-K,mask,4
+handkerchief,0.006,4.296702689606244e-05,4,4.0,False,4,Set Top-K,mask,2
+candy,0.0,3.7527058840091236e-06,5,5.5,True,5,Set Top-K,mask,6
+napkins,0.0,2.647843669352575e-07,5,5.5,True,6,Set Top-K,mask,3
+chicken,0.0822859601795621,0.08228596017956212,1,1.0,False,1,No linking,meat,1
+tofu,0.0104614858574449,0.010461485857444924,2,2.0,False,2,No linking,meat,4
+rice,0.0046422562086924,0.004642256208692444,3,3.0,False,3,No linking,meat,6
+turkey,0.0019351802990206,0.0019351802990206276,4,4.0,False,4,No linking,meat,2
+mushrooms,0.0016043208168171,0.0016043208168171543,5,5.0,False,5,No linking,meat,5
+crab,0.0004317970900365,0.000431797090036559,6,6.0,False,6,No linking,meat,3
+chicken,0.896,0.08228596017956212,1,1.0,False,1,Set Top-K,meat,1
+tofu,0.254,0.010461485857444924,2,2.0,False,2,Set Top-K,meat,4
+rice,0.138,0.004642256208692444,3,3.0,False,3,Set Top-K,meat,6
+mushrooms,0.058,0.0016043208168171543,4,4.0,False,4,Set Top-K,meat,5
+turkey,0.036,0.0019351802990206276,5,5.0,False,5,Set Top-K,meat,2
+crab,0.006,0.000431797090036559,6,6.0,False,6,Set Top-K,meat,3
+cocktails,0.0052652665069001,0.005265266506900108,1,1.0,False,1,No linking,restaurant,1
+vodka,0.0033995115614301,0.003399511561430189,2,2.0,False,2,No linking,restaurant,2
+soda,0.0014171272554182,0.0014171272554182282,3,3.0,False,3,No linking,restaurant,3
+cake,0.0002540767953055,0.000254076795305507,4,4.0,False,4,No linking,restaurant,5
+salad,1.4334031928628165e-05,1.4334031928628163e-05,5,5.0,False,5,No linking,restaurant,6
+soup,1.3465576836538736e-05,1.3465576836538736e-05,6,6.0,False,6,No linking,restaurant,4
+cocktails,0.222,0.005265266506900108,1,1.0,False,1,Set Top-K,restaurant,1
+vodka,0.14,0.003399511561430189,2,2.0,False,2,Set Top-K,restaurant,2
+soda,0.072,0.0014171272554182282,3,3.0,False,3,Set Top-K,restaurant,3
+cake,0.008,0.000254076795305507,4,4.0,False,4,Set Top-K,restaurant,5
+salad,0.0,1.4334031928628163e-05,5,5.5,True,5,Set Top-K,restaurant,6
+soup,0.0,1.3465576836538736e-05,5,5.5,True,6,Set Top-K,restaurant,4
+lettuce,0.2179767900150529,0.21797679001505293,1,1.0,False,1,No linking,salad,1
+dressing,0.0006122517963633,0.0006122517963633667,2,2.0,False,2,No linking,salad,2
+tuna,0.0001987690563339,0.0001987690563339489,3,3.0,False,3,No linking,salad,3
+chips,8.820323407554447e-05,8.820323407554445e-05,4,4.0,False,4,No linking,salad,5
+meat,1.6833881810151733e-05,1.6833881810151733e-05,5,5.0,False,5,No linking,salad,4
+cigarettes,3.756146744218896e-06,3.756146744218896e-06,6,6.0,False,6,No linking,salad,6
+lettuce,0.998,0.21797679001505293,1,1.0,False,1,Set Top-K,salad,1
+dressing,0.006,0.0006122517963633667,2,2.5,True,2,Set Top-K,salad,2
+tuna,0.006,0.0001987690563339489,2,2.5,True,3,Set Top-K,salad,3
+chips,0.0,8.820323407554445e-05,4,5.0,True,4,Set Top-K,salad,5
+meat,0.0,1.6833881810151733e-05,4,5.0,True,5,Set Top-K,salad,4
+cigarettes,0.0,3.756146744218896e-06,4,5.0,True,6,Set Top-K,salad,6
+physics,0.2949822844184409,0.29498228441844093,1,1.0,False,1,No linking,science,1
+geology,0.0110088518685431,0.01100885186854318,2,2.0,False,2,No linking,science,2
+math,0.005402788999982,0.005402788999982043,3,3.0,False,3,No linking,science,4
+zoology,0.0020963296416434,0.0020963296416434555,4,4.0,False,4,No linking,science,3
+philosophy,0.0002954265085436,0.0002954265085436466,5,5.0,False,5,No linking,science,5
+art,0.0001086813388702,0.00010868133887026704,6,6.0,False,6,No linking,science,6
+physics,1.0,0.29498228441844093,1,1.0,False,1,Set Top-K,science,1
+geology,0.352,0.01100885186854318,2,2.0,False,2,Set Top-K,science,2
+math,0.21,0.005402788999982043,3,3.0,False,3,Set Top-K,science,4
+zoology,0.076,0.0020963296416434555,4,4.0,False,4,Set Top-K,science,3
+philosophy,0.014,0.0002954265085436466,5,5.0,False,5,Set Top-K,science,5
+art,0.002,0.00010868133887026704,6,6.0,False,6,Set Top-K,science,6
+football,0.067458234281605,0.06745823428160502,1,1.0,False,1,No linking,throw,1
+beach ball,0.0016868579270212,0.001686857927021264,2,2.0,False,2,No linking,throw,2
+shovel,0.0001185711802118,0.00011857118021183989,3,3.0,False,3,No linking,throw,5
+boomerang,6.20600872162518e-05,6.20600872162518e-05,4,4.0,False,4,No linking,throw,3
+lawnmower,1.9195345987974895e-05,1.9195345987974895e-05,5,5.0,False,5,No linking,throw,6
+tires,1.337949819823876e-06,1.337949819823876e-06,6,6.0,False,6,No linking,throw,4
+football,0.972,0.06745823428160502,1,1.0,False,1,Set Top-K,throw,1
+beach ball,0.082,0.001686857927021264,2,2.0,False,2,Set Top-K,throw,2
+boomerang,0.004,6.20600872162518e-05,3,3.0,False,3,Set Top-K,throw,3
+shovel,0.0,0.00011857118021183989,4,5.0,True,4,Set Top-K,throw,5
+lawnmower,0.0,1.9195345987974895e-05,4,5.0,True,5,Set Top-K,throw,6
+tires,0.0,1.337949819823876e-06,4,5.0,True,6,Set Top-K,throw,4
+car,0.1242291349782643,0.12422913497826434,1,1.0,False,1,No linking,transport,1
+motorcycle,0.0457013447530155,0.04570134475301556,2,2.0,False,2,No linking,transport,2
+lawnmower,0.0003070479300541,0.0003070479300541097,3,3.0,False,3,No linking,transport,4
+roller blades,0.0002343414613225,0.00023434146132251247,4,4.0,False,4,No linking,transport,3
+hammer,1.3959119218555842e-05,1.395911921855584e-05,5,5.0,False,5,No linking,transport,6
+chairs,5.349479920767685e-07,5.349479920767684e-07,6,6.0,False,6,No linking,transport,5
+car,0.986,0.12422913497826434,1,1.0,False,1,Set Top-K,transport,1
+motorcycle,0.83,0.04570134475301556,2,2.0,False,2,Set Top-K,transport,2
+lawnmower,0.02,0.0003070479300541097,3,3.0,False,3,Set Top-K,transport,4
+roller blades,0.008,0.00023434146132251247,4,4.0,False,4,Set Top-K,transport,3
+hammer,0.0,1.395911921855584e-05,5,5.5,True,5,Set Top-K,transport,6
+chairs,0.0,5.349479920767684e-07,5,5.5,True,6,Set Top-K,transport,5

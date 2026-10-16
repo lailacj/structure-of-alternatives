@@ -1,0 +1,42 @@
+{
+  "sources": [
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/negation_paired_ranks.csv",
+      "sha256": "f00ca0c8705302b704436c365f447fd68a6fe1de293d9ae3088332ac25bbea35"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/advisor_summary/baseline_comparison/focus_context_differences.csv",
+      "sha256": "d6564de41ba3eb8092a2816cb69b7857f0b9e18bb1fff5cb3419fe9a6ffdcf63"
+    }
+  ],
+  "verified_differences": 144,
+  "fridge_baseline_set_rank_vectors_identical": true,
+  "within_context_pairs": 30,
+  "contexts": 16,
+  "rank_origin": 0,
+  "rank_ties": "average",
+  "clip_epsilon": 1e-10,
+  "highlighted_pairs": [
+    {
+      "label": "A",
+      "trigger": "water",
+      "query": "juice"
+    },
+    {
+      "label": "B",
+      "trigger": "juice",
+      "query": "water"
+    },
+    {
+      "label": "C",
+      "trigger": "water",
+      "query": "milk"
+    },
+    {
+      "label": "D",
+      "trigger": "meat",
+      "query": "milk"
+    }
+  ],
+  "interpretation": "Descriptive saved point estimates; no refitting or inference."
+}
