@@ -1,0 +1,2 @@
+"model","n","participants","contexts","pairs","interaction","se","ci_low","ci_high","wald_p","lrt_stat","lrt_df","lrt_p","full_logLik","null_logLik","full_singular","null_singular","full_scaled_gradient","null_scaled_gradient"
+"no_linking",3408,213,16,480,1.11247522850835,1.26348720807281,-1.36391419424141,3.58886465125812,0.378599330113315,0.705515763783296,1,0.400936501168743,-1795.10129568966,-1795.45405357155,FALSE,FALSE,7.0265167002818e-06,3.73478569671579e-06

@@ -1,0 +1,22 @@
+[
+  {
+    "optimizer": "bobyqa",
+    "warnings": [],
+    "messages": "boundary (singular) fit: see help('isSingular')",
+    "optimizer_code": 0,
+    "logLik": -1654.3887145952426,
+    "singular": true,
+    "max_scaled_gradient": "NA",
+    "min_hessian_eigenvalue": "NA"
+  },
+  {
+    "optimizer": "nloptwrap",
+    "warnings": [],
+    "messages": null,
+    "optimizer_code": 0,
+    "logLik": -1654.3884127716103,
+    "singular": false,
+    "max_scaled_gradient": 0.00079197723169023397,
+    "min_hessian_eigenvalue": 5.6042453799097727
+  }
+]

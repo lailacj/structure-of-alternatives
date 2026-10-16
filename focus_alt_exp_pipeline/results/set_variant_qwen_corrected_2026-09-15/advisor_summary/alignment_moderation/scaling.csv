@@ -1,0 +1,5 @@
+model,prediction_mean,prediction_sd,alignment_mean,prediction_scale_basis,alignment_scale_basis
+no_linking,0.018164526545278316,0.05312695598914583,0.6984228473198828,480 equally weighted pairs,16 equally weighted contexts
+x_but_not_y,0.015070221970708241,0.058384161016581594,0.6984228473198828,480 equally weighted pairs,16 equally weighted contexts
+ordering,0.5,0.42479613678658856,0.6984228473198828,480 equally weighted pairs,16 equally weighted contexts
+set_top_k,0.1839583333333333,0.3195679467371025,0.6984228473198828,480 equally weighted pairs,16 equally weighted contexts

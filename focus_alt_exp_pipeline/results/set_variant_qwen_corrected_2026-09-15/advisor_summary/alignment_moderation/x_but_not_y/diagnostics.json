@@ -1,0 +1,50 @@
+{
+  "full": {
+    "chosen": {
+      "optimizer": "bobyqa",
+      "warnings": [],
+      "messages": null,
+      "optimizer_code": 0,
+      "logLik": -1823.920837061607,
+      "singular": false,
+      "max_scaled_gradient": 5.4193771798248366e-05,
+      "min_hessian_eigenvalue": 0.1411213745446121
+    },
+    "attempts": [
+      {
+        "optimizer": "bobyqa",
+        "warnings": [],
+        "messages": null,
+        "optimizer_code": 0,
+        "logLik": -1823.920837061607,
+        "singular": false,
+        "max_scaled_gradient": 5.4193771798248366e-05,
+        "min_hessian_eigenvalue": 0.1411213745446121
+      }
+    ]
+  },
+  "null": {
+    "chosen": {
+      "optimizer": "bobyqa",
+      "warnings": [],
+      "messages": null,
+      "optimizer_code": 0,
+      "logLik": -1824.9903033285095,
+      "singular": false,
+      "max_scaled_gradient": 7.8538823459818528e-06,
+      "min_hessian_eigenvalue": 2.5575362033806348
+    },
+    "attempts": [
+      {
+        "optimizer": "bobyqa",
+        "warnings": [],
+        "messages": null,
+        "optimizer_code": 0,
+        "logLik": -1824.9903033285095,
+        "singular": false,
+        "max_scaled_gradient": 7.8538823459818528e-06,
+        "min_hessian_eigenvalue": 2.5575362033806348
+      }
+    ]
+  }
+}

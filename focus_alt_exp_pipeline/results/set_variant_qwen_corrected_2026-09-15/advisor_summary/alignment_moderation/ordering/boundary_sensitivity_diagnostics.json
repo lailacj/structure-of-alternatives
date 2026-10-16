@@ -1,0 +1,26 @@
+{
+  "full": [
+    {
+      "optimizer": "bobyqa",
+      "warnings": [],
+      "messages": null,
+      "optimizer_code": 0,
+      "logLik": -1795.1769878649579,
+      "singular": false,
+      "max_scaled_gradient": 5.1603581892248758e-06,
+      "min_hessian_eigenvalue": 6.1442494295199701
+    }
+  ],
+  "null": [
+    {
+      "optimizer": "bobyqa",
+      "warnings": [],
+      "messages": null,
+      "optimizer_code": 0,
+      "logLik": -1802.7003313655173,
+      "singular": false,
+      "max_scaled_gradient": 6.0966183788047632e-06,
+      "min_hessian_eigenvalue": 6.1650350521455586
+    }
+  ]
+}

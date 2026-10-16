@@ -1,0 +1,53 @@
+[
+  {
+    "optimizer": "bobyqa",
+    "strict_tolerances": false,
+    "restarted": false,
+    "warnings": ["Model failed to converge with max|grad| = 0.0972978 (tol = 0.002, component 1)\n  See ?lme4::convergence and ?lme4::troubleshooting.", "Model is nearly unidentifiable: very large eigenvalue\n - Rescale variables?"],
+    "messages": [
+      "Model failed to converge with max|grad| = 0.0972978 (tol = 0.002, component 1)\n  See ?lme4::convergence and ?lme4::troubleshooting.",
+      "Model is nearly unidentifiable: very large eigenvalue\n - Rescale variables?"
+    ],
+    "optimizer_code": 0,
+    "logLik": -1684.7853489823706,
+    "singular": false,
+    "max_scaled_gradient": 0.097297772994019899,
+    "min_hessian_eigenvalue": 3648400.5262707099
+  },
+  {
+    "optimizer": "nloptwrap",
+    "strict_tolerances": false,
+    "restarted": false,
+    "warnings": "Model failed to converge with max|grad| = 0.00509615 (tol = 0.002, component 1)\n  See ?lme4::convergence and ?lme4::troubleshooting.",
+    "messages": "Model failed to converge with max|grad| = 0.00509615 (tol = 0.002, component 1)\n  See ?lme4::convergence and ?lme4::troubleshooting.",
+    "optimizer_code": 0,
+    "logLik": -1684.082578351688,
+    "singular": false,
+    "max_scaled_gradient": 0.0050961519113234752,
+    "min_hessian_eigenvalue": 1.039845923014034
+  },
+  {
+    "optimizer": "nloptwrap",
+    "strict_tolerances": true,
+    "restarted": false,
+    "warnings": "Model failed to converge with max|grad| = 0.00509615 (tol = 0.002, component 1)\n  See ?lme4::convergence and ?lme4::troubleshooting.",
+    "messages": "Model failed to converge with max|grad| = 0.00509615 (tol = 0.002, component 1)\n  See ?lme4::convergence and ?lme4::troubleshooting.",
+    "optimizer_code": 0,
+    "logLik": -1684.082578351688,
+    "singular": false,
+    "max_scaled_gradient": 0.0050961519113234752,
+    "min_hessian_eigenvalue": 1.039845923014034
+  },
+  {
+    "optimizer": "bobyqa",
+    "strict_tolerances": true,
+    "restarted": true,
+    "warnings": [],
+    "messages": null,
+    "optimizer_code": 0,
+    "logLik": -1684.1289225043517,
+    "singular": false,
+    "max_scaled_gradient": 1.5582405407156932e-05,
+    "min_hessian_eigenvalue": 1.0618546334448504
+  }
+]

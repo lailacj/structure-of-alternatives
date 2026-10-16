@@ -1,0 +1,43 @@
+Generalized linear mixed model fit by maximum likelihood (Laplace
+  Approximation) [glmerMod]
+ Family: binomial  ( logit )
+Formula: neg ~ prediction_z * alignment_c + ((1 | participant) + (0 +  
+    prediction_z | participant)) + ((1 | context) + (0 + prediction_z |  
+    context)) + (1 | item)
+   Data: d
+Control: glmerControl(optimizer = optimizer, optCtrl = if (optimizer ==  
+    "bobyqa") list(maxfun = 2e+05) else list(maxeval = 2e+05))
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   3535.6    3590.9   -1758.8    3517.6      3399 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.5365 -0.4655  0.0365  0.4832  4.5533 
+
+Random effects:
+ Groups        Name         Variance  Std.Dev. 
+ item          (Intercept)  3.003e+00 1.733e+00
+ participant   prediction_z 2.548e-01 5.048e-01
+ participant.1 (Intercept)  1.253e+00 1.119e+00
+ context       prediction_z 2.357e-10 1.535e-05
+ context.1     (Intercept)  4.400e-01 6.633e-01
+Number of obs: 3408, groups:  item, 480; participant, 213; context, 16
+
+Fixed effects:
+                         Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                0.2484     0.2129   1.167   0.2433    
+prediction_z               1.9941     0.1621  12.304   <2e-16 ***
+alignment_c                1.1771     0.6133   1.919   0.0549 .  
+prediction_z:alignment_c   0.7613     0.4286   1.776   0.0757 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) prdct_ algnm_
+predictin_z  0.180              
+alignment_c  0.006 -0.013       
+prdctn_z:l_ -0.009  0.029  0.152
+optimizer (nloptwrap) convergence code: 0 (OK)
+boundary (singular) fit: see help('isSingular')
+

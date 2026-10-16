@@ -1,0 +1,36 @@
+{
+  "sources": [
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/human_exp_data/sca_dataframe.csv",
+      "sha256": "985db789fb1aa16d68121a2b7434e500052536e7420b509a25a1800501fd7f22"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/negation_paired_ranks.csv",
+      "sha256": "f00ca0c8705302b704436c365f447fd68a6fe1de293d9ae3088332ac25bbea35"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/word_paired_ranks.csv",
+      "sha256": "fad1957438114aa4b10c6417aba9dd6fc8105736b56816e59ecbab7913844c13"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/word_spearman_by_context.csv",
+      "sha256": "2eb546a9670898c27551f71c1593c8183ff7e8cd6d534adace45de6b6a8846ad"
+    }
+  ],
+  "responses_per_model": 3408,
+  "participant_ids": 213,
+  "contexts": 16,
+  "unique_pairs": 480,
+  "participant_assumption": "id is treated as participant: each of 213 IDs appears once in every context",
+  "human_rate_count_matches": true,
+  "word_reference_rank_matches": true,
+  "models": [
+    "no_linking",
+    "x_but_not_y",
+    "ordering",
+    "set_top_k"
+  ],
+  "moderator_source": "six independent reference relevance ranks versus corrected neutral Qwen word ranks",
+  "filtering": "none; all contexts and all binary responses retained",
+  "prediction_source": "saved direct baselines and held-out ordering/Set predictions; no new K selection"
+}

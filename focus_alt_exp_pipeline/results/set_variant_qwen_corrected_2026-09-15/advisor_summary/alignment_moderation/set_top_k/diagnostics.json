@@ -1,0 +1,60 @@
+{
+  "full": {
+    "chosen": {
+      "optimizer": "nloptwrap",
+      "warnings": [],
+      "messages": "boundary (singular) fit: see help('isSingular')",
+      "optimizer_code": 0,
+      "logLik": -1758.8242790103918,
+      "singular": true,
+      "max_scaled_gradient": "NA",
+      "min_hessian_eigenvalue": "NA"
+    },
+    "attempts": [
+      {
+        "optimizer": "bobyqa",
+        "warnings": [],
+        "messages": "boundary (singular) fit: see help('isSingular')",
+        "optimizer_code": 0,
+        "logLik": -1758.8242802001544,
+        "singular": true,
+        "max_scaled_gradient": "NA",
+        "min_hessian_eigenvalue": "NA"
+      },
+      {
+        "optimizer": "nloptwrap",
+        "warnings": [],
+        "messages": "boundary (singular) fit: see help('isSingular')",
+        "optimizer_code": 0,
+        "logLik": -1758.8242790103918,
+        "singular": true,
+        "max_scaled_gradient": "NA",
+        "min_hessian_eigenvalue": "NA"
+      }
+    ]
+  },
+  "null": {
+    "chosen": {
+      "optimizer": "bobyqa",
+      "warnings": [],
+      "messages": null,
+      "optimizer_code": 0,
+      "logLik": -1760.540113295636,
+      "singular": false,
+      "max_scaled_gradient": 2.7803081539109773e-06,
+      "min_hessian_eigenvalue": 2.8721368094289059
+    },
+    "attempts": [
+      {
+        "optimizer": "bobyqa",
+        "warnings": [],
+        "messages": null,
+        "optimizer_code": 0,
+        "logLik": -1760.540113295636,
+        "singular": false,
+        "max_scaled_gradient": 2.7803081539109773e-06,
+        "min_hessian_eigenvalue": 2.8721368094289059
+      }
+    ]
+  }
+}

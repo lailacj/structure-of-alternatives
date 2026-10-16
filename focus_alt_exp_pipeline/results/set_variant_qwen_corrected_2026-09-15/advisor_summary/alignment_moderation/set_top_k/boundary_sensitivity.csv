@@ -1,0 +1,2 @@
+"model","formula","interaction","se","ci_low","ci_high","lrt_p","full_singular","null_singular"
+"set_top_k","neg ~ prediction_z * alignment_c + (1 + prediction_z || participant) +      (1 | context) + (1 | item)",0.761063377838969,0.405449416161565,-0.0336028753904911,1.55572963106843,0.0640224011961164,FALSE,FALSE

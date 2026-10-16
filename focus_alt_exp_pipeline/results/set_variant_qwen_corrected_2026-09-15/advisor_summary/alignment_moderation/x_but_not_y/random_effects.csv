@@ -1,0 +1,6 @@
+"grp","var1","var2","vcov","sdcor"
+"item","(Intercept)",NA,3.97438603317568,1.9935862241638
+"participant","prediction_z",NA,3.31800915945286,1.82154032605728
+"participant.1","(Intercept)",NA,1.20265506063883,1.09665630925957
+"context","prediction_z",NA,2.18264595281128,1.477378066986
+"context.1","(Intercept)",NA,0.3346035240876,0.57844924071832

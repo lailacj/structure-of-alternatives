@@ -1,0 +1,12 @@
+[
+  {
+    "optimizer": "bobyqa",
+    "warnings": [],
+    "messages": null,
+    "optimizer_code": 0,
+    "logLik": -1715.701359771896,
+    "singular": false,
+    "max_scaled_gradient": 6.9515777557509789e-06,
+    "min_hessian_eigenvalue": 0.14875132119406578
+  }
+]

@@ -1,0 +1,17 @@
+"model","omitted_context","interaction","se","ci_low","ci_high","singular","optimizer_code","messages","scaled_gradient"
+"ordering","bag",1.32463665931405,0.348386594083509,0.641811482213795,2.0074618364143,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
+"ordering","bakery",1.42627353575493,0.371534875415642,0.698078560939691,2.15446851057016,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
+"ordering","beach",1.49418549485739,0.371320302965376,0.766411074316753,2.22195991539803,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
+"ordering","cold",1.43768735386047,0.460125724375769,0.535857505723554,2.33951720199738,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
+"ordering","cut",1.47057375568802,0.367077181996589,0.751115699428255,2.19003181194779,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
+"ordering","fridge",1.30828677204963,0.352371738731019,0.617650854967078,1.99892268913219,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
+"ordering","gym",1.51868887591088,0.369377402707278,0.794722469901671,2.2426552819201,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
+"ordering","hot",1.54339022217746,0.385893782324571,0.787052306963357,2.29972813739155,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
+"ordering","mall",1.49265412230364,0.368147999306009,0.77109730268339,2.2142109419239,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
+"ordering","mask",1.36722151323947,0.39247030264545,0.597993855052857,2.13644917142609,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
+"ordering","meat",1.29305913233816,0.36239166430185,0.582784522009006,2.00333374266731,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
+"ordering","restaurant",1.37590762394672,0.365901538001634,0.658753787575702,2.09306146031773,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
+"ordering","salad",1.48867187287475,0.366247614883252,0.770839738279882,2.20650400746962,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
+"ordering","science",1.62241986048764,0.377846709561273,0.881853918070573,2.3629858029047,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
+"ordering","throw",1.38618106283313,0.349070751039252,0.702014962739853,2.07034716292641,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
+"ordering","transport",1.45163577104798,0.364993887779379,0.736260896423148,2.16701064567282,TRUE,"0","boundary (singular) fit: see help('isSingular')",NA
