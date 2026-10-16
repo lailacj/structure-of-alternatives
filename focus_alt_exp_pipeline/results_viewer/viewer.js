@@ -72,15 +72,14 @@ const ResultsMath = (() => {
     return distance;
   }
   function focusWasserstein(items,modelCount) {
-    const focus=items.filter(r=>r.dataset==="novel_focus"),pooled=focus.map(r=>r.y);
+    const focus=items.filter(r=>r.dataset==="novel_focus");
     const contexts=[...new Set(focus.map(r=>r.context))].sort();
     return [null,...contexts].flatMap(context=>{
       const scope=context===null?focus:focus.filter(r=>r.context===context);
       return Array.from({length:modelCount},(_,model)=>{
         const rows=scope.filter(r=>r.p[model]!==null),predictions=rows.map(r=>r.p[model]);
-        return {context:context===null?"all":context,model,n:rows.length,human_n:rows.length,
-          pooled_human_n:pooled.length,w1_context:wasserstein(predictions,rows.map(r=>r.y)),
-          w1_pooled:wasserstein(predictions,pooled)};
+        return {context:context===null?"all":context,scope:context===null?"pooled_contexts":"within_context",
+          model,n:rows.length,human_n:rows.length,wasserstein_distance:wasserstein(predictions,rows.map(r=>r.y))};
       });
     });
   }
@@ -222,16 +221,16 @@ function distributionRows(){
   return D.items.filter(r=>r.dataset===state.dataset&&(state.dataset!=="novel_focus"||state.distributionContext==="all"||r.context===state.distributionContext));
 }
 function wassersteinTable(rows){
-  return `<div class="table-wrap"><table><thead><tr><th>Model scope</th><th>Linking structure</th><th>Model N</th><th>Human N · matching scope</th><th>W₁ · matching human scope</th><th>W₁ · pooled humans</th></tr></thead><tbody>${rows.map(r=>`<tr><th>${r.context==="all"?"All contexts pooled":esc(r.context)}</th><td>${esc(D.models[r.model])}</td><td>${r.n}</td><td>${r.human_n}</td><td data-sort-value="${r.w1_context??""}">${fmt(r.w1_context,6)}</td><td data-sort-value="${r.w1_pooled??""}">${fmt(r.w1_pooled,6)}</td></tr>`).join("")}</tbody></table></div>`;
+  return `<div class="table-wrap"><table><thead><tr><th>Context</th><th>Linking structure</th><th>Model N</th><th>Human N</th><th>Wasserstein distance (W₁)</th></tr></thead><tbody>${rows.map(r=>`<tr><th>${r.context==="all"?"All contexts pooled":esc(r.context)}</th><td>${esc(D.models[r.model])}</td><td>${r.n}</td><td>${r.human_n}</td><td data-sort-value="${r.wasserstein_distance??""}">${fmt(r.wasserstein_distance,6)}</td></tr>`).join("")}</tbody></table></div>`;
 }
 function wassersteinPanel(context){
   const rows=focusDistances.filter(r=>state.distributionModel==="all"||r.model===Number(state.distributionModel));
   return `<section class="panel"><div class="panel-heading"><h2>Wasserstein distance · focus study</h2>${downloadButton("wasserstein","Download all focus distances")}</div>
     <p>Wasserstein-1 (earth mover’s distance) compares the exact distributions of exclusion probabilities and rates. Lower is closer; 0 means identical distributions. Values use the 0–1 probability scale: 0.10 represents 10 percentage points of average transport distance.</p>
-    <p class="caption">Matching scope: model and human values from the selected context (30 pairs), or all contexts pooled (480 pairs). Pooled humans: the full empirical distribution of ${focusDistances[0].pooled_human_n} item rates across all 16 contexts, compared with the model values in that row’s scope. Each pair has equal weight; participant counts and histogram bins do not weight the distance. This measures marginal distribution agreement and ignores item correspondence.</p>
+    <p class="caption">For each context, compare its 30 model probabilities with its 30 human exclusion rates. For “All contexts pooled,” compare all 480 model probabilities with all 480 human rates across the 16 contexts. The pooled distance is calculated from the pooled distributions, not by averaging the context distances. Each pair has equal weight; participant counts and histogram bins do not weight the distance. This measures marginal distribution agreement and ignores item correspondence.</p>
     ${wassersteinTable(rows.filter(r=>r.context===context))}
-    ${context==="all"?`<details><summary>Compare all 16 contexts with local and pooled human distributions</summary>${wassersteinTable(rows.filter(r=>r.context!=="all"))}</details>`:""}
-    <p class="caption">The CSV includes all contexts and all nine models plus pooled-model comparisons, regardless of the display filters. These are descriptive distances, with no significance test.</p></section>`;
+    ${context==="all"?`<details><summary>Compare all 16 within-context distances</summary>${wassersteinTable(rows.filter(r=>r.context!=="all"))}</details>`:""}
+    <p class="caption">The CSV includes all 144 within-context distances and nine pooled distances, regardless of the display filters. These are descriptive distances, with no significance test.</p></section>`;
 }
 function distributions(){
   const context=state.dataset==="novel_focus"?state.distributionContext:"all";
