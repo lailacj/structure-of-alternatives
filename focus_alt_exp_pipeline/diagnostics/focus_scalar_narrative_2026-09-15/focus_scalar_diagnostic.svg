@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="740" viewBox="0 0 1440 740">
+<rect width="1440" height="740" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#202b34;font-size:17px}.small{font-size:14px;fill:#52616d}</style>
+<text x="35" y="42" style="font-size:25px">Focus versus scalar alternatives: a scoring and linking-rule diagnostic</text>
+<text x="35" y="72" class="small">Exploratory analysis of historical scores — not final paper results</text>
+<text x="35" y="121" style="font-weight:bold">A. Saved focus/scalar correlations</text>
+<line x1="240.0" x2="240.0" y1="155" y2="535" stroke="#e2e6e9"/>
+<text x="240.0" y="563" text-anchor="middle" class="small">-0.2</text>
+<line x1="335" x2="335" y1="155" y2="535" stroke="#e2e6e9"/>
+<text x="335" y="563" text-anchor="middle" class="small">0.0</text>
+<line x1="430.0" x2="430.0" y1="155" y2="535" stroke="#e2e6e9"/>
+<text x="430.0" y="563" text-anchor="middle" class="small">0.2</text>
+<line x1="525.0" x2="525.0" y1="155" y2="535" stroke="#e2e6e9"/>
+<text x="525.0" y="563" text-anchor="middle" class="small">0.4</text>
+<line x1="620.0" x2="620.0" y1="155" y2="535" stroke="#e2e6e9"/>
+<text x="620.0" y="563" text-anchor="middle" class="small">0.6</text>
+<text x="230" y="185" text-anchor="end" style="font-size:14px">Focus alternatives</text>
+<circle cx="507.58630671134483" cy="162" r="6" fill="#87929c"/>
+<circle cx="459.8545423148506" cy="174" r="6" fill="#d17033"/>
+<circle cx="616.9284520070155" cy="186" r="6" fill="#246a9a"/>
+<circle cx="572.1494266317933" cy="198" r="6" fill="#48a58e"/>
+<text x="230" y="263" text-anchor="end" style="font-size:14px">van Tiel (2016)</text>
+<circle cx="412.0352987716089" cy="240" r="6" fill="#87929c"/>
+<circle cx="398.36744755910746" cy="252" r="6" fill="#d17033"/>
+<circle cx="465.94211249795944" cy="264" r="6" fill="#246a9a"/>
+<circle cx="457.9066669485381" cy="276" r="6" fill="#48a58e"/>
+<text x="230" y="341" text-anchor="end" style="font-size:14px">Gotzner (2018)</text>
+<circle cx="410.43640059012716" cy="318" r="6" fill="#87929c"/>
+<circle cx="453.0091628009164" cy="330" r="6" fill="#d17033"/>
+<circle cx="466.8409360104929" cy="342" r="6" fill="#246a9a"/>
+<circle cx="475.92443851251414" cy="354" r="6" fill="#48a58e"/>
+<text x="230" y="419" text-anchor="end" style="font-size:14px">Pankratz &amp; van Tiel (2021)</text>
+<circle cx="282.8750177658859" cy="396" r="6" fill="#87929c"/>
+<circle cx="396.1768225188068" cy="408" r="6" fill="#d17033"/>
+<circle cx="258.12114486383774" cy="420" r="6" fill="#246a9a"/>
+<circle cx="262.2853825449679" cy="432" r="6" fill="#48a58e"/>
+<text x="230" y="497" text-anchor="end" style="font-size:14px">Ronai &amp; Xiang (2022)</text>
+<circle cx="376.2818556285441" cy="474" r="6" fill="#87929c"/>
+<circle cx="511.24628066377875" cy="486" r="6" fill="#d17033"/>
+<circle cx="421.71390467488993" cy="498" r="6" fill="#246a9a"/>
+<circle cx="415.1188741171819" cy="510" r="6" fill="#48a58e"/>
+<text x="340" y="596" style="font-size:15px">Pearson r with human exclusion</text>
+<circle cx="60" cy="627" r="5" fill="#87929c"/>
+<text x="74" y="632" class="small">No linking structure</text>
+<circle cx="340" cy="627" r="5" fill="#d17033"/>
+<text x="354" y="632" class="small">X but not Y</text>
+<circle cx="60" cy="654" r="5" fill="#246a9a"/>
+<text x="74" y="659" class="small">Set Top-K</text>
+<circle cx="340" cy="654" r="5" fill="#48a58e"/>
+<text x="354" y="659" class="small">Set Top-p</text>
+<text x="740" y="121" style="font-weight:bold">B. Focus: matched sampling-input checks</text>
+<text x="990" y="185" text-anchor="end" style="font-size:14px">Reported direct baseline</text>
+<rect x="1010" y="163" width="172.5863067113448" height="34" fill="#becbd3"/>
+<text x="1190.5863067113448" y="185" style="font-size:15px">0.363</text>
+<text x="990" y="263" text-anchor="end" style="font-size:14px">Array raw P(q)</text>
+<rect x="1010" y="241" width="99.48886694401243" height="34" fill="#becbd3"/>
+<text x="1117.4888669440124" y="263" style="font-size:15px">0.209</text>
+<text x="990" y="341" text-anchor="end" style="font-size:14px">Array normalized π(q)</text>
+<rect x="1010" y="319" width="190.4745255451006" height="34" fill="#becbd3"/>
+<text x="1208.4745255451005" y="341" style="font-size:15px">0.401</text>
+<text x="990" y="419" text-anchor="end" style="font-size:14px">Array log P(q): diagnostic</text>
+<rect x="1010" y="397" width="240.69574502591104" height="34" fill="#becbd3"/>
+<text x="1258.695745025911" y="419" style="font-size:15px">0.507</text>
+<text x="990" y="497" text-anchor="end" style="font-size:14px">Set Top-K (K = 100)</text>
+<rect x="1010" y="475" width="281.92845200701544" height="34" fill="#246a9a"/>
+<text x="1299.9284520070155" y="497" style="font-size:15px">0.594</text>
+<text x="1010" y="563" text-anchor="middle" class="small">0.0</text>
+<text x="1105.0" y="563" text-anchor="middle" class="small">0.2</text>
+<text x="1200.0" y="563" text-anchor="middle" class="small">0.4</text>
+<text x="1295.0" y="563" text-anchor="middle" class="small">0.6</text>
+<text x="1010" y="596" style="font-size:15px">Pearson r (480 focus pairs)</text>
+<text x="740" y="634" class="small">Raw, normalized, and log scores in B use the same array</text>
+<text x="740" y="657" class="small">as Set. Log P(q) is not an exclusion probability.</text>
+<text x="35" y="710" class="small">A uses matched items but different direct/sampling score artifacts. Neither panel resolves the pending word-boundary correction.</text>
+</svg>

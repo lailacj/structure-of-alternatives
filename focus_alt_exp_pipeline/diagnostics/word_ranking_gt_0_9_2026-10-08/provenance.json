@@ -1,0 +1,42 @@
+{
+  "selected_contexts": [
+    "bag",
+    "bakery",
+    "beach",
+    "fridge",
+    "gym",
+    "salad",
+    "science"
+  ],
+  "selected_context_count": 7,
+  "total_context_count": 16,
+  "n_distinct_pairs": 210,
+  "n_human_responses": 1491,
+  "word_rank_definition": "Human trigger_relevance norming ranks versus descending summed neutral continuation log probabilities, over six tested words per context; not cloze frequency correlations.",
+  "selection": "Word Spearman strictly greater than 0.9; comparison uses unrounded coefficients.",
+  "evaluation": "Pearson and average-tie Spearman of model exclusion probabilities against observed item rates. Equal item weights; arithmetic mean of defined per-context correlations. Pooled Spearman reranks all 210 items together.",
+  "predictions": "Original corrected held-out predictions retained; no boundary selection or refit on the selected subset. Identical Ordering variants deduplicated.",
+  "limitations": "7 selected contexts. Descriptive selected-subset analysis, not an equivalence/significance test or evidence that human/model probabilities or full distributions agree. Undefined constant-vector correlations are excluded from within-context means, with valid counts reported.",
+  "inputs": {
+    "word_correlations": {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/word_spearman_by_context.csv",
+      "sha256": "2eb546a9670898c27551f71c1593c8183ff7e8cd6d534adace45de6b6a8846ad"
+    },
+    "word_ranks": {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/word_paired_ranks.csv",
+      "sha256": "fad1957438114aa4b10c6417aba9dd6fc8105736b56816e59ecbab7913844c13"
+    },
+    "predictions": {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/negation_paired_ranks.csv",
+      "sha256": "f00ca0c8705302b704436c365f447fd68a6fe1de293d9ae3088332ac25bbea35"
+    },
+    "source_rows": {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/inputs/source_rows.csv",
+      "sha256": "0ab0b70aef1f40bf6f733e880862b0585575ded5fea97f7d7dcae39082b7a9ba"
+    },
+    "human": {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/human_exp_data/sca_dataframe.csv",
+      "sha256": "985db789fb1aa16d68121a2b7434e500052536e7420b509a25a1800501fd7f22"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "inputs": {
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/word_spearman_by_context.csv": "2eb546a9670898c27551f71c1593c8183ff7e8cd6d534adace45de6b6a8846ad",
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/negation_paired_ranks.csv": "f00ca0c8705302b704436c365f447fd68a6fe1de293d9ae3088332ac25bbea35"
+  },
+  "evaluation": "Equal-item within-context correlations, arithmetic equal-context means; average ranks for ties. Original held-out predictions; no refitting. Strict word rho > .9; perfect rho uses roundoff tolerance 1e-12.",
+  "validation": "Recomputed subset means match both saved mini-analysis summaries within 1e-12."
+}

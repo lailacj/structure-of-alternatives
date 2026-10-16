@@ -1,0 +1,15 @@
+{
+  "seed": 20260915,
+  "status": "exploratory; historical scores; no refit or rescoring",
+  "array_targets": 947,
+  "source_array_mismatches_gt_1e_minus_4": 947,
+  "analysis_units": 993,
+  "full_support_normalization": "preserved from array export, not computed over displayed subset",
+  "exact_ordering_max_absolute_error_vs_500_draw_saved": 0.05464513533394583,
+  "inputs": {
+    "scoring_manifests/set_variant_qwen/source_rows.csv": "d6979e01d7c917f596244559a176b81a74339e3c0a7562c852296a37bea6a2d7",
+    "results/set_variant_qwen/cv_results/oof_predictions.csv": "803064d540b9ec305471a445c673d1ffba4031954dd5173473f94734825c9ad2",
+    "results/set_variant_qwen/prediction_grid.csv": "33bf1f3157ca1b8be60a97a9feb526d32a55fb5375334014b45726d536853929",
+    "results_viewer/index.html": "7cdeccf87a14535637b6ddc15d305567e4a4faea9c1d1684902d406c79958277"
+  }
+}

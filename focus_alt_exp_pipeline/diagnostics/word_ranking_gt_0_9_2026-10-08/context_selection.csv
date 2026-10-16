@@ -1,0 +1,17 @@
+context,model,n,spearman_rho,status,selected
+bag,Qwen2-7B,6,0.942857142857143,defined,True
+bakery,Qwen2-7B,6,1.0,defined,True
+beach,Qwen2-7B,6,0.942857142857143,defined,True
+cold,Qwen2-7B,6,-0.0285714285714285,defined,False
+cut,Qwen2-7B,6,0.7142857142857143,defined,False
+fridge,Qwen2-7B,6,1.0,defined,True
+gym,Qwen2-7B,6,0.942857142857143,defined,True
+hot,Qwen2-7B,6,0.2319084142609793,defined,False
+mall,Qwen2-7B,6,0.5428571428571429,defined,False
+mask,Qwen2-7B,6,0.3142857142857143,defined,False
+meat,Qwen2-7B,6,0.2571428571428572,defined,False
+restaurant,Qwen2-7B,6,0.8285714285714287,defined,False
+salad,Qwen2-7B,6,0.942857142857143,defined,True
+science,Qwen2-7B,6,0.942857142857143,defined,True
+throw,Qwen2-7B,6,0.7142857142857143,defined,False
+transport,Qwen2-7B,6,0.8857142857142858,defined,False
