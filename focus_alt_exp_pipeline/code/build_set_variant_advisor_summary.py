@@ -49,21 +49,21 @@ def _dataset_base_rate(oof: pd.DataFrame) -> tuple[pd.DataFrame, float]:
     raw = pd.DataFrame.from_records(records)
     by_dataset = raw.groupby(["analysis_dataset_id", "dataset"], as_index=False).agg(
         N=("analysis_unit_id", "size"),
-        mean_oof_log_score=("oof_log_score", "mean"),
+        sum_oof_log_score=("oof_log_score", "sum"),
         mean_prediction=("prediction", "mean"),
         mean_human_rate=("human_rate", "mean"),
     )
-    return by_dataset, float(by_dataset["mean_oof_log_score"].mean())
+    return by_dataset, float(by_dataset["sum_oof_log_score"].sum())
 
 
 def _plot_log_scores(
     summary: pd.DataFrame, output: Path, analysis_label: str
 ) -> None:
-    ordered = summary.sort_values("balanced_mean_oof_log_score", ascending=True)
+    ordered = summary.sort_values("sum_oof_log_score", ascending=True)
     colors = ["#777777" if label == "Dataset base rate" else "#4C78A8" for label in ordered["model"]]
     fig, ax = plt.subplots(figsize=(9, 5.5))
-    ax.barh(ordered["model"], ordered["balanced_mean_oof_log_score"], color=colors)
-    ax.set_xlabel("Balanced out-of-fold mean log score (higher is better)")
+    ax.barh(ordered["model"], ordered["sum_oof_log_score"], color=colors)
+    ax.set_xlabel("Summed out-of-fold log score (higher is better)")
     ax.set_title(f"{analysis_label} sampled-prefix model comparison")
     ax.axvline(0, color="black", linewidth=0.8)
     fig.tight_layout()
@@ -172,7 +172,7 @@ def _plot_linking_log_scores(
             ax.text(column, row, label, ha="center", va="center", fontsize=8)
     fig.colorbar(
         image, ax=ax, extend="both",
-        label="Mean proper log score (higher is better)",
+        label="Summed proper log score (higher is better)",
     )
     ax.set_title(f"{analysis_label} model–human log scores by dataset")
     fig.tight_layout()
@@ -212,7 +212,7 @@ def main() -> None:
     selections = pd.read_csv(cv_dir / "fold_selections.csv")
     base_by_dataset, base_score = _dataset_base_rate(oof)
 
-    model_rows = balanced.copy()
+    model_rows = balanced.drop(columns=["balanced_mean_oof_log_score"], errors="ignore").copy()
     model_rows["model"] = model_rows["variant"].str.replace("_", "-", regex=False) + " " + model_rows["structure"]
     # Ordering is boundary-independent, so show it once.
     model_rows = model_rows.loc[~(
@@ -220,27 +220,27 @@ def main() -> None:
     )].copy()
     base_row = pd.DataFrame([{
         "variant": "baseline", "structure": "dataset_base_rate",
-        "balanced_mean_oof_log_score": base_score,
+        "sum_oof_log_score": base_score,
         "dataset_count": base_by_dataset["analysis_dataset_id"].nunique(),
         "total_unit_count": base_by_dataset["N"].sum(),
         "model": "Dataset base rate",
     }])
     advisor_scores = pd.concat([base_row, model_rows], ignore_index=True)
     advisor_scores["delta_vs_dataset_base_rate"] = (
-        advisor_scores["balanced_mean_oof_log_score"] - base_score
+        advisor_scores["sum_oof_log_score"] - base_score
     )
     selection_counts = selections.groupby(
         ["variant", "selected_boundary"], as_index=False
     ).size().rename(columns={"size": "fold_count"})
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    advisor_scores.to_csv(args.output_dir / "advisor_balanced_oof_log_scores.csv", index=False)
+    advisor_scores.to_csv(args.output_dir / "advisor_summed_oof_log_scores.csv", index=False)
     base_by_dataset.to_csv(args.output_dir / "advisor_dataset_base_rate_scores.csv", index=False)
     correlations.to_csv(args.output_dir / "advisor_correlations.csv", index=False)
     selection_counts.to_csv(args.output_dir / "advisor_boundary_selection_counts.csv", index=False)
     _plot_log_scores(
         advisor_scores,
-        args.output_dir / "advisor_balanced_oof_log_scores.png",
+        args.output_dir / "advisor_summed_oof_log_scores.png",
         args.analysis_label,
     )
     linking_correlations = (
@@ -261,7 +261,7 @@ def main() -> None:
             args.analysis_label,
         )
 
-    best = model_rows.sort_values("balanced_mean_oof_log_score", ascending=False).iloc[0]
+    best = model_rows.sort_values("sum_oof_log_score", ascending=False).iloc[0]
     validation = json.loads((args.results_dir / "score_validation.json").read_text())
     prompt_count = int(validation["expected_prompts"])
     unit_count = int(
@@ -349,9 +349,14 @@ def main() -> None:
 
 ## Main results
 
-- Best proposed structure: **{best['structure']}** with balanced OOF mean log score **{best['balanced_mean_oof_log_score']:.3f}**.
+Reported log scores sum item scores without dividing by item counts. The original
+training-fold dataset-balanced mean objective and saved boundaries are unchanged.
+Sums across datasets weight analysis units equally and depend on dataset sizes.
+These are sums of pair/scale-level scores, not participant-weighted log-likelihoods.
+
+- Best proposed structure: **{best['structure']}** with summed OOF log score **{best['sum_oof_log_score']:.3f}**.
 - Fold-safe dataset base-rate score: **{base_score:.3f}**.
-- Difference between the best proposed structure and base rate: **{best['balanced_mean_oof_log_score'] - base_score:.3f}** (negative is worse).
+- Difference between the best proposed structure and base rate: **{best['sum_oof_log_score'] - base_score:.3f}** (negative is worse).
 - Top-K selected **{k_text}**. {k_note}
 - Top-p selected **{p_text}**.
 - Novel-focus correlations range from approximately **{novel_min:.2f} to {novel_max:.2f}** across structures, while most scalar-dataset correlations are weak or inconsistent.
@@ -360,7 +365,7 @@ def main() -> None:
 ## Interpretation
 
 The strongest proposed structure is **{best['structure']}**. Its difference from
-the fold-safe condition-specific base rate is **{best['balanced_mean_oof_log_score'] - base_score:.3f}**.
+the fold-safe condition-specific base rate is **{best['sum_oof_log_score'] - base_score:.3f}**.
 Extreme
 0/1 Monte Carlo probabilities produce large penalties when the model disagrees
 with non-extreme human rates. Calibration/noise requires discussion before

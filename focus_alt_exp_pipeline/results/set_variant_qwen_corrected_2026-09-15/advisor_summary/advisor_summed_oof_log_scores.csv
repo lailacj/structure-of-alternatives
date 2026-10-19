@@ -1,0 +1,9 @@
+variant,structure,sum_oof_log_score,dataset_count,total_unit_count,model,delta_vs_dataset_base_rate
+baseline,dataset_base_rate,-654.4706422659622,10,993,Dataset base rate,0.0
+top_k,ordering,-1536.465321301738,10,993,top-k ordering,-881.9946790357758
+top_k,disjunction,-1860.2152179686373,10,993,top-k disjunction,-1205.744575702675
+top_k,conjunction,-2649.028206254699,10,993,top-k conjunction,-1994.5575639887368
+top_k,set,-2884.600083923768,10,993,top-k set,-2230.1294416578057
+top_p,disjunction,-2099.7065014033246,10,993,top-p disjunction,-1445.2358591373625
+top_p,conjunction,-3235.619282289055,10,993,top-p conjunction,-2581.1486400230924
+top_p,set,-3752.609834765487,10,993,top-p set,-3098.139192499525

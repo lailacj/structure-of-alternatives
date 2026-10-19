@@ -1,0 +1,7 @@
+{
+  "aggregation": "sum_of_item_log_scores",
+  "item_formula": "y*ln(p)+(1-y)*ln(1-p)",
+  "epsilon": 1e-10,
+  "participant_count_weighting": false,
+  "selection_objective": "Original dataset-balanced training means retained; no refitting"
+}

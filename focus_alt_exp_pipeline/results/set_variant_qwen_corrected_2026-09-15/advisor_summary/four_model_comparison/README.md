@@ -9,7 +9,9 @@ Figures use the completed corrected single-space results. The bars are descripti
 point estimates, with no uncertainty interval or claim of statistical superiority.
 Missing X-but-not-Y values for the five R&X conditions are labeled N/A.
 
-Log scores and Pearson correlations are copied from the aligned dataset tables.
+Log scores sum item scores without division by item count. Compare models within
+a dataset; totals depend on sample size. Log scores and Pearson correlations
+are copied from the aligned dataset tables.
 Hu and R&X Spearman values use the saved within-dataset/condition coefficients.
 Novel-focus Spearman is the equal-weight mean of the 16 within-context negation
 correlations (30 ordered pairs each), as in the current viewer. It is neither

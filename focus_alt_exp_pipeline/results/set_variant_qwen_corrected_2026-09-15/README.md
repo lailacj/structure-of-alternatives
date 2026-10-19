@@ -26,6 +26,19 @@ See [the completion audit](audit_2026-09-28/REPORT.md),
 [advisor summary](advisor_summary/ADVISOR_SUMMARY.md). Historical September 8
 results remain in `../set_variant_qwen/`, including `results_viewer.html`.
 
+## Log-score reporting update — October 19, 2026
+
+Active reporting now sums item log scores instead of averaging them. The
+novel-focus No linking total is **−1544.387762** across 480 pairs. All ten
+dataset tables, nine models, focus contexts, viewer summaries and refreshed
+comparison figures use sums. Item scores and original predictions are unchanged.
+`linking_structure_tables/summed_log_scores.csv` contains all sums and counts;
+`log_score_reporting.json` declares the aggregation. Frozen cluster snapshots
+and historical audit reports retain the original mean-score convention.
+Training-fold selection still uses the original dataset-balanced means, with
+no refitting or boundary changes. These are item-score sums, not total
+participant-response log-likelihoods.
+
 ## Locations
 
 All remote paths below are on Oscar.

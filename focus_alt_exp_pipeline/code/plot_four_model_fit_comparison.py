@@ -11,7 +11,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
-from matplotlib.ticker import MultipleLocator
+from matplotlib.ticker import MultipleLocator, MaxNLocator
 import numpy as np
 import pandas as pd
 
@@ -33,7 +33,7 @@ DATASETS = [
     ("Novel Focus Alternative Study", "Novel focus"),
 ]
 METRICS = {
-    "log_score": ("log_scores", "Log score", "Mean log score (nats)"),
+    "log_score": ("log_scores", "Summed log score", "Sum of item log scores (nats)"),
     "pearson_r": ("correlations", "Pearson correlation", "Pearson r"),
     "spearman_rho": ("spearman", "Spearman correlation", "Spearman ρ"),
 }
@@ -69,6 +69,8 @@ def read_fits(results: Path) -> tuple[pd.DataFrame, list[Path]]:
                     aggregation = "equal_mean_of_16_within_context_negation_correlations"
                 else:
                     value = float(table.loc[dataset, model])
+                    if metric == "log_score":
+                        aggregation = "sum_of_item_log_scores"
                 unavailable = model == "X but not Y" and dataset.startswith("R&X ")
                 if unavailable != bool(np.isnan(value)):
                     raise ValueError(f"Unexpected coverage: {dataset}, {model}, {metric}")
@@ -113,7 +115,7 @@ def plot_metric(fits: pd.DataFrame, metric: str, output: Path) -> None:
     if metric == "log_score":
         lower = np.floor(subset.value.min()) - .35
         ax.set_ylim(lower, 0)
-        ax.yaxis.set_major_locator(MultipleLocator(1))
+        ax.yaxis.set_major_locator(MaxNLocator(nbins=7))
     else:
         ax.set_ylim(-.35, .70)
         ax.yaxis.set_major_locator(MultipleLocator(.2))
@@ -133,6 +135,8 @@ def plot_metric(fits: pd.DataFrame, metric: str, output: Path) -> None:
              fontsize=10, color="#52616B")
     if metric == "spearman_rho":
         note = "*Novel focus: mean negation ρ across 16 contexts (30 pairs per context). Other datasets: within-dataset ρ."
+    elif metric == "log_score":
+        note = "Novel focus: 480 pairs. Hu: retained scales. R&X: 60 items each. Log scores sum items; compare models within a dataset."
     else:
         note = "Novel focus uses all 480 pairs. Hu scales are evaluated after template aggregation; R&X conditions use 60 items each."
     fig.text(.072, .042, note, fontsize=10, color="#52616B")
@@ -171,7 +175,9 @@ Figures use the completed corrected single-space results. The bars are descripti
 point estimates, with no uncertainty interval or claim of statistical superiority.
 Missing X-but-not-Y values for the five R&X conditions are labeled N/A.
 
-Log scores and Pearson correlations are copied from the aligned dataset tables.
+Log scores sum item scores without division by item count. Compare models within
+a dataset; totals depend on sample size. Log scores and Pearson correlations
+are copied from the aligned dataset tables.
 Hu and R&X Spearman values use the saved within-dataset/condition coefficients.
 Novel-focus Spearman is the equal-weight mean of the 16 within-context negation
 correlations (30 ordered pairs each), as in the current viewer. It is neither

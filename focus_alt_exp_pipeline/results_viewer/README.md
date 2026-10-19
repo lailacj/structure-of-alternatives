@@ -232,11 +232,21 @@ distributions. Query-only CSVs cannot provide vocabulary-wide top-50 rankings.
 - **Methods & sources:** definitions, selected boundaries, coverage, input paths,
   and SHA-256 hashes. Every analysis view has a CSV export.
 
-The default aggregate log score preserves the pipeline's equal-weight mean of
-dataset means. Within a dataset, each analysis unit has equal weight. Hu
-templates are averaged at the probability level before scale evaluation, and
-published-rate datasets do not receive invented participant counts. Item
-log scores use natural logs and the existing epsilon of `1e-10`.
+All reported log-score summaries now sum item scores without dividing by the
+number of items. This applies to each of the ten datasets, every focus context,
+and the overall selected coverage. No linking in novel focus therefore reports
+**−1544.387762**, the sum of 480 pair scores. Hu templates are still averaged at
+the probability level before scale scoring. The sums do not multiply pair scores
+by participant counts and are not total response-level log-likelihoods. Compare
+models on matching item sets: raw sums depend on the number of items.
+
+Item scores use natural logs and epsilon `1e-10`. Original dataset-balanced
+training means and selected boundaries are preserved as fitting/audit artifacts;
+changing reporting does not refit models. The active aligned tables declare
+`sum_of_item_log_scores` in `log_score_reporting.json`. Frozen historical tables
+retain their original means; the builder converts those only for parity checks.
+`linking_structure_tables/summed_log_scores.csv` records all dataset and focus
+context sums, with model names and sample sizes.
 
 The saved pipeline has no single aggregate Pearson correlation. The viewer
 labels its additional aggregate correlation as the arithmetic mean of defined

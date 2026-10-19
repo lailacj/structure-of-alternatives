@@ -4,13 +4,13 @@ const math=require("./viewer.js");
 const html=fs.readFileSync(path.join(__dirname,"index.html"),"utf8");
 const data=JSON.parse(html.match(/<script id="results-data" type="application\/json">([\s\S]*?)<\/script>/)[1]);
 
-test("aggregate weighting and unavailable predictions",()=>{
+test("summed scores, correlation weighting, and unavailable predictions",()=>{
   const rows=[{dataset:"a",y:0,p:[.1,null],scores:[-1,null]},{dataset:"b",y:0,p:[.2,.3],scores:[-3,-4]},{dataset:"b",y:1,p:[.8,.6],scores:[-3,-5]}];
-  assert.equal(math.aggregate(rows,0,true).log,-2);
-  assert.equal(math.aggregate(rows,0,false).log,-7/3);
+  assert.equal(math.aggregate(rows,0,true).log,-7);
+  assert.equal(math.aggregate(rows,0,false).log,-7);
   assert.equal(math.aggregate(rows,1,true).datasets,1);
   assert.equal(math.aggregate(rows,1,true).n,2);
-  assert.equal(math.aggregate(rows,1,true).log,-4.5);
+  assert.equal(math.aggregate(rows,1,true).log,-9);
   assert.equal(math.pearson([1,1],[0,1]),null);
   assert.ok(Math.abs(math.pearson([0,1,2],[2,1,0])+1)<1e-12);
 });
@@ -34,6 +34,30 @@ test("JavaScript metrics agree with every Python-generated dataset and context s
         else assert.ok(Math.abs(actual[metric]-stats[model][metric])<1e-10);
       }
     }
+  }
+});
+
+test("log-score displays and downloads consistently report sums",async()=>{
+  assert.equal(data.logScoreAggregation,"sum_of_item_log_scores");
+  const app=harness();
+  assert.match(app.html(),/Summed log score across datasets/);
+  assert.ok(!app.html().includes('id="aggregation"'));
+  app.click({download:"overview"});
+  app.click({dataset:"novel_focus"});
+  assert.match(app.html(),/Summed log score/);
+  assert.match(app.html(),/-1544\.388/);
+  app.click({download:"dataset"});
+  app.click({context:"bag"});
+  assert.match(app.html(),/context log scores sum its 30 item scores/);
+  app.click({download:"contexts"});
+  const [overview,dataset,contexts]=await app.downloads();
+  assert.match(overview,/sum_log_score/);assert.match(overview,/sum_items/);
+  assert.ok(!overview.includes("mean_log_score"));
+  assert.match(dataset,/sum_items/);assert.match(contexts,/sum_items/);
+  assert.equal(contexts.split("\r\n").length,145);
+  for(let model=0;model<data.models.length;model++){
+    const sum=data.contexts.reduce((total,context)=>total+data.contextSummaries[context][model].log,0);
+    assert.ok(Math.abs(sum-data.datasetSummaries.novel_focus[model].log)<1e-8);
   }
 });
 
@@ -117,7 +141,7 @@ test("every dataset, structure, context, and fit measure renders with actual dat
     for(const c of data.contexts){app.click({context:c});assert.match(app.html(),/Contexts × linking structures/);assert.match(app.html(),/Individual items/);}
   }
   app.click({view:"methods"});assert.match(app.html(),/SHA-256/);
-  app.click({view:"overview"});app.change("coverage","shared");app.change("aggregation","pooled");assert.match(app.html(),/Pooled item log score/);
+  app.click({view:"overview"});app.change("coverage","shared");app.change("aggregation","pooled");assert.match(app.html(),/Summed log score across datasets/);
 });
 
 test("item drill-down, prompt navigation, source coverage, and search",()=>{
@@ -156,9 +180,9 @@ test("both HTML entry points lead to results and retain a script-free fallback",
   const fallback=html.match(/<main[^>]*>([\s\S]*?)<\/main>/)[1];
   assert.match(fallback,/viewer-status/);
   assert.match(fallback,/Pearson correlation/);
-  assert.match(fallback,/Mean proper log score/);
+  assert.match(fallback,/Summed proper log score/);
   assert.match(fallback,/van Tiel et al/);
-  assert.match(fallback,/-3\.217/);
+  assert.match(fallback,/-1544\.388/);
   assert.ok(!html.includes("__VIEWER_FALLBACK__"));
 });
 
@@ -390,7 +414,7 @@ test("Overview Spearman matrix preserves saved values, coverage, exports, and dr
   app.click({cell:"dataset|novel_focus|3"});
   assert.match(app.html(),/Negation Spearman/);assert.match(app.html(),/value="set\|top_p" selected/);
   app.click({view:"overview"});app.change("metric","r");assert.match(app.html(),/Pooled Pearson r/);
-  app.change("metric","log");assert.match(app.html(),/Pooled item log score/);
+  app.change("metric","log");assert.match(app.html(),/Summed log score across datasets/);
 });
 
 test("non-focus Spearman uses the same saved items and is available alongside Pearson",()=>{

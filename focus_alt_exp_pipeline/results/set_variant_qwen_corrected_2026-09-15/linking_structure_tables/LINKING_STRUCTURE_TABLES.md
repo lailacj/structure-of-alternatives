@@ -1,6 +1,6 @@
 # Cross-dataset linking-structure results
 
-All columns use the same analysis units within each dataset. Higher is better for both Pearson correlation and mean proper log score.
+All columns use the same analysis units within each dataset. Higher is better for both Pearson correlation and summed proper log score. Log scores sum item scores without dividing by item count. Sums depend on sample size, so compare models on matching items within a dataset. They are not participant-count-weighted response log-likelihoods. Training selection is unchanged.
 
 Focus-context word-ranking and negation Spearman results, paired ranks, and equal-context means are in `../spearman/SPEARMAN.md`.
 
@@ -35,20 +35,20 @@ Hu ranks scales within each dataset, after averaging van Tiel template probabili
 | R&X Eonly | 0.116 | NA | 0.221 | 0.029 | 0.156 | 0.215 | 0.021 | 0.179 | 0.207 |
 | R&X Eonlystrong | -0.223 | NA | -0.147 | -0.277 | -0.036 | -0.104 | -0.228 | -0.139 | -0.207 |
 
-## Mean proper log scores
+## Summed proper log scores
 
 | Dataset | No linking structure | X but not Y | Set Top-K | Set Top-p | Ordering | Conjunction Top-K | Conjunction Top-p | Disjunction Top-K | Disjunction Top-p |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| van Tiel et al. (2016) | -2.903 | -1.614 | -1.817 | -1.231 | -1.256 | -2.195 | -1.631 | -1.242 | -1.289 |
-| Gotzner et al. (2018) | -4.623 | -2.014 | -5.881 | -6.842 | -2.841 | -5.885 | -6.842 | -2.839 | -2.843 |
-| Pankratz & van Tiel (2021) | -2.741 | -1.304 | -3.329 | -2.798 | -1.238 | -3.276 | -2.179 | -1.321 | -1.920 |
-| Ronai & Xiang (2022) | -3.059 | -1.328 | -2.496 | -3.071 | -1.111 | -2.516 | -3.073 | -1.106 | -1.144 |
-| R&X ESI | -3.057 | NA | -2.712 | -3.311 | -1.141 | -2.513 | -3.077 | -1.356 | -1.412 |
-| R&X Eweak | -1.785 | NA | -2.098 | -3.307 | -1.702 | -1.707 | -1.763 | -2.102 | -3.248 |
-| R&X Estrong | -1.364 | NA | -5.122 | -7.609 | -1.448 | -1.291 | -1.443 | -5.963 | -7.693 |
-| R&X Eonly | -5.552 | NA | -5.266 | -5.118 | -1.593 | -5.395 | -5.248 | -1.477 | -1.498 |
-| R&X Eonlystrong | -1.799 | NA | -1.608 | -2.293 | -0.651 | -0.624 | -0.725 | -1.820 | -2.229 |
-| Novel Focus Alternative Study | -3.217 | -3.848 | -2.297 | -3.402 | -1.624 | -2.438 | -3.529 | -1.519 | -1.527 |
+| van Tiel et al. (2016) | -113.229 | -62.936 | -70.858 | -48.023 | -48.979 | -85.616 | -63.610 | -48.423 | -50.283 |
+| Gotzner et al. (2018) | -309.738 | -134.909 | -394.037 | -458.384 | -190.374 | -394.303 | -458.404 | -190.235 | -190.466 |
+| Pankratz & van Tiel (2021) | -137.042 | -65.196 | -166.461 | -139.888 | -61.911 | -163.818 | -108.959 | -66.037 | -96.007 |
+| Ronai & Xiang (2022) | -174.336 | -75.688 | -142.247 | -175.024 | -63.311 | -143.390 | -175.186 | -63.059 | -65.223 |
+| R&X ESI | -183.392 | NA | -162.730 | -198.655 | -68.489 | -150.801 | -184.629 | -81.356 | -84.740 |
+| R&X Eweak | -107.097 | NA | -125.890 | -198.448 | -102.122 | -102.399 | -105.752 | -126.142 | -194.895 |
+| R&X Estrong | -81.824 | NA | -307.326 | -456.516 | -86.907 | -77.445 | -86.595 | -357.789 | -461.567 |
+| R&X Eonly | -333.149 | NA | -315.970 | -307.110 | -95.594 | -323.693 | -314.892 | -88.648 | -89.906 |
+| R&X Eonlystrong | -107.959 | NA | -96.480 | -137.559 | -39.065 | -37.425 | -43.521 | -109.177 | -133.711 |
+| Novel Focus Alternative Study | -1544.388 | -1847.238 | -1102.600 | -1633.002 | -779.714 | -1170.137 | -1694.071 | -729.351 | -732.908 |
 
 ## Coverage
 

@@ -126,12 +126,14 @@ def summarize_log_scores(predictions: pd.DataFrame) -> tuple[pd.DataFrame, pd.Da
                 "structure": structure,
                 "N": len(rows),
                 "mean_oof_log_score": float(scores.mean()),
+                "sum_oof_log_score": float(scores.sum()),
             })
     by_dataset = pd.DataFrame.from_records(records)
     balanced = (
         by_dataset.groupby(["variant", "structure"], as_index=False)
         .agg(
             balanced_mean_oof_log_score=("mean_oof_log_score", "mean"),
+            sum_oof_log_score=("sum_oof_log_score", "sum"),
             dataset_count=("analysis_dataset_id", "nunique"),
             total_unit_count=("N", "sum"),
         )

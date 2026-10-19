@@ -55,7 +55,7 @@ def main():
             p=frame[label].clip(1e-10,1-1e-10); h=frame.human_rate
             log=h*np.log(p)+(1-h)*np.log1p(-p)
             all_metrics.append(dict(context=context,model=label,pearson=h.corr(frame[label]),
-                spearman=h.rank().corr(frame[label].rank()),log_score=log.mean()))
+                spearman=h.rank().corr(frame[label].rank()),log_score=log.sum()))
             frame[label+' rank']=frame[label].rank(method='average',ascending=False)
             frame[label+' log score']=log
             frame[label+' absolute error']=(h-frame[label]).abs()
@@ -80,7 +80,7 @@ def main():
     pd.concat(all_words).to_csv(OUT/'tested_word_rankings.csv',index=False)
     pd.DataFrame(all_candidates).to_csv(OUT/'saved_candidate_continuations.csv',index=False)
     (OUT/'audit.json').write_text(json.dumps(dict(contexts=audits,sources=[dict(path=str(p),sha256=digest(p)) for p in sources],
-        method='30 equally weighted pairs per context; Spearman average ranks for ties; log scores clipped at 1e-10; no resampling or refitting'),indent=2)+'\n')
+        method='30 pairs per context; log scores sum item scores without division; Spearman average ranks for ties; probabilities clipped at 1e-10; no resampling or refitting'),indent=2)+'\n')
     print(pd.DataFrame(all_metrics).round(4).to_string(index=False))
     print('Saved', OUT)
 
@@ -118,7 +118,7 @@ def draw(context,prompt,w,frame,metrics,order):
         title=label
         if label in MODELS:
             r=metrics.set_index('model').loc[label]
-            title+=f"\nr = {r.pearson:.3f}   ρ = {r.spearman:.3f}   log = {r.log_score:.3f}"
+            title+=f"\nr = {r.pearson:.3f}   ρ = {r.spearman:.3f}   Σ log = {r.log_score:.3f}"
         else:title+='\nRate and response count' if label=='Human judgments' else '\nRed = too high; blue = too low'
         ax.set_title(title,fontsize=11,pad=10,linespacing=1.6)
         for y,t in enumerate(order):

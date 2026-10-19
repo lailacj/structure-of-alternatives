@@ -40,7 +40,7 @@ def draw(deltas, output):
     order = [d for d, _ in DATASETS]
     for ax, (metric, (_, title, _)) in zip(axes, METRICS.items()):
         values = deltas.loc[deltas.metric.eq(metric)].pivot(index="dataset", columns="model", values="difference").loc[order, MODELS[1:]].to_numpy()
-        limit = 4. if metric == "log_score" else .4
+        limit = max(1., float(np.nanmax(np.abs(values)))) if metric == "log_score" else .4
         cmap = plt.get_cmap("RdBu").copy()
         cmap.set_bad("#ECEFF1")
         im = ax.imshow(np.ma.masked_invalid(values), cmap=cmap, norm=TwoSlopeNorm(vmin=-limit, vcenter=0, vmax=limit), aspect="auto")
@@ -62,7 +62,7 @@ def draw(deltas, output):
         for spine in ax.spines.values():
             spine.set_visible(False)
         bar = fig.colorbar(im, ax=ax, orientation="horizontal", fraction=.05, pad=.05)
-        bar.set_label("Change in mean log score" if metric == "log_score" else "Change in correlation", fontsize=10)
+        bar.set_label("Change in summed log score" if metric == "log_score" else "Change in correlation", fontsize=10)
         bar.ax.tick_params(labelsize=9)
     fig.text(.025, .07, "*Novel-focus Spearman is the mean of 16 within-context correlations; Pearson and log score use all 480 pairs.", fontsize=10, color="#52616B")
     fig.text(.025, .038, "Corrected Qwen2-7B results. Descriptive differences, with no uncertainty intervals. N/A indicates an unavailable model.", fontsize=10, color="#52616B")
@@ -95,7 +95,7 @@ def main():
         a = items.loc[items.dataset.eq(row.dataset) & items.model.eq(row.model)]
         assert not a.analysis_unit_id.duplicated().any()
         if row.metric == "log_score":
-            value = a.item_log_score.mean()
+            value = a.item_log_score.sum()
         elif row.metric == "pearson_r":
             value = a.human_rate.corr(a.prediction)
         elif row.dataset != DATASETS[-1][0]:
@@ -131,13 +131,13 @@ def main():
     diagnostics = selected.groupby(["dataset", "model"]).agg(
         n=("prediction", "size"), mean_human=("human_rate", "mean"),
         mean_prediction=("prediction", "mean"), zero_predictions=("prediction", lambda x: int(x.eq(0).sum())),
-        one_predictions=("prediction", lambda x: int(x.eq(1).sum())), mean_log_score=("item_log_score", "mean"))
+        one_predictions=("prediction", lambda x: int(x.eq(1).sum())), sum_log_score=("item_log_score", "sum"))
     diagnostics.to_csv(out / "probability_diagnostics.csv")
     base = selected.loc[selected.model.eq(MODELS[0]), ["dataset", "analysis_unit_id", "prediction", "item_log_score"]].rename(columns={"prediction": "baseline_prediction", "item_log_score": "baseline_item_log_score"})
     paired = selected.loc[~selected.model.eq(MODELS[0])].merge(base, on=["dataset", "analysis_unit_id"], validate="many_to_one")
     paired["log_score_difference"] = paired.item_log_score - paired.baseline_item_log_score
     paired.to_csv(out / "paired_item_log_score_differences.csv", index=False)
-    assert np.allclose(paired.groupby(["dataset", "model"]).log_score_difference.mean().sort_index(),
+    assert np.allclose(paired.groupby(["dataset", "model"]).log_score_difference.sum().sort_index(),
                        delta.loc[delta.metric.eq("log_score") & delta.available].set_index(["dataset", "model"]).difference.sort_index())
 
     # Keep context-level results distinct from pooled focus results.
@@ -145,7 +145,7 @@ def main():
     novel = selected.loc[selected.analysis_dataset_id.eq("novel_focus")].copy()
     novel["context"] = novel.analysis_unit_id.str.split("::").str[0]
     for (context, model), a in novel.groupby(["context", "model"]):
-        for metric, value in [("log_score", a.item_log_score.mean()), ("pearson_r", a.human_rate.corr(a.prediction)),
+        for metric, value in [("log_score", a.item_log_score.sum()), ("pearson_r", a.human_rate.corr(a.prediction)),
                               ("spearman_rho", a.human_rate.rank().corr(a.prediction.rank()))]:
             rows.append(dict(dataset=context, model=model, metric=metric, value=value))
     context_fits = pd.DataFrame(rows)

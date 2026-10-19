@@ -40,6 +40,16 @@ to populate the top-50 vocabulary distributions. The resulting HTML works
 offline. See [the viewer guide](results_viewer/README.md) for export options,
 metric definitions, and verification commands.
 
+### Summed log-score reporting
+
+Current tables and viewer summaries sum item log scores across each dataset,
+each focus context, and the selected cross-dataset coverage. No linking in the
+novel-focus study is −1544.387762 across 480 pairs. Item scores, predictions,
+correlations, clipping and selected boundaries are unchanged. Original
+dataset-balanced mean scores remain in CV artifacts to document the fitting
+objective; reported sums do not divide by item count or weight by participants.
+See `linking_structure_tables/summed_log_scores.csv` for all values and counts.
+
 ### Pipeline directories
 
 - `code/`

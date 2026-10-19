@@ -16,26 +16,26 @@ Each figure shows the exact scored prompt, the ten leading saved candidate strin
 
 ## Fit measures
 
-Higher values are better for all three measures, including less-negative log scores.
+Higher values are better for all three measures. Context log scores sum all 30 pair scores without dividing by 30; individual-pair examples retain their original scores.
 
-| Context | Model | Pearson r | Spearman ρ | Mean log score |
+| Context | Model | Pearson r | Spearman ρ | Summed log score |
 |---|---|---:|---:|---:|
-| Fridge | No linking | .5573 | .8595 | −2.9708 |
-| Fridge | X but not Y | .5592 | .8162 | −1.7009 |
-| Fridge | Ordering | .6944 | .7690 | −.8399 |
-| Fridge | Set Top-K | .8269 | .8595 | −1.0071 |
-| Throw | No linking | .5519 | .6834 | −3.0383 |
-| Throw | X but not Y | .4172 | .3232 | −5.6650 |
-| Throw | Ordering | .7285 | .7199 | −1.1254 |
-| Throw | Set Top-K | .5802 | .8549 | −2.3155 |
-| Bag | No linking | .4999 | .8744 | −4.1087 |
-| Bag | X but not Y | .3798 | .7464 | −3.7343 |
-| Bag | Ordering | .6111 | .7052 | −.8503 |
-| Bag | Set Top-K | .5358 | .8605 | −1.5575 |
-| Meat | No linking | .4519 | .1717 | −2.8885 |
-| Meat | X but not Y | .3090 | .3752 | −2.8931 |
-| Meat | Ordering | .0679 | .1851 | −1.6290 |
-| Meat | Set Top-K | .3670 | −.0313 | −1.4385 |
+| Fridge | No linking | 0.5573 | 0.8595 | −89.1236 |
+| Fridge | X but not Y | 0.5592 | 0.8162 | −51.0263 |
+| Fridge | Ordering | 0.6944 | 0.7690 | −25.1960 |
+| Fridge | Set Top-K | 0.8269 | 0.8595 | −30.2143 |
+| Throw | No linking | 0.5519 | 0.6834 | −91.1496 |
+| Throw | X but not Y | 0.4172 | 0.3232 | −169.9507 |
+| Throw | Ordering | 0.7285 | 0.7199 | −33.7612 |
+| Throw | Set Top-K | 0.5802 | 0.8549 | −69.4636 |
+| Bag | No linking | 0.4999 | 0.8744 | −123.2617 |
+| Bag | X but not Y | 0.3798 | 0.7464 | −112.0299 |
+| Bag | Ordering | 0.6111 | 0.7052 | −25.5076 |
+| Bag | Set Top-K | 0.5358 | 0.8605 | −46.7252 |
+| Meat | No linking | 0.4519 | 0.1717 | −86.6556 |
+| Meat | X but not Y | 0.3090 | 0.3752 | −86.7926 |
+| Meat | Ordering | 0.0679 | 0.1851 | −48.8699 |
+| Meat | Set Top-K | 0.3670 | −0.0313 | −43.1548 |
 
 ## Fridge
 
@@ -79,7 +79,7 @@ X but not Y is worse than no linking on all three measures in this context.
 
 **Context:** A person explicitly requests meat in ramen. Among tested words, Qwen ranks chicken > tofu > rice > turkey > mushrooms > crab. The reference human order is chicken > turkey > crab > tofu > mushrooms > rice. The full distribution begins with “meat”, “meat in”, and “chicken”; the problem is therefore not a complete failure to recognize the request. It is visible in the relative scores of particular tested alternatives.
 
-**Success:** crab → chicken has human exclusion 5/5 = 1.000. Set predicts .896, versus .082286 for no linking. Such gains help Set improve mean log score from −2.8885 to −1.4385.
+**Success:** crab → chicken has human exclusion 5/5 = 1.000. Set predicts .896, versus .082286 for no linking. Such gains help Set improve summed log score from −86.6556 to −43.1548.
 
 **Failures:** chicken → turkey has human exclusion 20/21 = .952, but Set predicts .036 and Ordering .016. Chicken → crab has human exclusion 13/17 = .765, but Set predicts .006 and Ordering zero. Conversely, chicken → tofu has human exclusion 0/5 = 0; Set increases the prediction from .010461 to .254, making it worse.
 

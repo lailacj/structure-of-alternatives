@@ -1,12 +1,17 @@
-# Corrected single-space sampled-prefix results
+# Full sampled-prefix results
 
 These results use all 360 Qwen prompts (1,089 canonical rows; 993 analysis units).
 
 ## Main results
 
-- Best proposed structure: **ordering** with balanced OOF mean log score **-1.461**.
-- Fold-safe dataset base-rate score: **-0.634**.
-- Difference between the best proposed structure and base rate: **-0.827** (negative is worse).
+Reported log scores sum item scores without dividing by item counts. The original
+training-fold dataset-balanced mean objective and saved boundaries are unchanged.
+Sums across datasets weight analysis units equally and depend on dataset sizes.
+These are sums of pair/scale-level scores, not participant-weighted log-likelihoods.
+
+- Best proposed structure: **ordering** with summed OOF log score **-1536.465**.
+- Fold-safe dataset base-rate score: **-654.471**.
+- Difference between the best proposed structure and base rate: **-881.995** (negative is worse).
 - Top-K selected **K=20 in 10 fold(s)**. All selected values are below the tested maximum K=100.
 - Top-p selected **p=0.6 in 7 fold(s), p=0.7 in 3 fold(s)**.
 - Novel-focus correlations range from approximately **0.47 to 0.54** across structures, while most scalar-dataset correlations are weak or inconsistent.
@@ -15,7 +20,7 @@ These results use all 360 Qwen prompts (1,089 canonical rows; 993 analysis units
 ## Interpretation
 
 The strongest proposed structure is **ordering**. Its difference from
-the fold-safe condition-specific base rate is **-0.827**.
+the fold-safe condition-specific base rate is **-881.995**.
 Extreme
 0/1 Monte Carlo probabilities produce large penalties when the model disagrees
 with non-extreme human rates. Calibration/noise requires discussion before

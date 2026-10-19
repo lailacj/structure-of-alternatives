@@ -2,6 +2,10 @@
 
 ## Scope and method
 
+Log-score summaries and differences now sum item scores without division by
+item count. Individual-pair examples remain individual scores. Original fitted
+predictions and training boundary selection are unchanged.
+
 This investigation uses the completed corrected single-space Qwen2-7B run.
 The primary comparison includes the three structures selected for the advisor
 plots: X but not Y, Ordering, and Set Top-K. Other evaluated structures are
@@ -82,45 +86,45 @@ Two model/dataset combinations are worse on all three measures:
 
 | Case | Δ log score | Δ Pearson r | Δ Spearman ρ |
 | --- | ---: | ---: | ---: |
-| Set Top-K, Pankratz–van Tiel | −0.588381 | −0.029328 | −0.029102 |
-| X but not Y, novel focus | −0.630939 | −0.098109 | −0.062456 |
+| Set Top-K, Pankratz–van Tiel | −29.419057 | −0.029328 | −0.029102 |
+| X but not Y, novel focus | −302.850738 | −0.098109 | −0.062456 |
 
 ## Why the measures disagree: evidence from individual predictions
 
 ### Probability levels improve without better correlations
 
 For van Tiel, mean human exclusion is 0.420. Mean prediction rises from 0.00556
-for no linking to 0.45267 for Ordering. Ordering's log score improves by 1.64744
-nats/item, while Pearson falls by 0.18372 and Spearman by 0.13992. Moving the
+for no linking to 0.45267 for Ordering. Ordering's log score improves by 64.25007
+nats summed over 39 scales, while Pearson falls by 0.18372 and Spearman by 0.13992. Moving the
 overall probability level nearer the human rate can accompany worse relative
 predictions across items. The mean alone does not establish full calibration.
 
 Gotzner shows a similar contrast for Ordering: mean human exclusion 0.39134,
 no-linking mean 0.000129, Ordering mean 0.38325. Ordering's log-score gain is
-1.78156 even though both correlations fall. Conversely, Set Top-K improves both
-correlations there but worsens log score by 1.25819; 38/67 Set predictions are
+119.36421 even though both correlations fall. Conversely, Set Top-K improves both
+correlations there but worsens summed log score by 84.29884; 38/67 Set predictions are
 exactly zero. For `sleepy/asleep`, the human rate is 0.81 and Set predicts zero,
 giving log score −18.65094 under the existing probability clipping rule.
 
 ### Estrong: confident predictions cause large log-score losses
 
-| Model | Mean prediction | Exact 1 predictions / 60 | Mean log score |
+| Model | Mean prediction | Exact 1 predictions / 60 | Summed log score |
 | --- | ---: | ---: | ---: |
-| No linking | 0.185911 | 0 | −1.363727 |
-| Ordering | 0.834533 | 3 | −1.448451 |
-| Set Top-K | 0.947133 | 28 | −5.122093 |
+| No linking | 0.185911 | 0 | −81.823645 |
+| Ordering | 0.834533 | 3 | −86.907079 |
+| Set Top-K | 0.947133 | 28 | −307.325602 |
 
 Mean human exclusion is 0.613187. Both linked structures improve correlations
 but incur expensive confident errors. For Estrong item 29, Ordering predicts
 1.0 and the human rate is 0.476190; its log score is −12.06116 versus −0.72257
 for no linking. Ordering improves 33/60 individual item log scores, yet its
-dataset mean is worse because losses on other items outweigh those gains.
+dataset sum is worse because losses on other items outweigh those gains.
 Set Top-K improves 22/60 items and worsens 38/60.
 
 Estrong and Eonlystrong have **identical item-level predictions for each of
 these models**, verified for all matched items. Mean human exclusion changes
 from 0.613187 to 0.886250. The same Ordering and Set predictions improve log
-score in Eonlystrong, by 1.148233 and 0.191311 respectively. This is evidence
+score in Eonlystrong, by 68.893956 and 11.478681 respectively. This is evidence
 that the benefit depends on the condition's human responses; it is not an
 across-condition adaptation in the predictions.
 
@@ -163,7 +167,7 @@ not replacement criteria selected to obtain a favorable conclusion.
 
 Adding Conjunction, Disjunction and Top-p variants changes the log-score
 exception. Conjunction Top-K scores −1.290755 on Estrong, above no linking's
-−1.363727 (gain 0.072973).
+−81.823645 (gain 0.072973).
 
 Across the full evaluated family, every dataset has at least one higher
 log score and at least one higher Pearson correlation. The winning structures

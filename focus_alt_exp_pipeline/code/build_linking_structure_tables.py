@@ -10,6 +10,8 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import json
+import math
 from pathlib import Path
 
 import numpy as np
@@ -138,7 +140,7 @@ def _direct_summaries(
             correlations[(dataset_id, column)] = (
                 float(x.corr(y)) if x.nunique() > 1 and y.nunique() > 1 else float("nan")
             )
-            log_scores[(dataset_id, column)] = float(item_log_score(y, x).mean())
+            log_scores[(dataset_id, column)] = math.fsum(item_log_score(y, x))
             coverage[(dataset_id, column)] = f"available (N={n})"
     return correlations, log_scores, coverage
 
@@ -179,8 +181,10 @@ def build_tables(
                 coverage.loc[key, column] = "missing"
                 continue
             corr.loc[key, column] = float(selected_corr.loc[key, corr_column])
-            scores.loc[key, column] = float(selected_scores.loc[key, "mean_oof_log_score"])
             n = int(selected_scores.loc[key, "N"])
+            scores.loc[key, column] = (float(selected_scores.loc[key, "sum_oof_log_score"])
+                                      if "sum_oof_log_score" in selected_scores.columns
+                                      else n * float(selected_scores.loc[key, "mean_oof_log_score"]))
             coverage.loc[key, column] = f"available (N={n})"
 
     for table in (corr, scores, coverage):
@@ -302,11 +306,39 @@ def main() -> None:
     paired_ranks.to_csv(args.output_dir / "spearman_paired_ranks.csv", index=False)
     corr.to_csv(args.output_dir / "correlations_by_dataset_and_linking_structure.csv", index=False)
     scores.to_csv(args.output_dir / "log_scores_by_dataset_and_linking_structure.csv", index=False)
+    # Export all nine focus-context sums and explicit sample sizes for every scope.
+    from build_results_viewer import build_items, read_csv, MODELS
+    items = build_items(read_csv(args.source_rows), read_csv(cv / "oof_predictions.csv"))
+    context_records, long_records = [], []
+    for dataset, label in DATASETS:
+        scopes = [("all", [r for r in items if r["dataset"] == dataset])]
+        if dataset == "novel_focus":
+            scopes += [(context, [r for r in items if r["dataset"] == dataset and r["context"] == context])
+                       for context in sorted({r["context"] for r in items if r["dataset"] == dataset})]
+        for context, scope in scopes:
+            record = {"Context": context}
+            for model, name in enumerate(MODELS):
+                values = [r["scores"][model] for r in scope if r["scores"][model] is not None]
+                total = math.fsum(values) if values else None
+                record[name] = total
+                long_records.append(dict(dataset_id=dataset, dataset=label, context=context, model=name,
+                                         n=len(values), sum_log_score=total))
+            if context != "all":
+                context_records.append(record)
+    pd.DataFrame(context_records).to_csv(args.output_dir / "log_scores_by_focus_context_and_linking_structure.csv", index=False)
+    pd.DataFrame(long_records).to_csv(args.output_dir / "summed_log_scores.csv", index=False)
+    (args.output_dir / "log_score_reporting.json").write_text(json.dumps({
+        "aggregation": "sum_of_item_log_scores", "item_formula": "y*ln(p)+(1-y)*ln(1-p)",
+        "epsilon": 1e-10, "participant_count_weighting": False,
+        "selection_objective": "Original dataset-balanced training means retained; no refitting",
+    }, indent=2) + "\n")
     coverage.to_csv(args.output_dir / "coverage_by_dataset_and_linking_structure.csv", index=False)
     report = (
         "# Cross-dataset linking-structure results\n\n"
         "All columns use the same analysis units within each dataset. Higher is better "
-        "for both Pearson correlation and mean proper log score.\n\n"
+        "for both Pearson correlation and summed proper log score. Log scores sum item scores without dividing by item count. "
+        "Sums depend on sample size, so compare models on matching items within a dataset. "
+        "They are not participant-count-weighted response log-likelihoods. Training selection is unchanged.\n\n"
         "Focus-context word-ranking and negation Spearman results, paired ranks, and equal-context means are in `../spearman/SPEARMAN.md`.\n\n"
         "## Pearson correlations\n\n"
         + _markdown_table(corr)
@@ -316,7 +348,7 @@ def main() -> None:
         + "as Pearson. Average ranks handle ties; constant predictions are undefined. "
         + "Focus uses the separate within-context analysis above.\n\n"
         + _markdown_table(dataset_spearman)
-        + "\n\n## Mean proper log scores\n\n"
+        + "\n\n## Summed proper log scores\n\n"
         + _markdown_table(scores)
         + "\n\n## Coverage\n\n"
         + _markdown_table(coverage)

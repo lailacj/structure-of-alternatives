@@ -60,8 +60,8 @@
     },
     {
       "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results_viewer/index.html",
-      "sha256": "6a3d7ac24a920cba1245664be844d0debb003d29b938ba1ab363350885f3968e"
+      "sha256": "f898f8d525ca11355aca2c0050ee63b2639fc217a95308629d69d5dad69736a2"
     }
   ],
-  "method": "30 equally weighted pairs per context; Spearman average ranks for ties; log scores clipped at 1e-10; no resampling or refitting"
+  "method": "30 pairs per context; log scores sum item scores without division; Spearman average ranks for ties; probabilities clipped at 1e-10; no resampling or refitting"
 }

@@ -1,0 +1,235 @@
+dataset_id,dataset,context,model,n,sum_log_score
+hu_vt16,van Tiel et al. (2016),all,No linking structure,39,-113.2288817060671
+hu_vt16,van Tiel et al. (2016),all,X but not Y,39,-62.93561800988959
+hu_vt16,van Tiel et al. (2016),all,Set Top-K,39,-70.85796436317621
+hu_vt16,van Tiel et al. (2016),all,Set Top-p,39,-48.02328458049946
+hu_vt16,van Tiel et al. (2016),all,Ordering,39,-48.978813484100904
+hu_vt16,van Tiel et al. (2016),all,Conjunction Top-K,39,-85.61601124768058
+hu_vt16,van Tiel et al. (2016),all,Conjunction Top-p,39,-63.60956065235732
+hu_vt16,van Tiel et al. (2016),all,Disjunction Top-K,39,-48.42292334508968
+hu_vt16,van Tiel et al. (2016),all,Disjunction Top-p,39,-50.28345326570584
+hu_g18,Gotzner et al. (2018),all,No linking structure,67,-309.73771119790433
+hu_g18,Gotzner et al. (2018),all,X but not Y,67,-134.90871542663285
+hu_g18,Gotzner et al. (2018),all,Set Top-K,67,-394.0365530711476
+hu_g18,Gotzner et al. (2018),all,Set Top-p,67,-458.3838142342699
+hu_g18,Gotzner et al. (2018),all,Ordering,67,-190.3735048993933
+hu_g18,Gotzner et al. (2018),all,Conjunction Top-K,67,-394.3029639002485
+hu_g18,Gotzner et al. (2018),all,Conjunction Top-p,67,-458.40439728730087
+hu_g18,Gotzner et al. (2018),all,Disjunction Top-K,67,-190.2345036936795
+hu_g18,Gotzner et al. (2018),all,Disjunction Top-p,67,-190.46563394437538
+hu_pvt21,Pankratz & van Tiel (2021),all,No linking structure,50,-137.0418622389724
+hu_pvt21,Pankratz & van Tiel (2021),all,X but not Y,50,-65.19611898489624
+hu_pvt21,Pankratz & van Tiel (2021),all,Set Top-K,50,-166.46091884511398
+hu_pvt21,Pankratz & van Tiel (2021),all,Set Top-p,50,-139.8882547405647
+hu_pvt21,Pankratz & van Tiel (2021),all,Ordering,50,-61.91127001643087
+hu_pvt21,Pankratz & van Tiel (2021),all,Conjunction Top-K,50,-163.8183284997781
+hu_pvt21,Pankratz & van Tiel (2021),all,Conjunction Top-p,50,-108.95891667141467
+hu_pvt21,Pankratz & van Tiel (2021),all,Disjunction Top-K,50,-66.03699596126596
+hu_pvt21,Pankratz & van Tiel (2021),all,Disjunction Top-p,50,-96.00689109408427
+hu_rx22,Ronai & Xiang (2022),all,No linking structure,57,-174.33627907113618
+hu_rx22,Ronai & Xiang (2022),all,X but not Y,57,-75.68774166894521
+hu_rx22,Ronai & Xiang (2022),all,Set Top-K,57,-142.24725971611554
+hu_rx22,Ronai & Xiang (2022),all,Set Top-p,57,-175.02381090940625
+hu_rx22,Ronai & Xiang (2022),all,Ordering,57,-63.310658857838916
+hu_rx22,Ronai & Xiang (2022),all,Conjunction Top-K,57,-143.39034313601482
+hu_rx22,Ronai & Xiang (2022),all,Conjunction Top-p,57,-175.18603317395073
+hu_rx22,Ronai & Xiang (2022),all,Disjunction Top-K,57,-63.059225717403386
+hu_rx22,Ronai & Xiang (2022),all,Disjunction Top-p,57,-65.22273992714881
+rnx_esi,R&X ESI,all,No linking structure,60,-183.39206502388603
+rnx_esi,R&X ESI,all,X but not Y,0,
+rnx_esi,R&X ESI,all,Set Top-K,60,-162.73045097117654
+rnx_esi,R&X ESI,all,Set Top-p,60,-198.65524491745902
+rnx_esi,R&X ESI,all,Ordering,60,-68.48878667515756
+rnx_esi,R&X ESI,all,Conjunction Top-K,60,-150.8014235102485
+rnx_esi,R&X ESI,all,Conjunction Top-p,60,-184.62912191018518
+rnx_esi,R&X ESI,all,Disjunction Top-K,60,-81.3555113674815
+rnx_esi,R&X ESI,all,Disjunction Top-p,60,-84.7403180039464
+rnx_eweak,R&X Eweak,all,No linking structure,60,-107.09692336880342
+rnx_eweak,R&X Eweak,all,X but not Y,0,
+rnx_eweak,R&X Eweak,all,Set Top-K,60,-125.89024543269501
+rnx_eweak,R&X Eweak,all,Set Top-p,60,-198.4484402375554
+rnx_eweak,R&X Eweak,all,Ordering,60,-102.12232813920417
+rnx_eweak,R&X Eweak,all,Conjunction Top-K,60,-102.39942393885988
+rnx_eweak,R&X Eweak,all,Conjunction Top-p,60,-105.75246577352152
+rnx_eweak,R&X Eweak,all,Disjunction Top-K,60,-126.14216476586392
+rnx_eweak,R&X Eweak,all,Disjunction Top-p,60,-194.89526037565798
+rnx_estrong,R&X Estrong,all,No linking structure,60,-81.82364469874224
+rnx_estrong,R&X Estrong,all,X but not Y,0,
+rnx_estrong,R&X Estrong,all,Set Top-K,60,-307.32560155191504
+rnx_estrong,R&X Estrong,all,Set Top-p,60,-456.5160529248652
+rnx_estrong,R&X Estrong,all,Ordering,60,-86.90707866836759
+rnx_estrong,R&X Estrong,all,Conjunction Top-K,60,-77.44528830246571
+rnx_estrong,R&X Estrong,all,Conjunction Top-p,60,-86.59455950381039
+rnx_estrong,R&X Estrong,all,Disjunction Top-K,60,-357.78851927971743
+rnx_estrong,R&X Estrong,all,Disjunction Top-p,60,-461.56741708607217
+rnx_eonly,R&X Eonly,all,No linking structure,60,-333.1488910960205
+rnx_eonly,R&X Eonly,all,X but not Y,0,
+rnx_eonly,R&X Eonly,all,Set Top-K,60,-315.97046086972534
+rnx_eonly,R&X Eonly,all,Set Top-p,60,-307.10981832564426
+rnx_eonly,R&X Eonly,all,Ordering,60,-95.59424285615242
+rnx_eonly,R&X Eonly,all,Conjunction Top-K,60,-323.6928619216445
+rnx_eonly,R&X Eonly,all,Conjunction Top-p,60,-314.8923357563266
+rnx_eonly,R&X Eonly,all,Disjunction Top-K,60,-88.64775421029888
+rnx_eonly,R&X Eonly,all,Disjunction Top-p,60,-89.90635118055974
+rnx_eonlystrong,R&X Eonlystrong,all,No linking structure,60,-107.9588810795279
+rnx_eonlystrong,R&X Eonlystrong,all,X but not Y,0,
+rnx_eonlystrong,R&X Eonlystrong,all,Set Top-K,60,-96.48019982231361
+rnx_eonlystrong,R&X Eonlystrong,all,Set Top-p,60,-137.55886146189587
+rnx_eonlystrong,R&X Eonlystrong,all,Ordering,60,-39.064924946295314
+rnx_eonlystrong,R&X Eonlystrong,all,Conjunction Top-K,60,-37.424887410876266
+rnx_eonlystrong,R&X Eonlystrong,all,Conjunction Top-p,60,-43.52129614841627
+rnx_eonlystrong,R&X Eonlystrong,all,Disjunction Top-K,60,-109.17673422701479
+rnx_eonlystrong,R&X Eonlystrong,all,Disjunction Top-p,60,-133.7106317144319
+novel_focus,Novel Focus Alternative Study,all,No linking structure,480,-1544.3877616439083
+novel_focus,Novel Focus Alternative Study,all,X but not Y,480,-1847.238499147217
+novel_focus,Novel Focus Alternative Study,all,Set Top-K,480,-1102.6004292803887
+novel_focus,Novel Focus Alternative Study,all,Set Top-p,480,-1633.002252433326
+novel_focus,Novel Focus Alternative Study,all,Ordering,480,-779.713712758797
+novel_focus,Novel Focus Alternative Study,all,Conjunction Top-K,480,-1170.136674386882
+novel_focus,Novel Focus Alternative Study,all,Conjunction Top-p,480,-1694.0705954117711
+novel_focus,Novel Focus Alternative Study,all,Disjunction Top-K,480,-729.3508854008223
+novel_focus,Novel Focus Alternative Study,all,Disjunction Top-p,480,-732.9078048113423
+novel_focus,Novel Focus Alternative Study,bag,No linking structure,30,-123.26174211031278
+novel_focus,Novel Focus Alternative Study,bag,X but not Y,30,-112.02992314732481
+novel_focus,Novel Focus Alternative Study,bag,Set Top-K,30,-46.725178288901795
+novel_focus,Novel Focus Alternative Study,bag,Set Top-p,30,-259.38937316797194
+novel_focus,Novel Focus Alternative Study,bag,Ordering,30,-25.507588336200318
+novel_focus,Novel Focus Alternative Study,bag,Conjunction Top-K,30,-52.14556120733419
+novel_focus,Novel Focus Alternative Study,bag,Conjunction Top-p,30,-259.38937316797194
+novel_focus,Novel Focus Alternative Study,bag,Disjunction Top-K,30,-20.20922134317758
+novel_focus,Novel Focus Alternative Study,bag,Disjunction Top-p,30,-25.507588336200318
+novel_focus,Novel Focus Alternative Study,bakery,No linking structure,30,-89.1028067148166
+novel_focus,Novel Focus Alternative Study,bakery,X but not Y,30,-89.106903829219
+novel_focus,Novel Focus Alternative Study,bakery,Set Top-K,30,-37.95430557771488
+novel_focus,Novel Focus Alternative Study,bakery,Set Top-p,30,-30.05974508354929
+novel_focus,Novel Focus Alternative Study,bakery,Ordering,30,-32.587369350844305
+novel_focus,Novel Focus Alternative Study,bakery,Conjunction Top-K,30,-46.22929193402296
+novel_focus,Novel Focus Alternative Study,bakery,Conjunction Top-p,30,-39.491128584634744
+novel_focus,Novel Focus Alternative Study,bakery,Disjunction Top-K,30,-25.16761503674592
+novel_focus,Novel Focus Alternative Study,bakery,Disjunction Top-p,30,-24.346039595216673
+novel_focus,Novel Focus Alternative Study,beach,No linking structure,30,-86.50324084026663
+novel_focus,Novel Focus Alternative Study,beach,X but not Y,30,-130.44581406241792
+novel_focus,Novel Focus Alternative Study,beach,Set Top-K,30,-42.69773526697402
+novel_focus,Novel Focus Alternative Study,beach,Set Top-p,30,-30.193604639243564
+novel_focus,Novel Focus Alternative Study,beach,Ordering,30,-35.42442488577459
+novel_focus,Novel Focus Alternative Study,beach,Conjunction Top-K,30,-49.57746506433769
+novel_focus,Novel Focus Alternative Study,beach,Conjunction Top-p,30,-38.79154400840086
+novel_focus,Novel Focus Alternative Study,beach,Disjunction Top-K,30,-29.19131737513027
+novel_focus,Novel Focus Alternative Study,beach,Disjunction Top-p,30,-27.9809284842618
+novel_focus,Novel Focus Alternative Study,cold,No linking structure,30,-70.91761336293165
+novel_focus,Novel Focus Alternative Study,cold,X but not Y,30,-90.82243612083275
+novel_focus,Novel Focus Alternative Study,cold,Set Top-K,30,-111.84926749328508
+novel_focus,Novel Focus Alternative Study,cold,Set Top-p,30,-113.9350812755132
+novel_focus,Novel Focus Alternative Study,cold,Ordering,30,-75.65009623322112
+novel_focus,Novel Focus Alternative Study,cold,Conjunction Top-K,30,-108.7191969899923
+novel_focus,Novel Focus Alternative Study,cold,Conjunction Top-p,30,-110.64783241085276
+novel_focus,Novel Focus Alternative Study,cold,Disjunction Top-K,30,-78.7801667365139
+novel_focus,Novel Focus Alternative Study,cold,Disjunction Top-p,30,-78.93734509788156
+novel_focus,Novel Focus Alternative Study,cut,No linking structure,30,-62.82946610426756
+novel_focus,Novel Focus Alternative Study,cut,X but not Y,30,-86.37711527212117
+novel_focus,Novel Focus Alternative Study,cut,Set Top-K,30,-58.899765375138244
+novel_focus,Novel Focus Alternative Study,cut,Set Top-p,30,-58.962044946729485
+novel_focus,Novel Focus Alternative Study,cut,Ordering,30,-83.99268310590098
+novel_focus,Novel Focus Alternative Study,cut,Conjunction Top-K,30,-61.12976007484748
+novel_focus,Novel Focus Alternative Study,cut,Conjunction Top-p,30,-61.246477136332494
+novel_focus,Novel Focus Alternative Study,cut,Disjunction Top-K,30,-81.82525742153827
+novel_focus,Novel Focus Alternative Study,cut,Disjunction Top-p,30,-81.97506230694883
+novel_focus,Novel Focus Alternative Study,fridge,No linking structure,30,-89.12360141934101
+novel_focus,Novel Focus Alternative Study,fridge,X but not Y,30,-51.02633707641553
+novel_focus,Novel Focus Alternative Study,fridge,Set Top-K,30,-30.214343232766534
+novel_focus,Novel Focus Alternative Study,fridge,Set Top-p,30,-90.47871695257813
+novel_focus,Novel Focus Alternative Study,fridge,Ordering,30,-25.196006428960942
+novel_focus,Novel Focus Alternative Study,fridge,Conjunction Top-K,30,-31.668060691657292
+novel_focus,Novel Focus Alternative Study,fridge,Conjunction Top-p,30,-90.97733503654753
+novel_focus,Novel Focus Alternative Study,fridge,Disjunction Top-K,30,-23.920016965179055
+novel_focus,Novel Focus Alternative Study,fridge,Disjunction Top-p,30,-25.041463110510954
+novel_focus,Novel Focus Alternative Study,gym,No linking structure,30,-118.02167602931969
+novel_focus,Novel Focus Alternative Study,gym,X but not Y,30,-126.85632545758331
+novel_focus,Novel Focus Alternative Study,gym,Set Top-K,30,-53.42898316618832
+novel_focus,Novel Focus Alternative Study,gym,Set Top-p,30,-44.88720130414974
+novel_focus,Novel Focus Alternative Study,gym,Ordering,30,-37.718633868415786
+novel_focus,Novel Focus Alternative Study,gym,Conjunction Top-K,30,-56.75335604799196
+novel_focus,Novel Focus Alternative Study,gym,Conjunction Top-p,30,-51.449584646448095
+novel_focus,Novel Focus Alternative Study,gym,Disjunction Top-K,30,-34.852496111765745
+novel_focus,Novel Focus Alternative Study,gym,Disjunction Top-p,30,-31.813434008244837
+novel_focus,Novel Focus Alternative Study,hot,No linking structure,30,-63.85030672355325
+novel_focus,Novel Focus Alternative Study,hot,X but not Y,30,-81.18143249134464
+novel_focus,Novel Focus Alternative Study,hot,Set Top-K,30,-30.87650386095088
+novel_focus,Novel Focus Alternative Study,hot,Set Top-p,30,-92.1993410550102
+novel_focus,Novel Focus Alternative Study,hot,Ordering,30,-59.37492207290893
+novel_focus,Novel Focus Alternative Study,hot,Conjunction Top-K,30,-35.05377255436063
+novel_focus,Novel Focus Alternative Study,hot,Conjunction Top-p,30,-92.20468546019923
+novel_focus,Novel Focus Alternative Study,hot,Disjunction Top-K,30,-59.81951859119445
+novel_focus,Novel Focus Alternative Study,hot,Disjunction Top-p,30,-59.377778788719226
+novel_focus,Novel Focus Alternative Study,mall,No linking structure,30,-168.36264027566577
+novel_focus,Novel Focus Alternative Study,mall,X but not Y,30,-236.35621861994986
+novel_focus,Novel Focus Alternative Study,mall,Set Top-K,30,-182.92774889831003
+novel_focus,Novel Focus Alternative Study,mall,Set Top-p,30,-207.54801338480425
+novel_focus,Novel Focus Alternative Study,mall,Ordering,30,-49.47068125965281
+novel_focus,Novel Focus Alternative Study,mall,Conjunction Top-K,30,-182.97058730653728
+novel_focus,Novel Focus Alternative Study,mall,Conjunction Top-p,30,-207.54801338480425
+novel_focus,Novel Focus Alternative Study,mall,Disjunction Top-K,30,-49.46839920306846
+novel_focus,Novel Focus Alternative Study,mall,Disjunction Top-p,30,-49.47068125965281
+novel_focus,Novel Focus Alternative Study,mask,No linking structure,30,-121.83866529222857
+novel_focus,Novel Focus Alternative Study,mask,X but not Y,30,-163.44754039363195
+novel_focus,Novel Focus Alternative Study,mask,Set Top-K,30,-92.6881163304259
+novel_focus,Novel Focus Alternative Study,mask,Set Top-p,30,-274.9930610176461
+novel_focus,Novel Focus Alternative Study,mask,Ordering,30,-73.80909727306985
+novel_focus,Novel Focus Alternative Study,mask,Conjunction Top-K,30,-92.77012192108417
+novel_focus,Novel Focus Alternative Study,mask,Conjunction Top-p,30,-274.9930610176461
+novel_focus,Novel Focus Alternative Study,mask,Disjunction Top-K,30,-73.81444897884701
+novel_focus,Novel Focus Alternative Study,mask,Disjunction Top-p,30,-73.80909727306985
+novel_focus,Novel Focus Alternative Study,meat,No linking structure,30,-86.65558548428555
+novel_focus,Novel Focus Alternative Study,meat,X but not Y,30,-86.79264990699735
+novel_focus,Novel Focus Alternative Study,meat,Set Top-K,30,-43.15479467193867
+novel_focus,Novel Focus Alternative Study,meat,Set Top-p,30,-35.87729940930624
+novel_focus,Novel Focus Alternative Study,meat,Ordering,30,-48.86985651915829
+novel_focus,Novel Focus Alternative Study,meat,Conjunction Top-K,30,-58.654752596318886
+novel_focus,Novel Focus Alternative Study,meat,Conjunction Top-p,30,-53.05707771967743
+novel_focus,Novel Focus Alternative Study,meat,Disjunction Top-K,30,-33.901906452847854
+novel_focus,Novel Focus Alternative Study,meat,Disjunction Top-p,30,-32.52670492122849
+novel_focus,Novel Focus Alternative Study,restaurant,No linking structure,30,-106.7479722219621
+novel_focus,Novel Focus Alternative Study,restaurant,X but not Y,30,-93.86161399962944
+novel_focus,Novel Focus Alternative Study,restaurant,Set Top-K,30,-81.69254302693034
+novel_focus,Novel Focus Alternative Study,restaurant,Set Top-p,30,-85.33814263802526
+novel_focus,Novel Focus Alternative Study,restaurant,Ordering,30,-17.973615761090013
+novel_focus,Novel Focus Alternative Study,restaurant,Conjunction Top-K,30,-82.13605872636772
+novel_focus,Novel Focus Alternative Study,restaurant,Conjunction Top-p,30,-85.81684630451392
+novel_focus,Novel Focus Alternative Study,restaurant,Disjunction Top-K,30,-17.88973093193919
+novel_focus,Novel Focus Alternative Study,restaurant,Disjunction Top-p,30,-17.913158957101903
+novel_focus,Novel Focus Alternative Study,salad,No linking structure,30,-77.4212737425392
+novel_focus,Novel Focus Alternative Study,salad,X but not Y,30,-60.737787727653114
+novel_focus,Novel Focus Alternative Study,salad,Set Top-K,30,-100.80391264774316
+novel_focus,Novel Focus Alternative Study,salad,Set Top-p,30,-103.20179306699121
+novel_focus,Novel Focus Alternative Study,salad,Ordering,30,-56.84096239014082
+novel_focus,Novel Focus Alternative Study,salad,Conjunction Top-K,30,-108.43699698505827
+novel_focus,Novel Focus Alternative Study,salad,Conjunction Top-p,30,-111.25610880058338
+novel_focus,Novel Focus Alternative Study,salad,Disjunction Top-K,30,-49.207882068981895
+novel_focus,Novel Focus Alternative Study,salad,Disjunction Top-p,30,-48.78664665654865
+novel_focus,Novel Focus Alternative Study,science,No linking structure,30,-115.70901669060933
+novel_focus,Novel Focus Alternative Study,science,X but not Y,30,-126.81192680895205
+novel_focus,Novel Focus Alternative Study,science,Set Top-K,30,-63.05377035923325
+novel_focus,Novel Focus Alternative Study,science,Set Top-p,30,-60.74914855505047
+novel_focus,Novel Focus Alternative Study,science,Ordering,30,-45.40916060568205
+novel_focus,Novel Focus Alternative Study,science,Conjunction Top-K,30,-74.07838100463576
+novel_focus,Novel Focus Alternative Study,science,Conjunction Top-p,30,-72.28868835708215
+novel_focus,Novel Focus Alternative Study,science,Disjunction Top-K,30,-43.12688305029294
+novel_focus,Novel Focus Alternative Study,science,Disjunction Top-p,30,-42.71119510332217
+novel_focus,Novel Focus Alternative Study,throw,No linking structure,30,-91.1496246473825
+novel_focus,Novel Focus Alternative Study,throw,X but not Y,30,-169.9506816443872
+novel_focus,Novel Focus Alternative Study,throw,Set Top-K,30,-69.46364162334385
+novel_focus,Novel Focus Alternative Study,throw,Set Top-p,30,-78.17076207902404
+novel_focus,Novel Focus Alternative Study,throw,Ordering,30,-33.76115334165108
+novel_focus,Novel Focus Alternative Study,throw,Conjunction Top-K,30,-71.59208386297244
+novel_focus,Novel Focus Alternative Study,throw,Conjunction Top-p,30,-79.34001767778949
+novel_focus,Novel Focus Alternative Study,throw,Disjunction Top-K,30,-32.0685156875556
+novel_focus,Novel Focus Alternative Study,throw,Disjunction Top-p,30,-33.136073511076994
+novel_focus,Novel Focus Alternative Study,transport,No linking structure,30,-72.89252998442608
+novel_focus,Novel Focus Alternative Study,transport,X but not Y,30,-141.43379258875694
+novel_focus,Novel Focus Alternative Study,transport,Set Top-K,30,-56.16981946054377
+novel_focus,Novel Focus Alternative Study,transport,Set Top-p,30,-67.01892385773291
+novel_focus,Novel Focus Alternative Study,transport,Ordering,30,-78.12746132612513
+novel_focus,Novel Focus Alternative Study,transport,Conjunction Top-K,30,-58.22122741936304
+novel_focus,Novel Focus Alternative Study,transport,Conjunction Top-p,30,-65.57282169828682
+novel_focus,Novel Focus Alternative Study,transport,Disjunction Top-K,30,-76.10750944604415
+novel_focus,Novel Focus Alternative Study,transport,Disjunction Top-p,30,-79.57460740135723

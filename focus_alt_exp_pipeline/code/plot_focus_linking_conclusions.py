@@ -19,7 +19,7 @@ OUTPUT = RESULT / 'advisor_summary/focus_linking_conclusions'
 MODELS = [('No linking', 'No linking structure', 'direct'),
           ('X but not Y', 'X but not Y', 'direct'),
           ('Ordering', 'ordering', 'top_k'), ('Set Top-K', 'set', 'top_k')]
-METRICS = [('log_score', 'Mean log score'), ('pearson_r', 'Pearson r'), ('spearman_rho', 'Spearman ρ')]
+METRICS = [('log_score', 'Summed log score'), ('pearson_r', 'Pearson r'), ('spearman_rho', 'Spearman ρ')]
 HIGHLIGHTS = [('A', 'water', 'juice', '#0072B2'), ('B', 'juice', 'water', '#D55E00'),
               ('C', 'water', 'milk', '#009E73'), ('D', 'meat', 'milk', '#A44D9E')]
 INK, MUTED = '#182B3A', '#546573'
@@ -129,7 +129,7 @@ def draw_contexts(deltas):
     counts=[]
     for ax,(key,label) in zip(axes,METRICS):
         values=deltas[deltas.metric.eq(key)].pivot(index='context',columns='model',values='difference').loc[contexts,models].to_numpy()
-        limit=4 if key=='log_score' else .8
+        limit=max(1.,float(np.max(np.abs(values)))) if key=='log_score' else .8
         im=ax.imshow(values,cmap='RdBu',norm=TwoSlopeNorm(vmin=-limit,vcenter=0,vmax=limit),aspect='auto')
         ax.set_title(label,fontsize=16,pad=54,color=INK)
         ax.set_xticks(range(3),['X but not Y','Ordering','Set Top-K'],fontsize=10)
@@ -149,7 +149,7 @@ def draw_contexts(deltas):
         cax=fig.add_axes([ax.get_position().x0,.204,ax.get_position().width,.014])
         cb=fig.colorbar(im,cax=cax,orientation='horizontal',ticks=[-limit,0,limit])
         cb.ax.tick_params(labelsize=10,length=3)
-        cb.set_label('Change in nats per pair' if key=='log_score' else 'Change in correlation',fontsize=10)
+        cb.set_label('Change in summed log score (nats)' if key=='log_score' else 'Change in correlation',fontsize=10)
         for x,m in enumerate(models):
             a=values[:,x];better=int((a>TOL).sum());tied=int((np.abs(a)<=TOL).sum());worse=int((a< -TOL).sum())
             counts.append(dict(metric=key,model=m,better=better,tied=tied,worse=worse))
@@ -183,7 +183,7 @@ def main():
             assert np.allclose(hr,g.human_rank,atol=TOL,rtol=0)
             p=g.model_value.clip(1e-10,1-1e-10);h=g.human_rate
             records.append(dict(context=context,model=display,n=30,pearson_r=h.corr(g.model_value),
-                                spearman_rho=hr.corr(mr),log_score=(h*np.log(p)+(1-h)*np.log1p(-p)).mean()))
+                                spearman_rho=hr.corr(mr),log_score=(h*np.log(p)+(1-h)*np.log1p(-p)).sum()))
         frames.append(frame)
     pairs=pd.concat(frames,ignore_index=True);fits=pd.DataFrame(records)
     base=frames[0].set_index(['context','trigger','query'])
@@ -202,7 +202,9 @@ def main():
     matched=deltas.merge(previous,on=['context','model','metric'],suffixes=('','_previous'),validate='one_to_one')
     assert len(matched)==144
     for key in ['value','baseline','difference']:
-        assert np.allclose(matched[key],matched[key+'_previous'],atol=TOL,rtol=0)
+        # Summation magnifies harmless CSV/exp roundoff relative to correlations.
+        tolerance=np.where(matched.metric.eq('log_score'),1e-9,TOL)
+        assert np.all(np.abs(matched[key]-matched[key+'_previous'])<=tolerance)
     pairs.to_csv(OUTPUT/'plotted_pair_values.csv',index=False)
     fits.to_csv(OUTPUT/'context_fit_values.csv',index=False)
     deltas.to_csv(OUTPUT/'context_fit_differences.csv',index=False)

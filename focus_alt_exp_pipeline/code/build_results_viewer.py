@@ -109,7 +109,7 @@ def summarize(items):
         if rho is not None and not math.isfinite(rho):
             rho = None
         records.append({"rho": rho, "n": len(rows), "r": pearson([r["p"][model] for r in rows], [r["y"] for r in rows]),
-                        "log": mean(r["scores"][model] for r in rows),
+                        "log": math.fsum(r["scores"][model] for r in rows) if rows else None,
                         "human": mean(r["y"] for r in rows), "prediction": mean(r["p"][model] for r in rows)})
     return records
 
@@ -160,6 +160,8 @@ def build_items(source, oof):
 
 def verify_tables(results, summaries):
     checked = 0
+    reporting = results / "linking_structure_tables/log_score_reporting.json"
+    summed = reporting.exists() and json.loads(reporting.read_text())["aggregation"] == "sum_of_item_log_scores"
     for metric, filename in [("r", "correlations"), ("log", "log_scores"), ("rho", "spearman")]:
         path = results / "linking_structure_tables" / (filename + "_by_dataset_and_linking_structure.csv")
         table = {row["Dataset"]: row for row in read_csv(path)}
@@ -168,6 +170,9 @@ def verify_tables(results, summaries):
                 continue
             for index, model in enumerate(MODELS):
                 expected, actual = number(table[label][model]), summaries[dataset][index][metric]
+                if metric == "log" and not summed and actual is not None:
+                    # Frozen historical tables retain means; validate the same item scores.
+                    actual /= summaries[dataset][index]["n"]
                 if (expected is None) != (actual is None) or (expected is not None and abs(expected - actual) > 1e-8):
                     raise ValueError("Viewer disagrees with saved {}: {} / {}: {} vs {}".format(metric, label, model, actual, expected))
                 checked += 1
@@ -353,11 +358,16 @@ def build_payload(results, manifest, log_probs_dir=None, top_n=50, vocab_dir=Non
     if log_probs_dir:
         provenance.extend(add_full_distributions(prompts, log_probs_dir, top_n, vocab_dir))
     baseline_path = results / "advisor_summary/advisor_dataset_base_rate_scores.csv"
-    baselines = {row["analysis_dataset_id"]: number(row["mean_oof_log_score"]) for row in read_csv(baseline_path)} if baseline_path.exists() else {}
+    baselines = {row["analysis_dataset_id"]: (number(row["sum_oof_log_score"]) if "sum_oof_log_score" in row
+                 else number(row["mean_oof_log_score"]) * number(row["N"]))
+                 for row in read_csv(baseline_path)} if baseline_path.exists() else {}
     if baseline_path.exists():
         provenance.append(baseline_path)
     for metric in ["correlations", "log_scores", "spearman"]:
         provenance.append(results / "linking_structure_tables" / (metric + "_by_dataset_and_linking_structure.csv"))
+    reporting = results / "linking_structure_tables/log_score_reporting.json"
+    if reporting.exists():
+        provenance.append(reporting)
     grid = read_csv(results / "prediction_grid.csv")
     if corrected and any(row.get("source_rows_sha256") != digest for row in grid):
         raise ValueError("Source-row hash does not match prediction grid")
@@ -366,6 +376,7 @@ def build_payload(results, manifest, log_probs_dir=None, top_n=50, vocab_dir=Non
     return {"generated": datetime.now(timezone.utc).isoformat(), "datasets": [{"id": key, "label": label} for key, label in DATASETS],
         "run": {"id": results.name, "path": str(results.resolve()), "corrected": corrected,
                 "label": "Corrected single-space run" if corrected else "Historical sampled-prefix run · uncorrected scores"},
+        "logScoreAggregation": "sum_of_item_log_scores",
         "spearman": spearman, "models": MODELS, "contexts": contexts, "items": items, "sources": sources, "prompts": list(prompts.values()),
         "datasetSummaries": dataset_summaries, "contextSummaries": {c: summarize([r for r in items if r["context"] == c]) for c in contexts},
         "baselines": baselines, "folds": read_csv(results / "cv_results/fold_selections.csv"), "boundaries": bounds,
@@ -430,7 +441,7 @@ def render_fallback(payload):
               '<p>{}</p>'.format(escape(payload.get("run", {}).get("label", ""))),
               '<p id="viewer-status" role="status">Starting the interactive viewer. If this message remains, open index.html directly in a web browser; this preview may not run JavaScript.</p>',
               '<details><summary>Read saved dataset results without interactive charts</summary>']
-    for metric, label in [("r", "Pearson correlation"), ("log", "Mean proper log score"), ("rho", "Spearman: within Hu dataset / R&X condition")]:
+    for metric, label in [("r", "Pearson correlation"), ("log", "Summed proper log score"), ("rho", "Spearman: within Hu dataset / R&X condition")]:
         output.append('<h2>{}</h2><div class="table-wrap"><table><thead><tr><th>Dataset</th>'.format(label))
         output.extend('<th>{}</th>'.format(escape(model)) for model in payload.get("models", []))
         output.append('</tr></thead><tbody>')
