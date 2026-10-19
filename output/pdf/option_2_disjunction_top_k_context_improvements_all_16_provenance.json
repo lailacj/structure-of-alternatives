@@ -1,0 +1,16 @@
+{
+  "inputs": {
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/word_spearman_by_context.csv": "2eb546a9670898c27551f71c1593c8183ff7e8cd6d534adace45de6b6a8846ad",
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/negation_paired_ranks.csv": "f00ca0c8705302b704436c365f447fd68a6fe1de293d9ae3088332ac25bbea35",
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/negation_spearman_by_context.csv": "83a13f656e0abc94b584cf2b279d19197e545f31fbe4e64d7bc5713e0729150e",
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/advisor_summary/item_level_scatterplots/novel_focus_by_context/novel_focus_item_level_predictions.csv": "4c3934e74ec051d037eb39f8adc9c9fc36b7641543f7527210dc4d54df9d7b97"
+  },
+  "script": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/word_ranking_figures_2026-10-15/plot_topk_all_contexts.py",
+  "selection": "All 16 contexts, alphabetical order; 30 pairs per context, 480 total.",
+  "evaluation": "Disjunction Top-K minus No linking within-context correlations. Spearman uses average ranks for ties. Original corrected held-out predictions; no fitting or resampling. Only top_k linking rows selected.",
+  "validation": "All 32 model/context Spearman coefficients match the saved full-data results within 1e-12. All item predictions, human rates, and Pearson coefficients match the separate saved item-level reporting export within 1e-12.",
+  "horizontal_limits": [
+    -0.65,
+    0.38
+  ]
+}

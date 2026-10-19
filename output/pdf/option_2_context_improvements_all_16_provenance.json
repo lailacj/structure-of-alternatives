@@ -1,0 +1,15 @@
+{
+  "inputs": {
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/word_spearman_by_context.csv": "2eb546a9670898c27551f71c1593c8183ff7e8cd6d534adace45de6b6a8846ad",
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/spearman/negation_paired_ranks.csv": "f00ca0c8705302b704436c365f447fd68a6fe1de293d9ae3088332ac25bbea35",
+    "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/word_ranking_figures_2026-10-15/figure_data.csv": "1a5d7823073fb4c5f82f2804ade3752938058b0e7c4f57cf7298461165f133ce"
+  },
+  "script": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/word_ranking_figures_2026-10-15/plot_all_contexts.py",
+  "selection": "All 16 contexts, alphabetical order; 30 pairs per context, 480 total.",
+  "evaluation": "Set Top-K minus No linking within-context correlations. Spearman uses average ranks for ties. Original corrected held-out predictions; no fitting or resampling.",
+  "validation": "All 16 contexts and every coefficient match the original saved figure data within absolute tolerance 1e-12.",
+  "horizontal_limits": [
+    -0.3,
+    0.38
+  ]
+}
