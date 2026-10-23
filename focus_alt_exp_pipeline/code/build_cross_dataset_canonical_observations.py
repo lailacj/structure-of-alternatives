@@ -482,12 +482,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--rnx-human", type=Path, default=DEFAULT_RNX_HUMAN)
     parser.add_argument("--no-frame-scores", type=Path, default=DEFAULT_NO_FRAME_SCORES)
     parser.add_argument("--remaining-scores", type=Path, default=DEFAULT_REMAINING_SCORES)
+    parser.add_argument("--rnx-x-frame-scores", type=Path, help="Optional completed R&X query-only contrastive artifact")
+    parser.add_argument("--rnx-x-frame-manifest", type=Path, help="Manifest used for the R&X contrastive scores (defaults to the committed R&X manifest)")
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    if args.rnx_x_frame_scores and args.output_dir.resolve() == DEFAULT_OUTPUT_DIR.resolve():
+        raise ValueError("Choose a new --output-dir when adding R&X framed scores; preserve the frozen canonical tables")
     no_frame_scores = pd.read_csv(args.no_frame_scores)
     remaining_scores = pd.read_csv(args.remaining_scores)
 
@@ -513,6 +517,13 @@ def main() -> None:
         source_human_file=_source_path(args.rnx_human),
         source_score_file=_source_path(args.no_frame_scores),
     )
+    if args.rnx_x_frame_scores:
+        from rnx_contrastive import DEFAULT_MANIFEST, attach_scores, sha256, validate_scores
+        manifest_path = args.rnx_x_frame_manifest or DEFAULT_MANIFEST
+        framed = pd.read_csv(args.rnx_x_frame_scores)
+        validate_scores(framed, pd.read_csv(manifest_path), manifest_sha256=sha256(manifest_path))
+        rnx = attach_scores(rnx, framed, artifact=_source_path(args.rnx_x_frame_scores))
+        validate_canonical_observations(rnx, require_complete_provenance=True, require_human_counts=True)
     combined = canonical_column_order(pd.concat([focus, hu, rnx], ignore_index=True))
     validate_canonical_observations(combined, require_complete_provenance=True)
 

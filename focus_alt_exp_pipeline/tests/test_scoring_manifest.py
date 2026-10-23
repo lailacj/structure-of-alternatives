@@ -205,7 +205,7 @@ class ScoringManifestTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "must score the query only"):
             validate_scoring_manifest(manifest)
 
-    def test_rnx_cannot_use_x_but_not_y_frame(self) -> None:
+    def test_rnx_can_use_matched_query_only_x_but_not_y_frame(self) -> None:
         row = _row(
             family="ronai_xiang_2024",
             condition="ESI",
@@ -221,13 +221,14 @@ class ScoringManifestTests(unittest.TestCase):
                 "score_query": True,
             }
         )
+        paired = dict(row, condition="Eonly", item_id="Eonly::01::x_but_not_y")
         manifest = pd.DataFrame(
-            [row],
+            [row, paired],
             columns=[*MANIFEST_COLUMNS, *SCORING_CONTROL_COLUMNS],
         )
 
-        with self.assertRaisesRegex(ValueError, "applies only to Hu and novel-focus"):
-            validate_scoring_manifest(manifest)
+        validate_scoring_manifest(manifest)
+        self.assertEqual(summarize_scoring_manifest(manifest).unique_prompt_candidate_count, 1)
 
     def test_committed_manifest_has_expected_coverage(self) -> None:
         path = PIPELINE_DIR / "scoring_manifests" / "hu_rnx_no_frame_manifest.csv"

@@ -1,0 +1,301 @@
+generation_prompt,trigger,query,conditions,source_items
+A delay will probably but not ,probably,necessarily,ESI|Eonly,ESI::39|Eonly::39
+Ann's speech was polished but not ,polished,impeccable,ESI|Eonly,ESI::35|Eonly::35
+Bill's score matches but not ,matches,exceeds,ESI|Eonly,ESI::25|Eonly::25
+Cecilia trusts some but not ,some,all,ESI|Eonly,ESI::47|Eonly::47
+Chris's opponent was intimidating but not ,intimidating,terrifying,ESI|Eonly,ESI::22|Eonly::22
+Drinking is allowed but not ,allowed,obligatory,ESI|Eonly,ESI::01|Eonly::01
+Jimmy writes books or but not ,or,and,ESI|Eonly,ESI::29|Eonly::29
+Joey's parents tolerate but not ,tolerate,encourage,ESI|Eonly,ESI::51|Eonly::51
+John began but not ,began,completed,ESI|Eonly,ESI::03|Eonly::03
+Kaye's illness was serious but not ,serious,life-threatening,ESI|Eonly,ESI::42|Eonly::42
+Mistakes happened once but not ,once,twice,ESI|Eonly,ESI::28|Eonly::28
+Peter's answers were mostly but not ,mostly,entirely,ESI|Eonly,ESI::26|Eonly::26
+Phoebe wants but not ,wants,needs,ESI|Eonly,ESI::57|Eonly::57
+Stu's daughter was scared but not ,scared,petrified,ESI|Eonly,ESI::41|Eonly::41
+Success is possible but not ,possible,certain,ESI|Eonly,ESI::36|Eonly::36
+"Sue: Are the residents exclusively Greek?
+Mary: The residents are primarily but not ",primarily,exclusively,Eonlystrong|Estrong,Eonlystrong::38|Estrong::38
+"Sue: Are the residents primarily Greek?
+Mary: The residents are primarily but not ",primarily,exclusively,Eweak,Eweak::38
+"Sue: Are the two paintings identical?
+Mary: The two paintings are similar but not ",similar,identical,Eonlystrong|Estrong,Eonlystrong::43|Estrong::43
+"Sue: Are the two paintings similar?
+Mary: The two paintings are similar but not ",similar,identical,Eweak,Eweak::43
+"Sue: Did John begin the race?
+Mary: John began but not ",began,completed,Eweak,Eweak::03
+"Sue: Did John complete the race?
+Mary: John began but not ",began,completed,Eonlystrong|Estrong,Eonlystrong::03|Estrong::03
+"Sue: Did mistakes happen once?
+Mary: Mistakes happened once but not ",once,twice,Eweak,Eweak::28
+"Sue: Did mistakes happen twice?
+Mary: Mistakes happened once but not ",once,twice,Eonlystrong|Estrong,Eonlystrong::28|Estrong::28
+"Sue: Did the candidate succeed?
+Mary: The candidate tried but not ",tried,succeeded,Eonlystrong|Estrong,Eonlystrong::52|Estrong::52
+"Sue: Did the candidate try?
+Mary: The candidate tried but not ",tried,succeeded,Eweak,Eweak::52
+"Sue: Did the city eliminate waste?
+Mary: The city reduced but not ",reduced,eliminated,Eonlystrong|Estrong,Eonlystrong::40|Estrong::40
+"Sue: Did the city reduce waste?
+Mary: The city reduced but not ",reduced,eliminated,Eweak,Eweak::40
+"Sue: Did the plant survive?
+Mary: The plant survived but not ",survived,thrived,Eweak,Eweak::49
+"Sue: Did the plant thrive?
+Mary: The plant survived but not ",survived,thrived,Eonlystrong|Estrong,Eonlystrong::49|Estrong::49
+"Sue: Did the rehearsal go superbly?
+Mary: The rehearsal went well but not ",well,superbly,Eonlystrong|Estrong,Eonlystrong::59|Estrong::59
+"Sue: Did the rehearsal go well?
+Mary: The rehearsal went well but not ",well,superbly,Eweak,Eweak::59
+"Sue: Did the runner finish?
+Mary: The runner started but not ",started,finished,Eonlystrong|Estrong,Eonlystrong::48|Estrong::48
+"Sue: Did the runner start?
+Mary: The runner started but not ",started,finished,Eweak,Eweak::48
+"Sue: Did the train slow down?
+Mary: The train slowed but not ",slowed,stopped,Eweak,Eweak::44
+"Sue: Did the train stop?
+Mary: The train slowed but not ",slowed,stopped,Eonlystrong|Estrong,Eonlystrong::44|Estrong::44
+"Sue: Do Joey's parents encourage dating?
+Mary: Joey's parents tolerate but not ",tolerate,encourage,Eonlystrong|Estrong,Eonlystrong::51|Estrong::51
+"Sue: Do Joey's parents tolerate dating?
+Mary: Joey's parents tolerate but not ",tolerate,encourage,Eweak,Eweak::51
+"Sue: Does Bill's score exceed Al's?
+Mary: Bill's score matches but not ",matches,exceeds,Eonlystrong|Estrong,Eonlystrong::25|Estrong::25
+"Sue: Does Bill's score match Al's?
+Mary: Bill's score matches but not ",matches,exceeds,Eweak,Eweak::25
+"Sue: Does Cecilia trust all politicians?
+Mary: Cecilia trusts some but not ",some,all,Eonlystrong|Estrong,Eonlystrong::47|Estrong::47
+"Sue: Does Cecilia trust some politicians?
+Mary: Cecilia trusts some but not ",some,all,Eweak,Eweak::47
+"Sue: Does Jimmy write books and plays?
+Mary: Jimmy writes books or but not ",or,and,Eonlystrong|Estrong,Eonlystrong::29|Estrong::29
+"Sue: Does Jimmy write books or plays?
+Mary: Jimmy writes books or but not ",or,and,Eweak,Eweak::29
+"Sue: Does Phoebe need a car?
+Mary: Phoebe wants but not ",wants,needs,Eonlystrong|Estrong,Eonlystrong::57|Estrong::57
+"Sue: Does Phoebe want a car?
+Mary: Phoebe wants but not ",wants,needs,Eweak,Eweak::57
+"Sue: Does the club permit dancing?
+Mary: The club permits but not ",permits,requires,Eweak,Eweak::34
+"Sue: Does the club require dancing?
+Mary: The club permits but not ",permits,requires,Eonlystrong|Estrong,Eonlystrong::34|Estrong::34
+"Sue: Does the doctor dislike coffee?
+Mary: The doctor dislikes but not ",dislikes,loathes,Eweak,Eweak::11
+"Sue: Does the doctor loathe coffee?
+Mary: The doctor dislikes but not ",dislikes,loathes,Eonlystrong|Estrong,Eonlystrong::11|Estrong::11
+"Sue: Does the princess like dancing?
+Mary: The princess likes but not ",likes,loves,Eweak,Eweak::24
+"Sue: Does the princess love dancing?
+Mary: The princess likes but not ",likes,loves,Eonlystrong|Estrong,Eonlystrong::24|Estrong::24
+"Sue: Does the teacher believe it is true?
+Mary: The teacher believes but not ",believes,knows,Eweak,Eweak::04
+"Sue: Does the teacher know it is true?
+Mary: The teacher believes but not ",believes,knows,Eonlystrong|Estrong,Eonlystrong::04|Estrong::04
+"Sue: Is drinking allowed?
+Mary: Drinking is allowed but not ",allowed,obligatory,Eweak,Eweak::01
+"Sue: Is drinking obligatory?
+Mary: Drinking is allowed but not ",allowed,obligatory,Eonlystrong|Estrong,Eonlystrong::01|Estrong::01
+"Sue: Is success certain?
+Mary: Success is possible but not ",possible,certain,Eonlystrong|Estrong,Eonlystrong::36|Estrong::36
+"Sue: Is success possible?
+Mary: Success is possible but not ",possible,certain,Eweak,Eweak::36
+"Sue: Is that candidate equally skilled?
+Mary: That candidate is equally but not ",equally,more,Eweak,Eweak::13
+"Sue: Is that candidate more skilled?
+Mary: That candidate is equally but not ",equally,more,Eonlystrong|Estrong,Eonlystrong::13|Estrong::13
+"Sue: Is the boy hungry?
+Mary: The boy is hungry but not ",hungry,starving,Eweak,Eweak::20
+"Sue: Is the boy starving?
+Mary: The boy is hungry but not ",hungry,starving,Eonlystrong|Estrong,Eonlystrong::20|Estrong::20
+"Sue: Is the elephant big?
+Mary: The elephant is big but not ",big,enormous,Eweak,Eweak::05
+"Sue: Is the elephant enormous?
+Mary: The elephant is big but not ",big,enormous,Eonlystrong|Estrong,Eonlystrong::05|Estrong::05
+"Sue: Is the fish small?
+Mary: The fish is small but not ",small,tiny,Eweak,Eweak::45
+"Sue: Is the fish tiny?
+Mary: The fish is small but not ",small,tiny,Eonlystrong|Estrong,Eonlystrong::45|Estrong::45
+"Sue: Is the girl beautiful?
+Mary: The girl is pretty but not ",pretty,beautiful,Eonlystrong|Estrong,Eonlystrong::37|Estrong::37
+"Sue: Is the girl pretty?
+Mary: The girl is pretty but not ",pretty,beautiful,Eweak,Eweak::37
+"Sue: Is the house ancient?
+Mary: The house is old but not ",old,ancient,Eonlystrong|Estrong,Eonlystrong::27|Estrong::27
+"Sue: Is the house old?
+Mary: The house is old but not ",old,ancient,Eweak,Eweak::27
+"Sue: Is the lawyer always early?
+Mary: The lawyer is usually but not ",usually,always,Eonlystrong|Estrong,Eonlystrong::56|Estrong::56
+"Sue: Is the lawyer usually early?
+Mary: The lawyer is usually but not ",usually,always,Eweak,Eweak::56
+"Sue: Is the movie excellent?
+Mary: The movie is good but not ",good,excellent,Eonlystrong|Estrong,Eonlystrong::15|Estrong::15
+"Sue: Is the movie funny?
+Mary: The movie is funny but not ",funny,hilarious,Eweak,Eweak::14
+"Sue: Is the movie good?
+Mary: The movie is good but not ",good,excellent,Eweak,Eweak::15
+"Sue: Is the movie hilarious?
+Mary: The movie is funny but not ",funny,hilarious,Eonlystrong|Estrong,Eonlystrong::14|Estrong::14
+"Sue: Is the problem hard?
+Mary: The problem is hard but not ",hard,unsolvable,Eweak,Eweak::17
+"Sue: Is the problem unsolvable?
+Mary: The problem is hard but not ",hard,unsolvable,Eonlystrong|Estrong,Eonlystrong::17|Estrong::17
+"Sue: Is the shirt snug?
+Mary: The shirt is snug but not ",snug,tight,Eweak,Eweak::46
+"Sue: Is the shirt tight?
+Mary: The shirt is snug but not ",snug,tight,Eonlystrong|Estrong,Eonlystrong::46|Estrong::46
+"Sue: Is the sky black?
+Mary: The sky is dark but not ",dark,black,Eonlystrong|Estrong,Eonlystrong::08|Estrong::08
+"Sue: Is the sky dark?
+Mary: The sky is dark but not ",dark,black,Eweak,Eweak::08
+"Sue: Is the student brilliant?
+Mary: The student is intelligent but not ",intelligent,brilliant,Eonlystrong|Estrong,Eonlystrong::21|Estrong::21
+"Sue: Is the student intelligent?
+Mary: The student is intelligent but not ",intelligent,brilliant,Eweak,Eweak::21
+"Sue: Is the tank completely full?
+Mary: The tank is partially but not ",partially,completely,Eonlystrong|Estrong,Eonlystrong::33|Estrong::33
+"Sue: Is the tank partially full?
+Mary: The tank is partially but not ",partially,completely,Eweak,Eweak::33
+"Sue: Is the task difficult?
+Mary: The task is difficult but not ",difficult,impossible,Eweak,Eweak::09
+"Sue: Is the task impossible?
+Mary: The task is difficult but not ",difficult,impossible,Eonlystrong|Estrong,Eonlystrong::09|Estrong::09
+"Sue: Is the teenager obese?
+Mary: The teenager is overweight but not ",overweight,obese,Eonlystrong|Estrong,Eonlystrong::30|Estrong::30
+"Sue: Is the teenager overweight?
+Mary: The teenager is overweight but not ",overweight,obese,Eweak,Eweak::30
+"Sue: Is the toxin deadly?
+Mary: The toxin is harmful but not ",harmful,deadly,Eonlystrong|Estrong,Eonlystrong::18|Estrong::18
+"Sue: Is the toxin harmful?
+Mary: The toxin is harmful but not ",harmful,deadly,Eweak,Eweak::18
+"Sue: Is the waiter eager?
+Mary: The waiter is willing but not ",willing,eager,Eonlystrong|Estrong,Eonlystrong::60|Estrong::60
+"Sue: Is the waiter willing?
+Mary: The waiter is willing but not ",willing,eager,Eweak,Eweak::60
+"Sue: Is the wallpaper hideous?
+Mary: The wallpaper is ugly but not ",ugly,hideous,Eonlystrong|Estrong,Eonlystrong::53|Estrong::53
+"Sue: Is the wallpaper ugly?
+Mary: The wallpaper is ugly but not ",ugly,hideous,Eweak,Eweak::53
+"Sue: Is the wather hot?
+Mary: The wather is warm but not ",warm,hot,Eonlystrong|Estrong,Eonlystrong::58|Estrong::58
+"Sue: Is the wather warm?
+Mary: The wather is warm but not ",warm,hot,Eweak,Eweak::58
+"Sue: Is the weather cold?
+Mary: The weather is cool but not ",cool,cold,Eonlystrong|Estrong,Eonlystrong::06|Estrong::06
+"Sue: Is the weather cool?
+Mary: The weather is cool but not ",cool,cold,Eweak,Eweak::06
+"Sue: Is the wine delicious?
+Mary: The wine is palatable but not ",palatable,delicious,Eonlystrong|Estrong,Eonlystrong::32|Estrong::32
+"Sue: Is the wine palatable?
+Mary: The wine is palatable but not ",palatable,delicious,Eweak,Eweak::32
+"Sue: Is the worker exhausted?
+Mary: The worker is tired but not ",tired,exhausted,Eonlystrong|Estrong,Eonlystrong::50|Estrong::50
+"Sue: Is the worker tired?
+Mary: The worker is tired but not ",tired,exhausted,Eweak,Eweak::50
+"Sue: Is there water everywhere?
+Mary: There is water here but not ",here,everywhere,Eonlystrong|Estrong,Eonlystrong::19|Estrong::19
+"Sue: Is there water here?
+Mary: There is water here but not ",here,everywhere,Eweak,Eweak::19
+"Sue: Is this model attractive?
+Mary: This model is attractive but not ",attractive,stunning,Eweak,Eweak::02
+"Sue: Is this model stunning?
+Mary: This model is attractive but not ",attractive,stunning,Eonlystrong|Estrong,Eonlystrong::02|Estrong::02
+"Sue: Might the machine damage itself?
+Mary: The machine might damage but not ",damage,destroy,Eweak,Eweak::07
+"Sue: Might the machine destroy itself?
+Mary: The machine might damage but not ",damage,destroy,Eonlystrong|Estrong,Eonlystrong::07|Estrong::07
+"Sue: Was Ann's speech impeccable?
+Mary: Ann's speech was polished but not ",polished,impeccable,Eonlystrong|Estrong,Eonlystrong::35|Estrong::35
+"Sue: Was Ann's speech polished?
+Mary: Ann's speech was polished but not ",polished,impeccable,Eweak,Eweak::35
+"Sue: Was Chris's opponent intimidating?
+Mary: Chris's opponent was intimidating but not ",intimidating,terrifying,Eweak,Eweak::22
+"Sue: Was Chris's opponent terrifying?
+Mary: Chris's opponent was intimidating but not ",intimidating,terrifying,Eonlystrong|Estrong,Eonlystrong::22|Estrong::22
+"Sue: Was Kaye's illness life-threatening?
+Mary: Kaye's illness was serious but not ",serious,life-threatening,Eonlystrong|Estrong,Eonlystrong::42|Estrong::42
+"Sue: Was Kaye's illness serious?
+Mary: Kaye's illness was serious but not ",serious,life-threatening,Eweak,Eweak::42
+"Sue: Was Stu's daughter petrified?
+Mary: Stu's daughter was scared but not ",scared,petrified,Eonlystrong|Estrong,Eonlystrong::41|Estrong::41
+"Sue: Was Stu's daughter scared?
+Mary: Stu's daughter was scared but not ",scared,petrified,Eweak,Eweak::41
+"Sue: Was Tim's bathroom disgusting?
+Mary: Tim's bathroom was unpleasant but not ",unpleasant,disgusting,Eonlystrong|Estrong,Eonlystrong::55|Estrong::55
+"Sue: Was Tim's bathroom unpleasant?
+Mary: Tim's bathroom was unpleasant but not ",unpleasant,disgusting,Eweak,Eweak::55
+"Sue: Was Tom's interview articulate?
+Mary: Tom's interview was understandable but not ",understandable,articulate,Eonlystrong|Estrong,Eonlystrong::54|Estrong::54
+"Sue: Was Tom's interview understandable?
+Mary: Tom's interview was understandable but not ",understandable,articulate,Eweak,Eweak::54
+"Sue: Was Zack's carpet dirty?
+Mary: Zack's carpet was dirty but not ",dirty,filthy,Eweak,Eweak::10
+"Sue: Was Zack's carpet filthy?
+Mary: Zack's carpet was dirty but not ",dirty,filthy,Eonlystrong|Estrong,Eonlystrong::10|Estrong::10
+"Sue: Was the coast largely flooded?
+Mary: The coast was largely but not ",largely,totally,Eweak,Eweak::23
+"Sue: Was the coast totally flooded?
+Mary: The coast was largely but not ",largely,totally,Eonlystrong|Estrong,Eonlystrong::23|Estrong::23
+"Sue: Was the measure supported overwhelmingly?
+Mary: The measure was supported overwhelmingly but not ",overwhelmingly,unanimously,Eweak,Eweak::31
+"Sue: Was the measure supported unanimously?
+Mary: The measure was supported overwhelmingly but not ",overwhelmingly,unanimously,Eonlystrong|Estrong,Eonlystrong::31|Estrong::31
+"Sue: Was the winner ecstatic?
+Mary: The winner was happy but not ",happy,ecstatic,Eonlystrong|Estrong,Eonlystrong::16|Estrong::16
+"Sue: Was the winner happy?
+Mary: The winner was happy but not ",happy,ecstatic,Eweak,Eweak::16
+"Sue: Were Peter's answers entirely wrong?
+Mary: Peter's answers were mostly but not ",mostly,entirely,Eonlystrong|Estrong,Eonlystrong::26|Estrong::26
+"Sue: Were Peter's answers mostly wrong?
+Mary: Peter's answers were mostly but not ",mostly,entirely,Eweak,Eweak::26
+"Sue: Will a delay necessarily occur?
+Mary: A delay will probably but not ",probably,necessarily,Eonlystrong|Estrong,Eonlystrong::39|Estrong::39
+"Sue: Will a delay probably occur?
+Mary: A delay will probably but not ",probably,necessarily,Eweak,Eweak::39
+"Sue: Will the sales double?
+Mary: The sales will double but not ",double,triple,Eweak,Eweak::12
+"Sue: Will the sales triple?
+Mary: The sales will double but not ",double,triple,Eonlystrong|Estrong,Eonlystrong::12|Estrong::12
+That candidate is equally but not ,equally,more,ESI|Eonly,ESI::13|Eonly::13
+The boy is hungry but not ,hungry,starving,ESI|Eonly,ESI::20|Eonly::20
+The candidate tried but not ,tried,succeeded,ESI|Eonly,ESI::52|Eonly::52
+The city reduced but not ,reduced,eliminated,ESI|Eonly,ESI::40|Eonly::40
+The club permits but not ,permits,requires,ESI|Eonly,ESI::34|Eonly::34
+The coast was largely but not ,largely,totally,ESI|Eonly,ESI::23|Eonly::23
+The doctor dislikes but not ,dislikes,loathes,ESI|Eonly,ESI::11|Eonly::11
+The elephant is big but not ,big,enormous,ESI|Eonly,ESI::05|Eonly::05
+The fish is small but not ,small,tiny,ESI|Eonly,ESI::45|Eonly::45
+The girl is pretty but not ,pretty,beautiful,ESI|Eonly,ESI::37|Eonly::37
+The house is old but not ,old,ancient,ESI|Eonly,ESI::27|Eonly::27
+The lawyer is usually but not ,usually,always,ESI|Eonly,ESI::56|Eonly::56
+The machine might damage but not ,damage,destroy,ESI|Eonly,ESI::07|Eonly::07
+The measure was supported overwhelmingly but not ,overwhelmingly,unanimously,ESI|Eonly,ESI::31|Eonly::31
+The movie is funny but not ,funny,hilarious,ESI|Eonly,ESI::14|Eonly::14
+The movie is good but not ,good,excellent,ESI|Eonly,ESI::15|Eonly::15
+The plant survived but not ,survived,thrived,ESI|Eonly,ESI::49|Eonly::49
+The princess likes but not ,likes,loves,ESI|Eonly,ESI::24|Eonly::24
+The problem is hard but not ,hard,unsolvable,ESI|Eonly,ESI::17|Eonly::17
+The rehearsal went well but not ,well,superbly,ESI|Eonly,ESI::59|Eonly::59
+The residents are primarily but not ,primarily,exclusively,ESI|Eonly,ESI::38|Eonly::38
+The runner started but not ,started,finished,ESI|Eonly,ESI::48|Eonly::48
+The sales will double but not ,double,triple,ESI|Eonly,ESI::12|Eonly::12
+The shirt is snug but not ,snug,tight,ESI|Eonly,ESI::46|Eonly::46
+The sky is dark but not ,dark,black,ESI|Eonly,ESI::08|Eonly::08
+The student is intelligent but not ,intelligent,brilliant,ESI|Eonly,ESI::21|Eonly::21
+The tank is partially but not ,partially,completely,ESI|Eonly,ESI::33|Eonly::33
+The task is difficult but not ,difficult,impossible,ESI|Eonly,ESI::09|Eonly::09
+The teacher believes but not ,believes,knows,ESI|Eonly,ESI::04|Eonly::04
+The teenager is overweight but not ,overweight,obese,ESI|Eonly,ESI::30|Eonly::30
+The toxin is harmful but not ,harmful,deadly,ESI|Eonly,ESI::18|Eonly::18
+The train slowed but not ,slowed,stopped,ESI|Eonly,ESI::44|Eonly::44
+The two paintings are similar but not ,similar,identical,ESI|Eonly,ESI::43|Eonly::43
+The waiter is willing but not ,willing,eager,ESI|Eonly,ESI::60|Eonly::60
+The wallpaper is ugly but not ,ugly,hideous,ESI|Eonly,ESI::53|Eonly::53
+The wather is warm but not ,warm,hot,ESI|Eonly,ESI::58|Eonly::58
+The weather is cool but not ,cool,cold,ESI|Eonly,ESI::06|Eonly::06
+The wine is palatable but not ,palatable,delicious,ESI|Eonly,ESI::32|Eonly::32
+The winner was happy but not ,happy,ecstatic,ESI|Eonly,ESI::16|Eonly::16
+The worker is tired but not ,tired,exhausted,ESI|Eonly,ESI::50|Eonly::50
+There is water here but not ,here,everywhere,ESI|Eonly,ESI::19|Eonly::19
+This model is attractive but not ,attractive,stunning,ESI|Eonly,ESI::02|Eonly::02
+Tim's bathroom was unpleasant but not ,unpleasant,disgusting,ESI|Eonly,ESI::55|Eonly::55
+Tom's interview was understandable but not ,understandable,articulate,ESI|Eonly,ESI::54|Eonly::54
+Zack's carpet was dirty but not ,dirty,filthy,ESI|Eonly,ESI::10|Eonly::10

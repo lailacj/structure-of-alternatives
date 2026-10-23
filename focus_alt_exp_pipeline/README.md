@@ -234,6 +234,14 @@ Builds item-level model-versus-human plots and Novel Focus context panels.
 
 ### Cross-dataset Qwen scoring status
 
+**R&X contrastive extension (prepared October 23, 2026):** the dedicated
+`scoring_manifests/rnx_x_but_not_y_manifest.csv` contains 300 query-only
+X-but-not-Y rows (180 unique prompt/target pairs). The weaker surface form
+occupies X; the stronger surface form is scored in Y. *Only* is omitted and
+QUDs are retained. Scoring has not been run for this extension. See
+[the cluster handoff](scoring_manifests/RNX_X_BUT_NOT_Y.md) for the scoring
+wrapper and CPU importer that adds scores to a new corrected results bundle.
+
 Both standardized Qwen cluster scoring runs are complete. The committed
 `scoring_manifests/hu_rnx_no_frame_manifest.csv` contains:
 
@@ -254,7 +262,8 @@ that diagnostic never receives alternative-structure inputs.
 
 `scoring_manifests/focus_hu_remaining_qwen_manifest.csv` contains 480 focus
 no-frame rows, 480 focus X-but-not-Y rows, and 309 Hu X-but-not-Y rows. R&X is
-intentionally absent from the X-but-not-Y frame. The corresponding complete
+absent from this original X-but-not-Y batch; the dedicated R&X extension above
+adds those inputs separately. The corresponding complete
 score files are `model_scores/hu_rnx_no_frame_qwen_scores.csv` and
 `model_scores/focus_hu_remaining_qwen_scores.csv`.
 

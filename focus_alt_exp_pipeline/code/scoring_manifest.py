@@ -174,10 +174,10 @@ def validate_scoring_manifest(manifest: pd.DataFrame) -> None:
     if flags.loc[x_but_not_y, "score_trigger"].any():
         raise ValueError("X-but-not-Y rows must score the query only")
     unsupported_x_frame = x_but_not_y & ~df["dataset_family"].astype(str).isin(
-        ["hu_2023_benchmark", "novel_focus"]
+        ["hu_2023_benchmark", "novel_focus", "ronai_xiang_2024"]
     )
     if unsupported_x_frame.any():
-        raise ValueError("X-but-not-Y scoring applies only to Hu and novel-focus rows")
+        raise ValueError("Unsupported dataset family for X-but-not-Y scoring")
     if df.duplicated(list(MANIFEST_KEY_COLUMNS)).any():
         raise ValueError("Scoring manifest contains duplicate item-condition keys")
     if df["trigger"].astype(str).eq(df["query"].astype(str)).any():
@@ -190,7 +190,12 @@ def validate_scoring_manifest(manifest: pd.DataFrame) -> None:
         answer_prefix = df.loc[rnx, "generation_prompt"].astype(str).str.rsplit("\n", n=1).str[-1]
         contains_only = answer_prefix.str.contains(r"\bonly\b", case=False, regex=True)
         if contains_only.any():
-            raise ValueError("R&X no-frame answer prompts must not contain the word 'only'")
+            raise ValueError("R&X answer prompts must not contain the word 'only'")
+
+        rnx_framed = df.loc[rnx & x_but_not_y]
+        for row in rnx_framed.itertuples():
+            if not str(row.generation_prompt).endswith(f" {row.trigger} but not "):
+                raise ValueError("R&X X-but-not-Y prompts must end in the weaker trigger + ' but not ' with exactly one trailing space")
 
         rnx_rows = df.loc[rnx]
         for left_condition, right_condition in [
@@ -199,19 +204,19 @@ def validate_scoring_manifest(manifest: pd.DataFrame) -> None:
         ]:
             left = rnx_rows.loc[
                 rnx_rows["condition"].eq(left_condition),
-                ["group_id", "generation_prompt", "trigger", "query"],
-            ].set_index("group_id")
+                ["generation_frame", "group_id", "generation_prompt", "trigger", "query"],
+            ].set_index(["generation_frame", "group_id"])
             right = rnx_rows.loc[
                 rnx_rows["condition"].eq(right_condition),
-                ["group_id", "generation_prompt", "trigger", "query"],
-            ].set_index("group_id")
+                ["generation_frame", "group_id", "generation_prompt", "trigger", "query"],
+            ].set_index(["generation_frame", "group_id"])
             if set(left.index) != set(right.index):
                 raise ValueError(
                     f"R&X {left_condition}/{right_condition} item coverage does not match"
                 )
             if not left.sort_index().equals(right.sort_index()):
                 raise ValueError(
-                    f"R&X {left_condition}/{right_condition} no-frame prompts must match exactly"
+                    f"R&X {left_condition}/{right_condition} prompts must match exactly within each frame"
                 )
 
 

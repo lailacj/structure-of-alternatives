@@ -1,5 +1,11 @@
 # Cross-dataset Qwen scoring manifest
 
+The separate R&X (2024) contrastive extension is prepared in
+`rnx_x_but_not_y_manifest.csv`: 300 query-only rows, 180 unique prompt/target
+pairs, with *only* omitted. See [the cluster handoff](RNX_X_BUT_NOT_Y.md) for
+dry-run, scoring and post-scoring integration commands. No GPU run is started
+by preparing this batch.
+
 This directory contains two self-contained direct-candidate Qwen scoring inputs:
 
 - `hu_rnx_no_frame_manifest.csv`: the completed Hu/R&X no-frame batch, with
@@ -31,7 +37,8 @@ For the remaining-frame manifest:
 | Hu benchmark | X-but-not-Y | 309 | Query only |
 
 The X-but-not-Y rows never score a trigger continuation and never produce an
-alternative-structure contrast. R&X does not receive this frame.
+alternative-structure contrast. This original batch excludes R&X; R&X framed
+rows are now supplied by the separate `rnx_x_but_not_y_manifest.csv` batch.
 
 ## Rebuild versus score
 

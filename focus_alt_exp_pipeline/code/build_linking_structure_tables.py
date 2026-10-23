@@ -228,10 +228,8 @@ def build_dataset_spearman(source_rows: pd.DataFrame, oof: pd.DataFrame):
             else:
                 variant, structure, column = "direct", model, model
             values = joined[column]
-            unavailable = dataset_id.startswith("rnx_") and model == "X but not Y"
+            unavailable = dataset_id.startswith("rnx_") and model == "X but not Y" and values.isna().all()
             if unavailable:
-                if values.notna().any():
-                    raise ValueError("Unexpected X-but-not-Y scores for R&X")
                 rho, status = np.nan, "not_applicable"
             else:
                 if not values.between(0, 1).all() or not joined.human_rate.between(0, 1).all():
@@ -352,8 +350,8 @@ def main() -> None:
         + _markdown_table(scores)
         + "\n\n## Coverage\n\n"
         + _markdown_table(coverage)
-        + "\n\nX-but-not-Y is structurally unavailable for the five R&X conditions. "
-        "NA in any other correlation cell means that the statistic is undefined.\n"
+        + "\n\nX-but-not-Y is reported for R&X when framed scores are supplied; frozen older bundles lack those scores. "
+        "Coverage distinguishes missing predictors from undefined correlations.\n"
     )
     (args.output_dir / "LINKING_STRUCTURE_TABLES.md").write_text(report, encoding="utf-8")
     print(f"[complete] wrote linking-structure tables to {args.output_dir}")

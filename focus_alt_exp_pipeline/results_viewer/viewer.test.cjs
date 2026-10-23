@@ -61,7 +61,7 @@ test("log-score displays and downloads consistently report sums",async()=>{
   }
 });
 
-function harness(payload=data){
+function harness(payload=data,source=null){
   const listeners={},elements={},downloads=[];
   const element=id=>elements[id]||(elements[id]={id,innerHTML:"",textContent:"",focus(){},setAttribute(){},removeAttribute(){},scrollIntoView(){}});
   element("results-data").textContent=JSON.stringify(payload);
@@ -70,12 +70,40 @@ function harness(payload=data){
     URL:{createObjectURL(blob){downloads.push(blob);return "blob:test";},revokeObjectURL(){}},setTimeout:fn=>fn()};
   vm.createContext(sandbox);
   // Exercise the scripts actually shipped in the HTML, not only the JS source.
-  for(const script of html.matchAll(/<script>([\s\S]*?)<\/script>/g))vm.runInContext(script[1],sandbox);
+  const scripts=source?[source]:[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(script=>script[1]);
+  for(const script of scripts)vm.runInContext(script,sandbox);
   return {html:()=>element("main").innerHTML,downloads:()=>Promise.all(downloads.map(blob=>blob.text())),
     click:(dataset,table)=>listeners.click({target:{closest:()=>({dataset,closest:()=>table})}}),
     change:(id,value)=>listeners.change({target:{id,value}}),
     input:(id,value)=>listeners.input({target:{id,value}})};
 }
+
+test("R&X contrastive coverage includes all ten datasets in overview, shared coverage and methods",()=>{
+  const extended=JSON.parse(JSON.stringify(data));
+  for(const row of extended.items.filter(r=>r.dataset.startsWith("rnx_"))){
+    row.p[1]=.1+(row.id.length%7)/10;
+    row.scores[1]=row.y*Math.log(row.p[1])+(1-row.y)*Math.log1p(-row.p[1]);
+  }
+  for(const dataset of extended.datasets){
+    extended.datasetSummaries[dataset.id]=extended.models.map((_,m)=>math.summary(extended.items.filter(r=>r.dataset===dataset.id),m));
+  }
+  const source=fs.readFileSync(path.join(__dirname,"viewer.js"),"utf8"),app=harness(extended,source);
+  assert.match(app.html(),/10 datasets with all 9 structures/);
+  assert.ok(!app.html().includes("covers only 5"));
+  app.change("coverage","shared");
+  assert.match(app.html(),/data-dataset="rnx_esi"/);
+  app.change("metric","rho");
+  assert.match(app.html(),/data-dataset="rnx_eonlystrong"/);
+  app.click({dataset:"rnx_esi"});
+  assert.match(app.html(),/only is omitted/);
+  app.click({view:"methods"});
+  assert.match(app.html(),/X-but-not-Y covers all 10 datasets/);
+  assert.ok(!app.html().includes("structurally unavailable"));
+  const historical=harness(data,source);
+  assert.match(historical.html(),/5 datasets with all 9 structures/);
+  historical.change("coverage","shared");
+  assert.ok(!historical.html().includes('data-dataset="rnx_esi"'));
+});
 
 test("pair contributions match saved context coefficients and tied ranks for all models",()=>{
   for(const context of data.contexts)for(let model=0;model<data.models.length;model++){

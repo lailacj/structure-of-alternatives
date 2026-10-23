@@ -1,0 +1,15 @@
+{
+  "row_count": 300,
+  "dataset_family_count": 1,
+  "dataset_count": 1,
+  "condition_count": 5,
+  "generation_frame_count": 1,
+  "unique_prompt_count": 180,
+  "unique_prompt_candidate_count": 180,
+  "hu_rows_pending_exact_filter": 0,
+  "source_rows": "focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/inputs/source_rows.csv",
+  "source_rows_sha256": "0ab0b70aef1f40bf6f733e880862b0585575ded5fea97f7d7dcae39082b7a9ba",
+  "manifest_sha256": "5378308357582e9c6564e5fa9b8fa2502dda4e9fcebb6592e6f99f697cfd05b3",
+  "scoring_status": "prepared_not_scored",
+  "prompt_policy": "neutral prefix + weaker surface + ' but not '; only omitted; score stronger only"
+}

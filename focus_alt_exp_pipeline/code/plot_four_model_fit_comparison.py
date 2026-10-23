@@ -71,8 +71,8 @@ def read_fits(results: Path) -> tuple[pd.DataFrame, list[Path]]:
                     value = float(table.loc[dataset, model])
                     if metric == "log_score":
                         aggregation = "sum_of_item_log_scores"
-                unavailable = model == "X but not Y" and dataset.startswith("R&X ")
-                if unavailable != bool(np.isnan(value)):
+                unavailable = bool(np.isnan(value)) and model == "X but not Y" and dataset.startswith("R&X ")
+                if np.isnan(value) and not unavailable:
                     raise ValueError(f"Unexpected coverage: {dataset}, {model}, {metric}")
                 if not unavailable and not np.isfinite(value):
                     raise ValueError("Nonfinite fit")
@@ -131,7 +131,9 @@ def plot_metric(fits: pd.DataFrame, metric: str, output: Path) -> None:
     for spine in ["top", "right", "bottom"]:
         ax.spines[spine].set_visible(False)
     ax.spines["left"].set_color("#CBD3D9")
-    fig.text(.072, .075, "N/A: X but not Y is unavailable for the five R&X (2024) conditions. Bars show point estimates.",
+    coverage_note = ("N/A: framed scores were not supplied for these R&X conditions. "
+                     if (~subset.available).any() else "")
+    fig.text(.072, .075, coverage_note + "Bars show point estimates.",
              fontsize=10, color="#52616B")
     if metric == "spearman_rho":
         note = "*Novel focus: mean negation ρ across 16 contexts (30 pairs per context). Other datasets: within-dataset ρ."
@@ -173,7 +175,8 @@ negative log scores extend down from zero. Correlation axes share the same range
 
 Figures use the completed corrected single-space results. The bars are descriptive
 point estimates, with no uncertainty interval or claim of statistical superiority.
-Missing X-but-not-Y values for the five R&X conditions are labeled N/A.
+R&X X-but-not-Y results are included when framed scores are supplied; missing
+framed scores in frozen older bundles are labeled N/A.
 
 Log scores sum item scores without division by item count. Compare models within
 a dataset; totals depend on sample size. Log scores and Pearson correlations

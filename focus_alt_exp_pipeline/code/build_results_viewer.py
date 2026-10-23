@@ -350,7 +350,9 @@ def build_payload(results, manifest, log_probs_dir=None, top_n=50, vocab_dir=Non
         raise ValueError("Expected ten datasets and sixteen novel-focus contexts")
     prompts, sources = build_prompts(source)
     provenance = [HUMAN_FILE, source_path, oof_path, results / "cv_results/fold_selections.csv"]
-    for name in ("score_artifact_provenance.json", "framed_scoring_audit.json"):
+    for name in ("score_artifact_provenance.json", "framed_scoring_audit.json", "rnx_contrastive_provenance.json",
+                 "parent_score_artifact_provenance.json", "parent_framed_scoring_audit.json",
+                 "rnx_x_but_not_y_manifest.csv", "rnx_x_but_not_y_qwen_scores.csv"):
         if (manifest / name).exists():
             provenance.append(manifest / name)
     if manifest.resolve() == (PIPELINE / "scoring_manifests/set_variant_qwen").resolve():
@@ -373,9 +375,15 @@ def build_payload(results, manifest, log_probs_dir=None, top_n=50, vocab_dir=Non
         raise ValueError("Source-row hash does not match prediction grid")
     bounds = {variant: sorted({number(row["boundary"]) for row in grid if row["variant"] == variant}) for variant in ["top_k", "top_p"]}
     provenance.append(results / "prediction_grid.csv")
+    extension_path = manifest / "rnx_contrastive_provenance.json"
+    extension = json.loads(extension_path.read_text()) if extension_path.exists() else None
+    if extension and extension.get("source_rows_sha256") != hashlib.sha256(source_path.read_bytes()).hexdigest():
+        raise ValueError("R&X contrastive provenance does not match the extended source")
     return {"generated": datetime.now(timezone.utc).isoformat(), "datasets": [{"id": key, "label": label} for key, label in DATASETS],
+        "rnxContrastiveExtension": extension,
         "run": {"id": results.name, "path": str(results.resolve()), "corrected": corrected,
-                "label": "Corrected single-space run" if corrected else "Historical sampled-prefix run · uncorrected scores"},
+                "label": ("Corrected single-space run · R&X contrastive extension" if extension else
+                          "Corrected single-space run" if corrected else "Historical sampled-prefix run · uncorrected scores")},
         "logScoreAggregation": "sum_of_item_log_scores",
         "spearman": spearman, "models": MODELS, "contexts": contexts, "items": items, "sources": sources, "prompts": list(prompts.values()),
         "datasetSummaries": dataset_summaries, "contextSummaries": {c: summarize([r for r in items if r["context"] == c]) for c in contexts},
@@ -401,9 +409,24 @@ def preserve_distributions(payload, previous_html):
     for field in ("modelName", "revision"):
         if old.get(field) != payload.get(field):
             raise ValueError("Model changed; rebuild with --log-probs-dir or explicitly --discard-distributions")
+    extension = payload.get("rnxContrastiveExtension")
+    extended_reuse = False
     for filename in ("source_rows.csv", "oof_predictions.csv", "prediction_grid.csv"):
         old_hashes = {p["sha256"] for p in old["provenance"] if Path(p["path"]).name == filename}
         new_hashes = {p["sha256"] for p in payload["provenance"] if Path(p["path"]).name == filename}
+        if old_hashes and old_hashes == new_hashes:
+            continue
+        if extension:
+            if filename == "source_rows.csv":
+                parent_hash = extension["parent_source_rows_sha256"]
+                extended_hash = extension["source_rows_sha256"]
+            else:
+                relative = "cv_results/oof_predictions.csv" if filename == "oof_predictions.csv" else filename
+                audit = extension["copied_predictions"][relative]
+                parent_hash, extended_hash = audit["parent_sha256"], audit["sha256"]
+            if old_hashes == {parent_hash} and new_hashes == {extended_hash}:
+                extended_reuse = True
+                continue
         if not old_hashes or old_hashes != new_hashes:
             raise ValueError("{} changed; rebuild with --log-probs-dir or explicitly --discard-distributions".format(filename))
     current = {p["id"]: p for p in payload["prompts"]}
@@ -423,6 +446,8 @@ def preserve_distributions(payload, previous_html):
     # Retain the source-array hashes from the cluster, even when unavailable locally.
     seen = {(p["path"], p["sha256"]) for p in payload["provenance"]}
     for record in old["provenance"]:
+        if extended_reuse and Path(record["path"]).name in ("source_rows.csv", "oof_predictions.csv", "prediction_grid.csv"):
+            continue  # Parent input hashes live in the explicit extension audit, not the current-input list.
         key = record["path"], record["sha256"]
         if key not in seen:
             payload["provenance"].append(record)
@@ -432,6 +457,10 @@ def preserve_distributions(payload, previous_html):
         "sourceHtmlSha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
         "promptCount": len(available),
     }
+    if extended_reuse:
+        payload["distributionReuse"] = {**payload["distributionReuse"],
+            "verifiedRnxExtensionParent": extension["parent_source_rows_sha256"],
+            "sourceHtmlSha256": hashlib.sha256(text.encode("utf-8")).hexdigest()}
     return len(available)
 
 

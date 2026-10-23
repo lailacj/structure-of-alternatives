@@ -6,8 +6,9 @@ This manifest covers:
 * novel-focus query scores after the X-but-not-Y frame; and
 * Hu query scores after the X-but-not-Y frame.
 
-R&X does not receive X-but-not-Y rows, and alternative-structure models use
-only the no-frame rows.
+This original batch excludes R&X; build_rnx_x_but_not_y_manifest.py prepares
+its separate contrastive extension. Alternative-structure models use only
+the no-frame rows.
 """
 
 from __future__ import annotations
