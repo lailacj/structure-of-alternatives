@@ -27,8 +27,10 @@ The repository now contains two related evaluation paths:
 - the active cross-dataset sampled-prefix analysis over the novel-focus data,
   four Hu benchmark datasets, and five Ronai-Xiang conditions.
 
-The active cross-dataset analysis uses grouped 10-fold selection and evaluates
-item-level proper log score, Pearson correlation, and Spearman correlation.
+The active cross-dataset analysis uses grouped 10-fold selection. Its two
+primary evaluation measures are Spearman correlation and summed item-level
+proper log score. Pearson results retained in existing artifacts are historical
+diagnostics and are no longer a reporting priority.
 Spearman uses within-context groups for focus alternatives, within-dataset scales
 for the Hu benchmarks, and within-condition items for Ronai–Xiang (2024). The original runner uses
 trial-level log likelihood and also includes correlation plots between:

@@ -1,0 +1,60 @@
+{
+  "verified_at": "2026-10-26T12:01:38.079645-04:00",
+  "status": "passed",
+  "original_files_hash_checked": 427,
+  "original_files_changed": [],
+  "source_rows": 1089,
+  "rnx_rows_extended": 300,
+  "prediction_rows_preserved": {
+    "prediction_grid.csv": 16881,
+    "cv_results/oof_predictions.csv": 1986
+  },
+  "unchanged_cv_files": 4,
+  "analysis_units": 993,
+  "datasets": 10,
+  "focus_contexts": 16,
+  "neutral_distributions_preserved": 360,
+  "viewer_metric_cells_verified_by_builder": 261,
+  "existing_table_cells_within_tolerance": 246,
+  "existing_viewer_item_log_scores_max_roundoff": 8.881784197001252e-16,
+  "independently_recomputed_rnx_metrics": {
+    "ESI": {
+      "n": 60,
+      "r": 0.5273022566994662,
+      "rho": 0.4972312596539753,
+      "log": -73.1464479684343
+    },
+    "Eweak": {
+      "n": 60,
+      "r": 0.5488441259580248,
+      "rho": 0.33493667297381247,
+      "log": -79.66311737170037
+    },
+    "Estrong": {
+      "n": 60,
+      "r": -0.03688293833357596,
+      "rho": 0.03166440073642081,
+      "log": -56.70231836457697
+    },
+    "Eonly": {
+      "n": 60,
+      "r": 0.43451544545479687,
+      "rho": 0.41329562650504215,
+      "log": -153.97916238854208
+    },
+    "Eonlystrong": {
+      "n": 60,
+      "r": 0.12152447935406756,
+      "rho": 0.06034637152096912,
+      "log": -49.43887465852975
+    }
+  },
+  "metric_formula": "scipy.stats Pearson/Spearman; sum y*ln(p)+(1-y)*ln(1-p); p=exp(raw query_logprob_sum); epsilon=1e-10",
+  "independent_metric_tolerance": 1e-10,
+  "paired_condition_rows": 240,
+  "only_pairs_with_zero_model_change": 120,
+  "four_model_fit_values": 120,
+  "figure_exports": 9,
+  "source_rows_sha256": "8413c7d227f7ad759c5585ee84cdb378dcc733c2516bb5e5e5fc3f1bf69d9e5c",
+  "viewer_sha256": "bed42e6f4689e3ea77a1e3b7b548e7974661bed941190482e80e72de6df2b039"
+}

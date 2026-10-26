@@ -9,6 +9,14 @@ all 1,269 focus/Hu rows finish. Its no-frame rows contain both candidate scores;
 its X-but-not-Y rows contain the query score only, with trigger and contrast
 columns intentionally empty.
 
+`rnx_x_but_not_y_qwen_scores.csv` contains the completed R&X contrastive
+extension: 300 query-only rows across five conditions and 180 unique
+prompt/target pairs. GPU job `7864638` completed and validated these scores on
+October 23, 2026. The scores were integrated October 26 into the separate
+`results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/` bundle.
+See [the R&X handoff](../scoring_manifests/RNX_X_BUT_NOT_Y.md) for the exact
+prompt policy, validation and reporting workflow.
+
 Every scored candidate records:
 
 - exact continuation token IDs and tokenizer tokens

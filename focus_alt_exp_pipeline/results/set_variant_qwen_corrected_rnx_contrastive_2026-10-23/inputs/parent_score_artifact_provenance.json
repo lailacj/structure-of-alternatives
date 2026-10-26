@@ -1,0 +1,2570 @@
+{
+  "ready": true,
+  "model_revision": "453ed1575b739b5b03ce3758b23befdb0967f40e",
+  "scoring_boundary_version": "single-space-exact-concat-v1",
+  "source_rows": 1089,
+  "unique_neutral_candidates": 947,
+  "validation": {
+    "expected_prompts": 360,
+    "complete_prompts": 360,
+    "partial_prompts": 0,
+    "missing_prompts": 0,
+    "candidate_count": 121301,
+    "required_candidate_count": 360,
+    "absent_required_candidates": [],
+    "problem_count": 0,
+    "partial_prompt_ids": [],
+    "missing_prompt_ids": [],
+    "problems": [],
+    "ready": true
+  },
+  "original_source_sha256": "d6979e01d7c917f596244559a176b81a74339e3c0a7562c852296a37bea6a2d7",
+  "corrected_source_sha256": "0ab0b70aef1f40bf6f733e880862b0585575ded5fea97f7d7dcae39082b7a9ba",
+  "vocabulary_manifest_sha256": "f1d0f4f63998cd9da493d4853d9843ad79168c3b0b4ad0086f656d56a9c5cdee",
+  "vocabulary_files": [
+    {
+      "path": "/users/ljohnst7/data/ljohnst7/ngrams/set_variant_qwen_support/vocab_1gram.txt",
+      "sha256": "2af07a005424263d2135d8c43a6a1ee660a66d0a4e96791fd5faf213afdb7256"
+    },
+    {
+      "path": "/users/ljohnst7/data/ljohnst7/ngrams/set_variant_qwen_support/vocab_2gram.txt",
+      "sha256": "e0bd9492e9f9223aa06a703af4d303bd5549b69346a5b86db74e8e5974fb6411"
+    }
+  ],
+  "framed_audit": {
+    "passed": true,
+    "framed_score_rows": 789,
+    "source_rows": 789,
+    "unique_prompt_candidate_pairs": 775,
+    "model_revision": "453ed1575b739b5b03ce3758b23befdb0967f40e",
+    "equivalent_boundary": "single-space-exact-concat-v1",
+    "action": "reuse verified existing framed scores unchanged",
+    "scope": "exact tokenization, prompt boundary, model revision, recorded sums/means and source mapping; no model-forward rerun",
+    "framed_scores": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/run_snapshot/focus_alt_exp_pipeline/model_scores/focus_hu_remaining_qwen_scores.csv",
+    "framed_scores_sha256": "a4ed514f02f47e38bfac94c8e7c6b0a72d7214cf4a9e848f7c2e7869c53c594e",
+    "source_rows_sha256": "d6979e01d7c917f596244559a176b81a74339e3c0a7562c852296a37bea6a2d7"
+  },
+  "arrays": [
+    {
+      "prompt_id": "prompt_00fcbca27c180dbc2d8e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_00fcbca27c180dbc2d8e.log_probs.npy",
+      "array_sha256": "d32dcc75246780d7084600ed99af758722b87f7ed9e3fb2e462aba180af137d1",
+      "metadata_sha256": "7f3924c33c0032a7820693d51d72f08ce95f1c3ae98299e7174bd88b26d689dd",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_02664c8f3dbdcb0f53a2",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_02664c8f3dbdcb0f53a2.log_probs.npy",
+      "array_sha256": "032fb04faf93f7e2b6f3a93eb80a57eb85e4dd5e9c6e21fc3ef8ed49bd58a7c1",
+      "metadata_sha256": "0ce71d163f322154fe835b47d8702c09780b8fd701464d2901e1fac35f75448a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_02c63b2172f6c288744a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_02c63b2172f6c288744a.log_probs.npy",
+      "array_sha256": "ed2c4f2c10bd439cbc7e55b241f42d46daafebc074e53346e92a2ebd5a5fceae",
+      "metadata_sha256": "ea5b0c62334b869d08f18c95ba26b2687abf14708d65931ea64b1f9f956bd948",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_042e0868e1132ca3a628",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_042e0868e1132ca3a628.log_probs.npy",
+      "array_sha256": "6d84cb5a7e535d23721dc97744ce4e6ac21ec832f68add2d715165a168143f0b",
+      "metadata_sha256": "23ed2c65458200b72f72d66dc4eb2be5853d8edf570f2b6ee10c0ec49d2761fe",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_04d2384fea57da279882",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_04d2384fea57da279882.log_probs.npy",
+      "array_sha256": "de66ec1d2479c71de3e2c8115a0cc1f034b4914a13f4bdb0e1a52d7d05a2860a",
+      "metadata_sha256": "8120592f8708515e6afcd0ef954c6d70a62a448f4ce0b18cf88e2cfbe1435d9d",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_053662257d9948468d43",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_053662257d9948468d43.log_probs.npy",
+      "array_sha256": "bf217812162eb35307770f85cef8d5b74a4cc033456f5da9da078697418a7de1",
+      "metadata_sha256": "fa1a24831740d01cf01d61f6d000ddacf73f3e44c051d3b39ad95db4b63a4b18",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_06692c036c31ce17278e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_06692c036c31ce17278e.log_probs.npy",
+      "array_sha256": "c8639c4630b28e38222932f7bc3891724a15414e7989e5e16d60fc2e42b67612",
+      "metadata_sha256": "da22bae01db065d88610895b05f71c73f47c32dd868037b9198bdeaf22601fc7",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_06e5454d12ae4fdc4a59",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_06e5454d12ae4fdc4a59.log_probs.npy",
+      "array_sha256": "fb314a148442299f591cd690f807d675afc9728e4b9cf9bfe19532de399fd0aa",
+      "metadata_sha256": "c1f716e03b979822fd88593604e293b0690aad7e7f9a6266bc8707005828b9b8",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_0735d3ea2ba349250fe1",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0735d3ea2ba349250fe1.log_probs.npy",
+      "array_sha256": "56f961e113425238f0fba1f84bd0950aac9a534d181f4b7b8f36d64261b1a84d",
+      "metadata_sha256": "299b2ca1a7dd677530cb9bf1c83f6be3b0310cb5a002d5df30b2ae03dafadab9",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_07d816e1de5ce39e7e94",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_07d816e1de5ce39e7e94.log_probs.npy",
+      "array_sha256": "75abae431aa7c799e1567af471b92b4feeca1eba924cdd92ce57292b192b638c",
+      "metadata_sha256": "b323af71850f1e557658e6b20495b038042a26254e5f3e32ddd9068027388e87",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_0a3370f683f7d2e1ec45",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0a3370f683f7d2e1ec45.log_probs.npy",
+      "array_sha256": "2e0cfaa69b915b686102cd3660d2f99dbcd45e76a81e92d2a6dd82808a38a577",
+      "metadata_sha256": "ef12b76f0dd8df9fd9c91c592af32f2358a2d09894d1638c6af36b206df48d93",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_0aa8db3e6ebab8794771",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0aa8db3e6ebab8794771.log_probs.npy",
+      "array_sha256": "39e1cb2a3fc07eb81284e1d09de9231c881771e799d93eb2cf16d40ed2456357",
+      "metadata_sha256": "160c0f1acedfc196626710e6696e54cd99473978fcaf0af2bda3b1c05f871a8d",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_0b3df724239c8875748e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0b3df724239c8875748e.log_probs.npy",
+      "array_sha256": "260d6b51e077ac75841c3fadce4a815520507850a3923332c05b2d4f8e15ae84",
+      "metadata_sha256": "0149bf2809f47b8feed57fa54184513e563f2d7bc44228ee54eed1a86de39f23",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_0b753bd8fdc518f6a507",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0b753bd8fdc518f6a507.log_probs.npy",
+      "array_sha256": "f26a7017e45909a1175eaf101559442f460627442c5cd07a7b21cee80c09781d",
+      "metadata_sha256": "3f75810729e78204449b99815f003a7765ed6a414eabe281c571fb44dd854f69",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_0b93613ae6c4e681296c",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0b93613ae6c4e681296c.log_probs.npy",
+      "array_sha256": "e539aee75d2414d1fbe5233c4de65260da5cb0f39cf9e2e38fa76c54413a4ce2",
+      "metadata_sha256": "f12ced982dce2d65926bb9fc95ad9066fa2c033943150f9871bdc13a28b165f0",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_0bbe81e1df686546a756",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0bbe81e1df686546a756.log_probs.npy",
+      "array_sha256": "132155b0ce95f63df6e3e6de193ac2fb2b87dd0c5f154daa6da1b4fe07715e37",
+      "metadata_sha256": "cfc3693a46ef4a6a2bdfa3c47025baf698f59d02350dc52de5a47d604c58199c",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_0cb5262612a78b4cdc39",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0cb5262612a78b4cdc39.log_probs.npy",
+      "array_sha256": "e34e20ec8ae2f04da29c1478d5c248f25c933073e7a8e29f3f81e26fa0d8ff47",
+      "metadata_sha256": "d07766210dc2f872bde01ccf1b6f983c44c043d4b625427ed91e0d1629b33ef2",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_0cce8bf6b8ac187413a7",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0cce8bf6b8ac187413a7.log_probs.npy",
+      "array_sha256": "5a3d61fdf2676560be507b33f231f9e4b3da751ae059538f84006d049a1b3e69",
+      "metadata_sha256": "ca651b2aa7609aafa358cfc1fb7dec11ea5eb271c94d79318d7679fcf3b87d4d",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_0d93bb0c063facbc35e3",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0d93bb0c063facbc35e3.log_probs.npy",
+      "array_sha256": "96f3e63adf2c5caa42d21b35cab308540f10ea72196a317e96bae3a1ff93cf0a",
+      "metadata_sha256": "b4c1385cc3388c65c2e6468a1017519aa4452ab4122e79343ece3bab3e6600db",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_0db43f7d800b9b92f666",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0db43f7d800b9b92f666.log_probs.npy",
+      "array_sha256": "01894b89a514ad2445c48c4fc8a6b7e47b511173098723ed247a9122606881b9",
+      "metadata_sha256": "5ce7df0f89c0a012021be7cb9a8f6024d859318da4b5d01b6946b58f7ff523b6",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_0dd418b630c0593430bc",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0dd418b630c0593430bc.log_probs.npy",
+      "array_sha256": "c5350aebafcca05d2a03d1f738ba6086feadb4a1c43132b21f829d3a231092e6",
+      "metadata_sha256": "5b2176b4e547f6539d7a20063580062a022e3bd0f168b946c4cf945653541e5a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_0e09cc2e8888b48393b2",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0e09cc2e8888b48393b2.log_probs.npy",
+      "array_sha256": "ac2e630ffff24aa1b5e0a9fa8671a477d95e2e9576d11c0322a1a0ecd126a20c",
+      "metadata_sha256": "f61aa2ff859a8a1212d79020fa02c408135295cc237ba3647382b7b697625d82",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_0f186d46d95f1a800470",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0f186d46d95f1a800470.log_probs.npy",
+      "array_sha256": "1413dfb095b60bbc2fba1420198659162c22e6921a5b6f65bceabe938f6f45ca",
+      "metadata_sha256": "ef03bfb194e949da7833cca95c994b6c10669fc26529a89382d55bbbb93b498a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_0f2d6d33c2d58294fdef",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0f2d6d33c2d58294fdef.log_probs.npy",
+      "array_sha256": "b04856c1cbf74b286cc5ede9bfc92d49c54835361951d0fd4972470be95c83d3",
+      "metadata_sha256": "6a3dc5d4e27911751ce41652e37567209535c37745863e3459cb84309bf71ce7",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_10513091a7c3e569afbd",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_10513091a7c3e569afbd.log_probs.npy",
+      "array_sha256": "43566fef77508dc2b4ddf61fd5e2091905aeb16a217b875ced1b6e290158e862",
+      "metadata_sha256": "5a6781249a5ca0cd6f77c8db7dc07f901600565609c940285cb898165a448f7c",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_10ff26381aea290f9893",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_10ff26381aea290f9893.log_probs.npy",
+      "array_sha256": "8fae76fbadd1b93f216fd2bb1eaa74f92ed3c90bbb5654f7480826e4a386074b",
+      "metadata_sha256": "2f7967787979c38c41da912ea7227b37c07f3be66685c17d68dec156d4b9ae90",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_12264f37f4a88235f85c",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_12264f37f4a88235f85c.log_probs.npy",
+      "array_sha256": "aa4ec67858647b9c6ec26311a4d4d00bbbafb0641f6972812f03b5f2385a9e05",
+      "metadata_sha256": "908064ed433c216983328763cd84cb1083272cd81dfe04aa817d792b4331b3f0",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_1289bd93b82b3a1f5223",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_1289bd93b82b3a1f5223.log_probs.npy",
+      "array_sha256": "8280ed07183b63d4eed26a0a10ac9fcf97de7c8c8919754ff9249a0ff0ddd14e",
+      "metadata_sha256": "b0513bdbc58ed83a3796e6aa335fab269c1aaa287f771a9da7bb66a7c7b148b0",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_13240e3a8bb3ecd078af",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_13240e3a8bb3ecd078af.log_probs.npy",
+      "array_sha256": "6bdd07b1ccff6465cc451e641d91e5aef1edbfd7bec0c01d87a8d85da0ffd8f5",
+      "metadata_sha256": "8a17eca3741f56bde877a82151be342771cf57b942b430f647ab168ed6415caf",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_13e0a61ad9e1e7a1a68d",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_13e0a61ad9e1e7a1a68d.log_probs.npy",
+      "array_sha256": "5323f5bce22d14752767b05c9580d5558d996355f3349f7f29975cf2db486b05",
+      "metadata_sha256": "3425b1166147551df52e5816f712252bf5b26266dc6331aea1d49ec876d9dc66",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_140aab184958ef7b4c06",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_140aab184958ef7b4c06.log_probs.npy",
+      "array_sha256": "5d19b6c4561568f19b7150950366537bea879c2f41a0039bb16febba130258d2",
+      "metadata_sha256": "49264f6eeca60dd22a0795d5f41d0e2fff370ee525d55096f8e2e8a41a04a1f3",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_166d78d2a7994d7f4fca",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_166d78d2a7994d7f4fca.log_probs.npy",
+      "array_sha256": "82562974094e5d0053629ae5d359f4949db793869dced7475244b47e8c9785e3",
+      "metadata_sha256": "37c7538d88ff73419769b13fdc9add0a178ab7a6dcd8401d0a13a34b27a3eded",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_1726c74183f5605e9380",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_1726c74183f5605e9380.log_probs.npy",
+      "array_sha256": "969e5065cf409067693951958f36aba9032855de7f8923aceae9f382a71ea087",
+      "metadata_sha256": "9f308ff2e91ba1a6623e0a59675ff591d3fd3dac5023417b131003bd7307a800",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_174d6ce179ddd97c9696",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_174d6ce179ddd97c9696.log_probs.npy",
+      "array_sha256": "f4aa662081a8675540bf809e8d78c98c5ed5b81adb2b0e6d312af37934314c46",
+      "metadata_sha256": "f4925c2ba0b5bc338aa0291bdf2ccf45f8eab290eff305572318681238dc69dc",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_17f792bd12bd5ac5e580",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_17f792bd12bd5ac5e580.log_probs.npy",
+      "array_sha256": "7078f00cfba77b038381cf3a0e95e9e7093f9e8f4bd84090a806291ccdeae776",
+      "metadata_sha256": "a66d964b004d16203266682d35a5be4b88d67f003510021fa5a97ec9e9d314a9",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_1a12b9d966441e5f0036",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_1a12b9d966441e5f0036.log_probs.npy",
+      "array_sha256": "2e6948a8c9d19f941a7e882cf4a54b0f8df23a9abf49810fb22e2628a84765a0",
+      "metadata_sha256": "ed0923a8cbbf01f41138ece7ac57289e02a3f40248f1f1863d92bd859c2beef5",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_1a1740d8ce2ee1c5c023",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_1a1740d8ce2ee1c5c023.log_probs.npy",
+      "array_sha256": "9c8b7b81dd4f332e4b2ee250a25d40a84905498ab6218374b2dada9c42c4cffb",
+      "metadata_sha256": "90029fbede2cbfe6088e1bec8d1b70eb7829fdd6997d6d82c35a58ad3512860a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_1ab25cbf80246cac5881",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_1ab25cbf80246cac5881.log_probs.npy",
+      "array_sha256": "43e238a6e260f87e0d0af6435a69bbfb088b6ec4b601527e6ceefda203ef97de",
+      "metadata_sha256": "f920ca62a2a08e1dc9b21905f143ce4c2c50273106c682936559f5d9305519d0",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_1adc9408a04759114c3c",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_1adc9408a04759114c3c.log_probs.npy",
+      "array_sha256": "c2302d883d1c43d893af133885b907efef7d98003b3594e911fd60c760cf59d6",
+      "metadata_sha256": "f337f7cc2a659ad84dcc678dd193740007ad9e2fb1e84e7196121e601970c9be",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_1b978122a2020f120028",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_1b978122a2020f120028.log_probs.npy",
+      "array_sha256": "f224d1a5b7b0db0d643db71ed2dc6a874e39365307ed7fbb60c66dd69c3dc5ce",
+      "metadata_sha256": "a25df8dcc7b4d444c208b215fbb0f159aafe37581f46e385c4a01de7ed54b9d9",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_1bae3728ee33e79bd9d0",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_1bae3728ee33e79bd9d0.log_probs.npy",
+      "array_sha256": "f6c5c2481338656ec6eaf1116d379b08b5b8daeee3b939a61f42480863f9e155",
+      "metadata_sha256": "fae4e019f86e5950f852f886516be01cf22e16ba5003d732bb3e5fddd651bcf2",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_1be9e092c61e1b72438e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_1be9e092c61e1b72438e.log_probs.npy",
+      "array_sha256": "b6b98b1f2867573c5c950f5c8130790bb15745b8106b9d91391e06f2129fdaff",
+      "metadata_sha256": "2cfc18f30d1a813c15dbf33fe60ddd1e71093275681804e15e0d800a11fea1cb",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_1cdfe9cb425f2858c3a7",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_1cdfe9cb425f2858c3a7.log_probs.npy",
+      "array_sha256": "5e0a80a99d996e1d9a5358ad79fc32b475d90549952ab13562fd71d1f4028572",
+      "metadata_sha256": "f7da69cded8bc3651e4d40b96f3b77fa330fa2493bdff56aa13c3f620f054012",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_1eaf69a2762f15937455",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_1eaf69a2762f15937455.log_probs.npy",
+      "array_sha256": "bbecf208dabe7ab4b76ed70a076ad4b8c1245fb3e218bfdddbab9e057645408d",
+      "metadata_sha256": "2aee359c67b89e7298846c45997ebd9e8b7907d889f1d3283b6978e44f02de44",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_1fc81b41052f866cdb7e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_1fc81b41052f866cdb7e.log_probs.npy",
+      "array_sha256": "090ba21ca390f994bf20a60f399a0170371a012476e4aa39201848b23089f1d9",
+      "metadata_sha256": "fde13b2afc45273a2c693e50338a71c94156c00f095bbbbbd21e58683935b13c",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_20686c4bc477920b48f1",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_20686c4bc477920b48f1.log_probs.npy",
+      "array_sha256": "9b968434f1a4cc05451fcf5c5f48def5c3278dc580cd5b1ea520b1f360393760",
+      "metadata_sha256": "7056cd696499ea3503859d068812dcd97609bdce2dffa79d8bb2f048621403a3",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_209a223912a6f1283004",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_209a223912a6f1283004.log_probs.npy",
+      "array_sha256": "f0f4f15cdcbe4c8181927be13138d3fc0310149810583b5066f7727f5107b5b7",
+      "metadata_sha256": "cee4074c5a5d8cc3c88afff9c3b206718871bb0014962fb83a947a54f7e80f10",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_20cce8f1b2f71226fa3e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_20cce8f1b2f71226fa3e.log_probs.npy",
+      "array_sha256": "d6098b985e9511932d0f734aab22fb803dd71602572f132f1fffd718a8781a5c",
+      "metadata_sha256": "fe17235ea64e52c79534b79d18d4ff33057b4bb3f061e634838500d8221980ac",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_2283f8f6e027870a69f3",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_2283f8f6e027870a69f3.log_probs.npy",
+      "array_sha256": "e7cdb4e57bd80b0dabd2f5be3fa986d360996323b0384e89a5f2c60f3489a019",
+      "metadata_sha256": "371674e9de99c9ed7bdded3c8f3a0ba29482ad570dcb17177c8d634159e316c3",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_22aaf212f7471342e37a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_22aaf212f7471342e37a.log_probs.npy",
+      "array_sha256": "435f842edf44cd541535474e55b869fcf33fda72e37360976e220b9044627cb0",
+      "metadata_sha256": "7597fb6d6badc9e312b31c970850ab917034cfee48f9530ee4fc436b041f64e7",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_23692ec0a817e0142608",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_23692ec0a817e0142608.log_probs.npy",
+      "array_sha256": "c7cf78320b1e1c8f54df12bbe6cb2b0f02eeba3b63bf347f540ed1c38210e55b",
+      "metadata_sha256": "3f6cc2dc9d6cff84880015286cfb012fa30ceece35997bb56c905b3cce051fd1",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_23cd377ebb3b02fb98c9",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_23cd377ebb3b02fb98c9.log_probs.npy",
+      "array_sha256": "5e0799707361ef9f626e2619db63088524b15172c4eea7ffa406f64e0622df5b",
+      "metadata_sha256": "1a914e61ad73320b6467e8af39f6babf827b10b8bc00ed7af7afc45527e9a089",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_23d333a041daa75094e7",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_23d333a041daa75094e7.log_probs.npy",
+      "array_sha256": "38ae9af25b292f12b25fcab6f674dbfec72d33eb04b175d9c6c03b4b6a4d815c",
+      "metadata_sha256": "e85b25dde69c384c7a0ab5cfab4f3eedbb6e6f01f379cff7f71fa27e86c1de58",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_2448a7424ef71d42a869",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_2448a7424ef71d42a869.log_probs.npy",
+      "array_sha256": "2b981658004e5a405d9dc7e602daa4525077ec47c421accf276e128cfa11ba48",
+      "metadata_sha256": "97452bf54313870ebaff4c1091b40ffe503a693ab613b868d731862aef55b04e",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_24d25b858ddf612defad",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_24d25b858ddf612defad.log_probs.npy",
+      "array_sha256": "762bea82b027e4f5ed477cd443cad14ac3ee02bf23c6da1fa7264d6e65def387",
+      "metadata_sha256": "eba362e0e58f5feecfa007ad6547bb65729a2f39b8be4f9421ea9dfc30603516",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_24f17fdaf7a9a606dc4d",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_24f17fdaf7a9a606dc4d.log_probs.npy",
+      "array_sha256": "bd8cb561eec599b29ddccef634bd8c34133530b3c7d9f94667987e07cadf8d01",
+      "metadata_sha256": "f3e8e6efe7201065312c99ddca95a385596b071efed409758f04721cfc44dd63",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_254e6a34399f82c3d892",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_254e6a34399f82c3d892.log_probs.npy",
+      "array_sha256": "1c0726182be520f251036bb493b10f23f83626d37dc842714c43461686c711bc",
+      "metadata_sha256": "d27ba62153ba7077c8f8fd4bc7b73e6cb140d68dcaea4478937801ead6983a75",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_278bce34e943a238094a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_278bce34e943a238094a.log_probs.npy",
+      "array_sha256": "7b2d91e33a98e793af91115bd2fa8ae3eff23356fa25fc7aff0290084ae6d1ea",
+      "metadata_sha256": "b912657841257a8200e73a621c7929c6e6d44dce96a55df0c5ef2efb3316a233",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_28cd3106cd87a4a16d3a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_28cd3106cd87a4a16d3a.log_probs.npy",
+      "array_sha256": "b850637a7c840ea2bb9389acec52329262aeb8bc9ae5b3b4c3a4407ec2f48cfb",
+      "metadata_sha256": "f56686f8f588dc8e5842b730b9179f4477e6c4e344de8d0742cae9612247e26f",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_2b894edfe9ee13f51831",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_2b894edfe9ee13f51831.log_probs.npy",
+      "array_sha256": "7b1b432fd7d8854fd0cbe191c6ca1e1eeb875e0202ca64d2c8ae538a524c6779",
+      "metadata_sha256": "b397c03ac811c5a356e4fa1b33b21d83e26b1ac0cdbe21f37c21a339b8f86c75",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_2c0dc59f6606aff02f49",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_2c0dc59f6606aff02f49.log_probs.npy",
+      "array_sha256": "6534d0db6df911fb595892d94509f38752b0225c3a7fc789d0834515e1c74887",
+      "metadata_sha256": "e3b09e14eb45105c0031ca9ec1bd5758467753dd0d102a9796970e0787c02586",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_2d114ad70f618a11c111",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_2d114ad70f618a11c111.log_probs.npy",
+      "array_sha256": "15540a620c781c2e3ec97666bc2beab7baba362619fab6ca0d927db259196b37",
+      "metadata_sha256": "bb0e31b613855d01b1a06aa4e4ca4e75943693635856907eeb23e44958ee0cfa",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_2d43afc9f37c35619745",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_2d43afc9f37c35619745.log_probs.npy",
+      "array_sha256": "bb073c7a54e96d4d93a15419b834443a16c334c48d18badc79e73779073adc89",
+      "metadata_sha256": "c0b1975e96f2f677eb7d2912b66bb4a4f027dbd5bbb32fbd6071701cfe3b7a44",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_2f38c14b59ad3710382f",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_2f38c14b59ad3710382f.log_probs.npy",
+      "array_sha256": "2eaa53ee165586f83ecf159b95d440043aceb13d779c2f763a9b1fc6510cea52",
+      "metadata_sha256": "8c7ad2bfc7e1f5a3ba815fdbfbefa174e98283d86744294729b739a3a30bc97d",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_2f3caef135aa9a848bf4",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_2f3caef135aa9a848bf4.log_probs.npy",
+      "array_sha256": "3c51b8fd14ea1561a6ee0c8504a0a7c437c05395fe11f5df9235ef02a616d61b",
+      "metadata_sha256": "6f5516931356b24dcb5981ac85c314cccf8ae69c610161db4684dceb7211d4f6",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_2fdaae5939867fc902f6",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_2fdaae5939867fc902f6.log_probs.npy",
+      "array_sha256": "84fae7f59a1b43fec7726ef4d0c2432be1a3735f233088b1e1a8280fc158a7e5",
+      "metadata_sha256": "53d2652196fb784dd8674e054ee44edf1a4f1935f2c6a7f85821d02ebaff5595",
+      "progress_sha256": "c31518c2ee6ab5cba34918db72ef45b175eca4cad298b15eeda69784b0cca9cf"
+    },
+    {
+      "prompt_id": "prompt_305b2035d30cdfd739c6",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_305b2035d30cdfd739c6.log_probs.npy",
+      "array_sha256": "1eb900971fc625a6915401152c368b8909253c3f11570df7a70f4629a3ebfbf6",
+      "metadata_sha256": "e85fed213cacc91ba47d4cb065bd2d1cd4e740a27679186ed348b70d82e76ed0",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_30cf93c1195d5b9ed158",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_30cf93c1195d5b9ed158.log_probs.npy",
+      "array_sha256": "bb7aff9a28731b114ccdb11c86c62ac9b5c4ac5aa6545c6341229ef1d4c4c729",
+      "metadata_sha256": "8e650626dc5a3a190580aa7219c07965aa24eb44c00cbf5bf417565b9c358692",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_3194e0da7154e8bdba3e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_3194e0da7154e8bdba3e.log_probs.npy",
+      "array_sha256": "5e7ad57988deff6d87b197b5fc89ad7e712261484805516249b36535d062d7db",
+      "metadata_sha256": "8ee5f9918bd8914051776e90379d7e5dcb3495524b4abedacc29ddd2eec8c229",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_320612dfb661a9cd2f3b",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_320612dfb661a9cd2f3b.log_probs.npy",
+      "array_sha256": "ee59a7f3767d069f602512d890e1b9ce5aab7111745c4a472af68d63be22c933",
+      "metadata_sha256": "577b281e8c4563996b68fe55ac45b0e5d97b0120f02659e3b50f1be6da6e896e",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_324a682db5923cbe3676",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_324a682db5923cbe3676.log_probs.npy",
+      "array_sha256": "fa2805d2ff6f170703613d9ca35270a36deaf18cfa2ea164509f5abe84615bd9",
+      "metadata_sha256": "941134db10f0530f0da7d88ec615002f2b53c1fd406bd5bd4d1a7ae0752d234a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_32ce4da167dc3c2174a7",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_32ce4da167dc3c2174a7.log_probs.npy",
+      "array_sha256": "80fd2eff3b010275f229b3b46d43b9c45938783bf742c58759f31c8504054359",
+      "metadata_sha256": "a96cb99b0259bcc57766e3445fe96d00f1f16ca4a9673ff3163469c052c72e72",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_3425a40526978196a350",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_3425a40526978196a350.log_probs.npy",
+      "array_sha256": "1ddcbb139128a8c07e84ba0636d4474359471a57d09b14ea418c2c2f7302f738",
+      "metadata_sha256": "1cfd1d9b914fbc6cab2c4816e2d462c0f667dca31bcd5205ecefa25a39d6437a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_344efcc7e201469e692a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_344efcc7e201469e692a.log_probs.npy",
+      "array_sha256": "e404f4f469096aa31931a12a8e32ffb4d56ad1ebb8b5b6fc5647fb97b254b373",
+      "metadata_sha256": "c0f26335e76a1934b63584384bcd1597f4cfc1491bc43a86afb911a98f20e987",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_3549ede9573c552fb149",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_3549ede9573c552fb149.log_probs.npy",
+      "array_sha256": "f5da61b31b146e21de628d188f2fcc5afe13ad43ece17333d72ba2f2ab60c239",
+      "metadata_sha256": "330796fb7de7459be7da50c94c6f5e0c50f1379ed54d843c589eee2c752eb44d",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_3622b2dc937ddcfab3b3",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_3622b2dc937ddcfab3b3.log_probs.npy",
+      "array_sha256": "b965522c9bc99138ad7078845c3a73197e972a263e9d71fd3396c8cc2aedb212",
+      "metadata_sha256": "6ac489587ae410f68a4ef318e042dc86b757ff6118a8d76ac6b34a9d8c8e64f7",
+      "progress_sha256": "84ae11bb0c105e8424940ca3859fe9755bb49bf1815d54918e9090a065258fb6"
+    },
+    {
+      "prompt_id": "prompt_37266f2f0cd8daf92dd4",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_37266f2f0cd8daf92dd4.log_probs.npy",
+      "array_sha256": "3ad277e495b7ff4d07684b31d8a4b6255d8dcdeb98e3f63c03a1b3227e7d6f08",
+      "metadata_sha256": "ddf0c2370caa31e465fdba6e84250936d2ac563ae7abcebae210d2b09157d510",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_388888845d0888eb59cc",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_388888845d0888eb59cc.log_probs.npy",
+      "array_sha256": "ddd1161c886e7d18c1f3def217b489dd0d0358ed330f168932077dddf9697e46",
+      "metadata_sha256": "aadd44941d310113d2ecc50c7875a25bee32661afbe3c2181d3515278f6d758c",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_38daba43804ff922ba32",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_38daba43804ff922ba32.log_probs.npy",
+      "array_sha256": "38247fb091530322c446e22cb96ee706adf5f61fe730576adeabb9776d8b88ce",
+      "metadata_sha256": "5a0f3ea69f8190288d1a9b7f405c8e31f03e0a46588e92a60442bf5ad5132d1e",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_38ec4d24956b54433acd",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_38ec4d24956b54433acd.log_probs.npy",
+      "array_sha256": "aea8b89dced29b466749b93bcf3656f83abc1fa9b554f750836320a91d3eaeb6",
+      "metadata_sha256": "c97806bc6cd32006d76897af25bd92df68fae881c7f3967b932d0c08ba80422a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_38fc1c18c8f8cfadb26a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_38fc1c18c8f8cfadb26a.log_probs.npy",
+      "array_sha256": "586ca937761c25aa01bec7d56e0243d7540bda332b9cc76eb66a877fd3c6b878",
+      "metadata_sha256": "d81e8bbaf1585afcfec7fac3b81f2bb4451d97c194cceb06a966f0ae50951732",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_398aa6ce6e5fbd1a847b",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_398aa6ce6e5fbd1a847b.log_probs.npy",
+      "array_sha256": "9c525524952c18a6e5743831f2790718ec7571327f53a6e4362a5f27731eef71",
+      "metadata_sha256": "ac3dc764ddee2eac4c6d99cd3ee48919e6f56de327648a199eed51083ee04632",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_39b3fb324282c6dc50a2",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_39b3fb324282c6dc50a2.log_probs.npy",
+      "array_sha256": "ff587496530f6c76b58e56e44600b6b8444d879aab61cd685218d068466ac14a",
+      "metadata_sha256": "e52e9a1dee685b603d35c91c7ff522a2cbdffdcfec7ed0bc4cb4abc35e18c298",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_3aba34f9f5cd8bad2888",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_3aba34f9f5cd8bad2888.log_probs.npy",
+      "array_sha256": "b5d5accb2f372065e4ad6df180756eda3b483115cfcce2c638b1ff4fccd08550",
+      "metadata_sha256": "6f32041de0aacbcd4a7bb4f66d058c93ca92b71fe27549183979d598797aa2c2",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_3bfc37193b201d696558",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_3bfc37193b201d696558.log_probs.npy",
+      "array_sha256": "c3bf2c0793e613ef3d24dc0574500d3e3a16cbfd77769ccc2f8271beebddeb64",
+      "metadata_sha256": "c08180bce3f466097eb31314163e30e91c7573c08c15c0064acf48aa97b81be1",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_3c636ba7364549b3c927",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_3c636ba7364549b3c927.log_probs.npy",
+      "array_sha256": "2ed9d172bdd8bf5039bdb7203adfa95de39ca59d79f4d9a30ca83936165c87dc",
+      "metadata_sha256": "3eaa0f2c5fa555a2151fd4d064939b88c5f6a6f0838d313bb8af8de9922a76b7",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_3e86e8ff5ab294e66f88",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_3e86e8ff5ab294e66f88.log_probs.npy",
+      "array_sha256": "c74694bd9bd9a0fe931ec440fca6717089a254208d94f94169b8b4b957890462",
+      "metadata_sha256": "f14265a0b55a435de913ffa0b24f4d60743231ca0c06519cd00cd38cd2dc6ad6",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_3f4165674fc70d33f862",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_3f4165674fc70d33f862.log_probs.npy",
+      "array_sha256": "caa6aab8a81ac8062a2136418bdab920bfd04b1314c292d009621ccd3f8ae778",
+      "metadata_sha256": "1d58fd4a7ade3f5246ef3c09856267895d1034952b57aff2ac76e7ea6960cfba",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_3f77c43e49906f041db0",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_3f77c43e49906f041db0.log_probs.npy",
+      "array_sha256": "8e8535f2457ff0a873ed30a5fd4e937422b8b75c52bb9b7062f872730af49c10",
+      "metadata_sha256": "2b7fbe80ea61355f7d9d7812ef075a261147698cead920c96f6e9297c9b24b69",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_41806a639329bd2f1ba1",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_41806a639329bd2f1ba1.log_probs.npy",
+      "array_sha256": "8d41f07d24c33ea811edd4fa58bad4e7a07c4a56eb6218c99ea731b340b3474c",
+      "metadata_sha256": "6cffd53282acc4696cd84b7e2b0584bebb542018591f2cc7e22ebfa3f7ce58fd",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_41ad60173d9be01fa4db",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_41ad60173d9be01fa4db.log_probs.npy",
+      "array_sha256": "08c8287415eda0109bca0368aebc2cc29ae525ab0d22b09fbe845b95b5331535",
+      "metadata_sha256": "f205e5241dfc1b4ddba4578beaf49700ff29d1df115e0bb4dedc56355858001a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_4238bcfdbf02089653bf",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_4238bcfdbf02089653bf.log_probs.npy",
+      "array_sha256": "062980f6a14530a5894def31bd84aad34d9096367d93f5eaee5c3237a45d9489",
+      "metadata_sha256": "7d9718569149008822d9fe7a8e3a3489557e165688462cd29f422549bc8fa05b",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_43f7962a774c6981785e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_43f7962a774c6981785e.log_probs.npy",
+      "array_sha256": "92b04f42c3fcb9dd1cd889971adc2c12bddf8a87a6e8bcf414272524ad473f41",
+      "metadata_sha256": "37e9b370bc264013702e81eb385b82dbc6d0d1f0acf052d421bc7212a37a0652",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_44613bb7e811db7749db",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_44613bb7e811db7749db.log_probs.npy",
+      "array_sha256": "ed2f186d0f79d81730c671561c812b788594424219c3bdef892ae681663d034d",
+      "metadata_sha256": "1cd1677bf627b00b7640baed4214b9374717020e8ebe53f66a5f08daa2148190",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_45589ec464e7c1a4bd55",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_45589ec464e7c1a4bd55.log_probs.npy",
+      "array_sha256": "d97164700634af9cd52f326aa424da58c134f937ebe2cc1d49cc514d3deb882e",
+      "metadata_sha256": "31747e5c62fde9ccf47d924694fb292822cfbe14483f03a1819a714aa10db447",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_4653ed50b98f0ec3ea7c",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_4653ed50b98f0ec3ea7c.log_probs.npy",
+      "array_sha256": "cd8d168fb5f0a4d958c52c2798bf1dcee54e156aa102515c545ff105f6a3baca",
+      "metadata_sha256": "c75d69c6ebd8f6918257d7e104261546a5d68a4c0d2ae006ef05c9dbd3f547b6",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_4707e633f2ec46c31d01",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_4707e633f2ec46c31d01.log_probs.npy",
+      "array_sha256": "ed50dde2454fc779d6be197b25311df3ebdc3f8645d8dd8397a16a4267dc2047",
+      "metadata_sha256": "43c0ee78798ae75ea35892c30923aa03b618b4654340a1ebec413b103c860516",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_4813211589e4a412af7d",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_4813211589e4a412af7d.log_probs.npy",
+      "array_sha256": "d01a96cfe980819fa41703fdebde8ae15716ea7edddba7b873e04dec45046c7d",
+      "metadata_sha256": "527e84112c7f2c2f63c89fc7f9626cc739f4915148786ffcfa241f16e58341d8",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_4893e801b71745885798",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_4893e801b71745885798.log_probs.npy",
+      "array_sha256": "71e9f83add177c100857bdc0d68ddd0deef85a2fa885d43f0cdd7e89df66f8d4",
+      "metadata_sha256": "d4584a9889e5445bd2f0f6a1445cd041dc0cebdb7c50c02aa10531d555cd556f",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_4b013d60a251cd341cf8",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_4b013d60a251cd341cf8.log_probs.npy",
+      "array_sha256": "074482b2f9f243a5f4ceb1a3d753fcfc2fa99e90c88cf5d74a23ff1a8d8ca5fb",
+      "metadata_sha256": "2051df665dceb03b4c76b99ec6928e7f754d3b6ffa9404e78ef2ca581c7a094e",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_4bc3eb6fdbcda8fe1412",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_4bc3eb6fdbcda8fe1412.log_probs.npy",
+      "array_sha256": "a5f4c1e1293763cf8019e80865d3bc8607e3f52027122feee56544f74e91a7b0",
+      "metadata_sha256": "f6ad50b3d3c4ac5dcf877f5b3a70173134b056ee373794ac7544107f12e8983f",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_4cc656298c8e6a68289e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_4cc656298c8e6a68289e.log_probs.npy",
+      "array_sha256": "5207320a2ac6a8c9afe47b0b8d5bb6c25a716b0f9fdc6bedf729299f4ddb738a",
+      "metadata_sha256": "0d01a43ee5f285ad9901584ea4912925aca21335ecd64ad854e77d434a1a7970",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_4d1e043e6e4822d516c8",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_4d1e043e6e4822d516c8.log_probs.npy",
+      "array_sha256": "46877f5eef4e8886faf19fa0a586fdd74c3899809c5e974a127dc1e0b21bddab",
+      "metadata_sha256": "449d4f5cac0aac8535d30870f53a8818a82cdadf67e54d6d8cb026ded2a38576",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_4e46ce3dcda426b5f96b",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_4e46ce3dcda426b5f96b.log_probs.npy",
+      "array_sha256": "43469d9eb9dce255462421d246d67a491a7d4bf2ec0e41713091c78870de64fb",
+      "metadata_sha256": "9664d3169fb834902314f39efff5b0ec83545dc2db050ae4d3377a76bb6c2685",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_501eb5cf496b8e6de236",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_501eb5cf496b8e6de236.log_probs.npy",
+      "array_sha256": "03971552b8925c79b23e40c30883e4f2285a856e6bfa225fe403a80b2d589d6f",
+      "metadata_sha256": "dacad2c62d852efc83abccdf13be46944e503427858d92565f72446bd13711ce",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_502dd2ff5a37ca2e0cd3",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_502dd2ff5a37ca2e0cd3.log_probs.npy",
+      "array_sha256": "536654952924ebfa808f7604305e431b1dcf13ba234714744d05a6514f0b6224",
+      "metadata_sha256": "be2cf8b0b7f2c0a8f21d9f28afbbaa15ed234d76730452bf6ec363fcfff0a2e1",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_51e155f5fcfa2891ea62",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_51e155f5fcfa2891ea62.log_probs.npy",
+      "array_sha256": "450b855838bb6c71dfe35189d7ce81ed18c3e50b09bd259ab58ed3692e072d8b",
+      "metadata_sha256": "71d22ae5e241ce92c73d84984ad39ce9aee24f8a1ec019ebe1d6c099217395a1",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_524153de25e6ceff3d6e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_524153de25e6ceff3d6e.log_probs.npy",
+      "array_sha256": "7a8f0c05b789863bc6a3d047488daa1ee92d6177b4d72f4dd66566984d32efd8",
+      "metadata_sha256": "5db89d7ec7ed9afd5147b1f029f044b1dd7a7baeb807a6e625e7fcea4207b844",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_530c673f2b0bcbfc970d",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_530c673f2b0bcbfc970d.log_probs.npy",
+      "array_sha256": "0263c0a79e7b6cda5f201611f6ef5c3ce7bdd9153c4b4d7802516a34fe47b252",
+      "metadata_sha256": "4d0c5e3de551b5aed85d3f8a4927f91eca743ce618817e80ebf85eec5e63f2ff",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_545e99a94cd3277336ba",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_545e99a94cd3277336ba.log_probs.npy",
+      "array_sha256": "43f083e35f0ea6c376bb3c3f44771f75026194ee3893c7b2df2e40c8c9e226f5",
+      "metadata_sha256": "9744d855393c1e2b83957a1091db2964bb3b02ac9634e39bed1ed71446332f26",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_56343fbf5be47438db59",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_56343fbf5be47438db59.log_probs.npy",
+      "array_sha256": "9f6322f3987cc277ab8a869396ebbbc6dc7a51a212c580e535c45672db1d4388",
+      "metadata_sha256": "e198b821cbdc22501136001724e6b92e23949aed9f106c50b9358590c6dda4cc",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_56c129d04dd821012306",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_56c129d04dd821012306.log_probs.npy",
+      "array_sha256": "e2a8ad29afb825ee983890a53fc4cf81826b09ee6d6890a0cc3ed57142c0d8ec",
+      "metadata_sha256": "489817dc973597913e20744151ec021ee181e1d9e215a540c273c162489e8cdd",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_56efa73860459df46fb5",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_56efa73860459df46fb5.log_probs.npy",
+      "array_sha256": "6fbdb376a0c97c98e32e0f38ce32b1c4b54e42bdc43f3ab2141120b8cf26a845",
+      "metadata_sha256": "43fe5e591e4d50d991fa70fc86e9427e6f38746e5a9d6e6851131aa389eb7dad",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_580930ed2328c7e847c9",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_580930ed2328c7e847c9.log_probs.npy",
+      "array_sha256": "57d607d3d93598c00122505a47051f535447662ae81750e0d235647b2a879ff8",
+      "metadata_sha256": "57a2303e5f29742e96053d61367cd14a7d7ab0bae3c3fcef7313a36ac0ae1973",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_58798cae89123fd97c37",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_58798cae89123fd97c37.log_probs.npy",
+      "array_sha256": "5f6c80d94249ac17870c3993b7ead0a68f2cfce568faed31dea1929caa3f50cc",
+      "metadata_sha256": "3562a5b5f29a26b824c926ac94f71eea939564ea15708f38fed20c4ef39d0d81",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_589d7f57d71a4c2efd9b",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_589d7f57d71a4c2efd9b.log_probs.npy",
+      "array_sha256": "ed3a3e40f6fd941dda5367939020815d78465b29f132e8d3df02234273b1d7b8",
+      "metadata_sha256": "c8169d0cc90eadebf1ca85f64ef0d4ff402236a6a082f1b2dc5c5cafc7035e98",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_592733e01f7163b01f24",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_592733e01f7163b01f24.log_probs.npy",
+      "array_sha256": "870f8022eb26fad0698821fee6ad4ce8f1af42adecb44b09816721c72aa51bee",
+      "metadata_sha256": "c34903b7eea521692d34873f8e8056b7243fb62c3f11cd8fcc3746d76a136315",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_599c4799a2f4855b6272",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_599c4799a2f4855b6272.log_probs.npy",
+      "array_sha256": "66336bb3b183e84cbc77b336e095223c03d32d65f77ad4f0330aa3c9be57231d",
+      "metadata_sha256": "9c1622153da36313072304e0ce9c050ff5e5708702e6523885de3db1c00478e3",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_59c09b6af0267c5fa0f3",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_59c09b6af0267c5fa0f3.log_probs.npy",
+      "array_sha256": "d41bb54ebe4082268e348bff336cf31836270fdae397450568a03dc0792d74b1",
+      "metadata_sha256": "0f570d408ca306e9810dd8412b5a19b204a3f6295ef555674fc0900876967b65",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_5a66e35a03647ad63fc9",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_5a66e35a03647ad63fc9.log_probs.npy",
+      "array_sha256": "6779a877c29ec6ad3f7c77f9d7b3fd0f5a7d9298f4c09818818fb024c31778c8",
+      "metadata_sha256": "e6617655b47fb414f22935657acc0e7c8944b3ac6ff636fd76c920b864cb8d48",
+      "progress_sha256": "c31518c2ee6ab5cba34918db72ef45b175eca4cad298b15eeda69784b0cca9cf"
+    },
+    {
+      "prompt_id": "prompt_5ab8f22986c662e19baa",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_5ab8f22986c662e19baa.log_probs.npy",
+      "array_sha256": "b80b5f4cbcf1d404ec77825e0824036844738fd6af54ee307bb6376191d199b8",
+      "metadata_sha256": "075a602ec10bf45e975bd4618088c7882e5017262dd9f6cf8b724470070717b5",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_5b05526d5984ccdada2b",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_5b05526d5984ccdada2b.log_probs.npy",
+      "array_sha256": "bc28f25b6cdf24bac71ce0189755853d33c11315879ea624b6d68064d2c7c023",
+      "metadata_sha256": "dcf235c4a7c8a83494833a7827f37c71c35aad819c6bc58f2c3f4b266179dc68",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_5b4bafe52d36709c7347",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_5b4bafe52d36709c7347.log_probs.npy",
+      "array_sha256": "4af3a696dc17bc7e3147cfb1de91e76c83a81b305a846ac83a6b1e5539218ca1",
+      "metadata_sha256": "e616b33c4ad3404c783d2bed67d5ae8e29af615f5b8ceeee49fee498e79bf49c",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_5c30cda77a6fe9b79a64",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_5c30cda77a6fe9b79a64.log_probs.npy",
+      "array_sha256": "9253a8497e60d4d51d6d0bfb10049f6b4d5b52bf85465fdeee05ac97faae2236",
+      "metadata_sha256": "e62f1f8de865bba06e98b395128d41803cc9f63d0ad9346ad3df7e2edf76c842",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_5c57e481bdb11271e9ca",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_5c57e481bdb11271e9ca.log_probs.npy",
+      "array_sha256": "9058b0201c5b599bd42113e4aa2144c7548e61b86f3fd6fdfe7439a39ce998bc",
+      "metadata_sha256": "c65acadd8ca9aad88f99e6d25e6428c97d74f3e18f5aab3badfd9085b68f8599",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_5c935bd5be540239ede7",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_5c935bd5be540239ede7.log_probs.npy",
+      "array_sha256": "04ac51e292c2358c0ae8b3b75d1af8036af3fd3ba5f95543652699a972c03df7",
+      "metadata_sha256": "9aa6a629ea9efc7b9662a53e791fa4b8088b4b560ee7a71dddb47c00551ccc78",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_5d3a9f03ba6ac59eb6f5",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_5d3a9f03ba6ac59eb6f5.log_probs.npy",
+      "array_sha256": "50f55919932b2cd93cf65ba6df76f0829dacb9eaf4b387d7121a01d02f84e302",
+      "metadata_sha256": "66c3928a23f851af9bfd9b6346538f55ef3c7d508ddf8307f3090d05719b7aa7",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_5dd80f11d6da80aeed3c",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_5dd80f11d6da80aeed3c.log_probs.npy",
+      "array_sha256": "989ce4c63ed1a1ef349bf66a3bebe1f5e686a029bae0fe806e9e3c382c0e24b1",
+      "metadata_sha256": "1926658968307425529bb8e403ec45da6e10047e14558930d6da11dbacd41ff1",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_5e7843f716d2765770a6",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_5e7843f716d2765770a6.log_probs.npy",
+      "array_sha256": "19c64689b392280d3260aae216b3c3485fbcbb37385d7dd349dbca7ccf56f516",
+      "metadata_sha256": "f37d050461205e90cdfc22d8fbed89dd333d00ae00ca77dedd989b6e8a4ca692",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_5ebb482fbc5e05dcf343",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_5ebb482fbc5e05dcf343.log_probs.npy",
+      "array_sha256": "a3506c9fd91a94a8bbeed2ba82f934132bbd1bfcd64b7bbd3b1d58aa61d6ab11",
+      "metadata_sha256": "92296e1aea94630ffb8cbfb80963d1fe042bb6feba64a5db4f0072fe94f90c0e",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_609ebcb01c16884d0a9b",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_609ebcb01c16884d0a9b.log_probs.npy",
+      "array_sha256": "7af7cebe96bc8ca785024224b55a7f22e4fb73f230f3e0005fa0125f84a26b3a",
+      "metadata_sha256": "b0bff83764ff5f9cb1c296c33abbf091f2f8b010ef4e6b98c9116f4953498887",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_61d855467faef22dda02",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_61d855467faef22dda02.log_probs.npy",
+      "array_sha256": "41533843dda7829666ff4ac7c2277db0be5efaa8275e92e82ff1a2a8ec19152a",
+      "metadata_sha256": "c2d202bf1764a118900a0dffd30d40a4f890ee9ec860ebc018bf0d0e95c3618a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_6221a2fa0be7cf08f388",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_6221a2fa0be7cf08f388.log_probs.npy",
+      "array_sha256": "c2cadf06d2ffa8ec44341de3e9ae7e45105eb52384f02ac659ff686c68e1b9db",
+      "metadata_sha256": "3974776099394b804001579d41973f525626b5707da2f1fb1147df97929a014f",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_637f3ba213712824d624",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_637f3ba213712824d624.log_probs.npy",
+      "array_sha256": "0188a12837777e593a6133561099bb9180d4a1a941bac4f5d7f462de52720b13",
+      "metadata_sha256": "b86a3e0887f300ccff687abe61e1131b57d2fee1fd911105f15c7c5b8b4b04bc",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_640423a416c4e3cdc50d",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_640423a416c4e3cdc50d.log_probs.npy",
+      "array_sha256": "fccd0ace23443e087a09f7e1988f30c85ac342b8c43a8fd8ac4532389fe3477e",
+      "metadata_sha256": "67c813f3926312b76494f0575b26573c10bc4bd6be4923ac1e164eec949270f7",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_64d2dffa827be493405d",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_64d2dffa827be493405d.log_probs.npy",
+      "array_sha256": "1e961e4e78a619104ea405171bfa8ec826ce4e38c14add549fd69553d2ba78ec",
+      "metadata_sha256": "327450f1fe0ba406bd59e4635c2fcf4e3cf8bb0796d8e37b5808423c2fc9e399",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_657c1e9c064cbc82fbce",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_657c1e9c064cbc82fbce.log_probs.npy",
+      "array_sha256": "c5a6fde05acc788fc2706cf5facc5b922ab3e77be30b49b13e6637ada18584de",
+      "metadata_sha256": "2eea8a939ddf59706f59df20e60a978c0f31d13464e33fceb9579cd53f72ac14",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_659af1eabd50b2180293",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_659af1eabd50b2180293.log_probs.npy",
+      "array_sha256": "b01c9cb85c03baeaa59e4e5011fa6e01f15cda40099472c15b2a9891bc792888",
+      "metadata_sha256": "be4dfc4982c7e4a8a022a181fef94f4bd544777f55ffd8245088d69484ab5db6",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_66323c06c37a8e00ed7c",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_66323c06c37a8e00ed7c.log_probs.npy",
+      "array_sha256": "8564bafc29a6ba07098107f7381e6089656932b461e1efa07f6f7ae43d2ff17d",
+      "metadata_sha256": "c25d8dd09101b4aab53ebbbf6497feff3001d03dc9ee543585d7e7f59a32db58",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_6687c41c215fb4c9bc18",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_6687c41c215fb4c9bc18.log_probs.npy",
+      "array_sha256": "d992de27186853b92fa58b35d93164dd95b69b05ccdfae7862d5ee89971cd19b",
+      "metadata_sha256": "77533f911475355305b8f00499a1274353cb0a889ae1f3300c4577b582bdfac3",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_688f85d2ee80be65d6ff",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_688f85d2ee80be65d6ff.log_probs.npy",
+      "array_sha256": "494e0a7f7544d8bbb137a75e46028482c090d152dfd7414ff020e34c84ac4895",
+      "metadata_sha256": "3dff36cfd1c926b9c97af9ba70f68f268c8d678cb490859ca20dfd2f8463c23f",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_698b8be3e62e148e260c",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_698b8be3e62e148e260c.log_probs.npy",
+      "array_sha256": "ce88efbbacca9fdb4e3eda847ecb5d484d55c0eaf098b4955abc6025fd527bd6",
+      "metadata_sha256": "a3f29c391f918f087de90c66a99f4f73190f67bbb6eba6df6ba4b6ee16e8817f",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_6aa492960e929d0d9716",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_6aa492960e929d0d9716.log_probs.npy",
+      "array_sha256": "3c45afd834b67673d0a5e5a2991e5c2ec8ba47ec096b9af33a73f6820eb59c2f",
+      "metadata_sha256": "7763c309446e3ad10af24afea437841f24503ed909dddb138dd6826a93166a2d",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_6b595c448108d920e068",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_6b595c448108d920e068.log_probs.npy",
+      "array_sha256": "05420d7b07925af1ac3b7be41daa7480a1c33c5706bf6c38da8526831947e5e0",
+      "metadata_sha256": "68475ce6c73c63eb1a8886e7ba25875c5bd75ab65bb46ddf2ff368cd9a317b88",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_6b640e6c5a51f055c739",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_6b640e6c5a51f055c739.log_probs.npy",
+      "array_sha256": "13d39a3ae353c5cbdc3f2ba6d06c6fd2249751d3b97f3db28565159c232fffe7",
+      "metadata_sha256": "53ecbf5622498416c3ef09b4ab573aa35a462cbe9f1cb6bc5dd067dfad706907",
+      "progress_sha256": "54588744cdc6713726d6f6a9eabbd1e7c2cf01fc255b812620b15c21f51894f5"
+    },
+    {
+      "prompt_id": "prompt_6c1b3593d11d68cadaaa",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_6c1b3593d11d68cadaaa.log_probs.npy",
+      "array_sha256": "9f2005fc33995de02b934dfdb36d4e9f3ccc5ce172088d83427f91171fce0331",
+      "metadata_sha256": "d74dff1ff654daf1de51b9b583ac926336578099def9782a6008597adcb3a4c2",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_6cc85ab73d4e7fbd17d7",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_6cc85ab73d4e7fbd17d7.log_probs.npy",
+      "array_sha256": "0a6599060fb536c99343b953dd1ad40e9efcb85d5b4bc50ee4f5ab4b1a12663b",
+      "metadata_sha256": "5921ce7a54f48a43ce02a5ed6cc59a6f58ff3de29818cf7d73bd9830d7e93818",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_6d032f07512360bb0a1c",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_6d032f07512360bb0a1c.log_probs.npy",
+      "array_sha256": "ce16ac5fecc00f1859abbe5e758df5f068f01ded80261e0ec6724f5799f71eec",
+      "metadata_sha256": "86a8e6f60db703db1372c5f5c7edca630582927ae139a3e39d1fe62c4115e7d7",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_6d389c2043c750266834",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_6d389c2043c750266834.log_probs.npy",
+      "array_sha256": "8005456e78692e27db4bb90097c2c88d0b518958dcb65f0baaba0120b4be87c5",
+      "metadata_sha256": "312a7ace3002d0cf33c386aaccbddb593c8f9dcbb6c3d12f7bfa9313fb381029",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_6d80c184c3718ce325c0",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_6d80c184c3718ce325c0.log_probs.npy",
+      "array_sha256": "573eb18c50de2ae3875d6d4cbd02e6c4a1998fe67e7059aed984aca04e867f2a",
+      "metadata_sha256": "0704132e9d58957f3c1a5d522ea409f2077851dd6785e6d09870beb7aa558eab",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_6e261efd81dca8051d26",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_6e261efd81dca8051d26.log_probs.npy",
+      "array_sha256": "efac985f85e807f54f4da245bdd2d4bc72c7766ef023f0220e0cc219b4e13d36",
+      "metadata_sha256": "d242fcad52cf5ad6fc23c203d8b30cb2e002f1e523240ca535d31fdaaa8e9435",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_6f5992006e03157c0366",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_6f5992006e03157c0366.log_probs.npy",
+      "array_sha256": "02107fe90b94471b5c47e5f8cdde3a49953555df7b7a47acf07afd729c352f9b",
+      "metadata_sha256": "5fea73c651f372f8c97eca01e2aa19f11c691b6fbfbcaa919058a08ea0cb5dd9",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_6fd514252c44029619a3",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_6fd514252c44029619a3.log_probs.npy",
+      "array_sha256": "f41ee8540669844590a2ebe9d2d71a357b0af4d422df69ae85e33c3a20b823a5",
+      "metadata_sha256": "aa2a3837668ffc16e78b9ac4603088327b120cb3526bd5e9eb38fce65cab6f9e",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_705d5e3c1a579842d626",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_705d5e3c1a579842d626.log_probs.npy",
+      "array_sha256": "427d3baa65983ad329f89f41b447daa3b50a45aa336969f73a40ec6328b2785b",
+      "metadata_sha256": "fe9afe069621698d145417ece0b6fbedf3f4049a49e2d3440bf3ee5b408683a8",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_709ab170815ec17190c7",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_709ab170815ec17190c7.log_probs.npy",
+      "array_sha256": "f740fb038d3eb85cf4d020d1f6a681a70220dcfea37179f7c1091ca56ed61584",
+      "metadata_sha256": "41171ada5d94691a7a09ee0c1a3f81cbc08ee0315311ca3f33b436e3a6d0104b",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_71317a193e7f4b2fe5d3",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_71317a193e7f4b2fe5d3.log_probs.npy",
+      "array_sha256": "4c5995c63f6b24ef895442d8f9a1680e2412a4f496e156720662151914885567",
+      "metadata_sha256": "35025628ae7aa856dce6655f15817f53130b24287cf11bda7ab3bcb1b3a3c39d",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_71d6afaafee59b5ad4a9",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_71d6afaafee59b5ad4a9.log_probs.npy",
+      "array_sha256": "414e3cd44aa0c907e023d3a9ab223c6d2692eb9fdbefd0735dfc3fa7ed94448b",
+      "metadata_sha256": "eb4e4e0a1ee1b57de4260928568493cbc5a70be0ef6e3a21688b72d12447b1df",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_721dd38f6e1cd385aeb9",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_721dd38f6e1cd385aeb9.log_probs.npy",
+      "array_sha256": "dbbd60e8cda8ba8a937430088635429a290e066ab3999dbd78d658cf1ff569ef",
+      "metadata_sha256": "52d4c4154a9577053f05316e8e7b31444febe6fb355428f4817a23da305b52d2",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_738a4371eb54b48233b0",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_738a4371eb54b48233b0.log_probs.npy",
+      "array_sha256": "350b578905d76064fd7aa21e45ad3437dccb2c3054e9a82e347e08d64aa2aa06",
+      "metadata_sha256": "5eb1938da3cfb3d309b134a4662ad838c61f035427ac27008b390ef5c36f0e31",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_739729bf2f10e6d80322",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_739729bf2f10e6d80322.log_probs.npy",
+      "array_sha256": "89ec8552ffa556b202e431c703d7a1b0f913a33d62e2e84ff61983039b411c04",
+      "metadata_sha256": "1093ed7c669ad92a5f85c6dc8b542c18a58605a9ecaf8101a162cc4993a9c40d",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_747fcc8e2f89ae3b0473",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_747fcc8e2f89ae3b0473.log_probs.npy",
+      "array_sha256": "1ad6c4d0a59e64201cbacd54ea6f20f128cbdb5fc477b69001c12c3a3d1bb679",
+      "metadata_sha256": "73d601f2b9e916d3530a1bb0239f40ce64838e45236c7898e0a4d4c5a0f5fa4c",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_752aae9e70bae7652559",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_752aae9e70bae7652559.log_probs.npy",
+      "array_sha256": "a468e2d1543692c2b9a6d56471fbe9b81f58555f4f6af6bf3c3befe8f7936e80",
+      "metadata_sha256": "975ebd65bda4fd5c62b495646effc84d29feb8d17ab6132d2c3cc836125ca1e6",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_756a22f2d4f21f4a218b",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_756a22f2d4f21f4a218b.log_probs.npy",
+      "array_sha256": "20a3d5310d9c909f0fb3ad95f104cbd01e66be4c74f2b89aaf066ed7d3d8a1f9",
+      "metadata_sha256": "00354cd3f333fb47099191a1f339d8323b64721ef317620bbb3c0e0acabc89ea",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_77568553322e24e8190f",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_77568553322e24e8190f.log_probs.npy",
+      "array_sha256": "e26d6fe0c203b19d520ab9e1f6815b42bd5b476cf6bcb17bee63918780b4f003",
+      "metadata_sha256": "2d62f52e7842ff251c87a917b1a81f295532135d699138da61ac8109e7db11e7",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_777a61df356187f82fac",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_777a61df356187f82fac.log_probs.npy",
+      "array_sha256": "cb7fd60e216e1171008f24845744cac563a94138dc321b4041cbe773ee0cb734",
+      "metadata_sha256": "104e76550a2cf69c1d0699f1e35fcf5b1141284de6158d4bb823a6fe6340c333",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_77b713410523f573f451",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_77b713410523f573f451.log_probs.npy",
+      "array_sha256": "750de6b2214705969fbd7960241f9f70214256ff4c2565cdfa099baf1a0e4e3f",
+      "metadata_sha256": "065c16407461189b1d7f334695d246d8552f43860c6cc70059511cb63137cfb6",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_78eebe9cb8187c270621",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_78eebe9cb8187c270621.log_probs.npy",
+      "array_sha256": "36d7b462c9f22b00029470eb2eddbc879f04a50d4287a90131c91aaa49809f9d",
+      "metadata_sha256": "7199a93d71b0398efd7bcb3278d690b6d73646dc796b357784e9970305f780e2",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_7a508071659adb7b52a6",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7a508071659adb7b52a6.log_probs.npy",
+      "array_sha256": "30780833903d4192568310dcf0839b1532c7184742efc5a838195586aefafaf5",
+      "metadata_sha256": "67e70a4223c2ed2ffbb24852a3d887b6e75037374dc842a3fe552873afffe433",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_7abd9e6d247ba9384d6d",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7abd9e6d247ba9384d6d.log_probs.npy",
+      "array_sha256": "1472ab1d146d4ed1660f8627229fa5b282002ada2100aba77c45937965ba1a59",
+      "metadata_sha256": "bb453e48ebb4141cca73f7416e5f14f198e5114579e66549c21554db9b7c1920",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_7ade7d887172c3ffdfc0",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7ade7d887172c3ffdfc0.log_probs.npy",
+      "array_sha256": "2450b50ad2571f14e9ba1ca8af99c34502ab27103e314f4dd65afc71a8b39cee",
+      "metadata_sha256": "7344206a9a1778820af5d9a1d299f6d3c3c9e0f178f7131a5ce575fa54d43fa3",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_7afd8befa5c668f87434",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7afd8befa5c668f87434.log_probs.npy",
+      "array_sha256": "5d8d1e7e6c8519d2f7dde56c9141bc6c62332f3752bf0f4373d9f64eec38e5ee",
+      "metadata_sha256": "254fb76598e899d44b25e4de2b0a7d8dd93a3b1019da94b65d378d75c1aa9d04",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_7b606437eb9b0fd82b1e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7b606437eb9b0fd82b1e.log_probs.npy",
+      "array_sha256": "9cd3962d880aa4fc39065fa850d98b173e0dc92484a58bdf1f207c93aac7e4c9",
+      "metadata_sha256": "bbf1034629a6cb41d58a0936e17dcd84198e380aa3920e525cc4432ef44c2c87",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_7be07c75e713df8bc1f0",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7be07c75e713df8bc1f0.log_probs.npy",
+      "array_sha256": "e565340e27252183010b08d991cb6cfebb963b138ab82607cfb0bd606474243e",
+      "metadata_sha256": "ca1db87fd80cdb585a5e3387dd625004ab49917327f8dcac786b663f9a672eba",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_7bea3739964bf9d3157d",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7bea3739964bf9d3157d.log_probs.npy",
+      "array_sha256": "e98cb2ff51675dbd2752a4e151cee37b41afc98160f38bf9f327014511aa323a",
+      "metadata_sha256": "6e919f13eb9fa8037499a6e8215c650afd6dd48ed0f64c7531af660fa21840e6",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_7c0787e202ddc7367361",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7c0787e202ddc7367361.log_probs.npy",
+      "array_sha256": "390d3ee6164bf8abebcc00e5df9f6f53a4ba43211dcfe05201f680b7ffe09689",
+      "metadata_sha256": "743398b928d16ef62f0b9c85e3bd42f2712fc5fef3925b934ec71971961934d3",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_7c964a821ce9486cb678",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7c964a821ce9486cb678.log_probs.npy",
+      "array_sha256": "23bd54f6715629ee32024efab8e117277899f4d54baa193f336eecb122a3ad5d",
+      "metadata_sha256": "3bdacafb323ff1e09b8b35c6b53896f70cb4d08f4136f29cbde3869aeb1801c3",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_7cdb0a04810e9e08cb10",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7cdb0a04810e9e08cb10.log_probs.npy",
+      "array_sha256": "78dce5c53a02fea0016d9a596eee63e97047aa2c817da85a69a4add8967c06c5",
+      "metadata_sha256": "937fd234cfe53e0d5277f2e649f8f452ca092f49c6a80e03caf11db5dca55814",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_7e0fdf0d18a78b2f26f0",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7e0fdf0d18a78b2f26f0.log_probs.npy",
+      "array_sha256": "4ada08371f4a0b1018c018f295af36385f57339fda1a9436be319aaa440933ea",
+      "metadata_sha256": "33a166d3a4fbf71aa4b88613a53b2e54a884cab4f2921724b06dec02b769ee60",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_7e7fe96035ca9e08eac0",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7e7fe96035ca9e08eac0.log_probs.npy",
+      "array_sha256": "62899ddd6cc763b09192b2c51c763c319159334725f2bd8d0c33e64a5398f5e2",
+      "metadata_sha256": "133b57886d79f160dc4f5bd69b806d925e0bce10f4271a7030831919de87b231",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_7ebf909e4b947d98da36",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7ebf909e4b947d98da36.log_probs.npy",
+      "array_sha256": "d50c884d152ce5b6f6aa2d10123504539573fc0e974844724fd29861791e0b23",
+      "metadata_sha256": "cc127f031c038f5c06932461e5e042e2fc68772a7256ac420f01cf55748c4574",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_7ef0d076d98598730e9a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7ef0d076d98598730e9a.log_probs.npy",
+      "array_sha256": "57dcba6b9e1e7fcea62da0b8241863c74624f1f84f46b6fe877fb39b0152ce1e",
+      "metadata_sha256": "1f9d4bb352bc9844fe6020ad498f65d260691377870f240e47e696b89f7ddda3",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_80a135acf3ebf3aa5eaa",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_80a135acf3ebf3aa5eaa.log_probs.npy",
+      "array_sha256": "6da02f4965224ffb9fb57cf549c0e22d22817bf9e4496dadd6dae15c6d084ea5",
+      "metadata_sha256": "15a07f4e7e83f69c32063061476e26a73390145c01f8883cc504d65389c66190",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_81510cf385785220acb5",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_81510cf385785220acb5.log_probs.npy",
+      "array_sha256": "c147377f930cfe10babc9c7c1efe5a28f6b49b284a6882b72ec6bebe3dce596a",
+      "metadata_sha256": "94092c65819468e89a51c4db2b45fdc77cd06db3fe343bb4ba37297d66825b02",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_82862027dcfc21ddd7a2",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_82862027dcfc21ddd7a2.log_probs.npy",
+      "array_sha256": "c09ea4b87f1243e935668ad2e6681db6274cecae300c41516c5e0e8d0a7a08cd",
+      "metadata_sha256": "2c03b3fd53d02f2c6e6fde6efdaf5f8027917e2db83e7b5f50f42d84e95219c1",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_83f277ddd353396d08b1",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_83f277ddd353396d08b1.log_probs.npy",
+      "array_sha256": "2c0f82d29c34e4a4fdf8f142bb7f232bac0441c4125eb57e0f1c19021aee39b4",
+      "metadata_sha256": "033223dfedf37a469ff248f423cc9c2b2da6d15cee22a8e5bdb12322fd44c26e",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_840ea27e6884b799f03d",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_840ea27e6884b799f03d.log_probs.npy",
+      "array_sha256": "bb428bc7e45f8399a0c23344526db71a4510e842ecb412892c487abe83e18b44",
+      "metadata_sha256": "2e744474306b387990e18fc805a771e7c9271a00dfa8a458b98bf20976b4d63d",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_8487b91d8b711b635de9",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_8487b91d8b711b635de9.log_probs.npy",
+      "array_sha256": "1df686d145f67c232e3cccd6c28e5a7a02d14200d289bd54ef8bbb02ccc49c60",
+      "metadata_sha256": "c48c1c21f4eb8593f3913cacbe8e1d63afa9b438c962081bb9bab6fd0ecb967d",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_8739e15a78acc9c748f2",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_8739e15a78acc9c748f2.log_probs.npy",
+      "array_sha256": "57cdbe0a992a9fb91875218e46efe68dc7b44bfe082486403cdd9f67fb273a0d",
+      "metadata_sha256": "aa562fb5a96aaf31155a4d6f5a073533d659b4a2a6d7c29bdbd6aa7a98a6fbf1",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_880556e472c188a19236",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_880556e472c188a19236.log_probs.npy",
+      "array_sha256": "24b69d2290986c759860e778d034e1cc41da1cf464223658481ea737c153f6dc",
+      "metadata_sha256": "df31fa1e22c87d341cbee75d4131ff4e6e8ae8f4736cabe1b556009e1cfeac9e",
+      "progress_sha256": "3b02b78d66397a5dcc28b951adb3c14452be70db35538eb6002c906270604ddd"
+    },
+    {
+      "prompt_id": "prompt_889d327ca8706844c390",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_889d327ca8706844c390.log_probs.npy",
+      "array_sha256": "ad980c95d20043f51d7a43c42733cf5f8aa13005079e9720df457544f8ed4c1b",
+      "metadata_sha256": "cef7036f85e9074d440e81a38fd788638a2cdb8b8110d21d1801ef2a1df90480",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_8a7d96bf9736b1016bf4",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_8a7d96bf9736b1016bf4.log_probs.npy",
+      "array_sha256": "830797e85c1ca5521dfa01fdb70015e0da53272bf3205cd58edd0a46762ef380",
+      "metadata_sha256": "f2b8aff90e6508038760b934cfa8322763449a21288503f961e2e29192dddc4a",
+      "progress_sha256": "ac0074563132eb3a4f3958ec40814a8832caf0a295948a3ff95fe5f87da0570e"
+    },
+    {
+      "prompt_id": "prompt_8be1725bcbc2c7cafd21",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_8be1725bcbc2c7cafd21.log_probs.npy",
+      "array_sha256": "66e861efbebd882a8d532849c85713ef61f532598dfa957a5b959a58b425e5f6",
+      "metadata_sha256": "1fc8f87f928dc03ff7b3301dde19fe8206266eb2e9f15443623b68c319d47060",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_8ca19e07495588590515",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_8ca19e07495588590515.log_probs.npy",
+      "array_sha256": "d74d6451bba5e1f1753036792472316db3ab9b332d7fae46fee5a4d3ca37d8ff",
+      "metadata_sha256": "ef8804e700bdd128b7aaa219ac3465d27a0217fc6b72652c241d944e03b3cc41",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_8db9c4024d83de073548",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_8db9c4024d83de073548.log_probs.npy",
+      "array_sha256": "462f6606f785a4331f9efc02b5ab8008ffb237aac933edbf0a14b07097b650bc",
+      "metadata_sha256": "dd462f3ee1f9a895d4c28f5dc6b8eefbd2052b1be18d759b08fb9df9a137fb64",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_8e5f09d888c394847072",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_8e5f09d888c394847072.log_probs.npy",
+      "array_sha256": "0e9b4840e1417ad80483a4f40cd0855d5dffefc06ac64a2ad74f9ac50edacc2f",
+      "metadata_sha256": "5cd0daa286a6ddf32bafcad3b416eeeceb052f19b860f584ca8b8bf360d99e35",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_8fcbba79ae1df9a8ba2f",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_8fcbba79ae1df9a8ba2f.log_probs.npy",
+      "array_sha256": "1c536606f53c651532d718654d4ad735b1fde81a49a8872b8607c060a739345b",
+      "metadata_sha256": "1bac132655c0932a93d62a85ac10efdbccaa96bf8d336c29d163a4cf75f919c5",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_8feddd2073fb246aa980",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_8feddd2073fb246aa980.log_probs.npy",
+      "array_sha256": "8f43a73c37ad9cdc68772f0774a90fedf4b4e2b44e2736aab8807bc0d2c9ebb9",
+      "metadata_sha256": "3bf03d73c1658804191c01b6a57ca9cbb382e7eac869ff9bcd6cd6ddef10aaec",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_90e8b2aad92e2cc22986",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_90e8b2aad92e2cc22986.log_probs.npy",
+      "array_sha256": "42e89bb736d967364ff32ba3a64f7decc01a208106fdc29f4af50105d6a928a0",
+      "metadata_sha256": "dd425c12c3ccb9bd8c2bb44f392d72fa6fc58626d21070929401706a9b0c5b79",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_90eaf9efa854c51aeab5",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_90eaf9efa854c51aeab5.log_probs.npy",
+      "array_sha256": "1b7d56283d7055f40d56019f2ac5000932a6d348f638442dd0da18c19bcfba35",
+      "metadata_sha256": "04b729004c4488d43c31b2c4d5af2230e40f096c6d7da027710227c988a1700c",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_917833c98fdb2bb36886",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_917833c98fdb2bb36886.log_probs.npy",
+      "array_sha256": "fbe05546f43aa0f77010d6fc07aa6f93d284230d73b5ff2c34523d3ca36dc4c5",
+      "metadata_sha256": "aba2b2d488e35182fb141dee44cde35e3e959bf6137aeb22fc87a7b409ab3935",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_930e8cc6f3119e5bd81c",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_930e8cc6f3119e5bd81c.log_probs.npy",
+      "array_sha256": "c66c372610a150c770028cd6fb526e080cc1911a22b888c861e9148139d894c2",
+      "metadata_sha256": "1b9a74672eeb154be6a1b43821ba0205806df49301a257899b9a7b248eaeaf86",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_931d0dd20892e44d05d5",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_931d0dd20892e44d05d5.log_probs.npy",
+      "array_sha256": "0ef0f3a8b1c438104b6a2f1c87f6ff7118f5bd773e2d08702dba1296e1b93009",
+      "metadata_sha256": "9af20c1fe257018395651757a015fa178053d4a1f4c17870ed62e81a17a463b9",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_939287c6e92ad6058c57",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_939287c6e92ad6058c57.log_probs.npy",
+      "array_sha256": "3ca9c58b5e545e61a43ae11409542a89f38d2c158c7e79b55db580e2467977df",
+      "metadata_sha256": "5882ef46df929246cb5b3b92154c4f51584649fb8dfee5bee1ad8e7bdbc59cf6",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_9464e3d9e8a4e8a05eff",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_9464e3d9e8a4e8a05eff.log_probs.npy",
+      "array_sha256": "ec5808ac6b81158f1c61679381e58783467b2807d5792a9bc7ad7682656f6db9",
+      "metadata_sha256": "c9269ad858b33815bec33affce24b3e804987c1eede25c09e1dc0e76e9b7cd68",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_95401d256c36dfade26e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_95401d256c36dfade26e.log_probs.npy",
+      "array_sha256": "28831ae166c6ad45bf026f73db5a260acc90fa58352098c42e1a21c308214da6",
+      "metadata_sha256": "9c9ff6668ff328beb07ed432475a3d9f4d3430fb0879d7cd3e3278d46bc3dea0",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_955d2464207ced42dea9",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_955d2464207ced42dea9.log_probs.npy",
+      "array_sha256": "eb05be6e7cae79a7797889820776f4ae2c39b3f77cb8d3b35d4c42130180830f",
+      "metadata_sha256": "147e9fde8c58059f2497e50408ca23506a774bb44cd327ea723b8752629419b0",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_957600c3996350b84f6f",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_957600c3996350b84f6f.log_probs.npy",
+      "array_sha256": "1ce2d7371ad4708ccac242ea6ca5910199ba3677004aa52f94a884486ee48d14",
+      "metadata_sha256": "e4d4c7fab9e160d0592bfb0ecd36f88e9a2be7d3fad69a4bb177df4252a74eb4",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_95c315c9ed427791791b",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_95c315c9ed427791791b.log_probs.npy",
+      "array_sha256": "c931621e6477c2116da2695bf9895f11dd3bcbf1f13847768bee91a58e6d7d0e",
+      "metadata_sha256": "0193b64d6c4b5eb6c9711baa5dcdf802db894445251a54d0fa3757ed33eeb676",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_96127195d571b60ef5ed",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_96127195d571b60ef5ed.log_probs.npy",
+      "array_sha256": "2124c074a325f0a8fdf8a69deee990d175547cd53201a37f4a8ba977083912dc",
+      "metadata_sha256": "4ba320d00f3848fedae18e218721d7c8f2ae95f4d232907801f90339cfb0d901",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_96b9fd88dd95d8e198a6",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_96b9fd88dd95d8e198a6.log_probs.npy",
+      "array_sha256": "8e7dbdb942cbca71d83a802527098a14a408dd7e7be095df40303ccd6fee3095",
+      "metadata_sha256": "20c2dcd6614e87a750acefeca1d96818639fc69d1388650a6ea11b3a2903938e",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_97105f92135d8fd5e77f",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_97105f92135d8fd5e77f.log_probs.npy",
+      "array_sha256": "ffdfeda907cc35e32094c8b76083445668232cb2660fe47d515c74f2e449a0cd",
+      "metadata_sha256": "74046d6ede187d24400ede415194eed0dfd488c24f57cc1c4fd3a55ac2b99322",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_980237e32fcb800eaba5",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_980237e32fcb800eaba5.log_probs.npy",
+      "array_sha256": "09e19e08c12ade2bef2e5182bc9c53a4bde6d1ea4e575322278b0403e41e27b5",
+      "metadata_sha256": "a9516085a6976502eb6f511af34bf60897a2fea8200969b0019cdb5895585acc",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_9811d6a2af36e00293d3",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_9811d6a2af36e00293d3.log_probs.npy",
+      "array_sha256": "a2fb2da45edf342af0c8e209e21d469b29e850e8b8daa41e07643857dac81938",
+      "metadata_sha256": "6010b334f19999709f0f9a072f3f0eba5563acaa73160bc5123b7fa76df18682",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_986769da57d78cb7ce52",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_986769da57d78cb7ce52.log_probs.npy",
+      "array_sha256": "2ecad2af0a2f0f2d6a2964c9852c1f572ebf6c62ba6738556f123c1cebb62982",
+      "metadata_sha256": "e34ce566c253f82edbbcec91fa229df164abc49f444ac311899312e651a7ccd5",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_99d6c7fa02cf58a58879",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_99d6c7fa02cf58a58879.log_probs.npy",
+      "array_sha256": "fe140c60384f529e7711eb2dd4aee718e328e6f23efc59822f940ece1531a3fa",
+      "metadata_sha256": "85be31d5f9169aff35f564d853ea2e1cb005d7163447397c6e2ca90e25e31236",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_9ab8d73f1cfc0cad14e4",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_9ab8d73f1cfc0cad14e4.log_probs.npy",
+      "array_sha256": "cfd10c6fc01c70e3e586311cfd481847709e49d3b99040e06089e3f6326718b2",
+      "metadata_sha256": "1475456c086fd5327f811fb2ebad85e7153e725b2df506063a732623cba1bcf4",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_9ae221f995afa06cc4d0",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_9ae221f995afa06cc4d0.log_probs.npy",
+      "array_sha256": "97202963339b712452fad46dabd4ca83537d7230aa9d40d2cfbd89bd6e19cac4",
+      "metadata_sha256": "a18d37a6e488a607296d88387b44f78d010f7c3d3414edd51cf9f1a56a94fd49",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_9beef84d602e83233184",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_9beef84d602e83233184.log_probs.npy",
+      "array_sha256": "068b0eadd1161cf2a6281755e0ce7a99063bdbe8f315dfd6cc81f3aeeb44bd9e",
+      "metadata_sha256": "cf46d3658cee428f6174dbcd62d3ede06afce228dc16571ddf3539674ff43542",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_9bf486d348995ffb3c18",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_9bf486d348995ffb3c18.log_probs.npy",
+      "array_sha256": "ea6c20b7bbeded1ddf222d47222fffaabd17d4c27b7d5ddec307adb357527ac8",
+      "metadata_sha256": "57cf39bff8dd2f851a1145c33be9fc8c7e242d5106244648e61f9075d22b263c",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_9d10b4bf28050baa10fa",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_9d10b4bf28050baa10fa.log_probs.npy",
+      "array_sha256": "ff047bd574b4e3832cc42cf53cbfcd3024824fa445c35681a008b30cce8de7bf",
+      "metadata_sha256": "ced6c5ede97cb638d9c03f567d7f72c307e445d796c9853b884ecb9fc803c397",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_9e9d73e33e446f793598",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_9e9d73e33e446f793598.log_probs.npy",
+      "array_sha256": "28ede7537ff8c6ec3f8433ae0e4f3a2a9f1856c2d19688331e2316aab62d4961",
+      "metadata_sha256": "31d9b195608d33048ca2b8d1ab40377e67b431299dd3ecc6191e72b0b469ddc5",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_9fb9edca3350bd8eb9ef",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_9fb9edca3350bd8eb9ef.log_probs.npy",
+      "array_sha256": "80ef1c4d3e9a613e929da67b2523271ed2e5790aa2c5c4f2d5d7087d8bc2da87",
+      "metadata_sha256": "63528e5c07d3ecb668560272eb5db4f0bb784fc7d4a53fe44425234946433238",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a00c8affba73ae324926",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a00c8affba73ae324926.log_probs.npy",
+      "array_sha256": "6049d5470ee955b2525e11997349578fd1e6cb55a642f517e3afbc7f80856625",
+      "metadata_sha256": "d1f36fc46d4bcf9c76691378f0e7f6793044b2846c573432ad7c64bd7c65a11f",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a0659a0313d2c4e6f7e9",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a0659a0313d2c4e6f7e9.log_probs.npy",
+      "array_sha256": "938253aca172d41570294753ec942c0774fb2cf528f94f0fab9a166fde0014ae",
+      "metadata_sha256": "f739a105135cb2e8ef6e29780c97f826957f9c12e5c32c5d9b4efa1fa0f18d05",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a09ae2916bf457412251",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a09ae2916bf457412251.log_probs.npy",
+      "array_sha256": "132742a17d1a08805f356ef5b3894b3af253afcd626b508e7ba722dab1aa3060",
+      "metadata_sha256": "67fd98f9fcbc48d74c18d97a9e2882d0beb2241e2f74d4cae8eb422f2a09a078",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a1ae54b0763a217f7d6a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a1ae54b0763a217f7d6a.log_probs.npy",
+      "array_sha256": "816ff46e5b3c1f5c7c8c2d9636eda8c981e0dcf1af893001613ff9d3ff85cd77",
+      "metadata_sha256": "4d27c1e2810856f3c67e9142f40a3a1d9e90b52905441e1f5a0a7d2206a6a709",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a1c3d53b82409c3a0909",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a1c3d53b82409c3a0909.log_probs.npy",
+      "array_sha256": "d14f61a89e8b9f5817b86fb6d38f38f0861deb06244d7b7e7ffad0260ae8cc80",
+      "metadata_sha256": "ef48bdfead0e9bc6ae3b58fdbc2e20804ae79e7fd0db924088c541fc8665c0eb",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a21e371598a2b50ec832",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a21e371598a2b50ec832.log_probs.npy",
+      "array_sha256": "d26c1a1a470a2a92b16da48e84d7bac61dd713b6f62768bb23680ffa3d594dae",
+      "metadata_sha256": "1ea0c56caa12ebfc588a9bddeb4e7dbb7016bd3133458782eeffe8eafa9ad2e2",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a24e95517a05e37fcb1a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a24e95517a05e37fcb1a.log_probs.npy",
+      "array_sha256": "98b373c2aee77943a2fdbe848e882bf25891ac48444fda61c2e496b4221a5d88",
+      "metadata_sha256": "6528d7805bf4f6d9c323a40504dc1af024dc330e10378e78b8e7baca41fed7d4",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a276e86b98781155d95f",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a276e86b98781155d95f.log_probs.npy",
+      "array_sha256": "e80169f510495614c3bd5873b46450934d9120c65f546c37c23963bab2d7e89f",
+      "metadata_sha256": "335e40832349a21a2e8b550fe029ddcf0e5c8bdd038654d51e82dbfb41d411a7",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a334c89b411df90df76b",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a334c89b411df90df76b.log_probs.npy",
+      "array_sha256": "2bbbbef235bea3171323c7f9cdf4ccb6fb9213325eafe8dbbee872ae92c56f31",
+      "metadata_sha256": "2bb20496d48dcead971f5bd3f27860c1cbab72003f097c19d5ec3e207ca532c4",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a34a467ede5a114e7f4e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a34a467ede5a114e7f4e.log_probs.npy",
+      "array_sha256": "ec3d5ef1eadef8a2c7be0f9a9b051b7ca43a45024ed3b79aeab2a93affbb621c",
+      "metadata_sha256": "4806ef524c162cba1d32465f6264c7480a702ce8c7c01eb152b3e6bdae1e32cd",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a366eaab2c5fdbd6a23c",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a366eaab2c5fdbd6a23c.log_probs.npy",
+      "array_sha256": "634fe0e6e9a63123be51ba1553a02a573da4c35ccce49d0544bc4b6605f450b0",
+      "metadata_sha256": "5bc3333b735e1de8159fbae3823e41c46c4d6242559759dddc2d3bd3feceffef",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a37e810a2613681c714c",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a37e810a2613681c714c.log_probs.npy",
+      "array_sha256": "601eb00655c9dabe92ab332b112a87cb7c7c7f2a00ff1009de65d6cbad617d8f",
+      "metadata_sha256": "0804fd857bb0c9dcf9f50d3f1b17af1b98a82f97d28e06bd72f582aee162fa3d",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a3afc32e2955323c1f0a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a3afc32e2955323c1f0a.log_probs.npy",
+      "array_sha256": "10707c8a9c6e194f5db3429c65e12740385be6412b21e7cac0bec3c3aa259b4b",
+      "metadata_sha256": "e034bdd5b848ec63937ee27f43f9fce6f1cd7c229ac51608033478e537470fb4",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a3f9a2b596f078fa95bf",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a3f9a2b596f078fa95bf.log_probs.npy",
+      "array_sha256": "7ecf77de2150946639a13d7a3c66c800121879ae448420ae8e36fa95124573d4",
+      "metadata_sha256": "6c878ffb3ac6d4a1fc11e21511afa9d7d87e1223e2a3efdf0ce4f9b8c981c095",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a4142fc44ef982483908",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a4142fc44ef982483908.log_probs.npy",
+      "array_sha256": "97cfd1ad1eee089fe8f2d0fbe8d38822b4f978b1917a134d7e1ce67215e2d4a2",
+      "metadata_sha256": "7a5096e6a2347e051b4c971f4572d8ceb69f6660772e873c468b2dbea5ff8f26",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a46876bb5719277b3e45",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a46876bb5719277b3e45.log_probs.npy",
+      "array_sha256": "887d92260ba88ae3a9d9053832a59952279448851174edb130b23f114f3209a4",
+      "metadata_sha256": "597857e678445aeae9fa661df715cc2e5f8a4659697595d7c4c7d125437d7749",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a53e97793a855559c06d",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a53e97793a855559c06d.log_probs.npy",
+      "array_sha256": "740b53bcac6aec4a4db5e9a3d66de61541a05dc4f831184deaabaae85580a85c",
+      "metadata_sha256": "fb7d044e023da319b7f01a167e2eefc58786b0c042d44d70e89ebb8e7003f4d4",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a553c55c4cf8ddfc9832",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a553c55c4cf8ddfc9832.log_probs.npy",
+      "array_sha256": "6988cabc0b62a0b8fd0cd94009eb82b72507f69f439b5a7da6fcf7b0253aaa68",
+      "metadata_sha256": "d25ba054cb1be4212166b12724faf69695d1532769948aa72f6eac0b689f82fc",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a5f165d5738b6f45b905",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a5f165d5738b6f45b905.log_probs.npy",
+      "array_sha256": "6dcab6e16a7a2710367eb6e098723a5decd035af12b5792e22dd7a4d579c9902",
+      "metadata_sha256": "eba903f03b54ab58eb1d1ace61815451109ee6bbe85cc919482fd8e343f544e0",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a7e5a055b1e502a56fda",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a7e5a055b1e502a56fda.log_probs.npy",
+      "array_sha256": "2149fa3b4733236eac5e3275f7ad89ef06df33d0c755916039278f82a35c03b1",
+      "metadata_sha256": "e02873fe33932c8103b56e23bc4611fa4b24f0f5bc01fb6d2d784f122f3f8681",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a9ba41eb1bf65a23642f",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a9ba41eb1bf65a23642f.log_probs.npy",
+      "array_sha256": "39aef79ee50448ead5824cb8ea4b4df9d82fd27fa337551c11e5f03b6d88d08a",
+      "metadata_sha256": "011a779b9c0c566973d146047446d9c0a289ad22585a66e779f017f093d7ce7a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_a9fecc303fff8855bd8a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_a9fecc303fff8855bd8a.log_probs.npy",
+      "array_sha256": "51510d3f950c2c17adfb8e56bebd54764c4bdd0ce4c2d6b34fd96a4dbc482198",
+      "metadata_sha256": "78d93fb26a03ea9db9c9d7a883dcb156ffbe9add147ebc641a45d870a709bdbc",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ac486d4c1ab5dfb3688f",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ac486d4c1ab5dfb3688f.log_probs.npy",
+      "array_sha256": "c73b34f7dc49f86a1e59b2e4c13539845db8dd299bfe75e4e8ed261a7a99012c",
+      "metadata_sha256": "bdda09cc16f498a1db9a2314bbcc1ca7ce727776595361ab03cefdbb36dd4918",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ac92eb3ea65506e3a9af",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ac92eb3ea65506e3a9af.log_probs.npy",
+      "array_sha256": "2846d7ff89eb034ea07de608b7d24490b1622f1396cfaca52f94edd4e1157283",
+      "metadata_sha256": "a65acd92e2675961bc6079bf55e31e4ae3117baa579cf39643137d1ba4a54e51",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ad186ae540b8c58ffeaf",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ad186ae540b8c58ffeaf.log_probs.npy",
+      "array_sha256": "4e9b95899a9d52c89dfae072b940edb7a220c767a09a377c40a3b285a98fd60d",
+      "metadata_sha256": "3e1f8af57f2c6e4b6664b307677ca37548b10d161f9448b341e5242bd4873e45",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ad4bd6c387f8a95f6d37",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ad4bd6c387f8a95f6d37.log_probs.npy",
+      "array_sha256": "faf8f0aea1ba97358a84f59a736cb12c21cc1ac65c0a77f64b139c3c85411f0e",
+      "metadata_sha256": "6ab6f6e49b95d991eac7b2feb054ccb427aaf384836c3912e475ac78cb91e4bb",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_adf94592398cfe046af8",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_adf94592398cfe046af8.log_probs.npy",
+      "array_sha256": "a8ec5ed95648c641ff4bbe8affe1ed3e9777818fd4a1e7da82343aaa38fcda34",
+      "metadata_sha256": "df68df51e65224553fde61e86d32564db62d902276d7d5e474dcda4bd7b20aa4",
+      "progress_sha256": "505aba7e4f4272c395acda289847bda2a88a2c267adc56d4357cfd5297dcd5b4"
+    },
+    {
+      "prompt_id": "prompt_afaed6bdbdebf46d03e3",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_afaed6bdbdebf46d03e3.log_probs.npy",
+      "array_sha256": "4e67419dc0ec4197e9cacd03328be32ade8deea02152907e0904540fb6fcc397",
+      "metadata_sha256": "3a2525a4887019e46f0e34fe9b0c09320a0356a5e79242b331bd81d9b875d8d9",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_aff743bcb72e5318327a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_aff743bcb72e5318327a.log_probs.npy",
+      "array_sha256": "2aeeba7e9b3d96b873c112adf508d011421b428991e599d5953a96a612b19af6",
+      "metadata_sha256": "6407310daf37e0a54c9923565ebe25203c465c15bfe95cfce1defd82fa3323b2",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_b03dd7d4b08353849f01",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b03dd7d4b08353849f01.log_probs.npy",
+      "array_sha256": "fe3faf342c87fa48a5d9ec663d8d3cf1a2a35037005eaef17db52288acccc2e8",
+      "metadata_sha256": "67063fef205553867381120a1edcf98979fd2004d809d4b9680830a64b3f08e6",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_b051d56fd48e430d8851",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b051d56fd48e430d8851.log_probs.npy",
+      "array_sha256": "170906152fb35ea98d7c3a32205cc934d927b8df05ebbc0baef0a0af5d26c790",
+      "metadata_sha256": "210d08ea71ff72d2de62949815019e94a3c0573add3f3847a741104739e22b7f",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_b1289cb8a28a6b86171f",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b1289cb8a28a6b86171f.log_probs.npy",
+      "array_sha256": "884d0928882e86e5d02e4fa9d6b2b79975343d27144e1b98af0d84e15ce711e7",
+      "metadata_sha256": "d92c164faab6da56785685836550d1583292f86fc1fb6473a2907d466fbe34ca",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_b18d3965f328ede4b57f",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b18d3965f328ede4b57f.log_probs.npy",
+      "array_sha256": "71326ef84cdfb1d648a97908b149a5ddeeaa89e96a4ffa1944e7c23cdfc66974",
+      "metadata_sha256": "9d1b3c3468c9e7831cba3c57e088c159e4bcbe4f7e4c40f12f34e4410e61b738",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_b3dd1592c51c5a571d1b",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b3dd1592c51c5a571d1b.log_probs.npy",
+      "array_sha256": "e087999e5ebf4c1621495d01cc0572762e6c456509addc4a3cc78b61b4d4f0c9",
+      "metadata_sha256": "13378dfb3cda6b074716f9d59ec2c08c66fdf3751656c09b9f91f3ed5d025897",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_b47e271b641a5847820e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b47e271b641a5847820e.log_probs.npy",
+      "array_sha256": "4e69751756b7b4688a029a7d0ff0aa0bbfce888d454ac1f0ecb3f590c67892c1",
+      "metadata_sha256": "801fe23f18a1a5a95e55a84028026bcf296e7c5dfa5899ef853777eb013a830a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_b4d6fb0c53a16899b941",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b4d6fb0c53a16899b941.log_probs.npy",
+      "array_sha256": "0355a84f208117fa8bf0f27497dfd4a62fc171a908bbf41f1644229fd2d26f74",
+      "metadata_sha256": "b6d534d9064e17a72950a7cf276b41b2d9a11effbfb466042a7fb44e9add3ca9",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_b4e6b0b901bff60ff734",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b4e6b0b901bff60ff734.log_probs.npy",
+      "array_sha256": "a453f6d357e94c4c54def1fc040be9790861be31d9d5f43d809d60ab656b3b10",
+      "metadata_sha256": "b957b11d1ad9a08c11619170f92ccce89f6b90990c238fc6bc7e6a4ef1a9eca1",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_b55b7bf43f7d75d0476a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b55b7bf43f7d75d0476a.log_probs.npy",
+      "array_sha256": "635a152fc2255e6a7e3276efe70ea4eb2cad4c889b1c1abf58203847df0f53e8",
+      "metadata_sha256": "252125789c2721056ca51d9f73a0a8521524d67a1f285dc4ab17cb3ef7193b35",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_b62ebf8247465c98ff0f",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b62ebf8247465c98ff0f.log_probs.npy",
+      "array_sha256": "8364a88c7146e97efd04ff5fa3b7a6aa0554d6461788d3da992236570dd1c186",
+      "metadata_sha256": "e3d560a654ca1a7025982e0dd81febd0ec319a027ae790525f176e28a890fb80",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_b63f760c82504d79ed42",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b63f760c82504d79ed42.log_probs.npy",
+      "array_sha256": "6491b83f6dd2b5cb42d75447b8d6123a758e94b2493267deaa716b5ff0e87a7a",
+      "metadata_sha256": "b1d84c5c137d32caf211e1ba26fd1158a918710d7e0d04bb000ac37788dae95e",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_b68ecef2a83cb4432762",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b68ecef2a83cb4432762.log_probs.npy",
+      "array_sha256": "aa786882d84f93dbc8fcca784f52e9d652dda74efb693c77d52a014a06e33e86",
+      "metadata_sha256": "90498815e17ee87066120f7824fe0a766675dac05d6eb230d271a3b25fcd049b",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_b6c0bce68d458956b199",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b6c0bce68d458956b199.log_probs.npy",
+      "array_sha256": "312e6d5be379c770f8aeb073f227ea86086f75b6ba3e17524e5c49f6bcee7b81",
+      "metadata_sha256": "4dbe2c6492b04df1a0ad10cafe95db3c8d8e4622fad535e8b9585cce76674578",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_b83734ea461bfb665969",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b83734ea461bfb665969.log_probs.npy",
+      "array_sha256": "5afb62d1f562b2186303f130139f06ea1e1bd8124eaf198a58f31daae9232615",
+      "metadata_sha256": "72d41ab5c0791e0c194d7485935acd50ef5ad503deafc4501bd129a45b961e69",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_b8a6334bbfe291ccb0b9",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b8a6334bbfe291ccb0b9.log_probs.npy",
+      "array_sha256": "c72bc58afee41ed323d9097026c0c0a2d4e5edb1a822f9fff54ee6c601f3faae",
+      "metadata_sha256": "6fd534da3df9552262e105534437c8a4eb84ee62f6264eb869e2510fd68c3c5b",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ba449c7bed5a4591f194",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ba449c7bed5a4591f194.log_probs.npy",
+      "array_sha256": "a6328187dd8ca7b7ce82a5e498cff26117ee7a5a861ce4992bc687cbcaf1e9d8",
+      "metadata_sha256": "72324c3c176404be73b4c1bb3c56273558bac7d13b0f595f2d9ef19393cb75a4",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_bc73462875e5b0142b35",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_bc73462875e5b0142b35.log_probs.npy",
+      "array_sha256": "673d4a28341d0ac31dabe1eeeab31ea926dd9d87acd532e652d69e816cb48ac3",
+      "metadata_sha256": "89eeff5f797e376824c17b42ee8e81c259de925410ee42e26999b018291a52f1",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_bce9bc6cff3595014145",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_bce9bc6cff3595014145.log_probs.npy",
+      "array_sha256": "b462a48a91902281c91b48fb45db286acfc10807a02187332896afe912718873",
+      "metadata_sha256": "27fb1aa220e85106cba96c7739228bf441d0530542fad2ec833bb02784854954",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_bd5c96f9fd4fdbd03e8a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_bd5c96f9fd4fdbd03e8a.log_probs.npy",
+      "array_sha256": "57e7b4ad1d96da464ca6b80126be5b379898baf9834137ffa570f0355fa2d234",
+      "metadata_sha256": "dec60e61a6048231dec5b0eab25161819940a6a73ba0d89fa238e2e5ebc9135d",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_bda2f68b11b1f8e34829",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_bda2f68b11b1f8e34829.log_probs.npy",
+      "array_sha256": "f59b35318b04b7b64bf2ba4c83b31b3911f1e1ef1d6892d96576bbd3db807cd7",
+      "metadata_sha256": "6241b433b2ee3816727d85287d6c0968f01c04629dca28459c6ae4b5cd4afcb0",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_bdd5addecb667c63fda0",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_bdd5addecb667c63fda0.log_probs.npy",
+      "array_sha256": "d9e57eed9b1527bffbbc44c999e34f2fd9947411e7ead71865f6a4d479efb76a",
+      "metadata_sha256": "1d91262b3a712a861efc378ff2613c146a16f25f798a23c0029832d1d1c55346",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_be0b6cfcc2b0f422511a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_be0b6cfcc2b0f422511a.log_probs.npy",
+      "array_sha256": "2b70a2b73fb46edcfca3f2cf5e10ecb6e0c2cfce7329a7d113e88f563af1e451",
+      "metadata_sha256": "1ff9129da9d682bbfbfbae294e999cf4d2e7c88ccc7b250f5eb6c24943cf6f42",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_bef1dc5815fd91e1a13e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_bef1dc5815fd91e1a13e.log_probs.npy",
+      "array_sha256": "b859009f434f5ae97d7caa3a78ed65323b32289724d388e4cac09c097df4c946",
+      "metadata_sha256": "6a828d9adf9ab1b1478204268d3193325987b107469676322a229c5a91d69b76",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_bfa46bdfac1c6516a56d",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_bfa46bdfac1c6516a56d.log_probs.npy",
+      "array_sha256": "c672e36c2337595398e921acc181a747f758d1b3ef2ff73ca6bf010223e37854",
+      "metadata_sha256": "28dc6f2b663229634941a96cb071829435442b9ca44813658697c04a96820b12",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_c0993b2d9dcd32f39c7a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c0993b2d9dcd32f39c7a.log_probs.npy",
+      "array_sha256": "5fc838c419c9b64e62e7198d7232b1af69021edf48135aaeee6acb8f3eb82e4d",
+      "metadata_sha256": "58dabf3462d9611532b16e15190b1355f4658e12bfa6d28f34d93e9e28f22806",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_c250877ca3335c171095",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c250877ca3335c171095.log_probs.npy",
+      "array_sha256": "8990b23f28eaaed5354a100fbd5ef971bfa36cb4f2a6b9a9422edc0b86509621",
+      "metadata_sha256": "d26b66cf97d5d1a8c844cb5f1e001b963bc9947f60dc5b9d785bd979bdb89106",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_c2ab947fae285508eec8",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c2ab947fae285508eec8.log_probs.npy",
+      "array_sha256": "1f6079998a76e33bd790968cf3977cc32d6cda3db5eee160a49077f6d7a46e10",
+      "metadata_sha256": "b97b852fb3d0cc07b9d728563f1e614edb72114d56e19a35decc148a5438a7ef",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_c45d58b9ff1d6a82bf90",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c45d58b9ff1d6a82bf90.log_probs.npy",
+      "array_sha256": "bb849c36ac69d963a24fa6efbba5463ebfd0a717bc0fe988521c908822afcc36",
+      "metadata_sha256": "65ab5970d8ec394742be478666aedd1c4e530ebbcf597573b9ee8c58156338d5",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_c49323f06cdff5ffad8b",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c49323f06cdff5ffad8b.log_probs.npy",
+      "array_sha256": "4bad4bcf83602ec227fb4d96c38f9e3f8f8d3920887b55b9a097c8217da7b772",
+      "metadata_sha256": "58b61dfeafd928007aae9f3d3fac1b8addc85bb5117a9f0a99c20e1e9f4554ae",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_c59b935a8b7c294921c9",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c59b935a8b7c294921c9.log_probs.npy",
+      "array_sha256": "e3b5f2ecb223103d389a8044e4877242dc56800bde860cad291d38b2b477826a",
+      "metadata_sha256": "3aebd6c2f7ffd2f80528312bdd88cdab1cfeb8c178d338458a1db91b5a7fe313",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_c5c3062ac27f7a19a928",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c5c3062ac27f7a19a928.log_probs.npy",
+      "array_sha256": "20b2ab122835fa28077d7700950acf7aec45ecf794ff90acafb5ce24e59439a4",
+      "metadata_sha256": "49dfef82872af64aafb69dac4515d652f04723ee3e679c47b693550d582f6b90",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_c63d460dc7adcff43405",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c63d460dc7adcff43405.log_probs.npy",
+      "array_sha256": "ed3c9d424160c55e1d8c28afb858a4bf1a437ab68689b2ece585c16f3bf26057",
+      "metadata_sha256": "9f14e1984b68f16bb8412d317a8aae7ccd724c80310015882251029e02ef0464",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_c6a031faed11dfb9f249",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c6a031faed11dfb9f249.log_probs.npy",
+      "array_sha256": "fec807704dcf29f07ead1f376d7532cbc6626fdd9ca1bf5e153cb55907f10dd2",
+      "metadata_sha256": "d8918186575c7bd46c7b65d440907c8a31fba2b4c61ebe02bd8f68a005c118aa",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_c6ff41e372f5153a7715",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c6ff41e372f5153a7715.log_probs.npy",
+      "array_sha256": "6c0dcb52d148d93174c693b44508e2da17ead8cfce9b218db5d9e943c9e18e96",
+      "metadata_sha256": "0969bf1a19d005effaf33a0621e529d86fc9851a5cd7771dfdfe069a0ebd61da",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_c7846a1a1c061226a93f",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c7846a1a1c061226a93f.log_probs.npy",
+      "array_sha256": "710f65259a153d3f45e301a4bc09d7aeb67e89e0b8613f4cb5715ba22db28601",
+      "metadata_sha256": "58dd126286bb130e1e04d2e2e115c78c64b873f6725eda4aa523e2595fb62070",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_c825997d8ae15e605a54",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c825997d8ae15e605a54.log_probs.npy",
+      "array_sha256": "053933eef1820a46482fde06e70d1deca00b12904027d608fcf6bf92748d0d77",
+      "metadata_sha256": "f5a13413b5f9971fa5d57ad94e595f032852b921dac55682f6e05f0e51a8adb1",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_c8e3fc550e50fdf8751b",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c8e3fc550e50fdf8751b.log_probs.npy",
+      "array_sha256": "014edd7a465b966b606a8a0a0ca6f813494bb1f19e623af3b3f7817ee1afd6d8",
+      "metadata_sha256": "71621ebbad6aaaf6fb3a0698027a8513d5726ea2c5c0dfd8e4bc44b64745e6a3",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_c909d94ac64271ad3703",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c909d94ac64271ad3703.log_probs.npy",
+      "array_sha256": "debfffff28fd4440e99f386d9d4e8c940c4361fb5a4464853b05729be5d12b69",
+      "metadata_sha256": "8eb8246e5f866eb26ef27a88001ce5bdc58475f52b29faeb22b85b72ee4e81bb",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_c9b623067e4fecf29cd5",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c9b623067e4fecf29cd5.log_probs.npy",
+      "array_sha256": "44e7df29d351a8e41ef86a643d50c5edb3f83399290ebaccd64cde01d03816a7",
+      "metadata_sha256": "e8b7472215ddf3c38a30d0edbf11c65992acb4e8dc5b2a2e848b6acc451f70df",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_caa49df0444325d783dd",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_caa49df0444325d783dd.log_probs.npy",
+      "array_sha256": "99d8ad23710b389d81f0b4bdbdb19db6ad1129a572b1ff6d61e6f0b8b4981ba8",
+      "metadata_sha256": "5a8ca83245ac6d84d7e8dfed687d43ff473d24d26537d64226f3b8ce2a43d0d2",
+      "progress_sha256": "c31518c2ee6ab5cba34918db72ef45b175eca4cad298b15eeda69784b0cca9cf"
+    },
+    {
+      "prompt_id": "prompt_cbbe437abe3a30539e9b",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_cbbe437abe3a30539e9b.log_probs.npy",
+      "array_sha256": "74dee8d49900b46ff994da8566311e1179524997aaeafa02a3d45a56f9972211",
+      "metadata_sha256": "9a69279ef30c79d74e96b19b0f7001966a276e7bd5f3298d99727089da0c8ab5",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_cc0ae0907862926149b7",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_cc0ae0907862926149b7.log_probs.npy",
+      "array_sha256": "eaed9a816b90290541b469584cdbedce46e67d3b72f2544f510db88a4c88c730",
+      "metadata_sha256": "97da3bfb2decba4b027f76c2a67800aa8b35f7c241e4171796b543d281c0a0c0",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_cc1ea24d726ed3f268c1",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_cc1ea24d726ed3f268c1.log_probs.npy",
+      "array_sha256": "8fad37f4a17804aa9a47e08ea4f550e1d2acc2e3d8f29a6db775bf36bf57557a",
+      "metadata_sha256": "85690c7e72a79aa530d4ef9f113d192728713deb2f4faf4d3e940f7e69a67c52",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_cc5a8ca63a23424c77af",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_cc5a8ca63a23424c77af.log_probs.npy",
+      "array_sha256": "1756a652198cf475d31182c8205ab42eb533d64214a477086d59181641795686",
+      "metadata_sha256": "a1c3b22dc5730076ad3c9545832a69b62159c32104c95e077a75768b98d71088",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ce09a56a2cbabd118965",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ce09a56a2cbabd118965.log_probs.npy",
+      "array_sha256": "b0cba3df5caacbeaf07ba48e735a82ec7b6f290c1c32ed9f8532a04fb089fe58",
+      "metadata_sha256": "91854589dba1851728114e8f81004c0da3cf87c91e5c422e0849cc5da9d34e89",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_cec1ec315d732e19ae01",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_cec1ec315d732e19ae01.log_probs.npy",
+      "array_sha256": "d9a100322b13ac83aac7cbecdc917ec3502d25c3ff69dedae8d27d1ecfb72c01",
+      "metadata_sha256": "03f94e6db6592d002cfa2fd021c85eb1b1581a14b04fe8dba6b35698bc477f24",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_d02ee8347834f80037ee",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_d02ee8347834f80037ee.log_probs.npy",
+      "array_sha256": "3f32c3dc6a552622a1f59d28ebe75fa12708af560eed339aa40fcbf54259995f",
+      "metadata_sha256": "05512b831183ef5ab900b7c8a6dc43e025a0a70f2a9a07bb06374b6ffad4276b",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_d31c8772343c8c5cc032",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_d31c8772343c8c5cc032.log_probs.npy",
+      "array_sha256": "ad71542f431d57741d411275bed67bae252f05a9e60721f97314011d0c1c007c",
+      "metadata_sha256": "8694134ea11871b76908d3729c13cd58edefc7e094e5704610755d4b32c69f68",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_d530dbfe54ae7ec1dc77",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_d530dbfe54ae7ec1dc77.log_probs.npy",
+      "array_sha256": "901a96cfb7d4718d98768c1f3987ac7b4aaf2de91cad19fa10f1a378f243e459",
+      "metadata_sha256": "b628828c50933d38818cae6a06a423509488f7161cb147250738a182f7ca6f8f",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_d5e51b3e9c6edaa814d6",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_d5e51b3e9c6edaa814d6.log_probs.npy",
+      "array_sha256": "f2a11856f9b5643fda7fbb58541801370b745388f13a8cf7c786dc404c8364e1",
+      "metadata_sha256": "c351b77b1de7a1111c2288ba23c4a6815c70ea17e201f784217c79be518ca0de",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_d63a3adc3e18671fdf36",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_d63a3adc3e18671fdf36.log_probs.npy",
+      "array_sha256": "5b2ef5550651fb2317cbc8cfffd5c1b9515a991bdf118d5600c909ab23393038",
+      "metadata_sha256": "541e0f09993d907820a82de5ab77c4bdb4535cb27ff9664e9cc95d792c1a4e37",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_d76ad01164d96b032efb",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_d76ad01164d96b032efb.log_probs.npy",
+      "array_sha256": "5bdd92e5f09068929d239d565eb735a6846d1108a3bb92dd7c2d5c313b2c2b16",
+      "metadata_sha256": "dbb4a3f5df4d664068e29a6c41398c3dcda5592cb52a1281cb265a08b07aa652",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_d83b47dbc21f5c5def29",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_d83b47dbc21f5c5def29.log_probs.npy",
+      "array_sha256": "ae24094f475a638209a1625e49692d7f281c63cac325655975d608adc959cb14",
+      "metadata_sha256": "801fe1dd17ea124b9604744f994c74b585042c4a5ecb38672c04e117258495fa",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_d8a639d649d5b62e57ed",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_d8a639d649d5b62e57ed.log_probs.npy",
+      "array_sha256": "9fc1e45476375707970835bb73f707ebf20c3eecf7e454c7ef0371d9f2dd3f08",
+      "metadata_sha256": "f1da72f80bd9ed53456542795f07861e2a21715cce81d7bd20aff1587aafad92",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_d8f00a6fd1996aff71f7",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_d8f00a6fd1996aff71f7.log_probs.npy",
+      "array_sha256": "8d6ba31e8d97234d0c93fa18b701540f0b15d2ac3696d8bfd7e475782fe85464",
+      "metadata_sha256": "8f29bfe61111660a7d8613b4f0aee418aa6a616955ea9f3d6b87c9b33370363c",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_da485e918a3352d4492c",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_da485e918a3352d4492c.log_probs.npy",
+      "array_sha256": "d6d70062390025911d881c6e76c988a304c4429b246a70cea57e3685662d0174",
+      "metadata_sha256": "4b005957623f3bf635587947d676abf3f339812ded831d80c58f30c98f92d1ce",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_da54171f5ca1be9e9d1a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_da54171f5ca1be9e9d1a.log_probs.npy",
+      "array_sha256": "2a7e5af08fd7478eb10a96f37163d42267690e29bde80ae799a1aae7cfcff912",
+      "metadata_sha256": "d3b65be49b3de0352aa1947c31abe3f82e6c184b17e4c2492016bc3d95795868",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_daa0f09c7f0b66a852b9",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_daa0f09c7f0b66a852b9.log_probs.npy",
+      "array_sha256": "6d839b170576b5a19c0a7cb3206a682325e7e8302c369a0ab7f1c53864525296",
+      "metadata_sha256": "4c0b9104ae847262fa58bb0edfe4bfd4f52ebb52834f928d33f53561f994a657",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_dae5a23e82f8085cc86d",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_dae5a23e82f8085cc86d.log_probs.npy",
+      "array_sha256": "69f36633063a6e1d9626c89a0dd5adf8056991d1db364f9a08d4e971557c2842",
+      "metadata_sha256": "d302e6ce7c6043d64364e2e9472893ceb0d176c8ef34a2f0aeb72f05717f2b44",
+      "progress_sha256": "4c7e3696ba96a3e018767c3f660b7010cf99923809940f24acc46e6b20adf749"
+    },
+    {
+      "prompt_id": "prompt_db0ade4afdd83de5c193",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_db0ade4afdd83de5c193.log_probs.npy",
+      "array_sha256": "835ca86f0ca0311bce61353584b9ac05abbd1bf02e66c8c5a275e97145140d45",
+      "metadata_sha256": "0c971f521a07109b15b36e0f537885b0e01e32f431c306c36f6d6fba86d70c02",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_dbc53c191f8c58a5e8e4",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_dbc53c191f8c58a5e8e4.log_probs.npy",
+      "array_sha256": "c656d6ca1fd33b7ba3050acdf1b22fad36e88ba0aeaa476dd059e35001ee484a",
+      "metadata_sha256": "3df7f8bf5fe24e4d479f490765242d5147d39e9b6c2563cd862c46c19ff6216c",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_dbec2de12c4fb61ba1da",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_dbec2de12c4fb61ba1da.log_probs.npy",
+      "array_sha256": "45019b8926cb6b030fab9bc5fe41614f77ff88ebbee35f92639890161d54dc38",
+      "metadata_sha256": "c17952920ebeb7c1f8037b1dac49a3d27e2f547493a846fcdc118f8b4a29f632",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ddab5e8daf5ed525b085",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ddab5e8daf5ed525b085.log_probs.npy",
+      "array_sha256": "ea0e59f07ff05914bc929b69e5ca75a9046cdac951666c0cb3f351d1e60e6aa0",
+      "metadata_sha256": "5daa91ffba6923227f56f1f061e5620a1c106821ca82e483d2bc3698bc13f65c",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_dee88e579e9935bbf58e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_dee88e579e9935bbf58e.log_probs.npy",
+      "array_sha256": "bc390fac87a31137aa65a2ade12ac4745ad73f36232a0fb66f56778417c4d2cd",
+      "metadata_sha256": "c0d42b7623b547ed3452fe96a934a10752ed93216ebce098626aece32cb96428",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_deed30743e2abe75ca62",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_deed30743e2abe75ca62.log_probs.npy",
+      "array_sha256": "dea4650c68cb78469d0519082a88dcfb3a931611c25b687f630b2aec435cf383",
+      "metadata_sha256": "29c65ab9407e4d3381c49e58272722fa8aed377e87cc6eb249eaa0174fe4d154",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_df3636797cb1da59471f",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_df3636797cb1da59471f.log_probs.npy",
+      "array_sha256": "b15d63681e89040c262b2facdc09ec5eff2a3f09732f64dbe0913aff327a664b",
+      "metadata_sha256": "4c4b6f4493325ada8e160837fa56cfbe7e48f25204f4a7965c4d52df04165801",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_df555b00a711d9ccdc1c",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_df555b00a711d9ccdc1c.log_probs.npy",
+      "array_sha256": "e8a339c41bd7cbdb401f6a39757fef5ce7050953cc6fad2d7868889040ee89a9",
+      "metadata_sha256": "a7b4d6da33605ab22567c8d9ee50fc7ce702cf02452850606408458c27270757",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_dfd6051c4e202c7686eb",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_dfd6051c4e202c7686eb.log_probs.npy",
+      "array_sha256": "f82d920516d84916a6d91a7aeb99001c3df36c221e9f99f018668cc75b81bc9b",
+      "metadata_sha256": "95b01885df0d6cef0eee77b47b69854effb004a80fb4df648c460d660194f4e1",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_e00e156f3257be31b90b",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_e00e156f3257be31b90b.log_probs.npy",
+      "array_sha256": "c132ce7f94384be83928e8179c88b2954b9fb636317961282fe7fe90ff81a20c",
+      "metadata_sha256": "07deb7f08cdba2f2f2d78568230d832db34393f44e01b9f9a1d1862ba6d4359f",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_e2cddd7f4dfaa714c703",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_e2cddd7f4dfaa714c703.log_probs.npy",
+      "array_sha256": "4e4899fc6dee176b09597410c6946a6efe9a7210a235e388e4f01089ea311632",
+      "metadata_sha256": "be19a374760f8167db0b6e73b2fdadd2cae8fc463599ded1a9b8fde14654b5a7",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_e35ee33c7bb0e64c4f20",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_e35ee33c7bb0e64c4f20.log_probs.npy",
+      "array_sha256": "d2796fd083963b1bd640b7ffe6acecfbfa6f1a3413c4327a340ed95436b9875c",
+      "metadata_sha256": "c682c953015fb1ff975e473bbac2a1557c98fe8b701dfc5d0bcdc42f22a5134c",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_e3b745ce25bd1b15dcfc",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_e3b745ce25bd1b15dcfc.log_probs.npy",
+      "array_sha256": "b100305ac1a7cde1262c553b6eff847af0a672e2e000d8b530922af8dfa8e108",
+      "metadata_sha256": "7029b5d76cf62d7a247b375c0aa9023a024b035cfd3e733dbdf9a9ffd4c01a2d",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_e4a4f360dfb01f6485fd",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_e4a4f360dfb01f6485fd.log_probs.npy",
+      "array_sha256": "57a42a4a10721b581baffcb40742a0ee27f5a1c87c8293e2162720056f8f8d45",
+      "metadata_sha256": "b9e98786ef3e9c96ea61f6205fb6e3f21ed8b539231110ecb14465cf568babbe",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_e4ac5d9373f6e6d83dc3",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_e4ac5d9373f6e6d83dc3.log_probs.npy",
+      "array_sha256": "cbae9cbd522b542a864db099aa70af7ca8882a27af34555526391788fb1772ca",
+      "metadata_sha256": "672bcb85cbc5dd57fd2b4bfab414f7ed7bea1412c6641bbc40e1c04793849216",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_e4f8f7ea12b62967b360",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_e4f8f7ea12b62967b360.log_probs.npy",
+      "array_sha256": "61bb018325ca9622ba08ce96b2855e1271ea16953490ebef816a2d6f54c8e6bf",
+      "metadata_sha256": "8db927a0293b7e5cdeefc929fa9941e8836cfc05a7c67b8c58d338ab2789f180",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_e5b13e89443f16745c5d",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_e5b13e89443f16745c5d.log_probs.npy",
+      "array_sha256": "5d3a2daf135a533d18e5e358f5741586879c76a49eb57be1319f38ec878764b9",
+      "metadata_sha256": "1414af802106faafa941ad31c3d9210bd293f6d3575a6607797c97562c992001",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_e5bf08482327a5df1d60",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_e5bf08482327a5df1d60.log_probs.npy",
+      "array_sha256": "0964695a3cd915570b2b9e7d772368ccdbe61ae6017c4ece32c55c2b1187ad0f",
+      "metadata_sha256": "e7a36f0d6926677a397b1a36b48b824aedc813ee61c88b6ce898af51a171f3a7",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_e82bab647a73f8a446d7",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_e82bab647a73f8a446d7.log_probs.npy",
+      "array_sha256": "677f78db6ef31a44b4f8daf03bf1df556f4446c34fee9dbb9709a34de8d442ce",
+      "metadata_sha256": "49248a4fdfa47a23b31e7244789cf51c5f6824d267f8a1772a5cf723c23e40ac",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_e9d12a32dc73461554ff",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_e9d12a32dc73461554ff.log_probs.npy",
+      "array_sha256": "5096aef54c29a9f7ce74a753cc90f209b0f461195b50e867b1f79a9c20c23d50",
+      "metadata_sha256": "60afe208270af0349ef9b5af99f2d3949182cb2be4385fea98127b408955cc3f",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ea689bc65a2f99810ab6",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ea689bc65a2f99810ab6.log_probs.npy",
+      "array_sha256": "eb0797909be73bdfddcb309b1be354c995037a8ede9e1906a8b945974f65dcf0",
+      "metadata_sha256": "97e4405d08a82091540356a98632acdad458de3adf577bcf66c0505ff9a3b6ed",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_eb885216a39e07a2bd21",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_eb885216a39e07a2bd21.log_probs.npy",
+      "array_sha256": "5519672bfa35fcb74d7f9f07324d08532bd3ea698d00cb7e49555015a821936b",
+      "metadata_sha256": "fce8c04733a7e2b3c5addbde49e1f3e840871cc85120762bba93cdd0ee798d20",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ebfd4fb99e6b0af76dad",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ebfd4fb99e6b0af76dad.log_probs.npy",
+      "array_sha256": "098b7ede4dfff321c991fd25d5f11ab4e6bcd028a17925dc71294034d419068c",
+      "metadata_sha256": "8512b09c42361671a0ac80c4284f2c6bc5d3c86c0efc3b47594870f58b127b2a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ec5d2f072ea58f209e14",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ec5d2f072ea58f209e14.log_probs.npy",
+      "array_sha256": "f037fd01b7efb6ad9db0daf3238cb3a01387b8cec5fbb5636531a5c9c4cec7ad",
+      "metadata_sha256": "b2bb5b38a211f2b5186abceef6db522fd5ea3e23b6ce59a12ff8af4465676dcc",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ec9c5dc1b73984c0dc7f",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ec9c5dc1b73984c0dc7f.log_probs.npy",
+      "array_sha256": "f501e63e4c3162ba5489c1868216fe584dfa4a630a6c0f516e2fdc55699a7d20",
+      "metadata_sha256": "4491666a3fd6f40a0244cccea17960dc40eff42f17db4ee03a444bc718469f54",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ecebd994c18af83dac06",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ecebd994c18af83dac06.log_probs.npy",
+      "array_sha256": "c24cd5d0a6278a0689fc08b63c649873f0f2b69b6834f7b5eb2eae445d827afd",
+      "metadata_sha256": "b4657562f2be997861ddea0a9fe6d3b75247cd16e54e120e87d9e2e67d4a2aa0",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ecec0eee8c393ba4f627",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ecec0eee8c393ba4f627.log_probs.npy",
+      "array_sha256": "f929a844ed8326e14d9d819f065a68a69655d729c70f5273021bee53d8e22ea7",
+      "metadata_sha256": "627151746f12a7706e7b8a0862956f6ba5ac7a1b197955e1ba312a783b70eb01",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ecf7f493b8f2be7288b0",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ecf7f493b8f2be7288b0.log_probs.npy",
+      "array_sha256": "ad34a27cb1d7cedca888684004f8f92993da56f7451025fdcfffdb908267585c",
+      "metadata_sha256": "0ec972052b05dce80d11b3f770ef3775436576b04195f8b80d1a458c28007a98",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ee1fa76eedf1bd204a38",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ee1fa76eedf1bd204a38.log_probs.npy",
+      "array_sha256": "b38a76acb182317048c1b6a522c854cbd1e3b094a4a7446a4f96e8c0f746ada7",
+      "metadata_sha256": "bdf7a651df03cba8ee89c8643d1eb1bb1b82ddc7a9f0e61640983a1c9e8ec69e",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ee84046823af22d8778a",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ee84046823af22d8778a.log_probs.npy",
+      "array_sha256": "b740dd7a70dc15dbd654ba25b05400c5ab5ad8e10dbef57fe5fd3d4b08da9aea",
+      "metadata_sha256": "132596a8825de938f5602c5df24a4fc7c9f01d7959191b62ab53c915b5fbb07f",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ef7471913f47082a0d86",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ef7471913f47082a0d86.log_probs.npy",
+      "array_sha256": "1966cca78ab065fec1023da990ed29fc65b2d2a592cb125093fb01715c0c29b9",
+      "metadata_sha256": "95b7c885bd7e88933432205d61ae4a7e3b6b6de8bd5a0e0bbd6414246c8ec37a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_f01e75d510904b865a65",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_f01e75d510904b865a65.log_probs.npy",
+      "array_sha256": "00e4c4d1c71dd58b402ba7e768a6550ae5ad3ee3c6a4ec1c8144e79af9402859",
+      "metadata_sha256": "8816ecf49542e3faa3a0701cb42c803cdf0bc987e1971224d3aa4c2ba5c3f8d0",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_f11fed7e5be6607d66ca",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_f11fed7e5be6607d66ca.log_probs.npy",
+      "array_sha256": "5759f8538d472dc4157096a641822c37c30681ce12c01daae7fb39b060818629",
+      "metadata_sha256": "67e63b64fe40fdbb1d2007583fc66e8af42f87fe4ea387c57f9f68a86009e827",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_f1e7fab7f4ad16b061cb",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_f1e7fab7f4ad16b061cb.log_probs.npy",
+      "array_sha256": "122e95ef2f166774f54e2cba8f9dc39b103fcbc93a473b6af58fa1b264bf6506",
+      "metadata_sha256": "cedb0f2b30edbcda6d925bfdc4e9d224d114e811f56db16674ef5838c0ff6f40",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_f3167ee58945b83f84c1",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_f3167ee58945b83f84c1.log_probs.npy",
+      "array_sha256": "3453cb08a7e46d9fa997e7c91d9f790a0b4aa35703e3aa10418dbe53db689b0e",
+      "metadata_sha256": "5a41a3876c6772916d2e37e649dfacf1883660afcdabaf1fd37c541ffc0d0798",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_f4191d98bae5b4aa3cf1",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_f4191d98bae5b4aa3cf1.log_probs.npy",
+      "array_sha256": "62c551ddfaad066998becd62b9bf1cc50297cb4ec8050a0bd3b6f71d5a7edb0d",
+      "metadata_sha256": "fecbf3aff30ea09fcb83fbb8c866b24301de84a3228fe7d348c6e853ad3e77d6",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_f4e2bc5ac7ff83f72aea",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_f4e2bc5ac7ff83f72aea.log_probs.npy",
+      "array_sha256": "0e9064521cd9cdcaaed3b6df6af8c0fc6ddba4d9556025e70ba2ff77bffafd52",
+      "metadata_sha256": "afc30b62fc6d6140355f589dc455ede7c4c8e4c924e28b93539188f52ab45860",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_f693c977edffb2c086d6",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_f693c977edffb2c086d6.log_probs.npy",
+      "array_sha256": "63164a2816bed6228e72d1c037fa927266d017ac6f77b95a7331b9ac9a5cbe1e",
+      "metadata_sha256": "c07965dec4b10ac6b7935ddf3eab9d1bdb95dfe3dc2387b705f17fd81cdf23f7",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_f6954c5b0310622a4671",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_f6954c5b0310622a4671.log_probs.npy",
+      "array_sha256": "f78e6c82c9486a3d8fb0dbb14e110481498573d5dfe31b78859f7d4d0fe0f157",
+      "metadata_sha256": "7abcc893bcc6eea905f5801589bc11a3a2514e4446ec4ffd1c89760cc5ebd49f",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_f7d1da402b3ced7db6af",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_f7d1da402b3ced7db6af.log_probs.npy",
+      "array_sha256": "a5d4abaf96f4da4d8a98ee23f50c97900065c5bd7675fb15d35d44d53cf13ffa",
+      "metadata_sha256": "2fdffff92503f7f9fee34cf71c5d3d626fb54a5f2e14cae2a308ee6f59131979",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_f8c5e9a77cd07765a0f3",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_f8c5e9a77cd07765a0f3.log_probs.npy",
+      "array_sha256": "2e04e6c70489476bd3aba12940b3a418b5dea633e6aac4d2303ec3e63010b4aa",
+      "metadata_sha256": "55c4799afbe6de111c121e6ed28bfb84ad21c600cc129363c2b1f165c25eb71a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_f96a2b49de247f143458",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_f96a2b49de247f143458.log_probs.npy",
+      "array_sha256": "01782f8e3e9154e68a3d1812f8a7c628d3027caf015d551cbaba24e67227cc89",
+      "metadata_sha256": "ce6f7440951e1378176bc8bdb639239e648b5b7c8d2008d7a711ffc3bca2fd91",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_f9d30c22929d9a400159",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_f9d30c22929d9a400159.log_probs.npy",
+      "array_sha256": "c0c528b06f27de257b7ab8e67e7ebe163f0ba961878d65c17803638423d1efbf",
+      "metadata_sha256": "adb18c3012c00398bb963cfc7c150457e264d763475e90dc7e9a20b5f7465310",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_fa0e91fae2dca17f6ad8",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_fa0e91fae2dca17f6ad8.log_probs.npy",
+      "array_sha256": "670e6409d31be9f78a8d3775e610741f8f8cf323a227574d7f114041441d4ab4",
+      "metadata_sha256": "9de67fac4e92045ea7b651ab633f49a1a71feb37e99d1a116b7197aaa56b3bfd",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_fa68475339cd0a68e956",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_fa68475339cd0a68e956.log_probs.npy",
+      "array_sha256": "0edb6cbb3ff00c64f6a89a0c727c7f7d30ea78a211147b55d7aab6a26d1cb6ea",
+      "metadata_sha256": "1d651f5d639b090bd0f9bd2a828b202e1b7d85cbe981109d4cb843580f279170",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_fb6989d279e85933a99e",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_fb6989d279e85933a99e.log_probs.npy",
+      "array_sha256": "cacaa457839e19579d51b7591190a9119141f7ce362c110331fbcd27b28057d9",
+      "metadata_sha256": "210e934ab3097460c8c50c808b1d9fef23b81e4db564f5cf68f5a8d5934a9dae",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_fb894dac29811930d695",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_fb894dac29811930d695.log_probs.npy",
+      "array_sha256": "7c509df91b2807f2aea7ba0a52b2d01595901f96845c891993d84ce5baa12b16",
+      "metadata_sha256": "71ad1347054c8eb208fc5544d4504e7859517340f14502b384a12b1f5b118b7a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_fc397a1a3f6733ca216c",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_fc397a1a3f6733ca216c.log_probs.npy",
+      "array_sha256": "86ef5325c9c2f5fa815605f60ef9406b32df8656a99f0d050eb3b36452a68967",
+      "metadata_sha256": "e17c62ac28c71ef09148c2521ea3e5886fc2033d5cbd1b03c7065ad365aaafa8",
+      "progress_sha256": "a9473cf7216c026d4f8d44ae974e7ede9c0441d7c33841b407c38709cf1028f9"
+    },
+    {
+      "prompt_id": "prompt_fdd6892e3f4ea647aa41",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_fdd6892e3f4ea647aa41.log_probs.npy",
+      "array_sha256": "53f4022d7e27d14bd031e197dcc8974904e35eb0b0e4c49fd6cfe0ea3ba2efc4",
+      "metadata_sha256": "c464a9b15777e2eecfbd571a29e3842bd4af9cc7f3863c8230d9e21a1d4780d6",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    },
+    {
+      "prompt_id": "prompt_ff684c9dbaca2eb6a8fa",
+      "array": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ff684c9dbaca2eb6a8fa.log_probs.npy",
+      "array_sha256": "4949b587a8258ad9d7aa8fd1905cae2b633221b8c59e56cb521267126d14d37e",
+      "metadata_sha256": "f0d54e34b41dddc0da7625516d10ccb62c5a4573d4619ef121805fd4c587f108",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e"
+    }
+  ],
+  "direct_baseline_definition": "exp(query_logprob_sum) from the same float32 array used by all linking rules; sampling_probability is additionally exported without renormalizing any subset"
+}

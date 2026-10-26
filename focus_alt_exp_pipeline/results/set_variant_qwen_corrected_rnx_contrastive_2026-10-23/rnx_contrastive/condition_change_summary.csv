@@ -1,0 +1,5 @@
+contrast,n,mean_human_delta,mean_model_delta,mean_model_logprob_delta,all_model_predictions_identical
+Eweak minus ESI,60,-0.041417887673333334,-0.018436008311272192,-0.27036429147119634,False
+Estrong minus Eweak,60,0.26752136753,0.4731435742003526,3.376126341036676,False
+Eonly minus ESI,60,0.29708333333333337,0.0,0.0,True
+Eonlystrong minus Estrong,60,0.27306318680999997,0.0,0.0,True

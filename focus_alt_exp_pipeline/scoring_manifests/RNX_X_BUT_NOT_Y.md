@@ -1,7 +1,15 @@
 # R&X (2024) X-but-not-Y scoring handoff
 
-Prepared October 23, 2026. This batch is ready for cluster scoring. No Qwen
-inference or GPU job submission was performed during preparation.
+Completed: GPU job `7864638` scored and validated all 300 rows on October 23,
+2026 (exit code 0). CPU integration completed October 26 in
+`../results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/`.
+The bundle contains updated tables, paired condition changes, an offline
+`results_viewer.html`, and figures under `advisor_summary/four_model_comparison/`.
+The original corrected parent and its viewer were preserved; existing neutral
+scores, sampled predictions, folds and selected boundaries were reused.
+
+The commands below document reproduction into a new output directory. The
+completed score CSV and results bundle are protected from overwrite.
 
 ## Inputs and prompt policy
 

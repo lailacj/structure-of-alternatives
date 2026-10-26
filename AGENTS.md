@@ -15,7 +15,21 @@ Core idea:
 
 The original runner evaluates trial-level log likelihood. The active
 cross-dataset sampled-prefix analysis uses grouped 10-fold boundary selection,
-item-level proper log scores, and correlations.
+Spearman rank correlation, and summed item-level proper log scores.
+
+## Primary Evaluation Measures
+
+As of October 26, 2026, the two primary measures are **Spearman correlation**
+and **summed proper log score**. Use these for result summaries, model
+comparisons, interpretation, and new primary figures. Pearson correlation is no
+longer a reporting priority; existing Pearson artifacts and internal calculations
+may remain for compatibility and provenance.
+
+Retain the established Spearman grouping: within focus context (equal-context
+means for summaries), within each Hu dataset after template aggregation, and
+within each R&X condition. Report log scores as sums of item scores on matching
+items, without participant-count weighting. Boundary selection continues to use
+the existing training-fold log-score objective.
 
 ## Where To Start
 

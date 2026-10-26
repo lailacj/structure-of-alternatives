@@ -22,9 +22,24 @@ the canonical novel-focus, Hu, and Ronai-Xiang tables; samples shared weighted
 orderings without replacement; defines separate Top-K and Top-p prefix sets;
 and selects K and p separately in grouped 10-fold cross-validation.
 
+The two primary evaluation measures are **Spearman correlation** and **summed
+proper log score** (reporting policy updated October 26, 2026). Use these for
+model comparisons, summaries and primary figures. Pearson outputs retained in
+existing artifacts are historical diagnostics. Spearman retains the established
+within-context, within-Hu-dataset and within-R&X-condition grouping; log scores
+sum item scores on matching items. The training-fold selection objective is
+unchanged.
+
 ## Directory Layout
 
 ### Offline results viewer
+
+The completed R&X contrastive extension is available in
+[`results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/results_viewer.html`](results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/results_viewer.html).
+It includes all 300 R&X X-but-not-Y predictions, updated comparison tables and
+four-model figures. Integration and verification completed October 26, 2026;
+the directory retains the October 23 scoring-batch date. The original corrected
+bundle and its viewer remain the verified parent.
 
 Open `results_viewer/index.html` for interactive descriptive and visual results
 across all ten datasets, nine linking structures, sixteen focus contexts, and
@@ -234,13 +249,19 @@ Builds item-level model-versus-human plots and Novel Focus context panels.
 
 ### Cross-dataset Qwen scoring status
 
-**R&X contrastive extension (prepared October 23, 2026):** the dedicated
+**R&X contrastive extension (completed October 26, 2026):** the dedicated
 `scoring_manifests/rnx_x_but_not_y_manifest.csv` contains 300 query-only
 X-but-not-Y rows (180 unique prompt/target pairs). The weaker surface form
 occupies X; the stronger surface form is scored in Y. *Only* is omitted and
-QUDs are retained. Scoring has not been run for this extension. See
-[the cluster handoff](scoring_manifests/RNX_X_BUT_NOT_Y.md) for the scoring
-wrapper and CPU importer that adds scores to a new corrected results bundle.
+QUDs are retained. GPU job `7864638` completed successfully October 23;
+`model_scores/rnx_x_but_not_y_qwen_scores.csv` contains all 300 validated rows.
+The CPU importer generated
+`results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/`, including
+aligned tables, paired condition changes, a separate offline viewer and
+four-model figures. Existing neutral scores, sampled predictions, folds and
+selected boundaries were preserved. See
+[the cluster handoff](scoring_manifests/RNX_X_BUT_NOT_Y.md) for provenance and
+reproduction commands.
 
 Both standardized Qwen cluster scoring runs are complete. The committed
 `scoring_manifests/hu_rnx_no_frame_manifest.csv` contains:

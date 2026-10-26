@@ -1,0 +1,28 @@
+{
+  "results_directory": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23",
+  "models": [
+    "No linking structure",
+    "X but not Y",
+    "Ordering",
+    "Set Top-K"
+  ],
+  "missing_values": "not plotted as zero",
+  "source_files": [
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/spearman/mean_within_context_spearman.csv",
+      "sha256": "b9859a826d68a7580955f3a9c1536b9bcbb265aac13117fa072940378b73ecf1"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/linking_structure_tables/log_scores_by_dataset_and_linking_structure.csv",
+      "sha256": "e81aa09045dab6a9507c5e7fd89e30354872f05320950b5cb45f1d8e4dd13667"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/linking_structure_tables/correlations_by_dataset_and_linking_structure.csv",
+      "sha256": "697b75799b495ee98e17bc4c1d02cf4f57d79556f6f9917c86b6573fc524e29a"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/linking_structure_tables/spearman_by_dataset_and_linking_structure.csv",
+      "sha256": "68c9e5bf0b6c4fb30cb32005f3cf7bc6239b377c2d8a502ab10655cf16b8e342"
+    }
+  ]
+}

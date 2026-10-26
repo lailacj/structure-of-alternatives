@@ -1,0 +1,46 @@
+{
+  "parent_results": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15",
+  "parent_source_rows_sha256": "0ab0b70aef1f40bf6f733e880862b0585575ded5fea97f7d7dcae39082b7a9ba",
+  "returned_scores": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/model_scores/rnx_x_but_not_y_qwen_scores.csv",
+  "source_rows_sha256": "8413c7d227f7ad759c5585ee84cdb378dcc733c2516bb5e5e5fc3f1bf69d9e5c",
+  "framed_manifest_sha256": "5378308357582e9c6564e5fa9b8fa2502dda4e9fcebb6592e6f99f697cfd05b3",
+  "framed_scores_sha256": "8bed54162f9f2a8809037af8ff03d12c8560b197cef827eaf29b7bc4b3012a56",
+  "rnx_framed_rows": 300,
+  "unique_prompt_target_pairs": 180,
+  "changed_source_fields": [
+    "x_but_not_y_applicable",
+    "x_but_not_y_prompt",
+    "x_but_not_y_logprob_sum",
+    "x_but_not_y_logprob_mean",
+    "x_but_not_y_token_count",
+    "x_but_not_y_tokenization_mode",
+    "x_but_not_y_trigger",
+    "x_but_not_y_query",
+    "x_but_not_y_score_artifact"
+  ],
+  "neutral_scores_humans_sampling_inputs": "verified unchanged before extending source lineage",
+  "copied_predictions": {
+    "prediction_grid.csv": {
+      "parent_sha256": "474e12fd64031c9f821469d8c4ed544c7114c8d81118e33654fde85d607476b4",
+      "sha256": "792992ac1bed84d46ff30fceca23a5d2e8e823a9c329d63b87ba6d2c3d640b3d",
+      "rows": 16881,
+      "changed_columns": [
+        "source_rows_sha256"
+      ],
+      "sampled_values_and_folds": "copied unchanged"
+    },
+    "cv_results/oof_predictions.csv": {
+      "parent_sha256": "2285ebeecef7eddc79e088a629c822585be83dc9d34473986ba6b2be9de28bd7",
+      "sha256": "ef3db889f09de8e771f1f8912ed0bad56c2f43153d7641b358e3e084eb4fae5b",
+      "rows": 1986,
+      "changed_columns": [
+        "source_rows_sha256"
+      ],
+      "sampled_values_and_folds": "copied unchanged"
+    }
+  },
+  "fold_selection": "copied unchanged; no refitting",
+  "parent_audits": "parent_* audit files describe the original neutral and pre-existing framed inputs",
+  "scoring_boundary": "single-space-exact-concat-v1",
+  "prompt_policy": "weaker X; score stronger Y; only omitted; QUD retained"
+}
