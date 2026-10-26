@@ -2,6 +2,8 @@
 import copy
 import json
 import math
+import re
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -11,6 +13,36 @@ PIPELINE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PIPELINE / "code"))
 import build_results_viewer as viewer
 import viewer_rank_association as association
+
+
+class DefaultResultsViewerTests(unittest.TestCase):
+    def test_default_cli_and_shipped_explorer_include_all_rnx_framed_scores(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "index.html"
+            subprocess.run([sys.executable, str(PIPELINE / "code/build_results_viewer.py"),
+                            "--output", str(output), "--reuse-distributions-from",
+                            str(PIPELINE / "results_viewer/index.html")],
+                           check=True, capture_output=True, text=True)
+            payloads = []
+            for path in [output, PIPELINE / "results_viewer/index.html"]:
+                match = re.search(r'<script id="results-data" type="application/json">(.*?)</script>',
+                                  path.read_text(), re.S)
+                self.assertIsNotNone(match)
+                data = json.loads(match.group(1))
+                self.assertIsNotNone(data["rnxContrastiveExtension"])
+                for condition in ["esi", "eweak", "estrong", "eonly", "eonlystrong"]:
+                    stats = data["datasetSummaries"]["rnx_" + condition][1]
+                    self.assertEqual(stats["n"], 60)
+                    self.assertTrue(math.isfinite(stats["rho"]))
+                    self.assertTrue(math.isfinite(stats["log"]))
+                rnx = [r for r in data["items"] if r["dataset"].startswith("rnx_")]
+                self.assertEqual(len(rnx), 300)
+                self.assertTrue(all(r["p"][1] is not None for r in rnx))
+                self.assertEqual(sum(bool(p.get("distribution")) and p["frame"] == "Neutral"
+                                     for p in data["prompts"]), 360)
+                payloads.append(data)
+            self.assertEqual(payloads[0]["datasetSummaries"], payloads[1]["datasetSummaries"])
+            self.assertEqual(payloads[0]["items"], payloads[1]["items"])
 
 
 class ResultsViewerTests(unittest.TestCase):

@@ -3,6 +3,20 @@ const test=require("node:test"),assert=require("node:assert/strict"),fs=require(
 const math=require("./viewer.js");
 const html=fs.readFileSync(path.join(__dirname,"index.html"),"utf8");
 const data=JSON.parse(html.match(/<script id="results-data" type="application\/json">([\s\S]*?)<\/script>/)[1]);
+const parentHtml=fs.readFileSync(path.join(__dirname,"archive/corrected_pre_rnx_2026-10-26.html"),"utf8");
+const parentData=JSON.parse(parentHtml.match(/<script id="results-data" type="application\/json">([\s\S]*?)<\/script>/)[1]);
+
+test("the default explorer contains all 300 real R&X framed scores",()=>{
+  assert.ok(data.rnxContrastiveExtension);
+  const rows=data.items.filter(r=>r.dataset.startsWith("rnx_"));
+  assert.equal(rows.length,300);
+  assert.ok(rows.every(r=>Number.isFinite(r.p[1])&&Number.isFinite(r.scores[1])));
+  for(const condition of ["esi","eweak","estrong","eonly","eonlystrong"]){
+    const stats=data.datasetSummaries[`rnx_${condition}`][1];
+    assert.equal(stats.n,60);
+    assert.ok(Number.isFinite(stats.rho)&&Number.isFinite(stats.log));
+  }
+});
 
 test("summed scores, correlation weighting, and unavailable predictions",()=>{
   const rows=[{dataset:"a",y:0,p:[.1,null],scores:[-1,null]},{dataset:"b",y:0,p:[.2,.3],scores:[-3,-4]},{dataset:"b",y:1,p:[.8,.6],scores:[-3,-5]}];
@@ -99,7 +113,7 @@ test("R&X contrastive coverage includes all ten datasets in overview, shared cov
   app.click({view:"methods"});
   assert.match(app.html(),/X-but-not-Y covers all 10 datasets/);
   assert.ok(!app.html().includes("structurally unavailable"));
-  const historical=harness(data,source);
+  const historical=harness(parentData,source);
   assert.match(historical.html(),/5 datasets with all 9 structures/);
   historical.change("coverage","shared");
   assert.ok(!historical.html().includes('data-dataset="rnx_esi"'));
@@ -183,7 +197,9 @@ test("item drill-down, prompt navigation, source coverage, and search",()=>{
   app.click({prompt:mask.id});assert.match(app.html(),/Top 50 from the vocabulary/);
   app.change("wordScale","normalized");assert.match(app.html(),/0\.7922/);
   app.change("candidateSource","targets");assert.match(app.html(),/Saved experimental candidates/);
-  app.change("promptDataset","rnx_esi");app.change("frame","X but not Y");assert.match(app.html(),/No prompts match/);
+  app.change("promptDataset","rnx_esi");app.change("frame","X but not Y");
+  assert.ok(!app.html().includes("No prompts match"));
+  assert.ok(data.prompts.some(p=>p.frame==="X but not Y"&&p.datasets.includes("rnx_esi")));
   app.change("frame","Neutral");assert.match(app.html(),/ESI/);assert.match(app.html(),/Eonly/);
   app.click({view:"datasets"});app.input("itemSearch","<script>bad</script>");assert.match(app.html(),/&lt;script&gt;/);assert.ok(!app.html().includes("<script>bad"));
 });
@@ -293,11 +309,11 @@ test("distribution gallery renders every available model and dataset",()=>{
   const app=harness();app.click({view:"distributions"});
   for(const dataset of data.datasets){
     app.change("dataset",dataset.id);
-    assert.equal((app.html().match(/class="chart distribution-chart"/g)||[]).length,dataset.id.startsWith("rnx_")?8:9);
+    assert.equal((app.html().match(/class="chart distribution-chart"/g)||[]).length,9);
     assert.ok(!/\bNaN\b|>undefined</.test(app.html()));
   }
   app.change("distributionModel","1");assert.match(app.html(),/X but not Y/);
-  app.change("dataset","rnx_esi");assert.match(app.html(),/Not applicable/);
+  app.change("dataset","rnx_esi");assert.match(app.html(),/60 matched units/);
   app.change("dataset","novel_focus");app.change("distributionModel","4");
   assert.equal((app.html().match(/class="chart distribution-chart"/g)||[]).length,1);
   assert.match(app.html(),/Model mean 50.0%/);assert.match(app.html(),/480 matched units/);
@@ -435,8 +451,8 @@ test("Overview Spearman matrix preserves saved values, coverage, exports, and dr
   assert.match(csv,/spearman_rho/);assert.match(csv,/mean_within_context/);
   assert.equal(csv.split("\r\n").length,91);
   app.change("coverage","shared");
-  assert.equal([...app.html().matchAll(/data-cell="dataset\|/g)].length,45);
-  assert.ok(!app.html().includes('data-cell="dataset|rnx_'));
+  assert.equal([...app.html().matchAll(/data-cell="dataset\|/g)].length,90);
+  assert.ok(app.html().includes('data-cell="dataset|rnx_'));
   app.click({cell:"dataset|hu_vt16|2"});assert.match(app.html(),/Inspect the 39 item ranks/);
   app.click({view:"overview"});assert.match(app.html(),/Download Spearman matrix/);
   app.click({cell:"dataset|novel_focus|3"});

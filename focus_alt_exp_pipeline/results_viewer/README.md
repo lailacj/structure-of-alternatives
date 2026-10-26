@@ -3,20 +3,26 @@
 Open **index.html** in any modern browser. It is a self-contained, offline HTML
 file: no server, package installation, CDN, or network connection is needed.
 
-The viewer now covers the **completed corrected single-space run** in
-`focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15`: ten
-datasets, nine linking structures, sixteen focus contexts and all 360 neutral
-vocabulary distributions (top 50 plus experimental targets). The September 28
-build verified 261 saved metric cells and exact agreement for all 947 direct
-neutral/sampling candidate scores. K=20 in every fold; p=0.6 in seven and p=0.7
-in three. Framed X-but-not-Y scores retain their verified original values.
-Vocabulary-wide framed distributions were not produced by these jobs.
+The viewer covers the **completed corrected run with the R&X contrastive
+extension** in
+`focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23`:
+ten datasets, nine linking structures, sixteen focus contexts and all 360 neutral
+vocabulary distributions (top 50 plus experimental targets). All five R&X
+conditions include 60 X-but-not-Y results each, so all ten datasets now have all
+nine structures. Spearman correlation and summed proper log score are the primary
+measures. The build verifies 261 saved metric cells and agreement for all 947
+direct neutral/sampling candidate scores. K=20 in every fold; p=0.6 in seven
+and p=0.7 in three. Vocabulary-wide framed distributions were not produced;
+the 300 R&X target scores are available.
 
-The default build now selects the corrected run and its `inputs/` manifest.
+The default build selects the completed extension and its `inputs/` manifest.
 Rebuilding locally preserves the matching distributions embedded in `index.html`.
 Across-context association tests are recalculated from the corrected inputs.
-The previous viewer is archived at `../results/set_variant_qwen/results_viewer.html`;
-the dated September 17 notes below describe that historical export.
+The corrected parent export before the R&X extension is preserved at
+`archive/corrected_pre_rnx_2026-10-26.html` and remains the importer's distribution
+source. The older uncorrected viewer is archived at
+`../results/set_variant_qwen/results_viewer.html`; the dated September 17 notes
+below describe that historical export.
 
 ### Wasserstein distances for the novel focus study
 

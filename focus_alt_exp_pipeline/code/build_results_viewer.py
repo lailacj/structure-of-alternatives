@@ -494,7 +494,7 @@ def render_html(payload, template_dir):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--results-dir", type=Path, default=PIPELINE / "results/set_variant_qwen_corrected_2026-09-15")
+    parser.add_argument("--results-dir", type=Path, default=PIPELINE / "results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23")
     parser.add_argument("--manifest-dir", type=Path, help="Source manifest; defaults to the selected corrected run's inputs, or the historical scoring manifest")
     parser.add_argument("--output", type=Path, default=PIPELINE / "results_viewer/index.html")
     distributions = parser.add_mutually_exclusive_group()

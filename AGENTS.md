@@ -181,8 +181,13 @@ Useful current rerun path:
 - Corrected arrays on Oscar: sibling `ngrams/qwen_set_variant_log_probs_single_space/`.
 - K=20 in all ten folds; p=0.6 in seven and p=0.7 in three. The K ceiling warning
   applied to the historical run and is no longer a limitation of this selection.
-- The viewer defaults to the corrected bundle and preserves its matching full
-  distributions on local rebuild. The historical viewer is retained at
+- The viewer and default rebuild use the completed extension under
+  `results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/`, with all 300
+  R&X X-but-not-Y scores. Its corrected parent remains the September 15 bundle.
+  The parent's previous default HTML is preserved at
+  `results_viewer/archive/corrected_pre_rnx_2026-10-26.html` for provenance and
+  importer distribution reuse. Default rebuilds preserve all 360 neutral
+  distributions. The historical uncorrected viewer is retained at
   `results/set_variant_qwen/results_viewer.html`.
 - Completion audit, job accounting, source hashes and regeneration comparisons
   are in the corrected run's `audit_2026-09-28/` directory.

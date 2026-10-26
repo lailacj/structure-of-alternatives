@@ -20,7 +20,7 @@ import pandas as pd
 
 from canonical_observations import validate_canonical_observations
 from rnx_contrastive import (
-    CONDITIONS, DEFAULT_MANIFEST, DEFAULT_SCORES, DEFAULT_SOURCE, FAMILY, FRAME_COLUMNS,
+    CONDITIONS, DEFAULT_MANIFEST, DEFAULT_PARENT_VIEWER, DEFAULT_SCORES, DEFAULT_SOURCE, FAMILY, FRAME_COLUMNS,
     PIPELINE, attach_scores, sha256, validate_scores,
 )
 
@@ -164,7 +164,7 @@ def main():
     parser.add_argument("--scores", type=Path, default=DEFAULT_SCORES)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--build-reports", action="store_true", help="Also regenerate aligned tables and a separate offline viewer (CPU only)")
-    parser.add_argument("--parent-viewer", type=Path, default=PIPELINE / "results_viewer/index.html",
+    parser.add_argument("--parent-viewer", type=Path, default=DEFAULT_PARENT_VIEWER,
                         help="Verified parent viewer whose saved vocabulary distributions can be reused")
     parser.add_argument("--log-probs-dir", type=Path, help="Instead of parent-viewer reuse, read existing corrected neutral arrays")
     args = parser.parse_args()

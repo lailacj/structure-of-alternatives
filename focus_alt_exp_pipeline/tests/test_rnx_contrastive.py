@@ -20,7 +20,7 @@ import pandas as pd
 PIPELINE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PIPELINE / "code"))
 
-from rnx_contrastive import (DEFAULT_SOURCE, DEFAULT_MANIFEST, REVISION, FAMILY, FRAME_COLUMNS,
+from rnx_contrastive import (DEFAULT_SOURCE, DEFAULT_MANIFEST, DEFAULT_PARENT_VIEWER, REVISION, FAMILY, FRAME_COLUMNS,
                             build_manifest, validate_scores, attach_scores, sha256)
 from score_qwen_scoring_manifest import OUTPUT_COLUMNS, SCORING_BOUNDARY_VERSION, scoring_row_key
 import score_qwen_scoring_manifest as scorer
@@ -163,7 +163,7 @@ class RnxContrastiveTests(unittest.TestCase):
                             "--output-dir", str(output / "linking_structure_tables")], check=True, capture_output=True)
             import build_results_viewer as viewer
             payload = viewer.build_payload(output, output / "inputs")
-            parent_viewer = PIPELINE / "results_viewer/index.html"
+            parent_viewer = DEFAULT_PARENT_VIEWER
             self.assertEqual(viewer.preserve_distributions(payload, parent_viewer), 360)
             self.assertEqual(payload["verifiedCells"], 261)
             self.assertTrue(all(payload["datasetSummaries"][f"rnx_{c}"][1]["n"] == 60

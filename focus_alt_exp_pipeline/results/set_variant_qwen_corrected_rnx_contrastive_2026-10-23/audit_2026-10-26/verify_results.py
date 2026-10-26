@@ -22,6 +22,7 @@ BUNDLE = AUDIT.parent
 PIPELINE = BUNDLE.parents[1]
 REPOSITORY = PIPELINE.parent
 PARENT = PIPELINE / "results/set_variant_qwen_corrected_2026-09-15"
+PARENT_VIEWER = PIPELINE / "results_viewer/archive/corrected_pre_rnx_2026-10-26.html"
 
 
 def digest(path):
@@ -43,8 +44,11 @@ def payload(path):
 
 def main():
     before = json.loads((AUDIT / "original_file_hashes.json").read_text())
+    # The default entry point now serves the extension. Verify its original
+    # bytes at the archived location without altering the captured hash ledger.
+    relocated = {"focus_alt_exp_pipeline/results_viewer/index.html": PARENT_VIEWER}
     changed = [name for name, checksum in before.items()
-               if digest(REPOSITORY / name) != checksum]
+               if digest(relocated.get(name, REPOSITORY / name)) != checksum]
     assert not changed, changed
     old_source = rows(PARENT / "inputs/source_rows.csv")
     new_source = rows(BUNDLE / "inputs/source_rows.csv")
@@ -83,8 +87,13 @@ def main():
     for path in cv_files:
         assert digest(path) == digest(BUNDLE / "cv_results" / path.name)
 
-    old_view = payload(PIPELINE / "results_viewer/index.html")
+    old_view = payload(PARENT_VIEWER)
     new_view = payload(BUNDLE / "results_viewer.html")
+    default_viewer = PIPELINE / "results_viewer/index.html"
+    current_view = payload(default_viewer)
+    assert current_view["run"]["id"] == new_view["run"]["id"]
+    assert current_view["items"] == new_view["items"]
+    assert current_view["datasetSummaries"] == new_view["datasetSummaries"]
     assert len(new_view["items"]) == len(old_view["items"]) == 993
     assert len(new_view["datasets"]) == 10 and len(new_view["contexts"]) == 16
     assert new_view["verifiedCells"] == 261
@@ -170,10 +179,13 @@ def main():
 
     report = {"verified_at": datetime.now(ZoneInfo("America/New_York")).isoformat(), "status": "passed",
               "original_files_hash_checked": len(before), "original_files_changed": changed,
+              "original_file_relocations": {name: str(path.relative_to(REPOSITORY))
+                                            for name, path in relocated.items()},
               "source_rows": 1089, "rnx_rows_extended": 300,
               "prediction_rows_preserved": prediction_counts, "unchanged_cv_files": len(cv_files),
               "analysis_units": 993, "datasets": 10, "focus_contexts": 16,
               "neutral_distributions_preserved": 360, "viewer_metric_cells_verified_by_builder": 261,
+              "default_viewer_matches_extension": True, "default_viewer_sha256": digest(default_viewer),
               "existing_table_cells_within_tolerance": unchanged_cells,
               "existing_viewer_item_log_scores_max_roundoff": max_score_roundoff,
               "independently_recomputed_rnx_metrics": independent,

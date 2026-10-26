@@ -147,8 +147,10 @@ within each R&X condition. The prediction is `exp(query_logprob_sum)`, following
 the existing X-but-not-Y model, with no pairwise renormalization or calibration.
 No sampled-model fitting or boundary selection is repeated.
 
-The new viewer reuses the existing corrected distributions from
-`results_viewer/index.html`. It checks the parent/new source and prediction
+The new viewer reuses the existing corrected distributions from the archived
+parent export, `results_viewer/archive/corrected_pre_rnx_2026-10-26.html`.
+The default `results_viewer/index.html` now displays the completed extension.
+The importer checks the parent/new source and prediction
 hashes recorded in the extension audit, exact prompt texts, and original array
 hashes before reuse. If relocated, pass `--parent-viewer /path/to/index.html`
 to the importer. Alternatively, pass `--log-probs-dir /path/to/corrected/arrays`

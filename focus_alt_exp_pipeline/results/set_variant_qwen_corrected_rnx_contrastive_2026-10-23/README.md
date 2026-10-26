@@ -24,6 +24,11 @@ Additional artifacts:
 - [Four-model figures and their source values](advisor_summary/four_model_comparison/README.md)
 - [Independent verification report](audit_2026-10-26/verification.json)
 
+The default explorer at `../../results_viewer/index.html` also serves this bundle.
+The original default export is preserved at
+`../../results_viewer/archive/corrected_pre_rnx_2026-10-26.html`; its original
+hash remains in the audit ledger, and verification checks the archived bytes.
+
 The audit verified all 427 original file hashes, exact preservation of sampled
 predictions and folds, and all 360 embedded neutral distributions. It independently
 recomputed Pearson correlation, Spearman correlation and summed proper log score

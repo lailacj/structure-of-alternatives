@@ -1,8 +1,11 @@
 {
-  "verified_at": "2026-10-26T12:01:38.079645-04:00",
+  "verified_at": "2026-10-26T12:18:22.311079-04:00",
   "status": "passed",
   "original_files_hash_checked": 427,
   "original_files_changed": [],
+  "original_file_relocations": {
+    "focus_alt_exp_pipeline/results_viewer/index.html": "focus_alt_exp_pipeline/results_viewer/archive/corrected_pre_rnx_2026-10-26.html"
+  },
   "source_rows": 1089,
   "rnx_rows_extended": 300,
   "prediction_rows_preserved": {
@@ -15,6 +18,8 @@
   "focus_contexts": 16,
   "neutral_distributions_preserved": 360,
   "viewer_metric_cells_verified_by_builder": 261,
+  "default_viewer_matches_extension": true,
+  "default_viewer_sha256": "63acf78c7afc9127c37b05582fb11cabe01aabe59152320a10d1e898e98ded5e",
   "existing_table_cells_within_tolerance": 246,
   "existing_viewer_item_log_scores_max_roundoff": 8.881784197001252e-16,
   "independently_recomputed_rnx_metrics": {

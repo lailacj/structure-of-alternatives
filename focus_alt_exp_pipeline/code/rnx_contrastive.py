@@ -22,6 +22,7 @@ CONDITIONS = ("ESI", "Eweak", "Estrong", "Eonly", "Eonlystrong")
 DEFAULT_SOURCE = PIPELINE / "results/set_variant_qwen_corrected_2026-09-15/inputs/source_rows.csv"
 DEFAULT_MANIFEST = PIPELINE / "scoring_manifests/rnx_x_but_not_y_manifest.csv"
 DEFAULT_SCORES = PIPELINE / "model_scores/rnx_x_but_not_y_qwen_scores.csv"
+DEFAULT_PARENT_VIEWER = PIPELINE / "results_viewer/archive/corrected_pre_rnx_2026-10-26.html"
 KEYS = ["dataset_family", "dataset", "condition", "context_id"]
 FRAME_COLUMNS = [
     "x_but_not_y_applicable", "x_but_not_y_prompt", "x_but_not_y_logprob_sum",

@@ -39,11 +39,14 @@ The completed R&X contrastive extension is available in
 It includes all 300 R&X X-but-not-Y predictions, updated comparison tables and
 four-model figures. Integration and verification completed October 26, 2026;
 the directory retains the October 23 scoring-batch date. The original corrected
-bundle and its viewer remain the verified parent.
+bundle remains the verified parent; its previous viewer is preserved in
+`results_viewer/archive/corrected_pre_rnx_2026-10-26.html`.
 
 Open `results_viewer/index.html` for interactive descriptive and visual results
 across all ten datasets, nine linking structures, sixteen focus contexts, and
-the exact prompts and next-word scores. Rebuild with:
+the exact prompts and next-word scores. Both this default explorer and its
+rebuild command now use the completed R&X extension, including all 300
+X-but-not-Y results. Rebuild with:
 
 ```bash
 python3 focus_alt_exp_pipeline/code/build_results_viewer.py
