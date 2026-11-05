@@ -1,0 +1,351 @@
+{
+  "validation_passed": true,
+  "created_at_utc": "2026-11-04T13:22:29.917595+00:00",
+  "repository_root": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives",
+  "git_commit": "acee028509d344e2a96bc09b2bd33c51b23a85af",
+  "hostname": "vscode1.oscar.ccv.brown.edu",
+  "python_version": "3.9.21 (main, Dec  5 2024, 00:00:00) \n[GCC 11.5.0 20240719 (Red Hat 11.5.0-2.0.1)]",
+  "numpy_version": "1.26.4",
+  "working_directory": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives",
+  "command": "/usr/bin/python /oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/entropy_ordering_advantage_2026-11-04/analyze_entropy_ordering_advantage.py --results-dir focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23 --log-probs-dir /oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space --output-dir focus_alt_exp_pipeline/diagnostics/entropy_ordering_advantage_2026-11-04",
+  "script": {
+    "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/entropy_ordering_advantage_2026-11-04/analyze_entropy_ordering_advantage.py",
+    "sha256": "07df15564aa8279c1470fa694fd8d1ca6cd47a19ec2f5d2e6cc855973381a78e"
+  },
+  "inputs": {
+    "source_rows": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/inputs/source_rows.csv",
+      "sha256": "8413c7d227f7ad759c5585ee84cdb378dcc733c2516bb5e5e5fc3f1bf69d9e5c"
+    },
+    "context_scores": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/linking_structure_tables/log_scores_by_focus_context_and_linking_structure.csv",
+      "sha256": "5867a4a78f3c2067b4d07f4a9ab53ac53ca1a98aecce48bdd5a92c96ab9e655f"
+    },
+    "fold_selections": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/cv_results/fold_selections.csv",
+      "sha256": "a6b164e2062d54100135b0edb9fd167db43ead50ee76167c2912ca0af16869f0"
+    },
+    "oof_predictions": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/cv_results/oof_predictions.csv",
+      "sha256": "ef3db889f09de8e771f1f8912ed0bad56c2f43153d7641b358e3e084eb4fae5b"
+    },
+    "summed_scores": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/linking_structure_tables/summed_log_scores.csv",
+      "sha256": "375d59fb876d4979f1cdd66186396f938023eb2b37aa900360de736298d2195f"
+    },
+    "score_reporting": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/linking_structure_tables/log_score_reporting.json",
+      "sha256": "b6089bb61f18aa4b5ff7dd750f17684b8c9df4dee7d43b899477da0638e02c27"
+    },
+    "prompts": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/inputs/prompts.csv",
+      "sha256": "98040a2444ad2fccb0f5e4cfd0c795fd766d5ef857d678322e7e3842d469f929"
+    },
+    "corrected_parent_provenance": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/inputs/parent_score_artifact_provenance.json",
+      "sha256": "b85b7319e1f9e883af67cd6b0d1bf37d204897620fdf1fb4dea139746ddfa67b"
+    }
+  },
+  "vocabulary": [
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/vocab_manifest.json",
+      "sha256": "f1d0f4f63998cd9da493d4853d9843ad79168c3b0b4ad0086f656d56a9c5cdee"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/ngrams/set_variant_qwen_support/vocab_1gram.txt",
+      "sha256": "2af07a005424263d2135d8c43a6a1ee660a66d0a4e96791fd5faf213afdb7256",
+      "candidate_count": 98509,
+      "offset": 0,
+      "words_per_candidate": 1
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/ngrams/set_variant_qwen_support/vocab_2gram.txt",
+      "sha256": "e0bd9492e9f9223aa06a703af4d303bd5549b69346a5b86db74e8e5974fb6411",
+      "candidate_count": 22792,
+      "offset": 98509,
+      "words_per_candidate": 2
+    }
+  ],
+  "calculation": {
+    "filter": "dataset_family == novel_focus",
+    "grain": "one entropy per context",
+    "normalization": "float64; weights=exp(log_scores-max(log_scores)); p=weights/sum(weights)",
+    "entropy": "-sum(p*log2(p)) over every positive p; zero contributions are zero",
+    "support": "all 98509 one-word and 22792 two-word saved candidates; no subset renormalization",
+    "probability_sum_absolute_tolerance": 1e-12,
+    "set_score_column": "Set Top-K",
+    "ordering_score_column": "Ordering",
+    "log_score_aggregation": {
+      "aggregation": "sum_of_item_log_scores",
+      "item_formula": "y*ln(p)+(1-y)*ln(1-p)",
+      "epsilon": 1e-10,
+      "participant_count_weighting": false,
+      "selection_objective": "Original dataset-balanced training means retained; no refitting"
+    },
+    "ordering_advantage": "ordering_log_score - set_log_score",
+    "comparison_scope": "pairwise Set/Ordering only",
+    "csv_precision": "Python float round-trip representation; no rounding"
+  },
+  "validation": {
+    "n_contexts": 16,
+    "source_pairs": 480,
+    "frozen_oof_pairs": 480,
+    "selected_k_by_fold": {
+      "0": 20.0,
+      "1": 20.0,
+      "2": 20.0,
+      "3": 20.0,
+      "4": 20.0,
+      "5": 20.0,
+      "6": 20.0,
+      "7": 20.0,
+      "8": 20.0,
+      "9": 20.0
+    },
+    "neutral_prompts_arrays_and_source_probabilities_match": true,
+    "complete_vocabulary_and_saved_hashes_match": true,
+    "frozen_sums_each_cover_same_30_pairs": true,
+    "arithmetic_checks": {
+      "hot": {
+        "actual": -28.49841821195805,
+        "expected_approximately": -28.4984,
+        "passed": true
+      },
+      "mall": {
+        "actual": 133.45706763865724,
+        "expected_approximately": 133.4571,
+        "passed": true
+      }
+    }
+  },
+  "arrays": [
+    {
+      "context": "bag",
+      "prompt_id": "prompt_b1289cb8a28a6b86171f",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b1289cb8a28a6b86171f.log_probs.npy",
+      "array_sha256": "884d0928882e86e5d02e4fa9d6b2b79975343d27144e1b98af0d84e15ce711e7",
+      "metadata_sha256": "d92c164faab6da56785685836550d1583292f86fc1fb6473a2907d466fbe34ca",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 0.9999999999999998,
+      "passed": true
+    },
+    {
+      "context": "bakery",
+      "prompt_id": "prompt_fc397a1a3f6733ca216c",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_fc397a1a3f6733ca216c.log_probs.npy",
+      "array_sha256": "86ef5325c9c2f5fa815605f60ef9406b32df8656a99f0d050eb3b36452a68967",
+      "metadata_sha256": "e17c62ac28c71ef09148c2521ea3e5886fc2033d5cbd1b03c7065ad365aaafa8",
+      "progress_sha256": "a9473cf7216c026d4f8d44ae974e7ede9c0441d7c33841b407c38709cf1028f9",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0000000000000002,
+      "passed": true
+    },
+    {
+      "context": "beach",
+      "prompt_id": "prompt_d5e51b3e9c6edaa814d6",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_d5e51b3e9c6edaa814d6.log_probs.npy",
+      "array_sha256": "f2a11856f9b5643fda7fbb58541801370b745388f13a8cf7c786dc404c8364e1",
+      "metadata_sha256": "c351b77b1de7a1111c2288ba23c4a6815c70ea17e201f784217c79be518ca0de",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0,
+      "passed": true
+    },
+    {
+      "context": "cold",
+      "prompt_id": "prompt_e5b13e89443f16745c5d",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_e5b13e89443f16745c5d.log_probs.npy",
+      "array_sha256": "5d3a2daf135a533d18e5e358f5741586879c76a49eb57be1319f38ec878764b9",
+      "metadata_sha256": "1414af802106faafa941ad31c3d9210bd293f6d3575a6607797c97562c992001",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 0.9999999999999999,
+      "passed": true
+    },
+    {
+      "context": "cut",
+      "prompt_id": "prompt_dae5a23e82f8085cc86d",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_dae5a23e82f8085cc86d.log_probs.npy",
+      "array_sha256": "69f36633063a6e1d9626c89a0dd5adf8056991d1db364f9a08d4e971557c2842",
+      "metadata_sha256": "d302e6ce7c6043d64364e2e9472893ceb0d176c8ef34a2f0aeb72f05717f2b44",
+      "progress_sha256": "4c7e3696ba96a3e018767c3f660b7010cf99923809940f24acc46e6b20adf749",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 0.9999999999999998,
+      "passed": true
+    },
+    {
+      "context": "fridge",
+      "prompt_id": "prompt_ef7471913f47082a0d86",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ef7471913f47082a0d86.log_probs.npy",
+      "array_sha256": "1966cca78ab065fec1023da990ed29fc65b2d2a592cb125093fb01715c0c29b9",
+      "metadata_sha256": "95b7c885bd7e88933432205d61ae4a7e3b6b6de8bd5a0e0bbd6414246c8ec37a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 0.9999999999999999,
+      "passed": true
+    },
+    {
+      "context": "gym",
+      "prompt_id": "prompt_0dd418b630c0593430bc",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0dd418b630c0593430bc.log_probs.npy",
+      "array_sha256": "c5350aebafcca05d2a03d1f738ba6086feadb4a1c43132b21f829d3a231092e6",
+      "metadata_sha256": "5b2176b4e547f6539d7a20063580062a022e3bd0f168b946c4cf945653541e5a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0,
+      "passed": true
+    },
+    {
+      "context": "hot",
+      "prompt_id": "prompt_6aa492960e929d0d9716",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_6aa492960e929d0d9716.log_probs.npy",
+      "array_sha256": "3c45afd834b67673d0a5e5a2991e5c2ec8ba47ec096b9af33a73f6820eb59c2f",
+      "metadata_sha256": "7763c309446e3ad10af24afea437841f24503ed909dddb138dd6826a93166a2d",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0000000000000002,
+      "passed": true
+    },
+    {
+      "context": "mall",
+      "prompt_id": "prompt_3622b2dc937ddcfab3b3",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_3622b2dc937ddcfab3b3.log_probs.npy",
+      "array_sha256": "b965522c9bc99138ad7078845c3a73197e972a263e9d71fd3396c8cc2aedb212",
+      "metadata_sha256": "6ac489587ae410f68a4ef318e042dc86b757ff6118a8d76ac6b34a9d8c8e64f7",
+      "progress_sha256": "84ae11bb0c105e8424940ca3859fe9755bb49bf1815d54918e9090a065258fb6",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0000000000000002,
+      "passed": true
+    },
+    {
+      "context": "mask",
+      "prompt_id": "prompt_7ebf909e4b947d98da36",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7ebf909e4b947d98da36.log_probs.npy",
+      "array_sha256": "d50c884d152ce5b6f6aa2d10123504539573fc0e974844724fd29861791e0b23",
+      "metadata_sha256": "cc127f031c038f5c06932461e5e042e2fc68772a7256ac420f01cf55748c4574",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0,
+      "passed": true
+    },
+    {
+      "context": "meat",
+      "prompt_id": "prompt_b4d6fb0c53a16899b941",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b4d6fb0c53a16899b941.log_probs.npy",
+      "array_sha256": "0355a84f208117fa8bf0f27497dfd4a62fc171a908bbf41f1644229fd2d26f74",
+      "metadata_sha256": "b6d534d9064e17a72950a7cf276b41b2d9a11effbfb466042a7fb44e9add3ca9",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 0.9999999999999999,
+      "passed": true
+    },
+    {
+      "context": "restaurant",
+      "prompt_id": "prompt_2283f8f6e027870a69f3",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_2283f8f6e027870a69f3.log_probs.npy",
+      "array_sha256": "e7cdb4e57bd80b0dabd2f5be3fa986d360996323b0384e89a5f2c60f3489a019",
+      "metadata_sha256": "371674e9de99c9ed7bdded3c8f3a0ba29482ad570dcb17177c8d634159e316c3",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0,
+      "passed": true
+    },
+    {
+      "context": "salad",
+      "prompt_id": "prompt_e00e156f3257be31b90b",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_e00e156f3257be31b90b.log_probs.npy",
+      "array_sha256": "c132ce7f94384be83928e8179c88b2954b9fb636317961282fe7fe90ff81a20c",
+      "metadata_sha256": "07deb7f08cdba2f2f2d78568230d832db34393f44e01b9f9a1d1862ba6d4359f",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 0.9999999999999999,
+      "passed": true
+    },
+    {
+      "context": "science",
+      "prompt_id": "prompt_c59b935a8b7c294921c9",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c59b935a8b7c294921c9.log_probs.npy",
+      "array_sha256": "e3b5f2ecb223103d389a8044e4877242dc56800bde860cad291d38b2b477826a",
+      "metadata_sha256": "3aebd6c2f7ffd2f80528312bdd88cdab1cfeb8c178d338458a1db91b5a7fe313",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0,
+      "passed": true
+    },
+    {
+      "context": "throw",
+      "prompt_id": "prompt_880556e472c188a19236",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_880556e472c188a19236.log_probs.npy",
+      "array_sha256": "24b69d2290986c759860e778d034e1cc41da1cf464223658481ea737c153f6dc",
+      "metadata_sha256": "df31fa1e22c87d341cbee75d4131ff4e6e8ae8f4736cabe1b556009e1cfeac9e",
+      "progress_sha256": "3b02b78d66397a5dcc28b951adb3c14452be70db35538eb6002c906270604ddd",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0000000000000004,
+      "passed": true
+    },
+    {
+      "context": "transport",
+      "prompt_id": "prompt_8a7d96bf9736b1016bf4",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_8a7d96bf9736b1016bf4.log_probs.npy",
+      "array_sha256": "830797e85c1ca5521dfa01fdb70015e0da53272bf3205cd58edd0a46762ef380",
+      "metadata_sha256": "f2b8aff90e6508038760b934cfa8322763449a21288503f961e2e29192dddc4a",
+      "progress_sha256": "ac0074563132eb3a4f3958ec40814a8832caf0a295948a3ff95fe5f87da0570e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0,
+      "passed": true
+    }
+  ],
+  "output_csv": {
+    "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/entropy_ordering_advantage_2026-11-04/entropy_ordering_advantage.csv",
+    "sha256": "793e12d72ee99358b437b4136a286222a4e436d506606cac08d6c7d995015b91"
+  }
+}

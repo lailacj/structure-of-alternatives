@@ -1,0 +1,1245 @@
+{
+  "validation_passed": true,
+  "created_at_utc": "2026-11-04T14:11:12.791207+00:00",
+  "command": "/usr/bin/python /oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/build_distribution_profiles_and_pair_audit.py",
+  "working_directory": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives",
+  "hostname": "vscode1.oscar.ccv.brown.edu",
+  "script": {
+    "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/build_distribution_profiles_and_pair_audit.py",
+    "sha256": "a3dae6f22505561e3beb4c7657176ef68573b5c331957cd9264d830a2d7d2966"
+  },
+  "validation_script": {
+    "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/entropy_ordering_advantage_2026-11-04/analyze_entropy_ordering_advantage.py",
+    "sha256": "07df15564aa8279c1470fa694fd8d1ca6cd47a19ec2f5d2e6cc855973381a78e"
+  },
+  "numpy_version": "1.26.4",
+  "matplotlib_version": "3.9.2",
+  "inputs": {
+    "source_rows": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/inputs/source_rows.csv",
+      "sha256": "8413c7d227f7ad759c5585ee84cdb378dcc733c2516bb5e5e5fc3f1bf69d9e5c"
+    },
+    "context_scores": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/linking_structure_tables/log_scores_by_focus_context_and_linking_structure.csv",
+      "sha256": "5867a4a78f3c2067b4d07f4a9ab53ac53ca1a98aecce48bdd5a92c96ab9e655f"
+    },
+    "fold_selections": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/cv_results/fold_selections.csv",
+      "sha256": "a6b164e2062d54100135b0edb9fd167db43ead50ee76167c2912ca0af16869f0"
+    },
+    "oof_predictions": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/cv_results/oof_predictions.csv",
+      "sha256": "ef3db889f09de8e771f1f8912ed0bad56c2f43153d7641b358e3e084eb4fae5b"
+    },
+    "summed_scores": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/linking_structure_tables/summed_log_scores.csv",
+      "sha256": "375d59fb876d4979f1cdd66186396f938023eb2b37aa900360de736298d2195f"
+    },
+    "score_reporting": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/linking_structure_tables/log_score_reporting.json",
+      "sha256": "b6089bb61f18aa4b5ff7dd750f17684b8c9df4dee7d43b899477da0638e02c27"
+    },
+    "prompts": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/inputs/prompts.csv",
+      "sha256": "98040a2444ad2fccb0f5e4cfd0c795fd766d5ef857d678322e7e3842d469f929"
+    },
+    "corrected_parent_provenance": {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/inputs/parent_score_artifact_provenance.json",
+      "sha256": "b85b7319e1f9e883af67cd6b0d1bf37d204897620fdf1fb4dea139746ddfa67b"
+    }
+  },
+  "vocabulary": [
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/vocab_manifest.json",
+      "sha256": "f1d0f4f63998cd9da493d4853d9843ad79168c3b0b4ad0086f656d56a9c5cdee"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/ngrams/set_variant_qwen_support/vocab_1gram.txt",
+      "sha256": "2af07a005424263d2135d8c43a6a1ee660a66d0a4e96791fd5faf213afdb7256",
+      "candidate_count": 98509,
+      "offset": 0,
+      "words_per_candidate": 1
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/ngrams/set_variant_qwen_support/vocab_2gram.txt",
+      "sha256": "e0bd9492e9f9223aa06a703af4d303bd5549b69346a5b86db74e8e5974fb6411",
+      "candidate_count": 22792,
+      "offset": 98509,
+      "words_per_candidate": 2
+    }
+  ],
+  "arrays": [
+    {
+      "context": "bag",
+      "prompt_id": "prompt_b1289cb8a28a6b86171f",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b1289cb8a28a6b86171f.log_probs.npy",
+      "array_sha256": "884d0928882e86e5d02e4fa9d6b2b79975343d27144e1b98af0d84e15ce711e7",
+      "metadata_sha256": "d92c164faab6da56785685836550d1583292f86fc1fb6473a2907d466fbe34ca",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 0.9999999999999998,
+      "passed": true
+    },
+    {
+      "context": "bakery",
+      "prompt_id": "prompt_fc397a1a3f6733ca216c",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_fc397a1a3f6733ca216c.log_probs.npy",
+      "array_sha256": "86ef5325c9c2f5fa815605f60ef9406b32df8656a99f0d050eb3b36452a68967",
+      "metadata_sha256": "e17c62ac28c71ef09148c2521ea3e5886fc2033d5cbd1b03c7065ad365aaafa8",
+      "progress_sha256": "a9473cf7216c026d4f8d44ae974e7ede9c0441d7c33841b407c38709cf1028f9",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0000000000000002,
+      "passed": true
+    },
+    {
+      "context": "beach",
+      "prompt_id": "prompt_d5e51b3e9c6edaa814d6",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_d5e51b3e9c6edaa814d6.log_probs.npy",
+      "array_sha256": "f2a11856f9b5643fda7fbb58541801370b745388f13a8cf7c786dc404c8364e1",
+      "metadata_sha256": "c351b77b1de7a1111c2288ba23c4a6815c70ea17e201f784217c79be518ca0de",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0,
+      "passed": true
+    },
+    {
+      "context": "cold",
+      "prompt_id": "prompt_e5b13e89443f16745c5d",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_e5b13e89443f16745c5d.log_probs.npy",
+      "array_sha256": "5d3a2daf135a533d18e5e358f5741586879c76a49eb57be1319f38ec878764b9",
+      "metadata_sha256": "1414af802106faafa941ad31c3d9210bd293f6d3575a6607797c97562c992001",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 0.9999999999999999,
+      "passed": true
+    },
+    {
+      "context": "cut",
+      "prompt_id": "prompt_dae5a23e82f8085cc86d",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_dae5a23e82f8085cc86d.log_probs.npy",
+      "array_sha256": "69f36633063a6e1d9626c89a0dd5adf8056991d1db364f9a08d4e971557c2842",
+      "metadata_sha256": "d302e6ce7c6043d64364e2e9472893ceb0d176c8ef34a2f0aeb72f05717f2b44",
+      "progress_sha256": "4c7e3696ba96a3e018767c3f660b7010cf99923809940f24acc46e6b20adf749",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 0.9999999999999998,
+      "passed": true
+    },
+    {
+      "context": "fridge",
+      "prompt_id": "prompt_ef7471913f47082a0d86",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_ef7471913f47082a0d86.log_probs.npy",
+      "array_sha256": "1966cca78ab065fec1023da990ed29fc65b2d2a592cb125093fb01715c0c29b9",
+      "metadata_sha256": "95b7c885bd7e88933432205d61ae4a7e3b6b6de8bd5a0e0bbd6414246c8ec37a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 0.9999999999999999,
+      "passed": true
+    },
+    {
+      "context": "gym",
+      "prompt_id": "prompt_0dd418b630c0593430bc",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_0dd418b630c0593430bc.log_probs.npy",
+      "array_sha256": "c5350aebafcca05d2a03d1f738ba6086feadb4a1c43132b21f829d3a231092e6",
+      "metadata_sha256": "5b2176b4e547f6539d7a20063580062a022e3bd0f168b946c4cf945653541e5a",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0,
+      "passed": true
+    },
+    {
+      "context": "hot",
+      "prompt_id": "prompt_6aa492960e929d0d9716",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_6aa492960e929d0d9716.log_probs.npy",
+      "array_sha256": "3c45afd834b67673d0a5e5a2991e5c2ec8ba47ec096b9af33a73f6820eb59c2f",
+      "metadata_sha256": "7763c309446e3ad10af24afea437841f24503ed909dddb138dd6826a93166a2d",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0000000000000002,
+      "passed": true
+    },
+    {
+      "context": "mall",
+      "prompt_id": "prompt_3622b2dc937ddcfab3b3",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_3622b2dc937ddcfab3b3.log_probs.npy",
+      "array_sha256": "b965522c9bc99138ad7078845c3a73197e972a263e9d71fd3396c8cc2aedb212",
+      "metadata_sha256": "6ac489587ae410f68a4ef318e042dc86b757ff6118a8d76ac6b34a9d8c8e64f7",
+      "progress_sha256": "84ae11bb0c105e8424940ca3859fe9755bb49bf1815d54918e9090a065258fb6",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0000000000000002,
+      "passed": true
+    },
+    {
+      "context": "mask",
+      "prompt_id": "prompt_7ebf909e4b947d98da36",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_7ebf909e4b947d98da36.log_probs.npy",
+      "array_sha256": "d50c884d152ce5b6f6aa2d10123504539573fc0e974844724fd29861791e0b23",
+      "metadata_sha256": "cc127f031c038f5c06932461e5e042e2fc68772a7256ac420f01cf55748c4574",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0,
+      "passed": true
+    },
+    {
+      "context": "meat",
+      "prompt_id": "prompt_b4d6fb0c53a16899b941",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_b4d6fb0c53a16899b941.log_probs.npy",
+      "array_sha256": "0355a84f208117fa8bf0f27497dfd4a62fc171a908bbf41f1644229fd2d26f74",
+      "metadata_sha256": "b6d534d9064e17a72950a7cf276b41b2d9a11effbfb466042a7fb44e9add3ca9",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 0.9999999999999999,
+      "passed": true
+    },
+    {
+      "context": "restaurant",
+      "prompt_id": "prompt_2283f8f6e027870a69f3",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_2283f8f6e027870a69f3.log_probs.npy",
+      "array_sha256": "e7cdb4e57bd80b0dabd2f5be3fa986d360996323b0384e89a5f2c60f3489a019",
+      "metadata_sha256": "371674e9de99c9ed7bdded3c8f3a0ba29482ad570dcb17177c8d634159e316c3",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0,
+      "passed": true
+    },
+    {
+      "context": "salad",
+      "prompt_id": "prompt_e00e156f3257be31b90b",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_e00e156f3257be31b90b.log_probs.npy",
+      "array_sha256": "c132ce7f94384be83928e8179c88b2954b9fb636317961282fe7fe90ff81a20c",
+      "metadata_sha256": "07deb7f08cdba2f2f2d78568230d832db34393f44e01b9f9a1d1862ba6d4359f",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 0.9999999999999999,
+      "passed": true
+    },
+    {
+      "context": "science",
+      "prompt_id": "prompt_c59b935a8b7c294921c9",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_c59b935a8b7c294921c9.log_probs.npy",
+      "array_sha256": "e3b5f2ecb223103d389a8044e4877242dc56800bde860cad291d38b2b477826a",
+      "metadata_sha256": "3aebd6c2f7ffd2f80528312bdd88cdab1cfeb8c178d338458a1db91b5a7fe313",
+      "progress_sha256": "ea25d80a115a764fce9b2faf17d3deb3ea944cf7f4b484abd3ff38c6f38a3e2e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0,
+      "passed": true
+    },
+    {
+      "context": "throw",
+      "prompt_id": "prompt_880556e472c188a19236",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_880556e472c188a19236.log_probs.npy",
+      "array_sha256": "24b69d2290986c759860e778d034e1cc41da1cf464223658481ea737c153f6dc",
+      "metadata_sha256": "df31fa1e22c87d341cbee75d4131ff4e6e8ae8f4736cabe1b556009e1cfeac9e",
+      "progress_sha256": "3b02b78d66397a5dcc28b951adb3c14452be70db35538eb6002c906270604ddd",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0000000000000004,
+      "passed": true
+    },
+    {
+      "context": "transport",
+      "prompt_id": "prompt_8a7d96bf9736b1016bf4",
+      "array_path": "/oscar/data/rfeiman/ljohnst7/ngrams/qwen_set_variant_log_probs_single_space/prompt_8a7d96bf9736b1016bf4.log_probs.npy",
+      "array_sha256": "830797e85c1ca5521dfa01fdb70015e0da53272bf3205cd58edd0a46762ef380",
+      "metadata_sha256": "f2b8aff90e6508038760b934cfa8322763449a21288503f961e2e29192dddc4a",
+      "progress_sha256": "ac0074563132eb3a4f3958ec40814a8832caf0a295948a3ff95fe5f87da0570e",
+      "n_trigger_query_pairs": 30,
+      "n_candidates": 121301,
+      "finite_score_count": 121301,
+      "zero_probability_count": 0,
+      "probability_sum": 1.0,
+      "passed": true
+    }
+  ],
+  "validation": {
+    "n_contexts": 16,
+    "n_alternative_rows": 96,
+    "n_pair_rows": 480,
+    "n_query_audit_rows": 96,
+    "all_64_frozen_context_model_sums_match": true,
+    "maximum_absolute_frozen_sum_difference": 0.0,
+    "set_prediction_constant_across_five_triggers_for_each_query": true,
+    "rank_ties": [
+      {
+        "context": "bag",
+        "prompt_id": "prompt_b1289cb8a28a6b86171f",
+        "alternative": "pen",
+        "candidate_index": 4290,
+        "rank_first": 5,
+        "rank_last": 6,
+        "rank_mid": 5.5,
+        "probability_full_support": 0.01884806774237608,
+        "saved_continuation_log_score": -3.9547972679138184,
+        "cumulative_mass_at_rank_end": 0.9228432995267716,
+        "frozen_set_inclusion_probability": 0.99
+      },
+      {
+        "context": "bag",
+        "prompt_id": "prompt_b1289cb8a28a6b86171f",
+        "alternative": "chalk",
+        "candidate_index": 10632,
+        "rank_first": 107,
+        "rank_last": 112,
+        "rank_mid": 109.5,
+        "probability_full_support": 2.6620063642694944e-05,
+        "saved_continuation_log_score": -10.517297744750977,
+        "cumulative_mass_at_rank_end": 0.9958738016658293,
+        "frozen_set_inclusion_probability": 0.014
+      },
+      {
+        "context": "bag",
+        "prompt_id": "prompt_b1289cb8a28a6b86171f",
+        "alternative": "makeup",
+        "candidate_index": 13413,
+        "rank_first": 135,
+        "rank_last": 140,
+        "rank_mid": 137.5,
+        "probability_full_support": 1.829568434235759e-05,
+        "saved_continuation_log_score": -10.892297744750977,
+        "cumulative_mass_at_rank_end": 0.9964678539711335,
+        "frozen_set_inclusion_probability": 0.008
+      },
+      {
+        "context": "bag",
+        "prompt_id": "prompt_b1289cb8a28a6b86171f",
+        "alternative": "headphones",
+        "candidate_index": 45040,
+        "rank_first": 470,
+        "rank_last": 481,
+        "rank_mid": 475.5,
+        "probability_full_support": 2.185107887478713e-06,
+        "saved_continuation_log_score": -13.017297744750977,
+        "cumulative_mass_at_rank_end": 0.9984873619081793,
+        "frozen_set_inclusion_probability": 0.0
+      },
+      {
+        "context": "bag",
+        "prompt_id": "prompt_b1289cb8a28a6b86171f",
+        "alternative": "cash",
+        "candidate_index": 1958,
+        "rank_first": 702,
+        "rank_last": 713,
+        "rank_mid": 707.5,
+        "probability_full_support": 1.2067311847306606e-06,
+        "saved_continuation_log_score": -13.611047744750977,
+        "cumulative_mass_at_rank_end": 0.9988519821438883,
+        "frozen_set_inclusion_probability": 0.002
+      },
+      {
+        "context": "bakery",
+        "prompt_id": "prompt_fc397a1a3f6733ca216c",
+        "alternative": "sandwiches",
+        "candidate_index": 17189,
+        "rank_first": 312,
+        "rank_last": 317,
+        "rank_mid": 314.5,
+        "probability_full_support": 9.976264210320662e-05,
+        "saved_continuation_log_score": -9.177620887756348,
+        "cumulative_mass_at_rank_end": 0.9655765890329278,
+        "frozen_set_inclusion_probability": 0.002
+      },
+      {
+        "context": "bakery",
+        "prompt_id": "prompt_fc397a1a3f6733ca216c",
+        "alternative": "water",
+        "candidate_index": 168,
+        "rank_first": 381,
+        "rank_last": 390,
+        "rank_mid": 385.5,
+        "probability_full_support": 6.645624662394986e-05,
+        "saved_continuation_log_score": -9.583870887756348,
+        "cumulative_mass_at_rank_end": 0.9713210664779995,
+        "frozen_set_inclusion_probability": 0.002
+      },
+      {
+        "context": "beach",
+        "prompt_id": "prompt_d5e51b3e9c6edaa814d6",
+        "alternative": "shorts",
+        "candidate_index": 17179,
+        "rank_first": 7,
+        "rank_last": 8,
+        "rank_mid": 7.5,
+        "probability_full_support": 0.022308895710179088,
+        "saved_continuation_log_score": -3.6525001525878906,
+        "cumulative_mass_at_rank_end": 0.4918879940472042,
+        "frozen_set_inclusion_probability": 0.504
+      },
+      {
+        "context": "beach",
+        "prompt_id": "prompt_d5e51b3e9c6edaa814d6",
+        "alternative": "jeans",
+        "candidate_index": 13111,
+        "rank_first": 33,
+        "rank_last": 35,
+        "rank_mid": 34.0,
+        "probability_full_support": 0.0032139011465211133,
+        "saved_continuation_log_score": -5.590000152587891,
+        "cumulative_mass_at_rank_end": 0.7006418785145172,
+        "frozen_set_inclusion_probability": 0.09
+      },
+      {
+        "context": "beach",
+        "prompt_id": "prompt_d5e51b3e9c6edaa814d6",
+        "alternative": "sunglasses",
+        "candidate_index": 30151,
+        "rank_first": 73,
+        "rank_last": 74,
+        "rank_mid": 73.5,
+        "probability_full_support": 0.0012585817725606835,
+        "saved_continuation_log_score": -6.527500152587891,
+        "cumulative_mass_at_rank_end": 0.7805544007923495,
+        "frozen_set_inclusion_probability": 0.024
+      },
+      {
+        "context": "beach",
+        "prompt_id": "prompt_d5e51b3e9c6edaa814d6",
+        "alternative": "jacket",
+        "candidate_index": 6995,
+        "rank_first": 185,
+        "rank_last": 187,
+        "rank_mid": 186.0,
+        "probability_full_support": 0.0003720360613451885,
+        "saved_continuation_log_score": -7.746250152587891,
+        "cumulative_mass_at_rank_end": 0.8572519725149933,
+        "frozen_set_inclusion_probability": 0.004
+      },
+      {
+        "context": "beach",
+        "prompt_id": "prompt_d5e51b3e9c6edaa814d6",
+        "alternative": "coat",
+        "candidate_index": 3666,
+        "rank_first": 369,
+        "rank_last": 374,
+        "rank_mid": 371.5,
+        "probability_full_support": 0.000165090001475087,
+        "saved_continuation_log_score": -8.55875015258789,
+        "cumulative_mass_at_rank_end": 0.903598543656788,
+        "frozen_set_inclusion_probability": 0.002
+      },
+      {
+        "context": "cold",
+        "prompt_id": "prompt_e5b13e89443f16745c5d",
+        "alternative": "fridge",
+        "candidate_index": 35371,
+        "rank_first": 58,
+        "rank_last": 60,
+        "rank_mid": 59.0,
+        "probability_full_support": 0.0007671167553340598,
+        "saved_continuation_log_score": -7.1044921875,
+        "cumulative_mass_at_rank_end": 0.9195089378184549,
+        "frozen_set_inclusion_probability": 0.044
+      },
+      {
+        "context": "cold",
+        "prompt_id": "prompt_e5b13e89443f16745c5d",
+        "alternative": "microwave",
+        "candidate_index": 12058,
+        "rank_first": 99,
+        "rank_last": 101,
+        "rank_mid": 100.0,
+        "probability_full_support": 0.00034040599669761485,
+        "saved_continuation_log_score": -7.9169921875,
+        "cumulative_mass_at_rank_end": 0.9398462356104698,
+        "frozen_set_inclusion_probability": 0.016
+      },
+      {
+        "context": "cold",
+        "prompt_id": "prompt_e5b13e89443f16745c5d",
+        "alternative": "sink",
+        "candidate_index": 6306,
+        "rank_first": 256,
+        "rank_last": 260,
+        "rank_mid": 258.0,
+        "probability_full_support": 8.606811461453682e-05,
+        "saved_continuation_log_score": -9.2919921875,
+        "cumulative_mass_at_rank_end": 0.9659109411191596,
+        "frozen_set_inclusion_probability": 0.002
+      },
+      {
+        "context": "cold",
+        "prompt_id": "prompt_e5b13e89443f16745c5d",
+        "alternative": "blankets",
+        "candidate_index": 11201,
+        "rank_first": 1331,
+        "rank_last": 1353,
+        "rank_mid": 1342.0,
+        "probability_full_support": 6.636860352357151e-06,
+        "saved_continuation_log_score": -11.8544921875,
+        "cumulative_mass_at_rank_end": 0.9898490173247945,
+        "frozen_set_inclusion_probability": 0.0
+      },
+      {
+        "context": "cold",
+        "prompt_id": "prompt_e5b13e89443f16745c5d",
+        "alternative": "tea",
+        "candidate_index": 2877,
+        "rank_first": 1711,
+        "rank_last": 1727,
+        "rank_mid": 1719.0,
+        "probability_full_support": 4.5614429650079434e-06,
+        "saved_continuation_log_score": -12.2294921875,
+        "cumulative_mass_at_rank_end": 0.9918874189105703,
+        "frozen_set_inclusion_probability": 0.0
+      },
+      {
+        "context": "cut",
+        "prompt_id": "prompt_dae5a23e82f8085cc86d",
+        "alternative": "keys",
+        "candidate_index": 5607,
+        "rank_first": 142,
+        "rank_last": 144,
+        "rank_mid": 143.0,
+        "probability_full_support": 0.00041033042837037523,
+        "saved_continuation_log_score": -7.578302383422852,
+        "cumulative_mass_at_rank_end": 0.889832567621437,
+        "frozen_set_inclusion_probability": 0.014
+      },
+      {
+        "context": "cut",
+        "prompt_id": "prompt_dae5a23e82f8085cc86d",
+        "alternative": "batteries",
+        "candidate_index": 8634,
+        "rank_first": 942,
+        "rank_last": 963,
+        "rank_mid": 952.5,
+        "probability_full_support": 2.7064225349146797e-05,
+        "saved_continuation_log_score": -10.297052383422852,
+        "cumulative_mass_at_rank_end": 0.9633328299521693,
+        "frozen_set_inclusion_probability": 0.002
+      },
+      {
+        "context": "fridge",
+        "prompt_id": "prompt_ef7471913f47082a0d86",
+        "alternative": "juice",
+        "candidate_index": 5769,
+        "rank_first": 5,
+        "rank_last": 6,
+        "rank_mid": 5.5,
+        "probability_full_support": 0.010115891952073972,
+        "saved_continuation_log_score": -4.572681427001953,
+        "cumulative_mass_at_rank_end": 0.8752173485341671,
+        "frozen_set_inclusion_probability": 0.762
+      },
+      {
+        "context": "fridge",
+        "prompt_id": "prompt_ef7471913f47082a0d86",
+        "alternative": "yogurt",
+        "candidate_index": 23675,
+        "rank_first": 242,
+        "rank_last": 244,
+        "rank_mid": 243.0,
+        "probability_full_support": 1.8345107667695876e-05,
+        "saved_continuation_log_score": -10.885181427001953,
+        "cumulative_mass_at_rank_end": 0.9950509200398426,
+        "frozen_set_inclusion_probability": 0.006
+      },
+      {
+        "context": "fridge",
+        "prompt_id": "prompt_ef7471913f47082a0d86",
+        "alternative": "meat",
+        "candidate_index": 2804,
+        "rank_first": 1040,
+        "rank_last": 1044,
+        "rank_mid": 1042.0,
+        "probability_full_support": 1.1545814840521329e-06,
+        "saved_continuation_log_score": -13.650806427001953,
+        "cumulative_mass_at_rank_end": 0.998631917155114,
+        "frozen_set_inclusion_probability": 0.0
+      },
+      {
+        "context": "gym",
+        "prompt_id": "prompt_0dd418b630c0593430bc",
+        "alternative": "softball",
+        "candidate_index": 35481,
+        "rank_first": 18,
+        "rank_last": 19,
+        "rank_mid": 18.5,
+        "probability_full_support": 0.011028867778664289,
+        "saved_continuation_log_score": -4.419955253601074,
+        "cumulative_mass_at_rank_end": 0.6859036223864227,
+        "frozen_set_inclusion_probability": 0.292
+      },
+      {
+        "context": "gym",
+        "prompt_id": "prompt_0dd418b630c0593430bc",
+        "alternative": "swimming",
+        "candidate_index": 6277,
+        "rank_first": 35,
+        "rank_last": 36,
+        "rank_mid": 35.5,
+        "probability_full_support": 0.004894030410022172,
+        "saved_continuation_log_score": -5.232455253601074,
+        "cumulative_mass_at_rank_end": 0.8073858489595787,
+        "frozen_set_inclusion_probability": 0.144
+      },
+      {
+        "context": "gym",
+        "prompt_id": "prompt_0dd418b630c0593430bc",
+        "alternative": "meditation",
+        "candidate_index": 7116,
+        "rank_first": 495,
+        "rank_last": 504,
+        "rank_mid": 499.5,
+        "probability_full_support": 3.196116134589461e-05,
+        "saved_continuation_log_score": -10.263705253601074,
+        "cumulative_mass_at_rank_end": 0.9796723718298507,
+        "frozen_set_inclusion_probability": 0.004
+      },
+      {
+        "context": "hot",
+        "prompt_id": "prompt_6aa492960e929d0d9716",
+        "alternative": "fan",
+        "candidate_index": 6437,
+        "rank_first": 12,
+        "rank_last": 14,
+        "rank_mid": 13.0,
+        "probability_full_support": 0.005143456411915182,
+        "saved_continuation_log_score": -5.381713390350342,
+        "cumulative_mass_at_rank_end": 0.8600259495367484,
+        "frozen_set_inclusion_probability": 0.336
+      },
+      {
+        "context": "hot",
+        "prompt_id": "prompt_6aa492960e929d0d9716",
+        "alternative": "heater",
+        "candidate_index": 16047,
+        "rank_first": 12,
+        "rank_last": 14,
+        "rank_mid": 13.0,
+        "probability_full_support": 0.005143456411915182,
+        "saved_continuation_log_score": -5.381713390350342,
+        "cumulative_mass_at_rank_end": 0.8600259495367484,
+        "frozen_set_inclusion_probability": 0.34
+      },
+      {
+        "context": "hot",
+        "prompt_id": "prompt_6aa492960e929d0d9716",
+        "alternative": "pool",
+        "candidate_index": 3757,
+        "rank_first": 163,
+        "rank_last": 164,
+        "rank_mid": 163.5,
+        "probability_full_support": 0.00010674898130964201,
+        "saved_continuation_log_score": -9.2567138671875,
+        "cumulative_mass_at_rank_end": 0.9702601308646234,
+        "frozen_set_inclusion_probability": 0.004
+      },
+      {
+        "context": "hot",
+        "prompt_id": "prompt_6aa492960e929d0d9716",
+        "alternative": "shower",
+        "candidate_index": 8200,
+        "rank_first": 246,
+        "rank_last": 252,
+        "rank_mid": 249.0,
+        "probability_full_support": 5.202529846914914e-05,
+        "saved_continuation_log_score": -9.9754638671875,
+        "cumulative_mass_at_rank_end": 0.9766051380435253,
+        "frozen_set_inclusion_probability": 0.014
+      },
+      {
+        "context": "hot",
+        "prompt_id": "prompt_6aa492960e929d0d9716",
+        "alternative": "blankets",
+        "candidate_index": 11201,
+        "rank_first": 325,
+        "rank_last": 330,
+        "rank_mid": 327.5,
+        "probability_full_support": 3.5756429863746576e-05,
+        "saved_continuation_log_score": -10.3504638671875,
+        "cumulative_mass_at_rank_end": 0.9799274531047004,
+        "frozen_set_inclusion_probability": 0.002
+      },
+      {
+        "context": "hot",
+        "prompt_id": "prompt_6aa492960e929d0d9716",
+        "alternative": "couch",
+        "candidate_index": 9324,
+        "rank_first": 765,
+        "rank_last": 780,
+        "rank_mid": 772.5,
+        "probability_full_support": 1.0569580478834046e-05,
+        "saved_continuation_log_score": -11.5692138671875,
+        "cumulative_mass_at_rank_end": 0.9883707696160807,
+        "frozen_set_inclusion_probability": 0.0
+      },
+      {
+        "context": "mask",
+        "prompt_id": "prompt_7ebf909e4b947d98da36",
+        "alternative": "gloves",
+        "candidate_index": 9948,
+        "rank_first": 100,
+        "rank_last": 102,
+        "rank_mid": 101.0,
+        "probability_full_support": 0.00010406562282263013,
+        "saved_continuation_log_score": -9.180533409118652,
+        "cumulative_mass_at_rank_end": 0.9782732845350944,
+        "frozen_set_inclusion_probability": 0.028
+      },
+      {
+        "context": "mask",
+        "prompt_id": "prompt_7ebf909e4b947d98da36",
+        "alternative": "candy",
+        "candidate_index": 10717,
+        "rank_first": 1108,
+        "rank_last": 1119,
+        "rank_mid": 1113.5,
+        "probability_full_support": 3.790590034225453e-06,
+        "saved_continuation_log_score": -12.493033409118652,
+        "cumulative_mass_at_rank_end": 0.9940833508874116,
+        "frozen_set_inclusion_probability": 0.0
+      },
+      {
+        "context": "meat",
+        "prompt_id": "prompt_b4d6fb0c53a16899b941",
+        "alternative": "rice",
+        "candidate_index": 2884,
+        "rank_first": 35,
+        "rank_last": 36,
+        "rank_mid": 35.5,
+        "probability_full_support": 0.0039739159543334445,
+        "saved_continuation_log_score": -5.372554779052734,
+        "cumulative_mass_at_rank_end": 0.7403299051377665,
+        "frozen_set_inclusion_probability": 0.138
+      },
+      {
+        "context": "meat",
+        "prompt_id": "prompt_b4d6fb0c53a16899b941",
+        "alternative": "turkey",
+        "candidate_index": 4390,
+        "rank_first": 60,
+        "rank_last": 65,
+        "rank_mid": 62.5,
+        "probability_full_support": 0.0016565746307560872,
+        "saved_continuation_log_score": -6.247554779052734,
+        "cumulative_mass_at_rank_end": 0.8103665680966273,
+        "frozen_set_inclusion_probability": 0.036
+      },
+      {
+        "context": "meat",
+        "prompt_id": "prompt_b4d6fb0c53a16899b941",
+        "alternative": "mushrooms",
+        "candidate_index": 15266,
+        "rank_first": 74,
+        "rank_last": 76,
+        "rank_mid": 75.0,
+        "probability_full_support": 0.001373348605335741,
+        "saved_continuation_log_score": -6.435054779052734,
+        "cumulative_mass_at_rank_end": 0.8267550460974239,
+        "frozen_set_inclusion_probability": 0.058
+      },
+      {
+        "context": "meat",
+        "prompt_id": "prompt_b4d6fb0c53a16899b941",
+        "alternative": "crab",
+        "candidate_index": 14374,
+        "rank_first": 181,
+        "rank_last": 184,
+        "rank_mid": 182.5,
+        "probability_full_support": 0.00036963176265843173,
+        "saved_continuation_log_score": -7.747554779052734,
+        "cumulative_mass_at_rank_end": 0.9025032120935532,
+        "frozen_set_inclusion_probability": 0.006
+      },
+      {
+        "context": "restaurant",
+        "prompt_id": "prompt_2283f8f6e027870a69f3",
+        "alternative": "cocktails",
+        "candidate_index": 36002,
+        "rank_first": 19,
+        "rank_last": 20,
+        "rank_mid": 19.5,
+        "probability_full_support": 0.005867471665134994,
+        "saved_continuation_log_score": -5.246623516082764,
+        "cumulative_mass_at_rank_end": 0.7269477515825703,
+        "frozen_set_inclusion_probability": 0.222
+      },
+      {
+        "context": "restaurant",
+        "prompt_id": "prompt_2283f8f6e027870a69f3",
+        "alternative": "vodka",
+        "candidate_index": 25227,
+        "rank_first": 29,
+        "rank_last": 33,
+        "rank_mid": 31.0,
+        "probability_full_support": 0.0037883244344518183,
+        "saved_continuation_log_score": -5.684123516082764,
+        "cumulative_mass_at_rank_end": 0.7867824739257089,
+        "frozen_set_inclusion_probability": 0.14
+      },
+      {
+        "context": "restaurant",
+        "prompt_id": "prompt_2283f8f6e027870a69f3",
+        "alternative": "soda",
+        "candidate_index": 8567,
+        "rank_first": 62,
+        "rank_last": 64,
+        "rank_mid": 63.0,
+        "probability_full_support": 0.0015792085749430284,
+        "saved_continuation_log_score": -6.559123516082764,
+        "cumulative_mass_at_rank_end": 0.8539773109800132,
+        "frozen_set_inclusion_probability": 0.072
+      },
+      {
+        "context": "restaurant",
+        "prompt_id": "prompt_2283f8f6e027870a69f3",
+        "alternative": "salad",
+        "candidate_index": 9879,
+        "rank_first": 903,
+        "rank_last": 906,
+        "rank_mid": 904.5,
+        "probability_full_support": 1.5973460427529634e-05,
+        "saved_continuation_log_score": -11.152873992919922,
+        "cumulative_mass_at_rank_end": 0.9832030419395464,
+        "frozen_set_inclusion_probability": 0.0
+      },
+      {
+        "context": "restaurant",
+        "prompt_id": "prompt_2283f8f6e027870a69f3",
+        "alternative": "soup",
+        "candidate_index": 7539,
+        "rank_first": 940,
+        "rank_last": 944,
+        "rank_mid": 942.0,
+        "probability_full_support": 1.5005677383955464e-05,
+        "saved_continuation_log_score": -11.215373992919922,
+        "cumulative_mass_at_rank_end": 0.9837872093937103,
+        "frozen_set_inclusion_probability": 0.0
+      },
+      {
+        "context": "salad",
+        "prompt_id": "prompt_e00e156f3257be31b90b",
+        "alternative": "dressing",
+        "candidate_index": 6119,
+        "rank_first": 117,
+        "rank_last": 121,
+        "rank_mid": 119.0,
+        "probability_full_support": 0.0005578869154572838,
+        "saved_continuation_log_score": -7.398366928100586,
+        "cumulative_mass_at_rank_end": 0.9196686824375206,
+        "frozen_set_inclusion_probability": 0.006
+      },
+      {
+        "context": "salad",
+        "prompt_id": "prompt_e00e156f3257be31b90b",
+        "alternative": "tuna",
+        "candidate_index": 19205,
+        "rank_first": 229,
+        "rank_last": 233,
+        "rank_mid": 231.0,
+        "probability_full_support": 0.00018111936361014624,
+        "saved_continuation_log_score": -8.523366928100586,
+        "cumulative_mass_at_rank_end": 0.9540272408813854,
+        "frozen_set_inclusion_probability": 0.006
+      },
+      {
+        "context": "salad",
+        "prompt_id": "prompt_e00e156f3257be31b90b",
+        "alternative": "chips",
+        "candidate_index": 9758,
+        "rank_first": 363,
+        "rank_last": 367,
+        "rank_mid": 365.0,
+        "probability_full_support": 8.037123040559942e-05,
+        "saved_continuation_log_score": -9.335866928100586,
+        "cumulative_mass_at_rank_end": 0.9693578254426009,
+        "frozen_set_inclusion_probability": 0.0
+      },
+      {
+        "context": "salad",
+        "prompt_id": "prompt_e00e156f3257be31b90b",
+        "alternative": "meat",
+        "candidate_index": 2804,
+        "rank_first": 831,
+        "rank_last": 844,
+        "rank_mid": 837.5,
+        "probability_full_support": 1.5339117751913136e-05,
+        "saved_continuation_log_score": -10.992116928100586,
+        "cumulative_mass_at_rank_end": 0.9855056747269059,
+        "frozen_set_inclusion_probability": 0.0
+      },
+      {
+        "context": "salad",
+        "prompt_id": "prompt_e00e156f3257be31b90b",
+        "alternative": "cigarettes",
+        "candidate_index": 10384,
+        "rank_first": 1914,
+        "rank_last": 1927,
+        "rank_mid": 1920.5,
+        "probability_full_support": 3.4226198005200015e-06,
+        "saved_continuation_log_score": -12.492116928100586,
+        "cumulative_mass_at_rank_end": 0.9931339084216749,
+        "frozen_set_inclusion_probability": 0.0
+      },
+      {
+        "context": "science",
+        "prompt_id": "prompt_c59b935a8b7c294921c9",
+        "alternative": "math",
+        "candidate_index": 8250,
+        "rank_first": 22,
+        "rank_last": 24,
+        "rank_mid": 23.0,
+        "probability_full_support": 0.005074887502606333,
+        "saved_continuation_log_score": -5.220839977264404,
+        "cumulative_mass_at_rank_end": 0.803490625777175,
+        "frozen_set_inclusion_probability": 0.21
+      },
+      {
+        "context": "science",
+        "prompt_id": "prompt_c59b935a8b7c294921c9",
+        "alternative": "philosophy",
+        "candidate_index": 1210,
+        "rank_first": 156,
+        "rank_last": 157,
+        "rank_mid": 156.5,
+        "probability_full_support": 0.00027749673291919383,
+        "saved_continuation_log_score": -8.127090454101562,
+        "cumulative_mass_at_rank_end": 0.9455202014299959,
+        "frozen_set_inclusion_probability": 0.014
+      },
+      {
+        "context": "science",
+        "prompt_id": "prompt_c59b935a8b7c294921c9",
+        "alternative": "art",
+        "candidate_index": 428,
+        "rank_first": 267,
+        "rank_last": 270,
+        "rank_mid": 268.5,
+        "probability_full_support": 0.000102085343033214,
+        "saved_continuation_log_score": -9.127090454101562,
+        "cumulative_mass_at_rank_end": 0.9648338136562427,
+        "frozen_set_inclusion_probability": 0.002
+      },
+      {
+        "context": "throw",
+        "prompt_id": "prompt_880556e472c188a19236",
+        "alternative": "shovel",
+        "candidate_index": 18002,
+        "rank_first": 212,
+        "rank_last": 214,
+        "rank_mid": 213.0,
+        "probability_full_support": 0.00011217336112011195,
+        "saved_continuation_log_score": -9.039997100830078,
+        "cumulative_mass_at_rank_end": 0.965940332051479,
+        "frozen_set_inclusion_probability": 0.0
+      },
+      {
+        "context": "throw",
+        "prompt_id": "prompt_880556e472c188a19236",
+        "alternative": "tires",
+        "candidate_index": 13748,
+        "rank_first": 3187,
+        "rank_last": 3208,
+        "rank_mid": 3197.5,
+        "probability_full_support": 1.265757227275249e-06,
+        "saved_continuation_log_score": -13.524372100830078,
+        "cumulative_mass_at_rank_end": 0.9967619074013555,
+        "frozen_set_inclusion_probability": 0.0
+      },
+      {
+        "context": "transport",
+        "prompt_id": "prompt_8a7d96bf9736b1016bf4",
+        "alternative": "hammer",
+        "candidate_index": 7926,
+        "rank_first": 1059,
+        "rank_last": 1070,
+        "rank_mid": 1064.5,
+        "probability_full_support": 1.280627987833838e-05,
+        "saved_continuation_log_score": -11.179377555847168,
+        "cumulative_mass_at_rank_end": 0.9820335632596771,
+        "frozen_set_inclusion_probability": 0.0
+      },
+      {
+        "context": "transport",
+        "prompt_id": "prompt_8a7d96bf9736b1016bf4",
+        "alternative": "chairs",
+        "candidate_index": 6305,
+        "rank_first": 7348,
+        "rank_last": 7350,
+        "rank_mid": 7349.0,
+        "probability_full_support": 4.907683357115841e-07,
+        "saved_continuation_log_score": -14.441096305847168,
+        "cumulative_mass_at_rank_end": 0.9974633815288463,
+        "frozen_set_inclusion_probability": 0.0
+      }
+    ]
+  },
+  "plot_validation": {
+    "distribution_pdf_pages": 16,
+    "audit_pdf_pages": 16,
+    "individual_distribution_pngs": 16,
+    "individual_pair_audit_pngs": 16,
+    "all_96_alternatives_labeled_on_both_overviews": true,
+    "alternative_callouts_checked_for_overlap_and_clipping": true,
+    "pair_heatmap_axis_labels_checked_for_clipping_and_footer_overlap": true,
+    "full_profile_axis_limits": [
+      121301,
+      [
+        6.61462044866782e-26,
+        1.0
+      ]
+    ],
+    "zoom_axis_limits": [
+      12296,
+      [
+        3.622618482073977e-08,
+        1.0
+      ]
+    ],
+    "full_distribution_curve_points_per_context": 121301,
+    "probability_heatmap_limits": [
+      0,
+      1
+    ],
+    "pair_difference_heatmap_limits": [
+      -22.98294334618881,
+      22.98294334618881
+    ]
+  },
+  "definitions": {
+    "probabilities": "float64 exp(log_score - max) normalized over all 121301 one-/two-word candidates",
+    "ranks": "1-based descending saved score; ties record first/last ranks and markers use their midpoint",
+    "cumulative_mass": "Sum of probabilities through the last rank in a tied group",
+    "zoom": "Display limits only; probabilities always normalized over the complete saved distribution",
+    "score": "y*ln(clip(p))+(1-y)*ln(1-clip(p)); original epsilon=1e-10; summed without participant weights",
+    "structures": {
+      "set": "Set Top-K",
+      "ordering": "Ordering",
+      "conjunction": "Conjunction Top-K",
+      "disjunction": "Disjunction Top-K"
+    },
+    "set_advantage": "Set log score minus Ordering log score",
+    "pair_score_audit": "Recomputed only from frozen probabilities to attribute the existing scores; no changed predictions or clipping",
+    "top_three_share": "Sum of the three largest absolute pair differences divided by sum of all 30 absolute pair differences",
+    "scope": "Descriptive plots and score decomposition only; no correlations, tests, model fitting, LM inference, or new samples"
+  },
+  "outputs": [
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/alternative_positions.csv",
+      "sha256": "3f3c446c9565fd0413e66b15deca8f98a6c6a967db85bb0e2c6ac38aca17deca"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/build_distribution_profiles_and_pair_audit.py",
+      "sha256": "a3dae6f22505561e3beb4c7657176ef68573b5c331957cd9264d830a2d7d2966"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/context_audit_summary.csv",
+      "sha256": "0d1f5308115a2b0c21984405f11dd0a35c912887b418a5ded737aca013f9e0e2"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/distribution_overview_full.pdf",
+      "sha256": "36d75916b9345bdcea8992cdfa84bf45d231f50bf96b7afb11fc08ea34318f16"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/distribution_overview_full.png",
+      "sha256": "25621215f58cc5d3e4a935f50739efc1c33fb821dc0c6029e2bd54938758215f"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/distribution_overview_zoom.pdf",
+      "sha256": "5a9dcb1eb3c0bfdc6ed922f44869bd508b8bf624575445edea4ec4307fb1393c"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/distribution_overview_zoom.png",
+      "sha256": "307627a87a650c7f1bb27242930fa61baecd9ad572c2498ad5f7b14a2daff47f"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/distribution_profiles.pdf",
+      "sha256": "b9db135952785ad8711281179a3939a0798555ea2c3d9b8df540d8330fd3932b"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/bag_pair_audit.png",
+      "sha256": "35a2ce5f01fc5c02648296743076fbd13654458d368b183d79b4ded47e551a2b"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/bakery_pair_audit.png",
+      "sha256": "cea4dba040318ab91621b0b2e30128df054202b42e412c8401b560e898528281"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/beach_pair_audit.png",
+      "sha256": "8445d11e1a344a3f62caaff8b8d2f64ffd4aff12f391ed834e8801d6e346ddd1"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/cold_pair_audit.png",
+      "sha256": "9a8b890165ea1373d856dd7d7d459aabb8f9fa0cf54c0ba1118c709875282bce"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/cut_pair_audit.png",
+      "sha256": "c9206fff6d1443b65fd43cf0e4cff9f4aa7a334291f75a183eeb4a36f678593d"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/fridge_pair_audit.png",
+      "sha256": "71eb876fd1c1ba88734828ec17d89e60d09d2b0882bcb437366a2706b87bdd4e"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/gym_pair_audit.png",
+      "sha256": "305f1f137784f3e964b01e8ce2f9ba1d5f3f9baf737ea8132e0ff8c241b26146"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/hot_pair_audit.png",
+      "sha256": "35695c4eebbdd21a59bebc71c0467fbefc5f547b80376317eb44729612d4eb58"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/mall_pair_audit.png",
+      "sha256": "c40f5c177c8bf7480a0e197948f109076a98644340b4f6fc509e1bccc6ae802c"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/mask_pair_audit.png",
+      "sha256": "08d0dd8d54876ff3cc1c03c31a4d4661aeb8b9d443dc18bc27decd4b841e2bda"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/meat_pair_audit.png",
+      "sha256": "6fd4d5df6cb148504ba67f8a146e3334422333f8e820af493633c0fcab7a5ced"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/restaurant_pair_audit.png",
+      "sha256": "595e033ecd8b82df1b44f6e26f6d7337be24b913296204e5360fde487c2530a4"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/salad_pair_audit.png",
+      "sha256": "e41954f9b219819bde69230a576b29a586bc983df7d084fcdf907b449f50bfbf"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/science_pair_audit.png",
+      "sha256": "f60442b085375164b23086a6175710a66271a360ac968899dfbaf2696437600d"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/throw_pair_audit.png",
+      "sha256": "be048945c0b7e97f7a4872cf3ae69504e56b6302ecf7fe5542a311ddc6c25fb5"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_heatmaps/transport_pair_audit.png",
+      "sha256": "17b4f5f4a0d4bd1f5f6323c1f132cefaddf253a7869468cff6aa7d12d168f8f5"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_level_audit.csv",
+      "sha256": "c0096716655519693eb44d941c12761d0f754b4a3ecd66b383cff33395bcec47"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/pair_level_audit.pdf",
+      "sha256": "d77ee3470568e4d039a0ffa939051f4f6bcf29155edc05f479606fe3d143cfc8"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/bag_distribution.png",
+      "sha256": "91fb6c93e3796be0a8e86cfa77ccf258d486f389bbc21f0741ce4ec43a0230d5"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/bakery_distribution.png",
+      "sha256": "b94042e0adf2b489d9c3d16e8d1dfa27ee2004d5925dd18a30866b4f37ff1a12"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/beach_distribution.png",
+      "sha256": "184f023a61e5b3c34d97ad79e21ff43640c2f3e38bd7d4e0918e39056543a039"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/cold_distribution.png",
+      "sha256": "7f262494bd14512cb0c1bc4c41daa3de386c69c3a3750b2280f3c650dcba0fff"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/cut_distribution.png",
+      "sha256": "0c7205fedbb14b45f0734849d3edb6960115b4ed10e0d0a151cbdfe0fca1d072"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/fridge_distribution.png",
+      "sha256": "782bbbaf3f3f40cf16497a4ca0a0a023d7e7a85ef831e49d4089462a4aa99829"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/gym_distribution.png",
+      "sha256": "33df70edbd44ce972d513b518f236cc59dd7422d2955df72ffe2c004243df0b1"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/hot_distribution.png",
+      "sha256": "d55f2c245a6333e79c87219e922a0f7e0343e1046f68b2e3d310cfed6344b939"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/mall_distribution.png",
+      "sha256": "6cf935fa503c927e9e2fae85e8a9055365ecc2a6401b410839be14f4c89aa112"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/mask_distribution.png",
+      "sha256": "e989944f862868f99280585a90d8536b0665ec9d9f2fb4699d892ba839113e12"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/meat_distribution.png",
+      "sha256": "5317db0c08efdd266b6458f1e03cff8c6b3bfe7dc628c385933f6844a61dbcdc"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/restaurant_distribution.png",
+      "sha256": "980027ae356da3625aa702c5a998302baf4e74ed12ca96206e4cda2f66e6d4b7"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/salad_distribution.png",
+      "sha256": "129daef2f6ad60c94479ec73e58c2f11f32b7155a08207e4484f569127d15639"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/science_distribution.png",
+      "sha256": "92a0dcc6c7b353b35c024278ab88b13f025e0d382ad897a40c6685cefeb2f728"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/throw_distribution.png",
+      "sha256": "7a7b992de5aee3713059a3a3840ce8ddace379bf83aae177957671c8993a367d"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/profiles/transport_distribution.png",
+      "sha256": "b4651bbb84e6e47fd2ca1e0ee08764ee1b4309a86cdaaadb98f503a6789c18c2"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/query_trigger_audit.csv",
+      "sha256": "5e884decc963ffe60dcf7b4c0faa4cb4f0c08ba803490fc406835b6d4c243944"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/set_ordering_pair_differences_overview.pdf",
+      "sha256": "2d92e26f9fcce13cdd6e9c954fcdca74fb77c50c8638631f7fa27d188edf34b2"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/set_ordering_pair_differences_overview.png",
+      "sha256": "4db20b242c9c6100e68900bfa5ba3df51c729e68fe8ddc8efab312157987d0ad"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/distribution_profiles_pair_audit_2026-11-04/top_20_candidates.csv",
+      "sha256": "8c5e9f7b7899a718cd1d660f0004471971a8837b4e49686156d7d7af0f24afb6"
+    }
+  ]
+}

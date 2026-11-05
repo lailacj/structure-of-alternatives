@@ -1,0 +1,130 @@
+{
+  "created_at_utc": "2026-11-04T13:45:27.367207+00:00",
+  "command": "/usr/bin/python /oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/entropy_ordering_advantage_2026-11-04/set_advantage_scatter/plot_entropy_set_advantage.py",
+  "input_csv": {
+    "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/entropy_ordering_advantage_2026-11-04/entropy_ordering_advantage.csv",
+    "sha256": "793e12d72ee99358b437b4136a286222a4e436d506606cac08d6c7d995015b91"
+  },
+  "analysis_provenance": {
+    "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/entropy_ordering_advantage_2026-11-04/provenance_validation.json",
+    "sha256": "b2aabbd1f97cca37fc9dd9cf99deadb4f2039cc6da3df8bcbe591c75a5985671"
+  },
+  "script": {
+    "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/entropy_ordering_advantage_2026-11-04/set_advantage_scatter/plot_entropy_set_advantage.py",
+    "sha256": "70796e5bd972b79789fc2c007cf005d3fc3b36d452e5ec87d1f15b61101f2a4e"
+  },
+  "matplotlib_version": "3.9.2",
+  "numpy_version": "1.26.4",
+  "axes": {
+    "horizontal": "entropy_bits",
+    "vertical": "set_advantage = set_log_score - ordering_log_score",
+    "reference_line": 0
+  },
+  "validation": {
+    "n_contexts": 16,
+    "all_contexts_labeled": true,
+    "coordinates_match_csv": true,
+    "exact_negative_of_ordering_advantage": true,
+    "label_overlap_count": 0,
+    "clipped_label_count": 0,
+    "distinct_entropy_values": 16,
+    "distinct_advantage_values": 16
+  },
+  "plotted_points": [
+    {
+      "context": "mask",
+      "entropy_bits": 1.7637473114194697,
+      "set_advantage": -18.879019057356047
+    },
+    {
+      "context": "bag",
+      "entropy_bits": 1.919354238135993,
+      "set_advantage": -21.217589952701477
+    },
+    {
+      "context": "fridge",
+      "entropy_bits": 2.5840272906176063,
+      "set_advantage": -5.018336803805592
+    },
+    {
+      "context": "hot",
+      "entropy_bits": 3.800118586212681,
+      "set_advantage": 28.49841821195805
+    },
+    {
+      "context": "mall",
+      "entropy_bits": 4.315567888569874,
+      "set_advantage": -133.45706763865724
+    },
+    {
+      "context": "cold",
+      "entropy_bits": 4.447681285086964,
+      "set_advantage": -36.19917126006396
+    },
+    {
+      "context": "throw",
+      "entropy_bits": 4.7510019928301155,
+      "set_advantage": -35.702488281692766
+    },
+    {
+      "context": "science",
+      "entropy_bits": 5.212903192765085,
+      "set_advantage": -17.6446097535512
+    },
+    {
+      "context": "restaurant",
+      "entropy_bits": 5.250966369230661,
+      "set_advantage": -63.71892726584032
+    },
+    {
+      "context": "transport",
+      "entropy_bits": 5.306652963848055,
+      "set_advantage": 21.95764186558136
+    },
+    {
+      "context": "cut",
+      "entropy_bits": 5.763519010627933,
+      "set_advantage": 25.092917730762736
+    },
+    {
+      "context": "salad",
+      "entropy_bits": 5.792089847164409,
+      "set_advantage": -43.962950257602344
+    },
+    {
+      "context": "gym",
+      "entropy_bits": 5.91065570049488,
+      "set_advantage": -15.710349297772531
+    },
+    {
+      "context": "bakery",
+      "entropy_bits": 6.168351970198862,
+      "set_advantage": -5.366936226870571
+    },
+    {
+      "context": "meat",
+      "entropy_bits": 6.226708061112888,
+      "set_advantage": 5.715061847219623
+    },
+    {
+      "context": "beach",
+      "entropy_bits": 6.806872597909045,
+      "set_advantage": -7.27331038119943
+    }
+  ],
+  "outputs": [
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/entropy_ordering_advantage_2026-11-04/set_advantage_scatter/entropy_set_advantage_scatter.png",
+      "sha256": "dde0bb4f18c07a94bf957538b20b3fb3b7e361c8eb65cfb7af0083fe04115182"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/entropy_ordering_advantage_2026-11-04/set_advantage_scatter/entropy_set_advantage_scatter.pdf",
+      "sha256": "d7ed967a036f24a697c68409d39e9f308ba085ade60b14c70dcba2461d8962c8"
+    },
+    {
+      "path": "/oscar/data/rfeiman/ljohnst7/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/entropy_ordering_advantage_2026-11-04/set_advantage_scatter/entropy_set_advantage_scatter.svg",
+      "sha256": "736ec7b8b613414abd0be03ae5514b0259c8cd26329defe527b25138a06cef4d"
+    }
+  ],
+  "statistical_tests_or_model_fitting_run": false
+}

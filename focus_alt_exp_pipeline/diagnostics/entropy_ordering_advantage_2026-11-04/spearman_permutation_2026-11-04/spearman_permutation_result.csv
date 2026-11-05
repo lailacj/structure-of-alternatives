@@ -1,0 +1,2 @@
+test,alternative,n_contexts,spearman_rho,one_sided_pvalue,n_permutations,n_null_statistics_ge_observed,n_null_statistics_equal_observed,seed,monte_carlo_standard_error_of_pvalue
+Spearman context-pairing permutation test,greater,16,-0.2235294117647059,0.8011991988008011,1000000,801199,3156,20261104,0.0003990977858141479
