@@ -1,0 +1,6 @@
+model,n_contexts,n_pairs,mean_within_context_spearman
+No linking,16,480,0.5837382395176374
+Set,16,480,0.5665701692690844
+Ordering,16,480,0.5130660773065275
+Conjunction,16,480,0.5690937938402523
+Disjunction,16,480,0.5284888621050545

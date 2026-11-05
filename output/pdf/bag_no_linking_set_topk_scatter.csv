@@ -1,0 +1,61 @@
+model,item_id,context_id,trigger,query,prediction,human_rate
+No linking structure,bag::cash::chalk,bag,cash,chalk,2.706422684422374e-05,1.0
+No linking structure,bag::cash::crayons,bag,cash,crayons,0.0001865203276673,1.0
+No linking structure,bag::cash::headphones,bag,cash,headphones,2.2215670232649904e-06,0.0
+No linking structure,bag::cash::makeup,bag,cash,makeup,1.8600952948801803e-05,0.1052631578947368
+No linking structure,bag::cash::pen,bag,cash,pen,0.0191625530202271,1.0
+No linking structure,bag::chalk::cash,bag,chalk,cash,1.2268658317994588e-06,0.0
+No linking structure,bag::chalk::crayons,bag,chalk,crayons,0.0001865203276673,1.0
+No linking structure,bag::chalk::headphones,bag,chalk,headphones,2.2215670232649904e-06,0.2
+No linking structure,bag::chalk::makeup,bag,chalk,makeup,1.8600952948801803e-05,0.2
+No linking structure,bag::chalk::pen,bag,chalk,pen,0.0191625530202271,1.0
+No linking structure,bag::crayons::cash,bag,crayons,cash,1.2268658317994588e-06,0.0
+No linking structure,bag::crayons::chalk,bag,crayons,chalk,2.706422684422374e-05,0.8888888888888888
+No linking structure,bag::crayons::headphones,bag,crayons,headphones,2.2215670232649904e-06,0.25
+No linking structure,bag::crayons::makeup,bag,crayons,makeup,1.8600952948801803e-05,0.0
+No linking structure,bag::crayons::pen,bag,crayons,pen,0.0191625530202271,1.0
+No linking structure,bag::headphones::cash,bag,headphones,cash,1.2268658317994588e-06,0.1428571428571428
+No linking structure,bag::headphones::chalk,bag,headphones,chalk,2.706422684422374e-05,0.4
+No linking structure,bag::headphones::crayons,bag,headphones,crayons,0.0001865203276673,1.0
+No linking structure,bag::headphones::makeup,bag,headphones,makeup,1.8600952948801803e-05,0.2105263157894736
+No linking structure,bag::headphones::pen,bag,headphones,pen,0.0191625530202271,1.0
+No linking structure,bag::makeup::cash,bag,makeup,cash,1.2268658317994588e-06,0.2
+No linking structure,bag::makeup::chalk,bag,makeup,chalk,2.706422684422374e-05,1.0
+No linking structure,bag::makeup::crayons,bag,makeup,crayons,0.0001865203276673,1.0
+No linking structure,bag::makeup::headphones,bag,makeup,headphones,2.2215670232649904e-06,0.0
+No linking structure,bag::makeup::pen,bag,makeup,pen,0.0191625530202271,1.0
+No linking structure,bag::pen::cash,bag,pen,cash,1.2268658317994588e-06,0.0
+No linking structure,bag::pen::chalk,bag,pen,chalk,2.706422684422374e-05,0.8571428571428571
+No linking structure,bag::pen::crayons,bag,pen,crayons,0.0001865203276673,0.8823529411764706
+No linking structure,bag::pen::headphones,bag,pen,headphones,2.2215670232649904e-06,0.0
+No linking structure,bag::pen::makeup,bag,pen,makeup,1.8600952948801803e-05,0.1666666666666666
+Set Top-K,bag::cash::chalk,bag,cash,chalk,0.014,1.0
+Set Top-K,bag::cash::crayons,bag,cash,crayons,0.068,1.0
+Set Top-K,bag::cash::headphones,bag,cash,headphones,0.0,0.0
+Set Top-K,bag::cash::makeup,bag,cash,makeup,0.008,0.1052631578947368
+Set Top-K,bag::cash::pen,bag,cash,pen,0.99,1.0
+Set Top-K,bag::chalk::cash,bag,chalk,cash,0.002,0.0
+Set Top-K,bag::chalk::crayons,bag,chalk,crayons,0.068,1.0
+Set Top-K,bag::chalk::headphones,bag,chalk,headphones,0.0,0.2
+Set Top-K,bag::chalk::makeup,bag,chalk,makeup,0.008,0.2
+Set Top-K,bag::chalk::pen,bag,chalk,pen,0.99,1.0
+Set Top-K,bag::crayons::cash,bag,crayons,cash,0.002,0.0
+Set Top-K,bag::crayons::chalk,bag,crayons,chalk,0.014,0.8888888888888888
+Set Top-K,bag::crayons::headphones,bag,crayons,headphones,0.0,0.25
+Set Top-K,bag::crayons::makeup,bag,crayons,makeup,0.008,0.0
+Set Top-K,bag::crayons::pen,bag,crayons,pen,0.99,1.0
+Set Top-K,bag::headphones::cash,bag,headphones,cash,0.002,0.1428571428571428
+Set Top-K,bag::headphones::chalk,bag,headphones,chalk,0.014,0.4
+Set Top-K,bag::headphones::crayons,bag,headphones,crayons,0.068,1.0
+Set Top-K,bag::headphones::makeup,bag,headphones,makeup,0.008,0.2105263157894736
+Set Top-K,bag::headphones::pen,bag,headphones,pen,0.99,1.0
+Set Top-K,bag::makeup::cash,bag,makeup,cash,0.002,0.2
+Set Top-K,bag::makeup::chalk,bag,makeup,chalk,0.014,1.0
+Set Top-K,bag::makeup::crayons,bag,makeup,crayons,0.068,1.0
+Set Top-K,bag::makeup::headphones,bag,makeup,headphones,0.0,0.0
+Set Top-K,bag::makeup::pen,bag,makeup,pen,0.99,1.0
+Set Top-K,bag::pen::cash,bag,pen,cash,0.002,0.0
+Set Top-K,bag::pen::chalk,bag,pen,chalk,0.014,0.8571428571428571
+Set Top-K,bag::pen::crayons,bag,pen,crayons,0.068,0.8823529411764706
+Set Top-K,bag::pen::headphones,bag,pen,headphones,0.0,0.0
+Set Top-K,bag::pen::makeup,bag,pen,makeup,0.008,0.1666666666666666

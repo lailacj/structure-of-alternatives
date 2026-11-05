@@ -1,0 +1,481 @@
+story,cleaned_trigger,cleaned_query,set,scale,trigger_relevance,query_relevance,n_exclusions,n_responses,human_rate
+bag,cash,chalk,inside,above,4,2,5,5,1.0
+bag,cash,crayons,inside,above,4,1,2,2,1.0
+bag,cash,headphones,outside,below,4,5,0,3,0.0
+bag,cash,makeup,outside,above,4,3,2,19,0.10526315789473684
+bag,cash,pen,inside,above,4,0,5,5,1.0
+bag,chalk,cash,outside,below,2,4,0,6,0.0
+bag,chalk,crayons,inside,above,2,1,6,6,1.0
+bag,chalk,headphones,outside,below,2,5,1,5,0.2
+bag,chalk,makeup,outside,below,2,3,1,5,0.2
+bag,chalk,pen,inside,above,2,0,5,5,1.0
+bag,crayons,cash,outside,below,1,4,0,5,0.0
+bag,crayons,chalk,inside,below,1,2,16,18,0.8888888888888888
+bag,crayons,headphones,outside,below,1,5,1,4,0.25
+bag,crayons,makeup,outside,below,1,3,0,5,0.0
+bag,crayons,pen,inside,above,1,0,4,4,1.0
+bag,headphones,cash,outside,above,5,4,2,14,0.14285714285714285
+bag,headphones,chalk,inside,above,5,2,2,5,0.4
+bag,headphones,crayons,inside,above,5,1,3,3,1.0
+bag,headphones,makeup,outside,above,5,3,4,19,0.21052631578947367
+bag,headphones,pen,inside,above,5,0,5,5,1.0
+bag,makeup,cash,outside,below,3,4,1,5,0.2
+bag,makeup,chalk,inside,above,3,2,2,2,1.0
+bag,makeup,crayons,inside,above,3,1,2,2,1.0
+bag,makeup,headphones,outside,below,3,5,0,4,0.0
+bag,makeup,pen,inside,above,3,0,3,3,1.0
+bag,pen,cash,outside,below,0,4,0,5,0.0
+bag,pen,chalk,inside,below,0,2,18,21,0.8571428571428571
+bag,pen,crayons,inside,below,0,1,15,17,0.8823529411764706
+bag,pen,headphones,outside,below,0,5,0,5,0.0
+bag,pen,makeup,outside,below,0,3,1,6,0.16666666666666666
+bakery,cakes,ice cream,inside,below,0,1,16,19,0.8421052631578947
+bakery,cakes,muffins,inside,below,0,2,16,18,0.8888888888888888
+bakery,cakes,pretzels,outside,below,0,3,3,6,0.5
+bakery,cakes,sandwiches,outside,below,0,4,2,5,0.4
+bakery,cakes,water,outside,below,0,5,0,5,0.0
+bakery,ice cream,cakes,inside,above,1,0,5,5,1.0
+bakery,ice cream,muffins,inside,below,1,2,10,17,0.5882352941176471
+bakery,ice cream,pretzels,outside,below,1,3,1,2,0.5
+bakery,ice cream,sandwiches,outside,below,1,4,1,4,0.25
+bakery,ice cream,water,outside,below,1,5,1,6,0.16666666666666666
+bakery,muffins,cakes,inside,above,2,0,5,5,1.0
+bakery,muffins,ice cream,inside,above,2,1,2,2,1.0
+bakery,muffins,pretzels,outside,below,2,3,2,5,0.4
+bakery,muffins,sandwiches,outside,below,2,4,0,2,0.0
+bakery,muffins,water,outside,below,2,5,0,5,0.0
+bakery,pretzels,cakes,inside,above,3,0,5,5,1.0
+bakery,pretzels,ice cream,inside,above,3,1,5,5,1.0
+bakery,pretzels,muffins,inside,above,3,2,3,3,1.0
+bakery,pretzels,sandwiches,outside,below,3,4,2,5,0.4
+bakery,pretzels,water,outside,below,3,5,0,4,0.0
+bakery,sandwiches,cakes,inside,above,4,0,3,3,1.0
+bakery,sandwiches,ice cream,inside,above,4,1,5,5,1.0
+bakery,sandwiches,muffins,inside,above,4,2,2,3,0.6666666666666666
+bakery,sandwiches,pretzels,outside,above,4,3,11,20,0.55
+bakery,sandwiches,water,outside,below,4,5,0,5,0.0
+bakery,water,cakes,inside,above,5,0,2,3,0.6666666666666666
+bakery,water,ice cream,inside,above,5,1,4,6,0.6666666666666666
+bakery,water,muffins,inside,above,5,2,3,6,0.5
+bakery,water,pretzels,outside,above,5,3,7,13,0.5384615384615384
+bakery,water,sandwiches,outside,above,5,4,9,21,0.42857142857142855
+beach,bikini,coat,outside,below,0,5,1,3,0.3333333333333333
+beach,bikini,jacket,outside,below,0,4,1,4,0.25
+beach,bikini,jeans,outside,below,0,3,3,6,0.5
+beach,bikini,shorts,inside,below,0,1,14,20,0.7
+beach,bikini,sunglasses,inside,below,0,2,3,18,0.16666666666666666
+beach,coat,bikini,inside,above,5,0,6,6,1.0
+beach,coat,jacket,outside,above,5,4,6,11,0.5454545454545454
+beach,coat,jeans,outside,above,5,3,8,16,0.5
+beach,coat,shorts,inside,above,5,1,5,5,1.0
+beach,coat,sunglasses,inside,above,5,2,0,3,0.0
+beach,jacket,bikini,inside,above,4,0,2,2,1.0
+beach,jacket,coat,outside,below,4,5,3,3,1.0
+beach,jacket,jeans,outside,above,4,3,9,20,0.45
+beach,jacket,shorts,inside,above,4,1,3,5,0.6
+beach,jacket,sunglasses,inside,above,4,2,2,4,0.5
+beach,jeans,bikini,inside,above,3,0,5,5,1.0
+beach,jeans,coat,outside,below,3,5,3,5,0.6
+beach,jeans,jacket,outside,below,3,4,0,6,0.0
+beach,jeans,shorts,inside,above,3,1,5,5,1.0
+beach,jeans,sunglasses,inside,above,3,2,1,4,0.25
+beach,shorts,bikini,inside,above,1,0,3,4,0.75
+beach,shorts,coat,outside,below,1,5,3,4,0.75
+beach,shorts,jacket,outside,below,1,4,1,4,0.25
+beach,shorts,jeans,outside,below,1,3,3,5,0.6
+beach,shorts,sunglasses,inside,below,1,2,3,20,0.15
+beach,sunglasses,bikini,inside,above,2,0,5,5,1.0
+beach,sunglasses,coat,outside,below,2,5,0,5,0.0
+beach,sunglasses,jacket,outside,below,2,4,4,5,0.8
+beach,sunglasses,jeans,outside,below,2,3,3,6,0.5
+beach,sunglasses,shorts,inside,above,2,1,2,4,0.5
+cold,blankets,fridge,outside,below,1,5,0,4,0.0
+cold,blankets,heater,inside,above,1,0,2,2,1.0
+cold,blankets,microwave,outside,below,1,3,0,5,0.0
+cold,blankets,sink,outside,below,1,4,0,4,0.0
+cold,blankets,tea,inside,below,1,2,4,20,0.2
+cold,fridge,blankets,inside,above,5,1,1,3,0.3333333333333333
+cold,fridge,heater,inside,above,5,0,4,5,0.8
+cold,fridge,microwave,outside,above,5,3,9,13,0.6923076923076923
+cold,fridge,sink,outside,above,5,4,5,21,0.23809523809523808
+cold,fridge,tea,inside,above,5,2,3,6,0.5
+cold,heater,blankets,inside,below,0,1,15,18,0.8333333333333334
+cold,heater,fridge,outside,below,0,5,0,4,0.0
+cold,heater,microwave,outside,below,0,3,1,5,0.2
+cold,heater,sink,outside,below,0,4,0,5,0.0
+cold,heater,tea,inside,below,0,2,2,16,0.125
+cold,microwave,blankets,inside,above,3,1,3,5,0.6
+cold,microwave,fridge,outside,below,3,5,2,4,0.5
+cold,microwave,heater,inside,above,3,0,5,5,1.0
+cold,microwave,sink,outside,below,3,4,0,4,0.0
+cold,microwave,tea,inside,above,3,2,1,5,0.2
+cold,sink,blankets,inside,above,4,1,1,3,0.3333333333333333
+cold,sink,fridge,outside,below,4,5,1,4,0.25
+cold,sink,heater,inside,above,4,0,4,4,1.0
+cold,sink,microwave,outside,above,4,3,9,17,0.5294117647058824
+cold,sink,tea,inside,above,4,2,0,5,0.0
+cold,tea,blankets,inside,above,2,1,3,5,0.6
+cold,tea,fridge,outside,below,2,5,0,6,0.0
+cold,tea,heater,inside,above,2,0,3,6,0.5
+cold,tea,microwave,outside,below,2,3,0,5,0.0
+cold,tea,sink,outside,below,2,4,0,4,0.0
+cut,batteries,keys,inside,above,5,2,1,6,0.16666666666666666
+cut,batteries,nail clippers,inside,above,5,1,4,5,0.8
+cut,batteries,scissors,inside,above,5,0,4,5,0.8
+cut,batteries,stapler,outside,above,5,4,8,18,0.4444444444444444
+cut,batteries,thumb tacks,outside,above,5,3,8,21,0.38095238095238093
+cut,keys,batteries,outside,below,2,5,1,4,0.25
+cut,keys,nail clippers,inside,above,2,1,4,5,0.8
+cut,keys,scissors,inside,above,2,0,5,5,1.0
+cut,keys,stapler,outside,below,2,4,1,5,0.2
+cut,keys,thumb tacks,outside,below,2,3,1,5,0.2
+cut,nail clippers,batteries,outside,below,1,5,0,5,0.0
+cut,nail clippers,keys,inside,below,1,2,5,16,0.3125
+cut,nail clippers,scissors,inside,above,1,0,4,4,1.0
+cut,nail clippers,stapler,outside,below,1,4,1,2,0.5
+cut,nail clippers,thumb tacks,outside,below,1,3,2,3,0.6666666666666666
+cut,scissors,batteries,outside,below,0,5,0,4,0.0
+cut,scissors,keys,inside,below,0,2,3,20,0.15
+cut,scissors,nail clippers,inside,below,0,1,7,11,0.6363636363636364
+cut,scissors,stapler,outside,below,0,4,1,6,0.16666666666666666
+cut,scissors,thumb tacks,outside,below,0,3,0,4,0.0
+cut,stapler,batteries,outside,below,4,5,0,5,0.0
+cut,stapler,keys,inside,above,4,2,1,5,0.2
+cut,stapler,nail clippers,inside,above,4,1,4,6,0.6666666666666666
+cut,stapler,scissors,inside,above,4,0,4,4,1.0
+cut,stapler,thumb tacks,outside,above,4,3,2,17,0.11764705882352941
+cut,thumb tacks,batteries,outside,below,3,5,0,4,0.0
+cut,thumb tacks,keys,inside,above,3,2,1,3,0.3333333333333333
+cut,thumb tacks,nail clippers,inside,above,3,1,3,5,0.6
+cut,thumb tacks,scissors,inside,above,3,0,4,5,0.8
+cut,thumb tacks,stapler,outside,below,3,4,0,5,0.0
+fridge,juice,ketchup,outside,below,1,4,2,6,0.3333333333333333
+fridge,juice,meat,outside,below,1,5,0,3,0.0
+fridge,juice,milk,inside,below,1,2,15,15,1.0
+fridge,juice,water,inside,above,1,0,6,6,1.0
+fridge,juice,yogurt,outside,below,1,3,0,5,0.0
+fridge,ketchup,juice,inside,above,4,1,5,5,1.0
+fridge,ketchup,meat,outside,below,4,5,0,4,0.0
+fridge,ketchup,milk,inside,above,4,2,5,5,1.0
+fridge,ketchup,water,inside,above,4,0,2,2,1.0
+fridge,ketchup,yogurt,outside,above,4,3,4,18,0.2222222222222222
+fridge,meat,juice,inside,above,5,1,5,5,1.0
+fridge,meat,ketchup,outside,above,5,4,3,18,0.16666666666666666
+fridge,meat,milk,inside,above,5,2,2,3,0.6666666666666666
+fridge,meat,water,inside,above,5,0,2,2,1.0
+fridge,meat,yogurt,outside,above,5,3,10,16,0.625
+fridge,milk,juice,inside,above,2,1,5,5,1.0
+fridge,milk,ketchup,outside,below,2,4,0,5,0.0
+fridge,milk,meat,outside,below,2,5,0,6,0.0
+fridge,milk,water,inside,above,2,0,5,6,0.8333333333333334
+fridge,milk,yogurt,outside,below,2,3,1,5,0.2
+fridge,water,juice,inside,below,0,1,22,22,1.0
+fridge,water,ketchup,outside,below,0,4,0,4,0.0
+fridge,water,meat,outside,below,0,5,0,3,0.0
+fridge,water,milk,inside,below,0,2,17,18,0.9444444444444444
+fridge,water,yogurt,outside,below,0,3,0,5,0.0
+fridge,yogurt,juice,inside,above,3,1,5,5,1.0
+fridge,yogurt,ketchup,outside,below,3,4,1,5,0.2
+fridge,yogurt,meat,outside,below,3,5,2,5,0.4
+fridge,yogurt,milk,inside,above,3,2,3,4,0.75
+fridge,yogurt,water,inside,above,3,0,2,2,1.0
+gym,basketball,lacrosse,inside,below,0,2,14,15,0.9333333333333333
+gym,basketball,meditation,outside,below,0,5,0,2,0.0
+gym,basketball,softball,inside,below,0,1,18,20,0.9
+gym,basketball,swimming,outside,below,0,3,2,5,0.4
+gym,basketball,weightlifting,outside,below,0,4,4,5,0.8
+gym,lacrosse,basketball,inside,above,2,0,4,4,1.0
+gym,lacrosse,meditation,outside,below,2,5,0,2,0.0
+gym,lacrosse,softball,inside,above,2,1,3,3,1.0
+gym,lacrosse,swimming,outside,below,2,3,1,3,0.3333333333333333
+gym,lacrosse,weightlifting,outside,below,2,4,2,3,0.6666666666666666
+gym,meditation,basketball,inside,above,5,0,3,4,0.75
+gym,meditation,lacrosse,inside,above,5,2,4,4,1.0
+gym,meditation,softball,inside,above,5,1,4,4,1.0
+gym,meditation,swimming,outside,above,5,3,15,19,0.7894736842105263
+gym,meditation,weightlifting,outside,above,5,4,11,20,0.55
+gym,softball,basketball,inside,above,1,0,6,6,1.0
+gym,softball,lacrosse,inside,below,1,2,18,19,0.9473684210526315
+gym,softball,meditation,outside,below,1,5,3,5,0.6
+gym,softball,swimming,outside,below,1,3,4,5,0.8
+gym,softball,weightlifting,outside,below,1,4,1,3,0.3333333333333333
+gym,swimming,basketball,inside,above,3,0,5,5,1.0
+gym,swimming,lacrosse,inside,above,3,2,4,4,1.0
+gym,swimming,meditation,outside,below,3,5,0,5,0.0
+gym,swimming,softball,inside,above,3,1,3,4,0.75
+gym,swimming,weightlifting,outside,below,3,4,2,5,0.4
+gym,weightlifting,basketball,inside,above,4,0,5,5,1.0
+gym,weightlifting,lacrosse,inside,above,4,2,6,6,1.0
+gym,weightlifting,meditation,outside,below,4,5,2,2,1.0
+gym,weightlifting,softball,inside,above,4,1,5,6,0.8333333333333334
+gym,weightlifting,swimming,outside,above,4,3,17,20,0.85
+hot,blankets,couch,outside,above,4,3,0,12,0.0
+hot,blankets,fan,inside,above,4,0,1,5,0.2
+hot,blankets,heater,outside,below,4,5,3,4,0.75
+hot,blankets,pool,inside,above,4,1,0,5,0.0
+hot,blankets,shower,inside,above,4,2,1,5,0.2
+hot,couch,blankets,outside,below,3,4,1,5,0.2
+hot,couch,fan,inside,above,3,0,0,3,0.0
+hot,couch,heater,outside,below,3,5,0,3,0.0
+hot,couch,pool,inside,above,3,1,3,6,0.5
+hot,couch,shower,inside,above,3,2,2,2,1.0
+hot,fan,blankets,outside,below,0,4,0,4,0.0
+hot,fan,couch,outside,below,0,3,0,4,0.0
+hot,fan,heater,outside,below,0,5,1,6,0.16666666666666666
+hot,fan,pool,inside,below,0,1,11,20,0.55
+hot,fan,shower,inside,below,0,2,1,20,0.05
+hot,heater,blankets,outside,above,5,4,3,13,0.23076923076923078
+hot,heater,couch,outside,above,5,3,0,20,0.0
+hot,heater,fan,inside,above,5,0,5,5,1.0
+hot,heater,pool,inside,above,5,1,1,4,0.25
+hot,heater,shower,inside,above,5,2,0,5,0.0
+hot,pool,blankets,outside,below,1,4,2,5,0.4
+hot,pool,couch,outside,below,1,3,0,4,0.0
+hot,pool,fan,inside,above,1,0,1,4,0.25
+hot,pool,heater,outside,below,1,5,0,4,0.0
+hot,pool,shower,inside,below,1,2,5,19,0.2631578947368421
+hot,shower,blankets,outside,below,2,4,0,4,0.0
+hot,shower,couch,outside,below,2,3,0,6,0.0
+hot,shower,fan,inside,above,2,0,4,5,0.8
+hot,shower,heater,outside,below,2,5,2,6,0.3333333333333333
+hot,shower,pool,inside,above,2,1,5,5,1.0
+mall,burger joint,coffee shop,inside,below,0,2,10,16,0.625
+mall,burger joint,electronics store,outside,below,0,5,0,6,0.0
+mall,burger joint,gift shop,outside,below,0,4,1,6,0.16666666666666666
+mall,burger joint,grocery store,outside,below,0,3,4,5,0.8
+mall,burger joint,pretzel stand,inside,below,0,1,16,19,0.8421052631578947
+mall,coffee shop,burger joint,inside,above,2,0,1,2,0.5
+mall,coffee shop,electronics store,outside,below,2,5,2,5,0.4
+mall,coffee shop,gift shop,outside,below,2,4,0,4,0.0
+mall,coffee shop,grocery store,outside,below,2,3,3,5,0.6
+mall,coffee shop,pretzel stand,inside,above,2,1,5,5,1.0
+mall,electronics store,burger joint,inside,above,5,0,5,5,1.0
+mall,electronics store,coffee shop,inside,above,5,2,4,5,0.8
+mall,electronics store,gift shop,outside,above,5,4,12,20,0.6
+mall,electronics store,grocery store,outside,above,5,3,16,19,0.8421052631578947
+mall,electronics store,pretzel stand,inside,above,5,1,2,3,0.6666666666666666
+mall,gift shop,burger joint,inside,above,4,0,3,3,1.0
+mall,gift shop,coffee shop,inside,above,4,2,1,2,0.5
+mall,gift shop,electronics store,outside,below,4,5,2,4,0.5
+mall,gift shop,grocery store,outside,above,4,3,13,15,0.8666666666666667
+mall,gift shop,pretzel stand,inside,above,4,1,3,3,1.0
+mall,grocery store,burger joint,inside,above,3,0,5,5,1.0
+mall,grocery store,coffee shop,inside,above,3,2,4,5,0.8
+mall,grocery store,electronics store,outside,below,3,5,0,3,0.0
+mall,grocery store,gift shop,outside,below,3,4,1,5,0.2
+mall,grocery store,pretzel stand,inside,above,3,1,4,5,0.8
+mall,pretzel stand,burger joint,inside,above,1,0,2,2,1.0
+mall,pretzel stand,coffee shop,inside,below,1,2,16,20,0.8
+mall,pretzel stand,electronics store,outside,below,1,5,0,5,0.0
+mall,pretzel stand,gift shop,outside,below,1,4,0,6,0.0
+mall,pretzel stand,grocery store,outside,below,1,3,3,5,0.6
+mask,bandana,candy,outside,below,0,5,0,4,0.0
+mask,bandana,gloves,outside,below,0,3,1,2,0.5
+mask,bandana,handkerchief,inside,below,0,1,8,13,0.6153846153846154
+mask,bandana,napkins,inside,below,0,2,2,12,0.16666666666666666
+mask,bandana,wallet,outside,below,0,4,2,5,0.4
+mask,candy,bandana,inside,above,5,0,4,5,0.8
+mask,candy,gloves,outside,above,5,3,1,16,0.0625
+mask,candy,handkerchief,inside,above,5,1,4,6,0.6666666666666666
+mask,candy,napkins,inside,above,5,2,2,4,0.5
+mask,candy,wallet,outside,above,5,4,4,20,0.2
+mask,gloves,bandana,inside,above,3,0,3,6,0.5
+mask,gloves,candy,outside,below,3,5,1,5,0.2
+mask,gloves,handkerchief,inside,above,3,1,2,5,0.4
+mask,gloves,napkins,inside,above,3,2,2,4,0.5
+mask,gloves,wallet,outside,below,3,4,0,3,0.0
+mask,handkerchief,bandana,inside,above,1,0,3,3,1.0
+mask,handkerchief,candy,outside,below,1,5,0,6,0.0
+mask,handkerchief,gloves,outside,below,1,3,2,5,0.4
+mask,handkerchief,napkins,inside,below,1,2,6,20,0.3
+mask,handkerchief,wallet,outside,below,1,4,0,5,0.0
+mask,napkins,bandana,inside,above,2,0,5,5,1.0
+mask,napkins,candy,outside,below,2,5,1,5,0.2
+mask,napkins,gloves,outside,below,2,3,1,5,0.2
+mask,napkins,handkerchief,inside,above,2,1,3,5,0.6
+mask,napkins,wallet,outside,below,2,4,0,4,0.0
+mask,wallet,bandana,inside,above,4,0,4,5,0.8
+mask,wallet,candy,outside,below,4,5,1,5,0.2
+mask,wallet,gloves,outside,above,4,3,12,19,0.631578947368421
+mask,wallet,handkerchief,inside,above,4,1,3,5,0.6
+mask,wallet,napkins,inside,above,4,2,3,6,0.5
+meat,chicken,crab,inside,below,0,2,13,17,0.7647058823529411
+meat,chicken,mushrooms,outside,below,0,4,1,5,0.2
+meat,chicken,rice,outside,below,0,5,1,2,0.5
+meat,chicken,tofu,outside,below,0,3,0,5,0.0
+meat,chicken,turkey,inside,below,0,1,20,21,0.9523809523809523
+meat,crab,chicken,inside,above,2,0,5,5,1.0
+meat,crab,mushrooms,outside,below,2,4,0,3,0.0
+meat,crab,rice,outside,below,2,5,0,5,0.0
+meat,crab,tofu,outside,below,2,3,2,3,0.6666666666666666
+meat,crab,turkey,inside,above,2,1,5,5,1.0
+meat,mushrooms,chicken,inside,above,4,0,6,6,1.0
+meat,mushrooms,crab,inside,above,4,2,5,5,1.0
+meat,mushrooms,rice,outside,below,4,5,0,6,0.0
+meat,mushrooms,tofu,outside,above,4,3,10,19,0.5263157894736842
+meat,mushrooms,turkey,inside,above,4,1,6,6,1.0
+meat,rice,chicken,inside,above,5,0,2,2,1.0
+meat,rice,crab,inside,above,5,2,1,2,0.5
+meat,rice,mushrooms,outside,above,5,4,4,17,0.23529411764705882
+meat,rice,tofu,outside,above,5,3,7,18,0.3888888888888889
+meat,rice,turkey,inside,above,5,1,5,5,1.0
+meat,tofu,chicken,inside,above,3,0,4,4,1.0
+meat,tofu,crab,inside,above,3,2,4,5,0.8
+meat,tofu,mushrooms,outside,below,3,4,0,5,0.0
+meat,tofu,rice,outside,below,3,5,0,5,0.0
+meat,tofu,turkey,inside,above,3,1,5,5,1.0
+meat,turkey,chicken,inside,above,1,0,4,4,1.0
+meat,turkey,crab,inside,below,1,2,10,13,0.7692307692307693
+meat,turkey,mushrooms,outside,below,1,4,0,4,0.0
+meat,turkey,rice,outside,below,1,5,0,5,0.0
+meat,turkey,tofu,outside,below,1,3,1,6,0.16666666666666666
+restaurant,cake,cocktails,inside,above,4,0,4,4,1.0
+restaurant,cake,salad,outside,below,4,5,3,5,0.6
+restaurant,cake,soda,inside,above,4,2,4,5,0.8
+restaurant,cake,soup,outside,above,4,3,7,18,0.3888888888888889
+restaurant,cake,vodka,inside,above,4,1,6,6,1.0
+restaurant,cocktails,cake,outside,below,0,4,3,5,0.6
+restaurant,cocktails,salad,outside,below,0,5,0,4,0.0
+restaurant,cocktails,soda,inside,below,0,2,8,19,0.42105263157894735
+restaurant,cocktails,soup,outside,below,0,3,0,2,0.0
+restaurant,cocktails,vodka,inside,below,0,1,7,14,0.5
+restaurant,salad,cake,outside,above,5,4,11,20,0.55
+restaurant,salad,cocktails,inside,above,5,0,3,4,0.75
+restaurant,salad,soda,inside,above,5,2,3,5,0.6
+restaurant,salad,soup,outside,above,5,3,14,20,0.7
+restaurant,salad,vodka,inside,above,5,1,5,5,1.0
+restaurant,soda,cake,outside,below,2,4,0,3,0.0
+restaurant,soda,cocktails,inside,above,2,0,3,3,1.0
+restaurant,soda,salad,outside,below,2,5,0,5,0.0
+restaurant,soda,soup,outside,below,2,3,0,2,0.0
+restaurant,soda,vodka,inside,above,2,1,5,5,1.0
+restaurant,soup,cake,outside,below,3,4,1,3,0.3333333333333333
+restaurant,soup,cocktails,inside,above,3,0,6,6,1.0
+restaurant,soup,salad,outside,below,3,5,3,6,0.5
+restaurant,soup,soda,inside,above,3,2,5,6,0.8333333333333334
+restaurant,soup,vodka,inside,above,3,1,4,4,1.0
+restaurant,vodka,cake,outside,below,1,4,0,5,0.0
+restaurant,vodka,cocktails,inside,above,1,0,3,3,1.0
+restaurant,vodka,salad,outside,below,1,5,0,2,0.0
+restaurant,vodka,soda,inside,below,1,2,6,19,0.3157894736842105
+restaurant,vodka,soup,outside,below,1,3,0,5,0.0
+salad,chips,cigarettes,outside,below,4,5,1,6,0.16666666666666666
+salad,chips,dressing,inside,above,4,1,2,5,0.4
+salad,chips,lettuce,inside,above,4,0,6,6,1.0
+salad,chips,meat,outside,above,4,3,6,21,0.2857142857142857
+salad,chips,tuna,inside,above,4,2,1,5,0.2
+salad,cigarettes,chips,outside,above,5,4,7,16,0.4375
+salad,cigarettes,dressing,inside,above,5,1,4,4,1.0
+salad,cigarettes,lettuce,inside,above,5,0,3,4,0.75
+salad,cigarettes,meat,outside,above,5,3,11,19,0.5789473684210527
+salad,cigarettes,tuna,inside,above,5,2,2,6,0.3333333333333333
+salad,dressing,chips,outside,below,1,4,0,2,0.0
+salad,dressing,cigarettes,outside,below,1,5,0,5,0.0
+salad,dressing,lettuce,inside,above,1,0,3,3,1.0
+salad,dressing,meat,outside,below,1,3,1,3,0.3333333333333333
+salad,dressing,tuna,inside,below,1,2,7,16,0.4375
+salad,lettuce,chips,outside,below,0,4,0,2,0.0
+salad,lettuce,cigarettes,outside,below,0,5,0,6,0.0
+salad,lettuce,dressing,inside,below,0,1,11,18,0.6111111111111112
+salad,lettuce,meat,outside,below,0,3,3,4,0.75
+salad,lettuce,tuna,inside,below,0,2,7,18,0.3888888888888889
+salad,meat,chips,outside,below,3,4,0,2,0.0
+salad,meat,cigarettes,outside,below,3,5,0,5,0.0
+salad,meat,dressing,inside,above,3,1,0,3,0.0
+salad,meat,lettuce,inside,above,3,0,6,6,1.0
+salad,meat,tuna,inside,above,3,2,1,3,0.3333333333333333
+salad,tuna,chips,outside,below,2,4,0,5,0.0
+salad,tuna,cigarettes,outside,below,2,5,0,5,0.0
+salad,tuna,dressing,inside,above,2,1,3,5,0.6
+salad,tuna,lettuce,inside,above,2,0,5,5,1.0
+salad,tuna,meat,outside,below,2,3,4,5,0.8
+science,art,geology,inside,above,5,1,4,4,1.0
+science,art,math,outside,above,5,3,14,20,0.7
+science,art,philosophy,outside,above,5,4,11,18,0.6111111111111112
+science,art,physics,inside,above,5,0,5,5,1.0
+science,art,zoology,inside,above,5,2,4,5,0.8
+science,geology,art,outside,below,1,5,3,5,0.6
+science,geology,math,outside,below,1,3,5,6,0.8333333333333334
+science,geology,philosophy,outside,below,1,4,2,3,0.6666666666666666
+science,geology,physics,inside,above,1,0,4,4,1.0
+science,geology,zoology,inside,below,1,2,13,13,1.0
+science,math,art,outside,below,3,5,1,2,0.5
+science,math,geology,inside,above,3,1,3,4,0.75
+science,math,philosophy,outside,below,3,4,2,5,0.4
+science,math,physics,inside,above,3,0,2,4,0.5
+science,math,zoology,inside,above,3,2,4,5,0.8
+science,philosophy,art,outside,below,4,5,5,5,1.0
+science,philosophy,geology,inside,above,4,1,4,5,0.8
+science,philosophy,math,outside,above,4,3,11,16,0.6875
+science,philosophy,physics,inside,above,4,0,4,4,1.0
+science,philosophy,zoology,inside,above,4,2,5,6,0.8333333333333334
+science,physics,art,outside,below,0,5,2,5,0.4
+science,physics,geology,inside,below,0,1,18,21,0.8571428571428571
+science,physics,math,outside,below,0,3,1,3,0.3333333333333333
+science,physics,philosophy,outside,below,0,4,1,3,0.3333333333333333
+science,physics,zoology,inside,below,0,2,13,20,0.65
+science,zoology,art,outside,below,2,5,2,3,0.6666666666666666
+science,zoology,geology,inside,above,2,1,3,4,0.75
+science,zoology,math,outside,below,2,3,2,5,0.4
+science,zoology,philosophy,outside,below,2,4,4,6,0.6666666666666666
+science,zoology,physics,inside,above,2,0,4,4,1.0
+throw,beach ball,boomerang,inside,below,1,2,12,19,0.631578947368421
+throw,beach ball,football,inside,above,1,0,5,5,1.0
+throw,beach ball,lawnmower,outside,below,1,5,0,3,0.0
+throw,beach ball,shovel,outside,below,1,4,0,6,0.0
+throw,beach ball,tires,outside,below,1,3,0,6,0.0
+throw,boomerang,beach ball,inside,above,2,1,3,4,0.75
+throw,boomerang,football,inside,above,2,0,4,4,1.0
+throw,boomerang,lawnmower,outside,below,2,5,0,5,0.0
+throw,boomerang,shovel,outside,below,2,4,0,4,0.0
+throw,boomerang,tires,outside,below,2,3,0,5,0.0
+throw,football,beach ball,inside,below,0,1,14,16,0.875
+throw,football,boomerang,inside,below,0,2,13,21,0.6190476190476191
+throw,football,lawnmower,outside,below,0,5,0,3,0.0
+throw,football,shovel,outside,below,0,4,0,4,0.0
+throw,football,tires,outside,below,0,3,0,3,0.0
+throw,lawnmower,beach ball,inside,above,5,1,2,2,1.0
+throw,lawnmower,boomerang,inside,above,5,2,4,5,0.8
+throw,lawnmower,football,inside,above,5,0,5,5,1.0
+throw,lawnmower,shovel,outside,above,5,4,7,21,0.3333333333333333
+throw,lawnmower,tires,outside,above,5,3,1,13,0.07692307692307693
+throw,shovel,beach ball,inside,above,4,1,3,4,0.75
+throw,shovel,boomerang,inside,above,4,2,3,5,0.6
+throw,shovel,football,inside,above,4,0,4,4,1.0
+throw,shovel,lawnmower,outside,below,4,5,0,5,0.0
+throw,shovel,tires,outside,above,4,3,2,16,0.125
+throw,tires,beach ball,inside,above,3,1,3,5,0.6
+throw,tires,boomerang,inside,above,3,2,4,4,1.0
+throw,tires,football,inside,above,3,0,4,5,0.8
+throw,tires,lawnmower,outside,below,3,5,4,5,0.8
+throw,tires,shovel,outside,below,3,4,2,6,0.3333333333333333
+transport,car,chairs,outside,below,0,4,0,5,0.0
+transport,car,hammer,outside,below,0,5,1,5,0.2
+transport,car,lawnmower,outside,below,0,3,1,4,0.25
+transport,car,motorcycle,inside,below,0,1,19,21,0.9047619047619048
+transport,car,roller blades,inside,below,0,2,9,16,0.5625
+transport,chairs,car,inside,above,4,0,3,3,1.0
+transport,chairs,hammer,outside,below,4,5,0,4,0.0
+transport,chairs,lawnmower,outside,above,4,3,2,22,0.09090909090909091
+transport,chairs,motorcycle,inside,above,4,1,3,5,0.6
+transport,chairs,roller blades,inside,above,4,2,2,3,0.6666666666666666
+transport,hammer,car,inside,above,5,0,3,5,0.6
+transport,hammer,chairs,outside,above,5,4,1,15,0.06666666666666667
+transport,hammer,lawnmower,outside,above,5,3,10,18,0.5555555555555556
+transport,hammer,motorcycle,inside,above,5,1,2,4,0.5
+transport,hammer,roller blades,inside,above,5,2,4,5,0.8
+transport,lawnmower,car,inside,above,3,0,6,6,1.0
+transport,lawnmower,chairs,outside,below,3,4,1,5,0.2
+transport,lawnmower,hammer,outside,below,3,5,1,4,0.25
+transport,lawnmower,motorcycle,inside,above,3,1,5,5,1.0
+transport,lawnmower,roller blades,inside,above,3,2,2,4,0.5
+transport,motorcycle,car,inside,above,1,0,4,5,0.8
+transport,motorcycle,chairs,outside,below,1,4,0,4,0.0
+transport,motorcycle,hammer,outside,below,1,5,0,5,0.0
+transport,motorcycle,lawnmower,outside,below,1,3,0,5,0.0
+transport,motorcycle,roller blades,inside,below,1,2,7,13,0.5384615384615384
+transport,roller blades,car,inside,above,2,0,5,5,1.0
+transport,roller blades,chairs,outside,below,2,4,1,2,0.5
+transport,roller blades,hammer,outside,below,2,5,1,5,0.2
+transport,roller blades,lawnmower,outside,below,2,3,0,4,0.0
+transport,roller blades,motorcycle,inside,above,2,1,6,6,1.0

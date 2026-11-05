@@ -1,0 +1,5 @@
+set,scale,mean_item_exclusion_rate,n_contexts,n_pairs,n_exclusions,n_responses,pooled_response_exclusion_rate,n_participants,set_predicts_exclusion,ordering_predicts_exclusion,conjunction_predicts_exclusion,disjunction_predicts_exclusion,structures_predicting_exclusion
+inside,above,0.7872395833333333,16,192,669,852,0.7852112676056338,213,True,True,True,True,All four
+inside,below,0.6241268955108932,16,48,533,852,0.6255868544600939,213,True,False,False,True,"Set, Disjunction"
+outside,above,0.41353174089484074,16,48,356,852,0.41784037558685444,213,False,True,False,True,"Ordering, Disjunction"
+outside,below,0.21345486111111112,16,192,180,852,0.2112676056338028,213,False,False,False,False,None

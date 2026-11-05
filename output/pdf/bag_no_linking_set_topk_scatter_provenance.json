@@ -1,0 +1,13 @@
+{
+  "source": "focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/advisor_summary/item_level_scatterplots/novel_focus_by_context/novel_focus_item_level_predictions.csv",
+  "source_sha256": "4c3934e74ec051d037eb39f8adc9c9fc36b7641543f7527210dc4d54df9d7b97",
+  "script_sha256": "193100c3cb8020ade040c6cf90686cb6e374bfc1380a0f81a2f057fc05c7e31b",
+  "context": "bag",
+  "models": [
+    "No linking structure",
+    "Set Top-K"
+  ],
+  "n_pairs_per_model": 30,
+  "refitting_or_resampling": false,
+  "caption": "Model exclusion probabilities versus observed human exclusion rates in the bag context. Each panel contains the same 30 ordered trigger-query pairs, using saved corrected predictions. Both axes span 0 to 1 on the same linear scale. The dashed equality line marks p = y; points above it have model probabilities below observed human rates. Marker area is proportional to the number of pairs at identical coordinates, using the same size scale in both panels. Coordinates are not jittered. Means weight each of the 30 pairs equally. Human rates are sample estimates; equality here describes agreement with those observed rates."
+}

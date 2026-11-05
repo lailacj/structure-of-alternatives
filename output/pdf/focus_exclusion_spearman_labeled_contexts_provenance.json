@@ -1,0 +1,72 @@
+{
+  "results_directory": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23",
+  "metric": "within-context exclusion Spearman",
+  "model_selectors": [
+    [
+      "No linking structure",
+      "direct",
+      "No linking"
+    ],
+    [
+      "set",
+      "top_k",
+      "Set"
+    ],
+    [
+      "ordering",
+      "top_k",
+      "Ordering"
+    ],
+    [
+      "conjunction",
+      "top_k",
+      "Conjunction"
+    ],
+    [
+      "disjunction",
+      "top_k",
+      "Disjunction"
+    ]
+  ],
+  "title": "Focus study: exclusion rankings",
+  "context_weighting": "equal; each model mean averages 16 context coefficients",
+  "n_context_coefficients": 80,
+  "n_means": 5,
+  "pairs_per_context": 30,
+  "vertical_offsets": "label layout only; no quantitative meaning",
+  "figure_inches": [
+    3.5,
+    4.8
+  ],
+  "png_dpi": 400,
+  "target_layout": "single column at 3.5 inches wide",
+  "font_sizes_pt": {
+    "context": 5.4,
+    "mean": 9.5,
+    "model": 9.5,
+    "x_axis_title": 10.5,
+    "x_ticks": 8.5
+  },
+  "mean_point_area_pt_squared": 40,
+  "validation": [
+    "80 coefficients recomputed from saved predictions",
+    "80 coefficients match saved context table within 1e-12",
+    "5 means match saved mean table within 1e-12",
+    "All 80 context labels and 5 mean labels fit without overlap"
+  ],
+  "sources": [
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/spearman/negation_paired_ranks.csv",
+      "sha256": "f00ca0c8705302b704436c365f447fd68a6fe1de293d9ae3088332ac25bbea35"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/spearman/negation_spearman_by_context.csv",
+      "sha256": "83a13f656e0abc94b584cf2b279d19197e545f31fbe4e64d7bc5713e0729150e"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/spearman/mean_within_context_spearman.csv",
+      "sha256": "b9859a826d68a7580955f3a9c1536b9bcbb265aac13117fa072940378b73ecf1"
+    }
+  ],
+  "script": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/code/plot_focus_spearman_labeled_contexts.py"
+}

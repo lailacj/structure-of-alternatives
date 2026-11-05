@@ -1,0 +1,48 @@
+{
+  "sources": [
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/human_exp_data/sca_dataframe.csv",
+      "sha256": "985db789fb1aa16d68121a2b7434e500052536e7420b509a25a1800501fd7f22"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/canonical_data/novel_focus_observations.csv",
+      "sha256": "6cc6370a630f8bff9e9357dd544b498669064fcf730812dbfd5e144f697d5110"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results/set_variant_qwen_corrected_rnx_contrastive_2026-10-23/inputs/source_rows.csv",
+      "sha256": "8413c7d227f7ad759c5585ee84cdb378dcc733c2516bb5e5e5fc3f1bf69d9e5c"
+    }
+  ],
+  "script": {
+    "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/code/summarize_focus_human_conditions.py",
+    "sha256": "0f5fdea70d61d930cf70d0fc7ccfd5d493ecd401e4fb3e52fe324d9f958820be"
+  },
+  "responses": 3408,
+  "participants": 213,
+  "contexts": 16,
+  "items": 480,
+  "primary_aggregation": "mean item rates within condition/context, then equal-context mean",
+  "diagnostic_aggregation": "sum exclusions / sum responses; separate pooled-response column",
+  "classification": "inside: query norm rank 0-2; above: query rank < trigger rank",
+  "structure_mapping": "categorical rules applied to independent norming; not fitted probabilistic predictions",
+  "validation": "all 480 counts/rates match canonical data and active corrected snapshot",
+  "inference": "descriptive; no significance tests or uncertainty intervals computed",
+  "outputs": [
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/human_focus_conditions_2026-10-26/condition_summary.csv",
+      "sha256": "341d8a9e019acce06c49b0a66ea507194f7e0b9922915b6836f33113964a4ff6"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/human_focus_conditions_2026-10-26/context_condition_summary.csv",
+      "sha256": "4d2c638fa35b41d9b62e7ec8cf6e5a28d3b00af3b015cdd41a56170eadaa7c43"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/diagnostics/human_focus_conditions_2026-10-26/item_condition_rates.csv",
+      "sha256": "f298fc052a2f95839d8f767c44c6af959f3b1f91ad27519e91ad355f507bdd65"
+    },
+    {
+      "path": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/focus_alternatives_writing/human_focus_results_2026-10-26.tex",
+      "sha256": "4cb0f76818b5c53737236c0e1235f507b53eacd1b857bde8407e51c48bbb2cfb"
+    }
+  ]
+}

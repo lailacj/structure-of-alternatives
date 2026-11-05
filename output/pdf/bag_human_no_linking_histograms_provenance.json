@@ -1,0 +1,67 @@
+{
+  "source": "focus_alt_exp_pipeline/results/set_variant_qwen_corrected_2026-09-15/advisor_summary/item_level_scatterplots/novel_focus_by_context/novel_focus_item_level_predictions.csv",
+  "source_sha256": "4c3934e74ec051d037eb39f8adc9c9fc36b7641543f7527210dc4d54df9d7b97",
+  "bins": {
+    "human_rate": [
+      0.0,
+      0.1,
+      0.2,
+      0.30000000000000004,
+      0.4,
+      0.5,
+      0.6000000000000001,
+      0.7000000000000001,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "prediction": [
+      0.0,
+      0.002,
+      0.004,
+      0.006,
+      0.008,
+      0.01,
+      0.012,
+      0.014,
+      0.016,
+      0.018000000000000002,
+      0.02
+    ]
+  },
+  "n_pairs": 30,
+  "bin_convention": "Left-inclusive, right-exclusive; final bin includes its right edge.",
+  "standard_deviation": "ddof=0, divisor 30; matches manual verification notebook.",
+  "additional_zoom": {
+    "selection": "prediction < 0.002",
+    "n_pairs": 25,
+    "n_pairs_outside_view": 5,
+    "bins": [
+      0.0,
+      1e-05,
+      2e-05,
+      3.0000000000000004e-05,
+      4e-05,
+      5e-05,
+      6.000000000000001e-05,
+      7.000000000000001e-05,
+      8e-05,
+      9e-05,
+      0.0001,
+      0.00011,
+      0.00012000000000000002,
+      0.00013000000000000002,
+      0.00014000000000000001,
+      0.00015000000000000001,
+      0.00016,
+      0.00017,
+      0.00018,
+      0.00019,
+      0.0002
+    ],
+    "mean": 4.712678806307801e-05,
+    "sd_ddof_0": 7.038475723122562e-05
+  },
+  "weighting": "One count per context-trigger-query pair; no response-count weighting.",
+  "refitting_or_resampling": false
+}

@@ -1,0 +1,81 @@
+model,structure,variant,context,n_pairs,spearman_rho,row_center,vertical_offset,label_side
+No linking,No linking structure,direct,bag,30,0.8744241090305216,0.0,0.4,right
+No linking,No linking structure,direct,bakery,30,0.9230067218992806,0.0,-0.4,right
+No linking,No linking structure,direct,beach,30,0.5079179812745016,0.0,0.24,right
+No linking,No linking structure,direct,cold,30,0.24968933431379264,0.0,0.24,right
+No linking,No linking structure,direct,cut,30,0.727189367224505,0.0,0.4,right
+No linking,No linking structure,direct,fridge,30,0.8595116716322172,0.0,-0.24,right
+No linking,No linking structure,direct,gym,30,0.5335272118462119,0.0,0.4,right
+No linking,No linking structure,direct,hot,30,0.4000070027398225,0.0,-0.24,right
+No linking,No linking structure,direct,mall,30,0.5247027884058713,0.0,-0.4,right
+No linking,No linking structure,direct,mask,30,0.27150327367541377,0.0,-0.4,right
+No linking,No linking structure,direct,meat,30,0.17171326408119086,0.0,-0.24,right
+No linking,No linking structure,direct,restaurant,30,0.7692450532868873,0.0,0.24,right
+No linking,No linking structure,direct,salad,30,0.6396176961495091,0.0,0.24,right
+No linking,No linking structure,direct,science,30,0.49443791107218854,0.0,-0.24,right
+No linking,No linking structure,direct,throw,30,0.6834005028786231,0.0,-0.24,right
+No linking,No linking structure,direct,transport,30,0.7099179427716618,0.0,-0.4,right
+Set,set,top_k,bag,30,0.8604519528276372,1.35,-0.56,left
+Set,set,top_k,bakery,30,0.9121427258511982,1.35,0.24,right
+Set,set,top_k,beach,30,0.5079179812745016,1.35,0.24,right
+Set,set,top_k,cold,30,0.19904863542640722,1.35,-0.24,right
+Set,set,top_k,cut,30,0.727189367224505,1.35,-0.4,right
+Set,set,top_k,fridge,30,0.8595116716322172,1.35,0.4,left
+Set,set,top_k,gym,30,0.5378164521374112,1.35,-0.4,right
+Set,set,top_k,hot,30,0.32426578499701125,1.35,0.24,right
+Set,set,top_k,mall,30,0.35072249332327565,1.35,-0.4,right
+Set,set,top_k,mask,30,0.3227228859384692,1.35,-0.24,right
+Set,set,top_k,meat,30,-0.03132606844724428,1.35,-0.24,right
+Set,set,top_k,restaurant,30,0.7798921871016474,1.35,-0.24,right
+Set,set,top_k,salad,30,0.6456750121799416,1.35,-0.24,right
+Set,set,top_k,science,30,0.49443791107218854,1.35,-0.24,right
+Set,set,top_k,throw,30,0.8549476849807384,1.35,-0.4,right
+Set,set,top_k,transport,30,0.7197060307854456,1.35,0.24,right
+Ordering,ordering,top_k,bag,30,0.7052400243151663,2.7,0.24,right
+Ordering,ordering,top_k,bakery,30,0.721139790320438,2.7,0.4,right
+Ordering,ordering,top_k,beach,30,0.49817117928430343,2.7,0.24,right
+Ordering,ordering,top_k,cold,30,0.15993334269460965,2.7,0.24,right
+Ordering,ordering,top_k,cut,30,0.5286696170564431,2.7,-0.4,right
+Ordering,ordering,top_k,fridge,30,0.7689549513484735,2.7,-0.56,right
+Ordering,ordering,top_k,gym,30,0.5458850139716591,2.7,0.4,right
+Ordering,ordering,top_k,hot,30,0.2388335042941311,2.7,-0.24,right
+Ordering,ordering,top_k,mall,30,0.5553708477978704,2.7,-0.56,right
+Ordering,ordering,top_k,mask,30,0.11571092569727802,2.7,-0.24,right
+Ordering,ordering,top_k,meat,30,0.18512836588143966,2.7,-0.4,right
+Ordering,ordering,top_k,restaurant,30,0.7678706870129407,2.7,-0.24,right
+Ordering,ordering,top_k,salad,30,0.49642413893484993,2.7,-0.24,right
+Ordering,ordering,top_k,science,30,0.6161024337692615,2.7,-0.24,right
+Ordering,ordering,top_k,throw,30,0.7199413752530933,2.7,-0.4,right
+Ordering,ordering,top_k,transport,30,0.585681039272483,2.7,0.56,right
+Conjunction,conjunction,top_k,bag,30,0.8589464709288478,4.050000000000001,0.4,left
+Conjunction,conjunction,top_k,bakery,30,0.8811547108613709,4.050000000000001,0.56,left
+Conjunction,conjunction,top_k,beach,30,0.5318232308371136,4.050000000000001,-0.24,right
+Conjunction,conjunction,top_k,cold,30,0.21248374332281444,4.050000000000001,-0.24,right
+Conjunction,conjunction,top_k,cut,30,0.7109344004170667,4.050000000000001,-0.24,right
+Conjunction,conjunction,top_k,fridge,30,0.8717856657257119,4.050000000000001,-0.56,left
+Conjunction,conjunction,top_k,gym,30,0.555074837091284,4.050000000000001,-0.4,right
+Conjunction,conjunction,top_k,hot,30,0.2927036566968356,4.050000000000001,0.24,right
+Conjunction,conjunction,top_k,mall,30,0.34713046308959306,4.050000000000001,-0.4,right
+Conjunction,conjunction,top_k,mask,30,0.319264593940682,4.050000000000001,-0.24,right
+Conjunction,conjunction,top_k,meat,30,-0.009168290003599117,4.050000000000001,-0.24,right
+Conjunction,conjunction,top_k,restaurant,30,0.7884563818768494,4.050000000000001,-0.4,right
+Conjunction,conjunction,top_k,salad,30,0.617734496011322,4.050000000000001,0.4,right
+Conjunction,conjunction,top_k,science,30,0.5505210571642205,4.050000000000001,0.24,right
+Conjunction,conjunction,top_k,throw,30,0.8507849257351737,4.050000000000001,-0.24,right
+Conjunction,conjunction,top_k,transport,30,0.7258703577487488,4.050000000000001,0.24,right
+Disjunction,disjunction,top_k,bag,30,0.7265283810618722,5.4,0.24,right
+Disjunction,disjunction,top_k,bakery,30,0.7419001979211055,5.4,-0.4,right
+Disjunction,disjunction,top_k,beach,30,0.5213738013975843,5.4,0.24,right
+Disjunction,disjunction,top_k,cold,30,0.16458689203998703,5.4,0.24,right
+Disjunction,disjunction,top_k,cut,30,0.5874001602525782,5.4,-0.56,right
+Disjunction,disjunction,top_k,fridge,30,0.8072735125321856,5.4,0.56,right
+Disjunction,disjunction,top_k,gym,30,0.551498097416848,5.4,-0.4,right
+Disjunction,disjunction,top_k,hot,30,0.23261807815828384,5.4,0.4,right
+Disjunction,disjunction,top_k,mall,30,0.5553708477978704,5.4,0.4,right
+Disjunction,disjunction,top_k,mask,30,0.11571092569727802,5.4,-0.24,right
+Disjunction,disjunction,top_k,meat,30,0.16574287613129116,5.4,-0.4,right
+Disjunction,disjunction,top_k,restaurant,30,0.7720147450695876,5.4,-0.56,right
+Disjunction,disjunction,top_k,salad,30,0.49965016107422267,5.4,-0.24,right
+Disjunction,disjunction,top_k,science,30,0.5949753207299401,5.4,0.56,right
+Disjunction,disjunction,top_k,throw,30,0.7551504393084688,5.4,0.4,right
+Disjunction,disjunction,top_k,transport,30,0.6640273570917699,5.4,-0.24,right

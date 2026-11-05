@@ -1,0 +1,8 @@
+% Requires \usepackage{graphicx}. Copy the PDF to the manuscript's
+% figures directory; figure* spans both columns in a two-column paper.
+\begin{figure*}[p]
+  \centering
+  \includegraphics[width=\textwidth]{figures/word_ranking_spearman_all_contexts.pdf}
+  \caption{Word-ranking agreement in all 16 focus contexts. Each panel plots the six tested alternatives, with human relevance rank (trigger_relevance) on the horizontal axis and Qwen2-7B rank on the vertical axis. Model ranks are calculated within each context from the sampling-array log probabilities used in the HTML viewer. Rank 0 is highest; tied model scores receive average ranks (fan and heater in hot both have rank 0.5). The dashed diagonal indicates identical human and model ranks. Panel annotations report Spearman's $\rho$ across the six words, rounded to three decimal places. Contexts are arranged alphabetically.}
+  \label{fig:appendix-word-ranking-spearman}
+\end{figure*}

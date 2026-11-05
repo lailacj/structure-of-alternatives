@@ -1,0 +1,7 @@
+% Requires \usepackage{graphicx}; copy the PDF to figures/.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/focus_exclusion_spearman_labeled_contexts.pdf}
+  \caption{Within-context agreement between model predictions and human exclusion rankings in the focus alternative study. Each labeled gray point shows Spearman's $\rho$ across the 30 ordered trigger-query pairs in one context. Larger blue points and numerical annotations show the equally weighted mean across all 16 contexts for each model. Vertical offsets separate labels and have no quantitative meaning. Linking predictions use the saved Top-K evaluation with boundaries selected on training folds and predictions evaluated on held-out items. Model names are shortened for display. All five models have defined correlations in all 16 contexts. These are descriptive point estimates; the spread of context points does not represent a confidence interval.}
+  \label{fig:focus-exclusion-spearman-contexts}
+\end{figure}

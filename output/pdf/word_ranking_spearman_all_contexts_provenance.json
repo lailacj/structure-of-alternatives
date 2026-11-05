@@ -1,0 +1,59 @@
+{
+  "run": "set_variant_qwen_corrected_rnx_contrastive_2026-10-23",
+  "viewer": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/results_viewer/index.html",
+  "viewer_sha256": "63acf78c7afc9127c37b05582fb11cabe01aabe59152320a10d1e898e98ded5e",
+  "human_source": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/human_exp_data/sca_dataframe.csv",
+  "human_source_sha256": "985db789fb1aa16d68121a2b7434e500052536e7420b509a25a1800501fd7f22",
+  "source_fields": [
+    "spearman.word_paired_ranks",
+    "spearman.word_spearman_by_context"
+  ],
+  "score_source": "sampling_array",
+  "n_contexts": 16,
+  "words_per_context": 6,
+  "n_points": 96,
+  "panel_order": [
+    "bag",
+    "bakery",
+    "beach",
+    "cold",
+    "cut",
+    "fridge",
+    "gym",
+    "hot",
+    "mall",
+    "mask",
+    "meat",
+    "restaurant",
+    "salad",
+    "science",
+    "throw",
+    "transport"
+  ],
+  "rank_convention": "Descending, zero-based, average ranks for ties",
+  "coefficient": "Pearson correlation of human and model rank columns",
+  "display_precision": 3,
+  "validation": [
+    "All 96 human ranks match sca_dataframe.csv trigger_relevance",
+    "All 96 model ranks recomputed from viewer sampling-array log scores",
+    "All 16 recomputed coefficients match viewer values within 1e-12",
+    "All word label boxes fit the figure and do not overlap each other"
+  ],
+  "title": "Word-ranking agreement across contexts",
+  "figure_inches": [
+    7.8,
+    8.85
+  ],
+  "png_dpi": 400,
+  "subplot_layout": {
+    "left": 0.06,
+    "right": 0.989,
+    "bottom": 0.058,
+    "top": 0.913,
+    "wspace": 0.37,
+    "hspace": 0.48
+  },
+  "point_area_pt_squared": 19,
+  "label_offset_pt": 3,
+  "script": "/Users/lailajohnston/Documents/Research Projects /FocusAlternatives/structure-of-alternatives/focus_alt_exp_pipeline/code/plot_word_ranking_spearman_all_contexts.py"
+}
